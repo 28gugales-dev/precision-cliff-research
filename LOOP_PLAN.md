@@ -26,7 +26,7 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
       (b) Stats referee: prereg discipline, Fisher tests, multiple comparisons;
       (c) GECCO/EC domain reviewer: novelty vs FunSearch/QD lit, venue fit.
       Each returns numbered findings, severity-tagged.
-- [ ] P5. Council pressure-test — /llm-council on paper 1 core claims + framing.
+- [x] P5. DONE 2026-08-01: council ran (5 advisors + chairman; peer round folded into chairman, unanimity). Verdict: maximal honesty all cruxes; falsifier TRIGGERED; same-wave = post-hoc labeled, never primary; P-T2 confirmed-as-registered; blind rescore under frozen rubric e181d2a; abstract range not 'exact'; disclose LLM panel in methods; mode-baseline demanded AND DELIVERED (p11_mode_baseline.json: pred==mode 7/7 N, hit rate saturates ceiling, round-number ~0). Council pressure-test — /llm-council on paper 1 core claims + framing.
 - [ ] P6. Revision pass — Opus fixes accepted findings from P4+P5; Fable arbitrates
       which findings are valid (reject persona nitpicks that contradict prereg).
 - [ ] P7. Gap experiments IF reviews demand — subagent sampling only (haiku/sonnet/opus
@@ -34,7 +34,7 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
       kernels need no API key for CPU experiments).
 - [x] P8. DRAFT DONE 2026-08-01 (paper2_draft.md 3627w; conflicts flagged outline-plan vs executed-run — writer used executed). P9 MUST audit: (1) §3 numbers trace to EXECUTED sections of precision-cliff-paper-outline.md, not '[PLACEHOLDER]' plan text (outline line 48 abstract is unexecuted plan!); (2) 24-overlap-of-26-failures arithmetic; (3) three [SLOT: systems-lit] pending p8_systems_citations.md. Paper 2 prose — condense paper-0 cliff data into §3 + write §1-2, 4-8.
       Opus writes, Fable verifies vs STATE.md §8-8b + arm_f_repro.py provenance.
-- [ ] P9. Paper 2 review — systems/repro persona (MLSys-style reviewer) + revision.
+- [x] P9. REVIEW DONE 2026-08-01 (p9_review_mlsys.md, 27 findings, 5 placeholder leaks — outline = UNEXECUTED PLAN in entirety; real data = ../precision-cliff-paper-combined.md). Rebuild agent dispatched. Paper 2 review — systems/repro persona (MLSys-style reviewer) + revision.
 - [x] P10. DONE 2026-08-01 (pulled forward — no dependency on draft text). fig_scripts.py
       deterministic; fig1_trapzones.png (rule vs recipe-best vs published, zones shaded),
       fig2_packings.png (Haiku truncation / Sonnet 2.75 escape / opus_alias overlap fail),
@@ -138,3 +138,8 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
   dependency on prose). Figures rendered + eyeballed. Rectangle recount verified 5/11 0/11.
 - 2026-08-01 iter3: merge verified (12 checks), P2-P3 closed, P4 panel dispatched.
 - 2026-08-01 iter4: paper2 draft landed + spot-checked; systems-citation verifier dispatched; P4 panel still out.
+- 2026-08-01 iter5: council verdict + chairman blind-spots logged; rubric frozen e181d2a
+  PRE-verdict; blind adjudicator running; paper2 sec3 rebuild agent + ledger v2 agent
+  dispatched. CRITICAL learning: paper2 writer had been pointed at outline (plan file);
+  executed paper-0 lives at ../precision-cliff-paper-combined.md. P6 revision (paper 1)
+  waits on blind labels. Remaining after that: P6 revision agent, P11 polish.
