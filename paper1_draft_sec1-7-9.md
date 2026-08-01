@@ -40,13 +40,13 @@ closed-form output.
 
 Three framing commitments deserve stating up front, because they are context for the
 result rather than parts of it. First, behavioural anchoring in language models is
-established territory: the literature has documented numeric priming and estimate-dragging
-in scalar settings, and we inherit that vocabulary rather than extend it. What differs
-here is the modality — the anchor is a *construction template*, not a number, and the
-quantity dragged toward it is a geometric layout. Second, the benchmark choice is
-strategic rather than novel: we deliberately run on the task the discovery-systems
-literature already treats as its exemplar, so that a negative characterisation of the
-proposal distribution lands where it is load-bearing. Third, preregistration is by now an
+established territory: the literature documents numeric priming and estimate-dragging in
+scalar settings, and we inherit that vocabulary rather than extend it. What differs is the
+modality — the anchor is a *construction template*, not a number, and the quantity dragged
+toward it is a geometric layout. Second, the benchmark choice is strategic rather than
+novel: we run on the task the discovery-systems literature already treats as its exemplar,
+so that a negative characterisation of the proposal distribution lands where it is
+load-bearing. Third, preregistration is by now an
 adopted standard for LLM experiments rather than a contribution
 (2606.27687; 2607.07184; 2606.11217; 2607.00276); our only twist is what is locked — we
 hash-lock exact-output point predictions derived from a closed form, on a held-out
@@ -98,15 +98,14 @@ ThetaEvolve (2511.23473). The spread across systems is smaller than the systems'
 architectural differences, which is itself informative: the benchmark is saturated at the
 reporting precision these papers use.
 
-Two critiques of that scoreboard bear directly on our framing. Gideoni, Risi and Gal
-(2602.16805) show that simple baselines recover much of the reported advantage, and
-Berthold et al. (2605.04850) show that classical solvers do so as well — the two critiques
-are independent and are frequently conflated, so we note the attribution explicitly. Both
-ask whether the *system* is adding what its headline number implies. We ask a prior
-question: what does the LLM component actually propose when queried directly? Our answer —
-a truncated grid template whose value a formula anticipates — supplies a mechanism-free
-account of why saturation looks the way it does, and of what the loop's selection pressure
-is filtering.
+Two critiques of that scoreboard bear on our framing. Gideoni, Risi and Gal (2602.16805)
+show that simple baselines recover much of the reported advantage, and Berthold et al.
+(2605.04850) show that classical solvers do so as well — independent critiques that are
+frequently conflated, so we note the attribution explicitly. Both ask whether the *system*
+adds what its headline number implies. We ask a prior question: what does the LLM component
+propose when queried directly? Our answer — a truncated grid template whose value a formula
+anticipates — gives a mechanism-free account of what the loop's selection pressure is
+filtering.
 
 ### 7.2 Template convergence and diversity collapse
 
@@ -164,31 +163,29 @@ correctly, and neither substitutes for the other.
 The closest cousin is "The Price of Format" (2505.18949), which shows that imposing an
 output format collapses generation diversity. The differentiator is what is imposed: a
 format constraint restricts the *shape* of the answer, whereas our manipulation adds a
-one-line request to name a method and leaves the answer format untouched — yet still
+one-line request to name a method, leaves the answer format untouched, and still
 concentrates the output. Related reactivity results include the Hawthorne effect in
 reasoning models (2505.14617), where test-awareness steers behaviour; Verbalized Sampling
-(2510.01171), which treats mode collapse as addressable at the prompt level; and Latent
-Memory Anchor (2506.17630). Our setting adds something these lack: the emitted method line
-is auditable against the emitted coordinates, so faithfulness is checkable against ground
-truth rather than estimated.
+(2510.01171) on mode collapse; and Latent Memory Anchor (2506.17630). Our setting adds what
+these lack: the emitted method line is auditable against the emitted coordinates, so
+faithfulness is checked against ground truth rather than estimated.
 
 ### 7.5 Preregistration lineage
 
-Preregistration of LLM experiments is an established and growing practice. Thomas, Gligoric
-and Shah (2606.27687) preregister the experimental recipe; "Predicting LLM Safety Before
-Release" (2607.07184) files OSF preregistrations of prevalence rates; 2606.11217 adapts the
-protocol to AI-agent experiments; and 2607.00276 applies it in a physics-literacy study.
-Concurrently, HindsightBench (2607.18867, 2026-07-21) freezes directional aggregate
-hypotheses under SHA-256. We adopt this standard rather than claim it. What we add is the
-object being locked: exact closed-form point predictions of specific output values, hashed
-together with the prompts, and then tested on a container the rule was never fitted to.
-The structural precedents for this move come from outside the prereg literature — Kaplan et
-al. (2001.08361) and Chinchilla (2203.15556) publish a functional form and then run the
-confirming instance, and "Predicting Emergent Capabilities by Finetuning" (2411.16035) is
-the closest structural twin: a timestamped preregistered threshold tested on deliberately
-excluded models. Related in spirit, MatLLMSearch (2502.20933) reports crowding in an
-LLM-driven materials search, and QDAIF (2310.13032) is the QD-descriptor setting most
-directly affected by our §5 reactivity finding.
+Preregistration of LLM experiments is established practice. Thomas, Gligoric and Shah
+(2606.27687) preregister the experimental recipe; "Predicting LLM Safety Before Release"
+(2607.07184) files OSF preregistrations of prevalence rates; 2606.11217 adapts the protocol
+to AI-agent experiments; 2607.00276 applies it in a physics-literacy study. Concurrently,
+HindsightBench (2607.18867) freezes directional aggregate hypotheses under SHA-256. We adopt
+this standard rather than claim it; what we add is the object locked — exact closed-form
+point predictions of specific output values, hashed with the prompts, tested on a container
+the rule was never fitted to. The structural precedents come from outside the prereg
+literature: Kaplan et al. (2001.08361) and Chinchilla (2203.15556) publish a functional form
+and then run the confirming instance, and "Predicting Emergent Capabilities by Finetuning"
+(2411.16035) is the closest structural twin — a timestamped preregistered threshold tested
+on deliberately excluded models. Related in spirit, MatLLMSearch (2502.20933) reports
+crowding in an LLM-driven materials search, and QDAIF (2310.13032) is the QD-descriptor
+setting most directly affected by our §5 reactivity finding.
 
 ---
 
@@ -197,9 +194,9 @@ directly affected by our §5 reactivity finding.
 **Single vendor.** All model tiers sampled here come from one provider. A cross-vendor arm
 was scoped and is blocked on credit rather than on design; we disclose this rather than
 generalise past it. The closed form is stated over problem parameters, not over any
-vendor's architecture, so it is testable elsewhere — but it has not yet been tested
-elsewhere, and the tier-inversion result in particular should be read as a within-family
-observation until it is.
+vendor's architecture, so it is testable elsewhere — but it has not been, and the
+tier-inversion result in particular should be read as a within-family observation until
+it is.
 
 **Zero-shot only.** We characterise the single-call proposal distribution and do not rerun
 an evolutionary loop. This is a deliberate scope choice — paper 0 found the loop to perform
@@ -234,12 +231,11 @@ P1–P5, square arm), `arm_s_preregistration.txt` (Sonnet tier), `arm_o_preregis
 `ab7900a8…`). The rectangle transfer was registered before collection and never refitted to
 rectangle data (`rect_forecast.py`, `arm_g_rect.py`).
 
-All raw model outputs are stored verbatim, unedited, in the repository
-(`arm_f_raw.json`, `arm_f_candidates.jsonl`, `arm_g_candidates.jsonl`), so that any scoring
-decision can be re-derived from the original text rather than trusted. Scoring is
-deterministic and local: candidate layouts are parsed into coordinates and radii, overlap
-and containment are checked at fixed tolerance, and the sum of radii is computed without
-model involvement at any stage.
+All raw model outputs are stored verbatim in the repository (`arm_f_raw.json`,
+`arm_f_candidates.jsonl`, `arm_g_candidates.jsonl`), so any scoring decision can be
+re-derived from the original text rather than trusted. Scoring is deterministic and local:
+layouts are parsed into coordinates and radii, overlap and containment are checked at fixed
+tolerance, and the sum of radii is computed without model involvement at any stage.
 
 Value claims are gated on an independent linear-programming oracle rather than on the
 closed form being tested. The forecast pipeline (`n_sweep_forecast.py`, with
@@ -249,7 +245,7 @@ rectangle filler closed form does not exist, with an LP counterexample at 1.125 
 1.1545085. We keep that negative in the paper because it demonstrates the gate working —
 the pipeline aborts on drift rather than fitting through it.
 
-Analysis scripts (`arm_t_analysis.py`), the forecast artefacts (`n_sweep_forecast.json`,
-`rect_forecast.json`), and a running experimental log (`STATE.md`) are included so that
-each table in this paper can be regenerated from the raw outputs by a single command
-documented in `HOW_TO_RUN.md`.
+Analysis scripts (`arm_t_analysis.py`), forecast artefacts (`n_sweep_forecast.json`,
+`rect_forecast.json`), and a running experimental log (`STATE.md`) are included, so every
+table in this paper regenerates from the raw outputs by a single command documented in
+`HOW_TO_RUN.md`.

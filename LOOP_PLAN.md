@@ -85,6 +85,22 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
 - Reject Gemini's K6 inflation ("constraint vector physically pulls coordinates") —
   mechanism claim unsupported; keep behavioral-distribution language only.
 
+## Per-phase resource map (user order: name optimal tools per step, token-lean)
+| phase | workers | tools/skills/MCPs | token notes |
+|---|---|---|---|
+| P2c verify+merge | none (Fable) | Bash python recompute, Grep spot-checks | never full-file re-read; grep numbers only |
+| P4 review panel | 3x Agent opus | plain persona prompts; findings to files | reviewers write findings to corpus files, return 1-line counts |
+| P5 council | Fable invokes | Skill: llm-council | feed abstract + claim map only, not full drafts |
+| P6 revision | 1x Agent opus | headroom_compress findings first | worker gets finding list + file pointers |
+| P7 gap experiments | Agent haiku/sonnet samplers | arm_f_repro.py protocol, collect_raw.py regexes | prereg first; label-exact dispatch (HOW_TO_RUN.md) |
+| P8 paper 2 prose | 1x Agent opus | paper2 skeleton + STATE §8-8b + precision-cliff-paper-outline.md | pointer-based, no pastes |
+| P9 paper 2 review | 1x Agent opus | MLSys persona | same file-based findings |
+| P10 figures | Fable local | Bash python matplotlib; Read on PNGs to verify | no browser, no screenshots |
+| P11 polish | Fable + 1 opus | WebFetch venue pages (ALIFE/TMLR); NotebookLM optional | fetch format rules once, cache in file |
+| backup (every iter) | Fable | PowerShell robocopy to OneDrive; git commit | free, zero context cost |
+| backup (milestones) | Agent sonnet | Drive MCP create_file to folder 1duA4rzycj1Ad2pGKA6XOT5VQt7WGWtqG | delegate = bytes stay out of orchestrator context |
+| any code search | Fable | Grep/Glob direct | corpus tiny + known layout; graphify skipped deliberately |
+
 ## Iteration log
 - 2026-08-01 setup: loop created, P2a+P2b dispatched, kill-check running.
 - 2026-08-01 Gemini feedback triaged: positioning rules above; verification agent dispatched.
@@ -95,3 +111,9 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
   recomputation: pairwise+wall slack both 0.000e+00 at tol=0, sum 2.7499999991 — draft
   updated to assert flatly. Conflicts 2 (ladder placement) + 3 (p rounding 0.0325) accepted
   as writer resolved. Awaiting §2-3 and §1+§7-9 writers for P2c merge.
+- 2026-08-01 iter1c: §1+§7-9 landed (~2400 w, 40 citations, positioning executed). Merge
+  fixes queued for P2c: restore FunSearch (Romera-Paredes et al., Nature 2023) to §1/§7.1;
+  restore skeleton anchoring-bias trio (2505.15392, 2412.06593, 2410.15413) + faithfulness
+  trio (2503.08679, 2606.13603, 2605.29087) — real citations from earlier sweep, writer
+  excluded them only by authoritative-file rule. Consider BehaveSim + Strategy Diversity adds.
+  Drive backup rerun on haiku after sonnet safeguard false-positive; OneDrive mirror done (90 files).
