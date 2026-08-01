@@ -605,11 +605,12 @@ For benchmark lineage, arXiv 2605.29268 studies the same objective (26 circles i
 unit square) under LLM-guided program synthesis with an explicit best-of-N comparator;
 its asymmetric-proposal-mass account is the complement of our companion paper's
 attractor account. The saturation of reported values here — AlphaEvolve at 2.635 and a
-cluster of later systems at 2.635983283, 2.63598308 and 2.636 (ShinkaEvolve; HELIX,
-2603.07642; GigaEvo, 2511.17592; AdaEvolve, 2602.20133; SeaEvo, 2604.24372;
-ThetaEvolve, 2511.23473) — is itself an argument for this paper: a field reporting
-agreement at the eighth decimal while addressing its models by alias is reporting
-agreement it cannot attest.
+cluster of later systems at 2.635983283 (ShinkaEvolve), 2.63598308 (HELIX,
+2603.07642) and 2.636 (GigaEvo, 2511.17592; AdaEvolve, 2602.20133), with further
+systems on the same benchmark whose reported values we have not independently
+verified (SeaEvo, 2604.24372; ThetaEvolve, 2511.23473) — is itself an argument for
+this paper: a field reporting agreement at the eighth decimal while addressing its
+models by alias is reporting agreement it cannot attest.
 
 On the tier behavior in §4, Zhou et al. (Nature, 2024) report that larger and more
 instructable models attempt more and err more in question answering; our observation
