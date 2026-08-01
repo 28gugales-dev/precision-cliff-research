@@ -117,8 +117,14 @@ def parse_packing(raw):
     return out, None
 
 
-def validate(circles, n, tol=1e-9):
-    """Exactly n circles, all inside the unit square, none overlapping."""
+def validate(circles, n, tol=1e-6):
+    """Exactly n circles, all inside the unit square, none overlapping.
+
+    The default is the DECLARED PRIMARY tolerance (1e-6), so a reader who runs
+    this file with defaults reproduces the paper's headline numbers. The strict
+    1e-9 gate is still computed for every row by ingest(), which passes both
+    explicitly; it is a second reported column, never the default.
+    """
     if len(circles) != n:
         return False, f"count_{len(circles)}_expected_{n}"
     for x, y, r in circles:

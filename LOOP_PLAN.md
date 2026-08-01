@@ -34,7 +34,7 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
       kernels need no API key for CPU experiments).
 - [x] P8. DRAFT DONE 2026-08-01 (paper2_draft.md 3627w; conflicts flagged outline-plan vs executed-run — writer used executed). P9 MUST audit: (1) §3 numbers trace to EXECUTED sections of precision-cliff-paper-outline.md, not '[PLACEHOLDER]' plan text (outline line 48 abstract is unexecuted plan!); (2) 24-overlap-of-26-failures arithmetic; (3) three [SLOT: systems-lit] pending p8_systems_citations.md. Paper 2 prose — condense paper-0 cliff data into §3 + write §1-2, 4-8.
       Opus writes, Fable verifies vs STATE.md §8-8b + arm_f_repro.py provenance.
-- [x] P9. REVIEW DONE 2026-08-01 (p9_review_mlsys.md, 27 findings, 5 placeholder leaks — outline = UNEXECUTED PLAN in entirety; real data = ../precision-cliff-paper-combined.md). Rebuild agent dispatched. Paper 2 review — systems/repro persona (MLSys-style reviewer) + revision.
+- [x] P9. FULLY DONE 2026-08-01 (review 27 findings + rebuild agent addressed 27/27; sec3 rebuilt from executed combined paper; validate() tol default doc-fix verified rippleless) (p9_review_mlsys.md, 27 findings, 5 placeholder leaks — outline = UNEXECUTED PLAN in entirety; real data = ../precision-cliff-paper-combined.md). Rebuild agent dispatched. Paper 2 review — systems/repro persona (MLSys-style reviewer) + revision.
 - [x] P10. DONE 2026-08-01 (pulled forward — no dependency on draft text). fig_scripts.py
       deterministic; fig1_trapzones.png (rule vs recipe-best vs published, zones shaded),
       fig2_packings.png (Haiku truncation / Sonnet 2.75 escape / opus_alias overlap fail),
@@ -143,3 +143,4 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
   dispatched. CRITICAL learning: paper2 writer had been pointed at outline (plan file);
   executed paper-0 lives at ../precision-cliff-paper-combined.md. P6 revision (paper 1)
   waits on blind labels. Remaining after that: P6 revision agent, P11 polish.
+- 2026-08-01 iter6: ledger v2 committed; paper2 rebuild landed + verified; falsifier dual-reading in analysis code; awaiting paper1 grand revision only.
