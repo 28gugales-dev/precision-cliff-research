@@ -45,12 +45,25 @@ def call(prompt):
             err = str(e)
     return {"transport_error": err if 'err' in dir() else "retries exhausted"}, 8
 
+# Checkpoint: one JSON row per line, appended immediately after each call.
+# Restart skips (n, sample_idx) pairs already on disk. Interruptions discard
+# only unsaved in-flight responses, unobserved (disclosed in ledger note).
+CKPT = HERE / "arm_gm_checkpoint.jsonl"
+done_pairs = set()
+if CKPT.exists():
+    for line in CKPT.read_text().splitlines():
+        if line.strip():
+            r = json.loads(line)
+            done_pairs.add((r["n"], r["sample_idx"]))
+    print(f"resuming: {len(done_pairs)} rows already on disk", flush=True)
+
 results = []
 lock = threading.Lock()
 jobs = queue.Queue()
 for n in NS:
     for i in range(SAMPLES):
-        jobs.put((n, i))
+        if (n, i) not in done_pairs:
+            jobs.put((n, i))
 
 def worker():
     while True:
@@ -65,7 +78,9 @@ def worker():
                "transport_retries": retries, "response": resp}
         with lock:
             results.append(row)
-            done = len(results)
+            with CKPT.open("a") as f:
+                f.write(json.dumps(row) + "\n")
+            done = len(results) + len(done_pairs)
             if done % 10 == 0:
                 print(f"{done}/140", flush=True)
 
@@ -73,9 +88,18 @@ threads = [threading.Thread(target=worker) for _ in range(4)]
 [t.start() for t in threads]
 [t.join() for t in threads]
 
-results.sort(key=lambda r: (r["n"], r["sample_idx"]))
-(HERE / "arm_gm_raw.json").write_text(json.dumps(
-    {"model": MODEL, "endpoint": URL, "prereg_commit": "37b3adb",
-     "temperature": 1.0, "rows": results}, indent=1))
-errs = sum(1 for r in results if "transport_error" in r["response"])
-print(f"done: {len(results)} rows, {errs} transport errors")
+# Final assembly from checkpoint (single source of truth).
+all_rows = [json.loads(l) for l in CKPT.read_text().splitlines() if l.strip()]
+all_rows.sort(key=lambda r: (r["n"], r["sample_idx"]))
+if len(all_rows) == len(NS) * SAMPLES:
+    (HERE / "arm_gm_raw.json").write_text(json.dumps(
+        {"model": MODEL, "endpoint": URL, "prereg_commit": "37b3adb",
+         "temperature": 1.0,
+         "note": "assembled from arm_gm_checkpoint.jsonl; run was "
+                 "interruptible — in-flight responses at interruption were "
+                 "discarded unobserved and their cells re-called",
+         "rows": all_rows}, indent=1))
+    errs = sum(1 for r in all_rows if "transport_error" in r["response"])
+    print(f"COMPLETE: {len(all_rows)} rows, {errs} transport errors")
+else:
+    print(f"partial: {len(all_rows)}/{len(NS) * SAMPLES} rows — rerun to resume")
