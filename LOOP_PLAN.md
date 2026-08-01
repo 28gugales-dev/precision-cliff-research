@@ -32,7 +32,7 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
 - [ ] P7. Gap experiments IF reviews demand — subagent sampling only (haiku/sonnet/opus
       agents), prereg-first, no API. Kaggle only if compute-bound (unlikely; note:
       kernels need no API key for CPU experiments).
-- [ ] P8. Paper 2 prose — condense paper-0 cliff data into §3 + write §1-2, 4-8.
+- [x] P8. DRAFT DONE 2026-08-01 (paper2_draft.md 3627w; conflicts flagged outline-plan vs executed-run — writer used executed). P9 MUST audit: (1) §3 numbers trace to EXECUTED sections of precision-cliff-paper-outline.md, not '[PLACEHOLDER]' plan text (outline line 48 abstract is unexecuted plan!); (2) 24-overlap-of-26-failures arithmetic; (3) three [SLOT: systems-lit] pending p8_systems_citations.md. Paper 2 prose — condense paper-0 cliff data into §3 + write §1-2, 4-8.
       Opus writes, Fable verifies vs STATE.md §8-8b + arm_f_repro.py provenance.
 - [ ] P9. Paper 2 review — systems/repro persona (MLSys-style reviewer) + revision.
 - [x] P10. DONE 2026-08-01 (pulled forward — no dependency on draft text). fig_scripts.py
@@ -137,3 +137,4 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
 - 2026-08-01 iter2: P10 executed during merge wait (self-edit: reorder, reason = zero
   dependency on prose). Figures rendered + eyeballed. Rectangle recount verified 5/11 0/11.
 - 2026-08-01 iter3: merge verified (12 checks), P2-P3 closed, P4 panel dispatched.
+- 2026-08-01 iter4: paper2 draft landed + spot-checked; systems-citation verifier dispatched; P4 panel still out.
