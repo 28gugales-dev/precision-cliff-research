@@ -40,7 +40,7 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
       fig2_packings.png (Haiku truncation / Sonnet 2.75 escape / opus_alias overlap fail),
       fig3_armT.png (87v70 p=0.0325, validity n.s.). All three PNG-verified by Read.
       Pooled validity denominators re-verified via arm_t_analysis.py (50/60, 53/60).
-- [ ] P11. Final polish — abstract sync, venue checklist (ALIFE 2026 open now;
+- [x] P11. DONE 2026-08-01: abstract synced (352w calibrated); claim-evidence audited through grand-revision checks; venues verified by search: ALIFE 2026 CLOSED (late-breaking passed 07-20), GECCO'26 wksp passed; plan = paper2 -> TMLR NOW (MLRC 2026 window to 09-30), paper1 -> arXiv + GECCO 2027 Krakow (Jul 12-16 2027, deadline ~Jan 2027), TMLR fallback. Final polish — abstract sync, venue checklist (ALIFE 2026 open now;
       TMLR window through 2026-09-30), claim-evidence map final audit. Report to user.
 
 ## Standing rules
@@ -145,3 +145,9 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
   waits on blind labels. Remaining after that: P6 revision agent, P11 polish.
 - 2026-08-01 iter6: ledger v2 committed; paper2 rebuild landed + verified; falsifier dual-reading in analysis code; awaiting paper1 grand revision only.
 - 2026-08-01 iter7: paper1 revision landed + verified; abstract synced; P4/P6/P7 closed. P11 remains.
+- [ ] P12. LaTeX + PDF: convert both drafts to arXiv-ready LaTeX (pandoc or hand template),
+  embed fig1-3, render PDFs, verify by Read. Opus worker per draft, Fable verifies.
+- [ ] P13. Release audit: repo README (private until submission), artifact manifest,
+  final sweep for stray key material / personal data in released files (none expected).
+- 2026-08-01 iter8: P11 closed; venue truth from live search; P12/P13 appended (loop
+  self-edit: continuation = submission prep, user asleep, goal = keep loop going).
