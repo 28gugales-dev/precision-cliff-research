@@ -1,0 +1,22 @@
+{
+  "13": {
+    "prompt": "Pack exactly 13 non-overlapping circles inside the unit square [0,1]x[0,1] so that the sum of their radii is as large as possible.\nMUST hold: exactly 13 circles; every circle fully inside the unit square [0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap (distance between centers >= sum of the two radii; touching is allowed).\nDo not write or execute code - construct the packing by reasoning alone.\nOutput ONLY the raw Python list of 13 [x, y, r] lists. No explanation, no code fences, no other text.",
+    "sha256": "32db485bea625ff9f39f4723ebf1a01f337559a9e2cf567fb486928f71f7f8df"
+  },
+  "17": {
+    "prompt": "Pack exactly 17 non-overlapping circles inside the unit square [0,1]x[0,1] so that the sum of their radii is as large as possible.\nMUST hold: exactly 17 circles; every circle fully inside the unit square [0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap (distance between centers >= sum of the two radii; touching is allowed).\nDo not write or execute code - construct the packing by reasoning alone.\nOutput ONLY the raw Python list of 17 [x, y, r] lists. No explanation, no code fences, no other text.",
+    "sha256": "8437df753f98cf7c263869a6f6813f19a6e8a2cda206affab8d7ef7ad1c6d942"
+  },
+  "31": {
+    "prompt": "Pack exactly 31 non-overlapping circles inside the unit square [0,1]x[0,1] so that the sum of their radii is as large as possible.\nMUST hold: exactly 31 circles; every circle fully inside the unit square [0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap (distance between centers >= sum of the two radii; touching is allowed).\nDo not write or execute code - construct the packing by reasoning alone.\nOutput ONLY the raw Python list of 31 [x, y, r] lists. No explanation, no code fences, no other text.",
+    "sha256": "a664d003cbf1c0eca51bae5b3a1d072071eb34756725a7491d6a2e8fa3b78e92"
+  },
+  "35": {
+    "prompt": "Pack exactly 35 non-overlapping circles inside the unit square [0,1]x[0,1] so that the sum of their radii is as large as possible.\nMUST hold: exactly 35 circles; every circle fully inside the unit square [0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap (distance between centers >= sum of the two radii; touching is allowed).\nDo not write or execute code - construct the packing by reasoning alone.\nOutput ONLY the raw Python list of 35 [x, y, r] lists. No explanation, no code fences, no other text.",
+    "sha256": "3b08c56e587df8700a5db0be38bbca680eb8d1ea1ad138eb0768fead69a6b22c"
+  },
+  "37": {
+    "prompt": "Pack exactly 37 non-overlapping circles inside the unit square [0,1]x[0,1] so that the sum of their radii is as large as possible.\nMUST hold: exactly 37 circles; every circle fully inside the unit square [0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap (distance between centers >= sum of the two radii; touching is allowed).\nDo not write or execute code - construct the packing by reasoning alone.\nOutput ONLY the raw Python list of 37 [x, y, r] lists. No explanation, no code fences, no other text.",
+    "sha256": "2c0a88191cb280e9105949b6f76d442da40c7ad6661cb584bf9f546225fcc516"
+  }
+}

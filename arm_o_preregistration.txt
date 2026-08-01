@@ -1,0 +1,14 @@
+Arm O pre-registration, 2026-07-31, written BEFORE any Opus proposal was sampled.
+Fully blind: zero Opus samples observed on this task, any N, ever.
+Proposer: runtime alias "opus" (user-designated Opus 4.6; alias->weights binding
+is a promise not a hash, per the S4 disclosure pattern). Cells: N=13/21/31, 10 each,
+bare prompt identical to Haiku/Sonnet arms.
+
+If constructive anchoring is capability-graded (Haiku anchors 7/11, Sonnet 1/30):
+P-O1  Opus on-trap rate at N=13/21/31 pooled <= Sonnet's 1/30.
+P-O2  Opus rival-argmax rate >= Sonnet's 6/30.
+P-O3  Opus multi-radii fraction >= 0.9 of valid samples.
+P-O4  At least one Opus sample strictly exceeds the best recipe-family value in
+      some cell (Sonnet: one, 2.75 > 2.7485281 at N=31).
+Disconfirmation worth having: if Opus REGRESSES toward the trap (on-trap > Sonnet),
+capability-grading is wrong and the tier story needs rethinking.
