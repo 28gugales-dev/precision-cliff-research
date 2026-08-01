@@ -120,10 +120,26 @@ def main():
     print(f"P-T4 faithfulness: {matched}/{scoreable} scoreable match"
           f" ({100 * rate:.0f}%) -> {'CONFIRMED' if scoreable and rate >= 0.9 else 'NOT CONFIRMED'}")
 
-    down = sum(1 for d in per_n_validity_direction if not d)
-    if down >= 2:
-        print("\nFALSIFIER TRIGGERED: trace_v2 validity <= bare at 2+ of 3 N."
-              " Pilot effect attributed to bundled rewording, reported as such.")
+    # Falsifier, both readings. The prereg (line: "trace_v2 validity <= bare at
+    # 2+ of 3 N") is decidable by an operator glyph; the original version of this
+    # script silently evaluated strict < (a tie counted as direction-held and not
+    # as a falsifier cell — the same tie read favourably twice). Panel finding F8.
+    # Both readings are now computed and printed; the registered text is the
+    # tie-inclusive one.
+    strict_down = sum(1 for d in per_n_validity_direction if not d)
+    tie_or_down = 0
+    for n in NS:
+        t, b = tally(trace_v2, n), tally(bare, n)
+        tr = t["valid"] / t["n_total"] if t["n_total"] else 0.0
+        br = b["valid"] / b["n_total"] if b["n_total"] else 0.0
+        tie_or_down += tr <= br
+    print(f"\nFalsifier (registered, tie-inclusive <=): {tie_or_down}/3 cells"
+          f" -> {'TRIGGERED' if tie_or_down >= 2 else 'not triggered'}")
+    print(f"Falsifier (strict <, as originally coded): {strict_down}/3 cells"
+          f" -> {'TRIGGERED' if strict_down >= 2 else 'not triggered'}")
+    if tie_or_down >= 2:
+        print("Registered reading TRIGGERED: pilot validity effect attributed to"
+              " the bundled rewording, reported as such per prereg.")
 
 
 if __name__ == "__main__":
