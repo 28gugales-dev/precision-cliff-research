@@ -61,6 +61,17 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
   its verdicts from file.
 - LOOP SELF-EDIT (user grant): Fable may reorder/add/drop phases in this file as work
   reveals needs — log every edit in iteration log with one-line reason.
+- REVERTIBILITY (user order): corpus is now a git repo (revert point 84e4db0,
+  2026-08-01). Commit after every iteration's file changes, one-line message.
+  Revert anything: git checkout / git revert. Never force-push (no remote anyway),
+  never delete evidence files.
+- WORKER MODEL RULE (user order): subagents = Opus at MEDIUM effort where effort is
+  settable (Workflow agent() opts.effort='medium'); Agent tool lacks effort param —
+  model:'opus' only, never model:'fable' for workers. Fable = orchestrator only.
+  Cheap mechanical lookups may use sonnet/haiku.
+- RESOURCE: user has NotebookLM in Chrome + notebooklm MCP — usable for source-grounded
+  Q&A on uploaded corpora if a phase needs it (e.g. checking venue guidelines, related-work
+  digestion). Optional, not required.
 
 ## Positioning rules (from Gemini feedback triage, 2026-08-01)
 - K2 (closed form), K5 (tier inversion), K6 (elicitation-as-intervention) = claimed
