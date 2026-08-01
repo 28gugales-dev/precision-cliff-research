@@ -145,9 +145,10 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
   waits on blind labels. Remaining after that: P6 revision agent, P11 polish.
 - 2026-08-01 iter6: ledger v2 committed; paper2 rebuild landed + verified; falsifier dual-reading in analysis code; awaiting paper1 grand revision only.
 - 2026-08-01 iter7: paper1 revision landed + verified; abstract synced; P4/P6/P7 closed. P11 remains.
-- [ ] P12. LaTeX + PDF: convert both drafts to arXiv-ready LaTeX (pandoc or hand template),
+- [x] P12. DONE 2026-08-01: latex1/ + latex2/ written, fidelity-verified (0 prose lost, digests round-trip); no local TeX — compile on Overleaf/arXiv; SeaEvo/ThetaEvolve score-cluster misattribution fixed in draft+tex. LaTeX + PDF: convert both drafts to arXiv-ready LaTeX (pandoc or hand template),
   embed fig1-3, render PDFs, verify by Read. Opus worker per draft, Fable verifies.
-- [ ] P13. Release audit: repo README (private until submission), artifact manifest,
+- [x] P13. DONE 2026-08-01: secret sweep clean (0 hits); README.md written (repo landing + evidence chain + review trail); FINAL_REPORT.md written for user wake-up. Release audit: repo README (private until submission), artifact manifest,
   final sweep for stray key material / personal data in released files (none expected).
 - 2026-08-01 iter8: P11 closed; venue truth from live search; P12/P13 appended (loop
   self-edit: continuation = submission prep, user asleep, goal = keep loop going).
+- 2026-08-01 iter9: P12+P13 closed. LOOP -> MAINTENANCE MODE: hourly heartbeat, no new phases unless user directs or notifications arrive. All 13 phases complete.
