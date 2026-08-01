@@ -101,6 +101,20 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
 | backup (milestones) | Agent sonnet | Drive MCP create_file to folder 1duA4rzycj1Ad2pGKA6XOT5VQt7WGWtqG | delegate = bytes stay out of orchestrator context |
 | any code search | Fable | Grep/Glob direct | corpus tiny + known layout; graphify skipped deliberately |
 
+## Skill/plugin bindings per phase (explicit, user order)
+| phase | Claude skills / plugins to invoke | why |
+|---|---|---|
+| ALL | caveman (full) — orchestrator output; brain skill verifying-before-done before checking any box | style rule + done-gate |
+| P2c merge | grounding-claims-in-evidence (rigid) — every number recomputed or grep-verified before assert | prevents draft drift |
+| P4 panel | validating-with-fresh-eyes — personas get NO access to our justifications, only draft + evidence files | uncontaminated review |
+| P5 council | llm-council skill (installed) | user-designated pressure-test tool |
+| P6 revision | intercepting-rationalizations (rigid) — when tempted to reject a finding because fixing is work | arbitration honesty |
+| P7 experiments | planning-before-building + premortem-thinking BEFORE prereg write; root-cause-investigation on anomalies; pr-review-toolkit:silent-failure-hunter on new analysis code | prereg discipline |
+| P8-P9 paper 2 | grounding-claims-in-evidence again; calibrating-confidence on serving-signature claims | forensic sections risk overclaim |
+| P10 figures | ponytail-review on figure scripts (complexity cut); verifying-before-done on rendered PNGs (Read them) | scripts stay minimal |
+| P11 polish | communicating-outcomes for final user report; humanizer (antigravity) OPTIONAL on abstract readability — never on technical sections | report quality |
+| NOT used (deliberate) | graphify (corpus tiny), gstack-review/qa (built for app code diffs, not paper corpus; revisit only if P7 spawns real experiment code), taste-skill/gsap/frontend (no UI), context7 (no library APIs in play; matplotlib basic) | listed so future iterations don't re-litigate |
+
 ## Iteration log
 - 2026-08-01 setup: loop created, P2a+P2b dispatched, kill-check running.
 - 2026-08-01 Gemini feedback triaged: positioning rules above; verification agent dispatched.
