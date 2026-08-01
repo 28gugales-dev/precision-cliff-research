@@ -97,7 +97,7 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
 | P9 paper 2 review | 1x Agent opus | MLSys persona | same file-based findings |
 | P10 figures | Fable local | Bash python matplotlib; Read on PNGs to verify | no browser, no screenshots |
 | P11 polish | Fable + 1 opus | WebFetch venue pages (ALIFE/TMLR); NotebookLM optional | fetch format rules once, cache in file |
-| backup (every iter) | Fable | PowerShell robocopy to OneDrive; git commit | free, zero context cost |
+| backup (every iter) | Fable | git commit + git push origin main (github.com/28gugales-dev/precision-cliff-research, PRIVATE); robocopy OneDrive | free, zero context cost |
 | backup (milestones) | Agent sonnet | Drive MCP create_file to folder 1duA4rzycj1Ad2pGKA6XOT5VQt7WGWtqG | delegate = bytes stay out of orchestrator context |
 | any code search | Fable | Grep/Glob direct | corpus tiny + known layout; graphify skipped deliberately |
 
