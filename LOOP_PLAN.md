@@ -12,16 +12,16 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
       new must-cite set per section: kill_check_2026-08-01.md. Gemini citations
       triaged (real set confirmed, fabrications flagged) in lit_sweep_2026-08-01.md.
       P3 (intro + related work) now UNBLOCKED — must consume kill_check must-cite set.
-- [ ] P2a. Paper 1 prose §2-3 (task/recipe/forecast) — Opus writes paper1_draft_sec2-3.md
+- [x] P2a. DONE. Paper 1 prose §2-3 (task/recipe/forecast) — Opus writes paper1_draft_sec2-3.md
       from skeleton + STATE.md + n_sweep_forecast + arm_f/arm_g evidence. DISPATCHED
       2026-08-01 alongside loop setup.
-- [ ] P2b. Paper 1 prose §4-6 (tier ladder/arm T/faithfulness) — Opus writes
+- [x] P2b. DONE. Paper 1 prose §4-6 (tier ladder/arm T/faithfulness) — Opus writes
       paper1_draft_sec4-6.md. DISPATCHED 2026-08-01 alongside loop setup.
-- [ ] P2c. Fable verify P2a+P2b: every number cross-checked against evidence files;
+- [x] P2c. DONE 2026-08-01: merged paper1_draft.md 7630w, 12 integrity checks green, penalty-claim arbitration verified vs trap_zones data. Fable verify P2a+P2b: every number cross-checked against evidence files;
       no fabricated citations; merge into paper1_draft.md.
-- [ ] P3. Paper 1 prose §1 + §7-9 (intro/related/limitations/repro) — Opus, AFTER P1
+- [x] P3. DONE (same merge). Paper 1 prose §1 + §7-9 (intro/related/limitations/repro) — Opus, AFTER P1
       verdicts in. Then Fable verify + merge.
-- [ ] P4. Peer review panel, paper 1 — 3 Opus personas in parallel:
+- [ ] P4. IN PROGRESS 2026-08-01: 3 isolated Opus personas dispatched, findings to p4_review_*.md. Peer review panel, paper 1 — 3 Opus personas in parallel:
       (a) Reviewer-2: harsh methods skeptic, hunts overclaiming;
       (b) Stats referee: prereg discipline, Fisher tests, multiple comparisons;
       (c) GECCO/EC domain reviewer: novelty vs FunSearch/QD lit, venue fit.
@@ -136,3 +136,4 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
   Drive backup rerun on haiku after sonnet safeguard false-positive; OneDrive mirror done (90 files).
 - 2026-08-01 iter2: P10 executed during merge wait (self-edit: reorder, reason = zero
   dependency on prose). Figures rendered + eyeballed. Rectangle recount verified 5/11 0/11.
+- 2026-08-01 iter3: merge verified (12 checks), P2-P3 closed, P4 panel dispatched.
