@@ -35,8 +35,11 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
 - [ ] P8. Paper 2 prose — condense paper-0 cliff data into §3 + write §1-2, 4-8.
       Opus writes, Fable verifies vs STATE.md §8-8b + arm_f_repro.py provenance.
 - [ ] P9. Paper 2 review — systems/repro persona (MLSys-style reviewer) + revision.
-- [ ] P10. Figures — python scripts (matplotlib, local): trap-zone curve, per-tier
-      packing renders, arm-T bar chart. Scripts into corpus, PNGs alongside.
+- [x] P10. DONE 2026-08-01 (pulled forward — no dependency on draft text). fig_scripts.py
+      deterministic; fig1_trapzones.png (rule vs recipe-best vs published, zones shaded),
+      fig2_packings.png (Haiku truncation / Sonnet 2.75 escape / opus_alias overlap fail),
+      fig3_armT.png (87v70 p=0.0325, validity n.s.). All three PNG-verified by Read.
+      Pooled validity denominators re-verified via arm_t_analysis.py (50/60, 53/60).
 - [ ] P11. Final polish — abstract sync, venue checklist (ALIFE 2026 open now;
       TMLR window through 2026-09-30), claim-evidence map final audit. Report to user.
 
@@ -131,3 +134,5 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
   trio (2503.08679, 2606.13603, 2605.29087) — real citations from earlier sweep, writer
   excluded them only by authoritative-file rule. Consider BehaveSim + Strategy Diversity adds.
   Drive backup rerun on haiku after sonnet safeguard false-positive; OneDrive mirror done (90 files).
+- 2026-08-01 iter2: P10 executed during merge wait (self-edit: reorder, reason = zero
+  dependency on prose). Figures rendered + eyeballed. Rectangle recount verified 5/11 0/11.
