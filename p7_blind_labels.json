@@ -1,0 +1,302 @@
+[
+  {
+    "row_id": 1,
+    "label": "MATCH",
+    "justification": "\"middle row of 5 smaller circles (radius 1/10)\" - y=0.5 cluster holds exactly 5 circles at r=0.1, top and bottom rows 4 each at r=0.125."
+  },
+  {
+    "row_id": 2,
+    "label": "MATCH",
+    "justification": "\"4x4 rectangular grid with 3 corner circles removed\" - 4 y-clusters x 4 x-clusters, 13 = 16-3, and the three absent cells are exactly corners (R5)."
+  },
+  {
+    "row_id": 3,
+    "label": "MATCH",
+    "justification": "\"3x4 rectangular grid with one additional circle\" - base grid is 3 rows x 4 cols (12 circles) with exactly 1 extra circle added (R2)."
+  },
+  {
+    "row_id": 4,
+    "label": "MATCH",
+    "justification": "\"Regular 3 by 4 grid with one additional circle in row 4\" - base 3 rows x 4 cols, single extra circle forming the 4th row at y=0.875."
+  },
+  {
+    "row_id": 5,
+    "label": "MATCH",
+    "justification": "\"3 complete rows of 4 circles and 1 centered circle in the top row\" - rows of 4/4/4 plus one circle at x=0.5, y=0.875."
+  },
+  {
+    "row_id": 6,
+    "label": "MATCH",
+    "justification": "\"3x3 grid with radius 1/6 in center, plus four corner circles with radius (3-2√2)/6\" - 9 circles at r=0.166667 in an exact 3x3 and 4 corner circles at r=0.028595=(3-2√2)/6."
+  },
+  {
+    "row_id": 7,
+    "label": "MATCH",
+    "justification": "\"3x4 rectangular grid plus 1 circle in top margin\" - base 3 rows x 4 cols, exactly one extra circle at (0.5, 0.875)."
+  },
+  {
+    "row_id": 8,
+    "label": "MATCH",
+    "justification": "\"Hexagonal packing with 4 rows and radius 0.125\" - 4 y-clusters and all 13 radii exactly 0.125."
+  },
+  {
+    "row_id": 9,
+    "label": "MATCH",
+    "justification": "\"4x4 rectangular grid with 3 circles removed\" - 4 y-clusters x 4 x-clusters with 13 = 16-3 circles (R5 adjusts count, not dims)."
+  },
+  {
+    "row_id": 10,
+    "label": "MATCH",
+    "justification": "\"Equal-radius rectangular grid with 4 rows stacked vertically\" - exactly 4 y-clusters and a single radius 0.125 throughout; no column count asserted."
+  },
+  {
+    "row_id": 11,
+    "label": "MISMATCH",
+    "justification": "\"alternating rows of 4 and 3 circles\" - observed row sizes are 4,3,3,3, not the alternating 4,3,4,3."
+  },
+  {
+    "row_id": 12,
+    "label": "MATCH",
+    "justification": "\"4-row hexagonal packing\" - exactly 4 y-clusters observed."
+  },
+  {
+    "row_id": 13,
+    "label": "MATCH",
+    "justification": "\"rectangular grid 4-4-4-1 with uniform radius 1/8\" - row sizes are 4,4,4,1 and every radius is 0.125."
+  },
+  {
+    "row_id": 14,
+    "label": "MATCH",
+    "justification": "\"1 center + 6 inner hexagon + 6 outer hexagon at offset angles\" - 1 circle at (0.5,0.5) r=0.22, 6 at r=0.11, 6 at r=0.08, the two rings offset 30 degrees."
+  },
+  {
+    "row_id": 15,
+    "label": "MATCH",
+    "justification": "\"Rectangular grid 4x3 plus one circle in top center gap\" - base grid is 4 columns x 3 rows with one extra circle at (0.5, 0.875)."
+  },
+  {
+    "row_id": 16,
+    "label": "MATCH",
+    "justification": "\"3x4 rectangular grid with 1 circle above\" - base 3 rows x 4 cols with a single extra circle at y=0.875."
+  },
+  {
+    "row_id": 17,
+    "label": "MATCH",
+    "justification": "\"(4-3-4-2 pattern with uniform radius)\" - observed row sizes 4,3,4,2 with all radii 0.125."
+  },
+  {
+    "row_id": 18,
+    "label": "MATCH",
+    "justification": "\"four rows of sizes 4, 4, 3, 2 circles\" - observed row sizes are exactly 4,4,3,2."
+  },
+  {
+    "row_id": 19,
+    "label": "MATCH",
+    "justification": "\"4 circles in the first row and 3 circles in each of the remaining rows\" - observed row sizes 4,3,3,3 across 4 rows."
+  },
+  {
+    "row_id": 20,
+    "label": "MATCH",
+    "justification": "\"one central circle surrounded by 12 circles at equal angular spacing\" - 1 circle at (0.5,0.5) r=0.294361 and 12 at r=0.10282 spaced 30 degrees apart."
+  },
+  {
+    "row_id": 21,
+    "label": "MATCH",
+    "justification": "\"5 rows containing 5, 4, 5, 4, 3 circles\" - observed row sizes 5,4,5,4,3."
+  },
+  {
+    "row_id": 22,
+    "label": "MATCH",
+    "justification": "\"Hexagonal close packing with radius 0.1\" - all 21 radii are exactly 0.1; no dimensions asserted."
+  },
+  {
+    "row_id": 23,
+    "label": "MATCH",
+    "justification": "\"5, 4, 5, 4, and 3 circles respectively, each circle radius 0.1\" - observed row sizes 5,4,5,4,3 with uniform r=0.1."
+  },
+  {
+    "row_id": 24,
+    "label": "MATCH",
+    "justification": "\"alternating 5 and 4 circles and 3 in the final row\" - observed row sizes 5,4,5,4,3."
+  },
+  {
+    "row_id": 25,
+    "label": "MATCH",
+    "justification": "\"Staggered hexagonal packing with 5 rows\" - exactly 5 y-clusters observed."
+  },
+  {
+    "row_id": 26,
+    "label": "MATCH",
+    "justification": "\"5x4 rectangular grid plus optimally positioned filler circle\" - dominant-radius (0.1) subset is 5 rows x 4 cols = 20 circles, plus exactly 1 filler at r=0.066667 (R2)."
+  },
+  {
+    "row_id": 27,
+    "label": "MATCH",
+    "justification": "\"6 alternating rows of 4-3-4-3-4-3 circles\" - observed row sizes 4,3,4,3,4,3."
+  },
+  {
+    "row_id": 28,
+    "label": "MATCH",
+    "justification": "\"4x4 rectangular grid with 5 circles in internal gaps\" - dominant-radius (0.125) subset is an exact 4x4 of 16, plus 5 circles r=0.05 at interior gap positions."
+  },
+  {
+    "row_id": 29,
+    "label": "MATCH",
+    "justification": "\"5 columns and 4 rows, plus one additional circle on top edge\" - base grid is 4 rows x 5 cols with one extra circle at (0.5, 0.9)."
+  },
+  {
+    "row_id": 30,
+    "label": "UNSCOREABLE",
+    "justification": "\"Uniform horizontal strips with tight row spacing\" states no grid dimension, no radius, and no circle-count decomposition."
+  },
+  {
+    "row_id": 31,
+    "label": "UNSCOREABLE",
+    "justification": "\"Staggered rectangular packing with alternating row widths\" gives no dimension, radius, or count value."
+  },
+  {
+    "row_id": 32,
+    "label": "MATCH",
+    "justification": "\"5 rows with sizes 5-4-5-4-3 and uniform radius 0.1\" - observed row sizes 5,4,5,4,3 with every radius 0.1."
+  },
+  {
+    "row_id": 33,
+    "label": "MISMATCH",
+    "justification": "\"5 rows alternating between 5 and 4 circles\" - observed row sizes are 5,4,4,4,4, so rows 3 and 5 do not return to 5."
+  },
+  {
+    "row_id": 34,
+    "label": "MATCH",
+    "justification": "\"4x5 regular grid at r=0.1 plus one additional circle offset right\" - base grid is 5 rows x 4 cols at r=0.1 with the single extra circle at x=0.9."
+  },
+  {
+    "row_id": 35,
+    "label": "MATCH",
+    "justification": "\"5 rows alternating 5-4-5-4-3 circles\" - observed row sizes 5,4,5,4,3."
+  },
+  {
+    "row_id": 36,
+    "label": "MATCH",
+    "justification": "\"Rectangular grid 4x5 plus 1 circle\" - base grid is 4 rows x 5 cols = 20 with exactly one extra circle at (0.5, 0.9)."
+  },
+  {
+    "row_id": 37,
+    "label": "MATCH",
+    "justification": "\"staggered rows (5-4-5-4-3)\" - observed row sizes 5,4,5,4,3."
+  },
+  {
+    "row_id": 38,
+    "label": "MATCH",
+    "justification": "\"Modified 5×5 square grid with corners removed, all radius 0.1\" - 5 y- and 5 x-clusters, 21 = 25-4, absent cells are exactly the four corners, all radii 0.1."
+  },
+  {
+    "row_id": 39,
+    "label": "MATCH",
+    "justification": "\"Square grid 5 columns 4 rows with 1 additional circle at top\" - base grid is 4 rows x 5 cols with the extra circle at (0.5, 0.9)."
+  },
+  {
+    "row_id": 40,
+    "label": "MATCH",
+    "justification": "\"5x4 rectangular grid plus 1 offset circle\" - base grid is 4 rows x 5 cols with exactly one extra circle."
+  },
+  {
+    "row_id": 41,
+    "label": "MATCH",
+    "justification": "\"5×5 square grid base (25 circles) with 4 corner circles and 2 edge circles to fill gaps\" - 25 circles r=0.1 in an exact 5x5, 4 corner circles r=0.017157, 2 edge circles r=0.016667."
+  },
+  {
+    "row_id": 42,
+    "label": "MATCH",
+    "justification": "\"one additional circle at corner (11/12, 11/12)\" - base grid is 6 rows x 5 cols = 30 and the single extra circle sits at (0.916667, 0.916667)."
+  },
+  {
+    "row_id": 43,
+    "label": "MATCH",
+    "justification": "\"Regular 5x6 grid plus bottom-center circle\" - dominant-radius subset is 5 rows x 6 cols = 30 at r=0.083333 plus one circle at (0.5, 0.0)."
+  },
+  {
+    "row_id": 44,
+    "label": "MATCH",
+    "justification": "\"5x6 grid plus centered circle at top\" - base grid is 5 rows x 6 cols = 30 with the extra circle at (0.5, 0.916667)."
+  },
+  {
+    "row_id": 45,
+    "label": "MATCH",
+    "justification": "\"6 columns by 5 rows with one offset circle filling upper gap\" - dominant-radius subset is 5 rows x 6 cols = 30, plus one circle r=0.09375 at (0.5, 0.90625)."
+  },
+  {
+    "row_id": 46,
+    "label": "MATCH",
+    "justification": "\"Hexagonal close packing with 6 alternating rows\" - exactly 6 y-clusters observed."
+  },
+  {
+    "row_id": 47,
+    "label": "MATCH",
+    "justification": "\"5x5 square grid with radius 0.08, supplemented by five circles of radius 0.1 along the right edge and one circle of radius 0.1 at the top\" - the r=0.08 subset is an exact 5x5 of 25, and the r=0.1 circles are 5 at x=0.9 plus 1 at y=0.9."
+  },
+  {
+    "row_id": 48,
+    "label": "MATCH",
+    "justification": "\"six columns by six rows radius one-twelfth with five circles removed\" - 6 y-clusters x 6 x-clusters, r=0.083333=1/12, and 31 = 36-5 (R5)."
+  },
+  {
+    "row_id": 49,
+    "label": "MATCH",
+    "justification": "\"5x5 square grid (r=0.1) plus 6 interior gap circles (r=(√2-1)/10)\" - 25 circles r=0.1 in an exact 5x5 and exactly 6 circles at r=0.041421356."
+  },
+  {
+    "row_id": 50,
+    "label": "MATCH",
+    "justification": "\"6x6 rectangular grid with 4 corners and center removed\" - 6 y- and 6 x-clusters with 31 = 36-5, the absent cells being the four corners plus a central cell."
+  },
+  {
+    "row_id": 51,
+    "label": "UNSCOREABLE",
+    "justification": "\"Hexagonal grid packing with alternating row widths\" states no grid dimension, radius, or count."
+  },
+  {
+    "row_id": 52,
+    "label": "MATCH",
+    "justification": "\"Rectangular 6x5 grid plus one top-center circle\" - base grid is 5 rows x 6 cols = 30 with the extra circle at (0.5, 0.916667)."
+  },
+  {
+    "row_id": 53,
+    "label": "MATCH",
+    "justification": "\"6 rows (alternating 6 and 5 circles, final row with 3 circles)\" - observed row sizes 6,5,6,5,6,3."
+  },
+  {
+    "row_id": 54,
+    "label": "MATCH",
+    "justification": "\"Regular 5-column by 6-row grid plus one additional circle in the right margin\" - base grid is 6 rows x 5 cols = 30 with the extra circle at (0.916667, 0.5)."
+  },
+  {
+    "row_id": 55,
+    "label": "MATCH",
+    "justification": "\"6 circles in even rows, 5 circles in odd rows 2-4, and 3 circles in partial row 6, using uniform radius 1/12\" - observed row sizes 6,5,6,5,6,3 with uniform r=1/12."
+  },
+  {
+    "row_id": 56,
+    "label": "MATCH",
+    "justification": "\"five columns and six rows plus one additional circle\" - base grid is 6 rows x 5 cols = 30 with exactly one extra circle."
+  },
+  {
+    "row_id": 57,
+    "label": "MATCH",
+    "justification": "\"6 rows of alternating 6-5-6-5-6-3 circles\" - observed row sizes 6,5,6,5,6,3."
+  },
+  {
+    "row_id": 58,
+    "label": "UNSCOREABLE",
+    "justification": "\"Regular rectangular grid packing with corner circle\" states no grid dimension, no radius, and no explicit circle-count decomposition."
+  },
+  {
+    "row_id": 59,
+    "label": "MATCH",
+    "justification": "\"Hexagonal packing with 6 alternating rows\" - exactly 6 y-clusters observed."
+  },
+  {
+    "row_id": 60,
+    "label": "MATCH",
+    "justification": "\"alternating rows of 6-5-6-5-5-4 circles\" - observed row sizes 6,5,6,5,5,4."
+  }
+]
