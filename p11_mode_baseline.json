@@ -1,0 +1,83 @@
+{
+ "window": 0.002,
+ "note": "bare arm only; prediction==mode at all tested N; on-pred saturates mode ceiling; round-number baseline ~0",
+ "cells": [
+  {
+   "n": 13,
+   "predicted": 1.625,
+   "empirical_mode_4dp": 1.625,
+   "mode_freq": "10/18",
+   "pred_equals_mode": true,
+   "on_pred": 10,
+   "mode_ceiling": 10,
+   "valid_n": 18,
+   "roundnum_baseline_hits": 1
+  },
+  {
+   "n": 17,
+   "predicted": 2.0517767,
+   "empirical_mode_4dp": 2.0518,
+   "mode_freq": "3/4",
+   "pred_equals_mode": true,
+   "on_pred": 3,
+   "mode_ceiling": 3,
+   "valid_n": 4,
+   "roundnum_baseline_hits": 0
+  },
+  {
+   "n": 21,
+   "predicted": 2.1,
+   "empirical_mode_4dp": 2.1,
+   "mode_freq": "12/15",
+   "pred_equals_mode": true,
+   "on_pred": 12,
+   "mode_ceiling": 12,
+   "valid_n": 15,
+   "roundnum_baseline_hits": 0
+  },
+  {
+   "n": 31,
+   "predicted": 2.5833333,
+   "empirical_mode_4dp": 2.5833,
+   "mode_freq": "12/17",
+   "pred_equals_mode": true,
+   "on_pred": 13,
+   "mode_ceiling": 12,
+   "valid_n": 17,
+   "roundnum_baseline_hits": 0
+  },
+  {
+   "n": 35,
+   "predicted": 2.9166667,
+   "empirical_mode_4dp": 2.9167,
+   "mode_freq": "3/4",
+   "pred_equals_mode": true,
+   "on_pred": 3,
+   "mode_ceiling": 3,
+   "valid_n": 4,
+   "roundnum_baseline_hits": 1
+  },
+  {
+   "n": 37,
+   "predicted": 3.0345178,
+   "empirical_mode_4dp": 3.0345,
+   "mode_freq": "3/4",
+   "pred_equals_mode": true,
+   "on_pred": 3,
+   "mode_ceiling": 3,
+   "valid_n": 4,
+   "roundnum_baseline_hits": 0
+  },
+  {
+   "n": 43,
+   "predicted": 3.0714286,
+   "empirical_mode_4dp": 3.0714,
+   "mode_freq": "6/7",
+   "pred_equals_mode": true,
+   "on_pred": 6,
+   "mode_ceiling": 6,
+   "valid_n": 7,
+   "roundnum_baseline_hits": 0
+  }
+ ]
+}
