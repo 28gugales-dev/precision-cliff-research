@@ -21,15 +21,15 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
       no fabricated citations; merge into paper1_draft.md.
 - [x] P3. DONE (same merge). Paper 1 prose §1 + §7-9 (intro/related/limitations/repro) — Opus, AFTER P1
       verdicts in. Then Fable verify + merge.
-- [ ] P4. IN PROGRESS 2026-08-01: 3 isolated Opus personas dispatched, findings to p4_review_*.md. Peer review panel, paper 1 — 3 Opus personas in parallel:
+- [x] P4. DONE: 102 findings (18+12+15 MAJOR), 8 recomputation mismatches — all itemized in paper Table 5. Peer review panel, paper 1 — 3 Opus personas in parallel:
       (a) Reviewer-2: harsh methods skeptic, hunts overclaiming;
       (b) Stats referee: prereg discipline, Fisher tests, multiple comparisons;
       (c) GECCO/EC domain reviewer: novelty vs FunSearch/QD lit, venue fit.
       Each returns numbered findings, severity-tagged.
 - [x] P5. DONE 2026-08-01: council ran (5 advisors + chairman; peer round folded into chairman, unanimity). Verdict: maximal honesty all cruxes; falsifier TRIGGERED; same-wave = post-hoc labeled, never primary; P-T2 confirmed-as-registered; blind rescore under frozen rubric e181d2a; abstract range not 'exact'; disclose LLM panel in methods; mode-baseline demanded AND DELIVERED (p11_mode_baseline.json: pred==mode 7/7 N, hit rate saturates ceiling, round-number ~0). Council pressure-test — /llm-council on paper 1 core claims + framing.
-- [ ] P6. Revision pass — Opus fixes accepted findings from P4+P5; Fable arbitrates
+- [x] P6. DONE 2026-08-01: grand revision + consolidation. All council rulings R-A..R-H, 45/45 reviewer MAJORs. 9,939 prose words + 5 tables (32-row corrections table). Blind rescore 54/56=96.4% PASSED. Falsifier reported TRIGGERED (registered reading). Integrity checks green (3 false positives = Table 5 quoting old claims). Revision pass — Opus fixes accepted findings from P4+P5; Fable arbitrates
       which findings are valid (reject persona nitpicks that contradict prereg).
-- [ ] P7. Gap experiments IF reviews demand — subagent sampling only (haiku/sonnet/opus
+- [x] P7. CLOSED under stopping rule — demanded analyses named as future work, none run. Gap experiments IF reviews demand — subagent sampling only (haiku/sonnet/opus
       agents), prereg-first, no API. Kaggle only if compute-bound (unlikely; note:
       kernels need no API key for CPU experiments).
 - [x] P8. DRAFT DONE 2026-08-01 (paper2_draft.md 3627w; conflicts flagged outline-plan vs executed-run — writer used executed). P9 MUST audit: (1) §3 numbers trace to EXECUTED sections of precision-cliff-paper-outline.md, not '[PLACEHOLDER]' plan text (outline line 48 abstract is unexecuted plan!); (2) 24-overlap-of-26-failures arithmetic; (3) three [SLOT: systems-lit] pending p8_systems_citations.md. Paper 2 prose — condense paper-0 cliff data into §3 + write §1-2, 4-8.
@@ -144,3 +144,4 @@ Corpus root: C:/Users/soham/AppData/Local/hermes/research-corpus/precision-cliff
   executed paper-0 lives at ../precision-cliff-paper-combined.md. P6 revision (paper 1)
   waits on blind labels. Remaining after that: P6 revision agent, P11 polish.
 - 2026-08-01 iter6: ledger v2 committed; paper2 rebuild landed + verified; falsifier dual-reading in analysis code; awaiting paper1 grand revision only.
+- 2026-08-01 iter7: paper1 revision landed + verified; abstract synced; P4/P6/P7 closed. P11 remains.
