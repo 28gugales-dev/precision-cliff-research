@@ -796,3 +796,20 @@ Bonus observations from the same harvest:
 - Faithfulness mismatches (3/41) are all fillers-add-rows cases where the coarse
   rows/cols check penalizes claims like "4x4 grid + 5 gap circles"; the conservative
   scorer undercounts matches, so 93% is a floor.
+
+### Update 2026-08-02 (cross-vendor arms GM + GM2, IN PROGRESS)
+
+- **Arm GM** (gemini-2.5-flash-lite, direct API): prereg commit 37b3adb BEFORE
+  sampling. Free tier ~20 req/day — 28/140 content rows collected; grinds daily
+  via loop until 140. Checkpoint: arm_gm_checkpoint.jsonl (content rows only;
+  transport errors requeued per prereg rerun clause).
+- **Arm GM2** (gemma-4-26b-a4b-it, direct API): prereg commit 3019aab BEFORE
+  sampling; identical design (7 N x 20, arm F prompts byte-identical, tie-
+  inclusive MODE-MATCH, falsifier >=4 fails). Running now, no quota wall,
+  ~35-40s/call. Checkpoint: arm_gm_gm2_checkpoint.jsonl.
+- RESUME: python arm_gm_run.py C:/Users/soham/.secrets/gemini.key            (GM)
+          python arm_gm_run.py C:/Users/soham/.secrets/gemini.key gemma-4-26b-a4b-it gm2  (GM2)
+  Then: python arm_gm_analysis.py (GM report; edit paths for GM2) — registered
+  definitions inside. Key at C:/Users/soham/.secrets/gemini.key (NOT in repo).
+- Analysis embargo: neither arm's collected outputs parsed/scored yet.
+- Quota lesson: free flash-lite = ~20/day; gemma bucket separate + roomy.
