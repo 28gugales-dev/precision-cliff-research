@@ -75,14 +75,23 @@ for n in NS:
         if (n, i) not in done_pairs:
             jobs.put((n, i))
 
+quota_dead = threading.Event()
+
 def worker():
-    while True:
+    while not quota_dead.is_set():
         try:
             n, i = jobs.get_nowait()
         except queue.Empty:
             return
-        time.sleep(3.2)  # stay under 20 RPM free-tier cap
+        time.sleep(3.2)  # stay under free-tier RPM cap
         resp, retries = call(PROMPTS[n])
+        if "transport_error" in resp:
+            # quota exhausted for the day — stop burning the queue; the loop
+            # reruns this script after reset and resumes from checkpoint
+            print(f"quota dead at n={n} idx={i}: {resp['transport_error'][:100]}",
+                  flush=True)
+            quota_dead.set()
+            return
         row = {"n": n, "sample_idx": i,
                "prompt_sha256": hashlib.sha256(PROMPTS[n].encode()).hexdigest(),
                "ts": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
