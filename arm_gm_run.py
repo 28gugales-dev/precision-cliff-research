@@ -51,11 +51,21 @@ def call(prompt):
 CKPT = HERE / "arm_gm_checkpoint.jsonl"
 done_pairs = set()
 if CKPT.exists():
+    kept = []
+    requeued = 0
     for line in CKPT.read_text().splitlines():
         if line.strip():
             r = json.loads(line)
+            # transport errors are re-runnable per prereg (verbatim rerun,
+            # disclosed); content responses are final.
+            if "transport_error" in r["response"]:
+                requeued += 1
+                continue
+            kept.append(line)
             done_pairs.add((r["n"], r["sample_idx"]))
-    print(f"resuming: {len(done_pairs)} rows already on disk", flush=True)
+    CKPT.write_text("\n".join(kept) + ("\n" if kept else ""))
+    print(f"resuming: {len(done_pairs)} content rows kept, "
+          f"{requeued} transport-error rows requeued", flush=True)
 
 results = []
 lock = threading.Lock()
@@ -71,6 +81,7 @@ def worker():
             n, i = jobs.get_nowait()
         except queue.Empty:
             return
+        time.sleep(3.2)  # stay under 20 RPM free-tier cap
         resp, retries = call(PROMPTS[n])
         row = {"n": n, "sample_idx": i,
                "prompt_sha256": hashlib.sha256(PROMPTS[n].encode()).hexdigest(),
@@ -84,7 +95,9 @@ def worker():
             if done % 10 == 0:
                 print(f"{done}/140", flush=True)
 
-threads = [threading.Thread(target=worker) for _ in range(4)]
+# Single worker: free tier = 20 requests/min for this model; 4 parallel
+# threads exhausted retry budgets against the RPM cap on the first attempt.
+threads = [threading.Thread(target=worker) for _ in range(1)]
 [t.start() for t in threads]
 [t.join() for t in threads]
 
