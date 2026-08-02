@@ -10,7 +10,8 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 KEY = Path(sys.argv[1]).read_text().strip()
-MODEL = "gemini-2.5-flash-lite"
+MODEL = sys.argv[2] if len(sys.argv) > 2 else "gemini-2.5-flash-lite"
+SUFFIX = ("_" + sys.argv[3]) if len(sys.argv) > 3 else ""
 URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent"
 NS = [13, 17, 21, 31, 35, 37, 43]
 SAMPLES = 20
@@ -48,7 +49,7 @@ def call(prompt):
 # Checkpoint: one JSON row per line, appended immediately after each call.
 # Restart skips (n, sample_idx) pairs already on disk. Interruptions discard
 # only unsaved in-flight responses, unobserved (disclosed in ledger note).
-CKPT = HERE / "arm_gm_checkpoint.jsonl"
+CKPT = HERE / f"arm_gm{SUFFIX}_checkpoint.jsonl"
 done_pairs = set()
 if CKPT.exists():
     kept = []
@@ -114,7 +115,7 @@ threads = [threading.Thread(target=worker) for _ in range(1)]
 all_rows = [json.loads(l) for l in CKPT.read_text().splitlines() if l.strip()]
 all_rows.sort(key=lambda r: (r["n"], r["sample_idx"]))
 if len(all_rows) == len(NS) * SAMPLES:
-    (HERE / "arm_gm_raw.json").write_text(json.dumps(
+    (HERE / f"arm_gm{SUFFIX}_raw.json").write_text(json.dumps(
         {"model": MODEL, "endpoint": URL, "prereg_commit": "37b3adb",
          "temperature": 1.0,
          "note": "assembled from arm_gm_checkpoint.jsonl; run was "
