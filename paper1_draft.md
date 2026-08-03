@@ -812,7 +812,11 @@ confirmatory claim is made in either direction; a follow-up with an enlarged out
 (arm GM3, registered before sampling) is running. The anchoring law therefore remains
 single-vendor evidence at this time — but the format-compliance cliff between families under
 an identical prompt is itself a preregistered observation, and it is consistent with §5.1's
-point that output-format constraints are load-bearing.
+point that output-format constraints are load-bearing. We flag one reading the design cannot
+yet exclude: a 0/140 parse rate at a 4,096-token cap is also the signature of budget
+truncation — a verbose model cut off before its answer — rather than format inability. Arm
+GM3's enlarged budget separates the two, and we defer any characterization of the cliff's
+cause until it reports.
 
 **Sampling parameters unpinned.** The runtime does not expose pinned decoding parameters, so
 every effect is a distributional claim over the observed sampling regime, and §3.3's
