@@ -28,7 +28,7 @@ for n_str, obj in reg.items():
 def call(prompt):
     body = json.dumps({
         "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {"temperature": 1.0, "maxOutputTokens": 4096},
+        "generationConfig": {"temperature": 1.0, "maxOutputTokens": int(__import__("os").environ.get("GM_MAXTOK", "4096"))},
     }).encode()
     req = urllib.request.Request(URL, data=body, headers={
         "x-goog-api-key": KEY, "Content-Type": "application/json"})
