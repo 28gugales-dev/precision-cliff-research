@@ -34,7 +34,7 @@ def call(prompt):
         "x-goog-api-key": KEY, "Content-Type": "application/json"})
     for attempt in range(8):
         try:
-            with urllib.request.urlopen(req, timeout=120) as r:
+            with urllib.request.urlopen(req, timeout=int(__import__("os").environ.get("GM_TIMEOUT", "120"))) as r:
                 return json.loads(r.read()), attempt
         except urllib.error.HTTPError as e:
             if e.code in (429, 500, 503):
@@ -112,7 +112,7 @@ threads = [threading.Thread(target=worker) for _ in range(1)]
 [t.join() for t in threads]
 
 # Final assembly from checkpoint (single source of truth).
-all_rows = [json.loads(l) for l in CKPT.read_text().splitlines() if l.strip()]
+all_rows = [json.loads(l) for l in CKPT.read_text().splitlines() if l.strip()] if CKPT.exists() else []
 all_rows.sort(key=lambda r: (r["n"], r["sample_idx"]))
 if len(all_rows) == len(NS) * SAMPLES:
     (HERE / f"arm_gm{SUFFIX}_raw.json").write_text(json.dumps(
