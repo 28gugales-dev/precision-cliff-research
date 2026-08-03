@@ -798,9 +798,20 @@ training data. We ran no canary-string test, no comparison against N values abse
 literature, and no perturbed-container test preserving difficulty while destroying lexical
 overlap. The rectangle arm is the nearest thing we have, at n = 11 valid.
 
-**Single vendor.** All tiers come from one provider; a cross-vendor arm is blocked on credit
-rather than design. The closed form is stated over problem parameters, so it is testable
-elsewhere — but has not been.
+**Single vendor.** All tiers in the main study come from one provider. Two preregistered
+cross-vendor extensions are in progress at submission time, both registered before sampling and
+disclosed regardless of outcome. Arm GM (gemini-2.5-flash-lite, direct vendor API,
+prereg commit `37b3adb`) is quota-throttled and incomplete; no collected output has been
+analyzed. Arm GM2 (gemma-4-26b-a4b-it, prereg `3019aab`) completed 140/140 invocations with a
+null-compliance outcome: 0 of 140 responses were parseable under the registered pipeline —
+the model consumed its entire 4,096-token output budget on visible deliberation and never
+emitted the required coordinate list, under a prompt with which the weak-tier arm F model
+complied at 100% parse rate. Per the registered rule, all cells are UNSCOREABLE and no
+confirmatory claim is made in either direction; a follow-up with an enlarged output budget
+(arm GM3, registered before sampling) is running. The anchoring law therefore remains
+single-vendor evidence at this time — but the format-compliance cliff between families under
+an identical prompt is itself a preregistered observation, and it is consistent with §5.1's
+point that output-format constraints are load-bearing.
 
 **Sampling parameters unpinned.** The runtime does not expose pinned decoding parameters, so
 every effect is a distributional claim over the observed sampling regime, and §3.3's
