@@ -22,7 +22,7 @@ matches it to seven decimals. Per-sample agreement equals that modal frequency �
 cell — while a round-number baseline hits 2 of 69 valid samples: the formula captures
 everything short of sampling entropy. We preregistered these point predictions with prompt
 hashes before sampling and tested them out of sample on two containers, a square and a
-rectangle to which the rule was restated but never refitted. Across three tiers we find three
+rectangle, for which the rule was restated but never refitted. Across three tiers we find three
 attractor families and an inversion: constructive ambition rises with nominal tier while
 execution validity does not (78% → 100% → 13% at the primary 10⁻⁶ tolerance; the third arm is
 an unattributable serving alias, reported with that caveat throughout). Trace elicitation is an
@@ -44,7 +44,7 @@ radii, and it will not search. It reaches for the nearest square grid — five b
 1/(2k) — then truncates it to 21 circles, leaving four cells empty and their area unclaimed.
 Those cells are where the value went. A better construction is one parameter away: drop to a
 four-by-four grid and add corner fillers of radius (√2−1)/(2k), and the sum rises. The model
-does neither, and does so again on the next sample.
+does neither, and behaves the same way on the next sample.
 
 The behavior can be written down. Writing k\*(N) = round(√N) for the nearest-square order, a
 value function V(k, m) over grid order k and filler count m identifies the modal output of the
@@ -129,7 +129,7 @@ unconditioned calls.
 ### 2.2 The recipe family
 
 Three terms, used consistently: the **recipe family** is the parametric set of grid-plus-filler
-constructions, a **template** is one member, the **anchor** is the template the distribution
+constructions; a **template** is one member; the **anchor** is the template the distribution
 concentrates on at a given N.
 
 A k×k grid places one circle per cell center with r_grid = 1/(2k); m fillers sit on interior
@@ -140,7 +140,7 @@ cells, leave the radius unchanged — giving T(k, N) = N/(2k). These reproduce e
 reported anchor with no fitting: V(5,1) = 2.5414214, V(5,2) = 2.5828427, V(5,0) = 2.500,
 T(5,23) = 2.300, V(4,7) = 2.3624369.
 
-That 94 of 95 valid proposals in prior arms were grid-plus-filler is retained only as
+The finding that 94 of 95 valid proposals in prior arms were grid-plus-filler is retained only as
 motivation, since those arms are not reported here; the self-contained version is §4's
 observation that across 155 weak-tier rows only two exceeded the family best, both by ~10⁻⁷.
 
@@ -180,8 +180,8 @@ trap-branch N in range cost nothing, so "trap" names the branch, not a guarantee
 the penalty is zero, truncation is separable from convergence only by structure; §3.2 uses
 N = 35 as that control.
 
-Every closed-form value is recomputed by an independent linear program over the constructed
-coordinates, which knows nothing about the recipe; the script aborts on disagreement. 83
+Every closed-form value is recomputed over the constructed coordinates by an independent linear
+program that knows nothing about the recipe; the script aborts on disagreement. 83
 configurations, both branches, every k in 2…7, drift below 10⁻⁹.
 
 Our bound table (`n_sweep_forecast.json`) covers N = 10…30 only, and its N = 26 entry, 2.63598,
@@ -216,7 +216,7 @@ Four properties are disclosed rather than repaired. Temperature, top-p and top-k
 by the runtime. The alias-to-weights binding is a promise, not a hash. The subagent inherits
 instruction files outside the task prompt, so the digests lock a *fragment* of the conditioning
 context — they are prompt-fragment hashes, and a replicator cannot reconstruct the inherited
-files from what we release. And hash coverage is incomplete (§9).
+files from what we release. Finally, hash coverage is incomplete (§9).
 
 Two scoring conventions were fixed in advance. Validity is reported at 10⁻⁹ and 10⁻⁶, both
 logged, 10⁻⁶ primary: proposers print six to eight decimals, so an eight-decimal tangency misses
@@ -245,7 +245,7 @@ That the anchor first breaks at N = 21 is suggestive — it is the bottom of a z
 a finding. **P4** registered N = 37 as converging on 3.0345178, a prime predicted clean,
 contradicting the prior work's guess; it confirmed. **P5** registered N = 35 at 2.9166667, the
 top-of-zone control; three of four valid samples landed there, separable from convergence only
-because the structure classifier reads radii rather than totals, and the fourth used a 7×7
+because the structure classifier reads radii rather than totals; the fourth used a 7×7
 lattice truncated to 35 (sum 2.5), outside the rule. At n = 4 this is "consistent with" rather
 than confirmed, and deserves running to n = 20.
 
@@ -298,7 +298,8 @@ before: N = 19 at a = 3 (predicted 3.1666667, rival 3.5749194) and N = 25 at a =
 3.1250000, rival 3.4832492). With all sixteen scored, **5 of 11 valid proposals landed on the
 predicted value and 0 of 11 reached the rival**.
 
-All eleven, since a referee objected that the majority were uncharacterized. On-prediction: two
+We characterize all eleven here, since a referee objected that the majority were left
+undescribed. On-prediction: two
 at N = 19/a = 3 (3.1666666667 and 3.16666673, the latter agreeing to six decimals not seven) and
 three at N = 25/a = 2 (3.125 exactly). Off-prediction at N = 25/a = 2: two samples emitted a
 uniform 5×5 grid at r = 0.1 summing to 2.5000000 — the *square* rule with no aspect correction,
@@ -378,7 +379,7 @@ interior rows and two or three distinct radii in the same packing (29/30 multi-r
 
 One Sonnet sample at N = 31 emitted 27 circles at r = 1/12 with 4 corner circles at r = 1/8,
 summing to 2.7499999991 — above 2.7485281, the best the family reaches at that N. Recomputed
-from its stored coordinates the construction is tangency-tight: minimum pairwise and wall slack
+from its stored coordinates, the construction is tangency-tight: minimum pairwise and wall slack
 both exactly zero at tolerance zero, the exactly-tangent contacts involving the binary-exact
 r = 1/8 corner circles while the r = 1/12 circles carry small positive slack. It is the only
 sample in the study to leave the recipe family upward.
@@ -474,7 +475,7 @@ the output line and `"no other text"` changed to `"no other text after the list"
 are never pooled with `trace_v2`. That second change is not cosmetic, and §5.2 shows it doing
 measurable work: the measured effect is *method-line-plus-output-line-rewording* and cannot be
 attributed to the method line alone — a weaker version of the confound for which the pilot was
-discarded, held to the standard we set for the pilot.
+discarded, held here to the same standard.
 
 The scaled arm ran 100 new invocations, bringing both arms to 20 per cell at N ∈ {13, 21, 31}
 and the corpus to 215 logged square invocations (85 bare = 45 original + 40 new; 70 trace = 10
@@ -495,7 +496,7 @@ P-T3 with it (Table 5, item 12). The correction runs both ways.
 **P-T1, validity: NOT confirmed.** P-T1 is the one prediction that registered an alpha
 ("validity ≥ bare at EACH N, and pooled one-sided Fisher p < 0.05"). Direction held at all three
 cells; the pooled test gives p = 0.30, so the registered criterion fails. Observed rates are
-53/60 (88%) trace_v2 against 50/60 (83%) bare — a difference that size needs several hundred
+53/60 (88%) trace_v2 against 50/60 (83%) bare — a difference of that size needs several hundred
 samples per arm at 80% power, so this is a failure to detect, not a demonstration of no effect
 (Table 5, item 13).
 
@@ -689,7 +690,7 @@ asks (§7). Third, the audit is confounded with §5: it is computed on the arm �
 concentrates 87% of valid outputs onto one template, and correct description of a
 near-degenerate distribution is close to free. Faithfulness is informative precisely on
 off-template outputs — the pilot's triangular-hexagonal 6+5+4+3+2+1 sample, described exactly
-while summing to 1.75, is the informative kind. Splitting the rate by on- versus off-prediction
+while summing to 1.75, is that kind of case. Splitting the rate by on- versus off-prediction
 is the next analysis; it is not run here (§9, stopping rule).
 
 What survives is narrow: in a domain where claims are checkable, the method lines this proposer
@@ -728,8 +729,8 @@ space: across 11,683 paired proposals, LLM research ideas concentrate on bridge-
 framings (47–64% versus 12% for humans; normalized entropy down to 0.55 versus >0.92), and
 chain-of-thought pushes the distribution *further* from the human one. That result is
 distributional; ours is the limiting case where the collapsed distribution's mode is a single
-closed-form-predictable object — narrowness measurable there, computable here. Converging skepticism about what the proposer
-contributes comes from "Dictionaries, Not Darwin" (2607.04108), 2606.10587, BehaveSim
+closed-form-predictable object — narrowness measurable there, computable here. Converging
+skepticism about what the proposer contributes comes from "Dictionaries, Not Darwin" (2607.04108), 2606.10587, BehaveSim
 (2603.02787), Strategy Diversity (2605.09292), the bin-packing critiques (2510.27353;
 2501.11411) and MathConstruct (2502.10197). Two results cut the other way and belong on the
 other side of the ledger: 2407.10873 (Zhang et al.) provides empirical grounding for the
@@ -825,7 +826,7 @@ effect, and the supporting anomalies live only in the runtime transcript.
 N ∈ [k²−k+1, k²−1], so every discriminating cell is a trap cell by construction, and our
 discriminating evidence is four values of k in the square (k = 4, 5, 6, 7) plus two rectangle
 cells. The k = 8 zone appears in the abstract, §1, §2.4 and Figure 1 and was never sampled;
-N = 57 is the missing cell. And on-prediction is scored as a binary: we do not report the
+N = 57 is the missing cell. Further, on-prediction is scored as a binary: we do not report the
 *empirical* k backed out of each emitted layout, so a reader cannot tell whether off-prediction
 samples are floor-consistent, ceil-consistent or unstructured. That table is computable from
 data already on disk and would distinguish "the rule fits at the tested N" from "the model
