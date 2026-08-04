@@ -813,3 +813,10 @@ Bonus observations from the same harvest:
   definitions inside. Key at C:/Users/soham/.secrets/gemini.key (NOT in repo).
 - Analysis embargo: neither arm's collected outputs parsed/scored yet.
 - Quota lesson: free flash-lite = ~20/day; gemma bucket separate + roomy.
+
+## Update 2026-08-04 (de-niche + workshop spin-off)
+- Branch-off kill panel: 5/5 ideas killed, record in branch_off_killchecks_2026-08-03.md. Salvage applied: GM2 truncation hedge (paper1 section 8 + main.tex), AlphaEvolve positioning already present, 2607.01233 verified real.
+- De-niche: Artificial Hivemind (2510.22954) + Tam et al. (2408.02442) cites added both files; contribution sharpened as "mode predictable to seven decimals before sampling" vs collapse-is-default literature.
+- workshop1/workshop_draft.md: 4-page workshop distillation, ~2,243 words, numbers verified vs source (one fix: N=31 13/17). LaTeX-ification deferred until venue template chosen (NeurIPS/ICLR workshop class).
+- Known dual usage kept: p=0.03 abstract / p=0.0325 body (mirrors long paper).
+- Runs: GM3 gemma in progress (16k budget, 900s timeout, checkpoint arm_gm_gm3_checkpoint.jsonl); flash-lite 40/140 quota-walled. Hourly wakeup babysits both.
