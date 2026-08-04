@@ -41,8 +41,11 @@ k\*(N) = round(√N) the nearest-square order. When N < k\*² the model does not
 grid and fill it but *truncates*, giving T(k, N) = N/(2k). k\*(N) is a definition, not a
 discovered law; the falsifiable content is the *branch rule* — extend-and-fill (converge,
 k\*² ≤ N) versus truncate (trap, k\*² > N). Trap zones — N ∈ [13,15], [21,24], [31,35], [43,48],
-[57,63] — track the signed distance N − k\*², not primality. Every value is checked against an
-independent LP oracle (83 configurations, both branches, drift below 10⁻⁹).
+[57,63] — track the signed distance N − k\*², not primality. "Trap" names the branch, not a
+guaranteed value loss: at N = 35 (and every N = k² − 1 with k ≥ 6) truncation is value-optimal
+within the family; the cells where value is genuinely left on the table are N = 13, 21, 31, 43,
+with gaps 0.15–0.17. Every value is checked against an independent LP oracle (83
+configurations, both branches, drift below 10⁻⁹).
 
 Circle packing is the showcase benchmark of the LLM-driven discovery lineage FunSearch opened,
 carried forward by AlphaEvolve, ShinkaEvolve, and successors. Those systems query
@@ -78,20 +81,27 @@ collection.
 **Square container, held out.** Sampling a weak-tier (Haiku-class) proposer at seven N values,
 the predicted value equals the **empirical modal output at all seven tested N**:
 
-| N | predicted | modal freq | on-prediction / valid |
-|---|---|---|---|
-| 13 | 1.6250000 | 10/18 | 56% |
-| 17 | 2.0517767 | 3/4 | 75% |
-| 21 | 2.1000000 | 12/15 | 80% |
-| 31 | 2.5833333 | 13/17 | 76% |
-| 35 | 2.9166667 | 3/4 | 75% |
-| 37 | 3.0345178 | 3/4 | 75% |
-| 43 | 3.0714286 | 6/7 | 86% |
+| N | predicted | gap to best-in-family | modal freq | on-prediction / valid |
+|---|---|---|---|---|
+| 13 | 1.6250000 | +0.1511 | 10/18 | 56% |
+| 17 | 2.0517767 | 0 | 3/4 | 75% |
+| 21 | 2.1000000 | +0.1589 | 12/15 | 80% |
+| 31 | 2.5833333 | +0.1652 | 13/17 | 76% |
+| 35 | 2.9166667 | 0 | 3/4 | 75% |
+| 37 | 3.0345178 | 0 | 3/4 | 75% |
+| 43 | 3.0714286 | +0.1702 | 6/7 | 86% |
 
 No predictor of a single value can exceed the modal frequency, and this one attains it at all 7
-cells: the residual is dispersion, not misprediction. A naive "round number" baseline hits 2 of
-the same 69 valid samples. Pooled across every tier and container the on-prediction rate is
-46% — higher tiers are almost never on-prediction, so the closed form is a weak-tier law.
+cells: the residual is dispersion, not misprediction. The prediction itself is categorical —
+which template, and hence its computed value; the seven-decimal match verifies the
+identification rather than adding evidential strength. Two baselines: a naive "round number"
+null hits 2 of the same 69 valid samples, and the stronger null we use for the rectangle — a
+proposer uniform over a few plausible template shapes, roughly one third on-prediction — is
+cleared by each of the three powered cells (56%, 80%, 76% at n ≥ 15 valid). The four cells
+with n ≤ 7 valid are individually underpowered (Wilson 95% CI on 3/4 spans roughly [30%, 95%])
+and count as replications of the pattern, not independent confirmations. Pooled across every
+tier and container the on-prediction rate is 46% — higher tiers are almost never
+on-prediction, so the closed form is a weak-tier law.
 
 **Out-of-sample transfer.** For a 1×a rectangle the template gains an aspect-corrected pair of
 parameters (q\*, p\*, collapsing to round(√N) at a = 1), restated but never refitted. Probing two
