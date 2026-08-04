@@ -17,11 +17,14 @@ a value function V(k, m) identifies the *empirical modal output* at all seven te
 seven decimals. Per-sample agreement equals that modal frequency — 56–86% by cell — while a
 round-number baseline hits 2 of 69 valid samples. We preregistered these point predictions and
 tested them out of sample on two new containers (square and rectangle), restating but never
-refitting the rule. Across three nominal tiers we find an inversion: constructive ambition
-rises with tier while execution validity does not (78% → 100% → 13% at the primary 10⁻⁶
+refitting the rule; rectangle support is partial — 5 of 11 valid samples on-prediction, not
+separable from a uniform-template null, though 0 of 11 reached the provably higher-scoring
+rival. Across three nominal tiers we find an inversion: constructive ambition
+rises monotonically with tier while execution validity rises then collapses (78% → 100% → 13% at the primary 10⁻⁶
 tolerance; the top-tier arm ran through an unattributable serving alias, `opus_alias`, flagged
 throughout). Requesting a method-naming trace line concentrates output onto the anchor (87% vs
-70% on-prediction, p = 0.03 uncorrected — failing Holm over the registered family) with no
+70% on-prediction, p = 0.03 uncorrected — failing Holm over the registered family, carried by
+one of three cells and confounded with a collection-wave split of comparable size) with no
 detectable validity change. Our contribution relative to a growing diversity-collapse
 literature is not that collapse occurs — it is the expected default — but that its mode is
 predictable in closed form *before* sampling.
@@ -43,8 +46,10 @@ discovered law; the falsifiable content is the *branch rule* — extend-and-fill
 k\*² ≤ N) versus truncate (trap, k\*² > N). Trap zones — N ∈ [13,15], [21,24], [31,35], [43,48],
 [57,63] — track the signed distance N − k\*², not primality. "Trap" names the branch, not a
 guaranteed value loss: at N = 35 (and every N = k² − 1 with k ≥ 6) truncation is value-optimal
-within the family; the cells where value is genuinely left on the table are N = 13, 21, 31, 43,
-with gaps 0.15–0.17. Every value is checked against an independent LP oracle (83
+within the family; the largest losses are at N = 13, 21, 31, 43 (gaps 0.15–0.17), with a small
+residual at N = 24 (0.014, i.e. 0.59%). Trap and converge zones both contain primes (trap: 13,
+23, 31, 43, 47, 59; converge: 11, 17, 19, 29, 37, 41, 53), which is what rules primality out as
+the driver. Every value is checked against an independent LP oracle (83
 configurations, both branches, drift below 10⁻⁹).
 
 Circle packing is the showcase benchmark of the LLM-driven discovery lineage FunSearch opened,
@@ -91,8 +96,16 @@ the predicted value equals the **empirical modal output at all seven tested N**:
 | 37 | 3.0345178 | 0 | 3/4 | 75% |
 | 43 | 3.0714286 | +0.1702 | 6/7 | 86% |
 
+*Figure 1 (repository asset `workshop1/figs/fig1.png`) plots the prediction against the
+best-in-family value across all seven cells, with the four gap segments marked; Figure 2
+(`fig2.png`) shows the tier ladder of §3.*
+
 No predictor of a single value can exceed the modal frequency, and this one attains it at all 7
-cells: the residual is dispersion, not misprediction. The prediction itself is categorical —
+cells: the residual is dispersion, not misprediction. A post-hoc structural check (disclosed as
+such; `diagnostics_kmatch.py`) backs the grid order out of each sample's dominant radius: all
+50 of 50 on-prediction samples are k\*-structured, and 64 of 69 valid samples overall (93%) sit
+on the k\* grid — most value misses are k\*-grid variants, not different constructions. The
+prediction itself is categorical —
 which template, and hence its computed value; the seven-decimal match verifies the
 identification rather than adding evidential strength. Two baselines: a naive "round number"
 null hits 2 of the same 69 valid samples, and the stronger null we use for the rectangle — a
@@ -100,11 +113,13 @@ proposer uniform over a few plausible template shapes, roughly one third on-pred
 cleared by each of the three powered cells (56%, 80%, 76% at n ≥ 15 valid). The four cells
 with n ≤ 7 valid are individually underpowered (Wilson 95% CI on 3/4 spans roughly [30%, 95%])
 and count as replications of the pattern, not independent confirmations. Pooled across every
-tier and container the on-prediction rate is 46% — higher tiers are almost never
-on-prediction, so the closed form is a weak-tier law.
+tier and container the on-prediction rate is 46% (47/102 valid samples) — higher tiers are
+almost never on-prediction, so the closed form is a weak-tier regularity (single-vendor so
+far, §5).
 
 **Out-of-sample transfer.** For a 1×a rectangle the template gains an aspect-corrected pair of
-parameters (q\*, p\*, collapsing to round(√N) at a = 1), restated but never refitted. Probing two
+parameters — q\* = round(√(N/a)) rows of p\* = round(√(N·a)) columns, collapsing to round(√N)
+at a = 1 — restated but never refitted. Probing two
 sharpest cells in a container none had seen before (N = 19 at a = 3; N = 25 at a = 2), **5 of 11
 valid proposals landed on the predicted value and 0 of 11 reached the rival argmax**: partial
 out-of-sample support, not confirmation — 5/11 = 45%, Wilson 95% CI [21%, 72%], and a proposer
@@ -124,20 +139,22 @@ third arm, addressed only through a bare serving alias with no attestable weight
 (`opus_alias`, flagged with that caveat throughout and never referred to as any specific dated
 model), attempts recursive gasket-style constructions and is valid in 4 of 30 invocations (13%)
 at both tolerances, failing mostly on geometric overlap rather than numerical error. A
-post-hoc diagnostic (not preregistered; labeled as such in the repository) rules out a
-tolerance artifact behind that 13%: 24 of 26 invalid samples overlap grossly (median maximum
+post-hoc diagnostic (not preregistered; labeled as such in the repository) finds no evidence
+of a tolerance artifact behind that 13% in this sample: 24 of 26 invalid samples overlap grossly (median maximum
 overlap 3.3×10⁻²; radius-shrink repair costs a median 15% of sum-of-radii), while
 tolerance-scale near-misses (< 2.5×10⁻⁵) occur instead in 5 of 7 geometry-scored weak-tier
 failures — the exact-tangency grids, not the ambitious constructions. The
 ladder: 78% → 100% → 13% (64% → 90% → 13% at the stricter tolerance). "Monotone" applies to
 ambition only, while validity rises then collapses — a boundary condition on the main result:
-the branch rule is a weak-tier law, holding at the tier furthest from what discovery-loop
+the branch rule is a weak-tier regularity, holding at the tier furthest from what discovery-loop
 proposers typically use.
 
 ## 4. Trace elicitation as an intervention
 
-A preregistered scaled arm (100 new invocations) compared a bare prompt against a
-near-minimal variant requesting a leading `METHOD:` line. Validity showed no detectable change
+A preregistered scaled arm (100 new invocations: 40 bare + 60 trace; 20 of the 60 analyzed
+bare rows are pre-existing arm-F samples, disclosed in the preregistration) compared a bare
+prompt against a near-minimal variant requesting a leading `METHOD:` line — itself a bundled
+prompt-format-and-trace-request intervention. Validity showed no detectable change
 (53/60 trace vs 50/60 bare, p = 0.30, a failure to detect rather than evidence of no effect).
 Anchor concentration met its registered directional criterion — **87% (46/53) of trace-arm
 valid samples landed on the predicted construction against 70% (35/50) of bare samples** — but
@@ -145,8 +162,10 @@ this is inferentially fragile: the p-value (p = 0.0325, one-sided, uncorrected) 
 threshold (0.0167) over the registered family of three tested predictions, and the pooled gap is
 driven almost entirely by one of three cells (N = 13); a post hoc comparison further shows the
 bare arm's own between-wave drift is comparable in size to the effect attributed to the
-manipulation. We report this finding as *met as registered*, never as a confirmed or
-demonstrated effect. Method lines are independently checkable against emitted coordinates: a
+manipulation. A second registered outcome, rival-value suppression, was also met as registered
+(1 of 53 valid trace samples hit the rival vs 2 of 50 bare; directional, no inferential weight
+claimed). We report both findings as *met as registered*, never as confirmed or
+demonstrated effects. Method lines are independently checkable against emitted coordinates: a
 blind hand-adjudication finds 54 of 56 scoreable claims (96.4%) describe the object actually
 built, Wilson 95% CI [88%, 99%].
 

@@ -446,8 +446,8 @@ coarse 3×3 grid at r ≈ 1/6 with border strips at N = 31 (0/10 valid). Failure
 rather than numerical — edge strips at r = 0.03 placed 0.138 from an r = 1/6 grid circle needing
 0.197 — and twice the arm padded to count with zero-radius circles. Valid samples score *below*
 the trap they were expected to fall into (1.26–1.41 at N = 13 against 1.625). A post-hoc
-diagnostic (not preregistered; labeled as such in the repository) rules out a tolerance
-artifact behind the 13%: 24 of 26 invalid samples overlap grossly (median maximum overlap
+diagnostic (not preregistered; labeled as such in the repository) finds no evidence of a tolerance
+artifact behind the 13% in this sample: 24 of 26 invalid samples overlap grossly (median maximum overlap
 3.3×10⁻²; radius-shrink repair costs a median 15% of sum-of-radii), while tolerance-scale
 near-misses (< 2.5×10⁻⁵) occur instead in 5 of 7 geometry-scored weak-tier failures — the
 exact-tangency grids, not the ambitious constructions.

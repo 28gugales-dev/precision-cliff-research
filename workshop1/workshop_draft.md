@@ -44,7 +44,8 @@ predicts where the behavior costs value: when k\*² ≤ N the model extends the 
 zones — N ∈ [13,15], [21,24], [31,35], [43,48], [57,63] — are a property of the branch
 behavior, not of the packing problem. "Trap" names the branch, not a guaranteed value loss: at
 N = 35 (and every N = k² − 1 with k ≥ 6) truncation is value-optimal within the family; the
-cells where value is genuinely left on the table are N = 13, 21, 31, 43, with gaps 0.15–0.17.
+largest losses are at N = 13, 21, 31, 43 (gaps 0.15–0.17), with a small residual at N = 24
+(0.014, i.e. 0.59%).
 
 Circle packing is the showcase benchmark of the LLM-driven discovery lineage FunSearch opened,
 carried forward by AlphaEvolve, ShinkaEvolve, and successors. Those systems query
@@ -151,7 +152,7 @@ weights binding (`opus_alias`, flagged with that caveat throughout and never ref
 specific dated model), attempts recursive gasket-style constructions and is valid in 4 of 30
 invocations (13%) at both tolerances, failing mostly on geometric overlap rather than
 numerical error. A post-hoc diagnostic (not preregistered; labeled as such in the repository)
-rules out a tolerance artifact behind that 13%: 24 of 26 invalid samples overlap grossly
+finds no evidence of a tolerance artifact behind that 13% in this sample: 24 of 26 invalid samples overlap grossly
 (median maximum overlap 3.3×10⁻²; radius-shrink repair costs a median 15% of sum-of-radii),
 while tolerance-scale near-misses (< 2.5×10⁻⁵) occur instead in 5 of 7 geometry-scored
 weak-tier failures — the exact-tangency grids, not the ambitious constructions. The ladder,

@@ -41,6 +41,28 @@ Reviewer of record: session agent (Fable). Each review independently checked aga
 3. Underpowered cells need top-ups or louder flags.
 4. Single-vendor scope needs either softer wording or a completed cross-vendor arm (GM/GM3 in flight).
 
+## Review 4 (hermes/deepseek-v4-pro, restructured full paper, 72/100 Major revision) — verdict: high-quality, 7 of 8 deductions actioned same day
+
+- D1 (abstract rectangle overclaim, −8): fair. DONE — abstract now carries "partial support, 5/11, not separable from uniform-template null" in md+tex+compact.
+- D2 (wave confound missing from abstract, −5): fair. DONE — clause added.
+- D3 (appendix ordering, −4): fair. DONE — appendices swapped, Table 4 (deviations) now Appendix B, Table 5 (corrections) Appendix C; all refs re-pointed (md+tex).
+- D4 ("precisely" + precision drop, −3): arithmetic CONFIRMED (0.0945586). DONE — full value given, "precisely" dropped.
+- D5 (monotonicity ambiguity, −2): fair. DONE — "rises monotonically … rises then collapses".
+- D6 (opus_alias anomalies unreproducible, −2): fair. DONE — marked "anecdotal context from an unreleased session transcript". Transcript release remains user's call.
+- D7 (penalty coverage footnote, −1): PARTIALLY WRONG — worst-in-zone penalties are family-internal arithmetic, exact at every N; only the published-bound comparison stops at N=30. DONE — caption now states the distinction explicitly.
+- D8 (structural k-match, −1): fair and valuable. DONE — post-hoc `diagnostics_kmatch.py` (disclosed): 50/50 on-prediction samples k\*-structured, 64/69 (93%) of all valid samples on the k\* grid. Strengthens the template claim; added as table column in §3.2.
+
+## Review 5 (hermes/deepseek-v4-flash, compact 3-pager, 80/100) — verdict: mixed; 2 of 8 deductions rest on reviewer errors
+
+- D1 (100 vs 120 invocations, −6): REFUTED — 100 new = 40 bare + 60 trace; 20 of 60 analyzed bare rows are pre-existing arm-F samples (disclosed in full paper §6.1). Reviewer assumed all 120 analyzed rows were new. DONE anyway — compact now carries the decomposition inline.
+- D2 (46% unreproducible, −4): half-valid — full paper gives 47/102; compact had dropped the fraction. DONE — "(47/102 valid samples)" restored.
+- D3 (N=15/N=24 also lose value, −3): HALF-REFUTED — N=15 has NO reachable family alternative (filler cap (k−1)² = 4 < m = 6; reviewer's V(3,6) is outside the family). N=24 loss 0.0142136 is real and was already in the full paper. DONE — wording now "largest losses … with a small residual at N = 24 (0.014, i.e. 0.59%)" in compact + 4-page.
+- D4 ("rules out" too strong, −2): fair. DONE — "finds no evidence … in this sample" in all four artifacts.
+- D5 (rectangle formulas cut, −2): fair. DONE — q\*/p\* formulas restored.
+- D6 (primality lists cut, −1): fair. DONE — both prime lists restored inline (membership re-verified).
+- D7 (no figure, −1): fair. DONE — figure pointer paragraph added (docx build already embeds fig1/fig2).
+- D8 (rival suppression cut, −1): fair. DONE — P-T2 1/53-vs-2/50 clause restored.
+
 ## Queue state after this wave
 
 DONE (committed): short-version fixes for D1/D2/D3/D5/D7/D8, loop-audit claim correction (all versions), tolerance diagnostic + disclosure, figures.
