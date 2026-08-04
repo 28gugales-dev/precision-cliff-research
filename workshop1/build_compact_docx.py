@@ -160,7 +160,7 @@ def insert_fig_after(anchor_snippet, png, caption, width=5.6):
             return True
     return False
 
-ok1 = insert_fig_after("the closed form is a weak-tier law", FIGS / "fig1.png",
+ok1 = insert_fig_after("the closed form is a weak-tier regularity", FIGS / "fig1.png",
     "Figure 1: Predicted value (= empirical modal output at all 7 N) against the best value available "
     "inside the recipe family. Red segments mark the four cells where the emitted template leaves value "
     "on the table (gaps +0.151 to +0.170); at N = 17, 35, 37 the prediction is family-optimal.")
