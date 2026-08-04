@@ -487,7 +487,12 @@ Apollonius-style fillers at $N = 13$ (10/10 samples), mixed-radius $4\times4$-is
 coarse $3\times3$ grid at $r \approx 1/6$ with border strips at $N = 31$ (0/10 valid). Failures are geometric
 rather than numerical --- edge strips at $r = 0.03$ placed 0.138 from an $r = 1/6$ grid circle needing
 0.197 --- and twice the arm padded to count with zero-radius circles. Valid samples score \textit{below}
-the trap they were expected to fall into (1.26--1.41 at $N = 13$ against 1.625).
+the trap they were expected to fall into (1.26--1.41 at $N = 13$ against 1.625). A post-hoc
+diagnostic (not preregistered; labeled as such in the repository) rules out a tolerance
+artifact behind the 13\%: 24 of 26 invalid samples overlap grossly (median maximum overlap
+$3.3\times10^{-2}$; radius-shrink repair costs a median 15\% of sum-of-radii), while
+tolerance-scale near-misses ($< 2.5\times10^{-5}$) occur instead in 5 of 7 geometry-scored
+weak-tier failures --- the exact-tangency grids, not the ambitious constructions.
 
 Two decisions here were made after seeing the data and are recorded as deviations (Table~4).
 P-O1, P-O2 and P-O4 are reported \textbf{not evaluable}, on the grounds that a validity collapse of
