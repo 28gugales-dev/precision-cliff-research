@@ -729,7 +729,11 @@ space: across 11,683 paired proposals, LLM research ideas concentrate on bridge-
 framings (47–64% versus 12% for humans; normalized entropy down to 0.55 versus >0.92), and
 chain-of-thought pushes the distribution *further* from the human one. That result is
 distributional; ours is the limiting case where the collapsed distribution's mode is a single
-closed-form-predictable object — narrowness measurable there, computable here. Converging
+closed-form-predictable object — narrowness measurable there, computable here. "Artificial
+Hivemind" (2510.22954) documents the same homogeneity across open-ended domains at survey
+scale, which makes cross-domain generality of the collapse the expected default; against that
+backdrop our contribution is not that collapse occurs but that, in this regime, its mode is
+predictable to seven decimals before sampling. Converging
 skepticism about what the proposer contributes comes from "Dictionaries, Not Darwin" (2607.04108), 2606.10587, BehaveSim
 (2603.02787), Strategy Diversity (2605.09292), the bin-packing critiques (2510.27353;
 2501.11411) and MathConstruct (2502.10197). Two results cut the other way and belong on the
@@ -755,7 +759,8 @@ whether a trace is *requested* rather than editing its content, which is measure
 not causal faithfulness. The closest cousin is "The Price of Format" (2505.18949), showing
 format constraints collapse generation diversity — and as §5.1 concedes, our manipulation
 includes a small output-format change, so we commit a miniature version of the confound we cite.
-Related: 2505.14617, 2510.01171, 2506.17630.
+Format-restriction performance costs are documented at scale in 2408.02442. Related:
+2505.14617, 2510.01171, 2506.17630.
 
 **Preregistration lineage.** 2606.27687, 2607.07184, 2606.11217 and 2607.00276 preregister
 recipes, outcome-blinded predictions and agent protocols; HindsightBench (2607.18867) releases
