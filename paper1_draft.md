@@ -38,7 +38,12 @@ against emitted coordinates: 54 of 56 scoreable claims (96.4%) describe the obje
 built. Two scope conditions are load-bearing: the closed form is a weak-tier regularity,
 established so far within a single vendor lineage (§8), that does not describe the two higher
 tiers sampled; and it describes what an *unconditioned* call emits, not what a loop converges
-to.
+to. A preregistered extension run after external review (arm M, §3.4) sharpens the scope in
+both directions: the branch rule's fifth k confirmed out of sample at N = 57 (modal output
+T(8,57) = 3.5625000, 0 of 10 valid samples on the rival), while the registered falsifier for
+the filler branch **triggered at 3 of 3 cells** — at N = 20, 30 and 41 the model does not
+extend-and-fill but truncates the (k\*+1) grid, so V(k, m) describes behavior only on the
+m ≤ 1 support previously tested, and the extend branch of the rule is disconfirmed at m ≥ 4.
 
 ---
 
@@ -57,7 +62,8 @@ proposal distribution — which template the model emits most often at each N, a
 value, from the problem parameters alone, before sampling. The empirical mode equals the predicted value at
 all seven N tested, and per-sample agreement is bounded by the modal frequency itself, 56–86%
 by cell (§3.2). The rule also predicts where the behavior costs value: when k\*² ≤ N the model
-extends the grid with fillers; when k\*² > N it truncates instead of dropping to k\*−1 and
+extends the grid with fillers (a branch arm §3.4 later restricts to m ≤ 1); when k\*² > N it
+truncates instead of dropping to k\*−1 and
 filling. These *trap zones* — N ∈ [13,15], [21,24], [31,35], [43,48], [57,63] (clipped to
 [57,60] by our sweep bound) — are a property of the branch behavior, not of the packing problem.
 
@@ -206,7 +212,9 @@ each anchor with probability ½, some candidate among four goes 3/3 about 40% of
 this is a weakly identified discrete selection, not a zero-parameter law.
 
 The falsifiable content is the **branch rule**: k\*² ≤ N → extend with m = N − k\*² fillers
-(converge); k\*² > N → truncate the k\*-grid (trap). Nothing about "nearest" forces truncation —
+(converge); k\*² > N → truncate the k\*-grid (trap). The extend arm survived testing only at
+m ≤ 1 — a preregistered extension disconfirmed it at m ≥ 4, where the model prefers the
+(k\*+1) rectangle grid (§3.4). Nothing about "nearest" forces truncation —
 a proposer with any local search would drop to k\*−1 and fill, which is why the trap zones exist
 and why a higher-valued rival is reachable inside them. Truncate-versus-drop-and-fill is a
 genuine dichotomy, and it is what §3 and §4 test. The governing quantity is the signed distance
@@ -310,6 +318,46 @@ is reported both ways — 35/45 = 77.8%, or 35/50 = 70.0% had the rejections bee
 failures (Table 5, item 5) — and the five records appear in the ledger in no form (§9). The arm
 also contains three parse failures (Table 5, item 6), and one N = 37 proposer derived
 r = (√2−1)/12 correctly in prose, then transcribed 0.03571429.
+
+### 3.4 Preregistered extension (arm M): the filler branch fails at m > 1; the fifth k confirms
+
+Two external reviews of this revision observed, correctly, that (i) V(k, m)'s filler branch
+was empirically supported only at m ∈ {0, 1} — the converge cells N = 17 and 37 both have
+m = 1 — and (ii) the k = 8 trap zone appeared in Figure 1 but was never sampled. Arm M closes
+both gaps and was registered before sampling (`arm_m_preregistration.txt`, commit `e528c6b`;
+prompt hashes in `arm_m_prompts.json`): n = 15 bare weak-tier invocations at each of N = 20
+(k\* = 4, m = 4, predicted V(4,4) = 2.2071068), N = 30 (k\* = 5, m = 5, V(5,5) = 2.7071068),
+N = 41 (k\* = 6, m = 5, V(6,5) = 3.1725890) and N = 57 (k\* = 8, trap, T(8,57) = 3.5625000,
+rival V(7,8) = 3.7366935), with an explicit tie-stated falsifier for each half.
+
+**The falsifier for the filler branch triggered at 3 of 3 cells.** The registered predictions
+P-M1–P-M3 are disconfirmed: not one of the three converge cells has V(k\*, m) as its modal
+output. The model does not extend a k\*-grid with fillers; it moves *up* to the (k\*+1) grid
+and truncates or exactly fills it — modal outputs 2.0 = T(5,20) (12 of 15 valid; N = 20 is the
+5×4 rectangle exactly), 2.5 = T(6,30) (11 of 14; 6×5 exactly) and 2.9285714 = T(7,41)
+(6 of 7; 7×6 minus one). Exactly one sample in 36 valid converge-cell rows emitted the
+registered construction — a textbook V(4,4), all four fillers at (√2−1)/8. Per the
+registered falsifier wording, **V(k, m) is restricted to the m ≤ 1 support previously
+observed**, and the branch rule's extend arm is disconfirmed at m ≥ 4; the intermediate
+"places some fillers" outcome named in the registration did not occur (filler count 0 in 35
+of 36 valid converge rows). The emergent regularity is arithmetic, not geometric: where N
+factors as a×b with a, b near √N the model emits that exact rectangle of uniform circles
+(20 = 5×4, 30 = 6×5), which is further evidence for §8's arithmetic-tractability alternative
+— rectangle factorization is mentally computable where filler tangency is not.
+
+**P-M4 confirmed.** At N = 57 the modal valid output is T(8,57) = 3.5625000 (6 of 10 valid at
+10⁻⁶), the k = 8 grid truncated to 57; 0 of 10 valid samples reached the rival V(7,8), against
+a registered rival prediction of 0. The branch rule's truncate arm now has five confirmed k
+(4, 5, 6, 7, 8) and Figure 1's k = 8 zone is sampled. Validity by cell: 15/15, 14/15
+(one parse failure — fraction literals), 7/12 and 10/15 at 10⁻⁶. Three N = 41 invocations
+died in the runtime before reaching a model and are excluded under the pre-registered
+rejection rule, counted here: the cell is n = 12 sampled of 15 launched. Raw rows verbatim in
+`arm_m_collect.jsonl`; scoring in `arm_m_analysis.py`, conventions identical to arm F.
+
+The net effect on the paper's claim is a sharpening, not a rescue: the closed form now reads
+"k\* = round(√N) names the grid family; at k\*² > N the model truncates that grid (five k
+confirmed); at k\*² ≤ N it extends only to m ≤ 1 — beyond that it prefers the (k\*+1)
+rectangle, and V(k, m) does not describe it."
 
 ---
 
@@ -839,15 +887,15 @@ mode-ceiling result inherits that scope. This is the subject of the companion pa
 model version. Without pinned weights we cannot separate a model-tier effect from a serving-path
 effect, and the supporting anomalies live only in the runtime transcript.
 
-**Thin confirmatory base for the branch rule.** floor and round disagree exactly on
-N ∈ [k²−k+1, k²−1], so every discriminating cell is a trap cell by construction, and our
-discriminating evidence is four values of k in the square (k = 4, 5, 6, 7) plus two rectangle
-cells. The k = 8 zone appears in the abstract, §1, §1.1 and Figure 1 and was never sampled;
-N = 57 is the missing cell. Further, on-prediction is scored as a binary: we do not report the
-*empirical* k backed out of each emitted layout, so a reader cannot tell whether off-prediction
-samples are floor-consistent, ceil-consistent or unstructured. That table is computable from
-data already on disk and would distinguish "the rule fits at the tested N" from "the model
-applies the rule"; it is named here rather than run, per the stopping rule below.
+**Confirmatory base for the branch rule, updated by arm M.** floor and round disagree exactly
+on N ∈ [k²−k+1, k²−1], so every discriminating cell is a trap cell by construction. The
+truncate arm now has five confirmed k in the square (4, 5, 6, 7, 8 — the last added by arm M's
+N = 57 cell, §3.4) plus two rectangle cells; the extend arm is confirmed only at m ≤ 1 and
+**disconfirmed at m ≥ 4** (§3.4), which is the sharper scope the abstract now carries. The
+empirical-k back-out named as future work in earlier revisions has since been run twice as
+disclosed post-hoc diagnostics: `diagnostics_kmatch.py` (§3.2 — 50/50 on-prediction samples
+k\*-structured, 64/69 valid overall) and arm M's per-cell k_emp distributions (§3.4 — the
+converge cells sit on k\*+1, which is how the filler-branch failure was diagnosed).
 
 ---
 

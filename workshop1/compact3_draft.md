@@ -25,7 +25,11 @@ tolerance; the top-tier arm ran through an unattributable serving alias, `opus_a
 throughout). Requesting a method-naming trace line concentrates output onto the anchor (87% vs
 70% on-prediction, p = 0.03 uncorrected — failing Holm over the registered family, carried by
 one of three cells and confounded with a collection-wave split of comparable size) with no
-detectable validity change. Our contribution relative to a growing diversity-collapse
+detectable validity change. A preregistered extension run after external review sharpens the
+scope both ways: the branch rule's fifth k confirmed at N = 57 (modal T(8,57) = 3.5625000,
+0/10 rival), while the filler branch's registered falsifier triggered 3/3 — at N = 20, 30, 41
+the model truncates the (k\*+1) grid instead of extend-and-fill, so V(k, m) holds only on the
+m ≤ 1 support. Our contribution relative to a growing diversity-collapse
 literature is not that collapse occurs — it is the expected default — but that its mode is
 predictable in closed form *before* sampling.
 
@@ -118,6 +122,18 @@ and count as replications of the pattern, not independent confirmations. Pooled 
 tier and container the on-prediction rate is 46% (47/102 valid samples) — higher tiers are
 almost never on-prediction, so the closed form is a weak-tier regularity (single-vendor so
 far, §5).
+
+**Preregistered extension (arm M).** After external review flagged that the filler branch was
+supported only at m ∈ {0, 1} and that k = 8 was never sampled, we registered and ran four new
+cells (n = 15 each, hashes + tie-stated falsifiers committed before sampling). Outcome, both
+directions: **P-M4 confirmed** — N = 57 modal output is T(8,57) = 3.5625000 (6/10 valid on
+prediction, 0/10 rival), the truncate arm's fifth confirmed k. **Falsifier F-M1 triggered
+3/3** — at N = 20/30/41 (m = 4, 5, 5) the modal outputs are T(5,20) = 2.0, T(6,30) = 2.5 and
+T(7,41) = 2.9285714: the model moves up to the (k\*+1) grid and truncates or exactly fills it
+(20 = 5×4, 30 = 6×5) rather than extending with fillers — 1 of 36 valid converge samples
+emitted the registered V(k\*, m). V(k, m) is therefore restricted to the m ≤ 1 support, and
+the rectangle-factorization preference is further evidence for the untested
+arithmetic-tractability alternative (§5).
 
 **Out-of-sample transfer.** For a 1×a rectangle the template gains an aspect-corrected pair of
 parameters — q\* = round(√(N/a)) rows of p\* = round(√(N·a)) columns, collapsing to round(√N)
