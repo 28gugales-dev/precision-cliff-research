@@ -13,13 +13,13 @@ in context. On a classic constructive-geometry benchmark (maximize the sum of ra
 circles in a unit square), a weak-tier proposer does not search: it emits a grid-with-
 corner-fillers template and truncates it, even when a provably better construction is one
 parameter away. The behavior admits a closed form: a nearest-square order k\* = round(√N) with
-a value function V(k, m) identifies the *empirical modal output* at all seven tested N, to
-seven decimals. Per-sample agreement equals that modal frequency — 56–86% by cell — while a
+a value function V(k, m) identifies the *empirical modal output* — which template, and hence
+its computed value — at all seven tested N, stated before sampling. Per-sample agreement equals that modal frequency — 56–86% by cell — while a
 round-number baseline hits 2 of 69 valid samples. We preregistered these point predictions and
 tested them out of sample on two new containers (square and rectangle), restating but never
-refitting the rule; rectangle support is partial — 5 of 11 valid samples on-prediction, not
-separable from a uniform-template null, though 0 of 11 reached the provably higher-scoring
-rival. Across three nominal tiers we find an inversion: constructive ambition
+refitting the rule; on the rectangle the informative result is negative — 0 of 11 valid
+samples reached the provably higher-scoring rival — while on-prediction support is partial
+(5 of 11, not separable from a uniform-template null). Across three nominal tiers we find an inversion: constructive ambition
 rises monotonically with tier while execution validity rises then collapses (78% → 100% → 13% at the primary 10⁻⁶
 tolerance; the top-tier arm ran through an unattributable serving alias, `opus_alias`, flagged
 throughout). Requesting a method-naming trace line concentrates output onto the anchor (87% vs
@@ -69,9 +69,11 @@ forced-k initialization, trap-N avoidance in benchmark selection.
 **Contributions.** (1) A closed form — k\*(N), V(k, m), T(k, N) — naming the modal weak-tier
 output in advance, tested out of sample on a rectangle container whose rule was restated but
 never refitted. (2) A tier boundary: three attractor families, ambition rising monotonically
-while validity does not. (3) Trace elicitation as an *intervention*: a method line perturbs the
-sampled distribution rather than merely observing it — reported with the fragility it carries,
-not as a demonstrated effect.
+while validity does not — with ambition measured, not asserted (§3). (3) Checkable
+faithfulness, and trace requests as interventions: 54 of 56 scoreable method-line claims
+(96.4%) describe the object actually built, while requesting the line at all perturbs the
+sampled distribution — the concentration shift is reported with the fragility it carries
+(§4), not as a demonstrated effect.
 
 **Non-claim guard.** This is a behavioral regularity over emitted outputs, not a claim about
 mechanism inside the weights. A mechanism-free alternative, arithmetic tractability, predicts
@@ -145,7 +147,10 @@ overlap 3.3×10⁻²; radius-shrink repair costs a median 15% of sum-of-radii), 
 tolerance-scale near-misses (< 2.5×10⁻⁵) occur instead in 5 of 7 geometry-scored weak-tier
 failures — the exact-tangency grids, not the ambitious constructions. The
 ladder: 78% → 100% → 13% (64% → 90% → 13% at the stricter tolerance). "Monotone" applies to
-ambition only, while validity rises then collapses — a boundary condition on the main result:
+ambition only, and ambition is measured rather than asserted: a disclosed post-hoc diagnostic
+(`diagnostics_ambition.py`, all samples with emitted geometry, invalid included) gives median
+distinct radii 1 → 2 → 3 and median off-lattice center fraction 0.08 → 0.43 → 0.95 across the
+tiers, monotone on both. Validity instead rises then collapses — a boundary condition on the main result:
 the branch rule is a weak-tier regularity, holding at the tier furthest from what discovery-loop
 proposers typically use.
 
@@ -189,7 +194,7 @@ format constraints collapsing generation diversity; "Mutation Without Variation"
 finds iterated LLM mutation loops collapsing onto previously seen templates; and "Measuring the
 Gap Between Human and LLM Research Ideas" (2607.01233) reports the same collapse one level up,
 in idea space. Our contribution is not that collapse occurs — it is the expected default — but
-that, here, the collapsed mode's value is predictable to seven decimals *before* sampling.
+that, here, the collapsed mode is a single closed-form-computable object, stated *before* sampling.
 Relative to AlphaEvolve/ShinkaEvolve: those systems measure what a search loop converges to
 under parent conditioning, fitness feedback, and an evaluator in context; we measure the
 unconditioned proposal such loops implicitly assume is diverse when initialized from trivial

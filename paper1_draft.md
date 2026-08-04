@@ -17,14 +17,14 @@ in context. On a classic constructive-geometry benchmark, maximizing the sum of 
 circles in a unit square, a weak-tier proposer does not search. It emits a
 grid-with-corner-fillers template and truncates it, even when a provably better construction is
 one parameter away. The behavior admits a closed form: a nearest-square order k\* = round(√N)
-with a value function V(k, m) identifies the *empirical modal output* at all seven tested N and
-matches it to seven decimals. Per-sample agreement equals that modal frequency — 56–86% by
+with a value function V(k, m) identifies the *empirical modal output* — which template, and
+hence its computed value — at all seven tested N, stated before sampling. Per-sample agreement equals that modal frequency — 56–86% by
 cell — while a round-number baseline hits 2 of 69 valid samples: the formula captures
 everything short of sampling entropy. We preregistered these point predictions with prompt
 hashes before sampling and tested them out of sample on two containers, a square and a
-rectangle, for which the rule was restated but never refitted; rectangle support is partial —
-5 of 11 valid samples on-prediction, not separable from a uniform-template null, though 0 of 11
-reached the provably higher-scoring rival construction. Across three tiers we find three
+rectangle, for which the rule was restated but never refitted; on the rectangle the informative
+result is negative — 0 of 11 valid samples reached the provably higher-scoring rival — while
+on-prediction support is partial (5 of 11, not separable from a uniform-template null). Across three tiers we find three
 attractor families and an inversion: constructive ambition rises monotonically with nominal
 tier while execution validity does not — it rises then collapses (78% → 100% → 13% at the
 primary 10⁻⁶ tolerance; the third arm is
@@ -53,8 +53,8 @@ does neither, and behaves the same way on the next sample.
 
 The behavior can be written down. Writing k\*(N) = round(√N) for the nearest-square order, a
 value function V(k, m) over grid order k and filler count m identifies the modal output of the
-proposal distribution — the value the model emits most often at each N, to seven decimals, from
-the problem parameters alone, before sampling. The empirical mode equals the predicted value at
+proposal distribution — which template the model emits most often at each N, and hence its
+value, from the problem parameters alone, before sampling. The empirical mode equals the predicted value at
 all seven N tested, and per-sample agreement is bounded by the modal frequency itself, 56–86%
 by cell (§3.2). The rule also predicts where the behavior costs value: when k\*² ≤ N the model
 extends the grid with fillers; when k\*² > N it truncates instead of dropping to k\*−1 and
@@ -107,12 +107,14 @@ is scoped to the weak tier (§5). (2) *A tier boundary condition, as three attra
 Ambition rises monotonically with nominal tier; validity does not — 78% → 100% → 13% at the
 primary tolerance, 64% → 90% → 13% at 10⁻⁹. The most ambitious tier attempts recursive gaskets
 and mostly fails to produce a valid packing; it was addressed through a bare serving alias and
-appears as `opus_alias` with that caveat everywhere. (3) *Trace elicitation as an intervention.*
-Requesting a method line concentrates output onto the anchor (87% vs 70%, p = 0.0325
-uncorrected) with no detectable validity change. The result is inferentially fragile — it fails
-multiplicity correction and is carried by one of three cells (§6.4) — so we report it as
-met-as-registered, not as a demonstrated effect. Studies collecting process descriptors *by
-request* are nonetheless measuring a perturbed distribution.
+appears as `opus_alias` with that caveat everywhere. (3) *Checkable faithfulness, and trace
+requests as interventions.* Method lines are checkable against emitted coordinates, and 54 of
+56 scoreable claims (96.4%) describe the object actually built — a clean, well-powered finding
+(§6.5). Requesting the line at all is an intervention rather than an observation: the
+concentration shift it produced (87% vs 70%, p = 0.0325 uncorrected) fails multiplicity
+correction, is carried by one of three cells and is wave-confounded (§6.4), so it is reported
+as met-as-registered exploratory material, not a demonstrated effect. Studies collecting
+process descriptors *by request* are nonetheless measuring a perturbed distribution.
 
 **Non-claim guard.** Everything here is a behavioral regularity over emitted outputs. We make
 no claim about mechanism inside the weights, and the paper uses that vocabulary throughout: the
@@ -485,7 +487,11 @@ invalid, with only the offending circles highlighted). Source: `arm_f_candidates
 `fig_scripts.py`, deterministic.
 
 "Monotone" applies to one axis only (Table 5, item 11): ambition rises monotonically —
-truncated template, perturbed hybrid, recursive gasket — while validity rises then collapses. At
+truncated template, perturbed hybrid, recursive gasket — while validity rises then collapses.
+"Ambition" is measurable, not merely a qualitative read: a post-hoc diagnostic (disclosed;
+`diagnostics_ambition.py`, all samples with emitted geometry, invalid included) gives median
+distinct radii per sample 1 → 2 → 3 (means 1.33 → 2.40 → 3.37) and median off-lattice center
+fraction 0.08 → 0.43 → 0.95 across the three tiers — monotone on both operationalizations. At
 the canonical and plausibly contaminated cell N = 26 all tiers converge on the same 2.5414
 attractor; they diverge only at withheld trap cells. The branch rule of §2 is therefore a
 weak-tier regularity — single-vendor evidence until a cross-vendor arm completes (§8) — and
@@ -734,8 +740,8 @@ distributional; ours is the limiting case where the collapsed distribution's mod
 closed-form-predictable object — narrowness measurable there, computable here. "Artificial
 Hivemind" (2510.22954) documents the same homogeneity across open-ended domains at survey
 scale, which makes cross-domain generality of the collapse the expected default; against that
-backdrop our contribution is not that collapse occurs but that, in this regime, its mode is
-predictable to seven decimals before sampling. Converging
+backdrop our contribution is not that collapse occurs but that, in this regime, its mode is a
+single closed-form-computable object, stated before sampling. Converging
 skepticism about what the proposer contributes comes from "Dictionaries, Not Darwin" (2607.04108), 2606.10587, BehaveSim
 (2603.02787), Strategy Diversity (2605.09292), the bin-packing critiques (2510.27353;
 2501.11411) and MathConstruct (2502.10197). Two results cut the other way and belong on the
