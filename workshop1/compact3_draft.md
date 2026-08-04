@@ -158,8 +158,8 @@ in idea space. Our contribution is not that collapse occurs — it is the expect
 that, here, the collapsed mode's value is predictable to seven decimals *before* sampling.
 Relative to AlphaEvolve/ShinkaEvolve: those systems measure what a search loop converges to
 under parent conditioning, fitness feedback, and an evaluator in context; we measure the
-unconditioned proposal such loops implicitly assume is diverse when reseeding, restarting, or
-branching away from mutation — a different, load-bearing, quantity.
+unconditioned proposal such loops implicitly assume is diverse when initialized from trivial
+seeds — a different, load-bearing, quantity.
 
 ---
 
