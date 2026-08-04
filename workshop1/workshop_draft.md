@@ -49,11 +49,16 @@ carried forward by AlphaEvolve, ShinkaEvolve, and successors. Those systems quer
 p(program | parent programs, fitness scores, evaluator feedback, archive context, generation
 t > 0). We query p(coordinates | task description, no parent, no code channel, no feedback,
 generation 0). These differ on four axes at once, and we do not claim to have measured the
-in-loop distribution. What we characterize is the *unconditioned* call — a generation-0
-population, an island reseed, a restart after stagnation, a fresh-sample-instead-of-mutate
-branch — calls that demonstrably exist inside the cited systems. Finding that such a call is a
-template lookup, computable in advance, is actionable for people who build these loops: seed
-diversification, forced-k initialization, trap-N avoidance in benchmark selection. Nothing here
+in-loop distribution. What we characterize is the *unconditioned* call. A source
+audit finds no loop stage in the cited systems that makes precisely this call — FunSearch
+reseeds islands by cloning a best surviving program, ShinkaEvolve's stagnation restart re-seeds
+from its archive, OpenEvolve islands copy the user seed; every in-loop call is
+program-conditioned. The nearest relatives are initializations conditioned on a seed that "can
+be trivial" (FunSearch) or "rudimentary" (AlphaEvolve), plus AlphaEvolve's "No evolution"
+ablation. The unconditioned call is the limiting case these approach as seed information goes
+to zero; finding that this limit is a template lookup, computable in advance, is actionable for
+loop builders: seed diversification, forced-k initialization, trap-N avoidance in benchmark
+selection. Nothing here
 is a claim about what the loop samples at t > 0.
 
 **Contributions.** (1) A closed form — k\*(N), V(k, m), T(k, N) — that names the modal weak-tier

@@ -48,11 +48,15 @@ Circle packing is the showcase benchmark of the LLM-driven discovery lineage Fun
 carried forward by AlphaEvolve, ShinkaEvolve, and successors. Those systems query
 p(program | parent programs, fitness scores, evaluator feedback, generation t > 0). We query
 p(coordinates | task description, no parent, no feedback, generation 0) — the *unconditioned*
-call underlying a generation-0 population, an island reseed, a restart after stagnation, or a
-fresh-sample-instead-of-mutate branch, all of which demonstrably exist inside the cited systems.
-We do not claim to have measured the in-loop distribution. Finding this call to be a template
-lookup, computable in advance, is actionable for loop builders: seed diversification, forced-k
-initialization, trap-N avoidance in benchmark selection.
+call. A source audit finds no loop stage in the cited systems making precisely this call —
+FunSearch reseeds islands by cloning a best surviving program, ShinkaEvolve's stagnation
+restart re-seeds from its archive, OpenEvolve islands copy the user seed; every in-loop call is
+program-conditioned. The nearest relatives are initializations conditioned on a seed that "can
+be trivial" (FunSearch) or "rudimentary" (AlphaEvolve), plus AlphaEvolve's "No evolution"
+ablation; the unconditioned call is the limiting case these approach as seed information goes
+to zero. We do not claim to have measured the in-loop distribution. Finding this limit to be a
+template lookup, computable in advance, is actionable for loop builders: seed diversification,
+forced-k initialization, trap-N avoidance in benchmark selection.
 
 **Contributions.** (1) A closed form — k\*(N), V(k, m), T(k, N) — naming the modal weak-tier
 output in advance, tested out of sample on a rectangle container whose rule was restated but

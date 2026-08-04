@@ -33,3 +33,12 @@ Five expansion ideas adversarially reviewed (independent web-searching reviewers
 ## Net actions taken
 1. §8 hedge added to paper1_draft.md: GM2 0/140 explicitly flagged as truncation-vs-format-inability ambiguous, resolution deferred to GM3.
 2. No branch papers started. Effort stays on: GM/GM3 completion, paper 1 submission ladder (arXiv → workshop → TMLR/JEI).
+
+# Addendum 2026-08-04: FunSearch/AlphaEvolve/ShinkaEvolve/OpenEvolve source audit
+
+Two web auditors read primary sources. Verdicts:
+- NOVELTY HOLDS: no system characterizes generation-0/unconditioned proposal distribution; diversity asserted, never measured (FunSearch: "source of diverse (syntactically correct) programs"; AlphaEvolve: "highly diverse samples" — unquantified).
+- CLAIM CORRECTED: "unconditioned calls demonstrably exist inside the cited systems" was FALSE. FunSearch island reset clones best survivor (programs_database.py: founder = best_program_per_island). ShinkaEvolve stagnation restart re-seeds from archive (dbase.py island_spawn_strategy: "initial"|"best"|"archive_random"). OpenEvolve islands copy user seed. Every in-loop call program-conditioned. Nearest relatives: FunSearch trivial seed, AlphaEvolve "rudimentary" initial program + "No evolution" ablation (arXiv 2506.13131 sections 2.1, 4).
+- Sentence rewritten in all four artifacts (paper1_draft.md, latex1/main.tex, workshop1/workshop_draft.md, workshop1/compact3_draft.md): unconditioned call = limiting case of trivial-seed initializations, not literal loop stage. Origin of bad sentence: p4_review_gecco.md reviewer suggestion, accepted unverified.
+- Citation-chain note: n=26 = 2.635 NOT in AlphaEvolve white-paper body (results Colab only); our bound-table cites via ShinkaEvolve figure — correct chain, keep.
+- ShinkaEvolve novelty-rejection exists (embedding cosine threshold 0.95 paper / 0.99 repo default) but reports NO rejection rates — corroborates unmeasured-duplication gap.

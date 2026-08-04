@@ -119,11 +119,17 @@ fitness scores + evaluator feedback + archive context, at generation $t > 0$). W
 $p$(coordinates $\mid$ task description, no parent, no code channel, no feedback, generation 0). These
 differ on four axes at once --- parent conditioning, output modality, feedback, generation index
 --- and we do not claim to have measured the in-loop distribution. What we characterize is the
-\textit{unconditioned} call: the generation-0 population, an island reseed, a restart after
-stagnation, a fresh-sample-instead-of-mutate branch. Such calls demonstrably exist in the cited
-systems, and finding that they are a template lookup whose value is computable in advance is
-actionable for the people who build them --- seed diversification, forced-$k$ initialization,
-trap-$N$ avoidance in benchmark selection. Anything about what the loop samples at $t > 0$ is a
+\textit{unconditioned} call. A source audit finds no loop stage in the cited systems that makes
+precisely this call: FunSearch reseeds emptied islands by cloning a best surviving program,
+ShinkaEvolve's stagnation restart re-seeds from its own archive (``initial'', ``best'' or
+``archive\_random''), and OpenEvolve islands copy the user-provided seed --- every in-loop call is
+program-conditioned. The nearest deployed relatives are initializations conditioned on a seed
+that ``can be trivial'' (FunSearch) or ``rudimentary'', single-line functions returning constants
+(AlphaEvolve), plus AlphaEvolve's ``No evolution'' ablation, which re-prompts from the same
+rudimentary program throughout. The unconditioned call is the limiting case these approach as
+seed information goes to zero, and finding that this limit is a template lookup, its value
+computable in advance, is actionable for the people who build these loops --- seed
+diversification, forced-$k$ initialization, trap-$N$ avoidance in benchmark selection. Anything about what the loop samples at $t > 0$ is a
 hypothesis here. The one published result bearing directly on the substitution ---
 ``Dictionaries, Not Darwin'' (2607.04108, Pan Li), reporting parent-conditioned evolution
 indistinguishable from fresh independent sampling at equal budget --- is warrant from equation
