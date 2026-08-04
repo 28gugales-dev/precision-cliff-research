@@ -2,7 +2,7 @@
 
 *(Revision 2, 2026-08-01. Implements `p4_review_stats.md`, `p4_review_reviewer2.md` and
 `p4_review_gecco.md`, plus the arbitration in `p6_cruxes.md`. Every claim that changed relative
-to revision 1 is itemized in Table 5 (Appendix B); the deviations table is Table 4 (Appendix C),
+to revision 1 is itemized in Table 5 (Appendix C); the deviations table is Table 4 (Appendix B),
 and the ledger correction, the review-process disclosure and the stopping rule are in §9.)*
 
 ---
@@ -22,14 +22,17 @@ matches it to seven decimals. Per-sample agreement equals that modal frequency �
 cell — while a round-number baseline hits 2 of 69 valid samples: the formula captures
 everything short of sampling entropy. We preregistered these point predictions with prompt
 hashes before sampling and tested them out of sample on two containers, a square and a
-rectangle, for which the rule was restated but never refitted; on the rectangle, 0 of 11 valid
-samples reached the provably higher-scoring rival construction. Across three tiers we find three
-attractor families and an inversion: constructive ambition rises with nominal tier while
-execution validity does not (78% → 100% → 13% at the primary 10⁻⁶ tolerance; the third arm is
+rectangle, for which the rule was restated but never refitted; rectangle support is partial —
+5 of 11 valid samples on-prediction, not separable from a uniform-template null, though 0 of 11
+reached the provably higher-scoring rival construction. Across three tiers we find three
+attractor families and an inversion: constructive ambition rises monotonically with nominal
+tier while execution validity does not — it rises then collapses (78% → 100% → 13% at the
+primary 10⁻⁶ tolerance; the third arm is
 an unattributable serving alias, reported with that caveat throughout). Trace elicitation is an
 intervention rather than an observation: requesting a method line concentrates outputs onto the
 anchor (87% vs 70% on-prediction, p = 0.03 uncorrected — failing Holm over the registered
-family, carried by one of three cells), with no detectable validity change (p = 0.30,
+family, carried by one of three cells and confounded with a collection-wave split of comparable
+size), with no detectable validity change (p = 0.30,
 n = 60/arm; not powered to exclude an effect of the observed size). Method lines are checkable
 against emitted coordinates: 54 of 56 scoreable claims (96.4%) describe the object actually
 built. Two scope conditions are load-bearing: the closed form is a weak-tier regularity,
@@ -139,15 +142,17 @@ configurations, both branches, every k in 2…7, drift below 10⁻⁹.
 Our bound table (`n_sweep_forecast.json`) covers N = 10…30 only, and its N = 26 entry, 2.63598,
 *is* ShinkaEvolve's figure truncated, so the LLM-driven systems are the record on this problem
 (Table 5, item 4). What survives is that the recipe family is never competitive with that
-record: deficit 0.02–0.26 across N = 10…30, and 0.0946 at N = 26 — precisely
-2.63598 − 2.5414214. Above N = 30 there is no bound table, so both the deficit claim and the LP
+record: deficit 0.02–0.26 across N = 10…30, and 0.0946 at N = 26
+(2.63598 − 2.5414214 = 0.0945586). Above N = 30 there is no bound table, so both the deficit claim and the LP
 gate's "never exceeds a published bound" abort are unchecked there, covering three of five trap
 zones and four of our seven square cells.
 
 **[FIGURE 1]** *Predicted versus optimal value, N = 10…50.* (i) the rule's prediction; (ii) the
 best value in the recipe family; (iii, dotted) published best-known values, terminating at
 N = 30 because the bound table stops there. Shaded bands are the trap zones, the last being
-[57,63] clipped by `sweep(10,60)`. Worst-in-zone penalties 8.51%, 7.03%, 6.01%, 5.25%. The gap
+[57,63] clipped by `sweep(10,60)`. Worst-in-zone penalties 8.51%, 7.03%, 6.01%, 5.25%; these are
+family-internal arithmetic and exact at every N, while the published-bound comparison (curve iii)
+is checkable only up to N = 30, where the bound table stops. The gap
 closes to zero at N = 35 and N = 48 but **not** at N = 24, where 0.59% remains — curve (ii)
 sits strictly above (i) across [21,24].
 
@@ -248,15 +253,22 @@ not "predicting the exact output", which is what revision 1's abstract claimed (
 value is the empirical modal output**, and the on-prediction rate equals the modal frequency to
 within one sample:
 
-| N | predicted | empirical mode | modal freq | on-prediction / valid |
-|---|---|---|---|---|
-| 13 | 1.6250000 | 1.6250 | 10/18 | 10/18 (56%) |
-| 17 | 2.0517767 | 2.0518 | 3/4 | 3/4 (75%) |
-| 21 | 2.1000000 | 2.1000 | 12/15 | 12/15 (80%) |
-| 31 | 2.5833333 | 2.5833 | 12/17 | 13/17 (76%) |
-| 35 | 2.9166667 | 2.9167 | 3/4 | 3/4 (75%) |
-| 37 | 3.0345178 | 3.0345 | 3/4 | 3/4 (75%) |
-| 43 | 3.0714286 | 3.0714 | 6/7 | 6/7 (86%) |
+| N | predicted | empirical mode | modal freq | on-prediction / valid | k\*-structure / valid† |
+|---|---|---|---|---|---|
+| 13 | 1.6250000 | 1.6250 | 10/18 | 10/18 (56%) | 17/18 |
+| 17 | 2.0517767 | 2.0518 | 3/4 | 3/4 (75%) | 3/4 |
+| 21 | 2.1000000 | 2.1000 | 12/15 | 12/15 (80%) | 13/15 |
+| 31 | 2.5833333 | 2.5833 | 12/17 | 13/17 (76%) | 17/17 |
+| 35 | 2.9166667 | 2.9167 | 3/4 | 3/4 (75%) | 3/4 |
+| 37 | 3.0345178 | 3.0345 | 3/4 | 3/4 (75%) | 4/4 |
+| 43 | 3.0714286 | 3.0714 | 6/7 | 6/7 (86%) | 7/7 |
+
+† Post-hoc structural check, not preregistered, prompted by an external review of this
+revision (`diagnostics_kmatch.py`): the grid order backed out of each sample's dominant radius
+(k = round(1/2r)) equals k\*(N). All 50 of 50 on-prediction samples are k\*-structured — the
+value match is not an accounting coincidence — and 64 of 69 valid samples overall (93%) sit on
+the k\* grid, so most value misses are k\*-grid variants (perturbed radii or filler counts), not
+different constructions.
 
 No predictor of a single value can exceed the modal frequency, and this one attains it at 7 of
 7 cells: the residual is dispersion, not misprediction. As a floor, a naive "the model emits a
@@ -421,7 +433,9 @@ Two anomalies make that caveat load-bearing. Completion times ran 2.8–9 s acro
 invocations against 75–250 s for Haiku and 150–1170 s for Sonnet, and the reported token count
 was uniform at 49,906 across the first 20 completions, ≈49.9k thereafter — a signal of metadata
 that is not per-completion, or of a cache, router-fallback or truncation path. **Neither anomaly
-appears in any released artifact**: the ledger has no latency and no token field, and both
+appears in any released artifact** — we therefore treat both as anecdotal context from an
+unreleased session transcript, not as data-supported properties of the tier: the ledger has no
+latency and no token field, and both
 figures come from the runtime session transcript, so a referee cannot check them.
 
 Under those caveats the arm — preregistered fully blind in `arm_o_preregistration.txt` — was
@@ -833,8 +847,8 @@ applies the rule"; it is named here rather than run, per the stopping rule below
 
 ## 9. Reproducibility, deviations, and disclosures
 
-Deviations from preregistration are tabled in Appendix C; every claim that changed relative to
-revision 1 is tabled in Appendix B. Provenance, in list form:
+Deviations from preregistration are tabled in Appendix B; every claim that changed relative to
+revision 1 is tabled in Appendix C. Provenance, in list form:
 
 - **Registration.** Prompts were hashed with SHA-256 and the hashes recorded before sampling,
   with the predicted values they were to be tested against: `arm_f_repro.py` (header, P1–P5,
@@ -882,7 +896,7 @@ revision 1 is tabled in Appendix B. Provenance, in list form:
   recommendations (`p6_cruxes.md`), and the blind faithfulness adjudication of §6.5 were produced
   by language models under written protocols, not by human referees. They independently
   recomputed the paper's statistics from the released ledger and found eight recomputation
-  mismatches, all itemized in Appendix B, and their arithmetic was checkable and was checked. But
+  mismatches, all itemized in Appendix C, and their arithmetic was checkable and was checked. But
   the panel is not peer review, its verdicts carry no external authority, and it shares a family
   resemblance with the system under study — a blind-spot risk disclosed here rather than left
   implicit.
@@ -931,7 +945,29 @@ at the two registered tolerances.
 
 ---
 
-## Appendix B — Corrections ledger
+## Appendix B — Deviations and disclosure table
+
+**Table 4 — Deviations from preregistration.**
+
+| Prediction | Registered rule | As registered? | Outcome / reason |
+|---|---|---|---|
+| P1–P3 | exact-value point predictions | yes | §3.3, Table 1 |
+| P4 (N=37) | converge, 3.0345178 | yes | confirmed |
+| P5 (N=35) | truncate, 2.9166667, structural separation | yes | 3/4 valid; n = 4, "consistent with" |
+| P-S1…P-S4 | directional tier comparisons | yes | §5 |
+| P-O1, P-O2, P-O4 | tier comparisons on on-prediction / rival rates | **no** | declared not evaluable post hoc after a 13% validity collapse; the registered disconfirmation (regression toward the trap) did not occur |
+| P-O3 | multi-radius fraction ≥ 0.9 of valid | yes | trivially satisfied on 4/4 valid |
+| P-T1 | direction at each N **and** pooled p < 0.05 | yes | not confirmed, p = 0.30 |
+| P-T2 | directional, no alpha | yes | confirmed as registered (1/53 vs 2/50); no inferential weight claimed |
+| P-T3 | directional, no alpha | yes | met as registered; p = 0.0325 uncorrected fails Holm; carried by N = 13 (§6.4) |
+| P-T4 | ≥ 90% of scoreable claims match | yes, plus corrected scorer | 38/41 (93%) original; 54/56 (96.4%) blind, frozen rubric |
+| Falsifier | trace_v2 validity `<=` bare at 2+ of 3 N | **both readings reported** | **triggered** under the registered tie-inclusive reading (2/3 cells); not triggered under the strict `<` the code implemented (§6.3) |
+| Ladder inclusion | — | **post hoc** | `opus_alias` initially excluded, later included after results known; ladder reported both ways (§5) |
+| Cap exclusion | — | **not registered** | five records excluded; both rates reported (§3.3) |
+
+---
+
+## Appendix C — Corrections ledger
 
 **Table 5 — Corrections to revision 1.** Every claim that changed between the reviewed draft and
 this one, with the finding that forced it. `stats` = `p4_review_stats.md`, `R2` =
@@ -971,26 +1007,3 @@ this one, with the finding that forced it. `stats` = `p4_review_stats.md`, `R2` 
 | 30 | 5 | "no Haiku sample did [this] in 101 invocations" | 155 weak-tier rows; two exceeded the family best, both by ~10⁻⁷ | stats F17; R2 #23b |
 | 31 | 3.1, 9 | dual-tolerance reporting promised, never delivered; "cryptographic prompt hashes" | both tolerances in every validity figure; hashes restated as prompt-fragment hashes with coverage gaps itemized above | stats F21; GECCO M12 |
 | 32 | all | five HTML working comments and a merge-provenance header shipped | removed; the two load-bearing ones (k = 8 clipping, p-value convention) promoted into §1.1, Fig 1 and §6 | stats F22; R2 #29; GECCO NIT-1–2 |
-
----
-
-## Appendix C — Deviations and disclosure table
-
-**Table 4 — Deviations from preregistration.**
-
-| Prediction | Registered rule | As registered? | Outcome / reason |
-|---|---|---|---|
-| P1–P3 | exact-value point predictions | yes | §3.3, Table 1 |
-| P4 (N=37) | converge, 3.0345178 | yes | confirmed |
-| P5 (N=35) | truncate, 2.9166667, structural separation | yes | 3/4 valid; n = 4, "consistent with" |
-| P-S1…P-S4 | directional tier comparisons | yes | §5 |
-| P-O1, P-O2, P-O4 | tier comparisons on on-prediction / rival rates | **no** | declared not evaluable post hoc after a 13% validity collapse; the registered disconfirmation (regression toward the trap) did not occur |
-| P-O3 | multi-radius fraction ≥ 0.9 of valid | yes | trivially satisfied on 4/4 valid |
-| P-T1 | direction at each N **and** pooled p < 0.05 | yes | not confirmed, p = 0.30 |
-| P-T2 | directional, no alpha | yes | confirmed as registered (1/53 vs 2/50); no inferential weight claimed |
-| P-T3 | directional, no alpha | yes | met as registered; p = 0.0325 uncorrected fails Holm; carried by N = 13 (§6.4) |
-| P-T4 | ≥ 90% of scoreable claims match | yes, plus corrected scorer | 38/41 (93%) original; 54/56 (96.4%) blind, frozen rubric |
-| Falsifier | trace_v2 validity `<=` bare at 2+ of 3 N | **both readings reported** | **triggered** under the registered tie-inclusive reading (2/3 cells); not triggered under the strict `<` the code implemented (§6.3) |
-| Ladder inclusion | — | **post hoc** | `opus_alias` initially excluded, later included after results known; ladder reported both ways (§5) |
-| Cap exclusion | — | **not registered** | five records excluded; both rates reported (§3.3) |
-
