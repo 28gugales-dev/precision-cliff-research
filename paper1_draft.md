@@ -22,7 +22,8 @@ matches it to seven decimals. Per-sample agreement equals that modal frequency �
 cell — while a round-number baseline hits 2 of 69 valid samples: the formula captures
 everything short of sampling entropy. We preregistered these point predictions with prompt
 hashes before sampling and tested them out of sample on two containers, a square and a
-rectangle, for which the rule was restated but never refitted. Across three tiers we find three
+rectangle, for which the rule was restated but never refitted; on the rectangle, 0 of 11 valid
+samples reached the provably higher-scoring rival construction. Across three tiers we find three
 attractor families and an inversion: constructive ambition rises with nominal tier while
 execution validity does not (78% → 100% → 13% at the primary 10⁻⁶ tolerance; the third arm is
 an unattributable serving alias, reported with that caveat throughout). Trace elicitation is an
@@ -31,9 +32,10 @@ anchor (87% vs 70% on-prediction, p = 0.03 uncorrected — failing Holm over the
 family, carried by one of three cells), with no detectable validity change (p = 0.30,
 n = 60/arm; not powered to exclude an effect of the observed size). Method lines are checkable
 against emitted coordinates: 54 of 56 scoreable claims (96.4%) describe the object actually
-built. Two scope conditions are load-bearing: the closed form is a weak-tier law that does not
-describe the two higher tiers sampled, and it describes what an *unconditioned* call emits, not
-what a loop converges to.
+built. Two scope conditions are load-bearing: the closed form is a weak-tier regularity,
+established so far within a single vendor lineage (§8), that does not describe the two higher
+tiers sampled; and it describes what an *unconditioned* call emits, not what a loop converges
+to.
 
 ---
 
@@ -202,9 +204,8 @@ zones and four of our seven square cells.
 best value in the recipe family; (iii, dotted) published best-known values, terminating at
 N = 30 because the bound table stops there. Shaded bands are the trap zones, the last being
 [57,63] clipped by `sweep(10,60)`. Worst-in-zone penalties 8.51%, 7.03%, 6.01%, 5.25%. The gap
-closes to zero at N = 35 and N = 48 but **not** at N = 24, where 0.59% remains — the figure
-shows curve (ii) strictly above (i) across [21,24], and the revision-1 text was wrong where the
-figure was right.
+closes to zero at N = 35 and N = 48 but **not** at N = 24, where 0.59% remains — curve (ii)
+sits strictly above (i) across [21,24].
 
 ---
 
@@ -451,18 +452,20 @@ this row is not a statement about any released model version. Tier denominators 
 separately, and it is the matched comparison (83% → 100% → 13%) that should be quoted across
 tiers. Sources: `arm_f_candidates_v2.jsonl`, the three preregistration files.
 
-**[FIGURE 2]** *Three attractor families*, one representative valid packing per tier. The current
-rendering varies tier and cell simultaneously (Haiku N = 21, Sonnet N = 31, `opus_alias` N = 13)
-and gives no sample identifiers; it should be regenerated at a single N with ledger sample ids
-and overlap highlighting restricted to offending pairs.
+**[FIGURE 2]** *Three attractor families at a single cell, N = 31.* One representative packing
+per tier, ledger sample id in each panel title (weak tier `bare` id 1, on-prediction truncation
+2.5833333; middle tier `sonnet_bare` id 1, mixed-radius rival 2.7485281; `opus_alias` id 1,
+invalid, with only the offending circles highlighted). Source: `arm_f_candidates.jsonl` via
+`fig_scripts.py`, deterministic.
 
 "Monotone" applies to one axis only (Table 5, item 11): ambition rises monotonically —
 truncated template, perturbed hybrid, recursive gasket — while validity rises then collapses. At
 the canonical and plausibly contaminated cell N = 26 all tiers converge on the same 2.5414
 attractor; they diverge only at withheld trap cells. The branch rule of §2 is therefore a
-weak-tier law, and this is a **boundary condition on the main result**, not an independent
+weak-tier regularity — single-vendor evidence until a cross-vendor arm completes (§8) — and
+this is a **boundary condition on the main result**, not an independent
 second finding. It also cuts against §1's framing: the discovery systems cited there run
-frontier or mid-tier proposers, so the tier at which our law holds is the tier they do not use,
+frontier or mid-tier proposers, so the tier at which our regularity holds is the tier they do not use,
 while the tier closest to what they use escapes the trap in our own data.
 
 ---
@@ -480,7 +483,8 @@ We did not take it at face value. Before any scaled sample was drawn we register
 predictions and an explicit falsifier in `arm_t_preregistration.txt` (sha256 `ab7900a8…`),
 disclosing that the pilot's trace prompt had drifted from the bare template beyond the method
 line — it omitted the `[0,1]x[0,1]` tokens and reworded the output-format line — so the pilot's
-intervention was method-line-plus-rewording, bundled. The scaled prompt, `trace_v2`, is a
+intervention was method-line-plus-rewording, bundled. The scaled prompt, `trace_v2` — itself a
+**bundled prompt-format-and-trace-request** intervention — is a
 near-minimal diff: one inserted `METHOD:` line, plus `"After the METHOD line, "` prepended to
 the output line and `"no other text"` changed to `"no other text after the list"`. Pilot samples
 are never pooled with `trace_v2`. That second change is not cosmetic, and §5.2 shows it doing
@@ -593,7 +597,7 @@ parse-versus-geometric split is independent evidence pointing the same way, and 
 conclusion is unaffected either way since P-T1 fails under both readings — which is why fixing
 this costs nothing and leaving it would have cost credibility.
 
-### 5.4 What the concentration result will and will not carry
+### 5.4 Limits of P-T3: what the concentration result will and will not carry
 
 P-T3 met its registered directional criterion. It is not a flagship result.
 

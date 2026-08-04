@@ -85,17 +85,21 @@ def fig2():
                 return r
         return None
 
-    haiku = pick(lambda r: r["arm"] == "bare" and r["n"] == 21 and r.get("valid")
-                 and abs(r.get("sum_of_radii", 0) - 2.1) < 2e-3)
+    # Single N = 31 across all three tiers; ledger sample ids in each title.
+    haiku = pick(lambda r: r["arm"] == "bare" and r["n"] == 31 and r.get("valid")
+                 and abs(r.get("sum_of_radii", 0) - 2.5833333) < 1e-6)
     sonnet = pick(lambda r: r["arm"] == "sonnet_bare" and r["n"] == 31 and r.get("valid")
-                  and abs(r.get("sum_of_radii", 0) - 2.75) < 1e-3)
-    opus = pick(lambda r: "opus" in r["arm"] and not r.get("valid"))
+                  and abs(r.get("sum_of_radii", 0) - 2.7485281) < 1e-6)
+    opus = pick(lambda r: "opus" in r["arm"] and r["n"] == 31 and not r.get("valid"))
 
     fig, axes = plt.subplots(1, 3, figsize=(7.0, 2.6))
     panels = [
-        (haiku, "Haiku: uniform r=1/10 truncation, N=21\n(on-prediction, 2.1000000)", False),
-        (sonnet, "Sonnet: mixed-radius escape\n(2.7499999991, tangency-tight)", False),
-        (opus, "opus_alias: ambitious attempt\n(overlaps in red, invalid)", True),
+        (haiku, f"weak tier, N=31, id {haiku['sample_id'] if haiku else '?'}\n"
+                "on-prediction truncation, 2.5833333", False),
+        (sonnet, f"middle tier, N=31, id {sonnet['sample_id'] if sonnet else '?'}\n"
+                 "mixed-radius rival, 2.7485281", False),
+        (opus, f"opus_alias, N=31, id {opus['sample_id'] if opus else '?'}\n"
+               "ambitious attempt, invalid (overlaps red)", True),
     ]
     for ax, (row, title, mark) in zip(axes, panels):
         if row is None:
