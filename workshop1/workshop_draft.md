@@ -196,8 +196,8 @@ mode is a single object whose value is predictable to seven decimals *before* sa
 than merely observed to be narrow after the fact. Relative to the AlphaEvolve/ShinkaEvolve
 lineage: those systems measure what an LLM-driven *search* loop converges to under parent
 conditioning, fitness feedback, and an evaluator in context. We measure the unconditioned
-proposal that such loops implicitly assume is diverse when reseeding, restarting, or branching
-away from mutation — a different, and in the systems' own terms, load-bearing, quantity.
+proposal that such loops implicitly assume is diverse when initialized from trivial seeds — a
+different, and in the systems' own terms, load-bearing, quantity.
 
 ---
 
