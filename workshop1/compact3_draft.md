@@ -123,7 +123,12 @@ packings — valid 30/30 at 10⁻⁶ (100%), 27/30 (90%) at 10⁻⁹, but almost
 third arm, addressed only through a bare serving alias with no attestable weights binding
 (`opus_alias`, flagged with that caveat throughout and never referred to as any specific dated
 model), attempts recursive gasket-style constructions and is valid in 4 of 30 invocations (13%)
-at both tolerances, failing mostly on geometric overlap rather than numerical error. The
+at both tolerances, failing mostly on geometric overlap rather than numerical error. A
+post-hoc diagnostic (not preregistered; labeled as such in the repository) rules out a
+tolerance artifact behind that 13%: 24 of 26 invalid samples overlap grossly (median maximum
+overlap 3.3×10⁻²; radius-shrink repair costs a median 15% of sum-of-radii), while
+tolerance-scale near-misses (< 2.5×10⁻⁵) occur instead in 5 of 7 geometry-scored weak-tier
+failures — the exact-tangency grids, not the ambitious constructions. The
 ladder: 78% → 100% → 13% (64% → 90% → 13% at the stricter tolerance). "Monotone" applies to
 ambition only, while validity rises then collapses — a boundary condition on the main result:
 the branch rule is a weak-tier law, holding at the tier furthest from what discovery-loop
