@@ -97,7 +97,7 @@ the predicted value equals the **empirical modal output at all seven tested N**:
 | 13 | 1.6250000 | +0.1511 | 10/18 | 56% |
 | 17 | 2.0517767 | 0 | 3/4 | 75% |
 | 21 | 2.1000000 | +0.1589 | 12/15 | 80% |
-| 31 | 2.5833333 | +0.1652 | 13/17 | 76% |
+| 31 | 2.5833333 | +0.1652 | 12/17 | 76% |
 | 35 | 2.9166667 | 0 | 3/4 | 75% |
 | 37 | 3.0345178 | 0 | 3/4 | 75% |
 | 43 | 3.0714286 | +0.1702 | 6/7 | 86% |
@@ -118,8 +118,9 @@ null hits 2 of the same 69 valid samples, and the stronger null we use for the r
 proposer uniform over a few plausible template shapes, roughly one third on-prediction — is
 cleared by each of the three powered cells (56%, 80%, 76% at n ≥ 15 valid). The four cells
 with n ≤ 7 valid are individually underpowered (Wilson 95% CI on 3/4 spans roughly [30%, 95%])
-and count as replications of the pattern, not independent confirmations. Pooled across every
-tier and container the on-prediction rate is 46% (47/102 valid samples) — higher tiers are
+and count as replications of the pattern, not independent confirmations. Pooled over the four
+discriminating square cells (full ledger), the two higher tiers and the rectangle, the
+on-prediction rate is 46% (47/102 valid samples; non-discriminating cells excluded) — higher tiers are
 almost never on-prediction, so the closed form is a weak-tier regularity (single-vendor so
 far, §5).
 

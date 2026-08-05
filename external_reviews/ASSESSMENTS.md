@@ -82,3 +82,15 @@ BLOCKED (user): open-weights arm (Kaggle login or OpenRouter key); author name f
 - Top remaining action per reviewer: one-parent mutation arm (120 invocations, conditioning test). QUEUED as next preregistered arm.
 
 Score trajectory: 72 (r4) -> 88 (r6) -> 90 (r8). Compact: 80 (r5) -> 93 (r6-flash). User-side compact review: 71 (r7) -> est 78-82 post arm M.
+
+## Review 9 (user-run, rubric-based, 85/100 accept-with-fixes) — verdict: best review yet; every checkable deduction CONFIRMED against ledger, all fixes applied
+
+- D1 −2 (N=31 modal freq full-paper 12/17 vs compact 13/17): CONFIRMED — p11_mode_baseline.json says 12/17 with on_pred 13; compact was wrong. DONE — compact table fixed to 12/17; both formats now carry bucketing-convention clause on "7 of 7".
+- D1 −2 (47/102 "every tier and container"): CONFIRMED — decomposition 41/57 + 1/30 + 0/4 + 5/11 excludes non-discriminating cells (9/12). DONE — wording rescoped + decomposition printed inline (md+tex+compact).
+- D4 −3 (N=21 wave split 2/4 vs 10/11 impossible): CONFIRMED against ledger — true split 4/7 old vs 8/8 new; pooled new-wave 23/34 (68%), paper's 25/37 also wrong. DONE — corrected with in-text correction note (md+tex). Conclusion unchanged (drift argument holds, 68% figure coincidentally identical).
+- D4 −3 (155/231 stale post arm M): fair. DONE — 155 scoped as pre-arm-M with disclosure arm M rows not swept; corpus restated 231 at rev-2 close, 288 with arm M (md+tex).
+- D4 −1 (§3.4 "pre-registered rejection rule" vs §9 "not preregistered"): apparent contradiction, both true (arm M registered its own rule). DONE — clause disambiguated (md+tex).
+- D2 −3 (Table 4 missing arm M rows): fair. DONE — six rows added: P-M1–M3 disconfirmed, P-M4 confirmed, F-M1 triggered 3/3, F-M2 not triggered, rejection rule (md+tex).
+- §9 lists missing arm M artifacts: DONE — arm_m_preregistration.txt + arm_m_prompts.json in registration bullet, arm_m_collect.jsonl + arm_m_analysis.py in artifacts bullet (md+tex).
+- Reviewer's key UNVERIFIED (F-M1 registered wording): resolved by review 8, which checked it against arm_m_preregistration.txt and found no wiggle room.
+- Reviewer's projected post-fix score: 92–93.

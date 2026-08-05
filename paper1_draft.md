@@ -197,7 +197,9 @@ T(5,23) = 2.300, V(4,7) = 2.3624369.
 
 The finding that 94 of 95 valid proposals in prior arms were grid-plus-filler is retained only as
 motivation, since those arms are not reported here; the self-contained version is §5's
-observation that across 155 weak-tier rows only two exceeded the family best, both by ~10⁻⁷.
+observation that across the 155 weak-tier rows collected before arm M only two exceeded the
+family best, both by ~10⁻⁷ (arm M's 57 rows are scored separately in §3.4 and were not swept
+for this claim).
 
 ### 2.3 The order rule is a definition; the branch rule is the hypothesis
 
@@ -281,10 +283,15 @@ the k\* grid, so most value misses are k\*-grid variants (perturbed radii or fil
 different constructions.
 
 No predictor of a single value can exceed the modal frequency, and this one attains it at 7 of
-7 cells: the residual is dispersion, not misprediction. As a floor, a naive "the model emits a
+7 cells (at N = 31 the on-prediction count exceeds the 4-dp modal bucket by one sample —
+13/17 against 12/17 — a bucketing convention, not a violation of the ceiling): the residual is
+dispersion, not misprediction. As a floor, a naive "the model emits a
 round number" baseline hits 2 of the same 69 valid samples (3%). Two scope conditions: this is
-the bare weak-tier arm — pooled across every tier and container the on-prediction rate is 46%
-(47/102), because §5's higher tiers are almost never on-prediction — and "modal" is a property
+the bare weak-tier arm — pooled over the four discriminating square cells (full ledger), the
+two higher tiers and the rectangle, the on-prediction rate is 46%
+(47/102 = 41/57 + 1/30 + 0/4 + 5/11; the three non-discriminating square cells, 9/12, are
+excluded because prediction equals the family argmax there), because §5's higher tiers are
+almost never on-prediction — and "modal" is a property
 of the observed sampling regime, not of a pinned decoding configuration (§8).
 
 ### 3.3 Square container
@@ -350,8 +357,10 @@ factors as a×b with a, b near √N the model emits that exact rectangle of unif
 a registered rival prediction of 0. The branch rule's truncate arm now has five confirmed k
 (4, 5, 6, 7, 8) and Figure 1's k = 8 zone is sampled. Validity by cell: 15/15, 14/15
 (one parse failure — fraction literals), 7/12 and 10/15 at 10⁻⁶. Three N = 41 invocations
-died in the runtime before reaching a model and are excluded under the pre-registered
-rejection rule, counted here: the cell is n = 12 sampled of 15 launched. Raw rows verbatim in
+died in the runtime before reaching a model and are excluded under the rejection rule
+registered for this arm in `arm_m_preregistration.txt` — registered precisely because the
+analogous arm F exclusion was not (§9) — and counted here: the cell is n = 12 sampled of 15
+launched. Raw rows verbatim in
 `arm_m_collect.jsonl`; scoring in `arm_m_analysis.py`, conventions identical to arm F.
 
 The net effect on the paper's claim is a sharpening, not a rescue: the closed form now reads
@@ -576,8 +585,9 @@ the confound for which the pilot was discarded, held to the same standard.
 
 The scaled arm ran 100 new invocations, bringing both arms to 20 per cell at N ∈ {13, 21, 31} and
 the corpus to 215 logged square invocations (85 bare = 45 original + 40 new; 70 trace = 10 pilot +
-60 trace_v2; 30 sonnet; 30 `opus_alias`), plus 16 rectangle invocations, 231 total (Table 5, item
-27). One disclosure revision 1 did not carry: **20 of the 60 bare samples are pre-existing arm-F
+60 trace_v2; 30 sonnet; 30 `opus_alias`), plus 16 rectangle invocations, 231 total at the
+close of revision 2 (Table 5, item 27); the post-review arm M (§3.4) later added 57 sampled
+weak-tier invocations (60 launched), bringing the study corpus to 288. One disclosure revision 1 did not carry: **20 of the 60 bare samples are pre-existing arm-F
 rows** (N = 13 ids 1–5, N = 21 ids 1–10, N = 31 ids 1–5) whose results were known when P-T1–P-T3
 were written; only trace_v2 is fully fresh (§6.4). Scoring used `arm_f_repro.py` unchanged with
 the registered 2×10⁻³ window; the Fisher exact test comes from the hypergeometric tail in
@@ -676,9 +686,11 @@ equals that at N = 21. Dropping N = 13, the comparison is 30/35 vs 25/32, p = 0.
 
 *Wave confound.* The bare arm mixes two collection waves; trace_v2 is one. Splitting bare on the
 registered id boundary, with no intervention applied to either half, on-prediction is: N = 13, 3/4
-old wave vs 7/14 new; N = 21, 2/4 vs 10/11; N = 31, 5/5 vs 8/12 — the control arm's own
-between-wave drift is comparable to the effect attributed to the manipulation. Restricting to one
-wave, new-wave bare is 25/37 (68%) against trace_v2's 46/53 (87%), but **this stratified
+old wave vs 7/14 new; N = 21, 4/7 vs 8/8; N = 31, 5/5 vs 8/12 — the control arm's own
+between-wave drift is comparable to the effect attributed to the manipulation. (An earlier
+draft printed 2/4 vs 10/11 at N = 21 and a 25/37 pooled figure — arithmetically impossible
+against §6.1's id boundary; corrected here from the ledger.) Restricting to one
+wave, new-wave bare is 23/34 (68%) against trace_v2's 46/53 (87%), but **this stratified
 comparison is post hoc, not preregistered, no confirmatory weight** — a diagnosis, not a rescue:
 wave is a confound *in the registered analysis*, which cannot separate it from the manipulation.
 The design fix, interleaved collection in one session, was not run.
@@ -907,8 +919,9 @@ revision 1 is tabled in Appendix C. Provenance, in list form:
 - **Registration.** Prompts were hashed with SHA-256 and the hashes recorded before sampling,
   with the predicted values they were to be tested against: `arm_f_repro.py` (header, P1–P5,
   square arm), `arm_s_preregistration.txt`, `arm_o_preregistration.txt`,
-  `arm_t_preregistration.txt` (prereg hash `ab7900a8…`). The rectangle transfer was registered
-  before collection and never refitted.
+  `arm_t_preregistration.txt` (prereg hash `ab7900a8…`), and `arm_m_preregistration.txt` with
+  `arm_m_prompts.json` (committed `e528c6b` before sampling). The rectangle transfer was
+  registered before collection and never refitted.
 - **Four limits on that claim.** (i) The digests cover the task prompt only; the subagent
   inherits instruction files outside it, so what is locked is a *fragment* of the conditioning
   context, a replicator cannot reconstruct those files, and we cannot establish they were
@@ -936,7 +949,8 @@ revision 1 is tabled in Appendix C. Provenance, in list form:
   both rates are reported in §3.3. The `opus_alias` latency and token-count anomalies (§5) come
   from the runtime session transcript; no latency or token field exists in any released artifact.
 - **Analysis artifacts.** Raw outputs are stored verbatim (`arm_f_raw.json`,
-  `arm_f_candidates.jsonl`, `arm_f_candidates_v2.jsonl`, `arm_g_candidates.jsonl`) and scoring is
+  `arm_f_candidates.jsonl`, `arm_f_candidates_v2.jsonl`, `arm_g_candidates.jsonl`,
+  `arm_m_collect.jsonl` scored by `arm_m_analysis.py`) and scoring is
   deterministic and local. Value claims are gated on an independent LP oracle rather than on the
   closed form being tested: `n_sweep_forecast.py` with `verify_against_lp` checks 83
   configurations to within 10⁻⁹, and the same oracle produced §4.2's negative result. The
@@ -1015,6 +1029,11 @@ at the two registered tolerances.
 | P-T2 | directional, no alpha | yes | confirmed as registered (1/53 vs 2/50); no inferential weight claimed |
 | P-T3 | directional, no alpha | yes | met as registered; p = 0.0325 uncorrected fails Holm; carried by N = 13 (§6.4) |
 | P-T4 | ≥ 90% of scoreable claims match | yes, plus corrected scorer | 38/41 (93%) original; 54/56 (96.4%) blind, frozen rubric |
+| P-M1–P-M3 | modal output = V(k\*, m) at N = 20/30/41 | yes | **disconfirmed at all three cells** — modal outputs are (k\*+1)-grid values (§3.4) |
+| P-M4 | N = 57 modal = T(8,57), rival count 0 | yes | confirmed (6/10 on-prediction, 0/10 rival) |
+| F-M1 (arm M falsifier, filler branch) | modal ≠ V(k\*, m) at 2+ of 3 converge cells, ties count as NOT | yes, tie-stated in registration | **triggered at 3 of 3**; V(k, m) restricted to m ≤ 1 (§3.4) |
+| F-M2 (arm M falsifier, truncate branch) | N = 57 modal ≠ T(8,57) | yes | not triggered |
+| Arm M rejection rule | runtime deaths excluded, counted | yes (registered for this arm) | 3 N = 41 invocations excluded, cell reported as 12 of 15 |
 | Falsifier | trace_v2 validity `<=` bare at 2+ of 3 N | **both readings reported** | **triggered** under the registered tie-inclusive reading (2/3 cells); not triggered under the strict `<` the code implemented (§6.3) |
 | Ladder inclusion | — | **post hoc** | `opus_alias` initially excluded, later included after results known; ladder reported both ways (§5) |
 | Cap exclusion | — | **not registered** | five records excluded; both rates reported (§3.3) |
