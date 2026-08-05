@@ -32,9 +32,9 @@ for r in raw["rows"]:
             text = resp["candidates"][0]["content"]["parts"][0]["text"]
         except (KeyError, IndexError):
             text = ""
-    circles = parse_packing(text) if text else None
-    valid6 = bool(circles) and validate(circles, n, tol=1e-6)
-    valid3 = bool(circles) and validate(circles, n, tol=1e-3)
+    circles, parse_reason = parse_packing(text if text else None)
+    valid6 = circles is not None and validate(circles, n, tol=1e-6)[0]
+    valid3 = circles is not None and validate(circles, n, tol=1e-3)[0]
     s = score(circles) if circles else None
     s4 = round(s, 4) if s is not None else None
     onp = s is not None and valid6 and abs(s - PRED[n]) <= 0.002
