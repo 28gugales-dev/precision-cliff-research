@@ -103,3 +103,12 @@ Score trajectory: 72 (r4) -> 88 (r6) -> 90 (r8). Compact: 80 (r5) -> 93 (r6-flas
 - Scored stale rev3 snapshot, predates review-9 fixes.
 - Kept: nothing requiring change (its format-vs-geometry ask already implemented in §6.2). Venue facts plausible; strategy noted: AI-for-Science workshop (compact) then TMLR (full).
 - Full record: review10_gemini_88of100_2026-08-05.md; review 9 verbatim at review9_rubric_85of100_2026-08-05.md.
+
+## Council session 2026-08-05 (5 advisors + 5 peer reviewers + chairman) — actions taken
+
+1. GM parse-path positive control (chairman's #1): FOUND REAL BUG — parse_packing() 2-tuple mishandled in arm_gm_analysis.py + arm_gm2_analysis.py (successful parse would misclassify as parse failure; invalid could score truthy-valid). Fixed both; GM2 rescored under corrected scorer: outcome UNCHANGED (0/140; 139 literal_eval SyntaxError + 1 no_bracketed_list; 140/140 finishReason=MAX_TOKENS). Control now 7/7 (diagnostics_gm_parse_control.py). Commit 07bdf64.
+2. Arm MU (mutation, 135 inv) + arm CH (tractability choice probe, 45 inv) preregistered BEFORE sampling with council's required elements: MDE/power (0.83 at 70%->44%), numeric survive/dissolve thresholds (50%/20%) with non-overlapping Wilson regions, PARTIAL band with fixed sentence, tie-inclusive conventions, post-hoc-motivation + LLM-authorship provenance declaration, hard submission date 2026-08-12. Commit 2b7d202. Sampling wave 1 (18 B_rival haiku invocations) launched after commit.
+3. Dual-submission check: TMLR editorial policy allows arXiv + non-archival workshop overlap; bars parallel archival only. Verify "non-archival" on chosen workshop page at pick time.
+4. Chairman's tractability-confound point addressed by arm CH (the section-8 separating experiment, now registered).
+5. Still user-blocked: author name/affiliation (gates arXiv v1), naive-human read-back gate, transcript release decision.
+6. Not tunnel-visioned: flash-lite arm GM relaunched post-quota-reset (background); GM3 gemma running from 24/140 checkpoint.
