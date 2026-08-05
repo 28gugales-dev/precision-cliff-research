@@ -121,3 +121,15 @@ Score trajectory: 72 (r4) -> 88 (r6) -> 90 (r8). Compact: 80 (r5) -> 93 (r6-flas
 - CH registered verdict: P-CH1 holds 2/3 cells (valid-conditioned modal = T(k*,N) at N=13 and N=31 despite argmax printed in prompt). DISCLOSED survivorship artifact: all 31 invalid CH rows attempt the stated argmax (every one carries the family filler radius); 30/31 overlap from misplaced fillers (container corners instead of grid interstices), 1 parse (radical literals). Attempt-level reading: choice follows score table, execution fails off-template. Paper reports decomposition, not a winner: tractability wrong about selection, right about instantiation.
 - Artifacts: arm_mu_collect.jsonl (180 rows verbatim), arm_mu_analysis.py (committed before sampling done), arm_mu_results.txt (frozen output), integrity check: 12 condition-cells all 15/15, no duplicate slots.
 - Paper integration commit: section 3.5 + abstract + title word "Unconditioned" + section 8 two "not run" paragraphs closed + section 9 registration/artifact lists + corpus 288->468, mirrored md/tex/compact.
+
+## Review 12 (deepseek-v4-flash via hermes dispatch, rev4+MU, 2026-08-05) - 98/100, Accept minor, submission-ready YES
+
+Dispatched through handoff\dispatch.ps1 -Model deepseek-v4-flash (telegram messages_send lands in user DM, NOT hermes task queue - dispatch.ps1 is the working path; opencode-go flash 403 region-lock did not bite through this path). Reviewer recomputed every section 3.5 number from raw ledgers with its own scripts; zero discrepancies; git ancestry of prereg commit verified; Fisher/Wilson stats all matched.
+
+My verification of its critiques (all checked against raw rows before acting):
+- Deduction 1 (-1, CH N=31 4:3 margin unstated in prose): CONFIRMED (buckets 2.584 n=4 vs 2.748 n=3). FIXED: "(4 of 7 valid) against 2.7485281 (3 of 7) - a one-sample margin" in md+tex.
+- Zero-point tie note: CONFIRMED (A31 2.594/2.584 both n=2; C13 all n=1). FIXED: tie-convention header added to arm_mu_analysis.py, arm_mu_results.txt regenerated, verdicts byte-equal.
+- Optional abstract clause: APPLIED in md+tex+compact ("unconditioned calls only in the in-family-parent regime").
+- REVIEWER ERROR caught in its zero-point note: claimed P-MU4 verdict tie-invariant. FALSE for N=13 - all-singleton buckets make the modal pick arbitrary; alternative tie-break flips False->True (3/3). Direction favors the paper (current False is conservative pick), so no claim change; disclosed in the new results header instead.
+
+Score ledger: r8 90 -> r9 85 (fixes applied) -> r12 98 (post-MU/CH). Reviewer says 99 after deduction-1 fix (now applied).

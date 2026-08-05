@@ -48,8 +48,9 @@ A second preregistered extension (arms MU and CH, §3.5) tested whether the resu
 to parent-conditioned calls, and its registered falsifier **also triggered**: given a
 provably better in-family parent, 0 of 26 valid mutation samples return to the anchor
 (keep-or-improve 26/26, grid-order inheritance 26/26), so the anchoring result is a property
-of unconditioned calls only — the one-parent regime that discovery loops actually run in is
-not described by it, and the title of this paper is scoped accordingly. The template
+of unconditioned calls only in the in-family-parent regime — the one-parent regime that
+discovery loops actually run in is not described by it, and the title of this paper is
+scoped accordingly. The template
 reasserts itself only against a far-worse off-family parent (58.8% snap-back). A companion
 probe that enumerates the full recipe family in the prompt (arm CH) decomposes the mechanism:
 choice follows the stated score table, but execution fails off-template in 30 of 31 invalid
@@ -431,8 +432,8 @@ T(k\*, N) despite the argmax being printed in the prompt (P-CH1).
 survivorship artifact we disclose rather than exploit.** Under the registered scorer, which
 takes the modal output *among valid samples*, the template reading wins: at N = 13 the modal
 valid output is T(4,13) = 1.6250000 against a stated argmax of 1.7761424, at N = 31 it is
-T(6,31) ≈ 2.5833 against 2.7485281, and only N = 21 goes to the argmax (2.2588835, 3 of 5
-valid). P-CH2 is disconfirmed at 1 of 3 cells. Read no further and the tractability
+T(6,31) ≈ 2.5833 (4 of 7 valid) against 2.7485281 (3 of 7) — a one-sample margin — and only
+N = 21 goes to the argmax (2.2588835, 3 of 5 valid). P-CH2 is disconfirmed at 1 of 3 cells. Read no further and the tractability
 alternative fails the probe. But validity is low in this arm — 2, 5 and 7 valid of 15 by
 cell — and the failure modes reverse the picture at the *attempt* level: **all 31 invalid
 rows attempt the stated argmax** (every one carries the family's filler radius). Of those,

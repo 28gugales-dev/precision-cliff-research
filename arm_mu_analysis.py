@@ -41,6 +41,15 @@ def main():
             (HERE / "arm_mu_collect.jsonl").read_text(encoding="utf-8-sig").splitlines()
             if l.strip()]
     print(f"rows: {len(rows)}")
+    print("tie-break convention: descriptive per-cell 'modal' lines break count-ties by "
+          "first-encountered bucket (Counter insertion order over file order). CH modal "
+          "detection is tie-aware and counts ties as neither prediction. Known ties on "
+          "this data: A_anchor N=31 (2.594 vs 2.584, both n=2) and C_offfamily N=13 "
+          "(all valid buckets n=1); the latter makes P-MU4's N=13 entry tie-sensitive - "
+          "an alternative tie-break could flip it False->True, which would only "
+          "strengthen the template reading; the reported False is the conservative pick. "
+          "The MU decision rule and F-MU1 use anchor-rates, not modals, and are "
+          "tie-free.")
     recs = []
     for r in rows:
         circles, perr = parse_packing(r["raw"].strip() if r["raw"] else None)

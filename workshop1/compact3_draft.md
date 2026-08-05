@@ -32,8 +32,8 @@ the model moves to the (k\*+1) grid instead of extend-and-fill, so V(k, m) holds
 m ≤ 1 support. A second preregistered extension (arms MU/CH) tested transfer to
 parent-conditioned calls and its falsifier also triggered: given a provably better in-family
 parent, 0/26 valid mutation samples return to the anchor (keep-or-improve 26/26,
-grid-order inheritance 26/26) — the result is a property of *unconditioned* calls only, and
-the title is scoped accordingly; the template reasserts itself only against a far-worse
+grid-order inheritance 26/26) — the result is a property of *unconditioned* calls only in
+the in-family-parent regime, and the title is scoped accordingly; the template reasserts itself only against a far-worse
 off-family parent (58.8% snap-back). A companion probe that prints the full recipe family in
 the prompt decomposes the mechanism: choice follows the stated score table, but execution
 fails off-template in 30 of 31 invalid attempts — the template is less what the model
