@@ -94,3 +94,12 @@ Score trajectory: 72 (r4) -> 88 (r6) -> 90 (r8). Compact: 80 (r5) -> 93 (r6-flas
 - §9 lists missing arm M artifacts: DONE — arm_m_preregistration.txt + arm_m_prompts.json in registration bullet, arm_m_collect.jsonl + arm_m_analysis.py in artifacts bullet (md+tex).
 - Reviewer's key UNVERIFIED (F-M1 registered wording): resolved by review 8, which checked it against arm_m_preregistration.txt and found no wiggle room.
 - Reviewer's projected post-fix score: 92–93.
+
+## Review 10 (user-run Gemini, stale rev3 doc, 88/100) — verdict: NO-ACTION; score untrustworthy
+
+- Its only shown recomputation is misattributed: calls V(3,4) = 1.7761424 the "empirical modal sum" at N=13 — that is the RIVAL the model never reaches (0 hits); modal is T(4,13) = 1.6250000.
+- Invents model versions (Claude 3 Haiku / 3.5 Sonnet / Opus) the paper deliberately never names — review 2's error repeated.
+- Violates our own rubric while citing it: deducts for self-disclosed tabled items (D2 −3 opus ladder inclusion, D5 −2 cap exclusions) and for the paper's own §6.4 fragility analysis (D4 −3) — rubric rule 1 says disclosed gaps cost nothing. ~8 of its 12 deducted points invalid. No per-deduction arithmetic, no UNVERIFIED list, no ledger evidence.
+- Scored stale rev3 snapshot, predates review-9 fixes.
+- Kept: nothing requiring change (its format-vs-geometry ask already implemented in §6.2). Venue facts plausible; strategy noted: AI-for-Science workshop (compact) then TMLR (full).
+- Full record: review10_gemini_88of100_2026-08-05.md; review 9 verbatim at review9_rubric_85of100_2026-08-05.md.
