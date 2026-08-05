@@ -43,7 +43,7 @@
   belowskip=1em
 }
 
-\title{A Closed Form for What the Model Emits:\\ Template Anchoring in Zero-Shot Circle Packing}
+\title{A Closed Form for What the Model Emits:\\ Template Anchoring in Unconditioned Zero-Shot Circle Packing}
 \author{}
 \date{}
 
@@ -96,6 +96,16 @@ $T(8,57) = 3.5625000$, 0 of 10 valid samples on the rival), while the registered
 the filler branch \textbf{triggered at 3 of 3 cells} --- at $N = 20$, 30 and 41 the model does not
 extend-and-fill but moves to the $(k^{*}+1)$ grid, so $V(k, m)$ describes behavior only on the
 $m \le 1$ support previously tested, and the extend branch of the rule is disconfirmed at $m \ge 4$.
+A second preregistered extension (arms MU and CH, \S3.5) tested whether the result transfers
+to parent-conditioned calls, and its registered falsifier \textbf{also triggered}: given a
+provably better in-family parent, 0 of 26 valid mutation samples return to the anchor
+(keep-or-improve 26/26, grid-order inheritance 26/26), so the anchoring result is a property
+of unconditioned calls only --- the one-parent regime that discovery loops actually run in is
+not described by it, and the title of this paper is scoped accordingly. The template
+reasserts itself only against a far-worse off-family parent (58.8\% snap-back). A companion
+probe that enumerates the full recipe family in the prompt (arm CH) decomposes the mechanism:
+choice follows the stated score table, but execution fails off-template in 30 of 31 invalid
+attempts --- the template is less what the model prefers than what it can reliably build.
 \end{abstract}
 
 \section{Introduction}
@@ -427,6 +437,86 @@ The net effect on the paper's claim is a sharpening, not a rescue: the closed fo
 confirmed); at $k^{*2} \le N$ it extends only to $m \le 1$ --- beyond that it prefers the $(k^{*}+1)$
 rectangle, and $V(k, m)$ does not describe it.''
 
+\subsection{Preregistered extension (arms MU and CH): the anchor does not transfer to one-parent calls, and handing the model the argmax does not dislodge the template}
+
+Two questions remained open after arm M, and both were pressed by the council review of this
+revision: does the unconditioned anchoring result say anything about calls that carry a parent
+program --- the regime evolutionary loops actually run in --- and does the \S8
+arithmetic-tractability alternative survive a direct probe? Arms MU and CH were registered
+together before sampling (\texttt{arm\_mu\_preregistration.txt}, commit \texttt{2b7d202};
+prompt hashes in \texttt{arm\_mu\_prompts.json}), with numeric decision thresholds, a power
+analysis (0.83 at the registered effect size), tie-against conventions, and a falsifier
+(F-MU1) whose consequence --- the title and abstract of this paper are scoped to
+\textit{unconditioned} calls only --- was written down before the first invocation.
+
+\textbf{Arm MU} issues one-parent mutation calls: the bare prompt plus an existing packing and
+the instruction to modify it so the sum of radii increases. Three parents per cell
+($N = 13, 21, 31$; $n = 15$ per condition-cell, 135 invocations): \textit{A\_anchor}, the
+model's own unconditioned anchor $T(k^{*}, N)$; \textit{B\_rival}, the provably better
+in-family rival $V(k^{*}-1, m)$; and \textit{C\_offfamily}, a diagonal-chain packing scoring
+$\approx 0.59$--$0.62$, far below either.
+
+\textbf{F-MU1 triggered; the anchoring result dissolves under conditioning.} Under B\_rival
+the pooled anchor-rate is 0 of 26 valid (0\%, CI $[0.00, 0.13]$) against a registered
+DISSOLVES threshold of $\le 20\%$; keep-or-improve is 26 of 26 against a threshold of
+$\ge 50\%$. Every valid B\_rival sample keeps or refines the rival construction, and every one
+inherits the rival's grid order ($k$-inheritance 26/26, disconfirming P-MU3's $< 50\%$
+prediction). The template does not reassert itself when a better in-family parent is present.
+A\_anchor makes the same point from the other side: even with the model's \textit{own} anchor
+as parent and an explicit increase-the-sum instruction, only 7 of 28 valid samples (25\%,
+CI $[0.13, 0.43]$) stay on the anchor --- P-MU1's $\ge 50\%$ prediction is not met. Per the
+registered falsifier wording: the unconditioned-call anchoring result does not transfer to
+parent-conditioned calls, the loop-relevance framing is disconfirmed for the one-parent
+regime, and this paper's claims are scoped to unconditioned calls throughout.
+
+The one condition where the template does reassert itself is the one the registration
+predicted it would: given the \textit{off-family} diagonal parent, 20 of 34 valid samples
+(58.8\%, CI $[0.42, 0.74]$) abandon the parent entirely and emit a $k^{*}$-grid construction
+--- P-MU4 holds per-cell at $N = 21$ (7/13) and $N = 31$ (12/14, every valid sample on the
+$k = 6$ grid), though not at $N = 13$ (1/7). The asymmetry is the finding: a good in-family
+parent is followed, a bad off-family parent is discarded for the template. The attractor is
+real but weak --- it captures the trajectory only when the parent is worse than what the
+template supplies.
+
+\textbf{Arm CH} hands the model the entire recipe family: the bare prompt plus every
+admissible $T(k, N)$ and $V(k, m)$ value enumerated, including the family argmax, with the
+instruction to use whichever scores highest or anything better ($n = 15$ per cell, 45
+invocations). The \S8 tractability alternative says the model truncates at $k^{*}$ because
+that is the only construction it can compute; enumerating the family removes the computation
+burden, so under that reading the modal output should become the stated argmax (P-CH2). Under
+the template reading it stays $T(k^{*}, N)$ despite the argmax being printed in the prompt
+(P-CH1).
+
+\textbf{Registered verdict: P-CH1 holds (2 of 3 cells) --- but the registered metric carries
+a survivorship artifact we disclose rather than exploit.} Under the registered scorer, which
+takes the modal output \textit{among valid samples}, the template reading wins: at $N = 13$
+the modal valid output is $T(4,13) = 1.6250000$ against a stated argmax of 1.7761424, at
+$N = 31$ it is $T(6,31) \approx 2.5833$ against 2.7485281, and only $N = 21$ goes to the
+argmax (2.2588835, 3 of 5 valid). P-CH2 is disconfirmed at 1 of 3 cells. Read no further and
+the tractability alternative fails the probe. But validity is low in this arm --- 2, 5 and 7
+valid of 15 by cell --- and the failure modes reverse the picture at the \textit{attempt}
+level: \textbf{all 31 invalid rows attempt the stated argmax} (every one carries the family's
+filler radius). Of those, 30 misplace the fillers --- typically at the container corners,
+where radius $(\sqrt{2}-1)/(2k)$ overlaps the adjacent grid circle; the correct construction
+places them at the grid interstices --- and 1 emits radical literals the registered scorer
+cannot evaluate. Counting attempts rather than valid outputs, the model \textit{chooses} the
+argmax in a large majority of CH invocations and simply fails to execute it; the
+valid-conditioned modal is dominated by the template because the template is the only
+construction the model executes reliably. The registered metric was fixed before sampling, so
+we report its verdict as registered --- and flag in the same breath that it conditions on
+exactly the variable (execution success) that separates the two readings. The honest summary
+is a decomposition, not a winner: handed the argmax, the model's \textit{choice} follows the
+score table, but its \textit{execution} fails off-template in 30 of the 31 invalid attempts
+--- the \S8 tractability alternative is wrong about selection and right about instantiation.
+This is the same asymmetry arm MU found from the other direction, and it narrows the paper's
+central claim to its defensible core: the template is not what the model prefers; it is what
+the model can build.
+
+Raw rows verbatim in \texttt{arm\_mu\_collect.jsonl} (180 of 180 launched invocations
+collected, no runtime deaths); scoring in \texttt{arm\_mu\_analysis.py}, committed before
+sampling completed; frozen output in \texttt{arm\_mu\_results.txt}. This arm brings the study
+corpus to 468 invocations.
+
 \section{Rectangle transfer}
 
 \subsection{Transfer of the rule}
@@ -675,7 +765,8 @@ the corpus to 215 logged square invocations (85 bare = 45 original + 40 new; 70 
 60 trace\_v2; 30 sonnet; 30 \texttt{opus\_alias}), plus 16 rectangle invocations, 231 total at the
 close of revision 2; the post-review arm M (\S3.4) later added 57 sampled weak-tier invocations
 (60 launched), bringing the study corpus to 288 (Table~5, item
-27). One disclosure revision 1 did not carry: \textbf{20 of the 60 bare samples are pre-existing arm-F
+27), and the post-council arms MU and CH (\S3.5) added 180 more (180 launched, none lost),
+for a final corpus of 468. One disclosure revision 1 did not carry: \textbf{20 of the 60 bare samples are pre-existing arm-F
 rows} ($N = 13$ ids 1--5, $N = 21$ ids 1--10, $N = 31$ ids 1--5) whose results were known when P-T1--P-T3
 were written; only trace\_v2 is fully fresh (\S6.4). Scoring used \texttt{arm\_f\_repro.py} unchanged with
 the registered $2\times10^{-3}$ window; the Fisher exact test comes from the hypergeometric tail in
@@ -955,10 +1046,13 @@ stronger reading. The decisive cheap experiment is a one-parent mutation arm: sa
 prompt = bare template plus one parent packing plus its score plus ``propose a modification that
 increases the sum of radii'', under three parent conditions (the on-prediction truncated grid,
 the higher-value family rival, an off-family parent), measuring whether the branch rule still
-predicts and whether the model inherits the parent's $k$. That is ${\sim}120$ invocations and the single
-highest-value addition available. It was not run.
+predicts and whether the model inherits the parent's $k$. That experiment has now been run as
+the preregistered arm MU (\S3.5), and its registered falsifier triggered: 0 of 26 valid
+rival-parent samples return to the anchor, keep-or-improve and $k$-inheritance are both
+26/26, and the anchoring result is scoped to unconditioned calls as a stated negative
+transfer result. The concern this paragraph raised in revision 2 was correct.
 
-\textbf{A mechanism-free alternative we did not test.} Under an explicit ``construct the packing by
+\textbf{A mechanism-free alternative, now directly probed.} Under an explicit ``construct the packing by
 reasoning alone'' constraint, a $k \times k$ grid at $r = 1/(2k)$ is close to the only construction whose
 coordinates can be emitted from mental arithmetic without error accumulation, and $\mathrm{round}(\sqrt{N})$ is
 the arithmetically nearest such grid. That hypothesis predicts every observation in \S2--\S3
@@ -967,7 +1061,11 @@ attempts constructions whose coordinates it cannot compute by hand and overlaps 
 observed failure mode (24 overlaps and 2 nonpositive radii out of 26 \texttt{opus\_alias} failures). The
 separating experiment --- hand the model the recipe family explicitly, state $V(k, m)$ and the
 admissible $k$, and ask it to \textit{choose} $k$; if it picks the argmax, the tractability reading stands
---- was not run. This is why \S1's vocabulary is behavioral and why no memorization claim is made.
+--- has now been run as the preregistered arm CH (\S3.5). The outcome splits the hypothesis
+in two: the model's \textit{choice} follows the stated score table (so tractability does not
+explain the selection), but its \textit{execution} fails off-template in 30 of 31 invalid
+attempts (so tractability does explain the instantiation --- the grid is what survives mental
+arithmetic). \S1's vocabulary remains behavioral and no memorization claim is made.
 
 \textbf{Contamination is not probed.} $N = 26$ is the canonical published cell and plausibly in
 training data. We ran no canary-string test, no comparison against $N$ values absent from the
@@ -1022,8 +1120,10 @@ revision 1 is tabled in Appendix C. Provenance, in list form:
   square arm), \texttt{arm\_s\_preregistration.txt}, \texttt{arm\_o\_preregistration.txt},
   \texttt{arm\_t\_preregistration.txt} (prereg hash \texttt{ab7900a8\dots}), and
   \texttt{arm\_m\_preregistration.txt} with \texttt{arm\_m\_prompts.json} (committed
-  \texttt{e528c6b} before sampling). The rectangle transfer was registered
-  before collection and never refitted.
+  \texttt{e528c6b} before sampling), and \texttt{arm\_mu\_preregistration.txt} with
+  \texttt{arm\_mu\_prompts.json} (committed \texttt{2b7d202} before sampling; decision
+  thresholds, power analysis, tie conventions and falsifier F-MU1 all registered). The
+  rectangle transfer was registered before collection and never refitted.
 \item \textbf{Four limits on that claim.} (i) The digests cover the task prompt only; the subagent
   inherits instruction files outside it, so what is locked is a \textit{fragment} of the conditioning
   context, a replicator cannot reconstruct those files, and we cannot establish they were
@@ -1052,7 +1152,9 @@ revision 1 is tabled in Appendix C. Provenance, in list form:
   from the runtime session transcript; no latency or token field exists in any released artifact.
 \item \textbf{Analysis artifacts.} Raw outputs are stored verbatim (\texttt{arm\_f\_raw.json},
   \texttt{arm\_f\_candidates.jsonl}, \texttt{arm\_f\_candidates\_v2.jsonl}, \texttt{arm\_g\_candidates.jsonl},
-  \texttt{arm\_m\_collect.jsonl} scored by \texttt{arm\_m\_analysis.py}) and scoring is
+  \texttt{arm\_m\_collect.jsonl} scored by \texttt{arm\_m\_analysis.py},
+  \texttt{arm\_mu\_collect.jsonl} scored by \texttt{arm\_mu\_analysis.py} with frozen output
+  \texttt{arm\_mu\_results.txt}) and scoring is
   deterministic and local. Value claims are gated on an independent LP oracle rather than on the
   closed form being tested: \texttt{n\_sweep\_forecast.py} with \texttt{verify\_against\_lp} checks 83
   configurations to within $10^{-9}$, and the same oracle produced \S4.2's negative result. The

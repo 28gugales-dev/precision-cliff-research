@@ -112,3 +112,12 @@ Score trajectory: 72 (r4) -> 88 (r6) -> 90 (r8). Compact: 80 (r5) -> 93 (r6-flas
 4. Chairman's tractability-confound point addressed by arm CH (the section-8 separating experiment, now registered).
 5. Still user-blocked: author name/affiliation (gates arXiv v1), naive-human read-back gate, transcript release decision.
 6. Not tunnel-visioned: flash-lite arm GM relaunched post-quota-reset (background); GM3 gemma running from 24/140 checkpoint.
+
+## Arm MU/CH final outcomes (2026-08-05, 180/180 collected, zero runtime deaths)
+
+- B_rival: anchor 0/26 valid (CI [0.00,0.13]), keep-or-improve 26/26, k-inheritance 26/26 -> registered DISSOLVES verdict, F-MU1 TRIGGERED. Title/abstract scoped to unconditioned calls per registered wording; section 3.5 added to all three paper versions.
+- A_anchor: 25% (7/28) stay on own anchor; P-MU1 not met.
+- C_offfamily: 58.8% (20/34) snap back to k* template from bad off-family parent; P-MU4 per-cell 2/3 (N=21, N=31; not N=13).
+- CH registered verdict: P-CH1 holds 2/3 cells (valid-conditioned modal = T(k*,N) at N=13 and N=31 despite argmax printed in prompt). DISCLOSED survivorship artifact: all 31 invalid CH rows attempt the stated argmax (every one carries the family filler radius); 30/31 overlap from misplaced fillers (container corners instead of grid interstices), 1 parse (radical literals). Attempt-level reading: choice follows score table, execution fails off-template. Paper reports decomposition, not a winner: tractability wrong about selection, right about instantiation.
+- Artifacts: arm_mu_collect.jsonl (180 rows verbatim), arm_mu_analysis.py (committed before sampling done), arm_mu_results.txt (frozen output), integrity check: 12 condition-cells all 15/15, no duplicate slots.
+- Paper integration commit: section 3.5 + abstract + title word "Unconditioned" + section 8 two "not run" paragraphs closed + section 9 registration/artifact lists + corpus 288->468, mirrored md/tex/compact.

@@ -1,4 +1,4 @@
-# A Closed Form for What the Model Emits: Template Anchoring in Zero-Shot Circle Packing
+# A Closed Form for What the Model Emits: Template Anchoring in Unconditioned Zero-Shot Circle Packing
 
 *Workshop submission — 3-page compact version. Full technical report, preregistration hashes,
 ledgers, and deviations table available in the long version and accompanying repository.*
@@ -29,9 +29,17 @@ detectable validity change. A preregistered extension run after external review 
 scope both ways: the branch rule's fifth k confirmed at N = 57 (modal T(8,57) = 3.5625000,
 0/10 rival), while the filler branch's registered falsifier triggered 3/3 — at N = 20, 30, 41
 the model moves to the (k\*+1) grid instead of extend-and-fill, so V(k, m) holds only on the
-m ≤ 1 support. Our contribution relative to a growing diversity-collapse
-literature is not that collapse occurs — it is the expected default — but that its mode is
-predictable in closed form *before* sampling.
+m ≤ 1 support. A second preregistered extension (arms MU/CH) tested transfer to
+parent-conditioned calls and its falsifier also triggered: given a provably better in-family
+parent, 0/26 valid mutation samples return to the anchor (keep-or-improve 26/26,
+grid-order inheritance 26/26) — the result is a property of *unconditioned* calls only, and
+the title is scoped accordingly; the template reasserts itself only against a far-worse
+off-family parent (58.8% snap-back). A companion probe that prints the full recipe family in
+the prompt decomposes the mechanism: choice follows the stated score table, but execution
+fails off-template in 30 of 31 invalid attempts — the template is less what the model
+prefers than what it can reliably build. Our contribution relative to a growing
+diversity-collapse literature is not that collapse occurs — it is the expected default — but
+that its mode is predictable in closed form *before* sampling.
 
 ## 1. Introduction and closed form
 
@@ -133,8 +141,25 @@ prediction, 0/10 rival), the truncate arm's fifth confirmed k. **Falsifier F-M1 
 T(7,41) = 2.9285714: the model moves up to the (k\*+1) grid and truncates or exactly fills it
 (20 = 5×4, 30 = 6×5) rather than extending with fillers — 1 of 36 valid converge samples
 emitted the registered V(k\*, m). V(k, m) is therefore restricted to the m ≤ 1 support, and
-the rectangle-factorization preference is further evidence for the untested
+the rectangle-factorization preference is further evidence for the
 arithmetic-tractability alternative (§5).
+
+**Preregistered extension (arms MU and CH).** Registered together before sampling (decision
+thresholds, power 0.83, tie-against conventions, falsifier F-MU1), these arms test the two
+questions arm M left open. **Arm MU** (one-parent mutation calls, 3 parents × 3 cells × 15):
+under the provably better in-family rival parent, anchor-rate is **0/26 valid**
+(CI [0.00, 0.13]; DISSOLVES threshold ≤ 20%), keep-or-improve 26/26, grid-order inheritance
+26/26 — **F-MU1 triggered**: the unconditioned anchoring result does not transfer to
+parent-conditioned calls, and the paper's claims are scoped to unconditioned calls as a
+stated negative transfer result. Even with the model's *own* anchor as parent, only 7/28
+stay on it (25%). The template reasserts itself only against a far-worse off-family parent
+(20/34, 58.8%, per-cell at 2 of 3 N). **Arm CH** (recipe family enumerated in-prompt, argmax
+stated): the registered valid-conditioned metric favors the template (P-CH1, 2 of 3 cells —
+at N = 13 the modal valid output declines a strictly better construction printed in the
+prompt), but we disclose its survivorship artifact: **all 31 invalid rows attempt the stated
+argmax** and 30 misplace the fillers at the container corners. Choice follows the score
+table; execution fails off-template. The tractability alternative is wrong about selection
+and right about instantiation: the template is what the model can reliably build.
 
 **Out-of-sample transfer.** For a 1×a rectangle the template gains an aspect-corrected pair of
 parameters — q\* = round(√(N/a)) rows of p\* = round(√(N·a)) columns, collapsing to round(√N)
