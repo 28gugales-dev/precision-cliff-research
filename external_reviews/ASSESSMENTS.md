@@ -70,3 +70,15 @@ QUEUED (prose, cheap): weak-tier-law softening; bundled-intervention labeling; "
 QUEUED (new preregistered arms, need swarm run): N=57; rectangle n=20 hashed; N=35/37 top-ups; code arm.
 QUEUED (venue-time restructure): section reorder; Tables 4/5 → supplement; §5-6 compression in full paper.
 BLOCKED (user): open-weights arm (Kaggle login or OpenRouter key); author name for arXiv.
+
+## Review 8 (hermes/deepseek-v4-pro, arm M delta + full paper, 90/100 submission-ready YES) — verdict: clean verify pass; 1 wording fix actioned
+
+- Independently re-ran arm_m_analysis.py: all validity counts (15/15, 14/15, 7/12, 10/15), modal values (2.0, 2.5, 2.9285714, 3.5625), on-pred (1/0/0/6), rival 0/10, filler 35/36 — all confirmed against paper §3.4. Modal arithmetic shown and correct.
+- Falsifier honesty: F-M1 3/3 TRIGGERED per registered wording; tie convention unexercised; no wiggle room found. F-M2 not triggered, correct.
+- "Sharpening, not a rescue" framing judged legitimate — scope narrowing, negative result at equal prominence, no post-hoc salvage.
+- Review 7 D1 declared RESOLVED; estimated review-7 revised score 78–82. D2 partial (post-hoc metrics disclosed), D3 essentially adopted, D4 caveat load-bearing.
+- Only fix requested: abstract "truncates the (k*+1) grid" imprecise for N=20/30 (exact-fill rectangles, not truncations). DONE — s/truncates/moves to/ in paper1_draft.md, main.tex, compact3_draft.md.
+- Minor note accepted without action: prereg vocabulary didn't anticipate the (k*+1)-grid-shift outcome; paper already reports it as observation, not prediction.
+- Top remaining action per reviewer: one-parent mutation arm (120 invocations, conditioning test). QUEUED as next preregistered arm.
+
+Score trajectory: 72 (r4) -> 88 (r6) -> 90 (r8). Compact: 80 (r5) -> 93 (r6-flash). User-side compact review: 71 (r7) -> est 78-82 post arm M.

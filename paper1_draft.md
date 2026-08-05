@@ -42,7 +42,7 @@ to. A preregistered extension run after external review (arm M, §3.4) sharpens 
 both directions: the branch rule's fifth k confirmed out of sample at N = 57 (modal output
 T(8,57) = 3.5625000, 0 of 10 valid samples on the rival), while the registered falsifier for
 the filler branch **triggered at 3 of 3 cells** — at N = 20, 30 and 41 the model does not
-extend-and-fill but truncates the (k\*+1) grid, so V(k, m) describes behavior only on the
+extend-and-fill but moves to the (k\*+1) grid, so V(k, m) describes behavior only on the
 m ≤ 1 support previously tested, and the extend branch of the rule is disconfirmed at m ≥ 4.
 
 ---

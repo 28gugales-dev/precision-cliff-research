@@ -28,7 +28,7 @@ one of three cells and confounded with a collection-wave split of comparable siz
 detectable validity change. A preregistered extension run after external review sharpens the
 scope both ways: the branch rule's fifth k confirmed at N = 57 (modal T(8,57) = 3.5625000,
 0/10 rival), while the filler branch's registered falsifier triggered 3/3 — at N = 20, 30, 41
-the model truncates the (k\*+1) grid instead of extend-and-fill, so V(k, m) holds only on the
+the model moves to the (k\*+1) grid instead of extend-and-fill, so V(k, m) holds only on the
 m ≤ 1 support. Our contribution relative to a growing diversity-collapse
 literature is not that collapse occurs — it is the expected default — but that its mode is
 predictable in closed form *before* sampling.
