@@ -91,6 +91,31 @@ def report(rows, label):
               f"{f'{ce}/{cv} ({100*ce/cv:.0f}%)' if cv else 'n/a':<24}"
               f"{g:<20.6f}{len(bins[q]):<11}{ms:.4f}")
 
+    # The decomposition that locates the cliff: among valid rows, split by
+    # whether centres were copied and, if so, whether radii were varied.
+    # "centres copied + radii varied" is the proposer's entire realised search.
+    print(f"\n{'rung':<10}{'centres+radii varied':<24}{'centres+radii copied':<24}"
+          f"{'centres varied'}")
+    for q in RUNGS:
+        cc = cr = cv2 = 0
+        for r in rows:
+            if not r.get("valid") or r["rung"] != q:
+                continue
+            mx, _ = centers_metrics(r, pmap.get(r.get("parent_id")))
+            if mx is None:
+                continue
+            if mx < 1e-3:
+                if r.get("echo"):
+                    cr += 1
+                else:
+                    cc += 1
+            else:
+                cv2 += 1
+        t = cc + cr + cv2
+        if t:
+            print(f"{q:<10}{f'{cc}/{t} ({100*cc/t:.0f}%)':<24}"
+                  f"{f'{cr}/{t} ({100*cr/t:.0f}%)':<24}{cv2}/{t}")
+
     # Registered quality fork: mean score must be FLAT for the mechanism claim.
     print("\nregistered quality fork (mean score among valid must not decline"
           " monotonically):")
