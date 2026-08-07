@@ -5,6 +5,16 @@ SHA-256 is published and the runner carrying these predictions is pushed to an
 externally-timestamped host *before* any row is sampled. Until then it is a design note.
 Nothing in the paper may cite it as a registration.
 
+**Runner: written and dry-run verified.** `sec3_artifacts/runners/kaggle_precision_sweep_14b_heilbronn.py`
+carries every prediction below in its header block, in the same form the fresh-seed runner
+carried F1-F3. `python kaggle_precision_sweep_14b_heilbronn.py --dry-run` validates the
+evaluator, the parser, the seed parent against its hard-coded score, and the grid-scores-zero
+property, without downloading a model or touching a GPU.
+
+**To lock, three steps remain, none of them analytic:** resolve the author field; publish this
+file's SHA-256; push the runner to an externally-timestamped host before sampling a single
+row. Nothing about the design is outstanding.
+
 **Author:** *(unresolved — see the outstanding item in `PAPER2_AND_SCOPE_PLAN.md`)*
 **Written:** 2026-08-07, against paper 2 at commit `6b56467` (v23).
 
@@ -106,6 +116,16 @@ Mean accepted steps per lineage will be **≤ 1.5 at Q2_K** and **≥ 4.0 at Q4_
 generations; these bounds are stated for fifteen and are deliberately not the observed
 values.)
 
+**Control-arm floor, registered here because wave 2 lacked one and had to add it after the
+fact.** The seed parent scores 0.009087, against roughly 0.0250 for the best known
+configuration at n = 13 — mediocre by design, but *not* trivially beatable: a seeded random
+search of 4 000 configurations reaches only 0.0032, so the parent already sits well above
+naive sampling. If the task turns out to be too hard for the reference rung, the primary
+cannot discriminate no matter what the 2-bit rung does. So: **if mean accepted steps at
+Q4_K_M is below 1.0, the wave's verdict is UNINFORMATIVE and no branch of 5.1, 5.2 or 5.3 is
+claimed**, whatever the Q2_K figure. That is a floor on the control arm, not on the
+treatment arm, and it is the failure mode a one-sided power floor does not catch.
+
 **5.2 — SECONDARY, the form that failed before.** Fraction of lineages improving past the
 seed parent at all: **≤ 0.45 at Q2_K**, **≥ 0.85 at Q4_K_M**. Registered explicitly because
 its circle-packing analogue (F1) was refuted; if 5.1 holds and 5.2 fails again, that is
@@ -160,6 +180,24 @@ commitment predates the outcome.
 If 5.1 holds and 5.4 fails, the step collapse is not echo-driven on this task, and the
 identity paragraph in §3.6 does not transfer — a more interesting outcome than the
 confirmatory one, and the reason both are registered separately.
+
+## 6b. Logging precision, and why it is not the same as §3's
+
+§3's ledgers round scores to 6 decimals, which is harmless when the score support is lumpy
+at 0.900 / 1.040 / 1.300. Minimum triangle area is not lumpy, and an accepted improvement
+here can be of order 1e-7. Rounding the ledger to 6 dp would erase such a step from the
+record and silently corrupt 5.1 and 5.3 — the two primaries. The runner therefore logs
+`score`, `parent_score` and `score_delta` at **12 decimals**, while canonicalising
+coordinates to 6 dp *before* scoring, so the logged coordinates reproduce the logged score
+exactly. This is a departure from the earlier waves' convention and is registered here
+rather than discovered later.
+
+Two further conventions the runner fixes and this registration adopts. `valid` does **not**
+require a positive score, because 5.5 counts valid outputs scoring exactly zero. And `echo`
+is computed against the lineage's *running* parent as shown in the prompt, evaluated before
+the acceptance update, while `score_delta` is always measured against the *fixed seed*
+parent — two different references, deliberately, because 5.4 is about copying and 5.1 is
+about progress from a common origin.
 
 ## 7. Analysis, fixed in advance
 
