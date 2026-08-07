@@ -82,16 +82,34 @@ print(f"  wall clock   2026-08-01: 2.8-9 s (session log)      "
 print(f"  reported use 2026-08-01: uniform ~49.9k             "
       f"2026-08-07: {min(t)//1000}k-{max(t)//1000}k")
 print("""
-  The latency ranges are DISJOINT: the slowest 2026-08-01 call is an order of magnitude
-  faster than the fastest 2026-08-07 one. Section 4 built its serving-signature argument
-  on a 2.8-9 s window against comparator tiers at 75-1170 s. On this date the alias sits
-  INSIDE the comparator window it was once one to two orders below.
+  NEITHER of these is a second channel, and the second one is a trap we walked into.
 
-  Section 4's usage observation is worth re-reading against this. It withdrew the uniform
-  ~49.9k figure as an artifact of a large fixed prefix rather than a serving signature.
-  The prefix has not changed; the spread has, from uniform to better than three-fold.
-  The withdrawal was right on its own reasoning and is not reinstated -- a spread that
-  moves is not evidence the earlier tightness meant anything.""")
+  LATENCY is uncalibrated in both directions. The 2026-08-01 figures are eyeballed
+  session-log ranges; the 2026-08-07 ones are a runtime-reported duration field. No row
+  exists on which the two instruments can be compared, no comparator tier was sampled on
+  2026-08-07, and the registration registered NO timing claim. Consistent with the
+  validity change; not evidence for it.
+
+  USAGE fails outright, and arm R is the control that kills it. Printed below.""")
+
+ral = [r for r in load("r_n*.jsonl") if r["arm"] == "r_alias"]
+tr = [r["subagent_tokens"] for r in ral]
+print()
+print(f"  {'arm':<34}{'n':<5}{'token range':<22}{'spread'}")
+print(f"  {'B2 alias, packing task':<34}{len(t):<5}{f'{min(t)}-{max(t)}':<22}{max(t)/min(t):.2f}x")
+print(f"  {'R alias, SAME DAY, repair task':<34}{len(tr):<5}"
+      f"{f'{min(tr)}-{max(tr)}':<22}{max(tr)/min(tr):.2f}x")
+xs = [(r["subagent_tokens"], r["duration_ms"]) for r in new]
+mx = sum(a for a, _ in xs) / len(xs); my = sum(b for _, b in xs) / len(xs)
+num = sum((a - mx) * (b - my) for a, b in xs)
+den = (sum((a - mx) ** 2 for a, _ in xs) * sum((b - my) ** 2 for _, b in xs)) ** 0.5
+print(f"  within B2, corr(tokens, duration) = {num/den:+.3f}")
+print("""
+  Same alias, same day, different task: uniform to 1.01x. The spread tracks the TASK, not
+  the date, and within B2 usage and duration are one quantity at r = +0.69. Section 4
+  withdrew the ~49.9k observation on exactly this reasoning, and a draft of section 4.1
+  reproduced the withdrawn error inside the paragraph quoting the withdrawal. Withdrawn
+  again, with the control in the ledger.""")
 
 # -------------------------------------------------------------- arms R
 print(f"\n{'=' * 78}")
@@ -221,18 +239,23 @@ VERDICT, under the branch the preregistration fixed in advance
   NO H1/H2 conclusion is drawn from it, and the re-snapshot becomes the finding.
 
   That branch is binding even though arm R's own result is clean and would otherwise be
-  readable. {ex}/{len(allr)} exact, flat in delta across two orders of magnitude, at both
-  tiers, is what H2 predicts and not what H1 predicts -- and we may not say so, because
-  the path it was measured on is not the path H1 and H2 are hypotheses about. Reporting
-  the number and refusing the inference is the whole content of C3.
+  readable. Reporting the number and refusing the inference is the content of C3.
 
-  What arm R does establish, on the path it did measure: handing over a construction and
-  asking for the arithmetic is not where this serving path fails. That is a real
-  negative for anyone designing a verifier around repair-style probes, and it is stated
-  without a tier comparison behind it, because there is no longer a tier contrast to make
-  -- both tiers are at ceiling.
+  What arm R establishes, inside the scope its own registration fixes -- one substrate
+  family, two N, one displacement direction, five per cell: repair-style probes are not
+  where THIS path fails on THIS substrate. At N=31, delta=1e-4 that is 5/5 alias and 5/5
+  Sonnet, scored separately, because pooling the tiers would contradict this arm's own
+  referent-instability argument.""")
 
-  The 1e-4 cells matter most and are the least ambiguous: a violation four orders below
-  the coordinate scale, printed at 12 decimal places, is found by 10 of 10 invocations at
-  N = 13 and 10 of 10 at N = 31. A precision-eroded decode path is not what produced
-  those rows.""")
+print(f"""
+  NOT DETECTED IS NOT ABSENT. A 5/5 cell has a one-sided 95% lower bound of
+  0.05 ** 0.2 = {0.05 ** 0.2:.3f}, so any true detection rate above about 55% produces
+  these tables unremarkably. The design excludes a precision effect of roughly 45 points
+  or more and is silent below that. P-R6 became unreachable once Sonnet also hit ceiling:
+  a comparator at 1.00 cannot be beaten by 2/5. Discriminator, not estimator, as
+  registered.
+
+  P-R2 was registered as "monotone NON-INCREASING", which flat detection satisfies. It is
+  scored FAILED on one cell only -- N=31's 1.0/0.8/1.0, where the single false-positive
+  row makes the sequence rise at finer delta. A failure by the letter of a rule we wrote,
+  not evidence of anything.""")
