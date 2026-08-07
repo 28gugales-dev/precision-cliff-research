@@ -133,3 +133,16 @@ My verification of its critiques (all checked against raw rows before acting):
 - REVIEWER ERROR caught in its zero-point note: claimed P-MU4 verdict tie-invariant. FALSE for N=13 - all-singleton buckets make the modal pick arbitrary; alternative tie-break flips False->True (3/3). Direction favors the paper (current False is conservative pick), so no claim change; disclosed in the new results header instead.
 
 Score ledger: r8 90 -> r9 85 (fixes applied) -> r12 98 (post-MU/CH). Reviewer says 99 after deduction-1 fix (now applied).
+
+## LaTeX structural verification, 2026-08-06 (opus)
+
+main.tex (1369 lines, 101 KB) has NEVER been compiled - no TeX engine on the authoring machine (pdflatex/xelatex/lualatex/tectonic/latexmk all absent). Added latex1/texlint.py as a compile proxy. Result: structurally clean.
+
+Checked: environment balance, brace balance, inline-math $ parity, undefined/duplicate labels, cite-vs-bibliography wiring, tabular/longtable column-count consistency, non-ASCII. Non-ASCII count is 0 (safest state for pdflatex). All four initial hits were lint bugs, not manuscript bugs, and each was confirmed by hand before being taught as an exception:
+- "uncited bibliography" - FALSE. \nocite{*} present at main.tex:1277 with a documented rationale (manuscript cites inline by venue to stay 1:1 with the source markdown). Nearly "fixed" a non-bug here; checked the file first.
+- "tabular 0/2 cols" x4 - FALSE. Regex stopped at the first } inside the user column type L{19mm}; replaced with a brace matcher.
+- "caption row has 1 cell" x2 - FALSE. \caption* as the first longtable row spans all columns.
+
+REMAINING RISK (needs user): the manuscript is still unverified against a real TeX run. texlint cannot see missing packages, overfull hboxes, or float placement. Installing a TeX engine requires a download, which is user-gated. Recommend compiling once on Overleaf/arXiv before the 2026-08-12 submission.
+
+Note: 6 \label commands, 0 \ref - tables/figures are numbered by hand (\setcounter{table}{N} + \caption*) and referenced by name in prose. Consistent with the inline-citation choice; labels are inert. Not a defect, but hand-numbering can desync if a float is added.
