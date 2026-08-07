@@ -12,6 +12,7 @@ run any of these from the repository root with **no arguments**:
 | `sec3_dispersion_registered.py` | both dispersion-probe waves: registered echo measures, the post-hoc decomposition, quality forks |
 | `sec3_dispersion_prereg_rule.py` | wave 1's locked decision rule (returns *unclassified*) |
 | `sec3_registered_echo_test.py` | wave 1's registered primary echo JT, `score_delta` CIs, orthogonality diagnostic |
+| `sec3_search_progress.py` | §3.6 loop-level search progress: accepted hill-climb steps per lineage across all four ladders (14B ×3 plus 7B), the echo-complement identity gaps, conditional-on-departure rates, final best score, and twelve exact lineage-level permutation tests. Post-hoc throughout |
 | `sec3_artifacts/dispersion_probe_v2/analyze_v2.py` | wave 2's registered analysis and its `VERDICT: FAILED` label |
 | `sec4_independent_rescore.py`, `arm_f_repro.py` | section 4's validity, taxonomy, scores and prompt digests |
 
