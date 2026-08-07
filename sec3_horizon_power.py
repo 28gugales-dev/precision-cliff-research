@@ -1,6 +1,12 @@
 """
-Section 3.6 addendum -- why final best score is structurally blind, and how long a
-run would have to be before it stops being.
+Section 3.6 addendum -- why final best score is structurally blind.
+
+CAUTION, READ FIRST. An earlier draft used this script's power table to state that
+section 3.6's design had "roughly 17% power". That claim is WITHDRAWN. Power is
+power against a specific alternative; the only alternative this model supplies is
+its own projection, which comes out backwards and rests on six Q2_K offers. What
+survives here is the structural argument below and the design guidance at the end
+-- not a number.
 
 Section 3.6 reports a null: the 2-bit rung takes 1 accepted hill-climb step per 50
 calls against 14-16, and final best score after ten generations separates no pair of
@@ -29,8 +35,8 @@ This is a resampling projection, NOT a measurement. It assumes offers are i.i.d.
 independent of the current parent, which the loop design violates: a real proposer sees
 its parent and its offers should improve with it. Both violations push toward the model
 UNDERSTATING achievable scores at long horizons, and they push on both rungs. The number
-this script exists to produce is a design quantity -- generations required -- not a
-result, and no claim in the paper rests on it.
+this script exists to produce is a structural argument about the dependent variable
+-- not a result and not a power figure, and no claim in the paper rests on it.
 
 Run:  python sec3_horizon_power.py
 """
@@ -168,9 +174,11 @@ print("Conditional on departing at all, the 2-bit rung's observed offers are not
 print("That is the same open question section 3.6 poses and declines to answer, seen")
 print("here through a resampling model too thin to answer it either.")
 print()
-print("So the directional projection is discarded. What survives is the power column")
-print("below, which does not depend on the sign of the gap -- only on its magnitude")
-print("relative to the noise a five-lineage design carries.")
+print("So the directional projection is discarded -- and with it any power figure")
+print("derived from it, because power is power against a SPECIFIC alternative and this")
+print("model supplies only the one just disowned. The table below is printed for")
+print("completeness and is NOT a power statement about the design section 3.6 reports.")
+print("See the closing block for what does survive.")
 
 BAR = "=" * 74
 print()
@@ -199,27 +207,32 @@ print("five lineages per rung. That is the power its outcome-level null was obse
 
 
 print(f"\n{'='*74}\nWHAT THIS SAYS ABOUT THE WAVE THAT WOULD SETTLE IT\n{'='*74}")
-print("""  ONE number from this script is worth carrying into the paper, and it is not a
-  projection about which rung wins. It is the top-left cell of the power table:
-  at ten generations and five lineages per rung -- the design section 3.6 reports
-  -- this model gives about 17 percent power to detect a difference of the size it
-  itself implies. Section 3.6 already states its outcome-level result as
-  non-rejection rather than equivalence. This puts a number on that: the null it
-  reports is what an underpowered design returns, not evidence that the rungs
-  agree.
+print("""  READ THIS BEFORE QUOTING ANY NUMBER ABOVE.
 
-  The rest is design guidance and nothing more. Fifty generations at five
-  lineages reaches 37 percent; one hundred reaches 84; the same 84 arrives at
-  fifty generations if lineages go to twelve. Adding lineages buys more than
-  adding generations, because best-so-far is a maximum and maxima concentrate --
-  a longer run moves one lineage's ceiling a little, a wider run adds independent
-  draws of the whole experiment.
+  An earlier draft of section 3.6 quoted the top-left power cell, 17 percent, as
+  the power of the design the paper reports. That was wrong and the paper has
+  withdrawn it. Power is power against a SPECIFIC alternative, and the only
+  alternative this model supplies is its own projection -- the one printed above
+  as unusable, resting on six Q2_K offers of which the maximum appears twice and
+  one entry is the seed score itself. Six observations cannot carry a direction
+  and cannot carry an effect size either.
 
-  And the direction the projection reports is unusable, for the reason printed
-  above: it rests on six Q2_K offers. A wave that wants to demonstrate harm
-  should not use final best score as its dependent variable at all. It should
-  measure something that is not a maximum -- time-to-threshold, area under the
-  best-so-far curve, or the accepted-step count itself, which is what section 3.6
-  measures and what the wave-3 registration adopts as its primary.
+  The power column also does not behave like power at T = 10: the rejection rate
+  FALLS as lineages are added, 17 / 8 / 5 / 4 percent for 5 / 8 / 12 / 20. That is
+  the coarse permutation tail at five-versus-five doing the work, not an effect.
+  Read that row as a warning about the instrument.
+
+  And "widen rather than lengthen" does not follow from this table either. Cost
+  equalised, lengthening wins: 5 lineages x 100 generations is 500 calls for 84
+  percent, 12 x 50 is 600 calls for 82.
+
+  WHAT SURVIVES is structural and independent of every estimate here. Best-so-far
+  is a MAXIMUM, so it is insensitive to the draw count by construction -- more
+  draws move it by the distance between two upper quantiles of the same offer
+  distribution, not by anything proportional to the draw ratio. A wave that wants
+  to demonstrate harm should not use final best score as its dependent variable.
+  It should measure time-to-threshold, area under the best-so-far curve, or the
+  accepted-step count itself, which is what section 3.6 measures and what the
+  wave-3 registration adopts as its primary.
 
   No claim in the paper rests on any number above.""")

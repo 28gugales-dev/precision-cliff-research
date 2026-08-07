@@ -25,18 +25,42 @@ USE
 
 VERDICT
     >= 60%  RED     -- consistent with the degenerate regime of section 3
-    <= 30%  NORMAL  -- departing at the rate a healthy proposer does
+    <= 35%  NORMAL  -- departing at the rate a healthy proposer does
     between AMBIGUOUS
 
+    60 and 35 are the bounds preregistered in the fresh-seed runner of section 3
+    (`q2_k >= 60%; q4_k_m <= 35%`), where they held at 79% against 6%.
+
+USE A WEAK PARENT. THIS IS NOT OPTIONAL.
+    Those bounds were registered for the LOOP condition. Held against a FIXED
+    parent, the echo rate depends heavily on how good that parent is, and section
+    3's probe measures exactly how heavily -- pooled over both waves, echo rate
+    among valid outputs by parent score:
+
+        parent   Q4_K_M        Q3_K_M        Q2_K
+        0.880     7/30 (23%)    8/26 (31%)   19/21 (90%)
+        0.900     8/19 (42%)    5/20 (25%)   14/16 (88%)
+        1.040    21/30 (70%)   14/25 (56%)   22/24 (92%)
+        1.300    16/30 (53%)   13/28 (46%)   30/30 (100%)
+        1.550    23/31 (74%)   18/23 (78%)   19/19 (100%)
+        1.650    15/24 (62%)   14/20 (70%)   19/23 (83%)
+
+    Read the bottom half of that table: against a GOOD parent a perfectly healthy
+    Q4_K_M proposer echoes at 62-74% and Q3_K_M at 70-78%, well past the RED line.
+    The screen is only informative against a WEAK parent -- near the bottom of the
+    range your loop occupies, in practice its seed configuration. There the
+    separation is clean: 23-42% healthy against 88-90% degenerate.
+
+    Against a strong parent this tool will return RED on a healthy proposer and
+    the reading is worthless. It does not know your parent's quality and cannot
+    warn you. That is your job.
+
 WHAT THIS IS NOT
-    A calibrated precision detector. The bounds 60/30 are the ones preregistered
-    in the fresh-seed runner of section 3, where they held at 79% against 6%, and
-    they are validated on one task, one model family, one scale, one quantization
-    family. The rate depends on which parent you hold fixed: the fixed-parent
-    control in section 3 moves the healthy baseline from 6% to 33-52% with parent
-    quality alone. Read a RED verdict as "something is wrong with whatever is
-    serving this proposer" -- a tripwire, not a measurement. An AMBIGUOUS verdict
-    with an unmatched parent means very little.
+    A calibrated precision detector. Validated on one task, one model family, one
+    scale, one quantization family. Read a RED verdict at a weak parent as
+    "something is wrong with whatever is serving this proposer" -- a tripwire, not
+    a measurement. Note also that even at a weak parent one healthy cell reaches
+    42%, above the NORMAL line, so AMBIGUOUS does not imply degraded.
 """
 import argparse
 import json
@@ -44,7 +68,7 @@ import sys
 from math import comb
 
 STRUCTURE_KEYS = ("structure", "circles", "points", "candidate")
-RED, NORMAL = 0.60, 0.30
+RED, NORMAL = 0.60, 0.35
 
 
 def fingerprint(struct, dp=6):
@@ -52,7 +76,12 @@ def fingerprint(struct, dp=6):
     numeric tuple -- [x, y, r] circles, [x, y] points, anything comparable."""
     if not struct:
         return None
-    return tuple(sorted(tuple(round(float(v), dp) for v in el) for el in struct))
+    try:
+        return tuple(sorted(tuple(round(float(v), dp) for v in el) for el in struct))
+    except (TypeError, ValueError) as e:
+        raise SystemExit(
+            f"a structure is not a list of numeric tuples ({e}). If your rows store "
+            "the structure as a JSON *string*, decode it before passing it in.")
 
 
 def pick(row):
@@ -92,8 +121,18 @@ def binom_interval(k, n, conf=0.95):
 def screen(rows, parent=None, dp=6):
     pf = fingerprint(parent, dp) if parent else None
     valid = echo = invalid = no_struct = 0
+    seen_parents = set()
     for r in rows:
-        if r.get("valid") is False:
+        if "valid" not in r:
+            raise SystemExit(
+                "a row has no 'valid' key. This tool will not guess: a row whose "
+                "validity is unknown could be an invalid row counted as valid, "
+                "which silently deflates the echo rate and can turn RED into "
+                "AMBIGUOUS. Add the key to every row.")
+        v = r["valid"]
+        if isinstance(v, str):
+            raise SystemExit(f"'valid' is the string {v!r}. Use a JSON boolean or 0/1.")
+        if not v:
             invalid += 1
             continue
         s = pick(r)
@@ -110,6 +149,12 @@ def screen(rows, parent=None, dp=6):
             pf_row = fingerprint(p, dp)
         else:
             pf_row = pf
+        seen_parents.add(pf_row)
+        if len(seen_parents) > 1:
+            raise SystemExit(
+                "the parent is not constant across rows. The screen is defined "
+                "against a FIXED parent; run against a moving parent and the "
+                "number means something else entirely (see section 3).")
         valid += 1
         if fingerprint(s, dp) == pf_row:
             echo += 1
