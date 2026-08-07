@@ -16,8 +16,10 @@ is a test the paper owes its own proposal.
 
 WHAT THIS SCRIPT FINDS. The canary fires. It fires on the 2-bit rung, on both
 probe waves independently, at a ratio below the one-third threshold item 4 names.
-And the serving path did not change: same llama.cpp build, same 2 x T4, same
-sampling parameters, same harness, only the weight file differing.
+And the serving path did not change: same llama.cpp build, a single Tesla P100
+(per provenance.json -- the ladders ran on 2 x T4, and ladder timings are never
+compared with probe timings here), same sampling parameters, same harness, only
+the weight file differing.
 
 Conditioning on echo shows why. Echo rows re-emit the parent verbatim, so they
 share a token count, so they share a duration. Duration CV among echo rows is low
@@ -122,9 +124,14 @@ print("false-positive mode, on a condition where the serving path is FIXED?")
 print("=" * 76)
 print("""
 Setup. Every row below comes from a run in which the inference stack was constant
--- same llama.cpp build, same 2 x T4, same sampling parameters, same harness --
-and only the SHA-256-pinned weight file changed. Whatever the canary reports here,
-it is not reporting a serving-path change, because there was none.""")
+-- same llama.cpp build, a single Tesla P100, same sampling parameters, same
+harness -- and only the SHA-256-pinned weight file changed. Whatever the canary
+reports here, it is not reporting a serving-path change, because there was none.
+
+One confound is NOT excluded and is stated rather than buried: the probe loads one
+weight file at a time and runs that rung to completion, so rungs are sequential
+within a session, not interleaved. Slow drift over a session would present as a
+between-rung difference.""")
 
 report(load("dispersion_probe/probe_samples.jsonl"),
        "fixed-parent dispersion probe, wave 1", "rung")
@@ -155,7 +162,9 @@ print("""
   Q4_K_M [17.9, 18.1], Q3_K_M [15.7, 15.9], Q2_K [16.6, 16.7]. Not merely
   different in mean -- separable per invocation. Throughput is a fingerprint of
   the served weight file, computed from observables a runtime already exposes,
-  and it survives the confound that breaks duration CV.
+  and it survives the confound that breaks duration CV. Subject to the sequential-
+  not-interleaved caveat above: disjointness shows something separates the rungs per
+  invocation, and only an interleaved schedule would prove the something is the file.
 
   ITS LIMIT, WHICH MATTERS AS MUCH AS THE RESULT. That fingerprint is NOT ordered
   by bit-width. Q3_K_M is slower than Q2_K and slower than Q4_K_M; on the 14B
