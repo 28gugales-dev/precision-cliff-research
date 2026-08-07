@@ -1,5 +1,26 @@
 ## How to Run the Precision Cliff Experiment
 
+### 0. Reproduce the paper's figures (no GPU, no downloads)
+
+Everything section 3 and section 4 report regenerates from the artifacts vendored in
+this repository. Install dependencies once (`pip install -r requirements.txt`), then
+run any of these from the repository root with **no arguments**:
+
+| script | what it reproduces |
+|---|---|
+| `sec3_ladder_repro.py` | 14B ladder viability, validity, echo, per-seed and must-differ counts, and five of section 3's nine Fisher tails |
+| `sec3_dispersion_registered.py` | both dispersion-probe waves: registered echo measures, the post-hoc decomposition, quality forks |
+| `sec3_dispersion_prereg_rule.py` | wave 1's locked decision rule (returns *unclassified*) |
+| `sec3_registered_echo_test.py` | wave 1's registered primary echo JT, `score_delta` CIs, orthogonality diagnostic |
+| `sec3_artifacts/dispersion_probe_v2/analyze_v2.py` | wave 2's registered analysis and its `VERDICT: FAILED` label |
+| `sec4_independent_rescore.py`, `arm_f_repro.py` | section 4's validity, taxonomy, scores and prompt digests |
+
+Section 3's raw rows live under `sec3_artifacts/`. Four Fisher tails
+(*p* = 5.7e-10, 0.001, 0.44, 1.0) are **not** replayed by any script and must be
+computed from those rows directly; section 3 says so where it reports them.
+
+The sections below describe re-running the *experiment*, which needs a GPU.
+
 ### 1. Upload to Kaggle (recommended, free GPU)
 
 1. Go to kaggle.com → Notebooks → New Notebook
