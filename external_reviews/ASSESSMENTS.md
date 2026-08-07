@@ -158,3 +158,11 @@ Also propagated review 12 deduction-1 disclosure to workshop1/compact3_draft.md,
 Two follow-ups. (1) latex2/main.tex (paper 2, 770 lines) had never been lint-checked either - now clean, 22 bib entries, nocite present. (2) texlint had a hole: it only reported cite keys missing from the bibliography, so a bibliography with ZERO citations - which compiles to an empty reference list - was never actually tested. Both papers happened to carry nocite{*}, so nothing was hidden, but the check now exists and was confirmed by negative control (stripped nocite from a throwaway copy; it fired).
 
 Both manuscripts still have empty author/date blocks by design (the source markdown names no author). That is a submission blocker, not a defect: arXiv requires a real author name.
+
+### AI-use disclosure added to all six deliverables (2026-08-06)
+
+User asked to "cite claude as used for grammar and such". Written accurately instead, and the divergence flagged to the user: across 95 commits Claude models wrote the collection harnesses, the scoring/analysis/verification scripts and the structural-check tooling, and drafted the manuscript prose. A grammar-only claim would be materially false in a paper whose credibility rests on voluntary disclosure - and this paper studies LLM reliability, so an understated AI-use statement is the worst possible place to be caught short.
+
+First draft of the disclosure then failed in the OPPOSITE direction (caught on advisor review): it asserted the human "wrote and timestamped every preregistration", which is not verifiable and contradicts the evidence that the prereg commits were authored in model-assisted sessions. Rewritten to what is checkable - the human directed the programme, approved each preregistration before sampling, made the final inclusion/stopping/submission decisions, and is solely responsible; the ORDERING is the verifiable claim (each prereg commit is a git ancestor of the sampling it governs), not the authorship of those texts.
+
+Present in all six: latex1/main.tex, latex2/main.tex, paper1_draft.md, paper2_draft.md, workshop1/compact3_draft.md, workshop1/workshop_draft.md. Both tex files re-linted clean.

@@ -1063,10 +1063,13 @@ revision 1 is tabled in Appendix C. Provenance, in list form:
   Claude models (principally the Opus, Fable and Sonnet tiers) wrote the collection harnesses,
   the scoring, analysis and verification scripts, and the structural-check tooling, and drafted
   the manuscript prose; the external referee reports came from `deepseek-v4-pro`,
-  `deepseek-v4-flash` and Gemini under written protocols (next bullet). The human author set the
-  research questions, wrote and timestamped every preregistration, made every inclusion,
-  exclusion and stopping decision, gated each claim against the artifacts, and is solely
-  responsible for the content; no language model is an author. Two consequences are load-bearing
+  `deepseek-v4-flash` and Gemini under written protocols (next bullet). The human author directed
+  the programme, set the research questions, approved each preregistration before sampling, made
+  the final inclusion, stopping and submission decisions, and is solely responsible for the
+  content; no language model is an author. The claim a reader can check is the ordering, not the
+  authorship: each preregistration commit is a git ancestor of the sampling it governs. The
+  drafting of those preregistration texts, like the rest of this repository, was model-assisted.
+  Two consequences are load-bearing
   rather than cosmetic. First, the models that wrote the analysis are of the same family as arms
   under study (§5), so the blind-spot risk flagged below for the referee panel applies to the
   analysis code as well — the LP oracle, the frozen scorer output and the referee panel's

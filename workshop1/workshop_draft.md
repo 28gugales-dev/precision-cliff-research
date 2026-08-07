@@ -196,6 +196,17 @@ every effect here is a distributional claim over an unpinned sampling regime. Co
 not probed: the canonical N = 26 cell is plausibly in training data, and no canary-string test
 was run.
 
+**Use of AI systems.** This paper studies language-model behaviour and was written with
+language-model assistance. Claude models wrote the collection, scoring and analysis scripts and
+drafted the prose; the referee reports came from `deepseek-v4-pro`, `deepseek-v4-flash` and Gemini
+under written protocols. The human author directed the programme, approved each preregistration
+before sampling, made the final inclusion, stopping and submission decisions, and is solely
+responsible for the content; no language model is an author — what a reader can check is the
+ordering, each preregistration commit being a git ancestor of the sampling it governs, not the
+authorship of those texts, which was model-assisted like the rest of the repository. The authoring
+models share a family with arms under study, so the released scripts, raw ledgers and frozen
+scorer outputs, rather than the authorship, are what the claims rest on.
+
 ## 7. Related work and positioning
 
 Collapse onto a narrow output mode under an unconditioned or weakly-conditioned LLM call is a

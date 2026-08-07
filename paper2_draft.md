@@ -664,6 +664,20 @@ template family governs proposals across N, but it is an inference, not a replic
 reader should treat §3 as establishing that the failure mode *exists and is invisible to
 pass/fail metrics*, and treat its quantitative rungs as belonging to the sweep, not to §4.
 
+### Use of AI systems
+
+This paper studies language-model behaviour and was written with language-model assistance; both
+facts are stated here so a reader can weigh them together. Claude models (principally the Opus,
+Fable and Sonnet tiers) wrote the collection, scoring and analysis scripts and drafted the
+manuscript prose; the referee reports came from `deepseek-v4-pro`, `deepseek-v4-flash` and Gemini
+under written protocols. The human author directed the programme, approved each preregistration
+before sampling, made the final inclusion, stopping and submission decisions, and is solely
+responsible for the content; no language model is an author. What a reader can check is the
+ordering — each preregistration commit is a git ancestor of the sampling it governs — not the
+authorship of those texts, which was model-assisted like the rest of the repository. The authoring
+models share a family with the runtime under study in §4, so the released scripts, raw ledgers and
+frozen outputs, rather than the authorship, are what the claims rest on.
+
 ---
 
 ## Claim → evidence map

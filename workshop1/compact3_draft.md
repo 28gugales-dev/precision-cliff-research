@@ -231,9 +231,12 @@ is not probed: N = 26 is plausibly in training data, no canary-string test was r
 **Use of AI systems.** This paper studies language-model behaviour and was written with
 language-model assistance. Claude models wrote the collection, scoring and analysis scripts and
 drafted the prose; the referee reports came from `deepseek-v4-pro`, `deepseek-v4-flash` and
-Gemini under written protocols. The human author set the questions, wrote every preregistration,
-made all inclusion and stopping decisions, and is solely responsible for the content; no
-language model is an author. The authoring models share a family with arms under study, so the
+Gemini under written protocols. The human author directed the programme, approved each
+preregistration before sampling, made the final inclusion, stopping and submission decisions, and
+is solely responsible for the content; no language model is an author — what a reader can check is
+the ordering, each preregistration commit being a git ancestor of the sampling it governs, not the
+authorship of those texts, which was model-assisted like the rest of the repository. The authoring
+models share a family with arms under study, so the
 released scripts, raw ledgers and frozen scorer outputs — not the authorship — are what the
 claims rest on.
 
