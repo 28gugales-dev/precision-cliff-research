@@ -820,3 +820,36 @@ Bonus observations from the same harvest:
 - workshop1/workshop_draft.md: 4-page workshop distillation, ~2,243 words, numbers verified vs source (one fix: N=31 13/17). LaTeX-ification deferred until venue template chosen (NeurIPS/ICLR workshop class).
 - Known dual usage kept: p=0.03 abstract / p=0.0325 body (mirrors long paper).
 - Runs: GM3 gemma in progress (16k budget, 900s timeout, checkpoint arm_gm_gm3_checkpoint.jsonl); flash-lite 40/140 quota-walled. Hourly wakeup babysits both.
+
+## Update 2026-08-06 (GM3 relaunch mechanism + submission-readiness verification)
+
+**GM3 kept dying for a reason that was NOT quota or timeout.** Four consecutive runs each
+added a few rows then died: one genuine read-timeout, one user kill, and two session
+teardowns (one with no completion record, one exit 127 = the child shell losing its
+command). Background shells launched from a Claude session are children of that session
+and do not survive model switches, compaction, or teardown. The runner is idempotent
+(content rows kept, transport errors requeued), so nothing was ever lost - but progress
+was capped at whatever fit inside one session.
+
+FIX - launch detached so it outlives the session:
+
+    $root = "C:\Users\soham\AppData\Local\hermes\research-corpus\precision-cliff"
+    $cmd  = "`$env:GM_MAXTOK='16384'; `$env:GM_TIMEOUT='1800'; Set-Location '$root'; " +
+            "python arm_gm_run.py 'C:/Users/soham/.secrets/gemini.key' gemma-4-26b-a4b-it gm3 *>> '$root\gm3_run.log'"
+    Start-Process powershell -ArgumentList '-NoProfile','-NonInteractive','-Command',$cmd -WindowStyle Hidden -PassThru
+
+Running detached as of this entry at 66/140 (N=13/17/21 complete at 20/20 each; N=31 at
+6/20). Log: gm3_run.log. N=31 is slow - minutes per row at the 16k budget. Progress is
+checkpointed per call, so killing it is always safe.
+
+**Submission-readiness verification (same day).** Neither latex1/main.tex (1385 lines) nor
+latex2/main.tex (782 lines) had EVER been compiled - no TeX engine on this machine. Added
+latex1/texlint.py as a compile proxy (works on both; pass the tex path as argv[1]). Both
+structurally clean: environments, braces, math delimiters, labels, bibliography wiring,
+tabular column counts, non-ASCII (0 chars), and graphics/bib dependencies resolved AND
+git-tracked. texlint cannot see missing packages, overfull boxes, or float placement -
+one real compile on Overleaf is still owed before 08-12.
+
+**AI-use disclosure** added to all six deliverables (both tex, both md drafts, both
+workshop drafts). See external_reviews/ASSESSMENTS.md for the reasoning, including the
+first draft failing in the opposite direction by overclaiming the human's role.
