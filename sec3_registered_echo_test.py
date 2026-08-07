@@ -47,7 +47,14 @@ def median_displacement(r):
 
 
 def jonckheere(groups):
-    """JT statistic over ordered groups, 0.5 credit for ties (prereg tie rule)."""
+    """JT statistic over ordered groups, 0.5 credit for ties.
+
+    NOTE: the v1 preregistration names Jonckheere-Terpstra but specifies no tie
+    convention; only the v2 addendum states the 0.5 rule. We adopt v2's rule here
+    for consistency across the two waves, and flag it as our choice rather than a
+    registered one. It matters: 159 of 165 rows tie at exactly zero, so almost the
+    whole statistic is tie credit.
+    """
     total = 0.0
     for a, b in itertools.combinations(range(len(groups)), 2):
         for x in groups[a]:

@@ -49,10 +49,18 @@ Total: ~25 hours GPU time. Kaggle gives 30h/week free.
 
 ### File Locations
 
-- `research-corpus/precision-cliff-kaggle.ipynb` — the notebook
-- `research-corpus/precision-cliff-paper.md` — paper draft
-- `research-corpus/precision-cliff-future-papers.md` — future directions
-- `research-corpus/precision-cliff/paper-outline.md` — outline
-- `research-corpus/precision-cliff/STATE.md` — project status
-- `research-corpus/precision-cliff/findings.md` — findings log
-- `research-corpus/precision-cliff/overview.md` — full spec
+Only files actually in this repository are listed. Anything named in sections 1-3
+above (`precision-cliff-kaggle.ipynb` and the older `*-paper.md` /
+`*-future-papers.md` / `findings.md` / `overview.md` drafts) lived on the
+authoring host and is **not** in the release; those sections describe how the
+experiment was originally run, not a procedure a reader can follow from a clone.
+Reproducing the *figures* needs none of them — see section 0.
+
+- `paper2_draft.md` — the current manuscript, and the only one
+- `paper1_draft.md` / `latex1/` — companion paper
+- `latex2/` — STALE conversion of paper 2, frozen 19 revisions back; see README
+- `sec3_artifacts/` — every section 3 ledger, preregistration and provenance file
+- `sec3_*.py`, `sec4_independent_rescore.py`, `arm_f_repro.py` — reproduction scripts
+- `requirements.txt` — dependencies for those scripts
+- `STATE.md` — project status
+- `paper2_drafts/` — every revision of paper 2, one file per version
