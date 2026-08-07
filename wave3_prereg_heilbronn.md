@@ -125,6 +125,16 @@ the fraction scoring above the running parent. **DECISION RULE, both branches in
   **UNDERPOWERED** and no branch is claimed regardless of the ratio. This clause exists
   because wave 2's addendum had to add one after the fact.
 
+*Prior state of this question, stated here so the wave is not credited with settling more
+than it settles.* Applying this rule post-hoc to the pooled fixed-parent waves (§3.6,
+`sec3_conditional_quality.py`) gives Q2_K 8/10 = 80% against Q4_K_M 60/74 = 81%, with a 95%
+lower bound of 44% against the 41% the collapse branch requires. **The collapse branch is
+therefore already excluded on circle packing, and this wave is not testing it fresh.** What
+remains open, and what this wave is powered for, is (a) whether the *frequency-only* branch
+can be confirmed rather than merely left standing — the ≥ 61%-equivalent bound needs the 25
+departures the existing data lack — and (b) whether either holds on a second task. The
+asymmetric allocation in §3 exists to supply exactly the departures (a) needs.
+
 **5.4 — Echo.** Coordinate-verified parent echo among valid outputs: **≥ 55% at Q2_K**,
 **≤ 30% at Q4_K_M**. Lower than §3's circle-packing bound because the seed parent here
 carries no template the proposer might emit for reasons unrelated to copying.

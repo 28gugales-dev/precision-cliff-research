@@ -13,6 +13,7 @@ run any of these from the repository root with **no arguments**:
 | `sec3_dispersion_prereg_rule.py` | wave 1's locked decision rule (returns *unclassified*) |
 | `sec3_registered_echo_test.py` | wave 1's registered primary echo JT, `score_delta` CIs, orthogonality diagnostic |
 | `sec3_search_progress.py` | §3.6 loop-level search progress: accepted hill-climb steps per lineage across all four ladders (14B ×3 plus 7B), the echo-complement identity gaps, conditional-on-departure rates, final best score, and ten of the twelve exact lineage-level permutation tests (the other two, the 7B outcome tails, print here but appear in the paper only in §3's inferential-status paragraph). Post-hoc throughout |
+| `sec3_conditional_quality.py` | §3.6 conditional-on-departure improvement rate, pooled over both fixed-parent probe waves, with the per-parent breakdown and the verdict scored against the wave-3 registered decision rule and its power floor |
 | `sec3_horizon_power.py` | §3.6 horizon pricing: resamples the observed departure/offer process to give the power of the design actually run (17% at ten generations, five lineages) and of longer or wider ones. A projection, not a measurement; its directional output is discarded in-paper and the reason printed |
 | `sec3_artifacts/dispersion_probe_v2/analyze_v2.py` | wave 2's registered analysis and its `VERDICT: FAILED` label |
 | `sec4_independent_rescore.py`, `arm_f_repro.py` | section 4's validity, taxonomy, scores and prompt digests |
