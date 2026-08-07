@@ -968,4 +968,4 @@ it.
 | §4 latency ranges (2.8-9 s vs 75-250 s and 150-1170 s) | **not checkable**: `STATE.md` §8, §8b working-log ranges only; the per-invocation vector was never captured, and `arm_f_raw.json` rows carry no duration field (§4, §6 item 4) |
 | §6 item 3 worked example (32/45 → 32/50) | **not checkable**: the 45-row slice was overwritten in place and cannot be reconstructed (§4, §6) |
 | §7 systems citations | `p8_systems_citations.md` (nine verified by the authors; this is self-certification and a reader should treat it as such) |
-| §7 hazard-literature citations (2307.09009, 2603.19022, 2607.10252, 2607.08734, 2604.19884, 2509.19349, GUIDE-LLM, 2508.15503, 2601.01954, 2512.00651) | each checked against its live arXiv or publisher page during revision 2; titles and author lists as printed there |
+| §7 hazard-literature citations (2307.09009, 2603.19022, 2607.10252, 2607.08734, 2604.19884, 2509.19349, GUIDE-LLM, 2508.15503, 2601.01954, 2512.00651) | each checked against its live arXiv or publisher page; titles and author lists as printed there |
