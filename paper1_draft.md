@@ -1058,6 +1058,21 @@ revision 1 is tabled in Appendix C. Provenance, in list form:
   `p7_blind_labels.json`. `arm_t_analysis.py`, `n_sweep_forecast.json`, `rect_forecast.json`,
   `p11_mode_baseline.json` and `STATE.md` are included; every table regenerates from raw outputs
   by a command documented in `HOW_TO_RUN.md`.
+- **Use of AI systems.** This paper studies language-model behaviour and was written with
+  language-model assistance; both facts are stated here so a reader can weigh them together.
+  Claude models (principally the Opus, Fable and Sonnet tiers) wrote the collection harnesses,
+  the scoring, analysis and verification scripts, and the structural-check tooling, and drafted
+  the manuscript prose; the external referee reports came from `deepseek-v4-pro`,
+  `deepseek-v4-flash` and Gemini under written protocols (next bullet). The human author set the
+  research questions, wrote and timestamped every preregistration, made every inclusion,
+  exclusion and stopping decision, gated each claim against the artifacts, and is solely
+  responsible for the content; no language model is an author. Two consequences are load-bearing
+  rather than cosmetic. First, the models that wrote the analysis are of the same family as arms
+  under study (§5), so the blind-spot risk flagged below for the referee panel applies to the
+  analysis code as well — the LP oracle, the frozen scorer output and the referee panel's
+  independent recomputations exist in part to bound it. Second, every number here was produced
+  by a script a model wrote, which is why the scripts, the raw ledgers and the frozen outputs
+  are all released: what a reader is asked to trust is the artifact, not the author.
 - **Review process.** The three referee reports that drove this revision (`p4_review_stats.md`,
   `p4_review_reviewer2.md`, `p4_review_gecco.md`), the arbitration of their conflicting
   recommendations (`p6_cruxes.md`), and the blind faithfulness adjudication of §6.5 were produced
