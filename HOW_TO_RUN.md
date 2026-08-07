@@ -17,6 +17,7 @@ run any of these from the repository root with **no arguments**:
 | `sec3_conditional_quality.py` | §3.6 conditional-on-departure improvement rate, pooled over both fixed-parent probe waves, with the per-parent breakdown and the verdict scored against the wave-3 registered decision rule and its power floor |
 | `sec3_horizon_power.py` | §3.6's structural argument that final best score is a maximum statistic and therefore the wrong dependent variable. Prints a resampling projection whose direction is discarded in-paper, and a power table whose use as a power statement is **withdrawn** — the script's closing block says why |
 | `sec3_artifacts/dispersion_probe_v2/analyze_v2.py` | wave 2's registered analysis and its `VERDICT: FAILED` label |
+| `sec6_cv_canary_audit.py` | §6 item 4's self-audit: runs the paper's own duration-CV serving canary against rows where the serving path is fixed, shows it fires at the 2-bit rung on both probe waves, and decomposes the firing into output degeneracy via the echo split |
 | `sec4_independent_rescore.py`, `arm_f_repro.py` | section 4's validity, taxonomy, scores and prompt digests |
 
 Section 3's raw rows live under `sec3_artifacts/`. Every figure in section 3 is
