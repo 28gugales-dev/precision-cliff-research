@@ -138,41 +138,115 @@ report(load("dispersion_probe/probe_samples.jsonl"),
 report(load("dispersion_probe_v2/**/probe_samples.jsonl"),
        "fixed-parent dispersion probe, wave 2 (independent seeds)", "rung")
 
-print(f"\n{'='*76}\nA REPAIRED STATISTIC, AND ITS OWN LIMIT\n{'='*76}")
+print(f"\n{'='*76}\nAN ATTEMPTED REPAIR, AND WHY IT FAILS AS AN ATTESTATION TOOL\n{'='*76}")
 print("""  If duration dispersion is confounded by output identity, the obvious repair is
-  to remove the confound: compute throughput -- completion tokens per second --
-  over NON-ECHO valid rows only. Below, per rung, on both waves.""")
+  to remove the confound: throughput over NON-ECHO valid rows only. It looks
+  excellent on one wave and then fails three ways. Everything below is computed
+  here, not quoted.""")
 
-for _lab, _pat in (("wave 1", "dispersion_probe/probe_samples.jsonl"),
-                   ("wave 2", "dispersion_probe_v2/**/probe_samples.jsonl")):
-    _rows = [r for r in load(_pat)
-             if r.get("valid") and r.get("wall_s") and not r.get("echo")]
-    print(f"\n  {_lab}:")
-    print(f"    {'rung':<10}{'n':<6}{'median tok/s':<16}{'CV':<10}{'observed range'}")
+def nonecho(pat):
+    return [r for r in load(pat)
+            if r.get("valid") and r.get("wall_s") and not r.get("echo")]
+
+print("\n  (a) per-wave non-echo throughput, with RANGES and not only medians:")
+print(f"    {'wave':<7}{'rung':<10}{'n':<5}{'median tok/s':<15}{'observed range'}")
+for _lab, _pat in (("w1", "dispersion_probe/probe_samples.jsonl"),
+                   ("w2", "dispersion_probe_v2/**/probe_samples.jsonl")):
     for _q in RUNGS:
-        _s = [r["completion_tokens"] / r["wall_s"] for r in _rows if r["rung"] == _q]
+        _s = sorted(r["completion_tokens"] / r["wall_s"]
+                    for r in nonecho(_pat) if r["rung"] == _q)
         if len(_s) < 2:
-            print(f"    {_q:<10}{len(_s):<6}(too few)")
+            print(f"    {_lab:<7}{_q:<10}{len(_s):<5}(too few)")
             continue
-        print(f"    {_q:<10}{len(_s):<6}{statistics.median(_s):<16.2f}{cv(_s):<10.4f}"
-              f"[{min(_s):.1f}, {max(_s):.1f}]")
-
+        print(f"    {_lab:<7}{_q:<10}{len(_s):<5}{statistics.median(_s):<15.2f}"
+              f"[{min(_s):.3f}, {max(_s):.3f}]")
 print("""
-  On wave 2, where every cell has enough rows, the observed ranges are DISJOINT:
-  Q4_K_M [17.9, 18.1], Q3_K_M [15.7, 15.9], Q2_K [16.6, 16.7]. Not merely
-  different in mean -- separable per invocation. Throughput is a fingerprint of
-  the served weight file, computed from observables a runtime already exposes,
-  and it survives the confound that breaks duration CV. Subject to the sequential-
-  not-interleaved caveat above: disjointness shows something separates the rungs per
-  invocation, and only an interleaved schedule would prove the something is the file.
+  Wave 2's three bands are disjoint. WAVE 1'S ARE NOT: Q4_K_M spans
+  [16.455, 18.188] and entirely CONTAINS Q2_K's [16.703, 16.753]. Reporting wave 1
+  by its median alone -- which an earlier draft of this paper did -- hides that.
+  Pooled across waves the bands overlap. Disjointness is a wave-2 property, not a
+  property of the released data.""")
 
-  ITS LIMIT, WHICH MATTERS AS MUCH AS THE RESULT. That fingerprint is NOT ordered
-  by bit-width. Q3_K_M is slower than Q2_K and slower than Q4_K_M; on the 14B
-  ladder Q8_0 is the slowest of four rungs at 14.9 tok/s against Q2_K's 22.5, and
-  on the 7B ladder FP16 is slower than every quantized rung while Q3_K_M again
-  sits below Q4_K_M. Throughput tells you THAT the served file changed. It does
-  not tell you the served file got smaller, and it cannot be read as a precision
-  ordering without a per-file calibration table measured on the same hardware.""")
+print("\n  (b) the cold-start effect, and what it silently filtered:")
+print(f"    {'wave':<7}{'rung':<10}{'cold n':<9}{'cold med':<11}{'warm n':<9}"
+      f"{'warm med':<11}{'ratio'}")
+for _lab, _pat in (("w1", "dispersion_probe/probe_samples.jsonl"),
+                   ("w2", "dispersion_probe_v2/**/probe_samples.jsonl")):
+    _rows = [r for r in load(_pat) if r.get("wall_s") and r.get("completion_tokens")]
+    _seen, _c, _w = set(), collections.defaultdict(list), collections.defaultdict(list)
+    for r in _rows:
+        k = (r["rung"], r.get("parent_id"))
+        (_c if k not in _seen else _w)[r["rung"]].append(
+            r["completion_tokens"] / r["wall_s"])
+        _seen.add(k)
+    for _q in RUNGS:
+        if not _c[_q] or not _w[_q]:
+            continue
+        cm, wm = statistics.median(_c[_q]), statistics.median(_w[_q])
+        print(f"    {_lab:<7}{_q:<10}{len(_c[_q]):<9}{cm:<11.2f}{len(_w[_q]):<9}"
+              f"{wm:<11.2f}{cm/wm:.3f}")
+print("""
+  The FIRST invocation against each parent runs at about 92 percent of that rung's
+  steady-state throughput, uniformly across all twelve rung-by-wave cells --
+  consistent with prefill or cache warm-up, and far too small to be model load
+  bleeding into wall_s. On wave 2 every cold row happens to be an echo or invalid,
+  so the echo filter removed them by accident and the non-echo set is silently a
+  WARM set. Wave 1's cold Q4_K_M row leaked through at 16.455 tok/s, and it is
+  precisely the row that destroys wave-1 disjointness. A verifier's fresh probe is
+  always a cold invocation, so a verifier reads the 92 percent band, not the
+  published one.""")
+
+print("\n  (c) the same weight file on different hardware -- and the order INVERTS:")
+lad = [r for r in load("precision_sweep_14b_v2_output/**/cand*.jsonl")
+       if r.get("wall_s") and r.get("completion_tokens")]
+prb = [r for r in load("dispersion_probe_v2/**/probe_samples.jsonl")
+       if r.get("valid") and r.get("wall_s")]
+print(f"    {'weight file':<12}{'P100 probe med':<18}{'2 x T4 ladder med'}")
+for _q in ("q4_k_m", "q2_k"):
+    a = [r["completion_tokens"] / r["wall_s"] for r in prb if r["rung"] == _q]
+    b = [r["completion_tokens"] / r["wall_s"] for r in lad if r["quant"] == _q]
+    print(f"    {_q:<12}{statistics.median(a):<18.2f}{statistics.median(b):.2f}")
+print("""
+  Identical SHA-256-pinned files. On the P100 probe Q4_K_M is FASTER than Q2_K;
+  on the 2 x T4 ladder Q2_K is faster than Q4_K_M. Not a shifted scale -- the
+  ORDER inverts. A per-file throughput band is not portable across hardware, and
+  attestation is exactly the case where the verifier does not control hardware.""")
+
+print("\n  (d) throughput is length-dependent; seconds-per-token is the stable form:")
+_rows = nonecho("dispersion_probe_v2/**/probe_samples.jsonl")
+for _q in RUNGS:
+    xs = [(r["completion_tokens"], r["completion_tokens"] / r["wall_s"])
+          for r in _rows if r["rung"] == _q]
+    if len(xs) < 3:
+        continue
+    mx = statistics.mean([x for x, _ in xs]); my = statistics.mean([y for _, y in xs])
+    num = sum((x - mx) * (y - my) for x, y in xs)
+    den = (sum((x - mx) ** 2 for x, _ in xs) * sum((y - my) ** 2 for _, y in xs)) ** 0.5
+    spt = sorted(r["wall_s"] / r["completion_tokens"] for r in _rows if r["rung"] == _q)
+    print(f"    {_q:<10}corr(tokens, tok/s) = {num/den:+.3f}   "
+          f"s/token range [{min(spt):.5f}, {max(spt):.5f}]")
+print("""
+  Within a rung, longer completions run slower per token, correlation about -0.9.
+  The tok/s bands hold only inside the observed token window. Inverting to seconds
+  per token removes the dependence and gives tighter bands, so s/token is the form
+  to report -- though it fixes none of (a), (b) or (c).""")
+
+print("\n  (e) throughput does not order by bit-width, on EITHER ladder"
+      " (computed here, not quoted):")
+for _lab, _pat, _rungs in (
+        ("14B ladder, 2 x T4", "precision_sweep_14b_v2_output/**/cand*.jsonl",
+         ["q8_0", "q4_k_m", "q3_k_m", "q2_k"]),
+        ("7B ladder, 2 x T4", "precision_sweep/candidates_precision.jsonl",
+         ["fp16", "q8_0", "q4_k_m", "q3_k_m", "q2_k"])):
+    _r = [x for x in load(_pat) if x.get("wall_s") and x.get("completion_tokens")]
+    cells = [(q, statistics.median([x["completion_tokens"] / x["wall_s"]
+                                    for x in _r if x["quant"] == q])) for q in _rungs]
+    print(f"    {_lab:<22}" + "  ".join(f"{q} {v:.2f}" for q, v in cells))
+print("""
+  On the 14B ladder Q8_0 -- the highest-precision rung run -- is the SLOWEST of
+  four. On the 7B ladder FP16 is slower than every quantized rung, and Q3_K_M
+  sits below Q4_K_M at both scales.""")
+
 
 print(f"\n{'='*76}\nWHAT THIS MEANS FOR ITEM 4\n{'='*76}")
 print("""  The canary FIRES on the 2-bit rung, on both waves independently, at a ratio
