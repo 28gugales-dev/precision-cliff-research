@@ -131,18 +131,19 @@ def simulate(q, T, reps=20000):
     return out
 
 
-def perm_p(a, b):
+def perm_p_mc(a, b, nperm=2000):
+    """Monte-Carlo permutation with the (hits+1)/(nperm+1) correction. The power
+    sweep runs thousands of these, so exact enumeration is not affordable here;
+    the correction keeps the estimate conservative rather than anti-conservative."""
     pooled = list(a) + list(b)
-    na, n = len(a), len(pooled)
+    na = len(a)
     obs = abs(statistics.mean(a) - statistics.mean(b))
-    tot = hit = 0
-    for idx in itertools.combinations(range(n), na):
-        x = [pooled[i] for i in idx]
-        y = [pooled[i] for i in range(n) if i not in idx]
-        tot += 1
-        if abs(statistics.mean(x) - statistics.mean(y)) >= obs - 1e-12:
-            hit += 1
-    return hit / tot
+    hits = 0
+    for _ in range(nperm):
+        RNG.shuffle(pooled)
+        if abs(statistics.mean(pooled[:na]) - statistics.mean(pooled[na:])) >= obs - 1e-12:
+            hits += 1
+    return (hits + 1) / (nperm + 1)
 
 
 print(f"\n{'='*74}\nPROJECTED MEAN FINAL BEST SCORE BY HORIZON\n{'='*74}")
@@ -156,44 +157,69 @@ for T in (10, 25, 50, 100, 200, 400, 800):
           f"{statistics.mean(b)-statistics.mean(a):<10.4f}"
           f"{T*d['q2_k']:.1f} / {T*d['q4_k_m']:.1f}")
 
-print("\nThe gap grows, and it grows slowly -- which is the point. Best-so-far is a max\n"
-      "statistic, so multiplying effective draws by 5.5 moves it by the distance between\n"
-      "two upper quantiles of the same offer distribution, not by anything proportional\n"
-      "to the draw ratio. An instrument with this shape cannot be made sensitive by\n"
-      "running longer at any horizon a practitioner would fund.")
+print()
+print("READ THE SIGN. The projected gap is NEGATIVE at every horizon: under this model")
+print("the 2-bit rung ends AHEAD, and the margin widens with the budget. That is not a")
+print("prediction we believe and it is not one the paper makes. It follows from the")
+print("estimation asymmetry noted above -- Q2_K's offer distribution is six observations")
+print("with mean 1.226 and max 1.625, Q4_K_M's is thirty-three with mean 0.962 and max")
+print("1.300, so a single jackpot offer sets the ceiling the max statistic converges to.")
+print("Conditional on departing at all, the 2-bit rung's observed offers are not worse.")
+print("That is the same open question section 3.6 poses and declines to answer, seen")
+print("here through a resampling model too thin to answer it either.")
+print()
+print("So the directional projection is discarded. What survives is the power column")
+print("below, which does not depend on the sign of the gap -- only on its magnitude")
+print("relative to the noise a five-lineage design carries.")
 
-print(f"\n{'='*74}\nPOWER: fraction of simulated experiments returning p < 0.05\n{'='*74}")
-print("exact lineage-level permutation, two-sided, as in section 3.6\n")
-print(f"{'gens/lineage':<15}{'8 vs 8 lineages':<20}{'12 vs 12 lineages'}")
-for T in (50, 100, 200, 400, 800):
+BAR = "=" * 74
+print()
+print(BAR)
+print("POWER: fraction of simulated experiments returning p < 0.05")
+print(BAR)
+print("lineage-level permutation on final best score, two-sided, 2000 shuffles per")
+print("test with the (hits+1)/(nperm+1) correction; 200 simulated experiments per cell")
+print()
+print(f"{'gens/lineage':<15}{'5 vs 5':<12}{'8 vs 8':<12}{'12 vs 12':<12}{'20 vs 20'}")
+for T in (10, 50, 100, 200, 400, 800):
     row = []
-    for L in (8, 12):
-        if L == 12 and T > 200:      # 2.7M splits per rep -- enumerate only where cheap
-            row.append("     (not run)")
-            continue
-        reps = 200 if L == 8 else 60
-        hits = 0
+    for L_ in (5, 8, 12, 20):
+        reps, hits = 200, 0
         for _ in range(reps):
-            a = simulate("q2_k", T, reps=L)
-            b = simulate("q4_k_m", T, reps=L)
-            if perm_p(a, b) < 0.05:
+            a = simulate("q2_k", T, reps=L_)
+            b = simulate("q4_k_m", T, reps=L_)
+            if perm_p_mc(a, b) < 0.05:
                 hits += 1
         row.append(f"{100*hits/reps:.0f}%")
-    print(f"{T:<15}{row[0]:<20}{row[1]}")
+    print(f"{T:<15}{row[0]:<12}{row[1]:<12}{row[2]:<12}{row[3]}")
+
+print()
+print("Read the first row for the design section 3.6 actually reports: ten generations,")
+print("five lineages per rung. That is the power its outcome-level null was observed at.")
+
 
 print(f"\n{'='*74}\nWHAT THIS SAYS ABOUT THE WAVE THAT WOULD SETTLE IT\n{'='*74}")
-print("""  Section 3.6 registers longer-horizon divergence as a prediction and does not
-  run it. This script prices that run under an explicitly stated model, and the
-  price is the finding: the horizon needed is far beyond the ten generations
-  already spent, because the outcome metric is a maximum and maxima are
-  insensitive to the draw count by construction.
+print("""  ONE number from this script is worth carrying into the paper, and it is not a
+  projection about which rung wins. It is the top-left cell of the power table:
+  at ten generations and five lineages per rung -- the design section 3.6 reports
+  -- this model gives about 17 percent power to detect a difference of the size it
+  itself implies. Section 3.6 already states its outcome-level result as
+  non-rejection rather than equivalence. This puts a number on that: the null it
+  reports is what an underpowered design returns, not evidence that the rungs
+  agree.
 
-  The design consequence is not "run longer". It is that final best score is the
-  wrong dependent variable for this effect at any fundable horizon, and a wave
-  that wants to demonstrate harm should measure something that is not a maximum
-  -- time-to-threshold, area under the best-so-far curve, or the accepted-step
-  count itself, which is what section 3.6 measures and what wave 3 registers.
+  The rest is design guidance and nothing more. Fifty generations at five
+  lineages reaches 37 percent; one hundred reaches 84; the same 84 arrives at
+  fifty generations if lineages go to twelve. Adding lineages buys more than
+  adding generations, because best-so-far is a maximum and maxima concentrate --
+  a longer run moves one lineage's ceiling a little, a wider run adds independent
+  draws of the whole experiment.
 
-  Every number above is a projection from a resampling model whose Q2_K offer
-  distribution rests on a handful of observations. It is a design quantity. It is
-  not evidence about any real run, and the paper claims nothing from it.""")
+  And the direction the projection reports is unusable, for the reason printed
+  above: it rests on six Q2_K offers. A wave that wants to demonstrate harm
+  should not use final best score as its dependent variable at all. It should
+  measure something that is not a maximum -- time-to-threshold, area under the
+  best-so-far curve, or the accepted-step count itself, which is what section 3.6
+  measures and what the wave-3 registration adopts as its primary.
+
+  No claim in the paper rests on any number above.""")
