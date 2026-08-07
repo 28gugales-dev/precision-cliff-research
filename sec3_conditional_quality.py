@@ -22,9 +22,18 @@ the cleaner instrument besides:
 Definitions, unchanged from section 3: a DEPARTURE is a valid output that is not a
 coordinate echo of the parent. It IMPROVED if its `score_delta` is strictly positive.
 
-POST-HOC. This analysis is in neither wave's preregistration. It is reported as one,
-labelled as one, and its verdict is scored against the power floor the wave-3 design
-note registers for exactly this quantity (25 departures at the 2-bit rung).
+POST-HOC, AND THE THRESHOLD IS OURS. This analysis is in neither wave's
+preregistration. It is scored against a decision rule and a power floor written by us
+in wave3_prereg_heilbronn.md -- an UNLOCKED design note, authored on the day this
+analysis became computable, from data already in the repository. That note states that
+nothing in the paper may cite it as a registration, and the paper does not. Read the
+verdict below as a threshold we specify, fixed in advance of reporting rather than in
+advance of seeing.
+
+AND THE EXCLUSION IS ONE OBSERVATION WIDE. The collapse branch is defined against half
+the reference rate, and the choice of reference moves the line by three points while
+the observed lower bound sits within one. Both are printed below, along with what
+happens if a single departure flips.
 
 Run:  python sec3_conditional_quality.py
 """
@@ -34,7 +43,7 @@ from math import comb
 HERE = os.path.dirname(os.path.abspath(__file__))
 ART = os.path.join(HERE, "sec3_artifacts")
 RUNGS = ["q4_k_m", "q3_k_m", "q2_k"]
-FLOOR = 25                     # wave-3 registered power floor for this quantity
+FLOOR = 25                     # OUR floor, from the unlocked wave-3 design note
 
 
 def load(pattern):
@@ -135,20 +144,33 @@ print(f"\nThe 2-bit rung's departures are NOT drawn from easier parents. At the 
 r2 = a[2] / a[1]
 r4 = b[2] / b[1]
 lo2, hi2 = clopper_pearson(a[2], a[1])
-print(f"\n{'='*74}\nVERDICT, scored against the wave-3 decision rule\n{'='*74}")
-print(f"  Q2_K rate           {100*r2:.0f}%   95% CI [{100*lo2:.0f}%, {100*hi2:.0f}%]")
-print(f"  Q4_K_M rate         {100*r4:.0f}%")
-print(f"  frequency-only branch needs Q2_K >= 0.75 x Q4_K_M = {100*0.75*r4:.0f}%")
-print(f"  quality-collapse branch needs Q2_K <= 0.50 x Q4_K_M = {100*0.50*r4:.0f}%")
-print(f"  registered power floor: {FLOOR} departures at the 2-bit rung; observed {a[1]}")
+r3 = agg["q3_k_m"][2] / agg["q3_k_m"][1]
+rp = ((agg["q4_k_m"][2] + agg["q3_k_m"][2]) /
+      (agg["q4_k_m"][1] + agg["q3_k_m"][1]))
+print(f"\n{'='*74}\nVERDICT, scored against OUR OWN unlocked decision rule\n{'='*74}")
+print(f"  Q2_K rate           {100*r2:.1f}%   95% CI [{100*lo2:.1f}%, {100*hi2:.1f}%]")
+print(f"  Q4_K_M rate         {100*r4:.1f}%      Q3_K_M rate  {100*r3:.1f}%")
+print(f"  frequency-only branch needs Q2_K >= 0.75 x reference")
+print(f"  quality-collapse branch needs Q2_K <= 0.50 x reference -- and WHICH reference")
+print(f"  is not fixed by the rule, so all three are shown:")
+for lab, ref in (("Q4_K_M", r4), ("pooled upper rungs", rp), ("Q3_K_M", r3)):
+    line = 0.50 * ref
+    verdict = "excluded" if lo2 > line else "NOT excluded"
+    print(f"      vs {lab:<20}{100*line:>6.1f}%   -> {verdict} by "
+          f"{100*(lo2-line):+.1f} points")
+lo7, _ = clopper_pearson(a[2] - 1, a[1])
+print(f"\n  SENSITIVITY: had one of the {a[1]} departures failed to improve, "
+      f"{a[2]-1}/{a[1]} gives a lower\n      bound of {100*lo7:.1f}% and the collapse"
+      f" branch is excluded against NONE of the three.")
+print(f"  power floor (ours, in an unlocked note): {FLOOR} departures at the 2-bit rung;"
+      f" observed {a[1]}")
 print()
 if a[1] < FLOOR:
-    print("  UNDERPOWERED by the floor this quantity's own design note registers, so no")
-    print("  branch is CONFIRMED. But the interval is not uninformative in both")
-    print(f"  directions: its lower bound {100*lo2:.0f}% sits above the "
-          f"{100*0.50*r4:.0f}% the quality-collapse")
-    print("  branch requires, so that branch is EXCLUDED at 95%. The point estimate sits")
-    print("  on top of the upper rungs' and the per-parent table shows no cell where the")
-    print("  2-bit rung underperforms. What the data support is an exclusion, not a")
-    print("  confirmation: quantization is not shown to degrade departure quality, and is")
-    print("  shown not to collapse it.")
+    print("  UNDERPOWERED by a floor we set ourselves, so no branch is CONFIRMED. The")
+    print("  collapse branch is excluded against all three references -- but by 0.8 points")
+    print("  against the least favourable of them, and not at all if a single departure")
+    print("  flips. The point estimate sits on top of the upper rungs' and the per-parent")
+    print("  table shows no cell where the 2-bit rung underperforms. What the data support")
+    print("  is a THIN exclusion and no confirmation: a collapse in departure quality is")
+    print("  not the explanation of the echo cliff, and the frequency-only reading that")
+    print("  leaves standing is unconfirmed rather than established.")

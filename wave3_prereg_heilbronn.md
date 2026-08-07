@@ -148,8 +148,14 @@ the fraction scoring above the running parent. **DECISION RULE, both branches in
 *Prior state of this question, stated here so the wave is not credited with settling more
 than it settles.* Applying this rule post-hoc to the pooled fixed-parent waves (§3.6,
 `sec3_conditional_quality.py`) gives Q2_K 8/10 = 80% against Q4_K_M 60/74 = 81%, with a 95%
-lower bound of 44% against the 41% the collapse branch requires. **The collapse branch is
-therefore already excluded on circle packing, and this wave is not testing it fresh.** What
+lower bound of 44.4%. Whether that excludes the collapse branch depends on which reference
+the rule's "half" is taken against — half of Q4_K_M is 40.5%, half of the pooled upper rungs
+42.0%, half of Q3_K_M 43.6% — so the exclusion holds by 3.8, 2.4 and **0.8** points, and
+fails against all three if one of the ten departures flips. **The collapse branch is
+therefore excluded on circle packing only thinly, and this wave should be read as testing it
+properly rather than confirming a settled result.** Note also that this rule was written on
+the same day that analysis became computable; that is a defect in the prior application of
+it, not in the wave-3 application, where the data do not yet exist. What
 remains open, and what this wave is powered for, is (a) whether the *frequency-only* branch
 can be confirmed rather than merely left standing — the ≥ 61%-equivalent bound needs the 25
 departures the existing data lack — and (b) whether either holds on a second task. The
