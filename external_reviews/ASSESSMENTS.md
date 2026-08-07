@@ -152,3 +152,9 @@ Note: 6 \label commands, 0 \ref - tables/figures are numbered by hand (\setcount
 texlint.py now also resolves every graphics/input/bibliography target and asserts it (a) exists on disk and (b) is git-tracked - an untracked figure compiles locally and fails on arXiv, which is the silent version of this failure. All 4 deps clean: fig1_trapzones.png, fig2_packings.png, fig3_armT.png, references.bib. Verified by negative control (renamed one figure; the check fired, as did the non-ASCII check on a BOM).
 
 Also propagated review 12 deduction-1 disclosure to workshop1/compact3_draft.md, which stated "P-CH1, 2 of 3 cells" with no per-cell quantification at all. Added the N=31 one-sample margin (4 of 7 vs 3 of 7) so the compact version carries the same disclosure as the main paper.
+
+### texlint gap closed + paper 2 checked (2026-08-06)
+
+Two follow-ups. (1) latex2/main.tex (paper 2, 770 lines) had never been lint-checked either - now clean, 22 bib entries, nocite present. (2) texlint had a hole: it only reported cite keys missing from the bibliography, so a bibliography with ZERO citations - which compiles to an empty reference list - was never actually tested. Both papers happened to carry nocite{*}, so nothing was hidden, but the check now exists and was confirmed by negative control (stripped nocite from a throwaway copy; it fired).
+
+Both manuscripts still have empty author/date blocks by design (the source markdown names no author). That is a submission blocker, not a defect: arXiv requires a real author name.

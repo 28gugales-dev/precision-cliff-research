@@ -100,6 +100,11 @@ nocite_all = "\\nocite{*}" in code
 if (bibs or not has_bibtex) and not nocite_all:
     for c in sorted(cites - bibs):
         issues.append(f"undefined \\cite{{{c}}}")
+# a \bibliography with nothing cited and no \nocite{*} compiles to an EMPTY
+# reference list -- silent, and fatal for a submission
+if has_bibtex and not cites and not nocite_all:
+    issues.append("\\bibliography declared but no \\cite and no \\nocite{*}: "
+                  "reference list will compile EMPTY")
 
 # 6. tabular column-count sanity
 def grab_braced(s, i):
