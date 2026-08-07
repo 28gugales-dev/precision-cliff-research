@@ -6,7 +6,20 @@ PRIVATE until submission. Two companion papers plus every artifact behind them.
 | file | paper | status |
 |---|---|---|
 | `paper1_draft.md` / `latex1/` | **The Nearest Square: Template Anchoring in Constructive Geometry** — closed form identifies the modal LLM output at 7/7 tested N; tier inversion; trace elicitation as intervention; triggered falsifier reported | revised post-panel, arXiv-ready LaTeX (compile on Overleaf/arXiv; no local TeX) |
-| `paper2_draft.md` | **Served Precision Is Part of the Model: A Quantization Cliff in Proposal Variation** — at the 2-bit rung the proposer very largely stops departing from its parent while viability and validity stay flat, so pass/fail instruments report health; `opus_alias` forensics; attestation impossibility; minimum disclosure standard. §3 data is vendored in-repo under `sec3_artifacts/` and replays from the released scripts (see `HOW_TO_RUN.md` §0) | **`paper2_draft.md` is the only current manuscript.** `latex2/` is STALE — frozen at commit `6a36f85`, 19 revisions behind, and it still carries the withdrawn "novelty cliff" framing. Do not submit or cite it; regenerate from the markdown before submission |
+| `paper2_draft.md` | **Served Precision Is Part of the Model: A Quantization Cliff in Proposal Variation** — at the 2-bit rung the proposer very largely stops departing from its parent while viability and validity stay flat, so pass/fail instruments report health; `opus_alias` forensics; attestation impossibility; minimum disclosure standard. §3 data is vendored in-repo under `sec3_artifacts/` and replays from the released scripts (see `HOW_TO_RUN.md` §0) | **`paper2_draft.md` is the only current manuscript.** `latex2/` is STALE — frozen at commit `6a36f85`, 30 revisions behind, missing §3.6 and §6 item 5 entirely, and still carrying the withdrawn "novelty cliff" framing. Do not submit or cite it; regenerate from the markdown before submission |
+
+Since that row was written, §3 gained a loop-level result (§3.6: accepted hill-climb steps
+per lineage, 1 per 50 calls at Q2_K against 14-16, with the outcome metric blind to it),
+a conditional-quality analysis excluding a collapse in departure quality, a horizon-power
+pricing, and §6 gained item 5 — a practitioner-runnable parent-echo canary shipped as
+`echo_screen.py`. Section 3 opens with a claims spine naming the two registered predictions
+that held and, in the same place, every registered outcome that failed.
+
+| also in this directory | what it is |
+|---|---|
+| `wave3_prereg_heilbronn.md` | **DRAFT, NOT LOCKED, NOT RUN.** The registration that would turn §3.6's post-hoc statistic into a registered primary on a second task. Three non-analytic steps remain to lock: author field, published SHA-256, timestamped push |
+| `sec3_artifacts/runners/kaggle_precision_sweep_14b_heilbronn.py` | the runner carrying wave 3's predictions in its header. `--dry-run` validates it with no GPU |
+| `echo_screen.py` | the §6 item 5 canary, standalone, no dependencies. `python echo_screen.py proposals.jsonl --parent parent.json` |
 
 Venue plan: paper 2 → TMLR now (MLRC 2026 window closes 2026-09-30); paper 1 → arXiv + GECCO 2027 (Krakow, deadline ~Jan 2027), TMLR fallback. ALIFE 2026 closed.
 
