@@ -144,17 +144,21 @@ for name, pat in (("must-differ (official)", "precision_sweep_14b_fresh_output/*
         md = load(pat)
     except SystemExit:
         print(f"\n{name}: ledger not found"); continue
+    # The must-differ probe holds the parent FIXED at the seeded grid, so echo
+    # is a direct comparison against SEED_KEY. There is no echo flag in this
+    # ledger -- it must be computed from coordinates.
     print(f"\n--- {name}: {len(md)} rows ---")
     by = collections.defaultdict(lambda: [0, 0])
     for r in md:
         if r.get("valid"):
             by[r["quant"]][1] += 1
-            if r.get("echo") or r.get("identical_to_parent"):
+            if key(r.get("circles")) == SEED_KEY:
                 by[r["quant"]][0] += 1
     for q in by:
-        print(f"   {q:<12} echo {by[q][0]}/{by[q][1]} valid")
-    print("   (echo flag keys present:",
-          sorted(k for k in md[0].keys() if "echo" in k or "ident" in k or "differ" in k), ")")
+        e, v = by[q]
+        print(f"   {q:<12} coordinate-identical to fixed parent: {e}/{v} valid")
+    assert all(abs(r.get("parent_score", 0) - SEED_SCORE) < 1e-9 for r in md), \
+        "must-differ parent is not the seed grid"
 
 print("\n" + "=" * 68)
 print("PAPER CLAIMS TO CHECK AGAINST THE ABOVE")
