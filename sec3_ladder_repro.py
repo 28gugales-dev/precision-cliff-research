@@ -16,8 +16,13 @@ Run:  python sec3_ladder_repro.py
 import json, glob, os, collections
 from math import comb
 
-AGENT_RUN = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                         "..", "agent-run")
+HERE = os.path.dirname(os.path.abspath(__file__))
+
+# Ladder outputs are vendored under sec3_artifacts/ so this replays in a fresh
+# clone; the sibling agent-run tree is the authoring host's copy and is a fallback.
+AGENT_RUN = os.path.join(HERE, "sec3_artifacts")
+if not os.path.isdir(AGENT_RUN):
+    AGENT_RUN = os.path.join(HERE, "..", "agent-run")
 
 def load(pattern):
     hits = glob.glob(os.path.join(AGENT_RUN, pattern), recursive=True)

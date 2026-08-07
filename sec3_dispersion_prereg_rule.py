@@ -1,10 +1,27 @@
-import json, itertools, math
+"""Runs the dispersion probe's registered decision rule (analysis_prereg.md + Amendment 1).
+
+Requires: numpy, rapidfuzz, scipy  ->  pip install -r requirements.txt
+
+NOTE ON THE SPREAD STATISTIC. The preregistration names its quantity by the
+generating kernel's field, `mean_pairwise_ned`. That kernel is not in this corpus,
+and the one surviving logged value (provenance.json,
+text_dispersion_mean_pairwise_ned = -0.3558 for q3_k_m) is negative, so it is not a
+normalized edit distance in the usual sense and its definition is unrecoverable.
+The definition below -- Levenshtein over raw_text divided by the longer length,
+averaged over unordered within-cell pairs -- is a substitution of ours, not a replay
+of the registered one. Section 3 discloses this.
+"""
+import json, itertools, math, os, sys
 import numpy as np
 from rapidfuzz.distance import Levenshtein
 from scipy.stats import spearmanr
 from math import comb
 
-PATH = r"C:/Users/soham/AppData/Local/hermes/research-corpus/agent-run/dispersion_probe/probe_samples.jsonl"
+HERE = os.path.dirname(os.path.abspath(__file__))
+PATH = sys.argv[1] if len(sys.argv) > 1 else os.path.join(
+    HERE, "sec3_artifacts", "dispersion_probe", "probe_samples.jsonl")
+if not os.path.exists(PATH):
+    PATH = os.path.join(HERE, "..", "agent-run", "dispersion_probe", "probe_samples.jsonl")
 rows = [json.loads(l) for l in open(PATH, encoding='utf-8')]
 RUNGS = ['q4_k_m', 'q3_k_m', 'q2_k']          # decreasing precision; q8_0 absent
 rng = np.random.default_rng(20260806)

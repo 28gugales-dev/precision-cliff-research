@@ -1,0 +1,12 @@
+# Dependencies for the released reproduction scripts.
+#   arm_f_repro.py, sec4_independent_rescore.py      -- stdlib only
+#   sec3_ladder_repro.py                             -- stdlib only
+#   sec3_dispersion_registered.py                    -- stdlib only
+#   sec3_dispersion_prereg_rule.py                   -- numpy, rapidfuzz, scipy
+#   sec3_artifacts/dispersion_probe_v2/analyze_v2.py -- numpy
+#
+# Versions are the ones the reported figures were produced under; the scripts do
+# not depend on version-specific behaviour and looser pins should reproduce.
+numpy>=1.24
+scipy>=1.10
+rapidfuzz>=3.0

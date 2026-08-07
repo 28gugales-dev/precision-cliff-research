@@ -19,10 +19,18 @@ Run:  python sec3_dispersion_registered.py
 import json, glob, os, statistics, collections
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-V1 = os.path.join(HERE, "..", "agent-run", "dispersion_probe", "probe_samples.jsonl")
-V2 = os.path.join(HERE, "..", "..", "handoff", "kaggle", "output",
-                  "precision-cliff-fixed-parent-dispersion-probe-v2", "**",
-                  "probe_samples.jsonl")
+
+# Both waves are vendored into this repo under sec3_artifacts/ so every figure in
+# section 3 regenerates from a clone with no external tree. The out-of-repo paths
+# are kept as fallbacks for the authoring host only.
+V1 = os.path.join(HERE, "sec3_artifacts", "dispersion_probe", "probe_samples.jsonl")
+V2 = os.path.join(HERE, "sec3_artifacts", "dispersion_probe_v2", "probe_samples.jsonl")
+if not glob.glob(V1):
+    V1 = os.path.join(HERE, "..", "agent-run", "dispersion_probe", "probe_samples.jsonl")
+if not glob.glob(V2):
+    V2 = os.path.join(HERE, "..", "..", "handoff", "kaggle", "output",
+                      "precision-cliff-fixed-parent-dispersion-probe-v2", "**",
+                      "probe_samples.jsonl")
 RUNGS = ["q4_k_m", "q3_k_m", "q2_k"]
 
 def load(p):
