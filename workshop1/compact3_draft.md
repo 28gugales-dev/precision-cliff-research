@@ -156,7 +156,8 @@ stay on it (25%). The template reasserts itself only against a far-worse off-fam
 (20/34, 58.8%, per-cell at 2 of 3 N). **Arm CH** (recipe family enumerated in-prompt, argmax
 stated): the registered valid-conditioned metric favors the template (P-CH1, 2 of 3 cells —
 at N = 13 the modal valid output declines a strictly better construction printed in the
-prompt), but we disclose its survivorship artifact: **all 31 invalid rows attempt the stated
+prompt; the N = 31 cell carries a one-sample margin, 4 of 7 valid against 3 of 7), but we
+disclose its survivorship artifact: **all 31 invalid rows attempt the stated
 argmax** and 30 misplace the fillers at the container corners. Choice follows the score
 table; execution fails off-template. The tractability alternative is wrong about selection
 and right about instantiation: the template is what the model can reliably build.

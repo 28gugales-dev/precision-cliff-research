@@ -162,7 +162,53 @@ if uni:
     issues.append("NON-ASCII chars present (pdflatex needs inputenc/utf8 or replacement): " +
                   ", ".join(f"{repr(c)}x{n}" + (f" ->{BAD[c]}" if c in BAD else " ->UNKNOWN") for c, n in uni.most_common()))
 
-# 8. preamble facts
+# 8. referenced files must exist on disk AND be tracked in git (arXiv gets the
+#    committed tree, not the working dir -- an untracked figure compiles here and
+#    fails there, which is the silent version of this failure).
+here = os.path.dirname(os.path.abspath(p))
+try:
+    import subprocess
+    tracked = set(subprocess.run(["git", "ls-files"], cwd=here, capture_output=True,
+                                 text=True, timeout=30).stdout.split())
+except Exception:
+    tracked = None
+
+def resolve(target):
+    """Return the on-disk filename for a graphics/input target, or None."""
+    if os.path.isfile(os.path.join(here, target)):
+        return target
+    for ext in (".pdf", ".png", ".jpg", ".jpeg", ".eps", ".tex"):
+        if os.path.isfile(os.path.join(here, target + ext)):
+            return target + ext
+    return None
+
+deps = []
+for m in re.finditer(r"\\includegraphics(?:\[[^\]]*\])?\{", code):
+    inner, _ = grab_braced(code, m.end() - 1)
+    deps.append(("includegraphics", inner))
+for m in re.finditer(r"\\(?:input|include)\{", code):
+    inner, _ = grab_braced(code, m.end() - 1)
+    deps.append(("input", inner))
+for m in re.finditer(r"\\bibliography\{", code):
+    inner, _ = grab_braced(code, m.end() - 1)
+    for b in inner.split(","):
+        deps.append(("bibliography", b.strip() + ".bib"))
+
+def undetok(raw):
+    """Strip the \\detokenize{...} wrapper used for filenames with underscores."""
+    return re.sub(r"^\\detokenize\{(.*)\}$", r"\1", raw.strip())
+
+for kind, raw in deps:
+    t = undetok(raw)
+    got = resolve(t)
+    if not got:
+        issues.append(f"\\{kind}{{{t}}} -> NO FILE on disk")
+    elif tracked is not None and got not in tracked:
+        issues.append(f"\\{kind}{{{t}}} -> {got} exists but is NOT git-tracked "
+                      f"(would be missing from an arXiv upload)")
+print("deps:", ", ".join(undetok(r) for _, r in deps) or "none")
+
+# 9. preamble facts
 docclass = re.search(r"\\documentclass(\[[^\]]*\])?\{([^}]+)\}", code)
 print("documentclass:", docclass.group(2) if docclass else "MISSING")
 print("packages:", ", ".join(re.findall(r"\\usepackage(?:\[[^\]]*\])?\{([^}]+)\}", code)))

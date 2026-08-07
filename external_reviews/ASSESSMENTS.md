@@ -146,3 +146,9 @@ Checked: environment balance, brace balance, inline-math $ parity, undefined/dup
 REMAINING RISK (needs user): the manuscript is still unverified against a real TeX run. texlint cannot see missing packages, overfull hboxes, or float placement. Installing a TeX engine requires a download, which is user-gated. Recommend compiling once on Overleaf/arXiv before the 2026-08-12 submission.
 
 Note: 6 \label commands, 0 \ref - tables/figures are numbered by hand (\setcounter{table}{N} + \caption*) and referenced by name in prose. Consistent with the inline-citation choice; labels are inert. Not a defect, but hand-numbering can desync if a float is added.
+
+### Dependency check added same day (advisor prompt)
+
+texlint.py now also resolves every graphics/input/bibliography target and asserts it (a) exists on disk and (b) is git-tracked - an untracked figure compiles locally and fails on arXiv, which is the silent version of this failure. All 4 deps clean: fig1_trapzones.png, fig2_packings.png, fig3_armT.png, references.bib. Verified by negative control (renamed one figure; the check fired, as did the non-ASCII check on a BOM).
+
+Also propagated review 12 deduction-1 disclosure to workshop1/compact3_draft.md, which stated "P-CH1, 2 of 3 cells" with no per-cell quantification at all. Added the N=31 one-sample margin (4 of 7 vs 3 of 7) so the compact version carries the same disclosure as the main paper.
