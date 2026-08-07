@@ -131,6 +131,40 @@ report(load("dispersion_probe/probe_samples.jsonl"),
 report(load("dispersion_probe_v2/**/probe_samples.jsonl"),
        "fixed-parent dispersion probe, wave 2 (independent seeds)", "rung")
 
+print(f"\n{'='*76}\nA REPAIRED STATISTIC, AND ITS OWN LIMIT\n{'='*76}")
+print("""  If duration dispersion is confounded by output identity, the obvious repair is
+  to remove the confound: compute throughput -- completion tokens per second --
+  over NON-ECHO valid rows only. Below, per rung, on both waves.""")
+
+for _lab, _pat in (("wave 1", "dispersion_probe/probe_samples.jsonl"),
+                   ("wave 2", "dispersion_probe_v2/**/probe_samples.jsonl")):
+    _rows = [r for r in load(_pat)
+             if r.get("valid") and r.get("wall_s") and not r.get("echo")]
+    print(f"\n  {_lab}:")
+    print(f"    {'rung':<10}{'n':<6}{'median tok/s':<16}{'CV':<10}{'observed range'}")
+    for _q in RUNGS:
+        _s = [r["completion_tokens"] / r["wall_s"] for r in _rows if r["rung"] == _q]
+        if len(_s) < 2:
+            print(f"    {_q:<10}{len(_s):<6}(too few)")
+            continue
+        print(f"    {_q:<10}{len(_s):<6}{statistics.median(_s):<16.2f}{cv(_s):<10.4f}"
+              f"[{min(_s):.1f}, {max(_s):.1f}]")
+
+print("""
+  On wave 2, where every cell has enough rows, the observed ranges are DISJOINT:
+  Q4_K_M [17.9, 18.1], Q3_K_M [15.7, 15.9], Q2_K [16.6, 16.7]. Not merely
+  different in mean -- separable per invocation. Throughput is a fingerprint of
+  the served weight file, computed from observables a runtime already exposes,
+  and it survives the confound that breaks duration CV.
+
+  ITS LIMIT, WHICH MATTERS AS MUCH AS THE RESULT. That fingerprint is NOT ordered
+  by bit-width. Q3_K_M is slower than Q2_K and slower than Q4_K_M; on the 14B
+  ladder Q8_0 is the slowest of four rungs at 14.9 tok/s against Q2_K's 22.5, and
+  on the 7B ladder FP16 is slower than every quantized rung while Q3_K_M again
+  sits below Q4_K_M. Throughput tells you THAT the served file changed. It does
+  not tell you the served file got smaller, and it cannot be read as a precision
+  ordering without a per-file calibration table measured on the same hardware.""")
+
 print(f"\n{'='*76}\nWHAT THIS MEANS FOR ITEM 4\n{'='*76}")
 print("""  The canary FIRES on the 2-bit rung, on both waves independently, at a ratio
   below the one-third threshold item 4 names -- and the serving path was fixed by
@@ -153,4 +187,13 @@ print("""  The canary FIRES on the 2-bit rung, on both waves independently, at a
   absolute latency gap of one to two orders of magnitude rather than a dispersion
   ratio, and whose arm was not echoing -- its failure mode was invalid geometry,
   4 of 30 valid. But it is a competing explanation section 4 never named for the
-  class of evidence it relies on, and section 6 now names it.""")
+  class of evidence it relies on, and section 6 now names it.
+
+  The non-monotonicity above is a second caution for section 4, of a different
+  kind. Section 4 reads an unusually FAST arm as evidence of a cheaper or
+  speculative serving path. Within these ladders speed does not order by precision
+  at all: the highest-precision rung is the slowest at both scales. The magnitudes
+  are not comparable -- section 4's gap is one to two orders and these are tens of
+  percent -- so this does not contradict the reading. It does show that "faster"
+  and "lower precision" are not the same axis even on a fixed stack, which is a
+  step section 4's inference passes through without stating.""")
