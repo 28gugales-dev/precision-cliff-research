@@ -15,6 +15,41 @@ property, without downloading a model or touching a GPU.
 file's SHA-256; push the runner to an externally-timestamped host before sampling a single
 row. Nothing about the design is outstanding.
 
+---
+
+## LOCK, 2026-08-08 — two of three steps taken, and the third stated rather than skipped
+
+Steps 2 and 3 are done and step 1 is not, so this section records exactly what that buys
+and what it does not.
+
+**Step 3, the one that mattered.** The runner is pushed to Kaggle as a PUBLIC kernel under
+account `sohamgugalet` *before any row of this wave is sampled*, carrying its prediction
+header verbatim. Kaggle stamps creation server-side. That converts this wave's registration
+from the class every other registration in this paper belongs to — a local git commit, whose
+timestamp the committer can set — into one a third party can check without trusting us.
+**This is the only externally-timestamped registration in either paper**, and §6 item 1's
+argument is the reason it was worth the step.
+
+**Step 2, the digests.** Published here before the push, so neither can be swapped after:
+
+- runner `sec3_artifacts/runners/kaggle_precision_sweep_14b_heilbronn.py`
+  SHA-256 `101b298c64af5e307aabe9d4cfabcaab0940fda48013624b9926347f0d621dd1`
+- this file's own SHA-256 is recorded in `wave3_lock_manifest.txt`, which is pushed inside
+  the kernel. It cannot be printed in this file without being self-referential, and a
+  self-referential digest is not a digest.
+
+**Step 1 is NOT done, and the paper says so wherever it cites this wave.** The author field
+is still open. That is a byline problem, not a registration problem: the predictions below,
+the decision rule, and the disconfirmation clause are all fixed and externally stamped
+regardless of whose name eventually sits on them. What an unnamed registration cannot do is
+attribute the commitment to a person, and it cannot be cited as satisfying a venue's
+author-disclosure requirement. **This wave may be cited as an externally-timestamped
+registration and may not be cited as a complete lock.**
+
+**Consequence for the sentence at the top of this file.** The DRAFT banner applied to a
+design note. From the push onward this file is a registration in the timestamp sense, and
+the paper may cite it as one — with the author caveat attached at every citation.
+
 **Author:** *(unresolved — see the outstanding item in `PAPER2_AND_SCOPE_PLAN.md`)*
 **Written:** 2026-08-07, against paper 2 at commit `6b56467` (v23).
 
