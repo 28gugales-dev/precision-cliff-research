@@ -62,6 +62,21 @@ it." This checkpoint preserves that exact claim; the dry-run above is consistent
   GPU host with the SHA-256 recorded.
 - If not resolved: keep the wave unlocked; the §8 "written and not run" claim stands
   unchanged.
+- **Both new samplers are blocked on transport, not on spend.** Each calls the Claude HTTP
+  API; the programme constraint for this study is Kaggle or the agent runtime, never a
+  metered API. `--run` is therefore not the supported path for either file. Porting the
+  transport to agent-runtime sampling is the next action for both, and it is known to work
+  at scale — §4.1's arms B2 and R ran 90 invocations that way.
+- **The canary needs redesign before it needs sampling.** Its three probes carry named
+  defects, now recorded in the file header and in §8: P1 injects its marker at sampling
+  time and so cannot bear on pretraining contamination at all; P2 passes any memorised
+  template that carries one filler radius; P3 counts distinct coordinate values rather than
+  rows and fires on any packing with non-lattice fillers. Sampling it as written would buy
+  18 calls of an untrustworthy verdict.
+- **The top-up must keep its two cohorts separable.** The 5 existing N=35 rows came through
+  the agent runtime with sampling parameters unlogged; anything added carries T/top_p and a
+  dated id. Two conditions, not one cell of 20 — pooling them is the defect §4 names in the
+  `trace` arm.
 
 ## Session additions (this checkpoint's sibling work)
 
@@ -70,4 +85,8 @@ it." This checkpoint preserves that exact claim; the dry-run above is consistent
   (was `--sample`). Not sampled; requires `--run` + API key to spend.
 - `arm_canary_contamination_audit.py`: §8 contamination-attribution screen (P1 canary
   string, P2 N=46 absent template, P3 1x3 container), dry-run verified, 3x6=18 calls when
-  run. Not run; §8's contamination sentence stays "screened-by-design, run optional".
+  run. **Not run.** An earlier version of this line said the screen kept §8's
+  "contamination sentence" honest; §8 contained no such sentence, and the file was
+  anchored to text that did not exist. §8 now carries a real subhead that cites this file
+  by name, states the screen is not run, and lists the three probe defects as the reason a
+  GREEN verdict from it could not be trusted.

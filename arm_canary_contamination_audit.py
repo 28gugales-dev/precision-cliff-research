@@ -10,9 +10,9 @@
 # sharply if the mechanism were recall versus construction. The screen is a
 # tripwire, not a measurement: each probe has a named RED condition registered
 # here BEFORE running; a RED fires only under the recall reading, never the
-# construction reading. §8 describes the screen as run (or as not runnable
-# within the available budget); the presence of this file is what makes that
-# sentence honest.
+# construction reading. §8 cites this file BY NAME, states that the screen is
+# NOT run, and lists the three probe defects below as the reason a GREEN verdict
+# from it could not be trusted. No claim in the paper rests on it.
 #
 # The screen is NOT evidence of purity. A GREEN screen tells a reader that on
 # three named checks the proposer did not resolve through memorisation; it
