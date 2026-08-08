@@ -1,0 +1,25 @@
+WAVE 3 LOCK MANIFEST
+====================
+Pushed to Kaggle BEFORE any row of wave 3 was sampled. Kaggle's own creation
+timestamp on this kernel is the registration date; nothing in this file can
+establish it, which is the point of pushing rather than asserting.
+
+runner   kaggle_precision_sweep_14b_heilbronn.py
+         sha256 101b298c64af5e307aabe9d4cfabcaab0940fda48013624b9926347f0d621dd1
+prereg   wave3_prereg_heilbronn.md  (paper repository, not shipped here)
+         sha256 a0b2e577512df1cacd3aa8251ac7b3c39fe9192292efdc14e6568e3bc0a023fa
+
+The runner carries every wave-3 prediction in its own header block, verbatim,
+so this kernel is self-contained as a record of what was predicted: a reader
+does not need the preregistration file to check what was committed to.
+
+WHAT THIS LOCK DOES NOT COVER. The author field is unresolved. These
+predictions are timestamped and unattributed. This may be cited as an
+externally-timestamped registration; it may not be cited as a complete lock.
+
+Design: 2 rungs (q4_k_m, q2_k), 33 never-sampled lineage seeds, asymmetric
+8/25 allocation, 15 generations, 495 registered calls. Task is Heilbronn
+minimum-triangle-area at n = 13, chosen because a regular grid scores exactly
+0.0 there, which separates "copies its parent" from "emits a default template".
+q8_0 is NOT RUN by design. The runner asserts the grid-scores-zero property and
+the seed parent's score at startup and aborts if either fails.
