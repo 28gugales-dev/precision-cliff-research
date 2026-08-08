@@ -166,3 +166,18 @@ User asked to "cite claude as used for grammar and such". Written accurately ins
 First draft of the disclosure then failed in the OPPOSITE direction (caught on advisor review): it asserted the human "wrote and timestamped every preregistration", which is not verifiable and contradicts the evidence that the prereg commits were authored in model-assisted sessions. Rewritten to what is checkable - the human directed the programme, approved each preregistration before sampling, made the final inclusion/stopping/submission decisions, and is solely responsible; the ORDERING is the verifiable claim (each prereg commit is a git ancestor of the sampling it governs), not the authorship of those texts.
 
 Present in all six: latex1/main.tex, latex2/main.tex, paper1_draft.md, paper2_draft.md, workshop1/compact3_draft.md, workshop1/workshop_draft.md. Both tex files re-linted clean.
+
+## Review 13 (session agent, paper 2 v4 = `paper2_draft.md`/commit bf11595, first external review of paper 2, 2026-08-07) — 98/100 integrity, 7.5/10 impact, Accept pending one experiment
+
+Full record: `review13_p2_first_2026-08-07.md`. This is the FIRST external review paper 2 has received (reviews 1-12 all went to paper 1). Scored on the paper-1 rubric (dimensions transfer; paper-1 scores not consulted - set from the page alone).
+
+- **D1 25/25:** reviewer recomputed five Fisher tails (17/18 vs 8/57 = 5.706e-10; 19/24 vs 1/17 = 3.403e-6; 3/5 vs 5/5 = 0.4444; 8/10 vs 60/74 = 1.0; scale & 7B tails all match), three Wilson intervals (7/50 = [0.070, 0.262], 60/74 = [0.707, 0.884], 61/70 = [0.773, 0.931]) and the Clopper-Pearson 8/10 lower bound (44.4%) - every figure matches the paper.
+- **D2 25/25:** F1 primary designation + failure reported in the runner's own words; F2 unlabelled-as-primary handled honestly; wave-2 FAILED label and registered primary both reinstated; §4.1 P-R0's 4th branch honoured against a clean 59/60 arm-R table.
+- **D3 18/20 (two -1 deductions, both abstract-placement):** (1) abstract leads with the re-execution cohort's 14% vs 94% without the cohort marker §3 itself uses - the registered, falsifiable figure is the fresh-seed 79% vs 6%; (2) the 0.8-point conditional-quality exclusion sits in the abstract although §3.6 itself calls it the thinnest load-bearing thing. Both fix in one sentence each. QUEUED: abstract edit.
+- **D4 15/15:** "Q2_K claim, not bit-width" carried abstract→§1→§3→§8; pooled-denominator warning and one-row-flip disclosure both reconcile.
+- **D5 15/15:** vendored artifacts, no-arg replays, provenance SHAs, published prompt digests (N=13 verified); every uncheckable row listed as uncheckable in claim→map.
+- **UNVERIFIED (no deduction):** reviewer did not re-run the released replay scripts; the re-execution same-224-outcomes claim taken as stated; git ancestry of the fresh-runner commit not independently verified (no working tree); per-seed vectors/step counts spot-checked via reconciliation only.
+- **Top action (agrees with our own plan):** run wave 3 (Heilbronn) - it is the transfer wave §1/§3/§8 all name, and locking its prereg before submission is the TMLR referee's likely first ask. Whether it confirms or refutes, submission is stronger with a registered primary on the loop-level measure.
+- **Deadline context retained from review log:** paper-1 update dated 2026-08-12; TMLR window closes 2026-09-30. Wave-3 ~1 day to lock, 2-3 to run.
+
+Score ledger now: paper 2 = 98/100 integrity, 7.5/10 impact (pending wave-3 + abstract edits).
