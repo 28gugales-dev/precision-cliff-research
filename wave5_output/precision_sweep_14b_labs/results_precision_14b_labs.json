@@ -1,0 +1,407 @@
+{
+  "q4_k_m": {
+    "lineages": 8,
+    "per_seed": [
+      {
+        "seed": 5101,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 7,
+        "echo": 2
+      },
+      {
+        "seed": 5102,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 8,
+        "echo": 1
+      },
+      {
+        "seed": 5103,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 9,
+        "echo": 1
+      },
+      {
+        "seed": 5104,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 9,
+        "echo": 2
+      },
+      {
+        "seed": 5105,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 8,
+        "echo": 0
+      },
+      {
+        "seed": 5106,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 7,
+        "echo": 2
+      },
+      {
+        "seed": 5107,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 6,
+        "echo": 1
+      },
+      {
+        "seed": 5108,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 6,
+        "echo": 3
+      }
+    ],
+    "mean_best_score": 3.282051282051,
+    "pop_std_best_score": 0.0,
+    "mean_accepted_steps": 0.0,
+    "frac_improved": 0.0,
+    "viability": "120/120",
+    "validity": "60/120",
+    "echo_among_valid": "12/60",
+    "departures": 48,
+    "improving_departures": 0,
+    "template_among_valid": "6/60",
+    "symmetry_variant_among_departures": "0/48",
+    "echo_by_device": {
+      "0": "12/60"
+    },
+    "mustdiffer_n": 0,
+    "mustdiffer_valid": 0
+  },
+  "q2_k": {
+    "lineages": 25,
+    "per_seed": [
+      {
+        "seed": 5201,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 11,
+        "echo": 1
+      },
+      {
+        "seed": 5202,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 9,
+        "echo": 1
+      },
+      {
+        "seed": 5203,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 9,
+        "echo": 0
+      },
+      {
+        "seed": 5204,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 12,
+        "echo": 1
+      },
+      {
+        "seed": 5205,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 11,
+        "echo": 0
+      },
+      {
+        "seed": 5206,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 8,
+        "echo": 0
+      },
+      {
+        "seed": 5207,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 11,
+        "echo": 1
+      },
+      {
+        "seed": 5208,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 9,
+        "echo": 0
+      },
+      {
+        "seed": 5209,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 9,
+        "echo": 1
+      },
+      {
+        "seed": 5210,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 9,
+        "echo": 1
+      },
+      {
+        "seed": 5211,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 7,
+        "echo": 0
+      },
+      {
+        "seed": 5212,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 8,
+        "echo": 0
+      },
+      {
+        "seed": 5213,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 10,
+        "echo": 0
+      },
+      {
+        "seed": 5214,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 9,
+        "echo": 1
+      },
+      {
+        "seed": 5215,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 10,
+        "echo": 0
+      },
+      {
+        "seed": 5216,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 10,
+        "echo": 0
+      },
+      {
+        "seed": 5217,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 10,
+        "echo": 1
+      },
+      {
+        "seed": 5218,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 7,
+        "echo": 1
+      },
+      {
+        "seed": 5219,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 10,
+        "echo": 1
+      },
+      {
+        "seed": 5220,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 8,
+        "echo": 0
+      },
+      {
+        "seed": 5221,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 9,
+        "echo": 0
+      },
+      {
+        "seed": 5222,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 12,
+        "echo": 0
+      },
+      {
+        "seed": 5223,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 8,
+        "echo": 0
+      },
+      {
+        "seed": 5224,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 12,
+        "echo": 0
+      },
+      {
+        "seed": 5225,
+        "best_energy": 156,
+        "best_score": 3.282051282051,
+        "gens": 15,
+        "accepted_steps": 0,
+        "improved": false,
+        "viable": 15,
+        "valid": 5,
+        "echo": 0
+      }
+    ],
+    "mean_best_score": 3.282051282051,
+    "pop_std_best_score": 0.0,
+    "mean_accepted_steps": 0.0,
+    "frac_improved": 0.0,
+    "viability": "375/375",
+    "validity": "233/375",
+    "echo_among_valid": "10/233",
+    "departures": 223,
+    "improving_departures": 0,
+    "template_among_valid": "10/233",
+    "symmetry_variant_among_departures": "0/223",
+    "echo_by_device": {
+      "0": "10/233"
+    },
+    "mustdiffer_n": 0,
+    "mustdiffer_valid": 0
+  }
+}
