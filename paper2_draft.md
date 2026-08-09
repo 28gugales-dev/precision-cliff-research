@@ -2034,6 +2034,17 @@ count from the raw ledger in exact arithmetic and prints each label.
   from it, at any precision. The conditional question §3.6 needed 25 departures for
   remains open; this wave produced 109 Q2_K departures and zero improving ones anywhere,
   which answers a different and harsher question about the task than about the rungs.
+  A disclosed seed-calibration pilot (`kaggle_wave8_pilot/`, public kernel
+  `sohamgugalet/wave8-seed-pilot`, Q4_K_M only, no Q2_K rows) then tested whether an
+  easier seed would repair this: four graded best-of-K random parents, scores 0.000308
+  to 0.003544 against this wave's 0.009087. **The control rung improved on 1 of 40
+  probes** — even from a best-of-1 random configuration — and echoed 6 of 8 valid
+  outputs at the easiest seed. The floor is the task, not the seed: no seed choice
+  makes Heilbronn a search-progress instrument for this model, so the search-progress
+  hypotheses stay tested on circle packing alone, and the recalibrated wave the pilot
+  was scoped for is not run. The pilot also shows, on 40 disclosed unregistered rows,
+  that the reference rung's regression toward copying on this task (46.9% above) is
+  not an artifact of the registered seed's difficulty.
 - **Echo (5.4, registered as a conjunction and not floor-gated): REFUTED as registered,
   with one side held.** Q2_K echo among valid: 186/295 = **63.1%**, against the ≥55%
   bound — held; the parent-copying signature transfers to a task whose parent is not a
