@@ -1,5 +1,7 @@
 # Served Precision Is Part of the Model: A Quantization Cliff in Proposal Variation, and the Limits of Reproducibility in Agent-Runtime LLM Studies
 
+**Soham Shailesh Gugale**
+
 
 ## Abstract
 
@@ -2021,7 +2023,8 @@ having *been* the template), the allocation (25 lineages at Q2_K against 8 at Q4
 six closed-form predictions including a control-arm floor, and a disconfirmation clause.
 The runner was pushed as a **public Kaggle kernel before any row was sampled** — the first
 externally-timestamped registration in either paper, a practice waves 4 and 5 then
-repeated (author field open; the lock section states exactly what that caveat costs). 495 calls ran; `wave3_analysis.py` replays every
+repeated (author field open at lock time — the registrations predate the byline this
+draft now carries, and the lock section states exactly what that caveat costs). 495 calls ran; `wave3_analysis.py` replays every
 count from the raw ledger in exact arithmetic and prints each label.
 
 - **Control-arm floor: TRIGGERED.** No proposal at any rung scored above the seed parent
