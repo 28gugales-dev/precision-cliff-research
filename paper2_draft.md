@@ -49,6 +49,21 @@ with its label, and no claim rests on it. A registered scheme-versus-bit-width c
 its inconclusive branch, so what is established is an effect of *this file's* quantization,
 replicated on an independently produced Q2_K.
 
+Five further registered waves then attack the result's generality, and each verdict below
+is the label its own locked rule printed. A capability-tier control runs three hosted
+tiers through the identical lineage protocol and returns **DISSOCIATION**: 0/120
+coordinate echoes against a registered ≤30% bound — stuck tiers emit zero-scoring
+templates (97.5% at the strongest tier), stuck 2-bit rungs copy, so weakness alone does
+not produce the failure mode. A harder-geometry transfer (Heilbronn triangles) holds the
+2-bit echo bound (63.1% vs a registered ≥55%) but *refutes* the reference rung's ceiling
+(46.9% vs ≤30%): the rung contrast survives off circle packing (*p* = 3.5e-3,
+descriptive); the absolute bands do not, because echo is driven jointly by precision and
+by whether the search has anywhere to go. A discrete-task wave (LABS) and two
+model-family waves (8-9B Llama and Gemma) return UNINFORMATIVE and UNDERPOWERED by their
+own floors — the tasks and models sat below the competence needed to test the question —
+and are reported as such rather than shelved; family generality beyond Qwen remains open,
+with a competence-matched wave registered.
+
 This matters because studies using a language model as a proposal operator increasingly run
 through managed agent runtimes that address models by *alias*. Which quantization is served
 is one of several things an alias leaves unattested — and it is now a variable the dependent
@@ -124,7 +139,12 @@ parents all share one lattice it can speak to radius variation only, and whether
 better-served proposer would have moved to a different construction is a question that
 design cannot reach. Both waves' registered decision rules return unusable
 verdicts — unclassified on wave 1, FAILED on wave 2 — and §3 reports both labels alongside
-the numbers they disqualify.
+the numbers they disqualify. Five later registered waves bound the claim's generality
+(§6, §8): a hosted capability ladder does not reproduce the failure mode (0/120, verdict
+DISSOCIATION), the rung *contrast* transfers to a second geometry while the absolute
+bands do not, and the transfers that could not be evaluated — two tasks and two model
+families that sat below the required competence — are reported under their own registered
+floor labels.
 
 **C2 — a forensic case study.** A thirty-invocation arm addressed only by alias, in which
 serving-signature and behavioral evidence together *mildly favour* an unattested serving
