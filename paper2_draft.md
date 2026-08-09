@@ -1480,7 +1480,12 @@ bound) finds valid outputs scoring *exactly zero* — three-plus collinear point
 tiers' signature failure is *ignoring the parent and emitting a template* — and the task
 chosen because a template scores zero on it (§3.6's transfer rationale) separates the
 two failure modes on a second substrate exactly as designed. A capability ladder does
-not reproduce the quantization ladder's failure mode even where it fails more often. The
+not reproduce the quantization ladder's failure mode even where it fails more often.
+
+![Heilbronn n=13, identical seed parent, zero improvements anywhere: quantized rungs
+copy (solid), hosted tiers emit zero-score templates (hatched). GGUF counts from
+`wave3_analysis.py`, tier counts from `wave4_analysis.py`; drawing script
+`figures/make_figures.py` computes nothing.](figures/fig_two_failure_modes.pdf) The
 scope limits are the prereg's own: served precision, sampling parameters, and serving
 path per tier are all unattested (C3); one date; one harness wrapper around a
 byte-identical prompt body; and the dissociation bounds the capability confound over the
@@ -2013,6 +2018,11 @@ count from the raw ledger in exact arithmetic and prints each label.
   valid outputs) is established on circle packing and directionally present on
   Heilbronn; the echo *bands* (≤30% healthy, ≥55% collapsed) are circle-packing
   figures and this paragraph is their correction.
+
+![Echo among valid outputs across tasks, Q2_K vs Q4_K_M on the same 14B GGUF ladder.
+The rung contrast transfers; the absolute bands do not, and LABS reverses under a
+fired control floor (descriptive only). Every count is printed by a released replay
+script; `figures/make_figures.py` only draws.](figures/fig_echo_transfer.pdf)
 - **Template check (5.5, no bound): 15.3% of Q2_K and 23.9% of Q4_K_M valid outputs
   score exactly zero** — the GGUF ladder does emit some template-like collinear output,
   at a fraction of the 97.5% rate the strongest hosted tier produced on the identical
