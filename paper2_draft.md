@@ -61,8 +61,11 @@ descriptive); the absolute bands do not, because echo is driven jointly by preci
 by whether the search has anywhere to go. A discrete-task wave (LABS) and two
 model-family waves (8-9B Llama and Gemma) return UNINFORMATIVE and UNDERPOWERED by their
 own floors — the tasks and models sat below the competence needed to test the question —
-and are reported as such rather than shelved; family generality beyond Qwen remains open,
-with a competence-matched wave registered.
+and are reported as such rather than shelved. A registered competence-matched retry
+(Phi-4 at 14.7B, Mistral-Small at 24B) also fell below its validity floor, so the
+family-generality limitation is **unresolved**: every non-Qwen family we tested, at up
+to 24B, sat below the task's format-competence floor, and the cliff's family scope is
+stated as an open limitation rather than estimated.
 
 This matters because studies using a language model as a proposal operator increasingly run
 through managed agent runtimes that address models by *alias*. Which quantization is served
@@ -2086,10 +2089,30 @@ Llama's 6 are. `wave7_analysis.py` prints UNDERPOWERED for both families, the co
 floors also fire, and the disconfirmation clause — which requires both families
 *evaluable* and refuted — does not. What wave 7 establishes is therefore a scope
 fact, not a transfer fact: the 8-9B open-weight class sits below this task's
-competence floor at every precision tested, so the family-generality question needs a
-14B-class non-Qwen model, and remains open until one is run. The power floor exists
-precisely so that this outcome reads as "could not test" rather than "no
-difference".
+competence floor at every precision tested. The power floor exists precisely so that
+this outcome reads as "could not test" rather than "no difference".
+
+**A competence-matched retry (wave 7b) then fired the branch its registration wrote
+for this exact outcome.** `wave7b_prereg_families_14b.md` (SHA-256 `cd043d63…`, public
+Kaggle dataset pushed before sampling) re-ran the identical protocol on Phi-4 (14.7B)
+and Mistral-Small-24B — the same size class as, and larger than, the Qwen model where
+the cliff lives. Both arms again miss the 20-valid-row floor: Phi-4 produced 9 valid
+packings in 100 loop calls, Mistral 2. The registered both-underpowered branch
+therefore holds: **the task's format-competence floor excluded every non-Qwen family
+we tested, at up to 24B**, and the family-generality limitation is stated as
+unresolved in the abstract's scope sentence, as that branch requires. Two unclaimable
+descriptives are still worth the ink. First, Phi-4 is the only non-Qwen model that
+*climbed* — four of its five Q2_K lineages improved past the seed (best 1.30, and one
+Q4_K_M lineage reached 2.1667) — and it echoed **zero** times at either rung, with its
+must-differ probe returning the instruction-sensitive branch. Second, across all four
+non-Qwen arms the 33 valid outputs split into Gemma's 18 (every one a parent echo, at
+both rungs) and the other families' 15 (not one echo). Whatever governs
+parent-copying, it is not bit-width alone: on these small samples it looks
+family-shaped, which is precisely what the registered FAMILY-DEPENDENT reporting rule
+anticipated and precisely what remains untested at adequate power. A family ladder at
+this task needs either a coder-tuned non-Qwen 14B that can hold the output format, or
+a format-forgiving task — both are named as open work, and no absolute figure from
+any arm above transports anywhere.
 
 Finally, §3's data comes from a locally-served open-weights ladder at N = 26, not from
 the alias-addressed runtime and not at §4's cells (N = 13, 21, 31). Two gaps, both real.
@@ -2153,6 +2176,7 @@ that merely repeats it.
 | §8 wave 3 (Heilbronn): control floor TRIGGERED → 5.1/5.2/5.3 UNINFORMATIVE; 5.4 echo Q2_K 186/295 = 63.1% HELD vs ≥55%, Q4_K_M 53/113 = 46.9% REFUTED vs ≤30%, conjunction REFUTED; Fisher 3.5e-3 (descriptive); template 15.3%/23.9%; 0/495 improvements; phantom-step rounding artifact | `wave3_output/precision_sweep_14b_heilbronn/candidates_precision_14b_heilbronn.jsonl` (495 rows), replayed by `wave3_analysis.py` with no arguments in exact arithmetic; agreement with all 33 kernel state files printed. Registration `wave3_prereg_heilbronn.md` + runner SHA `101b298c…`, pushed as public Kaggle kernel `sohamgugalet/precision-sweep-14b-heilbronn-wave3` before sampling — externally timestamped, author field open |
 | §8 wave 5 (LABS): control floor TRIGGERED → verdict UNINFORMATIVE, Branch C, no branch claimed; unclaimable descriptives echo 10/233 = 4.3% Q2_K vs 12/60 = 20.0% Q4_K_M (reversed), 0 improving departures anywhere, 0 symmetry variants | `wave5_output/precision_sweep_14b_labs/` ledger (495 rows), replayed by `wave5_analysis.py` with no arguments in exact integer arithmetic — every energy and echo recomputed from stored sequences, agreement with all 33 kernel state files printed (`gpu_crossing: single_card_fallback` recorded). Registration `wave5_prereg_labs.md` SHA `a1336cfd…`, runner SHA `d1739f6c…`, pushed as public kernel `sohamgugalet/precision-sweep-14b-labs-wave5` before sampling |
 | §8 wave 7 (family generality): UNDERPOWERED both families (llama valid 1/50 and 5/50; gemma 14/50 and 4/50, all under the registered 20-valid floor); control floors fired; disconfirmation clause does not fire; unclaimable descriptives — gemma 18/18 valid outputs are parent echoes at both rungs, llama 0/6 | `wave7_output/wave7_{llama31_8b,gemma2_9b}/` ledgers (100 rows each), replayed by `wave7_analysis.py` with no arguments (validity recomputed from coordinates, 10/10 state files agree per family). Registration `wave7_prereg_families.md` SHA `44244005…`, public Kaggle dataset `sohamgugalet/wave7-prereg-families` pushed before sampling; kernels `precision-sweep-llama31-8b-wave7`, `precision-sweep-gemma2-9b-wave7` public |
+| §8 wave 7b (competence-matched retry): UNDERPOWERED both families (phi-4 valid 6/50 and 3/50; mistral-24B 1/50 and 1/50) → registered both-underpowered branch holds; unclaimable descriptives — phi-4 0 echoes, 4/5 Q2_K lineages improved (best 1.30), must-differ instruction-sensitive; mistral 0 echoes in 2 valid | `wave7b_output/wave7b_{phi4_14b,mistral24b}/` ledgers (100 rows each), replayed by `wave7b_analysis.py` with no arguments, 10/10 state files agree per family. Registration `wave7b_prereg_families_14b.md` SHA `cd043d63…`, public Kaggle dataset `sohamgugalet/wave7b-prereg-families-14b` pushed before sampling; kernels `precision-sweep-phi4-14b-wave7b`, `precision-sweep-mistral24b-wave7b` public |
 | §6 item 4 self-audit and the failed repair: duration CV 0.0603 vs **0.0143** (wave 1) and 0.0692 vs **0.0200** (wave 2), ratios below the item's own one-third threshold, permutation *p* < 0.0001; the echo/non-echo CV split; wave-2 throughput ranges disjoint **and wave-1 ranges overlapping**; the ~92% cold-start ratio in all twelve rung × wave cells; the same-SHA hardware inversion (Q2_K 16.62 tok/s on P100 vs 22.48 on 2 × T4); the length dependence; and the bit-width non-monotonicity §4 cites | `sec6_cv_canary_audit.py`, run with no arguments. It reads both probe ledgers **and both 14B/7B ladder ledgers** — every figure above is computed there, including the ladder throughputs §4 cites, none quoted. The serving path is fixed by construction across the probe rows, so the firing is a **false positive** by design of the comparison |
 | §4 validity, failure taxonomy, families, scores, both tolerances | `arm_f_raw.json` `opus_alias` / `sonnet_bare` / `bare` rows, recomputed with `arm_f_repro.py` |
 | §4 fourth comparator: `trace` 63/70 valid (18/20, 28/30, 17/20), Fisher 1.1e-13 against `opus_alias` and 1.0e-16 pooled, comparator-vs-comparator *p* = 0.30 and 0.099 | `arm_f_raw.json` rows with `arm == "trace"`, scored by `sec4_independent_rescore.py`'s checker. **Pools the companion paper's pilot and `trace_v2` rows, which that paper forbids pooling**, because the released file carries no field separating them — stated in §4, and no claim rests on the arm |
