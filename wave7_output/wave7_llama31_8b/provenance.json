@@ -1,0 +1,31 @@
+{
+  "created": "2026-08-09 02:19:34",
+  "gpus": [
+    "Tesla P100-PCIE-16GB, 16384 MiB"
+  ],
+  "repo": "bartowski/Meta-Llama-3.1-8B-Instruct-GGUF",
+  "gens": 10,
+  "seeds": [
+    7101,
+    7102,
+    7103,
+    7104,
+    7105
+  ],
+  "temperature": 0.8,
+  "top_p": 0.95,
+  "runner_version": "wave7_llama31_8b_v1",
+  "purpose": "wave 7 family generality: llama31_8b, prereg sha 44244005bf272916",
+  "conditions": {
+    "q4_k_m": {
+      "sha256": "7b064f5842bf9532c91456deda288a1b672397a54fa729aa665952863033557c",
+      "bytes": 4920739232,
+      "filename": "Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf"
+    },
+    "q2_k": {
+      "sha256": "3f7f9265554ac91f1fb31c1b63b9cada4362533dfaa3f6e8dfc33c48d36909ce",
+      "bytes": 3179136416,
+      "filename": "Meta-Llama-3.1-8B-Instruct-Q2_K.gguf"
+    }
+  }
+}
