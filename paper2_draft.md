@@ -59,13 +59,13 @@ not produce the failure mode. A harder-geometry transfer (Heilbronn triangles) h
 (46.9% vs ≤30%): the rung contrast survives off circle packing (*p* = 3.5e-3,
 descriptive); the absolute bands do not, because echo is driven jointly by precision and
 by whether the search has anywhere to go. A discrete-task wave (LABS) and two
-model-family waves (8-9B Llama and Gemma) return UNINFORMATIVE and UNDERPOWERED by their
+model-family registrations (four non-Qwen models from 8B to 24B, the second a
+competence-matched retry of the first) return UNINFORMATIVE and UNDERPOWERED by their
 own floors — the tasks and models sat below the competence needed to test the question —
-and are reported as such rather than shelved. A registered competence-matched retry
-(Phi-4 at 14.7B, Mistral-Small at 24B) also fell below its validity floor, so the
-family-generality limitation is **unresolved**: every non-Qwen family we tested, at up
-to 24B, sat below the task's format-competence floor, and the cliff's family scope is
-stated as an open limitation rather than estimated.
+and are reported as such rather than shelved. The family-generality limitation is
+therefore **unresolved**: every non-Qwen family we tested, at up to 24B, sat below the
+task's format-competence floor, and the cliff's family scope is stated as an open
+limitation rather than estimated.
 
 This matters because studies using a language model as a proposal operator increasingly run
 through managed agent runtimes that address models by *alias*. Which quantization is served
@@ -145,7 +145,7 @@ verdicts — unclassified on wave 1, FAILED on wave 2 — and §3 reports both l
 the numbers they disqualify. Five later registered waves bound the claim's generality
 (§6, §8): a hosted capability ladder does not reproduce the failure mode (0/120, verdict
 DISSOCIATION), the rung *contrast* transfers to a second geometry while the absolute
-bands do not, and the transfers that could not be evaluated — two tasks and two model
+bands do not, and the transfers that could not be evaluated — two tasks and four model
 families that sat below the required competence — are reported under their own registered
 floor labels.
 
@@ -2097,7 +2097,14 @@ Gemma produced 14 and 4 — and, as an unclaimable descriptive, **all 18 of Gemm
 valid outputs at both rungs are coordinate-exact parent echoes**, while none of
 Llama's 6 are. `wave7_analysis.py` prints UNDERPOWERED for both families, the control
 floors also fire, and the disconfirmation clause — which requires both families
-*evaluable* and refuted — does not. What wave 7 establishes is therefore a scope
+*evaluable* and refuted — does not. One defect in the locked registration itself,
+caught after the fact and disclosed here because the file is public and immutable: its
+informational prior-state section quotes Qwen echo figures from working notes
+("94% / 60% / 51% against 15% / 10% / 24%") where ledger replay gives 94%/15% for the
+registered wave but **79% (19/24) against 6% (1/17)** for the fresh wave and 75%
+against 43% for the IQ2 pair. The discrepancy sits in a section that states priors,
+not in any registered bound, floor, or verdict — none of which reference those
+figures — and the correct values are the ones the figures in this paper draw from. What wave 7 establishes is therefore a scope
 fact, not a transfer fact: the 8-9B open-weight class sits below this task's
 competence floor at every precision tested. The power floor exists precisely so that
 this outcome reads as "could not test" rather than "no difference".
@@ -2114,7 +2121,8 @@ unresolved in the abstract's scope sentence, as that branch requires. Two unclai
 descriptives are still worth the ink. First, Phi-4 is the only non-Qwen model that
 *climbed* — four of its five Q2_K lineages improved past the seed (best 1.30, and one
 Q4_K_M lineage reached 2.1667) — and it echoed **zero** times at either rung, with its
-must-differ probe returning the instruction-sensitive branch. Second, across all four
+must-differ probe returning the instruction-sensitive branch (vacuously so: that branch
+exists to explain loop echo, and Phi-4 produced none for instruction to explain). Second, across all four
 non-Qwen arms the 33 valid outputs split into Gemma's 18 (every one a parent echo, at
 both rungs) and the other families' 15 (not one echo). Whatever governs
 parent-copying, it is not bit-width alone: on these small samples it looks

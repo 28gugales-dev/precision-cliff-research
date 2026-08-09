@@ -188,7 +188,7 @@ def analyse_family(fam, out_dir):
                            " -> instruction-SENSITIVE" if rate <= 0.2
                            else " -> inconclusive")
             print(f"  {quant}: probes {len(qm)}, valid {len(vv)}, "
-                  f"echo-under-differ {ech}/{len(vv) or 1}{tag}")
+                  f"echo-under-differ {ech}/{len(vv)}{tag}")
 
 for fam, out_dir in FAMILIES.items():
     analyse_family(fam, out_dir)
