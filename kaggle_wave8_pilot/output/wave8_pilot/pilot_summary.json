@@ -1,0 +1,35 @@
+{
+  "weight_sha256": "c1e659736d89ac1065fb495330fb824d94001974a4bfa78e7270e43476a8d940",
+  "quant": "q4_k_m",
+  "probes_per_candidate": 10,
+  "candidates": {
+    "k1": {
+      "parent_score": 0.0003081623880000217,
+      "valid": 8,
+      "improved": 1,
+      "echo": 6,
+      "improve_rate": 0.1
+    },
+    "k10": {
+      "parent_score": 0.0008565663840000015,
+      "valid": 10,
+      "improved": 0,
+      "echo": 3,
+      "improve_rate": 0.0
+    },
+    "k100": {
+      "parent_score": 0.0018554421234999903,
+      "valid": 10,
+      "improved": 0,
+      "echo": 5,
+      "improve_rate": 0.0
+    },
+    "k1000": {
+      "parent_score": 0.00354419586599998,
+      "valid": 9,
+      "improved": 0,
+      "echo": 2,
+      "improve_rate": 0.0
+    }
+  }
+}
