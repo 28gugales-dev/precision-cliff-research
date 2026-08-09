@@ -1,0 +1,364 @@
+{
+  "q4_k_m": {
+    "lineages": 8,
+    "per_seed": [
+      {
+        "seed": 3101,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 12,
+        "echo": 6
+      },
+      {
+        "seed": 3102,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 15,
+        "echo": 10
+      },
+      {
+        "seed": 3103,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 15,
+        "echo": 8
+      },
+      {
+        "seed": 3104,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 14,
+        "echo": 2
+      },
+      {
+        "seed": 3105,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 15,
+        "echo": 7
+      },
+      {
+        "seed": 3106,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 14,
+        "echo": 10
+      },
+      {
+        "seed": 3107,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 13,
+        "echo": 5
+      },
+      {
+        "seed": 3108,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 15,
+        "echo": 5
+      }
+    ],
+    "mean_best": 0.009087361293,
+    "pop_std_best": 0.0,
+    "mean_accepted_steps": 1.0,
+    "frac_improved": 1.0,
+    "viability": "120/120",
+    "validity": "113/120",
+    "echo_among_valid": "53/113",
+    "departures": 60,
+    "zero_score_among_valid": "27/113",
+    "mustdiffer_n": 0,
+    "mustdiffer_valid": 0
+  },
+  "q2_k": {
+    "lineages": 25,
+    "per_seed": [
+      {
+        "seed": 3201,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 13,
+        "echo": 9
+      },
+      {
+        "seed": 3202,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 12,
+        "echo": 6
+      },
+      {
+        "seed": 3203,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 12,
+        "echo": 10
+      },
+      {
+        "seed": 3204,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 11,
+        "echo": 7
+      },
+      {
+        "seed": 3205,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 12,
+        "echo": 9
+      },
+      {
+        "seed": 3206,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 14,
+        "echo": 7
+      },
+      {
+        "seed": 3207,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 13,
+        "echo": 7
+      },
+      {
+        "seed": 3208,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 13,
+        "echo": 11
+      },
+      {
+        "seed": 3209,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 9,
+        "echo": 6
+      },
+      {
+        "seed": 3210,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 13,
+        "echo": 7
+      },
+      {
+        "seed": 3211,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 10,
+        "echo": 7
+      },
+      {
+        "seed": 3212,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 10,
+        "echo": 6
+      },
+      {
+        "seed": 3213,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 11,
+        "echo": 7
+      },
+      {
+        "seed": 3214,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 12,
+        "echo": 9
+      },
+      {
+        "seed": 3215,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 14,
+        "echo": 8
+      },
+      {
+        "seed": 3216,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 12,
+        "echo": 8
+      },
+      {
+        "seed": 3217,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 12,
+        "echo": 5
+      },
+      {
+        "seed": 3218,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 15,
+        "echo": 10
+      },
+      {
+        "seed": 3219,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 12,
+        "echo": 7
+      },
+      {
+        "seed": 3220,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 12,
+        "echo": 7
+      },
+      {
+        "seed": 3221,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 11,
+        "echo": 7
+      },
+      {
+        "seed": 3222,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 11,
+        "echo": 8
+      },
+      {
+        "seed": 3223,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 11,
+        "echo": 6
+      },
+      {
+        "seed": 3224,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 11,
+        "echo": 6
+      },
+      {
+        "seed": 3225,
+        "best": 0.009087361293,
+        "gens": 15,
+        "accepted_steps": 1,
+        "improved": true,
+        "viable": 15,
+        "valid": 9,
+        "echo": 6
+      }
+    ],
+    "mean_best": 0.009087361293,
+    "pop_std_best": 0.0,
+    "mean_accepted_steps": 1.0,
+    "frac_improved": 1.0,
+    "viability": "375/375",
+    "validity": "295/375",
+    "echo_among_valid": "186/295",
+    "departures": 109,
+    "zero_score_among_valid": "45/295",
+    "mustdiffer_n": 0,
+    "mustdiffer_valid": 0
+  }
+}
