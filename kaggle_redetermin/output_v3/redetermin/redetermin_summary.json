@@ -1,0 +1,22 @@
+{
+  "claim": "pinned stack regenerates the same outcomes (paper 2 s3)",
+  "rows_tested": 112,
+  "rows_expected": 112,
+  "coverage": "112 of 224 original generations (q4_k_m + q2_k)",
+  "counts": {
+    "MATCH": 112
+  },
+  "skipped_rungs": {
+    "q8_0": "15.7 GB exceeds single-GPU memory (weights alone need both T4s); outside minimal rung set for the claim",
+    "q3_k_m": "interior rung; Q4_K_M + Q2_K bracket the cliff and suffice"
+  },
+  "gpus": [
+    "Tesla T4",
+    "Tesla T4"
+  ],
+  "arch_ok": true,
+  "llama_cpp_version": "0.3.34",
+  "llama_cpp_pin": "0.3.34",
+  "build_unverified": true,
+  "verdict": "SUPPORTED"
+}
