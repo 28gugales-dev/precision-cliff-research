@@ -1770,6 +1770,19 @@ roughly a hundred single-token queries; we note it as the cheapest available cha
 detector, while recording that it addresses identity rather than quantization, so it does
 not substitute for the preceding work on our axis.
 
+The attestation side of C3 is a crowded line, and our position in it is confirmatory
+rather than novel. Cai et al. (arXiv:2504.04715) audit model substitution in commercial
+LLM APIs directly, show that software-only detection is unreliable against exactly the
+substitution class that includes quantized serving, and arrive at trusted execution
+environments as the only route to provable model integrity; Zhang et al.
+(arXiv:2607.20860) extend the audit to gateway routing dilution under a query budget;
+Schnabl et al. (arXiv:2506.23706) build the TEE half, running verifiable benchmarks
+inside enclaves so that neither provider nor auditor need trust the other. Item 4 of §6's
+standard — attestation of the served decode path — is therefore not our invention: it is
+this line's conclusion restated as a reporting obligation, and what §§3-4 add to it is a
+measured demonstration, inside a selection loop, of how much the unattested variable can
+matter.
+
 Two 2026 quantization studies bracket §3's result and sharpen it by contrast. Rababah,
 Akcora and Leung (arXiv:2607.08734) introduce *correctness agreement* — the overlap of
 correct predictions between base and quantized model — and show behavioral divergence
@@ -1795,6 +1808,17 @@ different amount of work at another, with no signal that the amount changed. We 
 shown this varies smoothly with bit width, and the fixed-parent control is the reason to
 state the endpoint rather than a gradient.
 
+The LLM-evolution literature has meanwhile begun cataloguing its own failure modes, and
+the catalogue does not contain ours. PACEvolve (Yan et al., arXiv:2601.10657) names three
+— context pollution, mode collapse in sampling, and weak inter-generation collaboration —
+all observed at full precision and all addressed with orchestration machinery; a
+degraded-proposer failure in which the *model itself* silently returns its parent appears
+nowhere in the taxonomy, which is consistent with our reading that it is a property of
+the serving substrate, not of the evolutionary scaffold. Lin et al. (arXiv:2606.21090)
+document a rise-and-collapse failure in self-*training* loops; the mechanism (reward
+over-optimization) is unrelated, but it is the nearest published precedent for a
+selection loop degrading through a variable its own metrics do not surface.
+
 The quantization-effects literature measures degradation on static single-shot benchmarks.
 The substantive fit is Marchisio et al. (arXiv:2407.03211), whose multilingual study finds
 that automatic metrics systematically *understate* quantization harm — a 1.7% average drop
@@ -1807,6 +1831,25 @@ different scheme family from GPTQ/AWQ, and the antecedent study lists GPTQ, AWQ 
 bitsandbytes among the schemes it did *not* test. §3 places the quantization gradient
 inside a selection loop and finds the axis it moves — the variation a proposal carries away
 from its parent — is not the axis any of these benchmarks score.
+
+Four 2026 entries sharpen that gap without closing it. Kurt (arXiv:2601.14277) evaluates
+the same llama.cpp quantization ladder we sweep — on the same Llama-3.1-8B-Instruct our
+wave 7 registration adopts — across standard benchmarks and hardware metrics, one-shot
+throughout; it is the closest published instrument to ours and it does not run a loop.
+The "Quantization Meets Reasoning" line (Li et al., arXiv:2501.03035 and its expanded
+companion arXiv:2505.11574) localizes low-bit damage to mathematical reasoning and shows
+targeted fine-tuning recovers it, and Lv et al. (arXiv:2601.14888) systematize when
+quantization-aware training rescues reasoning at low bit widths — both establishing that
+*reasoning-shaped* capability is disproportionately fragile under compression, which is
+the static-benchmark shadow of the effect §3 measures dynamically. Chang et al.
+(arXiv:2506.12044) explain *which inputs* break low-bit models via residual-stream
+magnitudes, a mechanistic thread a future account of parent-echo would need to engage.
+Closest to our setting, Mix-Quant (Lu et al., arXiv:2605.20315) is to our knowledge the
+only published treatment of quantization specifically for *agentic* inference — and its
+finding that the decode phase, not prefill, is the precision-sensitive one is convergent
+with a proposal loop failing at generation time. None of these places a quantized
+proposer inside an iterative search and measures what happens to novelty; that remains
+the gap this paper occupies.
 
 Evaluation-variance studies quantify seed and prompt sensitivity: Madaan et al.
 (arXiv:2406.10229) measure seed variance and benchmark noise across 280 models on 13
@@ -1994,6 +2037,18 @@ single flipped symbol is a complete departure) are recorded in `wave5_output/` w
 verdict label attached. Two of the three transfer tasks we designed were too hard for
 the model that had to climb them; that is a fact about our task calibration, disclosed
 as such, and the LABS registration predicted its own failure mode in §8b before running.
+
+**One axis remains open by design and its registration is already locked.** Every GGUF
+figure above comes from a single model family. `wave7_prereg_families.md` (SHA-256
+`44244005…`, published as a public Kaggle dataset before sampling) registers the same
+circle-packing protocol, byte-identical prompts and evaluator, on Llama-3.1-8B-Instruct
+and Gemma-2-9B-it — per-family directional contrasts only, no absolute band imported
+from any prior task or family (the wave-3 lesson applied structurally), echo primary not
+floor-gated, and a disconfirmation clause committing us to qualify §3's claims as
+Qwen-family-specific, including in the abstract, if the contrast is refuted in both
+families. At submission of this draft the kernels are in flight; whatever they return
+will be reported in this section's format, verdict labels printed by the released
+`wave7_analysis.py` and not written by us.
 
 Finally, §3's data comes from a locally-served open-weights ladder at N = 26, not from
 the alias-addressed runtime and not at §4's cells (N = 13, 21, 31). Two gaps, both real.
