@@ -1,6 +1,6 @@
 # ============================================================================
 # Paper 1 figures. Deterministic: reads only n_sweep_forecast.json and
-# arm_f_candidates.jsonl, writes fig1_trapzones.png, fig2_packings.png,
+# arm_f_candidates_v2.jsonl, writes fig1_trapzones.png, fig2_packings.png,
 # fig3_armT.png at 150 dpi. No network, no randomness.
 # ============================================================================
 import json
@@ -48,7 +48,7 @@ def fig1():
 
 def load_candidates():
     out = []
-    for line in (ROOT / "arm_f_candidates.jsonl").read_text(encoding="utf-8").splitlines():
+    for line in (ROOT / "arm_f_candidates_v2.jsonl").read_text(encoding="utf-8").splitlines():
         if line.strip():
             out.append(json.loads(line))
     return out

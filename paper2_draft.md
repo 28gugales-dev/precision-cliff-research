@@ -1,6 +1,8 @@
 # Served Precision Is Part of the Model: A Quantization Cliff in Proposal Variation, and the Limits of Reproducibility in Agent-Runtime LLM Studies
 
 **Soham Shailesh Gugale**
+Independent Researcher
+`28gugales@gmail.com`
 
 
 ## Abstract
@@ -192,7 +194,11 @@ proposal is a list of `[x, y, r]` triples; validity is a finite set of arithmeti
 inequalities; the objective is a sum. The evaluator is deterministic and runs offline,
 so every source of run-to-run variance lives on the model side of the interface.
 
-*Companion paper.* Our companion paper establishes why this task is precision-sensitive
+*Companion paper.* Two prior documents are cited throughout and are distinct: the
+*companion paper* is the tier-substitution forensic study released alongside this one;
+the *antecedent study* is the combined technical report
+(`precision-cliff-paper-combined.md`) whose executed quantization results §3 condenses.
+Our companion paper establishes why this task is precision-sensitive
 rather than merely difficult. Proposals concentrate on a small family of
 *constructible* templates — a k × k grid of radius 1/(2k), optionally extended with
 fillers of radius (√2 − 1)/(2k) — whose values are exact rationals and algebraic
@@ -238,7 +244,9 @@ here: every rung figure comes from the antecedent's runs. One dataset appears he
 antecedent does not analyse — the fixed-parent dispersion probe reported below, which we
 bring in because it controls a confound in the antecedent's own echo measurement.
 
-**What carries this section, stated once and up front.** This section reports a great many
+### 3.1 What carries this section, stated once and up front
+
+This section reports a great many
 numbers and labels most of them descriptive. That is deliberate and it is easy to misread as
 a section with no claim in it, so here is the spine. **Two registered predictions held, and
 they are what the claim rests on.** The first is the fresh-seed echo bound — `q2_k >= 60%`,
@@ -322,11 +330,14 @@ stated definition returns 1/22. The discrepancy is one row at a definitional bou
 ("26 of 27 circles unchanged") and affects no claim. We record it rather than quietly
 restating the number.
 
-**Ladder and protocol** (combined §3.4). Proposers: **Qwen2.5-Coder-7B-Instruct** and
+### 3.2 Ladder and protocol (combined §3.4)
+
+Proposers: **Qwen2.5-Coder-7B-Instruct** and
 **Qwen2.5-Coder-14B-Instruct**, official Qwen GGUF releases, served locally through
 llama.cpp on 2 × NVIDIA T4, with a SHA-256 hash of each weight file recorded in the run's
 provenance log. Task: the same benchmark as §2 at **N = 26 in the unit square**; every
-lineage starts from the same seeded valid parent, a trivial 6 × 5 grid scoring 0.900, so
+lineage starts from the same seeded valid parent — 26 uniform-radius circles on a 6 × 5
+lattice (30 sites, four left empty), summed radii 0.89999, written as 0.900 throughout — so
 every lineage has a floor. Sampling: temperature 0.8, top-p 0.95, a deterministic
 per-call seed, at most 1,200 new tokens in a 4,096-token context, one bare chat
 completion per proposal — this condition is *not* agentic, which removes the
@@ -345,8 +356,9 @@ quantization algorithm* rather than indexing it independently. Everything in thi
 is therefore a **Q2_K claim, not yet a bit-width claim** — a distinction the IQ2 control
 below turns from a caveat into a measurement.
 
-**At 7B the founding hypothesis failed, and the antecedent study says so** (combined
-§5.9). Viability — a proposal that parses and emits exactly the requested count — was
+### 3.3 At 7B the founding hypothesis failed, and the antecedent study says so (combined §5.9)
+
+Viability — a proposal that parses and emits exactly the requested count — was
 flat from FP16 down through Q3_K_M, a 4× compression: 7/50, 6/50, 9/50, 7/50, with all
 pairwise Wilson intervals overlapping and FP16 versus Q3_K_M at Fisher *p* = 1.0. The
 precision threshold the project was founded on is absent over the entire usable GGUF
@@ -369,7 +381,9 @@ sits 29% below the canonical anchored value for this benchmark, 2.5414, which th
 frontier-tier arms treat as a floor. At this scale the
 proposer sits below the floor at which precision could matter.
 
-**At 14B, a cliff — in proposal variation, not in viability** (combined §5.9). Scaling lifts the
+### 3.4 At 14B, a cliff — in proposal variation, not in viability (combined §5.9)
+
+Scaling lifts the
 format floor: viability runs 22/50, 22/50, 24/50, 19/50 across Q8_0 / Q4_K_M / Q3_K_M /
 Q2_K, all four intervals overlapping, against 87/200 versus 38/200 pooled for the
 scale contrast (Fisher *p* = 1.7e-7). That 38/200 is **rung-matched** to the 14B ladder —
@@ -500,7 +514,9 @@ rows runs 0/33 (fresh Q4_K_M) → 2/22 (IQ2_M) → 5/18 (imatrix Q2_K) → 15/26
 (official Q2_K). A validity-filter explanation predicts mutation-dominated invalid rows;
 the invalid rows are copy-dominated.
 
-**A fixed-parent control narrows the contrast on the three rungs it covers.** Q8_0 was
+### 3.5 A fixed-parent control narrows the contrast on the three rungs it covers
+
+Q8_0 was
 *registered* as a fourth condition — both waves list it under `rungs` in `provenance.json` —
 and in both waves it was never attempted: each `provenance.json` records the reason verbatim
 as `"q8_0": {"skipped": "needs 2 gpus, have 1"}`. The 8-bit weight file did not fit the
@@ -743,7 +759,9 @@ history the loop includes, so the two conditions are not interchangeable, and th
 the condition this paper's argument is about. It is, however, the better-controlled
 comparison on the one axis where the loop design is confounded.
 
-**What the loop actually did: search progress at the lineage level.** Every measure to
+### 3.6 What the loop actually did: search progress at the lineage level
+
+Every measure to
 this point is a property of a single call — was this output viable, valid, an echo of its
 parent. None of them reports what the *loop* did with those calls, which is the quantity a
 practitioner running a discovery loop is actually paying for. We close §3 with that
@@ -819,8 +837,9 @@ legitimate where pooling a ladder with a probe would not be, and six parents spa
 | Q2_K | 133 | 10 | **8/10 (80%)** | [44%, 97%] |
 
 Fisher on 8/10 against 60/74 returns *p* = 1.00. Per parent, the 2-bit rung matches
-everywhere it has data — 2/2 at 0.880, 1/2 at 0.900, 2/2 at 1.040, 3/4 at the hardest parent
-1.650 against 6/9 and 4/6 there — and its departures are **not** drawn from easier parents:
+everywhere it has data — 2/2 at 0.880 against Q4_K_M's 21/23 (91%), 1/2 at 0.900 against
+10/11, 2/2 at 1.040 against 8/9 (89%), 3/4 at the hardest parent
+1.650 against Q4_K_M's 6/9 (67%) and Q3_K_M's 4/6 there — and its departures are **not** drawn from easier parents:
 4 of its 10 sit at that hardest parent, 40% of its sample against 12% of Q4_K_M's.
 
 Scored against a decision rule we wrote for this quantity in an unlocked design note
