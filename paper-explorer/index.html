@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Precision-cliff research atlas</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="mark"></span>
+    <h1>Precision-cliff research atlas</h1>
+  </div>
+
+  <nav class="tabs" id="tabs">
+    <button class="tab is-active" data-view="paper1">Paper 1 atlas</button>
+    <button class="tab" data-view="paper2">Paper 2 atlas</button>
+    <button class="tab" data-view="concept">Concept graph</button>
+    <button class="tab" data-view="about">About</button>
+  </nav>
+
+  <div class="search">
+    <input id="search" type="search" placeholder="Search nodes…" autocomplete="off" spellcheck="false">
+    <span id="search-count" class="search-count"></span>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="stage" id="stage">
+    <div class="stage-head">
+      <div>
+        <h2 id="stage-title">Paper 1 atlas</h2>
+        <p id="stage-sub" class="muted"></p>
+      </div>
+      <div class="stage-actions">
+        <button id="btn-reset" class="ghost" title="Reset zoom">Reset view</button>
+      </div>
+    </div>
+
+    <div class="canvas-wrap" id="canvas-wrap">
+      <svg id="graph"></svg>
+      <div id="empty" class="empty hidden"></div>
+      <div id="legend" class="legend"></div>
+      <div id="linktip" class="linktip hidden"></div>
+    </div>
+
+    <div id="about" class="about hidden"></div>
+  </section>
+
+  <aside class="panel" id="panel">
+    <div class="panel-empty" id="panel-empty">
+      <h3>Nothing selected</h3>
+      <p class="muted">Click a node in the graph to inspect its design, result and connections. Drag nodes to rearrange, scroll to zoom.</p>
+    </div>
+    <div class="panel-body hidden" id="panel-body"></div>
+  </aside>
+</main>
+
+<div id="toast" class="toast hidden">copied</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

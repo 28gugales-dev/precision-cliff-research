@@ -1,0 +1,1460 @@
+{
+  "papers": [
+    {
+      "id": "paper1",
+      "title": "A Closed Form for What the Model Emits",
+      "claim": "In the unconditioned zero-shot, code-free proposal regime — one call, no parent program, no fitness feedback, no evaluator in context — a weak-tier language model does not search the circle-packing solution space; it emits a grid-with-corner-fillers template and truncates it, even where a provably better construction in the same recipe family is one parameter away. The behaviour admits a closed form: a nearest-square order k*(N) = round(√N) with a value function V(k, m) = k/2 + m(√2 − 1)/(2k) and a truncation value T(k, N) = N/(2k) identify the empirical modal output — which template, and hence its exact multi-decimal value — at all seven tested N, stated before sampling, with per-sample agreement equal to the modal frequency itself (56–86% by cell) against a round-number baseline of 2 of 69 valid samples. Two scope conditions are load-bearing and both were established by preregistered extensions whose falsifiers triggered: the extend branch of the rule survives only at m ≤ 1 (at m ≥ 4 the model moves up to the (k*+1) rectangle grid), and the anchoring does not transfer to parent-conditioned calls — given a provably better in-family parent, 0 of 26 valid mutation samples return to the anchor. Across three nominal tiers, constructive ambition rises monotonically while execution validity rises then collapses (78% → 100% → 13%), and a recipe-family choice probe decomposes the mechanism: handed the argmax explicitly the model chooses it but cannot execute it, so the template is less what the model prefers than what it can reliably build."
+    },
+    {
+      "id": "paper2",
+      "title": "Served Precision Is Part of the Model",
+      "claim": "Quantizing a proposer's weights can leave every metric a discovery loop watches unchanged while collapsing the variation the loop depends on. On circle packing at N = 26 with Qwen2.5-Coder-14B served locally through llama.cpp on SHA-256-pinned weight files, degrading the quantization ladder moves viability (22/22/24/19 of 50) and validity (18/20/19/18 of 50) by no amount detectable at n = 50 per rung, while at the Q2_K rung the proposer very largely stops departing from its parent: coordinate-verified parent echo runs 17/18 (94%) at Q2_K against 8/57 (14%) pooled across the upper three rungs, and the registered fresh-seed bound (q2_k ≥ 60%, q4_k_m ≤ 35%), written into the runner before execution, held on five never-sampled seeds at 79% (19/24) against 6% (1/17). A registered must-differ probe returned 5 of 5 echoes under an explicit prohibition, so the failure is not reachable by instruction. The failed proposals are not garbage — they are coherent, well-formed near-copies, which is why every pass/fail instrument reports health, and why final best score after ten generations does not separate the rungs anywhere even though the 2-bit rung takes 1 accepted hill-climb step in 50 calls against 14–16 at the upper three. A fixed-parent control bounds rather than extends the result (33% vs 92% in the matched band), the registered scheme-versus-bit-width control returns its inconclusive branch, and five later registered waves scope the generality: a hosted capability ladder returns DISSOCIATION (0/120 echoes), a Heilbronn transfer holds the 2-bit bound (63.1%) but refutes the reference rung's ceiling (46.9%), and LABS plus four non-Qwen families return UNINFORMATIVE and UNDERPOWERED by their own floors, leaving family generality an open limitation. Because managed agent runtimes address models only by alias, which quantization is served is unattested — and a re-snapshot six days later returned 30/30 valid where the original arm returned 4/30, so the hypothesis pair the forensic case study poses becomes untestable rather than merely open."
+    }
+  ],
+  "arms": [
+    {
+      "id": "p1_claim_closed_form",
+      "paper": "paper1",
+      "label": "Claim — the closed form names the modal output in advance",
+      "kind": "claim",
+      "design": "The paper's first contribution: k*(N) = round(√N) with V(k, m) and T(k, N) identify the value a weak-tier proposer emits most often at a given N, from the problem parameters alone, before sampling. Point predictions were registered with prompt hashes and tested out of sample on two containers, a square and a 1 × a rectangle.",
+      "result": "At all seven tested square N the predicted value is the empirical modal output, and the on-prediction rate equals the modal frequency to within one sample (56–86% by cell). Pooled over the four discriminating square cells the full ledger gives 41/57 on-prediction and 2/57 rival; the rectangle gives 5/11 on-prediction and 0/11 rival.",
+      "verdict": "held, with scope narrowed twice by preregistered extensions",
+      "caveats": "Weak-tier regularity, single vendor, unconditioned calls only; the extend branch is confirmed at m ≤ 1 and disconfirmed at m ≥ 4; the order rule itself is a definition rather than a fitted discovery.",
+      "stats": {
+        "cells": "N=13,17,21,31,35,37,43",
+        "mode_match": "7/7",
+        "per_sample": "56-86%",
+        "pooled_on_prediction": "46% (47/102)"
+      }
+    },
+    {
+      "id": "p1_claim_tier_inversion",
+      "paper": "paper1",
+      "label": "Claim — three attractor families and a validity inversion",
+      "kind": "claim",
+      "design": "Holding prompt, container and scoring fixed, the nominal proposer tier was varied across the three cells that discriminate hardest between prediction and family optimum (N = 13, 21, 31, all inside trap zones). The claim is that the tiers do not merely differ in success rate but attempt qualitatively different construction families.",
+      "result": "Ambition rises monotonically — truncated template, perturbed multi-radius hybrid, recursive gasket — while validity rises then collapses: 78% → 100% → 13% at the primary 10⁻⁶ tolerance, 64% → 90% → 13% at 10⁻⁹, and 83% → 100% → 13% on the matched three cells. Post-hoc diagnostics operationalize ambition: median distinct radii 1 → 2 → 3, median off-lattice centre fraction 0.08 → 0.43 → 0.95.",
+      "verdict": "descriptive — a boundary condition on the main result, not an independent second finding",
+      "caveats": "Monotone in ambition only. The top tier was addressed through a bare serving alias whose weights binding is a vendor promise, so the third leg is not a statement about any released model version; tier denominators are unmatched, which is why the matched row is reported separately.",
+      "stats": {
+        "validity_1e6": "78% -> 100% -> 13%",
+        "validity_1e9": "64% -> 90% -> 13%",
+        "matched_cells": "83% -> 100% -> 13%"
+      }
+    },
+    {
+      "id": "p1_claim_template_executability",
+      "paper": "paper1",
+      "label": "Claim — the template is what the model can build, not what it prefers",
+      "kind": "claim",
+      "design": "The paper's defensible core after arms MU and CH: the anchor is an executability constraint rather than a preference. Arm CH removes the computation burden by printing the whole recipe family including the argmax; arm MU removes the need to construct by handing over a better parent.",
+      "result": "Handed the argmax, the model chooses it in a large majority of invocations — all 31 invalid CH rows carry the family's filler radius — but 30 of those 31 misplace the fillers, so the valid-conditioned modal stays on the template. Handed a better in-family parent, 0 of 26 valid mutation samples return to the anchor while keep-or-improve and grid-order inheritance are both 26/26.",
+      "verdict": "held — the arithmetic-tractability alternative is wrong about selection and right about instantiation",
+      "caveats": "Rests on two arms whose registered metrics carry a survivorship artifact (CH's modal-among-valid scorer conditions on exactly the variable that separates the readings) and on cell counts of 2, 5 and 7 valid of 15.",
+      "stats": {
+        "ch_invalid_attempting_argmax": "31/31",
+        "ch_filler_misplacement": "30/31",
+        "mu_anchor_return": "0/26"
+      }
+    },
+    {
+      "id": "p1_closed_form",
+      "paper": "paper1",
+      "label": "The closed form itself — order rule, V(k,m), T(k,N), trap zones",
+      "kind": "analysis",
+      "design": "A k×k grid places one circle per cell centre at r = 1/(2k); m fillers sit on interior grid vertices at r = (√2 − 1)/(2k), 0 ≤ m ≤ (k−1)². Hence V(k, m) = k/2 + m(√2 − 1)/(2k); when N < k² the observed behaviour is truncation rather than dropping order, giving T(k, N) = N/(2k). The order rule k*(N) = ⌊√N + ½⌋ is stated as a definition; the falsifiable content is the branch rule on the sign of N − k*².",
+      "result": "The forms reproduce every previously reported anchor with no fitting — V(5,1) = 2.5414214, V(5,2) = 2.5828427, V(5,0) = 2.500, T(5,23) = 2.300, V(4,7) = 2.3624369. Trap zones follow as N ∈ [k²−k+1, k²−1]: [13,15], [21,24], [31,35], [43,48], [57,63] clipped to [57,60]. Worst-in-zone penalties fall from 8.51% at N = 13 to 4.66% at N = 57. Every closed-form value is recomputed by an independent linear program on 83 configurations, both branches, every k in 2…7, drift below 10⁻⁹.",
+      "verdict": "descriptive — arithmetically exact and independently gated",
+      "caveats": "Branch label and penalty are not coextensive: 4 of the 22 trap-branch N in range cost nothing, and N = 24 retains a 0.59% residual (T(5,24) = 2.4000000 vs V(4,8) = 2.4142136). The published-bound comparison is checkable only to N = 30, where the bound table stops, leaving three of five trap zones unchecked.",
+      "stats": {
+        "lp_configs": "83",
+        "lp_drift": "<1e-9",
+        "trap_zones": "[13,15],[21,24],[31,35],[43,48],[57,60]",
+        "worst_penalties": "8.51%, 7.03%, 6.01%, 5.25%, 4.66%"
+      }
+    },
+    {
+      "id": "p1_prereg_protocol",
+      "paper": "paper1",
+      "label": "Preregistration protocol and scoring conventions",
+      "kind": "control",
+      "design": "For each cell the prompt is pinned and its SHA-256 digest written to disk before sampling (the N = 13 square prompt hashes to 32db485b…). Predictions P1–P5 sit in the header of arm_f_repro.py, with standalone registration files for arms S, O, T, M and MU. Raw outputs are stored verbatim including failures; scoring is deterministic and local. Two scoring conventions were fixed in advance: dual validity tolerances (10⁻⁹ and 10⁻⁶, with 10⁻⁶ primary) and a 2×10⁻³ value-matching window.",
+      "result": "Registration ordering is checkable — each preregistration commit is a git ancestor of the sampling it governs (arm M at e528c6b, arm MU at 2b7d202, the faithfulness rubric frozen at e181d2a on 2026-08-01 03:56:56). Four properties are disclosed rather than repaired: temperature/top-p/top-k are not exposed by the runtime; the alias-to-weights binding is a promise not a hash; the digests lock only a fragment of the conditioning context because the subagent inherits instruction files outside the task prompt; and hash coverage is incomplete.",
+      "verdict": "descriptive — adopted standard, with itemized gaps",
+      "caveats": "The N = 43 bare hash appears in no preregistration and no prompts file, existing only in the ledger; no hash was ever registered for the pilot prompt; the rectangle ledger carries no prompt hashes, run dates or proposer fields at all. Operationalization drift between registered prose and analysis code is named as a failure mode (§6.3).",
+      "stats": {
+        "tolerances": "1e-6 primary, 1e-9 logged",
+        "value_window": "2e-3",
+        "prereg_files": "5 arms + rectangle"
+      }
+    },
+    {
+      "id": "p1_arm_f",
+      "paper": "paper1",
+      "label": "Arm F — bare weak tier (Haiku), square container",
+      "kind": "arm",
+      "design": "Zero-shot, code-free, single-call invocations of a Haiku-tier proposer at N = 13, 17, 21, 31, 35, 37 and 43 in the unit square. The prompt fixes the count, states containment and non-overlap, forbids writing or executing code, and demands only a raw Python list of [x, y, r] triples. The rule was fitted on N = 23/26/27 only, so every sampled cell is out of sample. Four cells are discriminating (N = 13, 21, 31, 43), where a proposer that searched the family would return a higher number.",
+      "result": "35 of the 45 original invocations were geometrically valid at 10⁻⁶ (77.8%) and 29 at 10⁻⁹ (64.4%). Across the four discriminating cells 18 of 23 valid invocations landed on the predicted construction and the rival argmax was reached 2 times in 23, both at N = 21 (4×4 grid plus five fillers, 2.2588835). Over the full 85-row bare ledger after §6 added 40 rows, the same cells give 41/57 on-prediction and 2/57 rival. P4 (N = 37 converging on 3.0345178) confirmed; P5 (N = 35 at 2.9166667) gave 3 of 4 valid.",
+      "verdict": "held — the anchor is the modal output at every cell",
+      "caveats": "Five invocations were rejected by a 20-subagent concurrency cap before reaching a model and excluded under an unpreregistered rule, so the arm is reported both ways (35/45 = 77.8% or 35/50 = 70.0%); those five records appear in the ledger in no form. Three parse failures. §3 and §6 figures are nested subsets of one arm, not independent samples. P5 at n = 4 is 'consistent with' rather than confirmed.",
+      "stats": {
+        "samples": 45,
+        "cells": "N=13,17,21,31,35,37,43",
+        "valid_1e6": "35/45 (77.8%)",
+        "valid_1e9": "29/45 (64.4%)",
+        "on_prediction_discriminating": "18/23 original, 41/57 full ledger",
+        "rival": "2/23 original, 2/57 full"
+      }
+    },
+    {
+      "id": "p1_mode_ceiling",
+      "paper": "paper1",
+      "label": "Mode-ceiling analysis — the formula sits at the sampling-entropy ceiling",
+      "kind": "analysis",
+      "design": "The per-sample on-prediction rate is read against the sampling entropy of the bare arm's distribution, computed in p11_mode_baseline.json with 2×10⁻³ buckets. For each of the seven square cells the predicted value is compared against the empirical modal output and its modal frequency.",
+      "result": "At all seven tested N the predicted value is the empirical mode, and the on-prediction rate equals the modal frequency to within one sample: 10/18 (56%) at N = 13, 3/4 at 17, 12/15 (80%) at 21, 13/17 (76%) at 31, 3/4 at 35, 3/4 at 37, 6/7 (86%) at 43. No predictor of a single value can exceed the modal frequency, and this one attains it at 7 of 7 cells; the residual is dispersion, not misprediction.",
+      "verdict": "held — 7/7 cells at the ceiling",
+      "caveats": "At N = 31 the on-prediction count exceeds the 4-dp modal bucket by one sample (13/17 against 12/17), a bucketing convention rather than a ceiling violation. 'Modal' is a property of the observed sampling regime, not of a pinned decoding configuration, since the runtime exposes no sampling parameters. Pooled across all tiers and containers the on-prediction rate is 46% (47/102).",
+      "stats": {
+        "cells": 7,
+        "mode_match": "7/7",
+        "modal_freq_range": "56-86%",
+        "pooled": "47/102 = 46%"
+      }
+    },
+    {
+      "id": "p1_round_number_baseline",
+      "paper": "paper1",
+      "label": "Round-number baseline",
+      "kind": "control",
+      "design": "A naive floor predictor — 'the model emits a round number' — was scored against the same 69 valid bare-arm samples the closed form was scored on, to establish what a content-free heuristic recovers.",
+      "result": "The round-number baseline hits 2 of 69 valid samples (3%), against the closed form's 56–86% by cell. The formula therefore captures everything short of sampling entropy rather than merely exploiting a preference for round values.",
+      "verdict": "descriptive — establishes the floor the closed form is measured against",
+      "caveats": "Computed on the bare weak-tier arm only; it is a floor, not a competing hypothesis with its own registration.",
+      "stats": {
+        "baseline_hits": "2/69 (3%)",
+        "comparator": "56-86% by cell"
+      }
+    },
+    {
+      "id": "p1_structural_diagnostics",
+      "paper": "paper1",
+      "label": "Post-hoc structural diagnostics — k back-out and ambition",
+      "kind": "control",
+      "design": "Two disclosed post-hoc diagnostics, neither preregistered. diagnostics_kmatch.py backs the grid order out of each sample's dominant radius (k = round(1/2r)) and compares it to k*(N), testing whether value matches are accounting coincidences. diagnostics_ambition.py operationalizes 'ambition' over all samples with emitted geometry, invalid included, as distinct radii per sample and off-lattice centre fraction.",
+      "result": "All 50 of 50 on-prediction samples are k*-structured, and 64 of 69 valid samples overall (93%) sit on the k* grid, so most value misses are k*-grid variants — perturbed radii or filler counts — not different constructions. Ambition is monotone on both operationalizations across the three tiers: median distinct radii 1 → 2 → 3 (means 1.33 → 2.40 → 3.37) and median off-lattice centre fraction 0.08 → 0.43 → 0.95.",
+      "verdict": "descriptive — post-hoc, disclosed as such",
+      "caveats": "Prompted by external review of revision 2, run after the data existed; labelled post-hoc in the repository. The k back-out was named as future work in earlier revisions and is reported here as a diagnostic, not a registered test.",
+      "stats": {
+        "kmatch_on_prediction": "50/50",
+        "kmatch_all_valid": "64/69 (93%)",
+        "distinct_radii": "1 -> 2 -> 3",
+        "off_lattice": "0.08 -> 0.43 -> 0.95"
+      }
+    },
+    {
+      "id": "p1_arm_s",
+      "paper": "paper1",
+      "label": "Arm S — Sonnet middle tier",
+      "kind": "arm",
+      "design": "Thirty invocations of a Sonnet-tier proposer, ten each at N = 13, 21 and 31, under the same bare prompt, container and scoring. Preregistered in arm_s_preregistration.txt, which disclosed that 5 of 20 samples at N = 13/21 had been seen before registration and that N = 31 was fully blind.",
+      "result": "Valid 30/30 at 10⁻⁶ and 27/30 (90%) at 10⁻⁹, so the '100%' leg is tolerance-dependent. Almost never on-prediction: 0/10, 0/10, 1/10 — 1/30 pooled against the weak tier's 12/16 at the same cells. Instead of truncating a uniform grid it perturbs one, with enlarged edge rows, hexagonal interior rows and two or three distinct radii in the same packing (29/30 multi-radius). One N = 31 sample emitted 27 circles at r = 1/12 with 4 corner circles at r = 1/8, summing to 2.7499999991 — above 2.7485281, the family best at that N, and tangency-tight at tolerance zero. It is the only sample in the study to leave the recipe family upward.",
+      "verdict": "held as registered (directional tier comparisons P-S1…P-S4)",
+      "caveats": "That escape exposed a scoring defect: 2.75 sits 1.47×10⁻³ from the family rival, inside the registered 2×10⁻³ window, so the value classifier counted it as a hit on the construction it exceeded. Reclassified by structure, Sonnet's rival count at N = 31 is 2/10 and pooled 5/30, not 6/30. Every categorical rival claim in the paper is therefore made at structure level or at 10⁻⁶, never at 2×10⁻³.",
+      "stats": {
+        "samples": 30,
+        "cells": "N=13,21,31",
+        "valid_1e6": "30/30",
+        "valid_1e9": "27/30 (90%)",
+        "on_prediction": "1/30",
+        "multi_radius": "29/30",
+        "rival_structural": "5/30"
+      }
+    },
+    {
+      "id": "p1_arm_o",
+      "paper": "paper1",
+      "label": "Arm O — opus_alias top tier",
+      "kind": "arm",
+      "design": "Thirty invocations through a bare tier alias, ten each at N = 13, 21 and 31, preregistered fully blind in arm_o_preregistration.txt. The runtime accepts only the bare alias and exposes no dated identifier, so the arm is labelled opus_alias throughout and no version number appears anywhere in the paper.",
+      "result": "Valid in 4 of 30 invocations (13%) at both tolerances, per cell 3/10, 1/10, 0/10. At every cell it attempted a more ambitious construction than either other tier: quarter-circle corners at r = 0.25 with Apollonius-style fillers at N = 13 (10/10 samples), mixed-radius 4×4-ish grids at N = 21, and a coarse 3×3 grid at r ≈ 1/6 with border strips at N = 31 (0/10 valid). Failures are geometric rather than numerical — edge strips at r = 0.03 placed 0.138 from an r = 1/6 grid circle needing 0.197 — and valid samples score below the trap they were expected to fall into (1.26–1.41 at N = 13 against 1.625).",
+      "verdict": "partial — P-O3 trivially satisfied on 4/4; P-O1, P-O2, P-O4 declared not evaluable post hoc",
+      "caveats": "De-registering three of four predictions after a validity collapse is exactly the move preregistration exists to constrain, so it is tabled as a deviation rather than narrated. The registered disconfirmation — regression toward the trap — did not occur. The arm was initially excluded from the ladder, then included once results were known; the ladder is reported both ways. Paper 2 §4 later rescores P-O1 as arithmetically evaluable and held at 0/30.",
+      "stats": {
+        "samples": 30,
+        "cells": "N=13,21,31",
+        "valid": "4/30 (13%) at both tolerances",
+        "per_cell": "3/10, 1/10, 0/10",
+        "failure_modes": "overlap 24, nonpositive radius 2"
+      }
+    },
+    {
+      "id": "p1_arm_o_anomalies",
+      "paper": "paper1",
+      "label": "Arm O anomalies — latency, token count, overlap diagnostic",
+      "kind": "analysis",
+      "design": "Two serving-signature anomalies observed during the opus_alias arm, plus a post-hoc geometric diagnostic (diagnostics_opus_overlap.py) testing whether the 13% validity rate is a tolerance artifact rather than genuine geometric failure.",
+      "result": "Completion times ran 2.8–9 s across all 30 invocations against 75–250 s for Haiku and 150–1170 s for Sonnet, and the reported token count was uniform at 49,906 across the first 20 completions, ≈49.9k thereafter. The overlap diagnostic finds no tolerance artifact: 24 of 26 invalid samples overlap grossly (median maximum overlap 3.3×10⁻², radius-shrink repair costing a median 15% of sum-of-radii), while tolerance-scale near-misses (< 2.5×10⁻⁵) occur instead in 5 of 7 geometry-scored weak-tier failures — the exact-tangency grids, not the ambitious constructions.",
+      "verdict": "not evaluable as data — the anomalies appear in no released artifact",
+      "caveats": "The ledger has no latency and no token field; both figures come from an unreleased runtime session transcript, so a referee cannot check them, and they are treated as anecdotal context rather than data-supported properties of the tier. Paper 2 §4 later withdraws the token-count observation entirely as an aggregate-counter artifact over a large fixed prefix.",
+      "stats": {
+        "latency_alias": "2.8-9 s",
+        "latency_haiku": "75-250 s",
+        "latency_sonnet": "150-1170 s",
+        "tokens": "49,906 uniform",
+        "gross_overlap": "24/26",
+        "median_max_overlap": "3.3e-2"
+      }
+    },
+    {
+      "id": "p1_arm_t",
+      "paper": "paper1",
+      "label": "Arm T — trace elicitation (METHOD line)",
+      "kind": "arm",
+      "design": "A ten-versus-ten pilot at N = 21 compared the bare prompt against a variant asking the proposer to name its construction on a leading METHOD: line; validity rose 7/10 → 10/10 and the higher-scoring rival disappeared. Four predictions and an explicit falsifier were then registered in arm_t_preregistration.txt (sha256 ab7900a8…) before the scaled sample, disclosing that the pilot prompt had drifted beyond the method line. The scaled arm ran 100 new invocations, bringing both arms to 20 per cell at N ∈ {13, 21, 31}; trace_v2 is itself a bundled method-line-plus-output-line-rewording intervention.",
+      "result": "P-T1 (validity) NOT confirmed: 53/60 (88%) trace_v2 against 50/60 (83%) bare, pooled one-sided Fisher p = 0.30; the direction that did hold is format compliance, not geometry (bare 3 parse + 7 geometric failures, trace_v2 0 parse + 7 geometric). P-T2 (rival suppression) confirmed as registered, 1 of 53 against 2 of 50, with no inferential weight claimed. P-T3 (anchor concentration) met as registered: 46 of 53 (87%) against 35 of 50 (70%), p = 0.0325 one-sided uncorrected.",
+      "verdict": "partial — one registered prediction not confirmed, one confirmed directionally, one met but inferentially fragile, and the falsifier triggered",
+      "caveats": "P-T3 fails Holm over the registered family (threshold 0.0167), Bonferroni at any m ≥ 2 and BH FDR at q = 0.05; two-sided Fisher is 0.0537. It is carried by one cell (per-cell p = 0.030, 0.41, 0.50; dropping N = 13 gives p = 0.31) and confounded with a collection-wave split of comparable size. The registered falsifier ('validity <= bare at 2+ of 3 N') is triggered at 2 of 3 N under the registered tie-inclusive reading and at 0 of 3 under the strict < the code implemented; both are reported, registered reading authoritative. 20 of the 60 bare samples are pre-existing arm-F rows whose results were known when the predictions were written.",
+      "stats": {
+        "samples": "60 bare + 60 trace_v2 (+ 10 pilot, never pooled)",
+        "cells": "N=13,21,31",
+        "validity": "53/60 vs 50/60, p=0.30",
+        "on_prediction": "46/53 (87%) vs 35/50 (70%), p=0.0325",
+        "rival": "1/53 vs 2/50",
+        "holm_threshold": "0.0167"
+      }
+    },
+    {
+      "id": "p1_trace_faithfulness",
+      "paper": "paper1",
+      "label": "Trace faithfulness audit with ground truth",
+      "kind": "analysis",
+      "design": "Because claim and artifact sit in the same completion and the artifact is fully determined, a method line is checkable against the emitted coordinates. The registered scorer (arm_f_repro.trace_faithfulness) matches numeric dimensions from the method line against the emitted layout signature. A blind rescore then ran under a rubric committed to git as e181d2a at 03:56:56 on 2026-08-01, before any rescoring run, scoring all 60 trace_v2 rows including the 7 invalid ones, with claim text and circles only — no predicted or rival values, no running tally, no threshold, no sight of the existing result.",
+      "result": "The registered scorer returns 38 of 41 scoreable claims matching (93%) against the registered 90% threshold. Blind hand-adjudication returns 54 MATCH, 2 MISMATCH, 4 UNSCOREABLE — 54 of 56 scoreable claims (96.4%), Wilson 95% CI [88%, 99%]. The two mismatches share one form: both are mis-descriptions of alternation, a repeating pattern named and built for the first period only (row 11 'alternating rows of 4 and 3' over observed 4,3,3,3; row 33 '5 rows alternating between 5 and 4' over observed 5,4,4,4,4).",
+      "verdict": "held — P-T4 confirmed under a corrected scorer, and a clean, well-powered finding",
+      "caveats": "The registered scorer's 12 exclusions were regex coverage gaps, not claims without numeric content: 9 of 12 carry explicit checkable dimensions, and the excluded set is enriched for non-canonical phrasings where mismatch is a priori more likely — worst case, had all 12 been unfaithful, the rate would be 38/53 = 72%. The CI's lower bound sits just below the 90% threshold. The check verifies description against artifact, not process, and is computed on the arm that concentrates 87% of valid outputs onto one template, where correct description is close to free; the split by on- versus off-prediction was not run.",
+      "stats": {
+        "registered_scorer": "38/41 (93%)",
+        "blind_rescore": "54/56 (96.4%)",
+        "wilson_ci": "[88%, 99%]",
+        "labels": "54 MATCH / 2 MISMATCH / 4 UNSCOREABLE",
+        "worst_case": "38/53 = 72%"
+      }
+    },
+    {
+      "id": "p1_arm_g",
+      "paper": "paper1",
+      "label": "Arm G — rectangle transfer",
+      "kind": "arm",
+      "design": "For a 1 × a rectangle the template has two parameters: q* = round(√(N/a)) columns and p* = round(√(N·a)) rows, collapsing to round(√N) at a = 1 — the same rule with the aspect ratio put back, never refitted, written before any rectangle model output existed and verified against an independent LP at 213 configurations. Sixteen proposers were run in a container none had been given before, at the two sharpest cells: N = 19 at a = 3 (predicted 3.1666667, rival 3.5749194) and N = 25 at a = 2 (predicted 3.1250000, rival 3.4832492).",
+      "result": "Of 11 valid proposals, 5 landed on the predicted value and 0 of 11 reached the rival. On-prediction: two at N = 19/a = 3 (3.1666666667 and 3.16666673) and three at N = 25/a = 2 (3.125 exactly). Off-prediction at N = 25/a = 2: two samples emitted a uniform 5×5 grid at r = 0.1 summing to 2.5 — the square rule with no aspect correction — plus one at 3.0 and one at 3.151875. At N = 19/a = 3 two samples exceeded the prediction from outside the family, 3.45 and 3.5, both below the rival.",
+      "verdict": "partial out-of-sample support, not confirmation — the informative result is the negative one (0 of 11 on the rival)",
+      "caveats": "5/11 = 45%, Wilson 95% CI [21%, 72%], and a proposer choosing uniformly among the three or so plausible template shapes would land on-prediction about a third of the time, so it does not separate cleanly from that null. Validity degrades in the tall container (4/8 at a = 3 against 7/8 at a = 2, three of four a = 3 failures being overlaps), a confound at n = 8. The rectangle ledger carries no prompt hashes, no run dates and no proposer fields, so the arm with the strongest transfer claim has the least provenance.",
+      "stats": {
+        "samples": 16,
+        "valid": 11,
+        "cells": "N=19 a=3; N=25 a=2",
+        "on_prediction": "5/11 (45%)",
+        "rival": "0/11",
+        "wilson_ci": "[21%, 72%]",
+        "lp_configs": 213
+      }
+    },
+    {
+      "id": "p1_rect_formula_negative",
+      "paper": "paper1",
+      "label": "Negative result — the closed form does not survive the move to rectangles",
+      "kind": "analysis",
+      "design": "The rectangle generalizes the rule but not the formula. In the square every interior vertex has four identical neighbours, so one expression covers every filler. In a 1 × a rectangle, with half-spacings hₓ = 1/(2q) and hᵧ = a/(2p), a filler is also capped by spacing to adjacent fillers — constraints inactive when hₓ = hᵧ, and binding only when neighbouring vertices are occupied, so the cap depends on m and on which vertices a construction uses.",
+      "result": "No expression in (p, q, m, a) reproduces the cap. The LP gate caught this on the first run: at a = 1, p = 2, q = 4, m = 1 the natural generalization rf = min(diag, hₓ, hᵧ) returns 1.125 against a true 1.1545085, capping against a neighbouring filler that does not exist. Closed forms are retained only where provably exact — full grid and truncated grid — and the LP is used as the value oracle for the extend branch, so what arm G tests is the LP-backed prediction.",
+      "verdict": "disconfirmed (for the formula) — retained deliberately as evidence the verification gate works",
+      "caveats": "The failure was caught by the independent LP oracle rather than by inspection, which is the point; it means the extend branch of the rectangle prediction is not a closed form at all.",
+      "stats": {
+        "counterexample": "a=1, p=2, q=4, m=1",
+        "naive_value": "1.125",
+        "true_value": "1.1545085"
+      }
+    },
+    {
+      "id": "p1_arm_m",
+      "paper": "paper1",
+      "label": "Arm M — filler-branch and fifth-k extension (N = 20/30/41/57)",
+      "kind": "extension",
+      "design": "Registered before sampling (arm_m_preregistration.txt, commit e528c6b; prompt hashes in arm_m_prompts.json) after external review observed that V(k, m)'s filler branch was supported only at m ∈ {0, 1} and that the k = 8 trap zone was never sampled. n = 15 bare weak-tier invocations at each of N = 20 (k* = 4, m = 4, predicted V(4,4) = 2.2071068), N = 30 (V(5,5) = 2.7071068), N = 41 (V(6,5) = 3.1725890) and N = 57 (trap, T(8,57) = 3.5625000, rival V(7,8) = 3.7366935), with an explicit tie-stated falsifier for each half.",
+      "result": "The filler-branch falsifier F-M1 triggered at 3 of 3 cells: P-M1–P-M3 are disconfirmed, not one converge cell has V(k*, m) as its modal output. The model moves up to the (k*+1) grid and truncates or exactly fills it — modal outputs 2.0 = T(5,20) (12 of 15 valid; 5×4 exactly), 2.5 = T(6,30) (11 of 14; 6×5 exactly) and 2.9285714 = T(7,41) (6 of 7). Exactly one sample in 36 valid converge-cell rows emitted the registered construction; filler count is 0 in 35 of 36. P-M4 confirmed: at N = 57 the modal valid output is T(8,57) = 3.5625000 (6 of 10 valid at 10⁻⁶), 0 of 10 valid samples reached the rival.",
+      "verdict": "disconfirmed on the extend branch (falsifier triggered 3/3); confirmed on the truncate branch (fifth k)",
+      "caveats": "V(k, m) is restricted to the m ≤ 1 support previously observed and the extend arm is disconfirmed at m ≥ 4. Validity by cell 15/15, 14/15 (one fraction-literal parse failure), 7/12 and 10/15 at 10⁻⁶. Three N = 41 invocations died in the runtime and are excluded under a rejection rule registered for this arm — the cell is 12 sampled of 15 launched. Arm M's 57 rows were not swept for the family-best claim.",
+      "stats": {
+        "samples": "57 sampled of 60 launched",
+        "cells": "N=20,30,41,57",
+        "falsifier": "F-M1 triggered 3/3",
+        "n57_on_prediction": "6/10",
+        "n57_rival": "0/10",
+        "confirmed_k": "4,5,6,7,8"
+      }
+    },
+    {
+      "id": "p1_arm_mu",
+      "paper": "paper1",
+      "label": "Arm MU — one-parent mutation probe",
+      "kind": "extension",
+      "design": "Registered before sampling with arm CH (arm_mu_preregistration.txt, commit 2b7d202), with numeric decision thresholds, a power analysis (0.83 at the registered effect size), tie-against conventions, and falsifier F-MU1 whose consequence — scoping the paper's title and abstract to unconditioned calls — was written down before the first invocation. One-parent mutation calls: the bare prompt plus an existing packing plus the instruction to modify it so the sum of radii increases. Three parents per cell at N = 13, 21, 31, n = 15 per condition-cell, 135 invocations: A_anchor (the model's own unconditioned anchor T(k*, N)), B_rival (the provably better in-family rival V(k*−1, m)) and C_offfamily (a diagonal-chain packing scoring ≈ 0.59–0.62).",
+      "result": "F-MU1 triggered. Under B_rival the pooled anchor rate is 0 of 26 valid (0%, CI [0.00, 0.13]) against a registered DISSOLVES threshold of ≤ 20%; keep-or-improve is 26 of 26 against a ≥ 50% threshold, and grid-order inheritance is 26/26, disconfirming P-MU3's < 50% prediction. Under A_anchor only 7 of 28 valid samples (25%, CI [0.13, 0.43]) stay on the anchor, so P-MU1's ≥ 50% is not met. Under C_offfamily, 20 of 34 valid samples (58.8%, CI [0.42, 0.74]) abandon the parent and emit a k*-grid construction, holding per-cell at N = 21 (7/13) and N = 31 (12/14) but not at N = 13 (1/7).",
+      "verdict": "disconfirmed — the anchoring result does not transfer to parent-conditioned calls",
+      "caveats": "The asymmetry is the finding: a good in-family parent is followed, a bad off-family parent is discarded for the template, so the attractor is real but weak — it captures the trajectory only when the parent is worse than what the template supplies. The one-parent regime that discovery loops actually run in is not described by the anchoring result, and the paper's title is scoped accordingly.",
+      "stats": {
+        "samples": 135,
+        "cells": "N=13,21,31",
+        "b_rival_anchor": "0/26 (0%)",
+        "keep_or_improve": "26/26",
+        "k_inheritance": "26/26",
+        "a_anchor_stay": "7/28 (25%)",
+        "c_offfamily_snapback": "20/34 (58.8%)"
+      }
+    },
+    {
+      "id": "p1_arm_ch",
+      "paper": "paper1",
+      "label": "Arm CH — recipe-family choice probe",
+      "kind": "extension",
+      "design": "Registered together with arm MU. The prompt hands the model the entire recipe family: the bare prompt plus every admissible T(k, N) and V(k, m) value enumerated, including the family argmax, with the instruction to use whichever scores highest or anything better. n = 15 per cell at N = 13, 21, 31 (45 invocations). Under the arithmetic-tractability alternative the modal output should become the stated argmax (P-CH2); under the template reading it stays T(k*, N) despite the argmax being printed (P-CH1).",
+      "result": "P-CH1 holds at 2 of 3 cells under the registered scorer (modal output among valid samples): at N = 13 the modal valid output is T(4,13) = 1.6250000 against a stated argmax of 1.7761424; at N = 31 it is T(6,31) ≈ 2.5833 (4 of 7 valid) against 2.7485281 (3 of 7), a one-sample margin; only N = 21 goes to the argmax (2.2588835, 3 of 5 valid). P-CH2 is disconfirmed at 1 of 3 cells. But validity is low — 2, 5 and 7 valid of 15 — and at the attempt level all 31 invalid rows attempt the stated argmax, 30 of them misplacing the fillers (typically at the container corners, where (√2−1)/(2k) overlaps the adjacent grid circle) and 1 emitting radical literals the scorer cannot evaluate.",
+      "verdict": "held as registered (P-CH1 2/3), with a disclosed survivorship artifact that reverses the picture at attempt level",
+      "caveats": "The registered metric conditions on exactly the variable — execution success — that separates the two readings. The honest summary is a decomposition, not a winner: choice follows the score table, execution fails off-template in 30 of 31 invalid attempts. The tractability alternative is wrong about selection and right about instantiation.",
+      "stats": {
+        "samples": 45,
+        "cells": "N=13,21,31",
+        "valid_by_cell": "2, 5, 7 of 15",
+        "p_ch1": "holds 2/3",
+        "invalid_attempting_argmax": "31/31",
+        "filler_misplacement": "30/31"
+      }
+    },
+    {
+      "id": "p1_arm_gm",
+      "paper": "paper1",
+      "label": "Arm GM — cross-vendor (gemini-2.5-flash-lite)",
+      "kind": "extension",
+      "design": "A preregistered cross-vendor extension against gemini-2.5-flash-lite through the direct vendor API, registered before sampling at prereg commit 37b3adb, disclosed regardless of outcome.",
+      "result": "Quota-throttled and incomplete at submission time; no collected output has been analyzed.",
+      "verdict": "not evaluable — incomplete",
+      "caveats": "Leaves the anchoring law as single-vendor evidence at submission.",
+      "stats": {
+        "prereg_commit": "37b3adb",
+        "status": "incomplete, unanalyzed"
+      }
+    },
+    {
+      "id": "p1_arm_gm2",
+      "paper": "paper1",
+      "label": "Arm GM2 — cross-vendor (gemma-4-26b-a4b-it), format-compliance cliff",
+      "kind": "extension",
+      "design": "The second preregistered cross-vendor extension (prereg 3019aab), running the identical prompt and registered pipeline against gemma-4-26b-a4b-it, with a registered rule declaring cells UNSCOREABLE on a null-compliance outcome.",
+      "result": "Completed 140/140 invocations with 0 of 140 responses parseable under the registered pipeline: the model consumed its entire 4,096-token output budget on visible deliberation and never emitted the required coordinate list, under a prompt with which the weak-tier arm F model complied at 100% parse rate. Per the registered rule all cells are UNSCOREABLE and no confirmatory claim is made in either direction.",
+      "verdict": "not evaluable as registered — but the format-compliance cliff between families under an identical prompt is itself a preregistered observation",
+      "caveats": "A 0/140 parse rate at a 4,096-token cap is also the signature of budget truncation — a verbose model cut off before its answer — rather than format inability; the design cannot exclude that reading, and characterization of the cliff's cause is deferred to arm GM3.",
+      "stats": {
+        "samples": 140,
+        "parseable": "0/140",
+        "token_cap": 4096,
+        "prereg_commit": "3019aab"
+      }
+    },
+    {
+      "id": "p1_arm_gm3",
+      "paper": "paper1",
+      "label": "Arm GM3 — enlarged-budget follow-up",
+      "kind": "extension",
+      "design": "A follow-up to arm GM2 with an enlarged output budget, registered before sampling, designed specifically to separate format inability from budget truncation as the cause of GM2's 0/140 parse rate.",
+      "result": "Running at submission time; no outcome reported.",
+      "verdict": "not evaluable — in progress",
+      "caveats": "Until it reports, the anchoring law remains single-vendor evidence and the cause of the GM2 compliance cliff is uncharacterized.",
+      "stats": {
+        "status": "running at submission",
+        "purpose": "separates format inability from budget truncation"
+      }
+    },
+    {
+      "id": "p1_out_of_sample_containers",
+      "paper": "paper1",
+      "label": "Out-of-sample containers — square and rectangle",
+      "kind": "analysis",
+      "design": "The out-of-sample design of the whole study: the rule was fitted on N = 23/26/27 only, so all seven sampled square cells are held out, and the rectangle rule was restated with the aspect ratio put back (q* = round(√(N/a)), p* = round(√(N·a))) rather than refitted, in a container for which no model output existed when the rule was written.",
+      "result": "Square: 41/57 on-prediction and 2/57 rival across the four discriminating cells on the full ledger. Rectangle: 5/11 on-prediction and 0/11 rival, verified against an independent LP at 213 configurations with a cross-domain check requiring the square file's closed form to equal the rectangle file's LP at a = 1. Shape mismatch grows as a leaves 1 — over N = 10…45 the count of N whose predicted shape differs from the optimal rises from 12 at a = 1.0 to 23 at a = 1.5, 20 at a = 2.0 and 23 at a = 3.0.",
+      "verdict": "partial — square held, rectangle partial support with an informative negative",
+      "caveats": "The rectangle's on-prediction rate does not separate from a uniform-template null, and the negative (0 of 11 on the provably higher-scoring rival) is the informative half. The rectangle ledger has the least provenance in the study.",
+      "stats": {
+        "fitted_on": "N=23,26,27",
+        "square_out_of_sample": "41/57 on-prediction, 2/57 rival",
+        "rectangle": "5/11 on-prediction, 0/11 rival",
+        "lp_configs_rect": 213
+      }
+    },
+    {
+      "id": "p2_claim_c1",
+      "paper": "paper2",
+      "label": "C1 — the precision cliff, in variation rather than viability",
+      "kind": "claim",
+      "design": "The paper's headline claim: on a value-sensitive constructive task, degrading served-weight quantization moves viability and validity by no detectable amount while at the 2-bit rung collapsing the variation a proposal carries, leaving format and geometry intact. What carries the claim is registered and replicated — the echo bound q2_k ≥ 60%, q4_k_m ≤ 35% written into the runner before execution, plus a registered must-differ probe.",
+      "result": "The registered bound held on five never-sampled seeds at 79% (19/24) against 6% (1/17); the must-differ probe returned its registered instruction-insensitive branch at 5 of 5 valid outputs echoing under an explicit prohibition. The wider loop contrast is 94% (17/18) against 14% (8/57). The failure mode is invisible to viability and validity metrics, which is why it went unreported until coordinates rather than scores were examined.",
+      "verdict": "held — two registered predictions, one replicated on fresh seeds",
+      "caveats": "'Viability is flat' and 'validity does not move' report non-rejection at n = 50 per rung, not demonstrated equivalence; no equivalence test was run and the Wilson interval on 7/50 is compatible with a fourfold ratio. At 7B viability instead inverts. The fixed-parent control cuts the magnitude to 33% vs 92% in the matched band. The fresh wave's designated primary (F1, improvement count) was refuted.",
+      "stats": {
+        "registered_bound": "q2_k >= 60%, q4_k_m <= 35%",
+        "fresh_seeds": "19/24 (79%) vs 1/17 (6%)",
+        "loop_contrast": "17/18 (94%) vs 8/57 (14%)",
+        "must_differ": "5/5"
+      }
+    },
+    {
+      "id": "p2_claim_c2",
+      "paper": "paper2",
+      "label": "C2 — forensic case study of an alias-addressed arm",
+      "kind": "claim",
+      "design": "A thirty-invocation arm addressed only as opus_alias, in which serving-signature evidence (latency) and behavioral evidence (validity) together are weighed against two hypotheses: H1 serving-path degradation, and H2 a genuine tier property of whatever weights the alias resolved to.",
+      "result": "The two signatures mildly favour H1 without deciding it: on the text channel the hypotheses induce the same distribution, while on the timing channel H1 predicts the latency observation directly and H2 is silent, so H2 must be conjoined with an auxiliary ('a fast serving path was in use but had no behavioral effect') that is strictly more complex and not itself testable through the runtime's observable set.",
+      "verdict": "partial — mildly favours H1 within the snapshot, decides nothing",
+      "caveats": "The favouring evidence is a working-log observation the released artifact cannot check: arm_f_raw.json rows carry exactly four keys with no duration, no usage, no timestamp. The arms were not interleaved, so load is not excluded. §4.1 makes the favouring unrecoverable — the alias drifted within six days, so no later call can re-test it.",
+      "stats": {
+        "samples": 30,
+        "validity": "4/30",
+        "comparators": "Sonnet 30/30, bare 50/60, trace 63/70",
+        "pooled_fisher": "1.0e-16"
+      }
+    },
+    {
+      "id": "p2_claim_c3",
+      "paper": "paper2",
+      "label": "C3 — serving-path non-identifiability, conditioned on this runtime",
+      "kind": "claim",
+      "design": "For the agent runtime studied, the observable set exposed per invocation — completion text, wall-clock duration, a single aggregate usage figure, error codes — contains no variable that attests the serving path. The paper states the set explicitly, shows which hypothesis pairs it separates and which it does not, and names the discriminating experiments: two runnable inside the runtime, one requiring a pinned endpoint outside it.",
+      "result": "Both runnable experiments were run (§4.1) and the result constrains the argument rather than confirming it: the alias's behaviour and serving signature both moved within six days, unannounced, so the hypothesis pair the discriminator was built to separate presupposes a stable referent it does not have. The irreducible residue is the unattestability of the serving path, not a blanket impossibility of behavioral discrimination — output-side fingerprinting methods exist and detect change between snapshots, but none attests which decode path served a particular past call.",
+      "verdict": "held conditionally — a runtime exposing a serving-path flag or weights digest would falsify it for that runtime",
+      "caveats": "One vendor, one runtime. C3 is a claim about attesting a past call, not about the practical question being closed; a pinned dated endpoint outside the runtime was not run, and its absence is a limitation of the paper rather than a property of the problem.",
+      "stats": {
+        "observable_set": "text, duration, aggregate usage, error codes",
+        "runnable_experiments_run": "2 of 2"
+      }
+    },
+    {
+      "id": "p2_c4_repair_protocol",
+      "paper": "paper2",
+      "label": "C4 — repair protocol and disclosure standard, audited against itself",
+      "kind": "analysis",
+      "design": "The maximal reproducibility such a study can achieve — prompt hashing before sampling, verbatim raw storage, dated alias maps, deterministic local scoring, hash-locked preregistration — specified, implemented and audited. Items 1–3 restate requirements GUIDE-LLM (Feuerriegel et al., Nature Human Behaviour 10:1182-1186, 2026) already imposes; item 4 (serving-signature statistics with a firing condition) is the addition; item 5 is a parent-echo canary screen.",
+      "result": "Three of the five repairs are fully implemented in the released artifact and two are not. Prompt digests are published in-paper (N = 13 32db485b…, N = 21 a415425b…, N = 31 a664d003…). Not repairable from inside: sampling parameters, the alias → weights binding, inherited system and user prompts, and the serving path. Item 5's screen — 25–50 calls against a fixed weak parent, red flag at ≥ 60% structural echo, healthy at ≤ 35% — is released as echo_screen.py.",
+      "verdict": "partial — implemented, and its own gaps named",
+      "caveats": "The alias map contains a single entry, for the Haiku proposer, and RUN_DATE is not the opus_alias arm's run date, so the headline provenance repair is unimplemented for precisely the arm the paper is about. Rows carry no batch or wave key and sample_id collides across waves, so reported slices are not reconstructible. Item 5 inherits item 4's failure class: against a good parent a healthy Q4_K_M proposer echoes at 62–74% and Q3_K_M at 70–78%, past the red line, so the weak-parent precondition is load-bearing and the tool cannot detect its own violation.",
+      "stats": {
+        "repairs_implemented": "3 of 5",
+        "screen_thresholds": ">=60% red, <=35% healthy",
+        "false_positive_band": "healthy rungs 62-78% at good parents"
+      }
+    },
+    {
+      "id": "p2_quant_ladder",
+      "paper": "paper2",
+      "label": "Quantization ladder — protocol",
+      "kind": "analysis",
+      "design": "Proposers Qwen2.5-Coder-7B-Instruct and Qwen2.5-Coder-14B-Instruct, official Qwen GGUF releases, served locally through llama.cpp on 2 × NVIDIA T4 with a SHA-256 hash of each weight file in the provenance log. Task: circle packing at N = 26 in the unit square. Sampling: temperature 0.8, top-p 0.95, deterministic per-call seed, at most 1,200 new tokens in a 4,096-token context, one bare chat completion per proposal — not agentic, which removes the orchestration layer as a confound. Per rung: 5 seeds × 10 generations (50 loop candidates) plus 6 zero-shot probes.",
+      "result": "The 7B ladder ran five rungs — FP16 (16.0 effective bits per weight), Q8_0 (8.5), Q4_K_M (4.85), Q3_K_M (3.91), Q2_K (3.35) — for 250 loop rows and 30 probes; the 14B ladder ran the four quantized rungs (FP16 omitted because the ~29.5 GB file does not fit 2 × T4) for 200 loop rows and 24 probes. Every candidate is logged live at evaluation time and scored by the same deterministic evaluator at 1e-6.",
+      "verdict": "descriptive — the design that isolates served-weight precision",
+      "caveats": "Effective bits per weight are llama.cpp's nominal figures and co-vary with the quantization algorithm rather than indexing it independently, so every ladder result is a Q2_K claim and not yet a bit-width claim — a distinction the IQ2 control turns from a caveat into a measurement. The main ladder is a single quantization family (llama.cpp K-quants), never mixed.",
+      "stats": {
+        "models": "Qwen2.5-Coder 7B and 14B",
+        "hardware": "2 x NVIDIA T4",
+        "rows": "250 (7B) + 200 (14B) loop rows",
+        "task": "N=26 unit square",
+        "sampling": "temp 0.8, top-p 0.95"
+      }
+    },
+    {
+      "id": "p2_ladder_7b",
+      "paper": "paper2",
+      "label": "7B ladder — the founding hypothesis fails",
+      "kind": "arm",
+      "design": "Five rungs (FP16, Q8_0, Q4_K_M, Q3_K_M, Q2_K) at 7B, 50 loop candidates and 6 probes per rung. Viability is defined as a proposal that parses and emits exactly the requested count.",
+      "result": "Viability was flat from FP16 down through Q3_K_M, a 4× compression: 7/50, 6/50, 9/50, 7/50, all pairwise Wilson intervals overlapping, FP16 vs Q3_K_M Fisher p = 1.0. The 2-bit rung inverted at 16/50 (pooled upper four rungs p = 0.007; against FP16 alone p = 0.056, not significant). The mechanism is arithmetic: of 250 proposals only 45 contained exactly 26 circles and 153 contained 24–25, with the modal count from FP16 through Q3_K_M one or two short of the parent, while Q2_K's count distribution is broader (tail to 30–36) and happens to centre on the target. Token truncation is ruled out directly (maximum 687 tokens against a 1,200 cap). No probe was valid at any rung (0/30) and the best score in the whole sweep, 1.800, sits 29% below the canonical 2.5414.",
+      "verdict": "disconfirmed — the precision threshold the project was founded on is absent over the entire usable GGUF range at this scale",
+      "caveats": "Both 2-bit contrasts are post-hoc and disclosed as such. The 'format lottery' is flagged rather than claimed. The count ranges do not support a 'broader distribution' reading as cleanly as the modes do — Q4_K_M and Q3_K_M each carry a single 45-circle outlier, so what is broader at Q2_K is where the mass sits, not the extreme. The 7B ladder stores no coordinates, so echo is not computable there. At this scale the proposer sits below the floor at which precision could matter.",
+      "stats": {
+        "viability": "7/50, 6/50, 9/50, 7/50, 16/50",
+        "exact_count": "45 of 250",
+        "counts_24_25": 153,
+        "probes": "0/30",
+        "best_score": "1.800 (29% below 2.5414)"
+      }
+    },
+    {
+      "id": "p2_seeded_parent",
+      "paper": "paper2",
+      "label": "Seeded parent geometry — the lineage floor",
+      "kind": "control",
+      "design": "Every lineage in every ladder starts from the same seeded valid parent: 26 uniform-radius circles on a 6 × 5 lattice (30 sites, four left empty), summed radii 0.89999, written as 0.900 throughout, so every lineage has a floor and no rung can be advantaged by a different starting point. The running parent advances only on strict score improvement.",
+      "result": "Several Q2_K lineages never improve at all, so their parent remains the seeded 6 × 5 grid for all ten generations — which is exactly why parent quality is confounded with rung in the loop-measured echo statistic, and why the fixed-parent probe was run. The seeded lineage that never improved is released as q2_k_seed_42.json.",
+      "verdict": "descriptive — a design constant that becomes the confound the fixed-parent control addresses",
+      "caveats": "The strict-improvement rule is the one place a reimplementation is likely to diverge: advancing the parent on ties instead lets it drift and undercounts echo by roughly a quarter at the 2-bit rung. Because the seeded parent is itself the template family the companion paper describes, circle packing cannot separate 'copying the parent' from 'emitting the default template' — the rationale for the Heilbronn transfer.",
+      "stats": {
+        "parent": "26 circles on 6x5 lattice",
+        "score": "0.89999 (0.900)",
+        "acceptance": "strict improvement only"
+      }
+    },
+    {
+      "id": "p2_rung_q8_0",
+      "paper": "paper2",
+      "label": "Rung Q8_0 (8.5 bits/weight, 14B)",
+      "kind": "arm",
+      "design": "The highest-precision rung of the 14B ladder: 5 seeds × 10 generations = 50 loop candidates plus 6 zero-shot probes, on a SHA-256-pinned Q8_0 GGUF served through llama.cpp on 2 × T4.",
+      "result": "Viability 22/50, validity 18/50, coordinate-verified parent echo 2/18 (11%), accepted hill-climb steps 2, 2, 5, 1, 4 = 14/50, final best per lineage 0.936, 1.300, 0.926, 1.083, 1.040. Throughput 14.91 tok/s — the slowest of the four rungs, against Q2_K's 22.48, which is the basis for the paper's 'throughput does not order by bit-width' finding.",
+      "verdict": "descriptive — the ladder's reference ceiling",
+      "caveats": "Q8_0 was registered as a fourth condition in both fixed-parent probe waves and in both it was never attempted — each provenance.json records \"q8_0\": {\"skipped\": \"needs 2 gpus, have 1\"} — so its ladder figure of 2/18 inside the pooled 8/57 is uncontrolled and the probe covers three of the ladder's four rungs. That skip is what makes wave 2's registered verdict FAILED.",
+      "stats": {
+        "viability": "22/50",
+        "validity": "18/50",
+        "echo": "2/18 (11%)",
+        "accepted_steps": "14/50",
+        "throughput": "14.91 tok/s"
+      }
+    },
+    {
+      "id": "p2_rung_q4_k_m",
+      "paper": "paper2",
+      "label": "Rung Q4_K_M (4.85 bits/weight, 14B) — the reference rung",
+      "kind": "arm",
+      "design": "The comparison rung the registered echo bound q4_k_m ≤ 35% was written against, and the rung carried through every subsequent wave as the healthy comparator. Same protocol: 5 seeds × 10 generations plus 6 probes.",
+      "result": "Viability 22/50, validity 20/50, echo 3/20 (15%), accepted steps 6, 3, 2, 3, 2 = 16/50, final best per lineage 1.060, 1.300, 0.936, 1.040, 0.933. On fresh never-sampled seeds echo is 1/17 (6%) and all five seeds improved. In the must-differ probe it echoed 1 of 5, with all four non-echo outputs scoring above the parent.",
+      "verdict": "held — the registered ≤ 35% bound held at 11–16% under the loop condition",
+      "caveats": "The registered upper-rung bound is design-specific: it would have FAILED under fixed parents, where Q4_K_M echoes at 52–61%, and at 33% even in the 0.88–0.90 parent band the loop actually occupies. A reader should not carry ≤ 35% as a general property of the rung. Wave 3 (Heilbronn) refutes the ≤ 30% ceiling outright at 46.9%.",
+      "stats": {
+        "viability": "22/50",
+        "validity": "20/50",
+        "echo_loop": "3/20 (15%)",
+        "echo_fresh": "1/17 (6%)",
+        "echo_fixed_parent": "34/65 (52%)",
+        "accepted_steps": "16/50"
+      }
+    },
+    {
+      "id": "p2_rung_q3_k_m",
+      "paper": "paper2",
+      "label": "Rung Q3_K_M (3.91 bits/weight, 14B)",
+      "kind": "arm",
+      "design": "The intermediate rung, immediately above the cliff boundary. Same protocol; also the rung that does not fire the item-4 duration-CV canary, which is what shows the canary is selectively rather than randomly wrong.",
+      "result": "Viability 24/50, validity 19/50, echo 3/19 (16%), accepted steps 4, 3, 4, 2, 2 = 15/50, final best per lineage 1.040, 1.300, 0.962, 1.625, 1.248. In the fixed-parent probe it echoes 31/51 (61%) on wave 1 and 41/91 (45%) on wave 2. In the v2 registered rarefaction it returns 46.78 ± 1.30 distinct solutions, above Q4_K_M's 38.31 — the non-monotonicity that forces the paper to state the 2-bit endpoint rather than a gradient.",
+      "verdict": "descriptive — the cliff sits between this rung and Q2_K, between 3.91 and 3.35 nominal effective bits",
+      "caveats": "Ordering between Q3_K_M and Q4_K_M reverses between the two dispersion-probe waves on the radius-perturbation decomposition (31% vs 46% on v1, 51% vs 39% on v2), so no stable ordering exists between the upper rungs. Duration-CV ratios 0.949 and 1.066 — no canary firing.",
+      "stats": {
+        "viability": "24/50",
+        "validity": "19/50",
+        "echo_loop": "3/19 (16%)",
+        "echo_fixed_parent": "31/51 (61%) v1, 41/91 (45%) v2",
+        "accepted_steps": "15/50"
+      }
+    },
+    {
+      "id": "p2_rung_q2_k",
+      "paper": "paper2",
+      "label": "Rung Q2_K (3.35 bits/weight, 14B) — the cliff",
+      "kind": "arm",
+      "design": "The 2-bit rung where the effect lives. Same protocol: 5 seeds × 10 generations plus 6 probes, on a SHA-256-pinned official Qwen Q2_K GGUF.",
+      "result": "Viability 19/50 and validity 18/50 — indistinguishable from the upper rungs — but coordinate-verified parent echo is 17/18 (94%), two-sided Fisher p = 5.7e-10 against the pooled 8/57. Every seed echoes at or above half its valid rows (per-seed 7/7, 4/4, 4/4, 1/1, 1/2). Accepted hill-climb steps 0, 0, 0, 0, 1 = 1/50, with four of five lineages taking zero steps in ten generations; final best per lineage 0.900, 0.900, 0.900, 0.900, 1.625. On fresh seeds echo is 19/24 (79%), every fresh seed again majority-echo (4/5, 4/5, 5/6, 2/2, 4/6). Invalid rows are themselves majority near-copies (18/32 in the re-execution, 15/26 fresh), so counted over the whole output distribution official Q2_K emits copies or near-copies in roughly 70% of attempts.",
+      "verdict": "held — the registered ≥ 60% echo bound held at 79% on never-sampled seeds",
+      "caveats": "The effect is thinly spread: 15 of the 17 loop echoes come from three seeds, and the remaining two seeds contribute only 1 and 2 valid rows, so per-seed denominators support only the qualitative point. Rows are nested within lineages and the same five seeds recur across rungs, so the candidate-level Fisher figure is descriptive only. The fixed-parent control cuts the matched contrast to 11/12 (92%) against Q4_K_M's 6/18 (33%).",
+      "stats": {
+        "viability": "19/50",
+        "validity": "18/50",
+        "echo_loop": "17/18 (94%)",
+        "echo_fresh": "19/24 (79%)",
+        "echo_fixed_parent": "46/49 (94%)",
+        "accepted_steps": "1/50",
+        "near_copy_invalid": "18/32 and 15/26"
+      }
+    },
+    {
+      "id": "p2_registered_echo_bound",
+      "paper": "paper2",
+      "label": "Registered echo bound and the selection-effect audit",
+      "kind": "analysis",
+      "design": "The load-bearing registration: q2_k ≥ 60%, q4_k_m ≤ 35%, written into kaggle_precision_sweep_14b_fresh.py's header block under 'PREREGISTERED PREDICTIONS — written and pushed BEFORE this run executed' and released in the runner rather than described. Echo is defined as a valid output whose emitted circle set is identical, order-insensitive at the logs' six-decimal precision, to its lineage's running parent. A selection-effect audit then classifies every non-valid row, because a verbatim copy is valid by construction while a botched mutation usually is not.",
+      "result": "Both bounds held: 19/24 (79%) at Q2_K against 1/17 (6%) at Q4_K_M on five never-sampled seeds, and 94% against 11–16% on the re-executed original seeds. The selection-effect loophole is closed: there is no garbage — every failed 14B output at every rung is a fully parsed, malformed circle list, never truncation or non-coordinate text — and at official Q2_K the invalid rows are themselves majority near-copies. The scheme gradient reappears in the failures: near-copy fraction among invalid rows runs 0/33 (fresh Q4_K_M) → 2/22 (IQ2_M) → 5/18 (imatrix Q2_K) → 15/26 and 18/32 (official Q2_K). A validity-filter explanation predicts mutation-dominated invalid rows; the invalid rows are copy-dominated.",
+      "verdict": "held — the registered bound is the figure the paper's claim rests on",
+      "caveats": "On the fresh wave this was a registered secondary; the designated primary (F1) was refuted. The 2/22 IQ2_M invalid near-copy fraction does not reproduce — replay of the stated definition returns 1/22, a one-row definitional boundary case, recorded rather than restated. Echo rates are measured against each lineage's running parent, which is confounded with rung in the direction that flatters the result.",
+      "stats": {
+        "bound": "q2_k >= 60%, q4_k_m <= 35%",
+        "fresh_result": "19/24 (79%) vs 1/17 (6%)",
+        "near_copy_gradient": "0/33 -> 2/22 -> 5/18 -> 15/26, 18/32",
+        "unreproduced": "IQ2_M 2/22 replays as 1/22"
+      }
+    },
+    {
+      "id": "p2_coordinate_replay",
+      "paper": "paper2",
+      "label": "Coordinate-replayed re-execution cohort",
+      "kind": "control",
+      "design": "The original 14B run completed but its hosting session expired before the output directory was retrieved, destroying the per-candidate jsonl, probe texts and checkpoints. What survived was the verbatim live console log, which records scores and viability flags but never emitted coordinates, so the original echo metric could only be inferred from exact score identity with the parent. The rung was re-executed end to end against the same SHA-256-pinned weights, seeds, prompts, sampling parameters and generation order, as a platform batch job, with three logging-only additions: per-candidate coordinates, redundant console echo, and quantitative predictions embedded in the runner source before execution.",
+      "result": "224 outcomes regenerated. Both coordinate-level predictions held (Q2_K echo ≥ 60%: observed 94%; each upper rung ≤ 35%: observed 11–16%), and the check had visible discriminating power — it refuted the original score-inferred estimates on the upper rungs, reclassifying 4 of 12 presumed echoes as rearrangements and making the verified cliff sharper (14% → 94%) than the inferred one (21% → 94%).",
+      "verdict": "held — but this is a re-execution, not a replication",
+      "caveats": "llama.cpp's seeded sampling is deterministic on fixed weights and hardware, so it regenerates the same outcomes rather than drawing fresh ones — which means predictions about console-logged quantities were guaranteed to hold and carry no evidential weight. Only the coordinate-level predictions, about information the console log never contained, were falsifiable.",
+      "stats": {
+        "generations": 224,
+        "reclassified": "4 of 12 presumed echoes",
+        "verified_cliff": "14% -> 94%",
+        "inferred_cliff": "21% -> 94%"
+      }
+    },
+    {
+      "id": "p2_fresh_seed_wave",
+      "paper": "paper2",
+      "label": "Fresh-seed wave — registered primary refuted, secondary held",
+      "kind": "arm",
+      "design": "The same protocol run on five never-before-sampled seeds (2222, 3333, 5555, 7777, 9999) at the two decisive rungs — 100 new coordinate-logged candidates — with every registered prediction falsifiable because the draws are genuinely new. The runner header labels F1 'Improvement (seed-level, primary)' and gives the echo bound F2 no such label.",
+      "result": "The echo bound (F2) replicated: 19/24 (79%) at Q2_K against 1/17 (6%) at Q4_K_M, Fisher p = 3.4e-6, every fresh Q2_K seed again majority-echo. The designated primary F1 failed: it forecast ≤ 2/5 Q2_K seeds improving past the seeded baseline and 3/5 did, against 5/5 at Q4_K_M, a seed-level two-sided Fisher p = 0.44. The antecedent study demotes the improvement collapse to a fragile correlate — the echo rate, not the binary improvement count, is the cliff's replicable signature.",
+      "verdict": "partial — registered primary refuted, registered secondary held",
+      "caveats": "Every use the paper makes of the fresh replication is a use of the secondary, and the paper says so rather than reporting the surviving endpoint alone. The earlier p = 0.001 seed-level improvement figure is superseded and no claim rests on it. The finer post-hoc step-count form of F1 (3 steps vs 14, p = 0.0079) is an instance of analytic flexibility, not a repair of F1.",
+      "stats": {
+        "seeds": "2222, 3333, 5555, 7777, 9999",
+        "rows": 100,
+        "f2_echo": "19/24 (79%) vs 1/17 (6%), p=3.4e-6",
+        "f1_improvement": "3/5 vs 5/5, p=0.44"
+      }
+    },
+    {
+      "id": "p2_determinism_check",
+      "paper": "paper2",
+      "label": "Determinism check — 112/112 per-row digest match on T4",
+      "kind": "control",
+      "design": "The determinism premise underlying the re-execution was exercised externally rather than asserted: a public Kaggle kernel (sohamgugalet/precision-redetermin, runner SHA 58d9a4c8…, 112 embedded per-row digests from the vendored v2 ledger) re-ran 112 of the 224 generations — the Q4_K_M and Q2_K rungs that bracket the cliff — from the released seeds on the original hardware class.",
+      "result": "All 112 reproduced their archived per-row digests exactly; the kernel printed the verdict SUPPORTED itself.",
+      "verdict": "held — determinism verified externally on the bracketing rungs",
+      "caveats": "Two caveats travel with it, both recorded in the output: the original llama-cpp-python build is unrecoverable so the wheel is version-pinned (0.3.34) rather than build-verified (build_unverified: true), and two earlier executions of the same kernel drew a P100 and correctly returned VOID_ARCH for every row instead of comparing across architectures — cross-hardware nondeterminism being a published finding, not a defect to explain away. q8_0 and q3_k_m were skipped with reasons printed.",
+      "stats": {
+        "rows": "112/112 MATCH",
+        "verdict": "SUPPORTED",
+        "rungs": "Q4_K_M and Q2_K",
+        "hardware": "2 x T4",
+        "wheel": "0.3.34 version-pinned"
+      }
+    },
+    {
+      "id": "p2_mustdiffer",
+      "paper": "paper2",
+      "label": "Must-differ probes — copying is instruction-insensitive",
+      "kind": "control",
+      "design": "A registered probe held the parent fixed and appended one demand to the otherwise-identical prompt: the output must not be identical to the parent, at least three circles must change, and returning it unchanged counts as failure. The decision rule was registered in the runner before execution — ≥ 50% echo → instruction-insensitive; ≤ 20% → instruction-sensitive; between, inconclusive — both bounds inclusive, with Q2_K as the rule's registered subject.",
+      "result": "At Q2_K the model returned a coordinate-identical copy in 5 of 5 valid outputs — the instruction-insensitive branch at the maximum possible rate — while format adherence stayed intact. At Q4_K_M, 1 of 5, with all four non-echo outputs scoring above the parent; that rung is reported without a branch because the rule's registered subject is Q2_K alone. On the IQ2 pair the must-differ echoes are 6/8 (imatrix Q2_K) against 0/2 (IQ2_M).",
+      "verdict": "held — returned the registered instruction-insensitive branch",
+      "caveats": "At n = 5 valid outputs per rung this is strongly suggestive rather than definitive, and the antecedent study labels it so. Its consequence is that whatever gates departure at 2 bits is not reachable by instruction, making the intervention worth testing an architectural one — decoding constraints, temperature, diversity penalties — rather than a prompt.",
+      "stats": {
+        "q2_k": "5/5 echo",
+        "q4_k_m": "1/5",
+        "iq2_pair": "6/8 vs 0/2",
+        "rule": ">=50% insensitive, <=20% sensitive"
+      }
+    },
+    {
+      "id": "p2_iq2_control",
+      "paper": "paper2",
+      "label": "IQ2 scheme-versus-bit-width control",
+      "kind": "control",
+      "design": "Because effective bits co-vary with the algorithm, a registered control ran two independently produced 2-bit-class quantizations from a third-party imatrix-calibrated repository, SHA-256-pinned, under the identical protocol: imatrix Q2_K (~3.4 b/w) and IQ2_M (~2.7 b/w — fewer bits, different scheme family, same calibration). Registered thresholds: ≥ 60% would generalize the cliff to the 2-bit class, ≤ 35% would attribute it to algorithm quality.",
+      "result": "Echo 24/32 (75%) for imatrix Q2_K against 12/28 (43%) for IQ2_M (p = 0.017), with must-differ echoes 6/8 versus 0/2 and seeds improving 3/5 versus 5/5. The cliff replicates on an independently produced Q2_K at essentially the official file's matched-seed rate (75% versus 79%), so it is not an artifact of one weight file. The registered bit-width question returns its inconclusive branch — 43% falls between the thresholds — and neither registered conclusion is claimed.",
+      "verdict": "partial — replication held, bit-width question returns its registered inconclusive branch",
+      "caveats": "The apparent scheme gradient (6% Q4_K_M → 43% IQ2_M → 75–79% Q2_K) is withdrawn as evidence about bit width by the fixed-parent control: if Q4_K_M's matched rate is 33–52% rather than 6%, the ladder's low anchor is wrong and IQ2_M's 43% may not be separated from Q4_K_M at all. The gradient survives only as a description of the loop-condition numbers. The IQ2 control also fails to replicate the search-step contrast (6 steps vs 16, lineage-level p = 0.135).",
+      "stats": {
+        "imatrix_q2_k": "24/32 (75%)",
+        "iq2_m": "12/28 (43%)",
+        "p": "0.017",
+        "registered_branch": "inconclusive",
+        "steps": "6 vs 16, p=0.135"
+      }
+    },
+    {
+      "id": "p2_dispersion_probe",
+      "paper": "paper2",
+      "label": "Fixed-parent dispersion probes (waves 1 and 2)",
+      "kind": "control",
+      "design": "A control run against the paper's own result, removing the parent-quality confound in the loop echo measurement. Same Qwen2.5-Coder-14B at the same three rungs, holding the parent constant at each of six preset scores from 0.88 to 1.65, logging coordinates and an echo flag per row. Wave 1: 288 rows (165 valid, 123 invalid), on a single Tesla P100. Wave 2: 432 rows on out-of-sample salted seeds, with its own preregistration and a truncated-run addendum. Both waves registered Q8_0 as a fourth condition.",
+      "result": "Wave 1's locked replacement rule returns no category — SURVIVES, PARTIAL and FALSIFIED each require a combination the outcomes do not supply. Wave 2's addendum rule R2 returns FAILED because the ceiling rung never landed. Registered centres-only echo shows no cliff (98%, 92%, 98%), and the registered primary median-displacement measure is exactly 0.000000 at every rung (JT p = 0.686, degenerate — 159 of 165 rows at exactly zero). Legacy echo does show it: 34/65 (52%), 31/51 (61%), 46/49 (94%) on wave 1 and 56/99, 41/91, 77/84 (92%) on wave 2. The matched-band contrast is 6/18 (33%) against 11/12 (92%), not 15% against 94%. Wave 2's registered primary rarefaction at m = 84 gives 38.31 / 46.78 / 13.00 distinct solutions, JT p = 0.0081, with the score fork at p = 0.3526.",
+      "verdict": "descriptive throughout — neither wave returns a usable registered verdict, and no claim rests on the probe",
+      "caveats": "All six 'parents' share identical centres and differ only in radii, so the probe presents one lattice and can speak to radius variation but not to constructive novelty at all. The registered spread statistic is reconstructed, not replayed — its generating kernel is absent and its one surviving logged value is negative, so an explicit Levenshtein definition was substituted (p = 0.030 on that reconstruction). The post-hoc radius decomposition replicates only at its 2-bit endpoint (4% and 6%); the ordering between upper rungs reverses (46% > 31% on v1, 39% < 51% on v2). 18 of wave 1's 123 invalid rows are harness failures (logprobs unsupported), six per rung. The tie convention for JT is the authors', not registered.",
+      "stats": {
+        "wave1_rows": "288 (165 valid)",
+        "wave2_rows": 432,
+        "verdicts": "wave 1 unclassified, wave 2 FAILED",
+        "legacy_echo_v1": "52% / 61% / 94%",
+        "legacy_echo_v2": "57% / 45% / 92%",
+        "matched_band": "6/18 (33%) vs 11/12 (92%)",
+        "v2_rarefaction": "38.31 / 46.78 / 13.00, p=0.0081"
+      }
+    },
+    {
+      "id": "p2_conditional_quality",
+      "paper": "paper2",
+      "label": "Conditional-quality analysis — is departure quality also collapsed?",
+      "kind": "analysis",
+      "design": "The question the echo result leaves open: whether a degraded proposer's rare departures are also worse ones. A frequency-only effect is in principle repairable by forcing departure; a quality effect is not. The loop ladders cannot settle it (2-bit departure counts of 1, 5 and 8), so the analysis pools both fixed-parent probe waves, where the parent is held constant, score_delta is logged per row, and six parents spanning 0.88 to 1.65 permit a per-parent breakdown. Post-hoc, in neither registration.",
+      "result": "Pooled: Q4_K_M 60/74 (81%) improved among departures, Q3_K_M 61/70 (87%), Q2_K 8/10 (80%), 95% CI [44%, 97%]; Fisher on 8/10 against 60/74 returns p = 1.00. Per parent the 2-bit rung matches everywhere it has data — 2/2 at 0.880 against 21/23 (91%), 1/2 at 0.900 against 10/11, 2/2 at 1.040 against 8/9 (89%), 3/4 at the hardest parent 1.650 against 6/9 (67%) — and its departures are not drawn from easier parents (4 of its 10 sit at the hardest parent, 40% against Q4_K_M's 12%).",
+      "verdict": "partial — a collapse in departure quality is excluded at 95%, narrowly; the reading it leaves standing is unconfirmed",
+      "caveats": "This is the thinnest load-bearing thing in the paper and the paper says so. The decision rule is the authors' own, written in an unlocked design note on the day the analysis became computable — not a registration. Its power floor of 25 2-bit departures is unmet at 10 observed, so no branch is confirmed. The exclusion holds by 3.8, 2.4 and 0.8 points against three candidate comparators (the Clopper-Pearson lower bound on 8/10 is 44.4% against thresholds of 40.5%, 42.0% and 43.6%) and reverses entirely if one of the ten departures flips (7/10 gives 34.8%). It is also a fixed-parent measurement, so whether departure quality holds inside the loop is not established.",
+      "stats": {
+        "departures": "74 / 70 / 10",
+        "improved": "60/74 (81%), 61/70 (87%), 8/10 (80%)",
+        "fisher": "p=1.00",
+        "lower_bound": "44.4%",
+        "margin": "0.8 points against least favourable comparator",
+        "power_floor": "25 required, 10 observed"
+      }
+    },
+    {
+      "id": "p2_hill_climb_lineage",
+      "paper": "paper2",
+      "label": "Hill-climb lineage analysis and the horizon model",
+      "kind": "analysis",
+      "design": "An accepted improvement is a valid output scoring strictly above its lineage's running best — one hill-climb step actually taken. Measured across five lineages of ten generations per rung on the registered 14B ladder, the fresh wave, the IQ2 control and the 7B ladder. Post-hoc: it appears in no preregistration on any wave. Tests are exact enumerations of every split of the pooled lineages, two-sided, on the difference of mean step counts. sec3_horizon_power.py then resamples the observed process to price a longer-horizon run.",
+      "result": "Accepted steps: Q2_K 1/50, Q3_K_M 15/50, Q4_K_M 16/50, Q8_0 14/50, with four of five Q2_K lineages taking zero steps in ten generations. Lineage-level tails: p = 0.0008 against the pooled upper three, p = 0.0079 against Q4_K_M alone; the fresh seeds replicate at 3 steps against 14, p = 0.0079; the IQ2 control does not (6 vs 16, p = 0.135). Final best score after ten generations does not separate the rungs anywhere — six outcome-level tails across both scales at p = 0.12–0.94. At 7B the statistic reverses: FP16 6/50, Q8_0 2/50, Q4_K_M 3/50, Q3_K_M 4/50, Q2_K 7/50, the 2-bit rung taking the most steps.",
+      "verdict": "descriptive and post-hoc — no claim rests on it",
+      "caveats": "The identity accepted ≤ valid − echo holds by construction (an echo can never be an accepted improvement), and the gap k is 0, 1, 1, 2 across the four rungs — so most of the contrast is the echo contrast seen in complement, not a second independent result. Both 0.0079 figures sit exactly on the floor of a five-versus-five exact enumeration (2/252); a Bonferroni threshold across the twelve post-hoc tails is 0.0042, which only p = 0.0008 meets. The design is seed-crossed while the test is unstratified. The horizon power figure is withdrawn: the model's only alternative puts Q2_K ahead at every horizon because the 2-bit rung's six observed offers hand the resampler a one-in-three jackpot. What survives is structural — final best score is a maximum and is therefore the wrong dependent variable.",
+      "stats": {
+        "accepted_steps_14b": "1/50, 15/50, 16/50, 14/50",
+        "fresh": "3 vs 14, p=0.0079",
+        "iq2": "6 vs 16, p=0.135",
+        "7b": "6, 2, 3, 4, 7 per 50",
+        "outcome_tails": "p=0.12-0.94",
+        "enumeration_floor": "2/252 = 0.0079"
+      }
+    },
+    {
+      "id": "p2_opus_alias_forensic",
+      "paper": "paper2",
+      "label": "opus_alias forensic case study",
+      "kind": "analysis",
+      "design": "Thirty invocations, ten each at three held-out cells (N = 13, 21, 31), under a bare prompt identical to the other tiers, with predictions registered in arm_o_preregistration.txt (full digest 211718c6b58d…). The study owner requested a specific dated top-tier model; the runtime accepts an alias only, so the request was unsatisfiable and undetectably so. The case study weighs serving-signature evidence (latency) and behavioral evidence (validity, failure taxonomy) against hypotheses H1 (serving-path degradation) and H2 (a genuine tier property).",
+      "result": "Validity 4/30 (13%) at 1e-6 and 4/30 at 1e-9 — tolerance-invariant, per cell 3/10, 1/10, 0/10 — against Sonnet 30/30 (27/30 strict), the bare Haiku slice 50/60 (47/60 strict), and a fourth comparator not previously reported, 70 trace rows at 63/70 (90%), giving Fisher p = 1.1e-13 and 1.0e-16 pooled. The comparators do not differ detectably from each other. All 26 invalid rows overlap; the 2 labelled nonpositive_radius do so only because that gate fires first. Errors sit far outside rounding noise — in one N = 31 row edge strips at r = 0.03 sit 0.1367 from a grid circle needing 0.19667, nearly five orders of magnitude above tolerance. Rescored, the registered scorecard is two held, two failed, none unevaluable: P-O1 held at 0/30 on-trap and P-O3 at 4/4, while P-O2 and P-O4 failed outright.",
+      "verdict": "partial — the observations mildly favour H1 within this snapshot and cannot decide between the hypotheses",
+      "caveats": "The latency evidence is a working-log range the released artifact cannot check; the ~49.9k token observation is withdrawn as an aggregate-counter artifact over a large fixed prefix. The trace comparator pools the companion paper's pilot and trace_v2 rows, which that paper forbids pooling, because the released file carries no separating field; no claim rests on it. A 45-row Haiku slice that once served as comparator was overwritten in place and cannot be reconstructed. Speed is not precision: on the ladders the authors fully control, throughput does not order by bit-width.",
+      "stats": {
+        "samples": 30,
+        "validity": "4/30 at both tolerances",
+        "per_cell": "3/10, 1/10, 0/10",
+        "comparators": "30/30, 50/60, 63/70",
+        "pooled_fisher": "1.0e-16",
+        "invalid_overlapping": "26/26",
+        "scorecard": "2 held, 2 failed"
+      }
+    },
+    {
+      "id": "p2_arm_b2",
+      "paper": "paper2",
+      "label": "Arm B2 — dated re-snapshot of the alias",
+      "kind": "arm",
+      "design": "Preregistered with arm R in arm_r_preregistration.md, committed before the first invocation and run on 2026-08-07 through the same agent runtime and the same alias. Thirty invocations re-issuing the byte-identical bare prompts at N = 13, 21, 31. Arm B2 is the anchor without which the repair probe would be uninterpretable, and its outcome was registered in advance as P-R0 at ≤ 12/30 valid, with the disconfirming branch written out.",
+      "result": "P-R0 disconfirmed at the widest margin the design allows: 10/10, 10/10 and 10/10 against the original 3/10, 1/10 and 0/10, pooled 30/30 against 4/30, Fisher p = 7.8e-13, with best valid scores 1.776141, 2.276800 and 2.794180. Wall clock moved from the 2.8–9 s window to 68.7–594.1 s, median 228.2. Nothing in the runtime's response surface reported that anything had changed.",
+      "verdict": "disconfirmed — P-R0 refuted; the alias drifted within six days",
+      "caveats": "The p-value rejects only that the two sets are draws from one success rate; it is not a test that the serving path changed, since there is one serving path per condition — pseudoreplication with respect to that question — and the 2026-08-01 arm entered the paper for being extreme. It is also unregistered: the registration fixed the ≤ 12/30 band, not a test. The timing comparison is uncalibrated in both directions (eyeballed session-log ranges against a runtime duration_ms field, no overlapping rows, no contemporaneous comparator tier) and the registration registered no timing claim. The usage channel is withdrawn: arm R's same-day alias rows on a different task are uniform to 1.01-fold, so the spread tracks the task, not the date.",
+      "stats": {
+        "samples": 30,
+        "date": "2026-08-07",
+        "valid": "30/30 vs 4/30",
+        "per_cell": "10/10, 10/10, 10/10",
+        "fisher": "7.8e-13",
+        "registered_bound": "<= 12/30",
+        "latency": "68.7-594.1 s"
+      }
+    },
+    {
+      "id": "p2_arm_r",
+      "paper": "paper2",
+      "label": "Arm R — repair probe",
+      "kind": "arm",
+      "design": "The prompt-variation discriminator §4 named: hand the alias a fixed, known-valid packing and ask it to verify or repair the tangencies, so arithmetic execution is decoupled from constructive ambition. Sixty invocations across six cells — N ∈ {13, 31} × δ ∈ {1e-2, 1e-3, 1e-4} — five each at the alias tier and five at Sonnet. A grid-plus-interstitial packing, exactly tangent everywhere so the injected displacement is the only violation, with one circle slid by δ and the overlapping-pair set as an exact key generated by arm_r_build.py before the first invocation.",
+      "result": "59/60 exact. Recall over key pairs is 1.00 in every cell of every tier; the single miss is a false positive naming a pair whose true clearance is 7.089e-04. Detection is flat in δ across two orders of magnitude at both tiers, and no invocation anywhere returned the empty list. Of seven registered predictions, three held and four failed: P-R1 and P-R5 held, P-R4 held vacuously (zero empty responses anywhere), P-R2 is scored FAILED on one cell only by the letter of a rule the authors wrote, and P-R3 and P-R6 failed outright — P-R6 became structurally unreachable once Sonnet also hit ceiling.",
+      "verdict": "not evaluable for its purpose — P-R0's failure triggers the registration's fourth branch, which forbids drawing any H1/H2 conclusion from it",
+      "caveats": "The branch binds especially because arm R's result is clean and would otherwise read as evidence against H1: it measures a serving path that cannot be tied to the 2026-08-01 one. The H1 signature was not detected, which is weaker than absent — five invocations per cell put the one-sided 95% lower bound of a 5/5 cell at 0.549, so the design excludes a precision effect of roughly 45 points or more and says nothing about a smaller one. Scope: one substrate family, two N, one displacement direction. The preregistration is a local commit (e77bb0e), not an external timestamp.",
+      "stats": {
+        "samples": 60,
+        "exact": "59/60",
+        "cells": "N in {13,31} x delta in {1e-2,1e-3,1e-4}",
+        "recall": "1.00 every cell",
+        "scorecard": "3 held (1 vacuous), 4 failed",
+        "lower_bound_5of5": "0.549"
+      }
+    },
+    {
+      "id": "p2_alias_drift",
+      "paper": "paper2",
+      "label": "Alias drift note — the question becomes unaskable",
+      "kind": "analysis",
+      "design": "The interpretive consequence of arm B2: what a within-six-days change in an alias's behaviour, latency and usage spread does to the hypothesis pair §4 poses, and to any study whose treatment is a vendor alias.",
+      "result": "H1 and H2 are hypotheses about the 2026-08-01 call and remain well posed about it; what is gone is any route to testing them, because the only handle the runtime offers no longer addresses the thing they are about and no observable reports when that changed. A later call through the same alias is a sample of an unknown condition, not a second sample of the same one. The change cannot be read as a natural experiment settling the matter: fast-and-13% then slow-and-100% is what H1 predicts if only the decode path moved and equally what H2 predicts if the weights changed, and two conditions differing simultaneously in date, load, decode path and possibly identity distinguish none of them.",
+      "verdict": "descriptive — §4's H1/H2 question is not open pending more data; it is unaskable in the form §4 asks it",
+      "caveats": "This limits §4 more than it advances it, and the paper reports it as a limitation rather than a result. It also does not retract a single 2026-08-01 observation — those thirty rows are in the released artifact and score what they score. P-O2 and P-O4, which failed in 2026-08, are not rehabilitated by the later path producing a rival-argmax output at N = 21 and a best valid score of 2.794180.",
+      "stats": {
+        "drift_window": "6 days",
+        "channels_moved": "validity, latency, usage spread",
+        "surviving_channel": "validity only (usage withdrawn, timing uncalibrated)"
+      }
+    },
+    {
+      "id": "p2_wave3_heilbronn",
+      "paper": "paper2",
+      "label": "Wave 3 — Heilbronn triangle transfer",
+      "kind": "extension",
+      "design": "Registered in wave3_prereg_heilbronn.md with the runner pushed as a public Kaggle kernel before any row was sampled — the first externally-timestamped registration in either paper. Task: Heilbronn triangle at n = 13, chosen because a regular grid scores exactly zero on it, so a proposer emitting its default template is distinguishable from a proposer copying its parent — a separation circle packing cannot make, its seeded parent having been the template. Allocation 25 lineages at Q2_K against 8 at Q4_K_M, six closed-form predictions including a control-arm floor, and a disconfirmation clause. 495 calls.",
+      "result": "Control-arm floor TRIGGERED: no proposal at any rung scored above the seed parent in 495 attempts, mean accepted steps 0.0 at Q4_K_M against a registered ≥ 1.0 floor, so the search-progress primaries (5.1, 5.2) and conditional-quality primary (5.3) are UNINFORMATIVE. Echo (5.4, a registered conjunction, not floor-gated) is REFUTED as registered with one side held: Q2_K 186/295 = 63.1% against a ≥ 55% bound — held — while Q4_K_M is 53/113 = 46.9% against a ≤ 30% bound — refuted, at three times its circle-packing rate. The rung separation survives descriptively (two-sided Fisher p = 3.5e-3, unregistered). Template check (5.5, no bound): 15.3% of Q2_K and 23.9% of Q4_K_M valid outputs score exactly zero. The disconfirmation clause does not fire.",
+      "verdict": "partial — the rung contrast transfers, the absolute bands do not",
+      "caveats": "Echo rate is driven jointly by precision and by whether the search has anywhere to go: §3's bands were measured on a task with headroom, and wave 3 shows what the same ladder does without it. One defect caught by the released analysis: the kernel's in-flight summary counted a phantom accepted step per lineage because the ledger logs scores at 12 dp and an echo row's rounded score sits 5e-13 above the unrounded seed constant; exact recomputation and all 33 kernel state files agree the true count is zero everywhere.",
+      "stats": {
+        "calls": 495,
+        "q2_k_echo": "186/295 (63.1%) vs >=55% HELD",
+        "q4_k_m_echo": "53/113 (46.9%) vs <=30% REFUTED",
+        "fisher": "3.5e-3",
+        "improvements": "0/495",
+        "template_zero": "15.3% / 23.9%"
+      }
+    },
+    {
+      "id": "p2_wave4_dissociation",
+      "paper": "paper2",
+      "label": "Wave 4 — capability-tier control (DISSOCIATION)",
+      "kind": "extension",
+      "design": "The strongest alternative reading of §3 — that echo is what any sufficiently weak proposer does — was left standing by every ladder because no experiment varied capability with precision out of the design. Registered in wave4_prereg_tiers_heilbronn.md (SHA-256 7b3e67dc…, published to an externally-timestamped host before any row was sampled): three hosted capability tiers, requested by explicit model parameter, running the identical Heilbronn n = 13 lineage protocol — same seed parent extracted programmatically from the wave-3 runner rather than retyped, same echo definition, tools forbidden and tool_uses recorded per row.",
+      "result": "0 of 120 coordinate-verified echoes — every tier at 0% against a registered ≤ 30% bound — verdict DISSOCIATION, printed by the analysis script itself, which recomputes every echo and score from stored coordinates. The registered secondary (5.2, echo monotonicity) returned NOT EVALUATED, its 10-echo floor unmet. The failures differ in kind rather than degree: no proposal in any tier improved on the seed (0/120), and the registered template check finds valid outputs scoring exactly zero — three-plus collinear points — at 52.5% for the weakest tier, 27.5% for the middle and 97.5% for the strongest, whose 39/40 zero-scoring outputs are family-similar symmetric lattices, pairwise distinct at 6 dp.",
+      "verdict": "held — capability does not reproduce the quantization ladder's failure mode",
+      "caveats": "0/120 bounds echo at roughly 3% at this n, not an exclusion at any rate, and the dissociation bounds the capability confound over the tiers sampled without excluding it below them. Scope limits are the prereg's own: served precision, sampling parameters and serving path per tier are all unattested (C3); one date; one harness wrapper. On LABS, a third task where nothing climbed, the same rungs' stall-echo rates reversed, so the stuck-tier contrast is Heilbronn-specific rather than a law of stalls. The all-distinct uniqueness count is post-hoc and not computed by the replay script.",
+      "stats": {
+        "samples": 120,
+        "echo": "0/120 (0% per tier vs <=30% bound)",
+        "verdict": "DISSOCIATION",
+        "improvements": "0/120",
+        "template_zero": "52.5% / 27.5% / 97.5%",
+        "tool_uses": "0/120"
+      }
+    },
+    {
+      "id": "p2_wave5_labs",
+      "paper": "paper2",
+      "label": "Wave 5 — LABS discrete-task transfer",
+      "kind": "extension",
+      "design": "Registered in wave5_prereg_labs.md (SHA a1336cfd…, runner SHA d1739f6c…, pushed as a public Kaggle kernel before sampling): low-autocorrelation binary sequences at n = 32, a discrete task with no float arithmetic, registered specifically to test the 'echo is float-rounding' reading. 495 calls on the same 14B GGUF ladder. Its §8b predicted its own failure mode before running.",
+      "result": "The Q4_K_M rung accepted zero steps, the control floor fired, verdict UNINFORMATIVE (Branch C), and no branch of its decision rule is claimed. Its unclaimable descriptives run in the opposite direction from every other wave: echo 10/233 = 4.3% at Q2_K against 12/60 = 20.0% at Q4_K_M — reversed, on a task where a single flipped symbol is a complete departure — with 0 improving departures anywhere and 0 symmetry variants.",
+      "verdict": "not evaluable — UNINFORMATIVE by its own registered floor",
+      "caveats": "Reported rather than shelved. Two of the three transfer tasks designed were too hard for the model that had to climb them, which is a fact about task calibration and is disclosed as such. The reversal is what makes wave 4's stuck-tier contrast Heilbronn-specific rather than a general law about stalls.",
+      "stats": {
+        "calls": 495,
+        "verdict": "UNINFORMATIVE (Branch C)",
+        "echo": "10/233 (4.3%) Q2_K vs 12/60 (20.0%) Q4_K_M — reversed",
+        "improvements": 0
+      }
+    },
+    {
+      "id": "p2_wave7",
+      "paper": "paper2",
+      "label": "Wave 7 — family generality (Llama-3.1-8B, Gemma-2-9B)",
+      "kind": "extension",
+      "design": "Every GGUF figure comes from a single model family, so wave7_prereg_families.md (SHA-256 44244005…, published as a public Kaggle dataset before sampling) registered the same circle-packing protocol, byte-identical prompts and evaluator on Llama-3.1-8B-Instruct and Gemma-2-9B-it — per-family directional contrasts only, no absolute band imported from any prior task or family, echo primary not floor-gated, a 20-valid-row power floor per rung, and a disconfirmation clause committing the authors to qualify §3's claims as Qwen-specific if the contrast was refuted in both families.",
+      "result": "Neither family reached its power floor; wave7_analysis.py prints UNDERPOWERED for both, the control floors also fire, and the disconfirmation clause — which requires both families evaluable and refuted — does not. Llama produced 1 valid packing in 50 at Q4_K_M and 5 in 50 at Q2_K, failing by the same wrong-count lottery the 7B Qwen ladder shows (counts scattered 18–30 around the demanded 26); Gemma produced 14 and 4 — and, as an unclaimable descriptive, all 18 of Gemma's valid outputs at both rungs are coordinate-exact parent echoes, while none of Llama's 6 are.",
+      "verdict": "not evaluable — UNDERPOWERED in both arms; establishes a scope fact, not a transfer fact",
+      "caveats": "The 8–9B open-weight class sits below this task's competence floor at every precision tested. One defect in the locked, public and immutable registration is disclosed: its informational prior-state section quotes Qwen echo figures from working notes ('94% / 60% / 51% against 15% / 10% / 24%') where ledger replay gives 94%/15% for the registered wave, 79% (19/24) against 6% (1/17) for the fresh wave and 75% against 43% for the IQ2 pair; the discrepancy sits in a priors section, not in any registered bound, floor or verdict.",
+      "stats": {
+        "rows": "100 per family",
+        "llama_valid": "5/50 Q2_K, 1/50 Q4_K_M",
+        "gemma_valid": "4/50 Q2_K, 14/50 Q4_K_M",
+        "power_floor": "20 valid rows per rung",
+        "gemma_echo": "18/18",
+        "llama_echo": "0/6"
+      }
+    },
+    {
+      "id": "p2_wave7b",
+      "paper": "paper2",
+      "label": "Wave 7b — competence-matched retry (Phi-4, Mistral-Small-24B)",
+      "kind": "extension",
+      "design": "A competence-matched retry registered in wave7b_prereg_families_14b.md (SHA-256 cd043d63…, public Kaggle dataset pushed before sampling), re-running the identical protocol on Phi-4 (14.7B) and Mistral-Small-24B — the same size class as, and larger than, the Qwen model where the cliff lives — with the same 20-valid-row power floor and a registered both-underpowered branch written for exactly this outcome.",
+      "result": "Both arms again miss the floor: Phi-4 produced 9 valid packings in 100 loop calls (6/50 Q2_K, 3/50 Q4_K_M), Mistral 2 (1/50 and 1/50). The registered both-underpowered branch holds, so the task's format-competence floor excluded every non-Qwen family tested at up to 24B, and the family-generality limitation is stated as unresolved in the abstract's scope sentence as that branch requires. Unclaimable descriptives: unlike the 8–9B arms these climbed — four of Phi-4's five Q2_K lineages improved past the seed (best 1.30, one Q4_K_M lineage reaching 2.1667), Mistral improved in one lineage per rung with a Q2_K best of 2.1667 — and neither model echoed even once at either rung.",
+      "verdict": "not evaluable — UNDERPOWERED in both arms; the registered both-underpowered branch fires",
+      "caveats": "Across all four non-Qwen arms the 35 valid outputs split into Gemma's 18 (every one a parent echo, at both rungs) and the other three families' 17 (not one echo), so whatever governs parent-copying is not bit-width alone — on these small samples it looks family-shaped, which is what the registered FAMILY-DEPENDENT reporting rule anticipated and what remains untested at adequate power. Phi-4's must-differ probe returned the instruction-sensitive branch vacuously: that branch exists to explain loop echo and Phi-4 produced none. A family ladder needs either a coder-tuned non-Qwen 14B that can hold the output format or a format-forgiving task; both are named as open work.",
+      "stats": {
+        "rows": "100 per family",
+        "phi4_valid": "6/50 Q2_K, 3/50 Q4_K_M",
+        "mistral_valid": "1/50 and 1/50",
+        "echoes": "0 in both families",
+        "non_qwen_pooled": "35 valid: 18 gemma (all echo), 17 others (none)"
+      }
+    },
+    {
+      "id": "p2_wave8_pilot",
+      "paper": "paper2",
+      "label": "Wave-8 pilot — seed calibration against wave 3's control-rung floor",
+      "kind": "control",
+      "design": "A disclosed seed-calibration pilot (kaggle_wave8_pilot/, public kernel sohamgugalet/wave8-seed-pilot, Q4_K_M only, no Q2_K rows) testing whether an easier seed would repair wave 3's fired control-arm floor. Four graded best-of-K random parents, scores 0.000308 to 0.003544, against wave 3's registered seed at 0.009087.",
+      "result": "The control rung improved on 1 of 40 probes — even from a best-of-1 random configuration — and echoed 6 of 8 valid outputs at the easiest seed. The floor is the task, not the seed: no seed choice makes Heilbronn a search-progress instrument for this model, so the search-progress hypotheses stay tested on circle packing alone and the recalibrated wave the pilot was scoped for is not run. The pilot also shows, on 40 disclosed unregistered rows, that the reference rung's regression toward copying on this task (46.9%) is not an artifact of the registered seed's difficulty.",
+      "verdict": "descriptive — the conditional question wave 3 could not answer stays open",
+      "caveats": "40 unregistered rows, Q4_K_M only, no Q2_K arm, so nothing about the rung contrast can be drawn from it directly.",
+      "stats": {
+        "probes": 40,
+        "improvements": "1/40",
+        "echo_easiest_seed": "6/8",
+        "seed_scores": "0.000308-0.003544 vs 0.009087"
+      }
+    },
+    {
+      "id": "p2_item4_canary_audit",
+      "paper": "paper2",
+      "label": "Item-4 self-audit — the duration-CV canary fires on a fixed serving path",
+      "kind": "analysis",
+      "design": "Item 4 is the one element of the disclosure standard the paper claims as new, so it is audited against the paper's own rows: §3's ledgers carry per-invocation wall_s across weight files pinned by SHA-256 on a fixed inference stack — same llama.cpp build, a single Tesla P100, same sampling parameters, same harness. Whatever the canary reports there, it is not reporting a serving-path change, because there was none. Released as sec6_cv_canary_audit.py.",
+      "result": "It fires. Duration CV among valid rows is 0.0603 at Q4_K_M and 0.0143 at Q2_K — a ratio of 0.237, below the one-third threshold the item names — with wave 2 replicating on independent seeds at 0.0692 against 0.0200 (ratio 0.289) and a permutation test returning p < 0.0001 on both. Q3_K_M does not fire on either wave (ratios 0.949 and 1.066), so the canary is selectively wrong at exactly the rung §3 is about. The mechanism is output degeneracy, not serving: duration CV is low among echo rows at every rung (0.0210, 0.0141, 0.0113) and high among non-echo rows at every rung (0.0783, 0.0778, 0.0294). The obvious repair — throughput over non-echo valid rows only — fails three ways: wave 1's ranges are not disjoint (Q4_K_M's [16.455, 18.188] entirely contains Q2_K's [16.703, 16.753]); a ~92% cold-start effect uniform across all twelve rung × wave cells silently did the filtering; and the band does not survive a hardware change, with the same SHA-pinned files inverting order between a P100 (Q4_K_M 17.94 vs Q2_K 16.62 tok/s) and 2 × T4 (21.45 vs 22.48).",
+      "verdict": "disconfirmed — item 4's firing condition is withdrawn in its dispersion form and not replaced",
+      "caveats": "The disclosure half is retained because it costs nothing and enables exactly this audit. This does not overturn §4, whose serving-signature evidence is an absolute latency gap of one to two orders rather than a dispersion ratio and whose arm was not echoing at all. It does not show that no observable attests the served file — output-side methods exist — only that the one instrument class a verifier can compute from what an agent runtime already returns is ruled out, for a reason that worsens when the verifier loses the hardware.",
+      "stats": {
+        "cv_wave1": "0.0603 vs 0.0143 (ratio 0.237)",
+        "cv_wave2": "0.0692 vs 0.0200 (ratio 0.289)",
+        "q3_k_m_ratios": "0.949, 1.066",
+        "cold_start": "~92% of steady state, all 12 cells",
+        "hardware_inversion": "P100 vs 2xT4 ordering reverses"
+      }
+    },
+    {
+      "id": "p2_scope_conditions",
+      "paper": "paper2",
+      "label": "Scope conditions — family generality and serving-path non-identifiability",
+      "kind": "analysis",
+      "design": "The two limitations the paper states as unresolved rather than estimated: whether the cliff is a Qwen-family artifact, and whether any observable can attest which serving path answered a past call. The first was attacked by two registered family waves and a competence-matched retry; the second by the two runnable within-runtime experiments and an engagement with output-text fingerprinting.",
+      "result": "Family generality is unresolved: every non-Qwen family tested, at up to 24B, sat below the task's format-competence floor, so the registered both-underpowered branch fires and the abstract states the scope as an open limitation. Serving-path attestation is unresolved by construction: fingerprinting methods detect change between snapshots but none attests which decode path served a particular past call, and the timing instrument class is ruled out by the item-4 audit. §3's data also comes from a locally-served open-weights ladder at N = 26, not from the alias-addressed runtime and not at §4's cells — a mechanism gap and an instance gap, both real.",
+      "verdict": "descriptive — stated as open limitations rather than estimated",
+      "caveats": "The instance gap (that a cliff observed at N = 26 transfers to N = 13/21/31) is supported by the companion paper's finding that the same constructible template family governs proposals across N, but it is an inference, not a replication. A rival reading the paper does not screen — that the anchor is pretraining recall rather than construction — is named, and the contamination screen written for it (arm_canary_contamination_audit.py) is disclosed as defective in all three probes and not run.",
+      "stats": {
+        "families_tested": "Llama-3.1-8B, Gemma-2-9B, Phi-4 14.7B, Mistral-Small-24B",
+        "all_underpowered": "yes, up to 24B",
+        "ladder_task": "N=26",
+        "case_study_cells": "N=13,21,31"
+      }
+    }
+  ],
+  "links": [
+    {
+      "source": "p1_closed_form",
+      "target": "p1_claim_closed_form",
+      "type": "informs",
+      "note": "The order rule, V(k,m) and T(k,N) are the object the headline claim is about."
+    },
+    {
+      "source": "p1_arm_f",
+      "target": "p1_claim_closed_form",
+      "type": "informs",
+      "note": "The bare weak-tier arm is the corpus on which the closed form's point predictions were tested out of sample."
+    },
+    {
+      "source": "p1_mode_ceiling",
+      "target": "p1_claim_closed_form",
+      "type": "informs",
+      "note": "Establishes that the prediction attains the modal-frequency ceiling at 7 of 7 cells, so the residual is dispersion not misprediction."
+    },
+    {
+      "source": "p1_arm_f",
+      "target": "p1_mode_ceiling",
+      "type": "feeds",
+      "note": "The mode-ceiling table is computed over the bare arm's per-cell valid samples."
+    },
+    {
+      "source": "p1_round_number_baseline",
+      "target": "p1_mode_ceiling",
+      "type": "controls_for",
+      "note": "Supplies the content-free floor (2/69) the ceiling result is read against."
+    },
+    {
+      "source": "p1_structural_diagnostics",
+      "target": "p1_mode_ceiling",
+      "type": "controls_for",
+      "note": "The k back-out shows all 50 on-prediction samples are k*-structured, ruling out an accounting coincidence."
+    },
+    {
+      "source": "p1_prereg_protocol",
+      "target": "p1_arm_f",
+      "type": "scopes",
+      "note": "Prompt hashes, dual tolerances and the 2e-3 value window fix what arm F could report before sampling."
+    },
+    {
+      "source": "p1_arm_f",
+      "target": "p1_claim_tier_inversion",
+      "type": "informs",
+      "note": "Supplies the weak-tier leg of the ladder (78% / matched 83%)."
+    },
+    {
+      "source": "p1_arm_s",
+      "target": "p1_claim_tier_inversion",
+      "type": "informs",
+      "note": "Supplies the middle-tier leg, valid 30/30 at 1e-6 but on-prediction 1/30."
+    },
+    {
+      "source": "p1_arm_o",
+      "target": "p1_claim_tier_inversion",
+      "type": "informs",
+      "note": "Supplies the collapsing third leg at 13% validity, with the alias caveat attached."
+    },
+    {
+      "source": "p1_arm_o_anomalies",
+      "target": "p1_arm_o",
+      "type": "scopes",
+      "note": "Latency and token anomalies are why the arm is reported as an unattributable serving alias throughout."
+    },
+    {
+      "source": "p1_arm_o_anomalies",
+      "target": "p1_arm_o",
+      "type": "controls_for",
+      "note": "The overlap diagnostic rules out a tolerance artifact behind the 13% validity rate."
+    },
+    {
+      "source": "p1_arm_s",
+      "target": "p1_prereg_protocol",
+      "type": "disconfirms",
+      "note": "The 2.75 escape sits 1.47e-3 from the family rival, inside the registered 2e-3 window, exposing the value classifier as too loose for that distinction."
+    },
+    {
+      "source": "p1_arm_t",
+      "target": "p1_arm_f",
+      "type": "contrasts_with",
+      "note": "trace_v2 is the paired manipulation against the bare arm at the same three cells."
+    },
+    {
+      "source": "p1_arm_t",
+      "target": "p1_trace_faithfulness",
+      "type": "feeds",
+      "note": "All 60 trace_v2 rows and their METHOD lines are the audit's input."
+    },
+    {
+      "source": "p1_trace_faithfulness",
+      "target": "p1_arm_t",
+      "type": "scopes",
+      "note": "The audit is confounded with the elicitation arm, computed where 87% of valid outputs sit on one template and correct description is close to free."
+    },
+    {
+      "source": "p1_arm_t",
+      "target": "p1_claim_closed_form",
+      "type": "informs",
+      "note": "Requesting a method line concentrates output onto the anchor (87% vs 70%), so trace collection is an intervention on the measured distribution."
+    },
+    {
+      "source": "p1_arm_g",
+      "target": "p1_out_of_sample_containers",
+      "type": "feeds",
+      "note": "The rectangle is the second held-out container, with the rule restated but never refitted."
+    },
+    {
+      "source": "p1_out_of_sample_containers",
+      "target": "p1_claim_closed_form",
+      "type": "informs",
+      "note": "Out-of-sample transfer is what the preregistered point predictions were locked against."
+    },
+    {
+      "source": "p1_rect_formula_negative",
+      "target": "p1_arm_g",
+      "type": "scopes",
+      "note": "Because no closed form exists for the rectangle's extend branch, what arm G tests is the LP-backed prediction rather than a formula."
+    },
+    {
+      "source": "p1_rect_formula_negative",
+      "target": "p1_closed_form",
+      "type": "disconfirms",
+      "note": "The formula does not generalize past the square: filler-to-filler spacing constraints have no expression in (p, q, m, a)."
+    },
+    {
+      "source": "p1_arm_m",
+      "target": "p1_closed_form",
+      "type": "disconfirms",
+      "note": "The registered filler-branch falsifier triggered at 3 of 3 cells, restricting V(k,m) to the m <= 1 support."
+    },
+    {
+      "source": "p1_arm_m",
+      "target": "p1_claim_closed_form",
+      "type": "scopes",
+      "note": "Adds the fifth confirmed k on the truncate branch (N = 57) while disconfirming the extend branch at m >= 4."
+    },
+    {
+      "source": "p1_arm_m",
+      "target": "p1_arm_f",
+      "type": "extends",
+      "note": "Same bare prompt and scoring conventions, four new cells chosen to probe the untested branch and the unsampled k = 8 zone."
+    },
+    {
+      "source": "p1_arm_mu",
+      "target": "p1_claim_closed_form",
+      "type": "disconfirms",
+      "note": "F-MU1 triggered: the anchoring result does not transfer to one-parent calls, scoping the paper's title to unconditioned calls."
+    },
+    {
+      "source": "p1_arm_mu",
+      "target": "p1_claim_template_executability",
+      "type": "informs",
+      "note": "The good-parent-followed / bad-parent-discarded asymmetry is one half of the executability decomposition."
+    },
+    {
+      "source": "p1_arm_ch",
+      "target": "p1_claim_template_executability",
+      "type": "informs",
+      "note": "Choice follows the printed score table while execution fails off-template in 30 of 31 invalid attempts — the other half."
+    },
+    {
+      "source": "p1_arm_ch",
+      "target": "p1_arm_mu",
+      "type": "replicates",
+      "note": "Finds the same selection/execution asymmetry from the opposite direction; both were registered together."
+    },
+    {
+      "source": "p1_arm_gm",
+      "target": "p1_claim_closed_form",
+      "type": "scopes",
+      "note": "Cross-vendor generality is unestablished: the arm is quota-throttled and unanalyzed."
+    },
+    {
+      "source": "p1_arm_gm2",
+      "target": "p1_claim_closed_form",
+      "type": "scopes",
+      "note": "0 of 140 parseable responses leaves every cell UNSCOREABLE, so the law remains single-vendor evidence."
+    },
+    {
+      "source": "p1_arm_gm3",
+      "target": "p1_arm_gm2",
+      "type": "extends",
+      "note": "An enlarged output budget separates format inability from budget truncation as the cause of the 0/140 parse rate."
+    },
+    {
+      "source": "p1_prereg_protocol",
+      "target": "p1_arm_m",
+      "type": "scopes",
+      "note": "Arm M registered its own runtime-death rejection rule precisely because arm F's analogous exclusion was not registered."
+    },
+    {
+      "source": "p2_quant_ladder",
+      "target": "p2_claim_c1",
+      "type": "informs",
+      "note": "The ladder protocol holds the inference stack fixed and varies only the SHA-256-pinned weight file, which is what makes C1 a served-precision claim."
+    },
+    {
+      "source": "p2_seeded_parent",
+      "target": "p2_quant_ladder",
+      "type": "controls_for",
+      "note": "One seeded valid parent for every lineage at every rung gives all rungs the same floor."
+    },
+    {
+      "source": "p2_ladder_7b",
+      "target": "p2_claim_c1",
+      "type": "disconfirms",
+      "note": "At 7B viability inverts and the founding precision hypothesis fails outright over the entire usable GGUF range."
+    },
+    {
+      "source": "p2_rung_q8_0",
+      "target": "p2_registered_echo_bound",
+      "type": "feeds",
+      "note": "Contributes 2/18 to the pooled upper-rung echo denominator."
+    },
+    {
+      "source": "p2_rung_q4_k_m",
+      "target": "p2_registered_echo_bound",
+      "type": "feeds",
+      "note": "The reference rung the <= 35% half of the registered bound was written against."
+    },
+    {
+      "source": "p2_rung_q3_k_m",
+      "target": "p2_registered_echo_bound",
+      "type": "feeds",
+      "note": "Contributes 3/19; the cliff sits between this rung and Q2_K."
+    },
+    {
+      "source": "p2_rung_q2_k",
+      "target": "p2_registered_echo_bound",
+      "type": "feeds",
+      "note": "The 17/18 and 19/24 figures the >= 60% half of the bound was tested on."
+    },
+    {
+      "source": "p2_registered_echo_bound",
+      "target": "p2_claim_c1",
+      "type": "informs",
+      "note": "The registered, replicated bound is the single figure C1 rests on."
+    },
+    {
+      "source": "p2_fresh_seed_wave",
+      "target": "p2_registered_echo_bound",
+      "type": "replicates",
+      "note": "Five never-sampled seeds return 79% against 6%, with every prediction falsifiable because the draws are genuinely new."
+    },
+    {
+      "source": "p2_fresh_seed_wave",
+      "target": "p2_hill_climb_lineage",
+      "type": "disconfirms",
+      "note": "The wave's designated primary F1 forecast the improvement count and was refuted at 3/5 versus 5/5."
+    },
+    {
+      "source": "p2_coordinate_replay",
+      "target": "p2_registered_echo_bound",
+      "type": "controls_for",
+      "note": "Coordinate logging refuted the score-inferred echo estimates, reclassifying 4 of 12 presumed upper-rung echoes as rearrangements."
+    },
+    {
+      "source": "p2_determinism_check",
+      "target": "p2_coordinate_replay",
+      "type": "controls_for",
+      "note": "112 of 224 generations reproduced their archived per-row digests exactly, exercising the determinism premise the re-execution rests on."
+    },
+    {
+      "source": "p2_mustdiffer",
+      "target": "p2_claim_c1",
+      "type": "informs",
+      "note": "The second registered prediction: copying survives an explicit prohibition at 5 of 5, so the failure is not reachable by instruction."
+    },
+    {
+      "source": "p2_iq2_control",
+      "target": "p2_registered_echo_bound",
+      "type": "replicates",
+      "note": "An independently produced imatrix Q2_K echoes at 75%, essentially the official file's matched-seed rate, so the cliff is not a one-file artifact."
+    },
+    {
+      "source": "p2_iq2_control",
+      "target": "p2_quant_ladder",
+      "type": "controls_for",
+      "note": "Turns the effective-bits-co-vary-with-algorithm caveat into a measurement; the registered bit-width question returns its inconclusive branch."
+    },
+    {
+      "source": "p2_dispersion_probe",
+      "target": "p2_registered_echo_bound",
+      "type": "controls_for",
+      "note": "Removes the parent-quality confound and cuts the matched contrast from 15%-vs-94% to 33%-vs-92%."
+    },
+    {
+      "source": "p2_dispersion_probe",
+      "target": "p2_iq2_control",
+      "type": "disconfirms",
+      "note": "If Q4_K_M's matched rate is 33-52% rather than 6%, the IQ2 scheme gradient's low anchor is wrong and the gradient is withdrawn as bit-width evidence."
+    },
+    {
+      "source": "p2_dispersion_probe",
+      "target": "p2_rung_q4_k_m",
+      "type": "scopes",
+      "note": "The registered <= 35% upper-rung bound would have FAILED under fixed parents at 52-61%, so it is design-specific."
+    },
+    {
+      "source": "p2_dispersion_probe",
+      "target": "p2_conditional_quality",
+      "type": "feeds",
+      "note": "Both waves' score_delta and echo fields are the analysis's only usable source of departures."
+    },
+    {
+      "source": "p2_conditional_quality",
+      "target": "p2_claim_c1",
+      "type": "informs",
+      "note": "Excludes a collapse in departure quality at 95%, leaving 'the 2-bit rung loses the occasion to depart' standing but unconfirmed."
+    },
+    {
+      "source": "p2_hill_climb_lineage",
+      "target": "p2_claim_c1",
+      "type": "informs",
+      "note": "Translates the echo rate into the unit a loop's cost is denominated in: 1 accepted step per 50 calls against 14-16."
+    },
+    {
+      "source": "p2_registered_echo_bound",
+      "target": "p2_hill_climb_lineage",
+      "type": "scopes",
+      "note": "accepted <= valid - echo holds by construction, so most of the step-count contrast is the echo contrast in complement."
+    },
+    {
+      "source": "p2_ladder_7b",
+      "target": "p2_hill_climb_lineage",
+      "type": "disconfirms",
+      "note": "At 7B the 2-bit rung takes the most steps of five rungs, so the search-step collapse is a 14B observation, not a property of the ladder as such."
+    },
+    {
+      "source": "p2_iq2_control",
+      "target": "p2_hill_climb_lineage",
+      "type": "disconfirms",
+      "note": "The scheme control does not replicate the step contrast: 6 steps against 16, lineage-level p = 0.135."
+    },
+    {
+      "source": "p2_opus_alias_forensic",
+      "target": "p2_claim_c2",
+      "type": "informs",
+      "note": "The thirty-invocation arm and its two signatures are the case study C2 names."
+    },
+    {
+      "source": "p2_opus_alias_forensic",
+      "target": "p2_claim_c3",
+      "type": "informs",
+      "note": "The observable set exposed per invocation contains nothing that attests the serving path, which is C3's premise."
+    },
+    {
+      "source": "p2_claim_c1",
+      "target": "p2_opus_alias_forensic",
+      "type": "informs",
+      "note": "The quantization cliff's signature — surface competence preserved, constructive competence removed — is what makes H1 a live hypothesis for the alias arm."
+    },
+    {
+      "source": "p2_arm_b2",
+      "target": "p2_opus_alias_forensic",
+      "type": "disconfirms",
+      "note": "P-R0 registered <= 12/30 valid on re-issue and observed 30/30, disconfirming the assumption that the alias still addresses the sampled condition."
+    },
+    {
+      "source": "p2_arm_b2",
+      "target": "p2_alias_drift",
+      "type": "feeds",
+      "note": "The six-day change in validity, latency and usage spread is the drift note's entire evidence base."
+    },
+    {
+      "source": "p2_alias_drift",
+      "target": "p2_claim_c2",
+      "type": "scopes",
+      "note": "Makes the favouring of H1 unrecoverable: no later call can re-test the 2026-08-01 condition."
+    },
+    {
+      "source": "p2_alias_drift",
+      "target": "p2_claim_c3",
+      "type": "informs",
+      "note": "A later call through the same alias is a sample of an unknown condition, which is C3's residue made concrete."
+    },
+    {
+      "source": "p2_arm_r",
+      "target": "p2_opus_alias_forensic",
+      "type": "extends",
+      "note": "The prompt-variation discriminator §4 named, decoupling arithmetic execution from constructive ambition."
+    },
+    {
+      "source": "p2_arm_b2",
+      "target": "p2_arm_r",
+      "type": "controls_for",
+      "note": "B2 is the anchor without which a clean repair score is uninterpretable; its failure triggers the branch that forbids reading arm R."
+    },
+    {
+      "source": "p2_wave3_heilbronn",
+      "target": "p2_registered_echo_bound",
+      "type": "scopes",
+      "note": "The Q2_K bound holds at 63.1% but the reference rung's ceiling is refuted at 46.9%, so the absolute bands are circle-packing figures."
+    },
+    {
+      "source": "p2_wave3_heilbronn",
+      "target": "p2_claim_c1",
+      "type": "extends",
+      "note": "The rung contrast transfers to a second geometry descriptively (p = 3.5e-3) while the bands do not."
+    },
+    {
+      "source": "p2_seeded_parent",
+      "target": "p2_wave3_heilbronn",
+      "type": "informs",
+      "note": "Heilbronn was chosen because a regular grid scores exactly zero on it, a separation circle packing cannot make since its seeded parent was the template."
+    },
+    {
+      "source": "p2_wave8_pilot",
+      "target": "p2_wave3_heilbronn",
+      "type": "controls_for",
+      "note": "Four graded easier seeds show the control-arm floor is the task, not the seed choice."
+    },
+    {
+      "source": "p2_wave4_dissociation",
+      "target": "p2_claim_c1",
+      "type": "controls_for",
+      "note": "Rules out the capability alternative: hosted tiers at 0/120 echoes on the identical protocol, verdict DISSOCIATION."
+    },
+    {
+      "source": "p2_wave4_dissociation",
+      "target": "p2_wave3_heilbronn",
+      "type": "contrasts_with",
+      "note": "Same task, same parent, same stall: quantized rungs copy at 46.9-63.1%, hosted tiers emit zero-scoring templates at up to 97.5%."
+    },
+    {
+      "source": "p2_wave5_labs",
+      "target": "p2_wave4_dissociation",
+      "type": "scopes",
+      "note": "On LABS the stall-echo rates reverse, so the stuck-tier contrast is Heilbronn-specific rather than a law of stalls."
+    },
+    {
+      "source": "p2_wave7",
+      "target": "p2_scope_conditions",
+      "type": "feeds",
+      "note": "Both 8-9B families missed the 20-valid-row power floor, establishing a scope fact rather than a transfer fact."
+    },
+    {
+      "source": "p2_wave7b",
+      "target": "p2_wave7",
+      "type": "extends",
+      "note": "A competence-matched retry at 14.7B and 24B, registered with a both-underpowered branch written for this outcome."
+    },
+    {
+      "source": "p2_wave7b",
+      "target": "p2_scope_conditions",
+      "type": "feeds",
+      "note": "The registered branch fires: every non-Qwen family tested up to 24B sits below the format-competence floor, leaving family generality unresolved."
+    },
+    {
+      "source": "p2_wave7b",
+      "target": "p2_registered_echo_bound",
+      "type": "contrasts_with",
+      "note": "Gemma echoes 18/18 while Phi-4, Mistral and Llama echo not once, so parent-copying looks family-shaped rather than bit-width-driven on these small samples."
+    },
+    {
+      "source": "p2_item4_canary_audit",
+      "target": "p2_c4_repair_protocol",
+      "type": "disconfirms",
+      "note": "The one instrument the standard claimed as new fires on a fixed serving path; its dispersion form is withdrawn and not replaced."
+    },
+    {
+      "source": "p2_dispersion_probe",
+      "target": "p2_item4_canary_audit",
+      "type": "feeds",
+      "note": "The probe's per-row wall_s on a fixed stack is what makes the audit possible and guarantees any firing is a false positive."
+    },
+    {
+      "source": "p2_item4_canary_audit",
+      "target": "p2_claim_c3",
+      "type": "informs",
+      "note": "Forecloses the first objection a reader raises — inferring the serving path from latency — and does so for a reason that worsens without hardware control."
+    },
+    {
+      "source": "p2_scope_conditions",
+      "target": "p2_claim_c1",
+      "type": "scopes",
+      "note": "One task, one scale pair, one quantization family plus a control, measured outside the alias-addressed runtime and not at the case study's cells."
+    },
+    {
+      "source": "p1_arm_o",
+      "target": "p2_opus_alias_forensic",
+      "type": "feeds",
+      "note": "The same thirty invocations; paper 2 re-scores the registration and finds two held and two failed rather than three not evaluable."
+    },
+    {
+      "source": "p1_arm_o_anomalies",
+      "target": "p2_claim_c2",
+      "type": "feeds",
+      "note": "The latency and token observations paper 1 records as anecdotal are the serving signature paper 2's case study weighs."
+    },
+    {
+      "source": "p2_arm_b2",
+      "target": "p1_arm_o",
+      "type": "extends",
+      "note": "Re-issues the byte-identical prompts to the same alias six days later, returning 30/30 against the original 4/30."
+    },
+    {
+      "source": "p2_arm_r",
+      "target": "p1_arm_o",
+      "type": "extends",
+      "note": "Tests whether execution degradation is separable from constructive ambition by handing the alias a construction it did not choose."
+    },
+    {
+      "source": "p1_arm_s",
+      "target": "p2_opus_alias_forensic",
+      "type": "controls_for",
+      "note": "Sonnet's 30/30 at the same three cells on the same harness is the comparator that makes the collapse legible."
+    },
+    {
+      "source": "p1_arm_t",
+      "target": "p2_opus_alias_forensic",
+      "type": "controls_for",
+      "note": "The trace rows supply a fourth comparator at 63/70 whose prompt differs substantially while the serving path does not, ruling out prompt variation as such."
+    },
+    {
+      "source": "p1_closed_form",
+      "target": "p2_quant_ladder",
+      "type": "informs",
+      "note": "The constructible template family and its exact rational values are why proposals are detectable as echoes at 1e-6 in the quantization study."
+    }
+  ]
+}
