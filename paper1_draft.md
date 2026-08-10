@@ -110,12 +110,13 @@ hypothesis here. The one published result bearing directly on the substitution �
 indistinguishable from fresh independent sampling at equal budget — is warrant from equation
 discovery, not geometry. §8 names the experiment that would close the gap.
 
-Three framing commitments. Behavioral anchoring is established territory (2505.15392;
-2412.06593; 2410.15413) and we inherit its vocabulary; what differs is modality — the anchor is
-a *construction template*, not a number. The benchmark choice is strategic rather than novel.
-Preregistration is an adopted standard rather than a contribution (2606.27687; 2607.07184;
-2606.11217; 2607.00276); our twist is what is locked — exact-output point predictions from a
-closed form, on a held-out container.
+This paper makes three framing choices worth stating plainly. Behavioral anchoring is
+established territory (2505.15392; 2412.06593; 2410.15413) and we inherit its vocabulary; what
+differs is modality — the anchor is a *construction template*, not a number. The benchmark
+choice is strategic; we did not pick it for novelty. Preregistration, too, is an adopted
+standard here, not a contribution in itself (2606.27687; 2607.07184; 2606.11217; 2607.00276);
+our twist is what is locked — exact-output point predictions from a closed form, on a held-out
+container.
 
 **Contributions.** (1) *A closed form that names the modal model output in advance.* k\*(N) with
 V(k, m) and T(k, N) identify the value a weak-tier proposer emits most often at a given N,
@@ -253,7 +254,7 @@ square prompt hashes to `32db485b…`. Predictions P1–P5 are registered in the
 `arm_o_preregistration.txt`, `arm_t_preregistration.txt`). Raw outputs are stored verbatim,
 failures included; scoring is deterministic and local.
 
-Four properties are disclosed rather than repaired. Temperature, top-p and top-k are not exposed
+Four properties here are disclosed, not repaired. Temperature, top-p and top-k are not exposed
 by the runtime. The alias-to-weights binding is a promise, not a hash. The subagent inherits
 instruction files outside the task prompt, so the digests lock a *fragment* of the conditioning
 context — they are prompt-fragment hashes, and a replicator cannot reconstruct the inherited
@@ -380,7 +381,7 @@ analogous arm F exclusion was not (§9) — and counted here: the cell is n = 12
 launched. Raw rows verbatim in
 `arm_m_collect.jsonl`; scoring in `arm_m_analysis.py`, conventions identical to arm F.
 
-The net effect on the paper's claim is a sharpening, not a rescue: the closed form now reads
+The net effect on the paper's claim is a sharpening. Arm M does not rescue V(k, m); the closed form now reads
 "k\* = round(√N) names the grid family; at k\*² > N the model truncates that grid (five k
 confirmed); at k\*² ≤ N it extends only to m ≤ 1 — beyond that it prefers the (k\*+1)
 rectangle, and V(k, m) does not describe it."
@@ -389,8 +390,8 @@ rectangle, and V(k, m) does not describe it."
 
 ### 3.5 Preregistered extension (arms MU and CH): the anchor does not transfer to one-parent calls, and handing the model the argmax does not dislodge the template
 
-Two questions remained open after arm M, and both were pressed by the council review of this
-revision: does the unconditioned anchoring result say anything about calls that carry a parent
+Two questions were still open after arm M, both pressed by the council review of this revision.
+Does the unconditioned anchoring result say anything about calls that carry a parent
 program — the regime evolutionary loops actually run in — and does the §8
 arithmetic-tractability alternative survive a direct probe? Arms MU and CH were registered
 together before sampling (`arm_mu_preregistration.txt`, commit `2b7d202`; prompt hashes in
@@ -451,7 +452,7 @@ invocations and simply fails to execute it; the valid-conditioned modal is domin
 template because the template is the only construction the model executes reliably. The
 registered metric was fixed before sampling, so we report its verdict as registered — and
 flag in the same breath that it conditions on exactly the variable (execution success) that
-separates the two readings. The honest summary is a decomposition, not a winner: handed the
+separates the two readings. The honest summary is a decomposition rather than a clean winner: handed the
 argmax, the model's *choice* follows the score table, but its *execution* fails off-template
 in 30 of the 31 invalid attempts — the §8 tractability alternative is wrong about selection
 and right about instantiation. This is the same asymmetry arm MU found from the other
@@ -512,7 +513,7 @@ on m and on which vertices a construction uses, and no expression in (p, q, m, a
 it. The LP gate caught this on the first run: at a = 1, p = 2, q = 4, m = 1 the natural
 generalization `rf = min(diag, hₓ, hᵧ)` returns **1.125** against a true **1.1545085**, capping
 against a neighboring filler that does not exist. We retain closed forms only where provably
-exact — full grid and truncated grid — and use the LP as the value oracle for the extend branch,
+exact (full grid and truncated grid) and use the LP as the value oracle for the extend branch,
 so what §4.1 tests is the LP-backed prediction.
 
 **Table 1 — Forecast versus outcome, both containers.**
@@ -582,7 +583,7 @@ which weights served it: the runtime accepts only the bare alias and exposes no 
 identifier, so the binding is a vendor promise rather than an attestable fact. No version number
 appears anywhere in this paper.
 
-Two anomalies make that caveat load-bearing. Completion times ran 2.8–9 s across all 30
+That caveat matters because of two anomalies. Completion times ran 2.8–9 s across all 30
 invocations against 75–250 s for Haiku and 150–1170 s for Sonnet, and the reported token count
 was uniform at 49,906 across the first 20 completions, ≈49.9k thereafter — a signal of metadata
 that is not per-completion, or of a cache, router-fallback or truncation path. **Neither anomaly
@@ -627,7 +628,7 @@ is already the publishable contrast.
 
 ‡ Addressed through a bare serving alias; the alias-to-weights binding is not attestable, and
 this row is not a statement about any released model version. Tier denominators are not matched
-— the weak tier spans seven N against three — which is why the matched-cell row is given
+(the weak tier spans seven N against three), which is why the matched-cell row is given
 separately, and it is the matched comparison (83% → 100% → 13%) that should be quoted across
 tiers. Sources: `arm_f_candidates_v2.jsonl`, the three preregistration files.
 
@@ -1080,8 +1081,8 @@ revision 1 is tabled in Appendix C. Provenance, in list form:
   content; no language model is an author. The claim a reader can check is the ordering, not the
   authorship: each preregistration commit is a git ancestor of the sampling it governs. The
   drafting of those preregistration texts, like the rest of this repository, was model-assisted.
-  Two consequences are load-bearing
-  rather than cosmetic. First, the models that wrote the analysis are of the same family as arms
+  Two consequences follow from that, and neither is cosmetic. First, the models that wrote the
+  analysis are of the same family as arms
   under study (§5), so the blind-spot risk flagged below for the referee panel applies to the
   analysis code as well — the LP oracle, the frozen scorer output and the referee panel's
   independent recomputations exist in part to bound it. Second, every number here was produced
