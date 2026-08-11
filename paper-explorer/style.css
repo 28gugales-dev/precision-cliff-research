@@ -185,6 +185,14 @@ body.is-expanded .canvas-wrap{margin:0 14px 14px}
 }
 .paper-card h3{font-size:18px;letter-spacing:-.01em}
 .paper-sub{margin:0 0 12px;font-size:13.5px;color:var(--muted)}
+.paper-links{margin:14px 0 0}
+.paper-links a{
+  display:inline-block;font-size:13.5px;font-weight:600;color:#dce8ff;
+  background:linear-gradient(180deg,#2b3d5c,#22314a);border:1px solid #3a5075;
+  border-radius:9px;padding:7px 14px;text-decoration:none;border-bottom:1px solid #3a5075;
+  transition:filter .15s;
+}
+.paper-links a:hover{filter:brightness(1.15);border-bottom-color:#3a5075}
 
 .about-foot{
   margin-top:26px;padding-top:16px;border-top:1px solid var(--line-soft);
