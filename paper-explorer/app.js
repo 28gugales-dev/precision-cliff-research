@@ -80,7 +80,10 @@
     panelEmpty:  document.getElementById('panel-empty'),
     panelBody:   document.getElementById('panel-body'),
     toast:       document.getElementById('toast'),
-    reset:       document.getElementById('btn-reset')
+    reset:       document.getElementById('btn-reset'),
+    expand:      document.getElementById('btn-expand'),
+    subWrap:     document.getElementById('stage-sub-wrap'),
+    subToggle:   document.getElementById('btn-sub-toggle')
   };
 
   // ---------------------------------------------------------------- state
@@ -94,6 +97,8 @@
     views: {},           // viewId -> {nodes, links, byId, sim, layers, zoom}
     selected: {},        // viewId -> node id
     modes: { paper1: 'network', paper2: 'network' },  // viewId -> 'network' | 'flow'
+    subOpen: {},         // viewId -> summary expanded? (in-memory only)
+    expanded: false,     // fullscreen-ish stage
     query: ''
   };
 
@@ -1176,6 +1181,7 @@
   // ---------------------------------------------------------------- views
 
   function showEmpty(msg) {
+    syncSummary();
     el.empty.innerHTML = msg;
     el.empty.classList.remove('hidden');
     el.legend.classList.add('hidden');
@@ -1217,6 +1223,7 @@
   function renderAbout() {
     el.stageTitle.textContent = 'About';
     el.stageSub.textContent = 'How the atlas is built and how to read it.';
+    syncSummary();
     el.wrap.classList.add('hidden');
     el.about.classList.remove('hidden');
     el.about.innerHTML = ABOUT_HTML;
@@ -1303,6 +1310,7 @@
     }
     renderLegend(model);
     applySearch();
+    syncSummary();
   }
 
   // ---------------------------------------------------------------- events
@@ -1337,37 +1345,74 @@
       .call(view.zoom.transform, view.resetTransform || d3.zoomIdentity);
   });
 
+  // re-measure the stage and re-fit / re-centre the active graph
+  function refit() {
+    var view = state.views[state.view];
+    if (!view || el.wrap.classList.contains('hidden')) return;
+    var box = el.wrap.getBoundingClientRect();
+    var W = Math.max(320, box.width), H = Math.max(280, box.height);
+    view.W = W; view.H = H;
+    view.svg.attr('viewBox', '0 0 ' + W + ' ' + H);
+
+    if (view.layout === 'flow') {
+      var t = fitTransform(view.contentW, view.contentH, W, H);
+      view.resetTransform = t;
+      view.svg.call(view.zoom.transform, t);
+      return;
+    }
+    if (!view.sim) return;
+
+    view.sim.force('center', d3.forceCenter(W / 2, H / 2));
+    view.sim.force('x', d3.forceX(W / 2).strength(0.03));
+    view.sim.force('y', d3.forceY(H / 2).strength(0.05));
+    view.sim.alpha(0.3).restart();
+  }
+
   var resizeTimer = null;
   window.addEventListener('resize', function () {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function () {
-      var view = state.views[state.view];
-      if (!view || el.wrap.classList.contains('hidden')) return;
-      var box = el.wrap.getBoundingClientRect();
-      var W = Math.max(320, box.width), H = Math.max(280, box.height);
-      view.W = W; view.H = H;
-      view.svg.attr('viewBox', '0 0 ' + W + ' ' + H);
-
-      if (view.layout === 'flow') {
-        var t = fitTransform(view.contentW, view.contentH, W, H);
-        view.resetTransform = t;
-        view.svg.call(view.zoom.transform, t);
-        return;
-      }
-      if (!view.sim) return;
-
-      view.sim.force('center', d3.forceCenter(W / 2, H / 2));
-      view.sim.force('x', d3.forceX(W / 2).strength(0.03));
-      view.sim.force('y', d3.forceY(H / 2).strength(0.05));
-      view.sim.alpha(0.3).restart();
-    }, 160);
+    resizeTimer = setTimeout(refit, 160);
   });
+
+  // --------------------------------------------------- summary collapse
+
+  function syncSummary() {
+    var open = !!state.subOpen[state.view];
+    el.stageSub.classList.toggle('is-clamped', !open);
+    var overflows = open || el.stageSub.scrollHeight - el.stageSub.clientHeight > 1;
+    el.subToggle.classList.toggle('hidden', !overflows);
+    el.subToggle.textContent = open ? 'Show less' : 'Show more';
+    el.subToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  el.subToggle.addEventListener('click', function () {
+    state.subOpen[state.view] = !state.subOpen[state.view];
+    syncSummary();
+    refit();
+  });
+
+  // --------------------------------------------------- expanded stage
+
+  function setExpanded(on) {
+    if (state.expanded === on) return;
+    state.expanded = on;
+    document.body.classList.toggle('is-expanded', on);
+    el.expand.textContent = on ? 'Exit' : 'Expand';
+    if (!on) syncSummary();
+    requestAnimationFrame(refit);
+  }
+
+  el.expand.addEventListener('click', function () { setExpanded(!state.expanded); });
 
   document.addEventListener('keydown', function (e) {
     if (e.key === '/' && document.activeElement !== el.search) {
-      e.preventDefault(); el.search.focus();
+      e.preventDefault();
+      setExpanded(false);   // search box lives behind the expanded stage
+      el.search.focus();
     } else if (e.key === 'Escape') {
-      if (document.activeElement === el.search) {
+      if (state.expanded) {
+        setExpanded(false);
+      } else if (document.activeElement === el.search) {
         el.search.value = ''; state.query = ''; applySearch(); el.search.blur();
       } else {
         clearSelection(state.view);

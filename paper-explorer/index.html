@@ -30,9 +30,12 @@
 <main class="layout">
   <section class="stage" id="stage">
     <div class="stage-head">
-      <div>
+      <div class="stage-headings">
         <h2 id="stage-title">Paper 1 atlas</h2>
-        <p id="stage-sub" class="muted"></p>
+        <div class="stage-sub-wrap" id="stage-sub-wrap">
+          <p id="stage-sub" class="muted is-clamped"></p>
+          <button id="btn-sub-toggle" class="sub-toggle hidden" type="button" aria-expanded="false">Show more</button>
+        </div>
       </div>
       <div class="stage-actions">
         <div class="viewmode hidden" id="viewmode" role="group" aria-label="Layout">
@@ -40,6 +43,7 @@
           <button class="mode" data-mode="flow">Flowchart</button>
         </div>
         <button id="btn-reset" class="ghost" title="Reset zoom">Reset view</button>
+        <button id="btn-expand" class="ghost" title="Expand graph to full window (Esc to exit)">Expand</button>
       </div>
     </div>
 

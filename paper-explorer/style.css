@@ -81,6 +81,17 @@ body{
 }
 .stage-head h2{margin:0;font-size:17px;font-weight:600}
 .stage-head p{margin:3px 0 0;font-size:13.5px;max-width:72ch}
+.stage-headings{min-width:0}
+.stage-sub-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+#stage-sub.is-clamped{
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;
+  overflow:hidden;
+}
+.sub-toggle{
+  appearance:none;background:none;border:0;padding:0;cursor:pointer;
+  font:inherit;font-size:12.5px;color:var(--accent);
+}
+.sub-toggle:hover{text-decoration:underline}
 .muted{color:var(--muted)}
 .ghost{
   appearance:none;background:#0f131a;border:1px solid var(--line);color:var(--muted);
@@ -100,13 +111,22 @@ body{
 .viewmode .mode.is-active{background:var(--accent-dim);color:#dce8ff}
 
 .canvas-wrap{
-  position:relative;flex:1 1 auto;margin:0 22px 22px;min-height:0;
+  position:relative;flex:1 1 auto;margin:0 22px 22px;min-height:min(500px, 60vh);
   background:radial-gradient(1200px 600px at 50% 0%,#0f141c 0%,#0a0c11 70%);
   border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
 }
 #graph{width:100%;height:100%;display:block;cursor:grab}
 #graph:active{cursor:grabbing}
 .hidden{display:none !important}
+
+/* ---------- expanded (fullscreen-ish) stage ---------- */
+body.is-expanded .layout{
+  position:fixed;inset:0;z-index:60;background:var(--bg);
+}
+body.is-expanded .panel{display:none}
+body.is-expanded .stage-sub-wrap{display:none}
+body.is-expanded .stage-head{padding:10px 14px 8px}
+body.is-expanded .canvas-wrap{margin:0 14px 14px}
 
 .empty{
   position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
