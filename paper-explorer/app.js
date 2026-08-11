@@ -833,6 +833,13 @@
     if (view) view.nodeSel.classed('selected', false);
     el.panelBody.classList.add('hidden');
     el.panelEmpty.classList.remove('hidden');
+    if (document.body.classList.contains('is-expanded') &&
+        document.body.classList.contains('has-selection')) {
+      document.body.classList.remove('has-selection');
+      requestAnimationFrame(refit);
+    } else {
+      document.body.classList.remove('has-selection');
+    }
   }
 
   function selectNode(viewId, id) {
@@ -844,6 +851,10 @@
 
     state.selected[viewId] = id;
     view.nodeSel.classed('selected', function (d) { return d.id === id; });
+    var panelWasHidden = document.body.classList.contains('is-expanded') &&
+      !document.body.classList.contains('has-selection');
+    document.body.classList.add('has-selection');
+    if (panelWasHidden) requestAnimationFrame(refit);
     renderPanel(viewId, node);
   }
 
