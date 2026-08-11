@@ -1190,39 +1190,52 @@
   }
 
   var ABOUT_HTML = [
-    '<div class="card">',
-    '<h3 style="margin-top:0">What this is</h3>',
-    '<p>An interactive map of the experiments behind two precision-cliff papers. Each atlas view shows one paper\'s arms, waves, controls, analyses and extensions as a force-directed graph, with directed edges recording how one piece of evidence informs, controls for, disconfirms, scopes or extends another.</p>',
+    '<header class="about-hero">',
+    '<h2>Precision-cliff research programme</h2>',
+    '<p class="about-lede">Two companion papers on what an LLM proposal is actually made of: the template the model emits, and the served precision behind it. Both run on the same benchmark — circle packing, scored by an exact local evaluator rather than a judge — so every source of variance sits on the model side of the interface.</p>',
+    '<p class="about-byline">Soham Shailesh Gugale · Independent researcher · <a href="mailto:28gugales@gmail.com">28gugales@gmail.com</a></p>',
+    '</header>',
+
+    '<div class="card paper-card">',
+    '<div class="paper-tag">Paper 1</div>',
+    '<h3>A Closed Form for What the Model Emits</h3>',
+    '<p class="paper-sub">Template anchoring in unconditioned zero-shot circle packing.</p>',
+    '<p>Asked to place N circles in a unit square with no parent program, no fitness feedback and no evaluator in context, a weak-tier model does not search. It reaches for a k×k grid of radius 1/(2k), sometimes with corner fillers, and truncates it when N does not fill the grid. Which template it reaches for is predictable in closed form: a nearest-square order k*(N) = round(√N) plus a value function over grid order and filler count fixes the modal output, and therefore its score, before any sampling. The predicted mode matched the empirical mode at all seven tested N; per-sample agreement runs 56–86% by cell, which is the modal frequency itself. Across three tiers, constructive ambition rises with nominal tier while execution validity rises then collapses — 78% → 100% → 13% valid at the primary 1e-6 tolerance. The anchoring is a property of unconditioned calls only: given a provably better in-family parent, 0 of 26 valid mutation samples return to the template, which is the regime discovery loops actually run in. A probe that lists the whole recipe family in the prompt separates choice from execution — the model picks the recipe the stated score table favours, then cannot build it, failing off-template in 30 of 31 invalid attempts. Point predictions and prompt hashes were registered before sampling, and two registered falsifiers triggered; both are reported as such.</p>',
     '</div>',
+
+    '<div class="card paper-card">',
+    '<div class="paper-tag">Paper 2</div>',
+    '<h3>Served Precision Is Part of the Model</h3>',
+    '<p class="paper-sub">A quantization cliff in proposal variation, and the limits of alias-addressed study.</p>',
+    '<p>Quantizing a proposer\'s weights can leave every metric a discovery loop watches unchanged while collapsing the variation the loop depends on. Down a quantization ladder at 14B, viability and validity move by no amount detectable at n = 50 per rung, but at the 2-bit rung the proposer largely stops departing from its parent. Two registered outcomes carry the claim: an echo bound written into the runner before the run held on five never-sampled seeds at 79% (19/24) coordinate-verified parent-echo against 6% (1/17), and a must-differ probe returned coordinate-identical copies in 5 of 5 valid outputs under an explicit instruction not to copy. The failed proposals are coherent, well-formed near-copies, which is why every pass/fail instrument reports health. The cost is visible only at loop level: the 2-bit rung takes 1 accepted hill-climb step in 50 calls against 14–16 at the upper rungs, while final best score separates the rungs nowhere. The second half asks what this means for studies that address a model by alias, since served quantization is one of several serving-path variables an alias leaves unattested — and one the dependent measure is now known to be sensitive to. A forensic arm addressed only as <code>opus_alias</code> became untestable within six days: byte-identical prompts returned 30/30 valid against the original 4/30, so the hypothesis pair under test turned out to presuppose a stable referent it does not have. The paper closes with a repair protocol audited against itself, including one proposed instrument that was run on its own rows and withdrawn.</p>',
+    '</div>',
+
     '<div class="card">',
-    '<h3 style="margin-top:0">How to read it</h3>',
+    '<h3>How to read the atlas</h3>',
     '<ul>',
-    '<li><b>Node colour and shape</b> encode kind — arm, wave, control, analysis, extension. Claim nodes are larger and gold.</li>',
-    '<li><b>Edge colour and dashing</b> encode link type; hover an edge for the annotation behind it.</li>',
-    '<li><b>Network / Flowchart</b> switches each paper atlas between the force layout and a left-to-right layered DAG. Layers come from the link topology: nodes with no incoming edge sit in the first column, everything else lands one column past its deepest prerequisite, and any edge that would close a cycle is re-routed rather than dropped from the picture.</li>',
-    '<li><b>Click a node</b> for its findings (verdict, result, caveats), a lineage strip of the upstream and downstream chain, design, key figures and every connection with its annotation. Verdicts are colour-coded: green held, red disconfirmed, amber partial, grey descriptive.</li>',
-    '<li><b>Ask AI ↗</b> copies a ready-to-paste question about the selected experiment and its neighbours.</li>',
-    '<li><b>Concept graph</b> renders the full extracted knowledge graph, coloured by community, with edge opacity tracking extraction confidence.</li>',
+    '<li><b>Paper 1 atlas / Paper 2 atlas</b> put every arm, wave, control, analysis, extension and headline claim on the map as a node — 55 in total, with 87 directed edges between them.</li>',
+    '<li><b>Network or Flowchart.</b> Network is a force layout, good for seeing clusters. Flowchart lays the same nodes out left to right by dependency: anything with no prerequisite starts in the first column, everything else sits one column past its deepest prerequisite.</li>',
+    '<li><b>Click any node</b> for its design, result, verdict and caveats, plus a lineage strip of what fed it and what it fed. Verdicts are colour-coded — green held, red disconfirmed, amber partial, grey descriptive. Node colour and shape encode kind; claim nodes are larger and gold.</li>',
+    '<li><b>Edges are typed</b>: <i>feeds</i> and <i>informs</i> for supply of evidence, <i>controls_for</i> for a probe that bounds a result, <i>replicates</i>, <i>extends</i> and <i>scopes</i> for reach, <i>contrasts_with</i> and <i>disconfirms</i> for tension. Hover an edge to read the annotation behind it.</li>',
+    '<li><b>Concept graph</b> shows 178 concepts auto-extracted across both papers, coloured by community, with edge opacity tracking extraction confidence. It is a reading aid, not a result.</li>',
+    '<li><b>Search</b> filters the active view — matches stay lit, the rest dims. <b>Expand</b> takes the graph full-window (Esc to leave); <b>Reset view</b> restores the default zoom. Scroll to zoom, drag the background to pan, drag a node to pin it somewhere else.</li>',
     '</ul>',
     '</div>',
+
     '<div class="card">',
-    '<h3 style="margin-top:0">Controls</h3>',
-    '<ul>',
-    '<li>Scroll or pinch to zoom, drag the background to pan, drag a node to reposition it.</li>',
-    '<li>The search box filters the active view — matches keep full colour, everything else dims.</li>',
-    '<li><code>Reset view</code> restores the default zoom.</li>',
-    '</ul>',
+    '<h3>Provenance</h3>',
+    '<p>Every figure on this map traces to a released script and a raw ledger row. Preregistrations are git ancestors of the sampling they govern, so the registration date is checkable rather than asserted. Prose in both papers was model-assisted under the author\'s direction and disclosed there.</p>',
+    '<p class="muted small">This atlas is generated from two data files: <code>arms.json</code>, the per-paper experiment ledger, and <code>graph.json</code>, a node-link export of the extracted concept graph. Both load at runtime.</p>',
+    '<p id="about-status" class="muted small"></p>',
     '</div>',
-    '<div class="card">',
-    '<h3 style="margin-top:0">Data</h3>',
-    '<p><code>arms.json</code> holds the per-paper experiment ledger; <code>graph.json</code> is a networkx node-link export of the extracted concept graph. Both are loaded at runtime, so refreshing picks up regenerated data without a rebuild.</p>',
-    '<p id="about-status" class="muted"></p>',
-    '</div>'
+
+    '<footer class="about-foot">Questions, or a request for the underlying data: <a href="mailto:28gugales@gmail.com">28gugales@gmail.com</a></footer>'
   ].join('');
 
   function renderAbout() {
     el.stageTitle.textContent = 'About';
-    el.stageSub.textContent = 'How the atlas is built and how to read it.';
+    el.stageSub.textContent = 'The research programme in three minutes, and how to use this atlas.';
+    document.body.classList.add('is-about');
     syncSummary();
     el.wrap.classList.add('hidden');
     el.about.classList.remove('hidden');
@@ -1246,6 +1259,7 @@
 
   function renderView(viewId) {
     state.view = viewId;
+    document.body.classList.remove('is-about');
     el.about.classList.add('hidden');
     el.wrap.classList.remove('hidden');
     el.empty.classList.add('hidden');

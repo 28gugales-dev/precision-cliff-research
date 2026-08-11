@@ -158,12 +158,43 @@ body.is-expanded .canvas-wrap{margin:0 14px 14px}
 .linktip b{color:#9dc4ff;font-weight:600}
 
 /* ---------- about ---------- */
-.about{flex:1 1 auto;overflow:auto;padding:4px 22px 32px;max-width:920px}
-.about h3{font-size:15px;margin:26px 0 8px}
+.about{flex:1 1 auto;overflow:auto;padding:4px 26px 56px;max-width:860px}
+.about h3{font-size:16px;margin:0 0 6px;color:var(--text)}
 .about p,.about li{font-size:14.5px;color:#c3ccda}
-.about ul{padding-left:20px}
+.about li{margin-bottom:7px}
+.about li:last-child{margin-bottom:0}
+.about ul{padding-left:19px;margin:10px 0 0}
+.about b{color:#dfe5ef;font-weight:600}
+.about i{color:#9dc4ff;font-style:normal;font-family:var(--mono);font-size:13px}
+.about a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-dim)}
+.about a:hover{border-bottom-color:var(--accent)}
 .about code{font-family:var(--mono);font-size:13px;background:#141922;padding:1px 5px;border-radius:5px;border:1px solid var(--line-soft)}
-.about .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin-top:14px}
+.about .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin-top:16px}
+.about .card p+p{margin-bottom:0}
+.about .small{font-size:13px}
+
+.about-hero{padding:22px 0 4px;border-bottom:1px solid var(--line-soft)}
+.about-hero h2{margin:0;font-size:25px;font-weight:600;letter-spacing:-.01em}
+.about-lede{margin:10px 0 0;font-size:15.5px;line-height:1.6;color:#d3dae5}
+.about-byline{margin:14px 0 20px;font-size:13px;color:var(--muted)}
+
+.paper-card{position:relative;border-left:2px solid var(--accent-dim)}
+.paper-tag{
+  font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:8px;
+}
+.paper-card h3{font-size:18px;letter-spacing:-.01em}
+.paper-sub{margin:0 0 12px;font-size:13.5px;color:var(--muted)}
+
+.about-foot{
+  margin-top:26px;padding-top:16px;border-top:1px solid var(--line-soft);
+  font-size:13px;color:var(--muted);
+}
+
+/* about view suppresses graph-only chrome */
+body.is-about .panel,
+body.is-about .search,
+body.is-about .stage-actions{display:none}
 
 /* ---------- detail panel ---------- */
 .panel{
