@@ -89,6 +89,16 @@ body{
 }
 .ghost:hover{color:var(--text);border-color:#33404f}
 
+.stage-actions{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+.viewmode{display:flex;gap:3px;background:#0c0f14;border:1px solid var(--line);border-radius:9px;padding:3px}
+.viewmode .mode{
+  appearance:none;border:0;background:transparent;color:var(--muted);
+  font:inherit;font-size:13px;padding:5px 12px;border-radius:6px;cursor:pointer;
+  transition:background .15s ease,color .15s ease;white-space:nowrap;
+}
+.viewmode .mode:hover{color:var(--text);background:#151a22}
+.viewmode .mode.is-active{background:var(--accent-dim);color:#dce8ff}
+
 .canvas-wrap{
   position:relative;flex:1 1 auto;margin:0 22px 22px;min-height:0;
   background:radial-gradient(1200px 600px at 50% 0%,#0f141c 0%,#0a0c11 70%);
@@ -207,6 +217,57 @@ ul.neighbors .note{display:block;font-size:12.5px;color:var(--muted);margin-top:
 .link{fill:none;transition:opacity .18s}
 .link.dim{opacity:.05}
 .link-hit{stroke:transparent;stroke-width:12px;fill:none;cursor:pointer}
+
+/* ---------- flowchart nodes ---------- */
+.node.flow .shape{fill:#141922;stroke:#2a3341;stroke-width:1.2px}
+.node.flow:hover .shape{stroke:#3f5069}
+.node.flow.selected .shape{stroke:#fff;stroke-width:2px}
+.node.flow.hit .shape{stroke:#ffd166;stroke-width:2px}
+.node.flow .stripe{stroke:none}
+.node.flow .vdot{stroke:#0a0c11;stroke-width:1px}
+.node.flow text.nlabel{
+  font-size:11px;fill:#cbd4e2;pointer-events:none;stroke:none;paint-order:normal;
+}
+.node.flow text.nkind{
+  font-size:9px;fill:#7f8a9b;letter-spacing:.8px;text-transform:uppercase;
+  pointer-events:none;stroke:none;paint-order:normal;
+}
+
+/* ---------- lineage strip ---------- */
+.lineage{width:100%;display:block;overflow:visible}
+.lineage .ln-box{fill:#141922;stroke:#2a3341;stroke-width:1px;cursor:pointer}
+.lineage .ln-g:hover .ln-box{stroke:#3f5069;fill:#182029}
+.lineage .ln-g.self .ln-box{fill:#1b2433;stroke:#4a6088;stroke-width:1.5px}
+.lineage .ln-text{font-size:10.5px;fill:#cbd4e2;pointer-events:none}
+.lineage .ln-rel{font-size:9px;fill:#7f8a9b;pointer-events:none;letter-spacing:.5px;text-transform:uppercase}
+.lineage .ln-edge{fill:none;stroke-width:1.2px}
+.lineage .ln-band{font-size:9.5px;fill:#6f7a8b;letter-spacing:1px;text-transform:uppercase}
+
+/* ---------- findings block ---------- */
+.findings{
+  background:#0f141b;border:1px solid var(--line);border-radius:10px;
+  padding:12px 14px;margin-bottom:15px;
+}
+.findings .hdr{
+  font-size:11px;letter-spacing:.9px;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin-bottom:8px;
+}
+.findings .verdict-line{font-size:14.5px;line-height:1.45;color:#e7ebf2;margin:0 0 10px}
+.findings .verdict-line .lede{font-weight:600}
+.findings .verdict-line.v-held .lede{color:#7fe0ab}
+.findings .verdict-line.v-disconfirmed .lede{color:#ff9a9a}
+.findings .verdict-line.v-partial .lede{color:#ffcd85}
+.findings .verdict-line.v-descriptive .lede{color:#a8b2c1}
+.findings .field:last-child{margin-bottom:0}
+
+ul.linknotes{list-style:none;margin:0;padding:0}
+ul.linknotes li{
+  margin-bottom:6px;padding:7px 10px;border-radius:8px;
+  background:#10151c;border:1px solid var(--line-soft);font-size:13px;color:#c3ccda;
+}
+ul.linknotes .rel{font-size:10.5px;letter-spacing:.6px;text-transform:uppercase;font-weight:600}
+ul.linknotes .peer{color:#d6dde9}
+ul.linknotes .note{display:block;color:var(--muted);font-size:12.5px;margin-top:3px;line-height:1.4}
 
 @media (max-width:1180px){
   .panel{flex-basis:320px;width:320px}

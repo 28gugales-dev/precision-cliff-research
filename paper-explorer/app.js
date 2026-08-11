@@ -33,6 +33,13 @@
     other:            { color: '#6b7480', dash: '3,3',   label: 'other' }
   };
 
+  var VERDICT_COLOR = {
+    held: '#4ec98a', disconfirmed: '#ff6b6b', partial: '#f0b45e', descriptive: '#8d97a8'
+  };
+
+  // flowchart geometry
+  var FLOW = { w: 184, h: 52, xgap: 62, ygap: 14, pad: 36 };
+
   var COMMUNITY_LABELS = [
     'Provenance and alias audit',
     'Parent-echo cliff evidence',
@@ -67,6 +74,7 @@
     svg:         d3.select('#graph'),
     empty:       document.getElementById('empty'),
     legend:      document.getElementById('legend'),
+    viewmode:    document.getElementById('viewmode'),
     linktip:     document.getElementById('linktip'),
     about:       document.getElementById('about'),
     panelEmpty:  document.getElementById('panel-empty'),
@@ -85,6 +93,7 @@
     graphError: null,
     views: {},           // viewId -> {nodes, links, byId, sim, layers, zoom}
     selected: {},        // viewId -> node id
+    modes: { paper1: 'network', paper2: 'network' },  // viewId -> 'network' | 'flow'
     query: ''
   };
 
@@ -122,6 +131,28 @@
   function truncate(s, n) {
     s = String(s == null ? '' : s);
     return s.length > n ? s.slice(0, n - 1) + '…' : s;
+  }
+
+  // greedy word wrap into at most maxLines lines of ~maxChars, ellipsing leftovers
+  function wrapLabel(s, maxChars, maxLines) {
+    var words = String(s == null ? '' : s).split(/\s+/).filter(Boolean);
+    var lines = [], cur = '', dropped = false;
+    words.forEach(function (w) {
+      if (lines.length >= maxLines) { dropped = true; return; }
+      var test = cur ? cur + ' ' + w : w;
+      if (test.length <= maxChars) { cur = test; return; }
+      if (cur) { lines.push(cur); cur = w; }
+      else { lines.push(truncate(w, maxChars)); cur = ''; }
+    });
+    if (cur) {
+      if (lines.length < maxLines) lines.push(cur);
+      else dropped = true;
+    }
+    if (dropped && lines.length) {
+      var last = lines.length - 1;
+      lines[last] = lines[last].slice(0, Math.max(1, maxChars - 2)) + '…';
+    }
+    return lines.length ? lines : [''];
   }
 
   var toastTimer = null;
@@ -353,7 +384,7 @@
       .data(model.links, function (d) { return d.id; })
       .join('path')
       .attr('class', 'link-hit')
-      .on('mousemove', function (event, d) { showLinkTip(event, d); })
+      .on('mousemove', function (event, d) { showLinkTip(event, d, model); })
       .on('mouseleave', hideLinkTip);
 
     var nodeSel = nodeLayer.selectAll('g')
@@ -422,7 +453,8 @@
 
     var view = {
       model: model, svg: svg, root: root, sim: sim, zoom: zoom,
-      nodeSel: nodeSel, linkSel: linkSel, hitSel: hitSel, W: W, H: H
+      nodeSel: nodeSel, linkSel: linkSel, hitSel: hitSel, W: W, H: H,
+      layout: 'network', resetTransform: d3.zoomIdentity
     };
     state.views[viewId] = view;
     return view;
@@ -442,11 +474,19 @@
     };
   }
 
-  function showLinkTip(event, d) {
+  // links carry either raw string ids (flow view) or node objects (after forceLink)
+  function endpointNode(model, ref) {
+    if (ref && typeof ref === 'object') return ref;
+    return model.byId[ref] || null;
+  }
+
+  function showLinkTip(event, d, model) {
     var wrapBox = el.wrap.getBoundingClientRect();
     var st = linkStyle(d.type);
-    var sLabel = (d.source && d.source.label) || d.source;
-    var tLabel = (d.target && d.target.label) || d.target;
+    var sN = model ? endpointNode(model, d.source) : d.source;
+    var tN = model ? endpointNode(model, d.target) : d.target;
+    var sLabel = (sN && sN.label) || d.source;
+    var tLabel = (tN && tN.label) || d.target;
     el.linktip.innerHTML =
       '<b>' + esc(st.label) + '</b><br>' +
       esc(truncate(sLabel, 46)) + ' → ' + esc(truncate(tLabel, 46)) +
@@ -462,6 +502,259 @@
   }
 
   function hideLinkTip() { el.linktip.classList.add('hidden'); }
+
+  // ---------------------------------------------------------------- flowchart
+
+  // Adjacency for the current model, with cycles broken.
+  // Back edges are found by an iterative DFS (a child still grey is on the
+  // recursion stack, so that edge closes a cycle) and dropped from the DAG.
+  function flowTopology(model) {
+    var ids = model.nodes.map(function (n) { return n.id; });
+    var adj = {}, preds = {}, succs = {};
+    ids.forEach(function (id) { adj[id] = []; preds[id] = []; succs[id] = []; });
+
+    var edges = model.links.map(function (l) {
+      return {
+        s: (l.source && l.source.id) || l.source,
+        t: (l.target && l.target.id) || l.target,
+        type: l.type, note: l.note
+      };
+    }).filter(function (e) { return adj[e.s] && adj[e.t] && e.s !== e.t; });
+
+    edges.forEach(function (e) { adj[e.s].push(e.t); });
+
+    var color = {}, back = {};
+    ids.forEach(function (id) { color[id] = 0; });
+    ids.forEach(function (root) {
+      if (color[root] !== 0) return;
+      color[root] = 1;
+      var stack = [{ id: root, i: 0 }];
+      while (stack.length) {
+        var top = stack[stack.length - 1];
+        var kids = adj[top.id];
+        if (top.i < kids.length) {
+          var c = kids[top.i++];
+          if (color[c] === 1) back[top.id + '>' + c] = true;
+          else if (color[c] === 0) { color[c] = 1; stack.push({ id: c, i: 0 }); }
+        } else {
+          color[top.id] = 2;
+          stack.pop();
+        }
+      }
+    });
+
+    edges.forEach(function (e) {
+      if (back[e.s + '>' + e.t]) return;
+      preds[e.t].push(e.s);
+      succs[e.s].push(e.t);
+    });
+
+    // longest-path layering over the acyclic remainder
+    var indeg = {}, layer = {};
+    ids.forEach(function (id) { indeg[id] = preds[id].length; layer[id] = 0; });
+    var queue = ids.filter(function (id) { return indeg[id] === 0; });
+    while (queue.length) {
+      var id = queue.shift();
+      succs[id].forEach(function (t) {
+        if (layer[t] < layer[id] + 1) layer[t] = layer[id] + 1;
+        if (--indeg[t] === 0) queue.push(t);
+      });
+    }
+
+    return { layer: layer, preds: preds, succs: succs, broken: Object.keys(back).length };
+  }
+
+  function fitTransform(contentW, contentH, W, H) {
+    var k = Math.min(W / contentW, H / contentH) * 0.94;
+    k = Math.max(0.08, Math.min(1.15, k));
+    return d3.zoomIdentity
+      .translate((W - contentW * k) / 2, (H - contentH * k) / 2)
+      .scale(k);
+  }
+
+  // Assigns node.x / node.y (centres, in content space) for the layered layout.
+  function layoutFlow(model) {
+    var topo = flowTopology(model);
+    var maxL = 0;
+    model.nodes.forEach(function (n) { maxL = Math.max(maxL, topo.layer[n.id]); });
+
+    var cols = [];
+    for (var i = 0; i <= maxL; i++) cols.push([]);
+    model.nodes.forEach(function (n) { cols[topo.layer[n.id]].push(n.id); });
+
+    var pos = {};
+    cols.forEach(function (c) { c.forEach(function (id, i) { pos[id] = i; }); });
+
+    function bary(id, map) {
+      var ns = map[id], s = 0, k = 0;
+      for (var j = 0; j < ns.length; j++) {
+        if (pos[ns[j]] != null) { s += pos[ns[j]]; k++; }
+      }
+      return k ? s / k : pos[id];
+    }
+
+    // barycentre sweeps, alternating direction, to thin out crossings
+    for (var pass = 0; pass < 6; pass++) {
+      var down = pass % 2 === 0;
+      for (var step = 0; step <= maxL; step++) {
+        var ci = down ? step : maxL - step;
+        var map = down ? topo.preds : topo.succs;
+        var keyed = cols[ci].map(function (id, i) {
+          return { id: id, k: bary(id, map), i: i };
+        });
+        keyed.sort(function (a, b) { return (a.k - b.k) || (a.i - b.i); });
+        cols[ci] = keyed.map(function (o) { return o.id; });
+        cols[ci].forEach(function (id, i) { pos[id] = i; });
+      }
+    }
+
+    var maxRows = 1;
+    cols.forEach(function (c) { maxRows = Math.max(maxRows, c.length); });
+
+    var stepX = FLOW.w + FLOW.xgap;
+    var stepY = FLOW.h + FLOW.ygap;
+    var bandH = maxRows * stepY;
+
+    cols.forEach(function (col, ci) {
+      var n = col.length;
+      col.forEach(function (id, i) {
+        var node = model.byId[id];
+        node.x = FLOW.pad + FLOW.w / 2 + ci * stepX;
+        node.y = FLOW.pad + bandH / 2 + (i - (n - 1) / 2) * stepY;
+        node.layer = ci;
+      });
+    });
+
+    return {
+      cols: cols,
+      layers: maxL + 1,
+      broken: topo.broken,
+      contentW: FLOW.pad * 2 + maxL * stepX + FLOW.w,
+      contentH: FLOW.pad * 2 + bandH
+    };
+  }
+
+  function flowLinkPath(model) {
+    var hw = FLOW.w / 2;
+    return function (d) {
+      var s = endpointNode(model, d.source), t = endpointNode(model, d.target);
+      if (!s || !t || s.x == null || t.x == null) return 'M0,0L0,0';
+      if (t.x > s.x) {
+        var x1 = s.x + hw, x2 = t.x - hw - 5;
+        var dx = Math.max(38, (x2 - x1) * 0.55);
+        return 'M' + x1 + ',' + s.y +
+               'C' + (x1 + dx) + ',' + s.y + ' ' + (x2 - dx) + ',' + t.y + ' ' + x2 + ',' + t.y;
+      }
+      // same-layer or cycle-closing edge: bow out to the left
+      var bx1 = s.x - hw, bx2 = t.x - hw - 5;
+      var bow = 70 + Math.abs(t.y - s.y) * 0.25;
+      var my = Math.min(s.y, t.y) - 46;
+      return 'M' + bx1 + ',' + s.y +
+             'C' + (bx1 - bow) + ',' + my + ' ' + (bx2 - bow) + ',' + my + ' ' + bx2 + ',' + t.y;
+    };
+  }
+
+  function renderFlow(viewId, model) {
+    var svg = el.svg;
+    svg.selectAll('*').remove();
+
+    var box = el.wrap.getBoundingClientRect();
+    var W = Math.max(320, box.width), H = Math.max(280, box.height);
+    svg.attr('viewBox', '0 0 ' + W + ' ' + H);
+
+    ensureDefs(svg, model);
+
+    var lay = layoutFlow(model);
+    var root = svg.append('g').attr('class', 'root');
+    var linkLayer = root.append('g').attr('class', 'links');
+    var hitLayer  = root.append('g').attr('class', 'link-hits');
+    var nodeLayer = root.append('g').attr('class', 'nodes');
+
+    var pathFn = flowLinkPath(model);
+
+    var linkSel = linkLayer.selectAll('path')
+      .data(model.links, function (d) { return d.id; })
+      .join('path')
+      .attr('class', 'link')
+      .attr('d', pathFn)
+      .attr('stroke', function (d) { return linkStyle(d.type).color; })
+      .attr('stroke-width', 1.4)
+      .attr('stroke-opacity', function (d) { return d.opacity; })
+      .attr('stroke-dasharray', function (d) { return linkStyle(d.type).dash; })
+      .attr('marker-end', function (d) {
+        return 'url(#arrow-' + d.type.replace(/[^a-z0-9_]/gi, '_') + ')';
+      });
+
+    var hitSel = hitLayer.selectAll('path')
+      .data(model.links, function (d) { return d.id; })
+      .join('path')
+      .attr('class', 'link-hit')
+      .attr('d', pathFn)
+      .on('mousemove', function (event, d) { showLinkTip(event, d, model); })
+      .on('mouseleave', hideLinkTip);
+
+    var nodeSel = nodeLayer.selectAll('g')
+      .data(model.nodes, function (d) { return d.id; })
+      .join('g')
+      .attr('class', function (d) {
+        return 'node flow' + ((d.kind === 'claim' || d.kind === 'paper') ? ' is-claim' : '');
+      })
+      .attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')'; })
+      .on('click', function (event, d) {
+        event.stopPropagation();
+        selectNode(viewId, d.id);
+      });
+
+    nodeSel.append('rect').attr('class', 'shape')
+      .attr('x', -FLOW.w / 2).attr('y', -FLOW.h / 2)
+      .attr('width', FLOW.w).attr('height', FLOW.h).attr('rx', 9);
+
+    nodeSel.append('rect').attr('class', 'stripe')
+      .attr('x', -FLOW.w / 2 + 1.5).attr('y', -FLOW.h / 2 + 1.5)
+      .attr('width', 4).attr('height', FLOW.h - 3).attr('rx', 2)
+      .attr('fill', function (d) { return kindStyle(d.kind).color; });
+
+    nodeSel.append('circle').attr('class', 'vdot')
+      .attr('cx', FLOW.w / 2 - 13).attr('cy', -FLOW.h / 2 + 13).attr('r', 4.5)
+      .attr('fill', function (d) {
+        return VERDICT_COLOR[verdictClass(d.verdict)] || VERDICT_COLOR.descriptive;
+      });
+
+    nodeSel.append('text').attr('class', 'nkind')
+      .attr('x', -FLOW.w / 2 + 13).attr('y', -FLOW.h / 2 + 16)
+      .text(function (d) { return kindStyle(d.kind).label; });
+
+    nodeSel.append('title').text(function (d) {
+      return d.label + (d.verdict ? ' — ' + d.verdict : '');
+    });
+
+    nodeSel.each(function (d) {
+      var g = d3.select(this);
+      wrapLabel(d.label, 27, 2).forEach(function (line, i) {
+        g.append('text').attr('class', 'nlabel')
+          .attr('x', -FLOW.w / 2 + 13).attr('y', 5 + i * 13)
+          .text(line);
+      });
+    });
+
+    var zoom = d3.zoom().scaleExtent([0.06, 6]).on('zoom', function (event) {
+      root.attr('transform', event.transform);
+    });
+    svg.call(zoom);
+    var t0 = fitTransform(lay.contentW, lay.contentH, W, H);
+    svg.call(zoom.transform, t0);
+    svg.on('click', function () { clearSelection(viewId); });
+
+    var view = {
+      model: model, svg: svg, root: root, sim: null, zoom: zoom,
+      nodeSel: nodeSel, linkSel: linkSel, hitSel: hitSel, W: W, H: H,
+      layout: 'flow', resetTransform: t0,
+      contentW: lay.contentW, contentH: lay.contentH,
+      layers: lay.layers, broken: lay.broken
+    };
+    state.views[viewId] = view;
+    return view;
+  }
 
   // ---------------------------------------------------------------- legend
 
@@ -563,6 +856,174 @@
            '<table class="stats">' + rows + '</table></div>';
   }
 
+  // ---------------------------------------------------------------- lineage strip
+
+  // Breadth-first walk up (predecessors) and down (successors) from a node.
+  // `seen` is shared per direction so converging paths do not repeat a node.
+  function lineageChains(model, id, maxDepth) {
+    var preds = {}, succs = {};
+    model.nodes.forEach(function (n) { preds[n.id] = []; succs[n.id] = []; });
+    model.links.forEach(function (l) {
+      var s = (l.source && l.source.id) || l.source;
+      var t = (l.target && l.target.id) || l.target;
+      if (!preds[t] || !succs[s]) return;
+      preds[t].push({ id: s, type: l.type });
+      succs[s].push({ id: t, type: l.type });
+    });
+
+    function walk(map) {
+      var levels = [], seen = {}, frontier = [id];
+      seen[id] = true;
+      for (var d = 0; d < maxDepth && frontier.length; d++) {
+        var row = [], next = [];
+        frontier.forEach(function (fid) {
+          (map[fid] || []).forEach(function (e) {
+            if (seen[e.id] || !model.byId[e.id]) return;
+            seen[e.id] = true;
+            row.push({ id: e.id, type: e.type, from: fid });
+            next.push(e.id);
+          });
+        });
+        if (!row.length) break;
+        levels.push(row);
+        frontier = next;
+      }
+      return levels;
+    }
+
+    return { up: walk(preds), down: walk(succs) };
+  }
+
+  function lineageSVG(model, node) {
+    var chains = lineageChains(model, node.id, 3);
+    if (!chains.up.length && !chains.down.length) {
+      return '<div class="v muted">Isolated — no upstream or downstream chain.</div>';
+    }
+
+    var VW = 336, BH = 30, ROW = 58, PADT = 14;
+    var rows = [];
+    for (var i = chains.up.length - 1; i >= 0; i--) rows.push({ band: 'up', items: chains.up[i] });
+    rows.push({ band: 'self', items: [{ id: node.id, type: null, from: null }] });
+    chains.down.forEach(function (r) { rows.push({ band: 'down', items: r }); });
+
+    var placed = {}, boxes = [], edges = [];
+    rows.forEach(function (row, ri) {
+      var y = PADT + ri * ROW;
+      var n = Math.min(row.items.length, 4);
+      var shown = row.items.slice(0, 4);
+      var extra = row.items.length - shown.length;
+      var gap = 7;
+      var bw = Math.max(62, Math.min(160, (VW - 8 - (n - 1) * gap) / n));
+      var totalW = n * bw + (n - 1) * gap;
+      var x0 = (VW - totalW) / 2;
+      shown.forEach(function (it, k) {
+        var x = x0 + k * (bw + gap);
+        placed[it.id] = { x: x + bw / 2, y: y, h: BH };
+        boxes.push({ it: it, x: x, y: y, w: bw, band: row.band });
+      });
+      if (extra > 0) boxes.push({ more: extra, x: x0, y: y + BH + 1, w: totalW });
+      if (row.band !== 'self') {
+        shown.forEach(function (it) { edges.push({ it: it, band: row.band }); });
+      }
+    });
+
+    var H = PADT + rows.length * ROW - (ROW - BH) + 12;
+    var out = '<svg class="lineage" viewBox="0 0 ' + VW + ' ' + H + '" height="' + H + '">';
+
+    // self-contained markers so the strip does not depend on the stage <defs>
+    var mtypes = {};
+    edges.forEach(function (e) { mtypes[e.it.type] = true; });
+    out += '<defs>';
+    Object.keys(mtypes).forEach(function (t) {
+      out += '<marker id="ln-arrow-' + t.replace(/[^a-z0-9_]/gi, '_') + '" viewBox="0 -5 10 10"' +
+             ' refX="10" refY="0" markerWidth="5" markerHeight="5" orient="auto">' +
+             '<path d="M0,-4L9,0L0,4" fill="' + linkStyle(t).color + '"></path></marker>';
+    });
+    out += '</defs>';
+
+    edges.forEach(function (e) {
+      var a = placed[e.it.id], b = placed[e.it.from];
+      if (!a || !b) return;
+      // arrow always points downstream: upstream rows flow into their child
+      var from = e.band === 'up' ? a : b;
+      var to   = e.band === 'up' ? b : a;
+      var y1 = from.y + from.h, y2 = to.y - 5;
+      var st = linkStyle(e.it.type);
+      var mid = (y1 + y2) / 2;
+      out += '<path class="ln-edge" d="M' + from.x + ',' + y1 +
+             'C' + from.x + ',' + mid + ' ' + to.x + ',' + mid + ' ' + to.x + ',' + y2 + '"' +
+             ' stroke="' + st.color + '"' +
+             (st.dash ? ' stroke-dasharray="' + st.dash + '"' : '') +
+             ' marker-end="url(#ln-arrow-' + e.it.type.replace(/[^a-z0-9_]/gi, '_') + ')"></path>';
+      out += '<text class="ln-rel" x="' + ((from.x + to.x) / 2 + 5) + '" y="' + (mid + 3) + '">' +
+             esc(st.label) + '</text>';
+    });
+
+    boxes.forEach(function (b) {
+      if (b.more) {
+        out += '<text class="ln-band" x="' + b.x + '" y="' + (b.y + 9) + '">+' + b.more + ' more</text>';
+        return;
+      }
+      var n2 = model.byId[b.it.id];
+      var isSelf = b.band === 'self';
+      var chars = Math.max(6, Math.floor(b.w / 5.4));
+      out += '<g class="ln-g' + (isSelf ? ' self' : '') + '"' +
+             (isSelf ? '' : ' data-goto="' + esc(b.it.id) + '"') + '>' +
+             '<title>' + esc(n2.label) + '</title>' +
+             '<rect class="ln-box" x="' + b.x + '" y="' + b.y + '" width="' + b.w +
+             '" height="' + BH + '" rx="7"></rect>' +
+             '<rect x="' + (b.x + 1.5) + '" y="' + (b.y + 1.5) + '" width="3.5" height="' + (BH - 3) +
+             '" rx="1.8" fill="' + kindStyle(n2.kind).color + '"></rect>' +
+             '<circle cx="' + (b.x + b.w - 8) + '" cy="' + (b.y + 8) + '" r="3.2" fill="' +
+             (VERDICT_COLOR[verdictClass(n2.verdict)] || VERDICT_COLOR.descriptive) + '"></circle>';
+      wrapLabel(n2.label, chars, 2).forEach(function (line, li) {
+        out += '<text class="ln-text" x="' + (b.x + 9) + '" y="' + (b.y + 13 + li * 11) + '">' +
+               esc(line) + '</text>';
+      });
+      out += '</g>';
+    });
+
+    out += '</svg>';
+    return out;
+  }
+
+  function findingsBlock(node) {
+    if (!node.verdict && !node.result && !node.caveats) return '';
+    var cls = verdictClass(node.verdict);
+    var h = '<div class="findings"><div class="hdr">Findings</div>';
+    if (node.verdict) {
+      h += '<p class="verdict-line v-' + cls + '"><span class="lede">' +
+           esc(verdictWord(node.verdict).charAt(0).toUpperCase() + verdictWord(node.verdict).slice(1)) +
+           ' —</span> ' + esc(node.verdict) + '</p>';
+    }
+    h += field('Result', node.result);
+    h += field('Caveats', node.caveats);
+    h += '</div>';
+    return h;
+  }
+
+  function linkNotesBlock(nbrs) {
+    var ins = nbrs.filter(function (n) { return n.dir === 'in'; });
+    var outs = nbrs.filter(function (n) { return n.dir === 'out'; });
+    if (!ins.length && !outs.length) return '';
+
+    function list(items, heading) {
+      if (!items.length) return '';
+      var h = '<div class="field"><div class="k">' + heading + ' (' + items.length + ')</div>' +
+              '<ul class="linknotes">';
+      items.forEach(function (n) {
+        var st = linkStyle(n.type);
+        h += '<li><span class="rel" style="color:' + st.color + '">' + esc(st.label) + '</span> ' +
+             '<span class="peer">' + esc(n.other.label) + '</span>' +
+             (n.note ? '<span class="note">' + esc(n.note) + '</span>' : '') +
+             '</li>';
+      });
+      return h + '</ul></div>';
+    }
+
+    return list(ins, 'Incoming links') + list(outs, 'Outgoing links');
+  }
+
   function field(label, value) {
     if (value == null || value === '') return '';
     return '<div class="field"><div class="k">' + esc(label) + '</div>' +
@@ -602,10 +1063,10 @@
                 'style="color:#6ea8fe">' + esc(truncate(node.sourceUrl, 60)) + '</a></div></div>';
       }
     } else {
+      html += findingsBlock(node);
+      html += '<div class="field"><div class="k">Lineage</div>' +
+              lineageSVG(model, node) + '</div>';
       html += field('Design', node.design);
-      html += field('Result', node.result);
-      html += field('Verdict', node.verdict);
-      html += field('Caveats', node.caveats);
       html += statsTable(node.stats);
     }
 
@@ -620,12 +1081,17 @@
         html += '<li><button data-goto="' + esc(n.other.id) + '">' +
                 '<span class="rel" style="color:' + st.color + '">' + arrow + ' ' + esc(st.label) + '</span>' +
                 esc(n.other.label) +
-                (n.note ? '<span class="note">' + esc(truncate(n.note, 150)) + '</span>' : '') +
+                ((model.mode === 'concept' && n.note)
+                  ? '<span class="note">' + esc(truncate(n.note, 150)) + '</span>' : '') +
                 '</button></li>';
       });
       html += '</ul>';
     }
     html += '</div>';
+
+    if (model.mode === 'atlas') {
+      html += linkNotesBlock(nbrs);
+    }
 
     if (model.mode === 'atlas') {
       html += '<button class="ask" id="ask-ai">Ask AI ↗</button>';
@@ -638,7 +1104,7 @@
     el.panelBody.parentElement.scrollTop = 0;
 
     Array.prototype.forEach.call(
-      el.panelBody.querySelectorAll('button[data-goto]'),
+      el.panelBody.querySelectorAll('[data-goto]'),
       function (btn) {
         btn.addEventListener('click', function () {
           selectNode(viewId, btn.getAttribute('data-goto'));
@@ -667,7 +1133,7 @@
     var node = view.model.byId[id];
     if (!node || node.x == null) return;
     var t = d3.zoomTransform(view.svg.node());
-    var k = Math.max(t.k, 1);
+    var k = view.layout === 'flow' ? t.k : Math.max(t.k, 1);
     var tx = view.W / 2 - node.x * k;
     var ty = view.H / 2 - node.y * k;
     view.svg.transition().duration(500)
@@ -727,7 +1193,8 @@
     '<ul>',
     '<li><b>Node colour and shape</b> encode kind — arm, wave, control, analysis, extension. Claim nodes are larger and gold.</li>',
     '<li><b>Edge colour and dashing</b> encode link type; hover an edge for the annotation behind it.</li>',
-    '<li><b>Click a node</b> for design, result, verdict, caveats, key figures and every connection. Verdicts are colour-coded: green held, red disconfirmed, amber partial, grey descriptive.</li>',
+    '<li><b>Network / Flowchart</b> switches each paper atlas between the force layout and a left-to-right layered DAG. Layers come from the link topology: nodes with no incoming edge sit in the first column, everything else lands one column past its deepest prerequisite, and any edge that would close a cycle is re-routed rather than dropped from the picture.</li>',
+    '<li><b>Click a node</b> for its findings (verdict, result, caveats), a lineage strip of the upstream and downstream chain, design, key figures and every connection with its annotation. Verdicts are colour-coded: green held, red disconfirmed, amber partial, grey descriptive.</li>',
     '<li><b>Ask AI ↗</b> copies a ready-to-paste question about the selected experiment and its neighbours.</li>',
     '<li><b>Concept graph</b> renders the full extracted knowledge graph, coloured by community, with edge opacity tracking extraction confidence.</li>',
     '</ul>',
@@ -778,6 +1245,15 @@
     hideLinkTip();
     clearSelection(viewId);
 
+    var isPaper = (viewId === 'paper1' || viewId === 'paper2');
+    el.viewmode.classList.toggle('hidden', !isPaper);
+    if (isPaper) {
+      var mode = state.modes[viewId] || 'network';
+      Array.prototype.forEach.call(el.viewmode.querySelectorAll('.mode'), function (b) {
+        b.classList.toggle('is-active', b.getAttribute('data-mode') === mode);
+      });
+    }
+
     if (viewId === 'about') { renderAbout(); return; }
 
     var model = null;
@@ -818,7 +1294,13 @@
       }
     }
 
-    renderGraph(viewId, model);
+    if (isPaper && state.modes[viewId] === 'flow') {
+      var fv = renderFlow(viewId, model);
+      el.stageSub.textContent += ' · flowchart: ' + fv.layers + ' layers' +
+        (fv.broken ? ', ' + fv.broken + ' cycle edge' + (fv.broken === 1 ? '' : 's') + ' re-routed' : '');
+    } else {
+      renderGraph(viewId, model);
+    }
     renderLegend(model);
     applySearch();
   }
@@ -834,6 +1316,15 @@
     renderView(btn.getAttribute('data-view'));
   });
 
+  el.viewmode.addEventListener('click', function (e) {
+    var btn = e.target.closest('.mode');
+    if (!btn) return;
+    var mode = btn.getAttribute('data-mode');
+    if (state.modes[state.view] === mode) return;
+    state.modes[state.view] = mode;
+    renderView(state.view);
+  });
+
   el.search.addEventListener('input', function () {
     state.query = el.search.value;
     applySearch();
@@ -842,7 +1333,8 @@
   el.reset.addEventListener('click', function () {
     var view = state.views[state.view];
     if (!view) return;
-    view.svg.transition().duration(400).call(view.zoom.transform, d3.zoomIdentity);
+    view.svg.transition().duration(400)
+      .call(view.zoom.transform, view.resetTransform || d3.zoomIdentity);
   });
 
   var resizeTimer = null;
@@ -855,6 +1347,15 @@
       var W = Math.max(320, box.width), H = Math.max(280, box.height);
       view.W = W; view.H = H;
       view.svg.attr('viewBox', '0 0 ' + W + ' ' + H);
+
+      if (view.layout === 'flow') {
+        var t = fitTransform(view.contentW, view.contentH, W, H);
+        view.resetTransform = t;
+        view.svg.call(view.zoom.transform, t);
+        return;
+      }
+      if (!view.sim) return;
+
       view.sim.force('center', d3.forceCenter(W / 2, H / 2));
       view.sim.force('x', d3.forceX(W / 2).strength(0.03));
       view.sim.force('y', d3.forceY(H / 2).strength(0.05));
