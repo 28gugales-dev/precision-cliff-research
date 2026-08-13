@@ -1,0 +1,327 @@
+\begin{thebibliography}{42}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Baltes et~al.(2026)Baltes, Angermeir, Arora, Bar{\'o}n, Chen,
+  B{\"o}hme, Calefato, Ernst, Falessi, Fitzgerald, Fucci, He, Treude,
+  Kalinowski, Lambiase, Russo, Lungu, Montes, Prechelt, Ralph, van Tonder, and
+  Wagner]{baltes2026guidelinesempiricalstudiessoftware}
+Sebastian Baltes, Florian Angermeir, Chetan Arora, Marvin~Mu{\~n}oz Bar{\'o}n,
+  Chunyang Chen, Lukas B{\"o}hme, Fabio Calefato, Neil Ernst, Davide Falessi,
+  Brian Fitzgerald, Davide Fucci, Junda He, Christoph Treude, Marcos
+  Kalinowski, Stefano Lambiase, Daniel Russo, Mircea Lungu, Cristina~Martinez
+  Montes, Lutz Prechelt, Paul Ralph, Rijnard van Tonder, and Stefan Wagner.
+\newblock Guidelines for empirical studies in software engineering involving
+  large language models, 2026.
+\newblock URL \url{https://arxiv.org/abs/2508.15503}.
+
+\bibitem[Bruckner(2026)]{bruckner2026tokenenoughfingerprintingverifying}
+Tomas Bruckner.
+\newblock One token is enough: Fingerprinting and verifying large language
+  models from single-token output distributions, 2026.
+\newblock URL \url{https://arxiv.org/abs/2607.10252}.
+
+\bibitem[Cai et~al.(2025)Cai, Shi, Zhao, and
+  Song]{cai2025gettingpayforauditing}
+Will Cai, Tianneng Shi, Xuandong Zhao, and Dawn Song.
+\newblock Are you getting what you pay for? auditing model substitution in llm
+  apis, 2025.
+\newblock URL \url{https://arxiv.org/abs/2504.04715}.
+
+\bibitem[Cemri et~al.(2026)Cemri, Agrawal, Gupta, Liu, Cheng, Mang, Naren,
+  Erdogan, Sen, Zaharia, Dimakis, and
+  Stoica]{cemri2026adaevolveadaptivellmdriven}
+Mert Cemri, Shubham Agrawal, Akshat Gupta, Shu Liu, Audrey Cheng, Qiuyang Mang,
+  Ashwin Naren, Lutfi~Eren Erdogan, Koushik Sen, Matei Zaharia, Alex Dimakis,
+  and Ion Stoica.
+\newblock Adaevolve: Adaptive llm driven zeroth-order optimization, 2026.
+\newblock URL \url{https://arxiv.org/abs/2602.20133}.
+
+\bibitem[Chang et~al.(2025)Chang, Zhang, Thomason, and
+  Jia]{chang2025inputsbreaklowbitllm}
+Ting-Yun Chang, Muru Zhang, Jesse Thomason, and Robin Jia.
+\newblock Why do some inputs break low-bit llm quantization?, 2025.
+\newblock URL \url{https://arxiv.org/abs/2506.12044}.
+
+\bibitem[Chen et~al.(2023)Chen, Zaharia, and
+  Zou]{chen2023chatgptsbehaviorchangingtime}
+Lingjiao Chen, Matei Zaharia, and James Zou.
+\newblock How is chatgpt's behavior changing over time?, 2023.
+\newblock URL \url{https://arxiv.org/abs/2307.09009}.
+
+\bibitem[Feuerriegel et~al.(2026)Feuerriegel, Forster, Geissler, Maarouf,
+  Maier, Plank, et~al.]{feuerriegel2026guidellm}
+Stefan Feuerriegel, Kerstin Forster, Dominique Geissler, Abdurahman Maarouf,
+  Sebastian Maier, Barbara Plank, et~al.
+\newblock A reporting checklist for large language models in behavioural
+  science.
+\newblock \emph{Nature Human Behaviour}, 10:\penalty0 1182--1186, 2026.
+\newblock \doi{10.1038/s41562-026-02492-7}.
+\newblock GUIDE-LLM.
+
+\bibitem[Frantar et~al.(2023)Frantar, Ashkboos, Hoefler, and
+  Alistarh]{frantar2023gptqaccurateposttrainingquantization}
+Elias Frantar, Saleh Ashkboos, Torsten Hoefler, and Dan Alistarh.
+\newblock Gptq: Accurate post-training quantization for generative pre-trained
+  transformers, 2023.
+\newblock URL \url{https://arxiv.org/abs/2210.17323}.
+
+\bibitem[He et~al.(2025)]{he2025defeating}
+Horace He et~al.
+\newblock Defeating nondeterminism in {LLM} inference.
+\newblock Thinking Machines Lab blog, September 2025.
+\newblock URL
+  \url{https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/}.
+
+\bibitem[Jia(2026)]{jia2026hindsightbenchblackboxbehavioralaudit}
+Haozhe Jia.
+\newblock Hindsightbench: A black-box behavioral audit protocol for parametric
+  hindsight in time-indexed llm decision tasks, 2026.
+\newblock URL \url{https://arxiv.org/abs/2607.18867}.
+
+\bibitem[Khrulkov et~al.(2025)Khrulkov, Galichin, Bashkirov, Vinichenko,
+  Travkin, Alferov, Kuznetsov, and
+  Oseledets]{khrulkov2025gigaevoopensourceoptimization}
+Valentin Khrulkov, Andrey Galichin, Denis Bashkirov, Dmitry Vinichenko, Oleg
+  Travkin, Roman Alferov, Andrey Kuznetsov, and Ivan Oseledets.
+\newblock Gigaevo: An open source optimization framework powered by llms and
+  evolution algorithms, 2025.
+\newblock URL \url{https://arxiv.org/abs/2511.17592}.
+
+\bibitem[Korn et~al.(2026)Korn, Zaruchas, Arora, Metzger, Smolka, Wang, and
+  Vogelsang]{korn2026reportingllmpromptingautomated}
+Alexander Korn, Lea Zaruchas, Chetan Arora, Andreas Metzger, Sven Smolka, Fanyu
+  Wang, and Andreas Vogelsang.
+\newblock Reporting llm prompting in automated software engineering: A
+  guideline based on current practices and expectations, 2026.
+\newblock URL \url{https://arxiv.org/abs/2601.01954}.
+
+\bibitem[Kurt(2026)]{kurt2026quantizationiuseunified}
+Uygar Kurt.
+\newblock Which quantization should i use? a unified evaluation of llama.cpp
+  quantization on llama-3.1-8b-instruct, 2026.
+\newblock URL \url{https://arxiv.org/abs/2601.14277}.
+
+\bibitem[Lange et~al.(2025)Lange, Imajuku, and
+  Cetin]{lange2025shinkaevolveopenendedsampleefficientprogram}
+Robert~Tjarko Lange, Yuki Imajuku, and Edoardo Cetin.
+\newblock Shinkaevolve: Towards open-ended and sample-efficient program
+  evolution, 2025.
+\newblock URL \url{https://arxiv.org/abs/2509.19349}.
+
+\bibitem[Leshin et~al.(2026)Leshin, Shah, Timmis, and
+  Kang]{leshin2026behavioralfingerprintsllmendpoint}
+Jonah Leshin, Manish Shah, Ian Timmis, and Daniel Kang.
+\newblock Behavioral fingerprints for llm endpoint stability and identity,
+  2026.
+\newblock URL \url{https://arxiv.org/abs/2603.19022}.
+
+\bibitem[Li et~al.(2025)Li, Su, Yang, Xie, Wang, Xie, Wong, and
+  Yang]{li2025quantizationmeetsreasoningexploring}
+Zhen Li, Yupeng Su, Runming Yang, Congkai Xie, Zheng Wang, Zhongwei Xie, Ngai
+  Wong, and Hongxia Yang.
+\newblock Quantization meets reasoning: Exploring llm low-bit quantization
+  degradation for mathematical reasoning, 2025.
+\newblock URL \url{https://arxiv.org/abs/2501.03035}.
+
+\bibitem[Li et~al.(2026)Li, Su, Wang, Yang, Xie, Liu, Li, Cao, Xie, Wong, and
+  Yang]{li2026quantizationmeetsreasoningexploring}
+Zhen Li, Yupeng Su, Songmiao Wang, Runming Yang, Congkai Xie, Aofan Liu, Ming
+  Li, Jiannong Cao, Yuan Xie, Ngai Wong, and Hongxia Yang.
+\newblock Quantization meets reasoning: Exploring and mitigating degradation of
+  low-bit llms in mathematical reasoning, 2026.
+\newblock URL \url{https://arxiv.org/abs/2505.11574}.
+
+\bibitem[Lin et~al.(2024)Lin, Tang, Tang, Yang, Chen, Wang, Xiao, Dang, Gan,
+  and Han]{lin2024awqactivationawareweightquantization}
+Ji~Lin, Jiaming Tang, Haotian Tang, Shang Yang, Wei-Ming Chen, Wei-Chen Wang,
+  Guangxuan Xiao, Xingyu Dang, Chuang Gan, and Song Han.
+\newblock Awq: Activation-aware weight quantization for llm compression and
+  acceleration, 2024.
+\newblock URL \url{https://arxiv.org/abs/2306.00978}.
+\newblock MLSys 2024.
+
+\bibitem[Lin(2026)]{lin2026selfimprovementselfregressriseandcollapsefailure}
+Jianzhe Lin.
+\newblock Self-improvement can self-regress: The rise-and-collapse failure mode
+  of llm self-training, 2026.
+\newblock URL \url{https://arxiv.org/abs/2606.21090}.
+
+\bibitem[Lu et~al.(2026)Lu, Chen, Fang, Ma, and
+  Wang]{lu2026mixquantquantizedprefillingprecise}
+Haiquan Lu, Zigeng Chen, Gongfan Fang, Xinyin Ma, and Xinchao Wang.
+\newblock Mix-quant: Quantized prefilling, precise decoding for agentic llms,
+  2026.
+\newblock URL \url{https://arxiv.org/abs/2605.20315}.
+
+\bibitem[Luo et~al.(2026)Luo, Huang, Luo, Liu, Deng, Li, Yao, Hu, Feng, and
+  Liu]{luo2026seaevoadvancingalgorithmdiscovery}
+Sichun Luo, Yi~Huang, Haochen Luo, Fengyuan Liu, Guanzhi Deng, Lei Li, Qinghua
+  Yao, Zefa Hu, Junlan Feng, and Qi~Liu.
+\newblock Seaevo: Advancing algorithm discovery with strategy space evolution,
+  2026.
+\newblock URL \url{https://arxiv.org/abs/2604.24372}.
+
+\bibitem[Lv et~al.(2026)Lv, Zhang, Xia, Ni, Yan, Yu, Hou, Yuan, and
+  Bai]{lv2026makeslowbitquantizationawaretraining}
+Keyu Lv, Manyi Zhang, Xiaobo Xia, Jingchen Ni, Shannan Yan, Xianzhi Yu, Lu~Hou,
+  Chun Yuan, and Haoli Bai.
+\newblock What makes low-bit quantization-aware training work for reasoning
+  llms? a systematic study, 2026.
+\newblock URL \url{https://arxiv.org/abs/2601.14888}.
+
+\bibitem[Madaan et~al.(2024)Madaan, Singh, Schaeffer, Poulton, Koyejo,
+  Stenetorp, Narang, and
+  Hupkes]{madaan2024quantifyingvarianceevaluationbenchmarks}
+Lovish Madaan, Aaditya~K. Singh, Rylan Schaeffer, Andrew Poulton, Sanmi Koyejo,
+  Pontus Stenetorp, Sharan Narang, and Dieuwke Hupkes.
+\newblock Quantifying variance in evaluation benchmarks, 2024.
+\newblock URL \url{https://arxiv.org/abs/2406.10229}.
+
+\bibitem[Marchisio et~al.(2024)Marchisio, Dash, Chen, Aumiller, {\"U}st{\"u}n,
+  Hooker, and Ruder]{marchisio2024doesquantizationaffectmultilingual}
+Kelly Marchisio, Saurabh Dash, Hongyu Chen, Dennis Aumiller, Ahmet
+  {\"U}st{\"u}n, Sara Hooker, and Sebastian Ruder.
+\newblock How does quantization affect multilingual llms?, 2024.
+\newblock URL \url{https://arxiv.org/abs/2407.03211}.
+
+\bibitem[Miller(2024)]{miller2024addingerrorbarsevals}
+Evan Miller.
+\newblock Adding error bars to evals: A statistical approach to language model
+  evaluations, 2024.
+\newblock URL \url{https://arxiv.org/abs/2411.00640}.
+
+\bibitem[Novikov et~al.(2025)Novikov, V{\~u}, Eisenberger,
+  et~al.]{novikov2025alphaevolve}
+Alexander Novikov, Ng{\^a}n V{\~u}, Marvin Eisenberger, et~al.
+\newblock Alphaevolve: A coding agent for scientific and algorithmic discovery,
+  2025.
+\newblock URL \url{https://arxiv.org/abs/2506.13131}.
+
+\bibitem[Pineau et~al.(2021)Pineau, Vincent-Lamarre, Sinha, Larivi{\`e}re,
+  Beygelzimer, d'Alch{\'e} Buc, Fox, and Larochelle]{pineau2021reproducibility}
+Joelle Pineau, Philippe Vincent-Lamarre, Koustuv Sinha, Vincent Larivi{\`e}re,
+  Alina Beygelzimer, Florence d'Alch{\'e} Buc, Emily Fox, and Hugo Larochelle.
+\newblock Improving reproducibility in machine learning research (a report from
+  the {NeurIPS} 2019 reproducibility program).
+\newblock \emph{Journal of Machine Learning Research}, 22\penalty0
+  (164):\penalty0 1--20, 2021.
+\newblock arXiv:2003.12206.
+
+\bibitem[Rababah et~al.(2026)Rababah, Akcora, and
+  Leung]{rababah2026illusionequivalencystatisticalcharacterization}
+Baha Rababah, Cuneyt~Gurcan Akcora, and Carson~K. Leung.
+\newblock The illusion of equivalency: Statistical characterization of
+  quantization effects in llms, 2026.
+\newblock URL \url{https://arxiv.org/abs/2607.08734}.
+
+\bibitem[Schnabl et~al.(2025)Schnabl, Hugenroth, Marino, and
+  Beresford]{schnabl2025attestableauditsverifiableai}
+Christoph Schnabl, Daniel Hugenroth, Bill Marino, and Alastair~R. Beresford.
+\newblock Attestable audits: Verifiable ai safety benchmarks using trusted
+  execution environments, 2025.
+\newblock URL \url{https://arxiv.org/abs/2506.23706}.
+
+\bibitem[Siddiq et~al.(2025)Siddiq, Islam-Gomes, Sekerak, and
+  Santos]{siddiq2025largelanguagemodelssoftware}
+Mohammed~Latif Siddiq, Arvin Islam-Gomes, Natalie Sekerak, and Joanna C.~S.
+  Santos.
+\newblock Large language models for software engineering: A reproducibility
+  crisis, 2025.
+\newblock URL \url{https://arxiv.org/abs/2512.00651}.
+
+\bibitem[Su et~al.(2026)Su, Hao, Zhang, Xia, Wu, Su, and
+  Zhu]{su2026helixevolutionaryreinforcementlearning}
+Chang Su, Zhongkai Hao, Zhizhou Zhang, Zeyu Xia, Youjia Wu, Hang Su, and Jun
+  Zhu.
+\newblock Helix: Evolutionary reinforcement learning for open-ended scientific
+  problem solving, 2026.
+\newblock URL \url{https://arxiv.org/abs/2603.07642}.
+
+\bibitem[Thomas et~al.(2026)Thomas, Gligoric, and
+  Shah]{thomas2026mitigatingllmbasedphackingpreregistering}
+Maria Thomas, Kristina Gligoric, and Nihar~B. Shah.
+\newblock Mitigating llm-based p-hacking by preregistering for the next llm,
+  2026.
+\newblock URL \url{https://arxiv.org/abs/2606.27687}.
+
+\bibitem[Vaccaro(2026)]{vaccaro2026preregistrationexperimentsaiagents}
+Michelle Vaccaro.
+\newblock Preregistration for experiments with ai agents, 2026.
+\newblock URL \url{https://arxiv.org/abs/2606.11217}.
+
+\bibitem[Wang et~al.(2025)Wang, Su, Zeng, Xu, Ren, Yang, Huang, He, Ma, Peng,
+  Cheng, He, Chen, Wang, Du, and Shen]{wang2025thetaevolvetesttimelearningopen}
+Yiping Wang, Shao-Rong Su, Zhiyuan Zeng, Eva Xu, Liliang Ren, Xinyu Yang, Zeyi
+  Huang, Xuehai He, Luyao Ma, Baolin Peng, Hao Cheng, Pengcheng He, Weizhu
+  Chen, Shuohang Wang, Simon~Shaolei Du, and Yelong Shen.
+\newblock Thetaevolve: Test-time learning on open problems, 2025.
+\newblock URL \url{https://arxiv.org/abs/2511.23473}.
+
+\bibitem[Williams et~al.(2026)Williams, Sheahan, Raymond, Korbak, Pan, Yang,
+  Maksin, Xie, Guo, Kivlichan, and
+  Carroll]{williams2026predictingllmsafetyrelease}
+Marcus Williams, Hannah Sheahan, Cameron Raymond, Tomek Korbak, Deng Pan,
+  Peilin Yang, Leon Maksin, Ningyi Xie, Phillip Guo, Ian Kivlichan, and Micah
+  Carroll.
+\newblock Predicting llm safety before release by simulating deployment, 2026.
+\newblock URL \url{https://arxiv.org/abs/2607.07184}.
+
+\bibitem[Wimbauer et~al.(2026)Wimbauer, M{\"o}ller, Imgrund, and
+  Rieck]{wimbauer2026fingerprintinginferencesystemslarge}
+Anna Wimbauer, Jonas M{\"o}ller, Erik Imgrund, and Konrad Rieck.
+\newblock Fingerprinting inference systems of large language models, 2026.
+\newblock URL \url{https://arxiv.org/abs/2605.29979}.
+
+\bibitem[Xing et~al.(2026)Xing, He, Wu, Yang, Luo, Fu, and
+  Nagarajan]{xing2026computeallocationevolutionarysearch}
+Sixue Xing, Haoyu He, Kerui Wu, Zhuo Yang, Haozheng Luo, Tianfan Fu, and Aarthy
+  Nagarajan.
+\newblock Compute allocation in evolutionary search: From depth-breadth to
+  multi-armed bandits, 2026.
+\newblock URL \url{https://arxiv.org/abs/2605.29268}.
+
+\bibitem[Yan et~al.(2026)Yan, Peng, Coleman, Chen, Xie, Chen, He, Sachdeva, Ye,
+  Wang, Wang, Chi, Pereira, Kang, Cheng, and
+  Wang]{yan2026pacevolveenablinglonghorizonprogressaware}
+Minghao Yan, Bo~Peng, Benjamin Coleman, Ziqi Chen, Zhouhang Xie, Shuo Chen,
+  Zhankui He, Noveen Sachdeva, Isabella Ye, Weili Wang, Chi Wang, Ed~H. Chi,
+  Fernando Pereira, Wang-Cheng Kang, Derek~Zhiyuan Cheng, and Beidou Wang.
+\newblock Pacevolve: Enabling long-horizon progress-aware consistent evolution,
+  2026.
+\newblock URL \url{https://arxiv.org/abs/2601.10657}.
+
+\bibitem[Yuan et~al.(2025)Yuan, Li, Ding, Xie, Li, Zhao, Wan, Shi, Hu, and
+  Liu]{yuan2025understandingmitigatingnumericalsources}
+Jiayi Yuan, Hao Li, Xinheng Ding, Wenya Xie, Yu-Jhe Li, Wentian Zhao, Kun Wan,
+  Jing Shi, Xia Hu, and Zirui Liu.
+\newblock Understanding and mitigating numerical sources of nondeterminism in
+  llm inference, 2025.
+\newblock URL \url{https://arxiv.org/abs/2506.09501}.
+
+\bibitem[Zhang et~al.(2026)Zhang, Zhang, and
+  Qin]{zhang2026modelactuallyservingyou}
+Yuewei Zhang, Zhi-Hai Zhang, and Hanzhang Qin.
+\newblock Which model is actually serving you? iris: Budgeted black-box
+  auditing of model substitution and routing dilution in llm gateways, 2026.
+\newblock URL \url{https://arxiv.org/abs/2607.20860}.
+
+\bibitem[Zhou et~al.(2026)Zhou, Cao, Li, Yu, Ye, Zhao, and
+  Liu]{zhou2026signaldegradationcomputationcollapse}
+Chenxi Zhou, Pengfei Cao, Jiang Li, Bohan Yu, Jinyu Ye, Jun Zhao, and Kang Liu.
+\newblock From signal degradation to computation collapse: Uncovering the two
+  failure modes of llm quantization, 2026.
+\newblock URL \url{https://arxiv.org/abs/2604.19884}.
+
+\bibitem[Zhou et~al.(2024)Zhou, Schellaert, Mart{\'i}nez-Plumed, Moros-Daval,
+  Ferri, and Hern{\'a}ndez-Orallo]{zhou2024reliability}
+Lexin Zhou, Wout Schellaert, Fernando Mart{\'i}nez-Plumed, Yael Moros-Daval,
+  C{\`e}sar Ferri, and Jos{\'e} Hern{\'a}ndez-Orallo.
+\newblock Larger and more instructable language models become less reliable.
+\newblock \emph{Nature}, 634\penalty0 (8032):\penalty0 61--68, 2024.
+\newblock \doi{10.1038/s41586-024-07930-y}.
+
+\end{thebibliography}

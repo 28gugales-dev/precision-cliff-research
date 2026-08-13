@@ -1,0 +1,196 @@
+\section{the dispersion probes' registered analyses, in full}
+
+Section 3 reports every registered outcome of both probe waves, with its status label attached, in the tables where it belongs. This appendix holds the derivation narrative those tables point at: what was omitted from earlier drafts, what was reconstructed and why, and which conventions are ours rather than registered.
+
+\subsection{What earlier drafts omitted from wave 2, and in which direction}
+
+Wave 2 carries \texttt{analysis\_prereg\_v2.md} and a truncated-run addendum. Addendum rule R2 requires a ceiling rung to land; q8\_0 never ran, so the wave's own verdict is FAILED and every descriptive it produces is exploratory. Earlier drafts described the wave as ``a registered confirmatory replication,'' quoted two of its outputs as replicating, and reported neither the label nor the wave's registered primary test. Both omissions cut in opposite directions: the registered FAILED label was omitted \textbf{against us} --- it disqualifies every v2 number quoted as confirmatory --- while the registered primary (rarefaction 38.31 / 46.78 / 13.00 at m = 84, JT = 83.50 vs null 53.92, $p = 0.0081$) was omitted \textbf{for us} --- the best-powered registered result in the section, and it had been left out. That the suppressed material included the strongest number as well as the worst label is the reason to state the correction rather than absorb it quietly: selective reporting is not only the omission of unfavourable results, and a reader cannot check which kind occurred unless both are named.
+
+\subsection{The reconstructed spread statistic}
+
+The v1 preregistration names its spread quantity by the generating kernel's field, \texttt{mean\_pairwise\_ned}. That kernel is not in the released corpus. What survives is a single logged value in \texttt{provenance.json} --- \texttt{text\_dispersion\_mean\_pairwise\_ned} = \textbf{-0.3558} for Q3\_K\_M --- negative, so the kernel's quantity is not a normalized edit distance in the usual sense and its definition is unrecoverable. We substituted an explicit definition: Levenshtein distance over \texttt{raw\_text} divided by the longer of the two lengths, averaged over unordered within-cell pairs, which on that same cell returns \textbf{+0.1060}. The substitution is forced rather than chosen --- the preregistration wants the statistic per parent and the kernel logged it only per rung, so no replay was available at the registered granularity even had the definition survived. Section 3's $p = 0.030$ is the registered test run on a reconstructed quantity; a reader who declines the reconstruction should treat that row as unavailable rather than as evidence in either direction.
+
+\subsection{The registered primary echo measure, its degeneracy, and the tie rule}
+
+Section 2 of Amendment 1 designates median per-circle centre displacement \textbf{the primary echo measure}, specified with a Jonckheere-Terpstra test. Earlier drafts printed the medians as a descriptive ``graded companion'' and never ran that test --- the registration is ambiguous against itself (\texttt{**Graded companion:** median per-circle center displacement per sample --- this is the primary echo measure, tested with Jonckheere-Terpstra}), inviting the drafts' reading, but the sentence under the heading is explicit. Run in \texttt{sec3\_registered\_echo\_test.py}: Q4\_K\_M (n=65) median 0.000000, mean 0.002323, 64/65 rows at exactly zero; Q3\_K\_M (n=51) median 0.000000, mean 0.020092, 47/51 at zero; Q2\_K (n=49) median 0.000000, mean 0.002126, 48/49 at zero. \textbf{JT = 4460.0} against a null mean of 4498.54 (sd 108.41), permutation \textbf{p = 0.686} (0.6864 unrounded) over 10,000 shuffles. This outcome is unfavourable and had been left unreported while the favourable spread test was reported beside it. It is also degenerate, in the same way and for the same reason as the Amendment 1 rarefaction: 159 of 165 valid rows have a median displacement of exactly zero, so the statistic is very nearly all tie credit and $p = 0.686$ measures saturation rather than flatness --- both degeneracies trace to the single-lattice design, whose descriptors were built to detect movement the probe never gave the model an occasion to make. One convention is ours and not registered: the v1 preregistration names Jonckheere-Terpstra but specifies no tie rule, and with 159 of 165 values tied the convention is nearly the whole statistic --- we adopt the 0.5 tie credit that wave 2's addendum states, for consistency across the two waves, flagged as a choice. The registered second half of the quality fork --- mean \texttt{score\_delta} against the parent with bootstrap 95\% CIs --- was likewise unreported and is now in \S3's table; only Q4\_K\_M excludes zero, and the direction is a small \emph{improvement}, not a decline.
+
+\textbf{The registered replacement rule, adjudicated in full.} Under the rule this returns no category: SURVIVES needs both spread measures at $p < 0.05$ and rarefaction is 0.953; PARTIAL needs monotone score decline and it does not; FALSIFIED needs both spread measures flat and NED is 0.030; UNDERPOWERED does not apply. The honest label is unclassified --- this disqualifies the \emph{registered mechanism verdict} specifically, not the probe's descriptive counts, which \S3 reports as descriptive and post-hoc. Two further caveats cut against reading the favourable half alone: the NED decline is \textbf{not monotone} (Q3\_K\_M's 0.1060 sits above Q4\_K\_M's 0.0872, and the entire effect is Q2\_K collapsing), and the rarefaction instrument had no resolving power --- 159 of 165 valid rows sit at exactly zero displacement, the pooled quantile edges collapse to two occupied cells out of 64, both occupied by every rung, so its $p = 0.953$ is saturation, not evidence of flatness. The prespecified orthogonality check passes its registered criterion (Spearman rho = +0.1672 for the spread descriptor, $-0.1675$ for the displacement descriptor against score, both far below the registered |rho| > 0.5 confounding threshold), but passing that threshold is not independence: at n = 165 both correlations are nominally non-zero ($p = 0.032$ and $0.032$). The registered rule asks only whether either descriptor is \emph{confounded} by scoring, and neither is by its stated criterion; a weak residual association remains and is stated rather than rounded away.
+
+\subsection{Every \emph{p}-value reported in \S3 and \S3.6, its family, and the defect that family carries}
+
+Section 3 states the summary of this appendix and points here; nothing below is new evidence.
+
+\textbf{Nine are two-sided Fisher exact tests on counts} ($p = 5.7\times10^{-10}, 1.7\times10^{-7}, 3.4\times10^{-6}, 0.001, 0.007, 0.017, 0.056, 0.44, 1.0$). \textbf{Six are permutation tests belonging to the two dispersion probes' preregistrations} --- wave 1's spread JT (0.030), echo JT (0.686), quality fork (0.454) and rarefaction trend (0.953), and wave 2's rarefaction JT (0.0081) and score fork (0.3526). \textbf{Two are Spearman correlations} run as wave 1's orthogonality diagnostic (0.032 and 0.032), testing no claim of ours and existing only to check whether a descriptor is confounded by score; wave 1's preregistration prespecifies the |rho| criterion but not a \emph{p}-value threshold, wave 2's contains no orthogonality clause at all, and both tails are reported for completeness, not as registered tests. Within the Fisher family, the candidate-level contrasts ($5.7\times10^{-10}, 0.007, 1.7\times10^{-7}, 3.4\times10^{-6}, 0.017$) treat rows as independent when they are nested within lineages sharing five seeds across rungs, overstating the evidence --- the antecedent study's appendix declares them not part of any claim, and that status is adopted here for all of them. The seed-level tests (0.001, 0.44) do not have that defect but run on five seeds. No multiplicity correction is applied to the Fisher family and none should be read as implied: across its nine tests a Bonferroni threshold is $0.05/9 = 0.0056$, which neither $p = 0.017$ nor 0.007 meets. The six permutation tests get no correction of their own because each is a named primary or fork inside a locked decision rule, and both rules returned unusable verdicts (unclassified wave 1, FAILED wave 2), so no claim rests on any of the six whatever threshold applies. The two Spearman diagnostics are likewise uncorrected and support no claim.
+
+\textbf{Twelve are exact lineage-level permutation tests on the post-hoc search-progress statistic} --- six on accepted improvements (0.0008, 0.0079, 0.0079, 0.135, 0.116, 0.238) and six on final best score (0.593, 0.937, 0.421, 0.318, 0.158, 0.119). This family is the newest and least protected: specified after the data existed, largely the echo contrast in complement, no registration. A Bonferroni threshold across its twelve tests is $0.05/12 = 0.0042$, met only by $p = 0.0008$; neither fresh-seed nor within-ladder tail at 0.0079 survives it, and both are additionally \emph{at the floor} of a five-versus-five enumeration (2/252), so no design at this lineage count could have cleared the threshold. These twelve avoid the calls-within-lineage nesting defect (the permutation unit is the lineage), but two weaknesses remain: five lineages per cell is a small pool bounding how small any tail can be, and \textbf{the design is seed-crossed while the test is not stratified} --- the same five seeds appear at every rung, so the twenty lineages of the pooled comparison are five matched quadruples rather than twenty exchangeable draws, and the enumeration permutes them as though they were. Ignoring positive pairing is conservative for a difference of means, bounding the tails rather than reversing them; the matched alternative (a stratified test permuting rungs within each seed) has a minimum attainable $p$ of $1/16$ on five pairs and could not have produced any of the values above. A call-level Fisher tail on the IQ2 control's step counts was additionally computed ($p = 0.028$) and is recorded here only to note it is not used: calls within a lineage are not exchangeable, the lineage-level tail on the same counts is 0.135, and the more favourable number is the wrong one.
+
+\section{fixed-parent control protocol and full registered results}
+
+This appendix carries the full protocol, registration text, and complete result tables for the fixed-parent dispersion probe summarized in \S3.5.
+
+\textbf{Design.} The probe runs Qwen2.5-Coder-14B at the same three rungs as the main ladder (Q8\_0, Q4\_K\_M, Q3\_K\_M, Q2\_K --- Q8\_0 registered but never attempted, per \texttt{"q8\_0": \{"skipped": "needs 2 gpus, have 1"\}} in both waves' \texttt{provenance.json}, the single P100 allocated not fitting the 8-bit file), holding the parent constant at each of six preset scores --- 0.88, 0.90, 1.04, 1.30, 1.55, 1.65 --- and logging coordinates and an echo flag per row. Wave 1 (\texttt{sec3\_artifacts/dispersion\_probe/probe\_samples.jsonl}): 288 rows, 165 valid, 123 invalid, of which 18 are harness failures rather than model failures (\texttt{gen\_error: ValueError: logprobs is not supported}, exactly six per rung --- these neither bias between rungs nor belong in a denominator of model behaviour). Wave 2 (\texttt{sec3\_artifacts/dispersion\_probe\_v2/}, 432 rows on out-of-sample salted seeds) has none: its rows carry no \texttt{gen\_error} field, and of its 158 invalid rows exactly one records a genuine model parse failure (\texttt{parse\_error: bad\_triple}), which stays in the denominator.
+
+\textbf{Registration.} The probe carries an analysis preregistration (\texttt{analysis\_prereg.md}, written before any metric was read, with an amendment timestamped before any output file was downloaded). Wave 2 carries its own preregistration (\texttt{analysis\_prereg\_v2.md}) plus a truncated-run addendum, and its own registered verdict: \textbf{FAILED}, because addendum rule R2 requires a ceiling rung (q8\_0) to land and it did not, so no trend test is reportable and every wave-2 descriptive is exploratory --- the released analyser prints this unprompted (\texttt{VERDICT: FAILED / addendum R2: ceiling rung q8\_0 did not land; no trend test reportable}).
+
+\textbf{The v2 registered primary.} The pooled rarefied distinct-solution count at matched depth, with a per-parent Jonckheere-Terpstra over 10,000 shuffles. At m = 84: 38.31 $\pm$ 1.64 / 46.78 $\pm$ 1.30 / \textbf{13.00 $\pm$ 0.00} distinct solutions across Q4\_K\_M / Q3\_K\_M / Q2\_K, JT = 83.50 against a null mean of 53.92, permutation \textbf{p = 0.0081}. The registered score fork returns JT $p = 0.3526$ --- no monotone decline in quality, so this is a variation effect, not general degradation. Two qualifications: the wave is FAILED by its own rule, so this number is exploratory however favourable it looks; and it is non-monotone in exactly the way v1's spread test is (46.78 at Q3\_K\_M sits above 38.31 at Q4\_K\_M --- the whole effect is Q2\_K collapsing to 13.00). The replicable statement across both waves is ``distinct solutions collapse at the 2-bit rung,'' never ``distinct solutions decline with quantization.''
+
+\textbf{The three registered echo-family measures, both waves} (\texttt{sec3\_dispersion\_registered.py}):
+
+\begin{table}[h]
+\centering
+\caption{The three registered echo-family measures, both dispersion-probe waves.}
+\begin{tabular}{p{6.7cm}ccc}
+\toprule
+measure & Q4\_K\_M & Q3\_K\_M & Q2\_K \\
+\midrule
+registered centers-only echo (max index-wise centre displacement $<$ \texttt{1e-3}) & 64/65 (98\%) & 47/51 (92\%) & 48/49 (98\%) \\
+registered primary echo measure (median per-circle centre displacement) & 0.000000 & 0.000000 & 0.000000 \\
+retained legacy echo (\texttt{1e-5}, all three fields) & 34/65 (52\%) & 31/51 (61\%) & 46/49 (94\%) \\
+legacy echo, v2 replication & 56/99 (57\%) & 41/91 (45\%) & 77/84 (92\%) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All six of the probe's ``parents'' share identical centres, differing only in radii from a uniform 0.900 grid up to a 1.65 packing with 26 distinct radii, so centre-echo measures whether the model reproduces \emph{that} lattice and cannot observe what would happen with a proposer that moved to a different one. The 92--98\% centre-echo figure is a statement about the only lattice ever presented, not a general finding about constructive novelty.
+
+\textbf{Radius-variation decomposition} (post-hoc, constructed after the registered centre measures came back flat, labelled as such everywhere used):
+
+\begin{table}[h]
+\centering
+\caption{Radius-variation decomposition by rung (post-hoc, constructed after the
+registered centre measures came back flat).}
+\begin{tabular}{lccc}
+\toprule
+rung & centres copied and radii varied & centres copied and radii copied & centres varied \\
+\midrule
+Q4\_K\_M, v1 & \textbf{30/65 (46\%)} & 34/65 (52\%) & 1/65 \\
+Q3\_K\_M, v1 & \textbf{16/51 (31\%)} & 31/51 (61\%) & 4/51 \\
+Q2\_K, v1 & \textbf{2/49 (4\%)} & 46/49 (94\%) & 1/49 \\
+Q4\_K\_M, v2 & \textbf{39/99 (39\%)} & 56/99 (57\%) & 4/99 \\
+Q3\_K\_M, v2 & \textbf{46/91 (51\%)} & 41/91 (45\%) & 4/91 \\
+Q2\_K, v2 & \textbf{5/84 (6\%)} & 77/84 (92\%) & 2/84 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The middle column is identically the legacy echo count in all six cells, so the decomposition adds no evidence there; what it adds is a partition of the non-echo rows into radius-varying and centre-varying --- at Q2\_K on wave 1, three rows split 2 and 1. Reading down the first column and across waves: the 2-bit endpoint replicates (4\% and 6\% independently) and the ordering above it does not (46\% above 31\% on v1, 39\% below 51\% on v2 --- an earlier draft's ``the upper rungs'' quoting v1's 46\% alone overstated a single rung's rate as a pair's).
+
+\textbf{All registered outcomes, wave 1, including those against us.} One disclosure precedes the table: the spread statistic is reconstructed, not replayed (Appendix A.2), so row 1's $p = 0.030$ is the registered test on a reconstruction, and a reader who rejects the reconstruction should treat it as unavailable.
+
+\begingroup
+\footnotesize
+\begin{longtable}{p{4.3cm}p{6.3cm}p{3cm}}
+\caption{All registered wave-1 outcomes, including those unfavourable to the
+hypothesis.}\\
+\toprule
+registered analysis & result & direction \\
+\midrule
+\endfirsthead
+\toprule
+registered analysis & result & direction \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+primary spread: JT on per-parent mean pairwise NED, valid only, 10,000 permutations & mean NED 0.0872 / 0.1060 / 0.0291; JT = 31.0, $p = 0.030$ & declines --- favourable \\
+primary echo measure: JT on per-sample median centre displacement, 10,000 permutations & medians all 0.000000; JT = 4460.0 vs null mean 4498.5 (sd 108.4), $p = 0.686$ & flat --- unfavourable, degenerate \\
+Amendment 1 rarefaction: unique cells on the centres-only descriptor at matched m = 49 & 1.774 $\pm$ 0.418 / 2.000 $\pm$ 0.000 / 2.000 $\pm$ 0.000; $p = 0.953$ & wrong sign --- unfavourable \\
+quality fork: JT on mean score among valid & 1.23855 / 1.22889 / 1.25966; $p = 0.454$ & no monotone decline \\
+quality fork, registered second half: mean \texttt{score\_delta} vs parent, bootstrap 95\% CI & $+0.00725\ [+0.0018,\ +0.0139]$ / $-0.00329\ [-0.0254,\ +0.0113]$ / $-0.00199\ [-0.0211,\ +0.0151]$ & flat; only Q4\_K\_M excludes zero \\
+power floor (rule 4) & m = 49, six defined parents per rung & not underpowered \\
+\end{longtable}
+\endgroup
+
+Under the registered replacement rule this returns \textbf{no category} (full adjudication in Appendix A.3). It disqualifies the registered mechanism verdict, not the descriptive counts.
+
+\textbf{Loop-versus-fixed-parent comparison} (Q8\_0's condition failed, so this three-rung trend has correspondingly less power than preregistered):
+
+\begin{table}[h]
+\centering
+\caption{Loop-versus-fixed-parent echo comparison by rung.}
+\begin{tabular}{lccc}
+\toprule
+rung & echo, fixed parent (all) & echo, parent 0.88-0.90 & echo, loop \\
+\midrule
+Q4\_K\_M & 34/65 (52\%) & 6/18 (33\%) & 3/20 (15\%) \\
+Q3\_K\_M & 31/51 (61\%) & 7/16 (44\%) & 3/19 (16\%) \\
+Q2\_K & 46/49 (94\%) & 11/12 (92\%) & 17/18 (94\%) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+At the 2-bit rung the designs agree. At the upper rungs they do not: held to a fixed parent, Q4\_K\_M and Q3\_K\_M echo far more often than the loop suggests. Restricted to the 0.88-0.90 band the loop actually occupies, the contrast is \textbf{6/18 versus 11/12 --- 33\% against 92\%}, not 15\% against 94\%.
+
+\textbf{Per-parent vectors, in full:}
+
+\begin{table}[h]
+\centering
+\caption{Per-parent echo vectors, in full.}
+\footnotesize
+\begin{tabular}{lcccccc}
+\toprule
+parent & 0.88 & 0.90 & 1.04 & 1.30 & 1.55 & 1.65 \\
+\midrule
+Q4\_K\_M & 4/12 (33\%) & 2/6 (33\%) & 9/14 (64\%) & 4/11 (36\%) & 9/11 (82\%) & 6/11 (55\%) \\
+Q3\_K\_M & 5/10 (50\%) & 2/6 (33\%) & 4/7 (57\%) & 5/11 (45\%) & 9/10 (90\%) & 6/7 (86\%) \\
+Q2\_K & 7/8 (88\%) & 4/4 (100\%) & 8/8 (100\%) & 12/12 (100\%) & 8/8 (100\%) & 7/9 (78\%) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Q4\_K\_M's rate rises with parent score but not monotonically (1.30 drops back to 36\%, 1.65 to 55\%) --- no trend test is claimed. Q2\_K is high at every parent but not uniformly (78\% at 1.65 and 88\% at 0.88 are its two lowest cells; an earlier phrasing that put it ``at or above 88\% everywhere'' was wrong on both). At every one of the six parents, Q2\_K echoes more than either upper rung, and the gap is much smaller than the loop comparison implies.
+
+\textbf{Consequences.} The cliff's direction and 2-bit endpoint survive; its spread does not --- the loop's ``14\% to 94\%'' is partly an artifact of where each rung's running parent sits, and the fresh-seed 79\%-versus-6\% figure and the invalid-row near-copy gradient carry the same confound. The \S3.4 IQ2 scheme-gradient ladder (6\% $\rightarrow$ 43\% $\rightarrow$ 75-79\%) is weakened: if Q4\_K\_M's matched rate is 33-52\% rather than 6\%, IQ2\_M's 43\% may not be separated from Q4\_K\_M at all, and the gradient is withdrawn as evidence about bit width, kept only as a description of loop-condition numbers. The registered upper-rung bound ``$\le 35\%$'' held under the loop condition (11-16\%) and would have \textbf{failed} under fixed parents (52-61\%) --- correctly scored against the loop design it was registered for, but not a general property of those rungs. The probe is not a substitute for the loop measurement --- a fixed parent removes the lineage history the loop includes --- but is the better-controlled comparison on the one axis where the loop is confounded.
+
+\section{lineage-level search-progress records}
+
+This appendix carries the full per-lineage records and the horizon-power exercise summarized in \S3.6.
+
+\textbf{Per-lineage accepted-step records, registered 14B ladder} (five lineages of ten generations each; an accepted improvement is a valid output scoring strictly above the lineage's running best):
+
+\begingroup
+\footnotesize
+\begin{longtable}{lp{3cm}ccccp{3.8cm}}
+\caption{Per-lineage accepted-step records, registered 14B ladder.}\\
+\toprule
+rung & accepted steps per lineage & total & valid & echo & \multicolumn{2}{l}{final best per lineage} \\
+\midrule
+\endfirsthead
+\toprule
+rung & accepted steps per lineage & total & valid & echo & \multicolumn{2}{l}{final best per lineage} \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+Q2\_K & 0, 0, 0, 0, 1 & \textbf{1/50} & 18 & 17 & \multicolumn{2}{l}{0.900, 0.900, 0.900, 0.900, 1.625} \\
+Q3\_K\_M & 4, 3, 4, 2, 2 & 15/50 & 19 & 3 & \multicolumn{2}{l}{1.040, 1.300, 0.962, 1.625, 1.248} \\
+Q4\_K\_M & 6, 3, 2, 3, 2 & 16/50 & 20 & 3 & \multicolumn{2}{l}{1.060, 1.300, 0.936, 1.040, 0.933} \\
+Q8\_0 & 2, 2, 5, 1, 4 & 14/50 & 18 & 2 & \multicolumn{2}{l}{0.936, 1.300, 0.926, 1.083, 1.040} \\
+\end{longtable}
+\endgroup
+
+Four of five Q2\_K lineages take zero steps; their running parent is still the seeded $6 \times 5$ grid at generation nine. Because an echo can never be an accepted improvement (\texttt{accepted <= valid - echo}), the identity gap $k$ between the two --- 0, 1, 1, 2 across the four rungs --- is the count of rows that departed and still failed to beat the parent.
+
+\textbf{Conditional-quality per-parent breakdown} (pooled across both dispersion-probe waves, post-hoc, \texttt{sec3\_conditional\_quality.py}): Q4\_K\_M 164 valid, 74 departures, 60/74 (81\%) improved, 95\% CI [70\%, 89\%]; Q3\_K\_M 142 valid, 70 departures, 61/70 (87\%), CI [77\%, 94\%]; Q2\_K 133 valid, 10 departures, \textbf{8/10 (80\%)}, CI [44\%, 97\%]. Fisher on 8/10 vs 60/74, $p = 1.00$. Per-parent, where Q2\_K has data: 0.880, 2/2 against Q4\_K\_M's 21/23 (91\%); 0.900, 1/2 against 10/11; 1.040, 2/2 against 8/9 (89\%); 1.650, 3/4 against Q4\_K\_M's 6/9 (67\%) and Q3\_K\_M's 4/6. Four of Q2\_K's ten departures sit at the hardest parent (1.650), 40\% of its sample against 12\% of Q4\_K\_M's --- its departures are not drawn from easier parents. Scored against a threshold we wrote ourselves the same day, in an unlocked note (\texttt{wave3\_prereg\_heilbronn.md}, explicitly not a registration): the power floor (25 departures required, 10 observed) is not met, so no branch is confirmed. Which reference is chosen moves the exclusion line --- half of Q4\_K\_M's 81\% is 40.5\%, half of the pooled upper rungs' 84\% is 42.0\%, half of Q3\_K\_M's (the better-performing comparator) 87\% is 43.6\%. The 95\% Clopper-Pearson lower bound on 8/10 is \textbf{44.4\%}, excluding the collapse branch against all three by 3.8, 2.4 and \textbf{0.8} points respectively; had one of the ten departures failed to improve, 7/10 gives a lower bound of 34.8\% and the exclusion fails against every comparator.
+
+\textbf{Replication tests, exact lineage-level permutation} (distinct from the dispersion probes' JT tests --- shares only the word ``permutation''): registered ladder $p = 0.0008$ against the pooled upper three (15,504 splits), $p = 0.0079$ against Q4\_K\_M alone (252 splits --- the floor of a five-versus-five enumeration, the smallest two-sided tail such a design can return whatever the effect size). Fresh seeds: 3 steps against 14, $p = 0.0079$ (also floor-bound). IQ2 control: imatrix Q2\_K 6 steps against IQ2\_M's 16, $p = 0.135$ --- does not replicate. A call-level Fisher test on the same counts returns $p = 0.028$; the lineage-level figure is reported instead because calls within a lineage are not exchangeable (improvement at call $k$ depends on what landed earlier in the same lineage), which costs the IQ2 replication but avoids banking an unsupported significance. A design capable of distinguishing a large effect from an enormous one needs more lineages per rung, not more generations per lineage --- eight per rung would lower the floor to $1.6\times10^{-4}$.
+
+\textbf{Outcome-level (final best score) tails}, all non-rejection at five lineages per cell: registered ladder, Q2\_K mean 1.045 vs pooled 1.115 ($p = 0.593$), vs Q4\_K\_M 1.054 ($p = 0.937$); fresh seeds, Q2\_K 1.153 vs 0.999 ($p = 0.421$); IQ2 control, 1.087 vs 0.922 ($p = 0.318$); 7B, $p = 0.158$ against pooled others, 0.119 against Q4\_K\_M --- completing the six tails in the abstract's 0.12-0.94 range.
+
+\textbf{The horizon-power exercise, run and mostly withdrawn.} \texttt{sec3\_horizon\_power.py} resamples the observed process (departure rate and empirical offer distribution per rung from the pooled 14B ledgers, a lineage of $T$ calls drawing $\mathrm{Binom}(T, d)$ offers, best-so-far the max of those and the seed). It cannot support a power statement about the paper's own design: the only alternative the model supplies is its own projection, which puts Q2\_K \emph{ahead} at every horizon, because the 2-bit rung's six observed departure-offers are 0.867, 0.900, 1.040, 1.300, 1.625, 1.625 --- the maximum appears twice and one entry is the seed score itself, handing the resampler a one-in-three jackpot and a hard ceiling. Six observations cannot carry a direction, so they cannot carry an effect size either; an earlier draft's power claim is withdrawn, and the outcome-level null stands as non-rejection with no quantitative statement about how underpowered it is. It also cannot support ``widen rather than lengthen'': cost-equalised, lengthening wins (five lineages at 100 generations is 500 calls for 84\%; twelve at 50 is 600 calls for 82\%), and at $T = 10$ the simulated rejection rate \emph{falls} as lineages are added (17\%, 8\%, 5\%, 4\% for 5, 8, 12, 20 lineages) --- not how power behaves, a sign the coarse five-versus-five permutation tail is doing the work rather than any effect. What survives is structural: final best score is a maximum, insensitive to draw count by construction --- multiplying effective draws moves it by the distance between two upper quantiles of the same offer distribution, not proportionally to the draw ratio. A wave demonstrating harm should use time-to-threshold, area under the best-so-far curve, or the accepted-step count itself (which this appendix measures and which the wave-3 design note names as its primary), not final best score. The horizon run remains an open gap, not closed by arithmetic.
+
+\section{\texttt{opus\_alias} forensic detail}
+
+This appendix carries the narrative and secondary-comparator detail summarized in \S4.
+
+\textbf{Reported-token withdrawal, in full.} Reported-token counts were uniform at $\sim$49.9k across all thirty invocations, tight enough to read as a second serving signature. It does not survive definition. The harness log records a single per-invocation usage figure not disaggregated into input, output and cache-read; the thirty stored completions are 215-1283 characters (mean 578), roughly 61-367 output tokens, so $\sim$49.9k cannot be an output count. The reading it supports is a total/context counter over a large fixed system prompt, inherited user-level instruction files, and a task prompt byte-identical in length across all three cells (520 characters, the template substituting a two-digit N). Under that reading near-uniformity is exactly what the design predicts, and the residual spread is plausibly tokenizer-level variation between ``13'', ``21'' and ``31''. We report it as a non-finding because the reasoning generalizes to any study reading a single aggregate usage integer.
+
+\textbf{Throughput does not order by bit-width, in detail.} Across \S3's ladders: on the 14B ladder Q8\_0 is the slowest of four rungs at 14.9 tok/s against Q2\_K's 22.5; on the 7B ladder FP16 is slower than every quantized rung, and Q3\_K\_M sits below Q4\_K\_M at both scales (\texttt{sec6\_cv\_canary\_audit.py}). Those gaps are tens of percent and this arm's gap is one to two orders, so the magnitudes are not comparable and this does not overturn the reading that fast completions favour H1 --- but it does mean speed and precision are separate axes even on a fixed stack. What the ladders further show (\S6 item 4) is that throughput separates served files within a single wave on fixed hardware once warm-up and degenerate outputs are excluded, but not across waves and not across hardware, where the ordering between two SHA-pinned files reverses --- not a portable fingerprint, and not usable to attest a serving path by anyone who does not control the machine.
+
+\textbf{The registered scorecard, full detail.} The working log marked P-O1, P-O2 and P-O4 NOT EVALUABLE, reasoning that scoring a tier comparison across a validity collapse would be dishonest. That verdict is too conservative for P-O1, which is arithmetically evaluable and \textbf{held}: registered that the on-trap rate pooled across cells would be at most Sonnet's 1/30, observed \textbf{0/30} --- no valid row falls within the registered \texttt{2e-3} window of 1.625, 2.1 or 2.5833, nearest miss 2.07 against a 2.1 trap, off by 0.03, fifteen times the window. P-O3 (multi-radii fraction $\ge 0.9$ of valid samples) \textbf{held}, 4/4, though on four rows it carries little weight. P-O2 (rival-argmax) and P-O4 (best valid score $\ge 2.2588835$) \textbf{failed outright}: zero rival-argmax outputs against Sonnet's 6/30, best valid 2.07. Two held, two failed, none unevaluable --- weaker than the registration hoped on P-O2/P-O4, stronger than ``not evaluable'' on P-O1.
+
+\textbf{What the observable set separates, in detail.} The runtime exposes, per invocation, exactly four things: completion text, wall-clock duration, a single aggregate usage figure, and error codes (set $O$). On the text channel the two hypotheses induce the same distribution --- both predict ambitious families executed with broken tangencies --- so no amount of text observation separates them. On the timing channel they are not symmetric: H1 predicts the latency observation directly, H2 is silent on it, and to cover $O$ H2 must be conjoined with an auxiliary (``a fast serving path was in use but had no behavioral effect'') that is H1's mechanism minus its causal claim, strictly more complex. More sampling does not separate the hypotheses --- the anomaly is uniform, so more of it is more of the same --- and timing instrumentation does not either, because the serving path is not a variable settable from inside the runtime.
+
+\textbf{The pinned-endpoint route, not run.} The same thirty hash-pinned prompts could be issued to a dated model identifier on a pinned inference endpoint, entirely outside the agent runtime: if the endpoint reproduces the ambitious-family, broken-tangency signature at comparable validity, H2 gains substantially; if it returns 30/30-class competence, H1 does. What such a run still cannot do is attest what the \emph{alias} resolved to on the day sampled --- the counterfactual is gone, which is the sense in which C3 survives regardless. We did not run this experiment; its absence is a limitation of this paper rather than a property of the problem.
+
+\textbf{Prompt-variation and re-snapshot designs, as originally specified.} An earlier dismissal --- that prompt variation cannot help because both hypotheses act on execution rather than intent --- is wrong for at least one design: hand the alias a fixed, known-valid packing and ask it to verify or repair the tangencies. The model did not choose that construction, so arithmetic execution is decoupled from constructive ambition, an H1/H2 discriminator. Re-sampling the same alias at a later date is informative either way and runnable from inside the runtime, narrowed to: a re-snapshot can detect a \emph{change} in the serving signature without ever attesting the serving path in either snapshot. Both designs were preregistered together in \texttt{arm\_r\_preregistration.md} and run on 2026-08-07 (\S4.1), where B2 disconfirmed the anchor prediction P-R0 and the repair probe (arm R) ran under a decision rule that forbids drawing an H1/H2 conclusion from it once the anchor changed.

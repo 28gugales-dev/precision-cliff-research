@@ -1,0 +1,160 @@
+﻿\section*{Claim--evidence map}
+
+Every row names a file a reader can open \textbf{inside the released repository}. Earlier drafts satisfied the first half of that sentence and not the second: every \S3 row pointed into \texttt{../agent-run/} or \texttt{../../handoff/}, sibling trees on the authoring host that no clone contains, so a reader could see the path and not the data. The \S3 artifacts --- both dispersion-probe waves with their preregistrations, provenance and analyser, and the four ladder output trees --- are now vendored under \texttt{sec3\_artifacts/} (95 files, 1.8 MB), and the released scripts default to those in-repo copies, so \texttt{python sec3\_dispersion\_registered.py} and \texttt{python sec3\_artifacts/dispersion\_probe\_v2/analyze\_v2.py} both run in a fresh clone with no arguments. Dependencies are declared in \texttt{requirements.txt}. Where a figure is \emph{not} checkable from the released artifacts, the row says so instead of pointing at a document that merely repeats it.
+
+\begingroup
+\footnotesize
+\begin{longtable}{@{}p{0.42\textwidth}p{0.52\textwidth}@{}}
+\caption{Claim--evidence map: each claim paired with a file a reader can open
+inside the released repository.}\\
+\toprule
+\textbf{Claim} & \textbf{Evidence} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Claim} & \textbf{Evidence} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{2}{r}{\emph{continued on next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+
+\S3 14B ladder: viability 22/22/24/19, validity 18/20/19/18, echo 2/18, 3/20, 3/19 and 17/18, per-seed vectors, invalid-row near-copy fractions &
+\texttt{sec3\_artifacts/precision\_sweep\_14b\_v2\_output/**/candidates\_precision\_14b.jsonl} (200 rows), replayed by \texttt{sec3\_ladder\_repro.py} \\
+
+\S3 fresh-seed replication: 19/24 vs 1/17, per-seed 4/5, 4/5, 5/6, 2/2, 4/6 &
+\texttt{sec3\_artifacts/precision\_sweep\_14b\_fresh\_output/**/candidates\_precision\_14b\_fresh.jsonl} (100 rows), same script \\
+
+\S3 must-differ probe: 5/5 at Q2\_K, 1/5 at Q4\_K\_M; 6/8 vs 0/2 on the IQ2 pair &
+\texttt{sec3\_artifacts/**/mustdiffer\_14b.jsonl}, \texttt{mustdiffer\_14b\_iq2.jsonl}; echo computed against the fixed seed parent, no echo flag in the ledger \\
+
+\S3 IQ2 control: 24/32 vs 12/28 &
+\texttt{sec3\_artifacts/precision\_sweep\_14b\_iq2\_output/**/candidates\_precision\_14b\_iq2.jsonl} (100 rows), same script \\
+
+\S3 fixed-parent dispersion control: 34/65, 31/51, 46/49 and the parent-score gradient &
+\texttt{sec3\_artifacts/dispersion\_probe/probe\_samples.jsonl} (288 rows), \texttt{echo} field as labelled \\
+
+\S3 served weight files (SHA-256, byte length, repo, sampling parameters, GPUs) &
+\texttt{provenance.json} in each of the three ladder output directories \\
+
+\S3 seeded parent (26-circle 6 $\times$ 5 grid, score 0.89999) &
+\texttt{sec3\_artifacts/precision\_sweep\_14b\_v2\_output/**/state/q2\_k\_seed\_42.json}, a lineage that never improved \\
+
+\S3 Fisher figures \textbf{recomputed by a released script}: $p = 1.7\times10^{-7}, 3.4\times10^{-6}, 0.007, 0.017, 0.056$ &
+\texttt{sec3\_ladder\_repro.py} prints each as a \texttt{Fisher check} line beside the paper's rounded value \\
+
+\S3 Fisher figures $p = 5.7\times10^{-10}$ (17/18 vs 8/57), $p=0.001$ (15/15 vs 1/5, \textbf{pooled}), $p=0.44$ (F1's outcome), $p=1.0$ (FP16 vs Q3\_K\_M viability) &
+\texttt{sec3\_7b\_repro.py}, run with no arguments. It also prints the paired form of the 0.001 contrast, $p = 0.048$, so the pooling is visible \\
+
+\S3 inferential status of all twenty-nine \emph{p}-values (accounting in Appendix A.4) &
+\S3: nine Fisher, six preregistered permutation tests, two Spearman orthogonality diagnostics and twelve post-hoc lineage-level permutation tests; the four families not pooled, the reason given for each, and the Bonferroni threshold stated for the Fisher and post-hoc families \\
+
+\S3.6 search progress: accepted steps per lineage (1/50, 15/50, 16/50, 14/50 on the registered ladder; 3/50 vs 14/50 fresh; 6/50 vs 16/50 IQ2; 7/50, 4/50, 3/50, 2/50, 6/50 at 7B), the identity gaps \emph{k}, the conditional-on-departure rates, final best per lineage, and all twelve exact permutation tails &
+\texttt{sec3\_search\_progress.py}, run with no arguments; replays all four vendored ledgers. The two 7B final-best tails, 0.158 and 0.119, are stated in \S3.6's 7B paragraph. \textbf{Post-hoc} --- labelled as such at every use, and \S3.6 states that the fresh wave's registered \emph{primary} (F1) failed \\
+
+\S3.6 conditional quality: 60/74, 61/70, \textbf{8/10} improved among departures pooled over both probe waves, the per-parent breakdown, Fisher $p = 1.00$, and the exclusion of the collapse branch (95\% lower bound 44.4\% against 40.5 / 42.0 / 43.6\% depending on comparator) &
+\texttt{sec3\_conditional\_quality.py}, run with no arguments, from \texttt{score\_delta} and \texttt{echo} in the two vendored probe ledgers. \textbf{Post-hoc}, UNDERPOWERED against a 25-departure floor specified in an unlocked design note, not a registration; the exclusion's margin against the least favourable comparator (0.8 points) and its reversal if one row flips are stated in \S3.6 \\
+
+\S3.6 horizon argument: departure rates and offer distributions (6 vs 33 observations), the discarded directional projection, and the \textbf{withdrawn} power figure &
+\texttt{sec3\_horizon\_power.py}, run with no arguments. A \textbf{resampling projection}, not a measurement; detail in Appendix C \\
+
+\S3.6 the failed registered improvement prediction F1 ($\le$ 2/5 Q2\_K, $\ge$ 4/5 Q4\_K\_M; observed 3/5 vs 5/5) and its \textbf{primary} designation &
+\texttt{sec3\_artifacts/runners/kaggle\_precision\_sweep\_14b\_fresh.py} header, which reads \texttt{F1 Improvement (seed-level, primary)}; F2, the echo bound the paper leans on, carries no such label. Outcome computed by \texttt{sec3\_search\_progress.py} from the fresh ledger \\
+
+\S6 wave 4 capability-tier control: echo 0/120 (0\% per tier vs registered $\le 30\%$ bound, verdict DISSOCIATION), secondary 5.2 NOT EVALUATED (10-echo floor unmet), template rates 52.5\% / 27.5\% / 97.5\%, zero improvements past seed, \texttt{tool\_uses} 0/120 &
+\texttt{wave4\_artifacts/wave4\_tiers.jsonl} (120 rows), replayed by \texttt{wave4\_analysis.py} with no arguments, which recomputes every echo and score from stored coordinates and prints each verdict label. Registration \texttt{wave4\_prereg\_tiers\_heilbronn.md} (SHA-256 \texttt{7b3e67dc\ldots}, public Kaggle dataset \texttt{wave4-prereg-tiers-heilbronn} (owner handle withheld for double-blind review), pushed before sampling). All-distinct uniqueness count is \textbf{post-hoc, from \texttt{wave4\_artifacts/MODEL\_IDS\_NOTE.md}, not computed by the replay script}; model-ID caveats same file \\
+
+\S3 7B ladder: viability 7/6/9/7/16 per 50 with Wilson intervals, all three contrasts, the format-lottery counts (45 of 250 at exactly 26, 153 at 24-25, modal count per rung), the truncation check (687 tokens against a 1200 cap among the 24-25 rows), probes 0/30, best score 1.79998 &
+\texttt{sec3\_7b\_repro.py}, run with no arguments, from \texttt{sec3\_artifacts/precision\_sweep/}. Narrative and scope caveats in \texttt{sec3\_artifacts/precision-cliff-paper-combined.md} \S3.4, \S5.9, \S6 \\
+
+\S3 IQ2\_M invalid near-copy 2/22 &
+\textbf{not reproduced}: our replay of the stated definition returns 1/22 (\S3) \\
+
+\S8 wave 3 (Heilbronn): control floor TRIGGERED $\rightarrow$ 5.1/5.2/5.3 UNINFORMATIVE; 5.4 echo Q2\_K 186/295 = 63.1\% HELD vs $\ge 55\%$, Q4\_K\_M 53/113 = 46.9\% REFUTED vs $\le 30\%$, conjunction REFUTED; Fisher $3.5\times10^{-3}$ (descriptive); template 15.3\%/23.9\%; 0/495 improvements; phantom-step rounding artifact &
+\texttt{wave3\_output/precision\_sweep\_14b\_heilbronn/candidates\_precision\_14b\_heilbronn.jsonl} (495 rows), replayed by \texttt{wave3\_analysis.py} with no arguments in exact arithmetic; agreement with all 33 kernel state files printed. Registration \texttt{wave3\_prereg\_heilbronn.md} + runner SHA \texttt{101b298c\ldots}, pushed as public Kaggle kernel \texttt{precision-sweep-14b-heilbronn-wave3} (public Kaggle kernel; owner handle withheld for double-blind review) before sampling \\
+
+\S8 wave 5 (LABS): control floor TRIGGERED $\rightarrow$ verdict UNINFORMATIVE, Branch C, no branch claimed; unclaimable descriptives echo 10/233 = 4.3\% Q2\_K vs 12/60 = 20.0\% Q4\_K\_M (reversed), 0 improving departures anywhere, 0 symmetry variants &
+\texttt{wave5\_output/precision\_sweep\_14b\_labs/} ledger (495 rows), replayed by \texttt{wave5\_analysis.py} with no arguments in exact integer arithmetic. Registration \texttt{wave5\_prereg\_labs.md} SHA \texttt{a1336cfd\ldots}, runner SHA \texttt{d1739f6c\ldots}, pushed as public kernel \texttt{precision-sweep-14b-labs-wave5} (public Kaggle kernel; owner handle withheld for double-blind review) before sampling \\
+
+\S8 wave 7 (family generality): UNDERPOWERED both families; control floors fired; disconfirmation clause does not fire; unclaimable descriptives --- gemma 18/18 valid outputs are parent echoes at both rungs, llama 0/6 &
+\texttt{wave7\_output/wave7\_\{llama31\_8b,gemma2\_9b\}/} ledgers (100 rows each), replayed by \texttt{wave7\_analysis.py} with no arguments. Registration \texttt{wave7\_prereg\_families.md} SHA \texttt{44244005\ldots}, public Kaggle dataset \texttt{wave7-prereg-families} (owner handle withheld for double-blind review) pushed before sampling \\
+
+\S8 wave 7b (competence-matched retry): UNDERPOWERED both families $\rightarrow$ registered both-underpowered branch holds; unclaimable descriptives --- phi-4 0 echoes, 4/5 Q2\_K lineages improved (best 1.30), must-differ instruction-sensitive (vacuously); mistral 0 echoes, 1 lineage improved per rung, Q2\_K best 2.1667 &
+\texttt{wave7b\_output/wave7b\_\{phi4\_14b,mistral24b\}/} ledgers (100 rows each), replayed by \texttt{wave7b\_analysis.py} with no arguments. Registration \texttt{wave7b\_prereg\_families\_14b.md} SHA \texttt{cd043d63\ldots}, public Kaggle dataset \texttt{wave7b-prereg-families-14b} (owner handle withheld for double-blind review) pushed before sampling \\
+
+\S3 re-execution determinism, externally exercised: 112/112 per-row digest MATCH on T4 x2 (verdict SUPPORTED); two prior P100 draws returned 112/112 VOID\_ARCH each, not compared &
+\texttt{kaggle\_redetermin/} runner (SHA \texttt{58d9a4c8\ldots}, 112 embedded per-row digests from the vendored v2 ledger) + \texttt{output\_v3/redetermin\_summary.json}; public kernel \texttt{precision-redetermin} (public Kaggle kernel; owner handle withheld for double-blind review). Caveats in-file: \texttt{build\_unverified: true} (wheel version-pinned 0.3.34); q8\_0/q3\_k\_m skipped with reasons printed \\
+
+\S6 item 4 self-audit and the failed repair: duration CV 0.0603 vs \textbf{0.0143} (wave 1) and 0.0692 vs \textbf{0.0200} (wave 2), ratios below the item's own one-third threshold, permutation $p < 0.0001$; the echo/non-echo CV split; wave-2 throughput ranges disjoint \textbf{and wave-1 ranges overlapping}; the $\sim$92\% cold-start ratio; the same-SHA hardware inversion (Q2\_K 16.62 tok/s on P100 vs 22.48 on 2 $\times$ T4); the length dependence; the bit-width non-monotonicity \S4 cites &
+\texttt{sec6\_cv\_canary\_audit.py}, run with no arguments. It reads both probe ledgers \textbf{and both 14B/7B ladder ledgers}. The serving path is fixed by construction across the probe rows, so the firing is a \textbf{false positive} by design of the comparison \\
+
+\S4 validity, failure taxonomy, families, scores, both tolerances &
+\texttt{arm\_f\_raw.json} \texttt{opus\_alias} / \texttt{sonnet\_bare} / \texttt{bare} rows, recomputed with \texttt{arm\_f\_repro.py} \\
+
+\S4 fourth comparator: \texttt{trace} 63/70 valid (18/20, 28/30, 17/20), Fisher $1.1\times10^{-13}$ against \texttt{opus\_alias} and $1.0\times10^{-16}$ pooled, comparator-vs-comparator $p = 0.30$ and $0.099$ &
+\texttt{arm\_f\_raw.json} rows with \texttt{arm == "trace"}, scored by \texttt{sec4\_independent\_rescore.py}'s checker. Pools the companion paper's pilot and \texttt{trace\_v2} rows, which that paper forbids pooling --- stated in \S4, no claim rests on the arm \\
+
+\S4 durations &
+\texttt{STATE.md} \S8, \S8b --- session-log ranges; per-invocation vector not captured (\S4, \S5) \\
+
+\S4 registration digest &
+\texttt{arm\_o\_preregistration.txt}, SHA-256 published in \S4 \\
+
+\S4.1 arm B2 re-snapshot: 10/10, 10/10, 10/10 against 3/10, 1/10, 0/10; pooled 30/30 vs 4/30, Fisher $p = 7.8\times10^{-13}$; best valid 1.776141, 2.276800, 2.794180; latency 68.7-594.1 s; usage 58k-195k &
+\texttt{arm\_r\_artifacts/b2\_alias\_n\{13,21,31\}.jsonl}, replayed by \texttt{arm\_r\_analysis.py} with no arguments \\
+
+\S4.1 arm R repair probe: 59/60 exact, per-cell 5/5 everywhere except alias \texttt{n31\_d0.001} at 4/5, recall 1.00 in every cell, zero empty responses, and the single miss's \texttt{7.089e-04} true clearance &
+\texttt{arm\_r\_artifacts/r\_n\{13,31\}.jsonl} against the exact key in \texttt{arm\_r\_key.json}, both replayed by \texttt{arm\_r\_analysis.py} \\
+
+\S4.1 registered scorecard: P-R1, P-R4, P-R5 held (P-R4 \textbf{vacuously}); P-R0, P-R2, P-R3, P-R6 failed &
+\texttt{arm\_r\_preregistration.md}, committed in \texttt{e77bb0e} before any sampling; scored line by line in \texttt{arm\_r\_analysis.py}. A \textbf{local} commit, not an external timestamp \\
+
+\S5 prompt digests, N = 13 and N = 31 &
+\texttt{arm\_f\_repro.py} \texttt{prompt\_hash()}, \texttt{arm\_f\_prompts.json} \\
+
+\S5 prompt digest, N = 21 &
+absent from \texttt{arm\_f\_prompts.json} but derivable: substituting \texttt{21} into the released N = 13 prompt reproduces the digest exactly (\S5) \\
+
+\S3 probe's registered centres-echo, the registered primary median-displacement measure, and the v2 wave's counts &
+\texttt{sec3\_artifacts/dispersion\_probe/}, \texttt{sec3\_artifacts/dispersion\_probe\_v2/}, recomputed by \texttt{sec3\_dispersion\_registered.py}; the median measure's registered JT test is in \texttt{sec3\_registered\_echo\_test.py} \\
+
+\S3 probe's registered JT/NED test ($p = 0.030$), rarefaction count ($p = 0.953$), quality fork ($p = 0.454$), and the rule's unclassified verdict &
+\texttt{analysis\_prereg.md}; computed from \texttt{raw\_text} and \texttt{circles} in the released rows. NED is a substituted definition, not the kernel's --- Appendix B \\
+
+\S3 wave-2 registered verdict \textbf{FAILED}, its primary rarefaction (38.31 / 46.78 / 13.00 at m = 84, JT $p = 0.0081$) and score fork ($p = 0.3526$) &
+\texttt{sec3\_artifacts/dispersion\_probe\_v2/analysis\_prereg\_v2.md} + \texttt{analysis\_prereg\_v2\_addendum.md}; printed by \texttt{sec3\_artifacts/dispersion\_probe\_v2/analyze\_v2.py}, run with no arguments \\
+
+\S3 wave-1 registered \textbf{primary echo} JT ($p = 0.686$, 159/165 rows at exactly zero), registered \texttt{score\_delta} CIs, and the orthogonality \emph{p}-values &
+\texttt{sec3\_registered\_echo\_test.py}, run with no arguments; \S2 of \texttt{sec3\_artifacts/dispersion\_probe/analysis\_prereg.md} Amendment 1 designates this measure the primary \\
+
+\S3 ladder registrations (fresh-seed bound \texttt{q2\_k >= 60\%}, \texttt{q4\_k\_m <= 35\%}; must-differ decision rule; improvement-count prediction) &
+\texttt{sec3\_artifacts/runners/kaggle\_precision\_sweep\_14b\_fresh.py} and \texttt{..\_iq2.py}, in the header comment block pushed before the run executed \\
+
+\S3 post-hoc decomposition, both waves (46/31/4\% and 39/51/6\%) &
+emitted by \texttt{sec3\_dispersion\_registered.py}; labelled post-hoc at every use \\
+
+\S3 probe's design limit (six parents, one shared lattice) and Q8\_0's skipped condition &
+\texttt{sec3\_artifacts/dispersion\_probe/probe\_samples.jsonl} (parent centre lists identical across all six \texttt{parent\_id} values) and both waves' \texttt{provenance.json}, which record \texttt{"q8\_0": \{"skipped": "needs 2 gpus, have 1"\}} \\
+
+\S3 probe's 18 harness-error rows &
+\texttt{sec3\_artifacts/dispersion\_probe/probe\_samples.jsonl}, rows whose \texttt{parse\_error} reads \texttt{gen\_error: ValueError: logprobs is not supported}; six per rung. The v2 ledger has no such rows \\
+
+\S5 alias-map provenance and its gap &
+\texttt{ALIAS\_MAP}, \texttt{RUN\_DATE}, \texttt{PROPOSER\_ALIAS} in \texttt{arm\_f\_repro.py} \\
+
+\S4 latency ranges (2.8-9 s vs 75-250 s and 150-1170 s) &
+\textbf{not checkable}: \texttt{STATE.md} \S8, \S8b working-log ranges only; \texttt{arm\_f\_raw.json} rows carry no duration field (\S4, \S6 item 4) \\
+
+\S6 item 3 worked example (32/45 $\rightarrow$ 32/50) &
+\textbf{not checkable}: the 45-row slice was overwritten in place and cannot be reconstructed (\S4, \S6) \\
+
+\S7 systems citations &
+\texttt{p8\_systems\_citations.md} (self-certified) \\
+
+\S7 hazard-literature citations (2307.09009, 2603.19022, 2607.10252, 2607.08734, 2604.19884, 2509.19349, GUIDE-LLM, 2508.15503, 2601.01954, 2512.00651) &
+each checked against its live arXiv or publisher page \\
+
+\end{longtable}
+\endgroup

@@ -1,0 +1,104 @@
+% ===========================================================================
+% TMLR submission build of paper2_short.md (canonical source; see git commit
+% 3c52e40 "Add shortened paper 2"). Supersedes latex1/ and latex2/ — those
+% were converted from paper2_draft.md snapshots and must not be submitted.
+%
+% Regeneration: fragments sec_intro_cliff.tex, sec_forensic_repair.tex,
+% sec_evidence_map.tex, sec_appendices.tex are 1:1 markup translations of
+% paper2_short.md line ranges 15-120, 121-260, 261-314, 315-end.
+% Conversion rules: prose verbatim; pipe tables -> booktabs/longtable;
+% citations converted from the source's inline arXiv ids to natbib \citet/\citep
+% per TMLR's formatting instructions (see the bibliography note below);
+% anonymized for double-blind
+% (author block below is a placeholder; Kaggle owner handle withheld in
+% body text, kernel/dataset names kept).
+%
+% Compile (no local TeX on this machine): upload this directory to Overleaf,
+% compiler pdfLaTeX, main document main.tex. Or: tectonic main.tex after
+% `winget install tectonic`.
+%
+% Camera-ready: switch to \usepackage[accepted]{tmlr}, restore the real
+% author block (kept in SUBMISSION_TMLR.md, never in this file), set
+% \month/\year/\openreview below, and restore the Kaggle owner handle.
+% ===========================================================================
+\documentclass[10pt]{article}
+\usepackage{tmlr}
+% If accepted: \usepackage[accepted]{tmlr}
+% Preprint (arXiv): \usepackage[preprint]{tmlr}
+
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{microtype}
+
+% zero-width, hyphen-free break opportunity, used inside long hex digests
+\newcommand{\bk}{\discretionary{}{}{}}
+
+\title{Served Precision Is Part of the Model: A Quantization Cliff in
+Proposal Variation, and the Limits of Reproducibility in Agent-Runtime
+LLM Studies}
+
+% DOUBLE-BLIND: real author block intentionally absent from this file.
+% tmlr.sty hides \author until [accepted]/[preprint], but the source is
+% part of the supplementary upload, so even the source stays anonymous.
+\author{\name Anonymous authors \email anonymous@example.org \\
+      \addr Withheld for double-blind review}
+
+\def\month{MM}  % camera-ready
+\def\year{YYYY} % camera-ready
+\def\openreview{\url{https://openreview.net/forum?id=XXXX}} % camera-ready
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Quantizing a proposer's weights can leave every metric a discovery loop watches unchanged while collapsing the variation the loop depends on. On a constructive geometry task at 14B, degrading served quantization moves viability and validity by no detectable amount (non-rejection at $n = 50$ per rung, not demonstrated equivalence; at 7B viability instead \emph{inverts}), while at the 2-bit rung the proposer largely stops departing from its parent. Two registered outcomes carry the claim. An echo bound released before the run that tested it --- \texttt{q2\_k >= 60\%}, \texttt{q4\_k\_m <= 35\%} --- held on five never-sampled seeds, at \textbf{79\% (19/24)} coordinate-verified parent-echo against \textbf{6\% (1/17)}; and a must-differ probe returned coordinate-identical copies in \textbf{5 of 5} valid outputs under an explicit instruction not to copy. A wider-looking contrast --- \textbf{94\% (17/18)} against \textbf{14\% (8/57)} across the upper three rungs --- comes from a re-execution rather than the registered wave and is reported second for that reason (\S3). The failed proposals are coherent, well-formed near-copies, which is why every pass/fail instrument reports health. A post-hoc loop-level accounting shows what that costs: the 2-bit rung takes 1 accepted hill-climb step in 50 calls against 14--16 at the upper rungs, while final best score separates the rungs nowhere --- the outcome number a practitioner reports is blind to an order-of-magnitude collapse in search activity. A fixed-parent control bounds the result rather than extending it (direction and the 2-bit endpoint survive; the spread does not), a scheme-versus-bit-width control returns its inconclusive branch, and five further registered waves bound generality: a capability-tier control returns DISSOCIATION, a second geometry preserves the rung contrast but refutes the absolute bands, and two tasks plus four non-Qwen families sit below their own registered competence floors, leaving family generality unresolved. Everything beyond the two registered outcomes is descriptive or post-hoc and labelled as such in \S3. The second half asks what this means for studies that address models through managed agent runtimes by \emph{alias}. Served quantization is one of several serving-path variables an alias leaves unattested, and it is now one the dependent measure is known to be sensitive to; our ladder varies only the SHA-256-pinned weight file, so it measures served-weight precision, not a decode-path effect. A forensic case study of an arm addressed only as \texttt{opus\_alias} --- serving and behavioral signatures that \emph{mildly favour} an unattested serving path without deciding it --- becomes untestable within six days: re-issuing byte-identical prompts returns \textbf{30/30 valid against the original 4/30}, disconfirming the registered stability bound at the widest margin the design allows, and the alias no longer addresses the call under study. We close with a repair protocol audited against itself --- prompt hashing before sampling, verbatim raw storage, dated alias maps, hash-locked preregistration --- including one proposed instrument we tested against our own rows and withdrew.
+\end{abstract}
+
+\input{sec_intro_cliff}
+\input{sec_forensic_repair}
+\input{sec_evidence_map}
+
+\subsubsection*{Broader Impact Statement}
+
+This paper reports a way for a quantized proposer to keep every health metric a
+discovery loop watches while the search underneath it collapses. Two readings
+would be misuses of that result. It is not an argument against quantization:
+quantized serving is what puts capable models within reach of researchers
+without datacentre budgets, and nothing here shows harm at the rungs most
+practitioners use --- the collapse we measure is at the 2-bit endpoint, on one
+task family, at one scale. Nor is it an argument that published loop results are
+wrong; they are unrepeatable in a specific and now-demonstrable way, which
+calls for disclosure rather than retraction. The costs of the repair protocol in
+\S6 fall hardest on exactly the researchers least able to absorb them, and we
+have tried to keep every item in it cheap and local.
+
+Two further repercussions are worth naming. The forensic method of \S4 --- reading
+a serving path from latency and behaviour --- is a capability as well as a
+diagnostic, and the same reasoning that lets a researcher ask what served their
+calls could let a third party probe an endpoint its operator would rather not
+have characterized; we think the transparency gain dominates here, because the
+alternative is a research literature that cannot audit its own substrate, but
+the direction is not costless. Finally, this work addresses a commercial alias
+whose behaviour changed mid-study. We report that as an observability failure of
+the addressing mode, common to managed runtimes generally, and not as a claim
+about any vendor's conduct; we have no evidence of intent and make no
+allegation of any.
+
+% Citations use natbib \citet/\citep per TMLR's instructions. \nocite{*} is
+% retained because four works are cited in prose by name or project rather than
+% by key (He; Feuerriegel et al.; Zhou et al.; AlphaEvolve) and would otherwise
+% drop out of the reference list.
+\nocite{*}
+\bibliography{references}
+\bibliographystyle{tmlr}
+
+\appendix
+\input{sec_appendices}
+
+\end{document}
