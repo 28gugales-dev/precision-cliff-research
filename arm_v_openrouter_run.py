@@ -31,7 +31,7 @@ MODELS = [
 TARGET_N = [13, 17, 31, 35, 37]
 SAMPLES = 5
 CALL_TIMEOUT = 240
-MAX_WORKERS = 3
+MAX_WORKERS = 16  # one worker per model; per-model calls stay serial + 3s spacing
 ENDPOINT = "https://openrouter.ai/api/v1/chat/completions"
 
 
@@ -47,34 +47,43 @@ def load_prompts():
     return prompts
 
 
+MAX_TOKENS = 24576  # amendment 3: 8192 exhausted by hidden reasoning
+                    # (finish_reason=length, empty content) on three models
+
+
 def call(model, prompt, key):
     body = {"model": model,
             "messages": [{"role": "user", "content": prompt}],
-            "max_tokens": 8192}
-    req = urllib.request.Request(
-        ENDPOINT, data=json.dumps(body).encode("utf-8"),
-        headers={"Authorization": f"Bearer {key}",
-                 "Content-Type": "application/json"})
+            "max_tokens": MAX_TOKENS}
     t0 = time.time()
-    try:
-        with urllib.request.urlopen(req, timeout=CALL_TIMEOUT) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-        dur = time.time() - t0
-        choice = (data.get("choices") or [{}])[0]
-        text = (choice.get("message") or {}).get("content") or ""
-        meta = {"served_model": data.get("model"),
-                "generation_id": data.get("id"),
-                "finish_reason": choice.get("finish_reason"),
-                "usage": data.get("usage")}
-        return text, None, meta, dur
-    except Exception as e:
-        detail = ""
-        if hasattr(e, "read"):
-            try:
-                detail = e.read().decode("utf-8", "replace")[:500]
-            except Exception:
-                pass
-        return "", f"{type(e).__name__}: {e} {detail}"[:800], {}, time.time() - t0
+    last_err = ""
+    for attempt in range(4):
+        req = urllib.request.Request(
+            ENDPOINT, data=json.dumps(body).encode("utf-8"),
+            headers={"Authorization": f"Bearer {key}",
+                     "Content-Type": "application/json"})
+        try:
+            with urllib.request.urlopen(req, timeout=CALL_TIMEOUT) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            choice = (data.get("choices") or [{}])[0]
+            text = (choice.get("message") or {}).get("content") or ""
+            meta = {"served_model": data.get("model"),
+                    "generation_id": data.get("id"),
+                    "finish_reason": choice.get("finish_reason"),
+                    "usage": data.get("usage"),
+                    "attempts": attempt + 1}
+            return text, None, meta, time.time() - t0
+        except Exception as e:
+            detail = ""
+            if hasattr(e, "read"):
+                try:
+                    detail = e.read().decode("utf-8", "replace")[:500]
+                except Exception:
+                    pass
+            last_err = f"{type(e).__name__}: {e} {detail}"[:800]
+            # back off hard on rate limiting, briefly on anything else
+            time.sleep(45 if "429" in last_err else 10)
+    return "", last_err, {"attempts": 4}, time.time() - t0
 
 
 def existing_keys():
@@ -104,7 +113,7 @@ def worker(model, prompts, key, lock, done):
                 "prereg_amendment": AMENDMENT,
                 "proposer_alias": model,
                 "runtime": "openrouter-chat-completions",
-                "request_params": {"max_tokens": 8192,
+                "request_params": {"max_tokens": MAX_TOKENS,
                                    "note": "temperature/top_p provider defaults, unattested"},
                 "sampling_params": None,
                 "n": n,
@@ -122,7 +131,7 @@ def worker(model, prompts, key, lock, done):
                     fh.write(json.dumps(row) + "\n")
                 print(f"{short:34s} N={n:>2} s{sid}  len={len(raw):5d} "
                       f"{dur:5.1f}s {err or ''}", flush=True)
-            time.sleep(3)  # stay under the free-model per-minute limit
+            time.sleep(6)  # stay under the free-model per-minute limit
 
 
 def main():

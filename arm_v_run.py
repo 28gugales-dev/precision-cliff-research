@@ -28,7 +28,8 @@ MODELS = [
 TARGET_N = [13, 17, 31, 35, 37]
 SAMPLES = 5
 CALL_TIMEOUT = 300  # seconds
-MAX_WORKERS = 3     # gentle on the free tier
+MAX_WORKERS = 3     # 8 parallel Bun instances exhausted the paging file;
+                    # 3 is what this machine sustains (measured, not chosen)
 
 ANSI = re.compile(r"\x1b\[[0-9;]*[A-Za-z]|\x1b\][^\x07]*\x07")
 
