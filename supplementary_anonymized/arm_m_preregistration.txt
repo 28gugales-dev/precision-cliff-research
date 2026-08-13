@@ -1,0 +1,49 @@
+ARM M PREREGISTRATION — filler-branch (m > 1) cells + k = 8 trap cell
+Registered: 2026-08-04, before any sampling. Committed to git before the first invocation.
+Motivation (disclosed): external review 7 (2026-08-04) observed that V(k, m) is empirically
+supported only at m ∈ {0, 1} (converge cells N = 17 and 37 both have m = 1); external review 3
+observed the k = 8 trap zone appears in Figure 1 but was never sampled (N = 57 missing).
+These cells close both gaps. This registration follows the same protocol as arms F/S/O/T.
+
+PROPOSER: same weak-tier (Haiku-class) subagent channel as arm F, bare prompt only,
+zero-shot, code-free, no tools. Dispatch wrapper identical to Appendix A.3.
+n = 15 invocations per cell, 60 total. No exclusions except the pre-registered rule:
+runtime rejections that never reach a model are excluded and counted separately (both
+rates reported, as in §3.3).
+
+PROMPT: bare template A.1 verbatim, {n} substituted. SHA-256 of the four instances:
+  N=20: 7fb87eb5aa2d7a15... (full: recomputable from A.1; stored in arm_m_prompts.json)
+  N=30: 02ea09aa28cbc8c6...
+  N=41: 00232dbc111efef9...
+  N=57: e02bf4c5457a678d...
+
+PREDICTIONS (all values verified against the LP oracle / n_sweep_forecast.json before
+registration; scoring identical to arm F: validity at 1e-9 and 1e-6 with 1e-6 primary,
+value window 2e-3, structural classification by dominant radius as in diagnostics_kmatch.py):
+
+P-M1 (N=20, converge, k*=4, m=4): modal valid output = V(4,4) = 2.2071068, emitted as a 4x4
+  grid at r = 1/8 PLUS 4 fillers at r = (sqrt(2)-1)/8. Structural sub-prediction: the modal
+  valid sample places ALL m = 4 fillers (filler count backed out of the radius multiset).
+P-M2 (N=30, converge, k*=5, m=5): modal valid output = V(5,5) = 2.7071068; modal sample
+  places all 5 fillers at r = (sqrt(2)-1)/10 on a 5x5 grid at r = 1/10.
+P-M3 (N=41, converge, k*=6, m=5): modal valid output = V(6,5) = 3.1725890; modal sample
+  places all 5 fillers at r = (sqrt(2)-1)/12 on a 6x6 grid at r = 1/12.
+P-M4 (N=57, trap, k*=8): modal valid output = T(8,57) = 3.5625000, an 8x8 grid at r = 1/16
+  truncated to 57 circles. Rival argmax inside the family: V(7,8) = 3.7366935. Registered
+  rival count prediction: 0 rival hits (consistent with 2/126 across all prior weak-tier
+  discriminating cells).
+
+FALSIFIER (registered, tie conventions explicit per §6.3's lesson):
+  F-M1: if at 2 or more of the 3 converge cells (N = 20, 30, 41) the modal valid output is
+  NOT the registered V(k*, m) value (ties for mode count as NOT), then the filler branch of
+  the closed form does not describe behavior at m > 1, V(k, m) is restricted to the m <= 1
+  support observed so far, and the paper must say so in the abstract. "Modal" = most frequent
+  2e-3 bucket among valid samples at 1e-6.
+  F-M2: if at N = 57 the modal valid output is not T(8,57) (same conventions), the branch
+  rule fails at its fifth tested k and the k = 8 zone must be removed from Figure 1 or marked
+  disconfirmed.
+  Partial-filler outcome is a named intermediate: if modal samples place 1 <= fillers < m,
+  report as "filler branch truncates at m > 1" — a distinct, reportable behavior.
+
+ANALYSIS: arm_m_analysis.py (to be written after collection, reusing arm_f_repro.py checks
+unchanged); every raw output stored verbatim in arm_m_raw.json including failures.

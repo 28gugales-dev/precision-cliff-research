@@ -1,0 +1,31 @@
+{
+  "created": "2026-08-09 02:48:32",
+  "gpus": [
+    "Tesla P100-PCIE-16GB, 16384 MiB"
+  ],
+  "repo": "bartowski/gemma-2-9b-it-GGUF",
+  "gens": 10,
+  "seeds": [
+    7201,
+    7202,
+    7203,
+    7204,
+    7205
+  ],
+  "temperature": 0.8,
+  "top_p": 0.95,
+  "runner_version": "wave7_gemma2_9b_v1",
+  "purpose": "wave 7 family generality: gemma2_9b, prereg sha 44244005bf272916",
+  "conditions": {
+    "q4_k_m": {
+      "sha256": "13b2a7b4115bbd0900162edcebe476da1ba1fc24e718e8b40d32f6e300f56dfe",
+      "bytes": 5761057728,
+      "filename": "gemma-2-9b-it-Q4_K_M.gguf"
+    },
+    "q2_k": {
+      "sha256": "2efce51c0d774a47c247c07ec6f109f670e3da4f4eec0f9322d72e3635622403",
+      "bytes": 3805397952,
+      "filename": "gemma-2-9b-it-Q2_K.gguf"
+    }
+  }
+}

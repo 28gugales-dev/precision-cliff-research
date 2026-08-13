@@ -1,0 +1,32 @@
+ARM GM3 PREREGISTRATION — Gemma weak tier, enlarged output budget
+Registered: 2026-08-03, BEFORE any GM3 sampling.
+
+Model: gemma-4-26b-a4b-it (as arm GM2, prereg 3019aab).
+Motivation: arm GM2 collected 140/140 responses; 0/140 were parseable because
+  the model emits extended deliberation and hits maxOutputTokens 4096 before
+  any coordinate list. This was observed at the compliance/truncation level
+  ONLY — no packing contents, sums, radii or structures were parsed, scored,
+  or read. The sole design change below is the output token budget; this is
+  logistics-level adaptation to truncation, not data-dependent tuning.
+
+Design: identical to arm GM2 (prereg 3019aab) in every respect except:
+  maxOutputTokens 16384 (was 4096).
+Same cells, samples, prompts/hashes, temperature 1.0, scoring pipeline,
+  definitions (tie-inclusive MODE-MATCH, <3 valid = UNSCOREABLE), predictions
+  (P-GM3.1 = MODE-MATCH >= 5 of scoreable cells with >= 5 scoreable;
+   P-GM3.2 = pooled on-prediction >= 30%;
+   P-GM3.3 = two-radii signature in >= half of on-prediction samples),
+  FALSIFIER (MODE-MATCH fails in >= 4 scoreable cells),
+  transport-rerun clause, one-run stopping rule.
+Additional registered note: if GM3 also yields < 5 scoreable cells, the Gemma
+  weak-tier anchoring question is reported as unanswerable under this protocol
+  (two attempts, both disclosed); no third budget increase will be run.
+
+Outputs: arm_gm3_raw.json, arm_gm3_candidates.jsonl, arm_gm3_report.json.
+
+DISCLOSED DEVIATION (2026-08-03, before run start): one diagnostic timing call
+with the N=13 task prompt was made outside the ledger to size generation
+latency after two timeout-caused false starts (120s, then 420s HTTP timeouts).
+Its output was observed (a uniform-radius packing; tail inspected for format
+compliance). It is excluded from the ledger and from all analysis. Design,
+predictions, and definitions are unchanged from the registration above.

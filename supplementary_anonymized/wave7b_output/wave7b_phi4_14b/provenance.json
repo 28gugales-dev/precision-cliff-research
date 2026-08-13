@@ -1,0 +1,31 @@
+{
+  "created": "2026-08-09 03:44:51",
+  "gpus": [
+    "Tesla P100-PCIE-16GB, 16384 MiB"
+  ],
+  "repo": "bartowski/phi-4-GGUF",
+  "gens": 10,
+  "seeds": [
+    7301,
+    7302,
+    7303,
+    7304,
+    7305
+  ],
+  "temperature": 0.8,
+  "top_p": 0.95,
+  "runner_version": "wave7b_phi4_14b_v1",
+  "purpose": "wave 7b competence-matched family generality: phi4_14b, prereg sha cd043d63ce0cfc0e",
+  "conditions": {
+    "q4_k_m": {
+      "sha256": "009aba717c09d4a35890c7d35eb59d54e1dba884c7c526e7197d9c13ab5911d9",
+      "bytes": 9053114816,
+      "filename": "phi-4-Q4_K_M.gguf"
+    },
+    "q2_k": {
+      "sha256": "84dcd928908d18f723cb9884ba7cd18791a3a0160c7d8bbb8cd6cbd1631394d4",
+      "bytes": 5547348416,
+      "filename": "phi-4-Q2_K.gguf"
+    }
+  }
+}

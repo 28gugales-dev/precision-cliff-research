@@ -1,0 +1,111 @@
+ARM MU (one-parent mutation) + ARM CH (recipe-family choice probe)
+PREREGISTRATION — committed BEFORE any sampling. 2026-08-05.
+
+PROVENANCE DECLARATION (registered, per council review 2026-08-05)
+- This registration is post-hoc-motivated: it responds to the recurring
+  external-review objection that the paper measures only unconditioned calls
+  (reviews 3, 7, 8, 9) and to a council finding that the arithmetic-
+  tractability alternative (paper section 8) is untouched by the mutation arm
+  alone. Motivation is disclosed here rather than implied to be a priori.
+- This registration was drafted by the same session agent (an LLM) that runs
+  the study pipeline. We do not claim independent human authorship. External
+  timestamp = this git commit pushed to the public-remote repository
+  (28[ANON]s-dev/precision-cliff-research); the commit hash is cited in the
+  paper on integration.
+- HARD SUBMISSION DATE (registered): workshop compact + TMLR full paper are
+  submitted by 2026-08-12 REGARDLESS of arm MU/CH outcomes. Outcomes change
+  framing, not the calendar.
+
+DESIGN — ARM MU (mutation)
+- Cells: N = 13, 21, 31 (the three hardest-discriminating trap cells).
+- Conditions (parent handed to the model, one per invocation):
+    A_anchor    : T(k*, N) truncated grid — the bare-arm modal output.
+    B_rival     : family rival argmax V(k*-1, m) — provably higher score.
+    C_offfamily : diagonal chain, one radius, off-lattice — score ~0.6.
+  Parent coordinates, scores, exact prompts and SHA-256 hashes are frozen in
+  arm_mu_prompts.json (built by arm_mu_build.py, every parent validated at
+  1e-6 by the arm-F validator before registration).
+- Prompt = the arm-F bare template (byte-identical stem) + parent coordinates
+  + parent score + "Propose a modification of this packing that increases the
+  sum of radii." Output format clause unchanged.
+- n = 15 invocations per condition-cell = 135 total. Proposer: weak tier
+  (haiku subagent), dispatch wrapper identical to arm M ("Do not use any
+  tools. Your entire final message must be the answer and nothing else.").
+- Scoring: arm-F conventions unchanged (ast.literal_eval after fence strip;
+  validity at 1e-6 primary, 1e-9 also logged; value window 2e-3; structural
+  k from dominant radius = round(1/(2 r_dom))).
+- Rejection rule (same as arm M): invocations that die in the runtime before
+  reaching a model are excluded and counted; cells report sampled-of-launched.
+  Transport failures are not resampled beyond the launcher's normal retry.
+
+REGISTERED QUANTITIES — ARM MU
+- anchor-rate(condition) = fraction of VALID outputs whose sum matches the
+  bare-arm anchor value for that cell within 2e-3 (T(k*,N): 1.6250000,
+  2.1000000, 2.5833333).
+- keep-or-improve-rate(B_rival) = fraction of VALID outputs with
+  sum >= parent score - 2e-3.
+- k-inheritance(condition) = fraction of VALID outputs whose structural k
+  equals the parent's structural k (A: k*; B: k*-1; C: no defined k — for C
+  report distribution only).
+
+PREDICTIONS (from the template-anchoring reading)
+- P-MU1: under A_anchor, anchor-rate >= 50% pooled (the model stays on its
+  own modal template when handed it).
+- P-MU2: under B_rival, anchor-rate >= 35% pooled (the model abandons a
+  strictly better parent to regress toward the anchor at a substantial rate).
+- P-MU3: under B_rival, k-inheritance < 50% pooled (the rival's k*-1
+  structure is NOT retained by most valid outputs).
+- P-MU4: under C_offfamily, modal valid output is on the k* grid (structural
+  k = k* for the modal 2e-3 value bucket) — the model discards the
+  off-family parent for the template.
+
+DECISION RULE (registered; thresholds chosen before sampling)
+- ANCHORING SURVIVES conditioning if pooled anchor-rate under B_rival >= 50%.
+- ANCHORING DISSOLVES if pooled anchor-rate under B_rival <= 20% AND
+  keep-or-improve-rate(B_rival) >= 50%.
+- Anything between is PARTIAL and will be reported with exactly this
+  sentence stem: "the branch rule survives conditioning only partially:
+  anchor-rate X% [CI], keep-or-improve Y% [CI]" — no stronger framing in
+  either direction. Ties on any threshold count AGAINST the prediction row
+  being evaluated (tie-inclusive, same convention family as F-M1).
+- FALSIFIER F-MU1: if pooled anchor-rate under B_rival <= 20% and
+  keep-or-improve >= 50%, the unconditioned-call anchoring result does NOT
+  transfer to parent-conditioned calls; the paper's loop-relevance framing is
+  reported as disconfirmed for the one-parent regime (title/abstract adjusted
+  to unconditioned-only scope, stated as a negative result).
+
+POWER (computed before sampling; script inline in ASSESSMENTS log)
+- Pooled n = 45 valid ceiling per condition vs bare baseline 35/50 (70%).
+  One-sided two-proportion test, alpha 0.05: power 0.83 to detect a drop to
+  44%; 0.97 to 35%; ~1.00 to 20%. The SURVIVES/DISSOLVES thresholds (50%/20%)
+  are separated by more than two Wilson half-widths at n=45 (±13.5 points at
+  p=0.5), so the registered decision regions do not overlap at 95%.
+- MDE statement: this arm cannot distinguish anchor-rates between 45% and
+  55% from the survival threshold; results in that band are PARTIAL by
+  construction, and that is a registered limitation, not a post-hoc call.
+
+DESIGN — ARM CH (tractability choice probe; separates section-8 alternative)
+- Cells: N = 13, 21, 31; n = 15 per cell = 45 invocations, weak tier, bare
+  wrapper. Prompt = bare template + the explicit recipe family with V(k,m) /
+  T(k,N) values enumerated for every admissible k (frozen + hashed in
+  arm_mu_prompts.json).
+- Rationale (registered): the tractability alternative says the model emits
+  the k* grid because it is the only construction it can compute without
+  error. Handing it every family value removes the computation burden. If it
+  still truncates at k*, tractability loses standing; if it now picks the
+  family argmax, tractability gains standing over template anchoring.
+- P-CH1 (template reading): modal valid output remains T(k*, N) at >= 2 of 3
+  cells despite the argmax being stated in the prompt.
+- P-CH2 (tractability reading): modal valid output is the stated family
+  argmax V(k*-1, m) at >= 2 of 3 cells.
+- At most one of P-CH1/P-CH2 can hold; if neither holds (mixed modes), the
+  probe is reported INCONCLUSIVE with per-cell modes, no narrative rescue.
+  Modal = most frequent 2e-3 bucket among valid at 1e-6; ties count as
+  neither prediction holding.
+
+DISCLOSURE
+- Raw outputs stored verbatim in arm_mu_collect.jsonl (MU) rows
+  {"arm","cell","condition","slot","raw"} and CH rows likewise; scoring in
+  arm_mu_analysis.py committed before sampling completes; parse failures
+  logged, never dropped. The GM parse-path positive control
+  (diagnostics_gm_parse_control.py, 7/7) ran before this registration.
