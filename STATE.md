@@ -853,3 +853,19 @@ one real compile on Overleaf is still owed before 08-12.
 **AI-use disclosure** added to all six deliverables (both tex, both md drafts, both
 workshop drafts). See external_reviews/ASSESSMENTS.md for the reasoning, including the
 first draft failing in the opposite direction by overclaiming the human's role.
+
+---
+
+## v9 — TMLR submission build (2026-08-12)
+
+Venue decision (external review session): Paper 2 -> TMLR now; Paper 1 held for GM3, then ACM TELO. Solo TMLR quota 2/year; desk rejects count.
+
+Built this pass:
+- `latex-tmlr/` — full TMLR build of `paper2_short.md` (canonical, git 3c52e40). Official JmlrOrg style files. Compiles clean under MiKTeX pdflatex: 31 pp incl. bibliography, 0 errors, 0 undefined refs, 8 overfull hboxes (cosmetic). All registered figures verified present in rendered PDF; zero identity strings in PDF text.
+- Anonymization: author block replaced by placeholder; 8 `sohamgugalet/` Kaggle refs de-handled (names kept as evidence, handle withheld). Report: `latex-tmlr/ANONYMIZATION_REPORT.md`.
+- Citation audit: 38/38 arXiv ids live-verified, 0 withdrawn; 36 claim-CONFIRMED, 2 PLAUSIBLE (2605.29268, 2607.07184) need human abstract-read. `latex-tmlr/CITATION_AUDIT.md`. `references.bib` rebuilt from official arXiv bibtex exports + verified Nature/JMLR/AlphaEvolve entries.
+- `arm_f_repro.py` referee fix: replay writes `arm_f_candidates.replay.jsonl` (gitignored), prints MATCH/MISMATCH vs checked-in ledger on scientific fields. Verified MATCH 215/215; fresh clone stays clean. HOW_TO_RUN.md updated.
+- `latex1/` and `latex2/` marked `_SUPERSEDED_DO_NOT_SUBMIT.md`.
+- Runbook: `SUBMISSION_TMLR.md` (pre-upload checklist, supplementary-artifact plan, camera-ready restore steps, Paper 1 parking).
+
+Open before upload: 2 PLAUSIBLE citations; 5 non-arXiv refs (He/TML blog, Zhou Nature — verified this pass; Pineau JMLR — verified; AlphaEvolve — verified 2506.13131; GUIDE-LLM identifier still unresolved); Overleaf/OpenReview upload = user action; dirty tree (`arm_m_*`, `arm_mu_scored.json`) decide commit-or-restore before artifact bundle.

@@ -266,7 +266,7 @@ def trace_faithfulness(raw, circles):
             "faithful": verdict}
 
 
-def ingest(samples, out_name="arm_f_candidates.jsonl"):
+def ingest(samples, out_name="arm_f_candidates.replay.jsonl"):
     """samples: list of {n, sample_id, raw}. Writes one jsonl row per invocation.
 
     Every invocation produces a row, including unparsed ones. Nothing is dropped
@@ -378,6 +378,61 @@ def main():
     rows, path = ingest(samples)
     report(rows)
     print(f"wrote {path}")
+    compare_to_ledger(rows)
+
+
+# Fields whose values must agree row-for-row between a replay and the
+# checked-in ledger for the replay to count as a reproduction. Volatile
+# fields (raw float rendering, key order, later-added annotations) are
+# deliberately excluded: a MISMATCH here means the science moved, not the
+# formatting.
+COMPARE_FIELDS = ("valid", "valid_strict_1e9", "parse_error",
+                  "invalid_reason", "sum_of_radii", "structure")
+
+
+def compare_to_ledger(rows, ledger_name="arm_f_candidates.jsonl"):
+    """Diff the replay against the checked-in ledger without touching it.
+
+    The replay writes only to *.replay.jsonl; the canonical ledger is
+    read-only here, so running this script never dirties a fresh clone.
+    """
+    ledger_path = ROOT / ledger_name
+    if not ledger_path.exists():
+        print(f"\nno checked-in ledger at {ledger_path}; comparison skipped")
+        return
+    ledger = {}
+    with ledger_path.open(encoding="utf-8") as fh:
+        for line in fh:
+            if line.strip():
+                r = json.loads(line)
+                ledger[(r["arm"], r["n"], r["sample_id"])] = r
+    replay = {(r["arm"], r["n"], r["sample_id"]): r for r in rows}
+    missing = sorted(set(ledger) - set(replay))
+    extra = sorted(set(replay) - set(ledger))
+    diffs = []
+    for key in sorted(set(ledger) & set(replay)):
+        a, b = ledger[key], replay[key]
+        for f in COMPARE_FIELDS:
+            va, vb = a.get(f), b.get(f)
+            if isinstance(va, float) and isinstance(vb, float):
+                if abs(va - vb) > 1e-9:
+                    diffs.append((key, f, va, vb))
+            elif va != vb:
+                diffs.append((key, f, va, vb))
+    print(f"\n--- ledger comparison ({ledger_name}) ---")
+    if not (missing or extra or diffs):
+        print(f"MATCH: {len(replay)} rows agree with the checked-in ledger "
+              f"on {', '.join(COMPARE_FIELDS)}")
+        return
+    print("MISMATCH:")
+    for key in missing:
+        print(f"  row {key} in ledger but not in replay")
+    for key in extra:
+        print(f"  row {key} in replay but not in ledger")
+    for key, f, va, vb in diffs[:40]:
+        print(f"  row {key} field {f!r}: ledger={va!r} replay={vb!r}")
+    if len(diffs) > 40:
+        print(f"  ... and {len(diffs) - 40} more field differences")
 
 
 if __name__ == "__main__":

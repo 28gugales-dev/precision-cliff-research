@@ -18,7 +18,7 @@ run any of these from the repository root with **no arguments**:
 | `sec3_horizon_power.py` | §3.6's structural argument that final best score is a maximum statistic and therefore the wrong dependent variable. Prints a resampling projection whose direction is discarded in-paper, and a power table whose use as a power statement is **withdrawn** — the script's closing block says why |
 | `sec3_artifacts/dispersion_probe_v2/analyze_v2.py` | wave 2's registered analysis and its `VERDICT: FAILED` label |
 | `sec6_cv_canary_audit.py` | §6 item 4's self-audit: runs the paper's own duration-CV serving canary against rows where the serving path is fixed, shows it fires at the 2-bit rung on both probe waves, and decomposes the firing into output degeneracy via the echo split |
-| `sec4_independent_rescore.py`, `arm_f_repro.py` | section 4's validity, taxonomy, scores and prompt digests |
+| `sec4_independent_rescore.py`, `arm_f_repro.py` | section 4's validity, taxonomy, scores and prompt digests. `arm_f_repro.py` writes its replay to `arm_f_candidates.replay.jsonl` (gitignored) and prints MATCH/MISMATCH against the checked-in `arm_f_candidates.jsonl` on the scientific fields — it never modifies the ledger, so a fresh clone stays clean after replay |
 
 Section 3's raw rows live under `sec3_artifacts/`. Every figure in section 3 is
 now replayed by one of the scripts above; no tail is left for the reader to compute.
