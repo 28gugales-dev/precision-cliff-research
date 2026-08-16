@@ -239,6 +239,9 @@ def worker(model, done):
 
 
 def main():
+    global MODELS
+    if len(sys.argv) > 1:          # explicit model list, e.g. the paid-alias
+        MODELS = sys.argv[1:]      # gemma re-screen after free-tier starvation
     self_test()
     done = existing()
     if done:
