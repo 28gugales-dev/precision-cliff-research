@@ -1,0 +1,92 @@
+{
+  "q4_k_m": {
+    "per_seed": [
+      {
+        "seed": 7201,
+        "best": 0.89999,
+        "gens": 10,
+        "viable": 3,
+        "valid": 3
+      },
+      {
+        "seed": 7202,
+        "best": 0.89999,
+        "gens": 10,
+        "viable": 2,
+        "valid": 2
+      },
+      {
+        "seed": 7203,
+        "best": 0.89999,
+        "gens": 10,
+        "viable": 3,
+        "valid": 3
+      },
+      {
+        "seed": 7204,
+        "best": 0.89999,
+        "gens": 10,
+        "viable": 1,
+        "valid": 1
+      },
+      {
+        "seed": 7205,
+        "best": 0.89999,
+        "gens": 10,
+        "viable": 5,
+        "valid": 5
+      }
+    ],
+    "mean_best": 0.89999,
+    "pop_std_best": 0.0,
+    "viability": "14/50",
+    "validity": "14/50",
+    "mustdiffer_n": 10,
+    "mustdiffer_valid": 1
+  },
+  "q2_k": {
+    "per_seed": [
+      {
+        "seed": 7201,
+        "best": 0.89999,
+        "gens": 10,
+        "viable": 1,
+        "valid": 1
+      },
+      {
+        "seed": 7202,
+        "best": 0.0,
+        "gens": 10,
+        "viable": 0,
+        "valid": 0
+      },
+      {
+        "seed": 7203,
+        "best": 0.0,
+        "gens": 10,
+        "viable": 0,
+        "valid": 0
+      },
+      {
+        "seed": 7204,
+        "best": 0.89999,
+        "gens": 10,
+        "viable": 2,
+        "valid": 2
+      },
+      {
+        "seed": 7205,
+        "best": 0.89999,
+        "gens": 10,
+        "viable": 1,
+        "valid": 1
+      }
+    ],
+    "mean_best": 0.539994,
+    "pop_std_best": 0.440903,
+    "viability": "4/50",
+    "validity": "4/50",
+    "mustdiffer_n": 10,
+    "mustdiffer_valid": 0
+  }
+}

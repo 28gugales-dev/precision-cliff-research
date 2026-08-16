@@ -1,0 +1,514 @@
+% ===========================================================================
+% Bibliography for the TMLR build of paper2_short.md.
+% The manuscript cites inline (arXiv id / venue in prose); this file is
+% pulled in with \nocite{*} so every cited work appears in the reference
+% list without altering the manuscript's citation style.
+%
+% Provenance: every arXiv entry below is the OFFICIAL arxiv.org/bibtex/<id>
+% export, fetched 2026-08-12 (see CITATION_AUDIT.md; 38/38 verified live).
+% Two hand-verified exceptions: Pineau (JMLR journal version, matching the
+% prose citation "JMLR 22(164)"), Zhou et al. Nature 634:61-68. AWQ year
+% corrected from the auto-export's latest-revision year to its publication
+% (MLSys 2024). GUIDE-LLM resolved 2026-08-12: Feuerriegel et al.,
+% Nature Human Behaviour 10:1182-1186 (2026) — entered below.
+% ===========================================================================
+
+% ---- reproducibility & nondeterminism -------------------------------------
+
+@article{pineau2021reproducibility,
+  author  = {Pineau, Joelle and Vincent-Lamarre, Philippe and Sinha, Koustuv and
+             Larivi{\`e}re, Vincent and Beygelzimer, Alina and d'Alch{\'e}-Buc, Florence and
+             Fox, Emily and Larochelle, Hugo},
+  title   = {Improving Reproducibility in Machine Learning Research (A Report from
+             the {NeurIPS} 2019 Reproducibility Program)},
+  journal = {Journal of Machine Learning Research},
+  volume  = {22},
+  number  = {164},
+  pages   = {1--20},
+  year    = {2021},
+  note    = {arXiv:2003.12206}
+}
+
+@misc{yuan2025understandingmitigatingnumericalsources,
+      title={Understanding and Mitigating Numerical Sources of Nondeterminism in LLM Inference},
+      author={Jiayi Yuan and Hao Li and Xinheng Ding and Wenya Xie and Yu-Jhe Li and Wentian Zhao and Kun Wan and Jing Shi and Xia Hu and Zirui Liu},
+      year={2025},
+      eprint={2506.09501},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2506.09501},
+}
+
+@misc{he2025defeating,
+  author       = {He, Horace and others},
+  title        = {Defeating Nondeterminism in {LLM} Inference},
+  howpublished = {Thinking Machines Lab blog},
+  year         = {2025},
+  month        = sep,
+  url          = {https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/}
+}
+
+@misc{siddiq2025largelanguagemodelssoftware,
+      title={Large Language Models for Software Engineering: A Reproducibility Crisis},
+      author={Mohammed Latif Siddiq and Arvin Islam-Gomes and Natalie Sekerak and Joanna C. S. Santos},
+      year={2025},
+      eprint={2512.00651},
+      archivePrefix={arXiv},
+      primaryClass={cs.SE},
+      url={https://arxiv.org/abs/2512.00651},
+}
+
+@misc{baltes2026guidelinesempiricalstudiessoftware,
+      title={Guidelines for Empirical Studies in Software Engineering involving Large Language Models},
+      author={Sebastian Baltes and Florian Angermeir and Chetan Arora and Marvin Mu{\~n}oz Bar{\'o}n and Chunyang Chen and Lukas B{\"o}hme and Fabio Calefato and Neil Ernst and Davide Falessi and Brian Fitzgerald and Davide Fucci and Junda He and Christoph Treude and Marcos Kalinowski and Stefano Lambiase and Daniel Russo and Mircea Lungu and Cristina Martinez Montes and Lutz Prechelt and Paul Ralph and Rijnard van Tonder and Stefan Wagner},
+      year={2026},
+      eprint={2508.15503},
+      archivePrefix={arXiv},
+      primaryClass={cs.SE},
+      url={https://arxiv.org/abs/2508.15503},
+}
+
+@misc{korn2026reportingllmpromptingautomated,
+      title={Reporting LLM Prompting in Automated Software Engineering: A Guideline Based on Current Practices and Expectations},
+      author={Alexander Korn and Lea Zaruchas and Chetan Arora and Andreas Metzger and Sven Smolka and Fanyu Wang and Andreas Vogelsang},
+      year={2026},
+      eprint={2601.01954},
+      archivePrefix={arXiv},
+      primaryClass={cs.SE},
+      url={https://arxiv.org/abs/2601.01954},
+}
+
+@article{feuerriegel2026guidellm,
+  author  = {Feuerriegel, Stefan and Forster, Kerstin and Geissler, Dominique and
+             Maarouf, Abdurahman and Maier, Sebastian and Plank, Barbara and others},
+  title   = {A reporting checklist for large language models in behavioural science},
+  journal = {Nature Human Behaviour},
+  volume  = {10},
+  pages   = {1182--1186},
+  year    = {2026},
+  note    = {GUIDE-LLM},
+  doi     = {10.1038/s41562-026-02492-7}
+}
+
+% ---- drift, fingerprinting, attestation -----------------------------------
+
+@misc{chen2023chatgptsbehaviorchangingtime,
+      title={How is ChatGPT's behavior changing over time?},
+      author={Lingjiao Chen and Matei Zaharia and James Zou},
+      year={2023},
+      eprint={2307.09009},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2307.09009},
+}
+
+@misc{leshin2026behavioralfingerprintsllmendpoint,
+      title={Behavioral Fingerprints for LLM Endpoint Stability and Identity},
+      author={Jonah Leshin and Manish Shah and Ian Timmis and Daniel Kang},
+      year={2026},
+      eprint={2603.19022},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2603.19022},
+}
+
+@misc{bruckner2026tokenenoughfingerprintingverifying,
+      title={One Token Is Enough: Fingerprinting and Verifying Large Language Models from Single-Token Output Distributions},
+      author={Tomas Bruckner},
+      year={2026},
+      eprint={2607.10252},
+      archivePrefix={arXiv},
+      primaryClass={cs.CR},
+      url={https://arxiv.org/abs/2607.10252},
+}
+
+@misc{wimbauer2026fingerprintinginferencesystemslarge,
+      title={Fingerprinting Inference Systems of Large Language Models},
+      author={Anna Wimbauer and Jonas M{\"o}ller and Erik Imgrund and Konrad Rieck},
+      year={2026},
+      eprint={2605.29979},
+      archivePrefix={arXiv},
+      primaryClass={cs.CR},
+      url={https://arxiv.org/abs/2605.29979},
+}
+
+@misc{cai2025gettingpayforauditing,
+      title={Are You Getting What You Pay For? Auditing Model Substitution in LLM APIs},
+      author={Will Cai and Tianneng Shi and Xuandong Zhao and Dawn Song},
+      year={2025},
+      eprint={2504.04715},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2504.04715},
+}
+
+@misc{zhang2026modelactuallyservingyou,
+      title={Which Model Is Actually Serving You? IRIS: Budgeted Black-Box Auditing of Model Substitution and Routing Dilution in LLM Gateways},
+      author={Yuewei Zhang and Zhi-Hai Zhang and Hanzhang Qin},
+      year={2026},
+      eprint={2607.20860},
+      archivePrefix={arXiv},
+      primaryClass={cs.CR},
+      url={https://arxiv.org/abs/2607.20860},
+}
+
+@misc{schnabl2025attestableauditsverifiableai,
+      title={Attestable Audits: Verifiable AI Safety Benchmarks Using Trusted Execution Environments},
+      author={Christoph Schnabl and Daniel Hugenroth and Bill Marino and Alastair R. Beresford},
+      year={2025},
+      eprint={2506.23706},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2506.23706},
+}
+
+% ---- quantization ----------------------------------------------------------
+
+@misc{frantar2023gptqaccurateposttrainingquantization,
+      title={GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers},
+      author={Elias Frantar and Saleh Ashkboos and Torsten Hoefler and Dan Alistarh},
+      year={2023},
+      eprint={2210.17323},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2210.17323},
+}
+
+@misc{lin2024awqactivationawareweightquantization,
+      title={AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration},
+      author={Ji Lin and Jiaming Tang and Haotian Tang and Shang Yang and Wei-Ming Chen and Wei-Chen Wang and Guangxuan Xiao and Xingyu Dang and Chuang Gan and Song Han},
+      year={2024},
+      eprint={2306.00978},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2306.00978},
+      note={MLSys 2024},
+}
+
+@misc{marchisio2024doesquantizationaffectmultilingual,
+      title={How Does Quantization Affect Multilingual LLMs?},
+      author={Kelly Marchisio and Saurabh Dash and Hongyu Chen and Dennis Aumiller and Ahmet {\"U}st{\"u}n and Sara Hooker and Sebastian Ruder},
+      year={2024},
+      eprint={2407.03211},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2407.03211},
+}
+
+@misc{rababah2026illusionequivalencystatisticalcharacterization,
+      title={The Illusion of Equivalency: Statistical Characterization of Quantization Effects in LLMs},
+      author={Baha Rababah and Cuneyt Gurcan Akcora and Carson K. Leung},
+      year={2026},
+      eprint={2607.08734},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2607.08734},
+}
+
+@misc{zhou2026signaldegradationcomputationcollapse,
+      title={From Signal Degradation to Computation Collapse: Uncovering the Two Failure Modes of LLM Quantization},
+      author={Chenxi Zhou and Pengfei Cao and Jiang Li and Bohan Yu and Jinyu Ye and Jun Zhao and Kang Liu},
+      year={2026},
+      eprint={2604.19884},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2604.19884},
+}
+
+@misc{kurt2026quantizationiuseunified,
+      title={Which Quantization Should I Use? A Unified Evaluation of llama.cpp Quantization on Llama-3.1-8B-Instruct},
+      author={Uygar Kurt},
+      year={2026},
+      eprint={2601.14277},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2601.14277},
+}
+
+@misc{li2025quantizationmeetsreasoningexploring,
+      title={Quantization Meets Reasoning: Exploring LLM Low-Bit Quantization Degradation for Mathematical Reasoning},
+      author={Zhen Li and Yupeng Su and Runming Yang and Congkai Xie and Zheng Wang and Zhongwei Xie and Ngai Wong and Hongxia Yang},
+      year={2025},
+      eprint={2501.03035},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2501.03035},
+}
+
+@misc{li2026quantizationmeetsreasoningexploring,
+      title={Quantization Meets Reasoning: Exploring and Mitigating Degradation of Low-Bit LLMs in Mathematical Reasoning},
+      author={Zhen Li and Yupeng Su and Songmiao Wang and Runming Yang and Congkai Xie and Aofan Liu and Ming Li and Jiannong Cao and Yuan Xie and Ngai Wong and Hongxia Yang},
+      year={2026},
+      eprint={2505.11574},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2505.11574},
+}
+
+@misc{lv2026makeslowbitquantizationawaretraining,
+      title={What Makes Low-Bit Quantization-Aware Training Work for Reasoning LLMs? A Systematic Study},
+      author={Keyu Lv and Manyi Zhang and Xiaobo Xia and Jingchen Ni and Shannan Yan and Xianzhi Yu and Lu Hou and Chun Yuan and Haoli Bai},
+      year={2026},
+      eprint={2601.14888},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2601.14888},
+}
+
+@misc{chang2025inputsbreaklowbitllm,
+      title={Why Do Some Inputs Break Low-Bit LLM Quantization?},
+      author={Ting-Yun Chang and Muru Zhang and Jesse Thomason and Robin Jia},
+      year={2025},
+      eprint={2506.12044},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2506.12044},
+}
+
+@misc{lu2026mixquantquantizedprefillingprecise,
+      title={Mix-Quant: Quantized Prefilling, Precise Decoding for Agentic LLMs},
+      author={Haiquan Lu and Zigeng Chen and Gongfan Fang and Xinyin Ma and Xinchao Wang},
+      year={2026},
+      eprint={2605.20315},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2605.20315},
+}
+
+% ---- evaluation statistics -------------------------------------------------
+
+@misc{madaan2024quantifyingvarianceevaluationbenchmarks,
+      title={Quantifying Variance in Evaluation Benchmarks},
+      author={Lovish Madaan and Aaditya K. Singh and Rylan Schaeffer and Andrew Poulton and Sanmi Koyejo and Pontus Stenetorp and Sharan Narang and Dieuwke Hupkes},
+      year={2024},
+      eprint={2406.10229},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2406.10229},
+}
+
+@misc{miller2024addingerrorbarsevals,
+      title={Adding Error Bars to Evals: A Statistical Approach to Language Model Evaluations},
+      author={Evan Miller},
+      year={2024},
+      eprint={2411.00640},
+      archivePrefix={arXiv},
+      primaryClass={stat.AP},
+      url={https://arxiv.org/abs/2411.00640},
+}
+
+@article{zhou2024reliability,
+  author  = {Zhou, Lexin and Schellaert, Wout and Mart{\'i}nez-Plumed, Fernando and
+             Moros-Daval, Yael and Ferri, C{\`e}sar and Hern{\'a}ndez-Orallo, Jos{\'e}},
+  title   = {Larger and more instructable language models become less reliable},
+  journal = {Nature},
+  volume  = {634},
+  number  = {8032},
+  pages   = {61--68},
+  year    = {2024},
+  doi     = {10.1038/s41586-024-07930-y}
+}
+
+% ---- LLM-guided evolution / search -----------------------------------------
+
+@misc{novikov2025alphaevolve,
+      title={AlphaEvolve: A coding agent for scientific and algorithmic discovery},
+      author={Alexander Novikov and Ng{\^a}n V{\~u} and Marvin Eisenberger and others},
+      year={2025},
+      eprint={2506.13131},
+      archivePrefix={arXiv},
+      url={https://arxiv.org/abs/2506.13131},
+}
+
+@misc{lange2025shinkaevolveopenendedsampleefficientprogram,
+      title={ShinkaEvolve: Towards Open-Ended And Sample-Efficient Program Evolution},
+      author={Robert Tjarko Lange and Yuki Imajuku and Edoardo Cetin},
+      year={2025},
+      eprint={2509.19349},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2509.19349},
+}
+
+@misc{yan2026pacevolveenablinglonghorizonprogressaware,
+      title={PACEvolve: Enabling Long-Horizon Progress-Aware Consistent Evolution},
+      author={Minghao Yan and Bo Peng and Benjamin Coleman and Ziqi Chen and Zhouhang Xie and Shuo Chen and Zhankui He and Noveen Sachdeva and Isabella Ye and Weili Wang and Chi Wang and Ed H. Chi and Fernando Pereira and Wang-Cheng Kang and Derek Zhiyuan Cheng and Beidou Wang},
+      year={2026},
+      eprint={2601.10657},
+      archivePrefix={arXiv},
+      primaryClass={cs.NE},
+      url={https://arxiv.org/abs/2601.10657},
+}
+
+@misc{lin2026selfimprovementselfregressriseandcollapsefailure,
+      title={Self-Improvement Can Self-Regress: The Rise-and-Collapse Failure Mode of LLM Self-Training},
+      author={Jianzhe Lin},
+      year={2026},
+      eprint={2606.21090},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2606.21090},
+}
+
+@misc{xing2026computeallocationevolutionarysearch,
+      title={Compute Allocation in Evolutionary Search: From Depth-Breadth to Multi-Armed Bandits},
+      author={Sixue Xing and Haoyu He and Kerui Wu and Zhuo Yang and Haozheng Luo and Tianfan Fu and Aarthy Nagarajan},
+      year={2026},
+      eprint={2605.29268},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2605.29268},
+}
+
+@misc{su2026helixevolutionaryreinforcementlearning,
+      title={Helix: Evolutionary Reinforcement Learning for Open-Ended Scientific Problem Solving},
+      author={Chang Su and Zhongkai Hao and Zhizhou Zhang and Zeyu Xia and Youjia Wu and Hang Su and Jun Zhu},
+      year={2026},
+      eprint={2603.07642},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2603.07642},
+}
+
+@misc{khrulkov2025gigaevoopensourceoptimization,
+      title={GigaEvo: An Open Source Optimization Framework Powered By LLMs And Evolution Algorithms},
+      author={Valentin Khrulkov and Andrey Galichin and Denis Bashkirov and Dmitry Vinichenko and Oleg Travkin and Roman Alferov and Andrey Kuznetsov and Ivan Oseledets},
+      year={2025},
+      eprint={2511.17592},
+      archivePrefix={arXiv},
+      primaryClass={cs.NE},
+      url={https://arxiv.org/abs/2511.17592},
+}
+
+@misc{cemri2026adaevolveadaptivellmdriven,
+      title={AdaEvolve: Adaptive LLM Driven Zeroth-Order Optimization},
+      author={Mert Cemri and Shubham Agrawal and Akshat Gupta and Shu Liu and Audrey Cheng and Qiuyang Mang and Ashwin Naren and Lutfi Eren Erdogan and Koushik Sen and Matei Zaharia and Alex Dimakis and Ion Stoica},
+      year={2026},
+      eprint={2602.20133},
+      archivePrefix={arXiv},
+      primaryClass={cs.NE},
+      url={https://arxiv.org/abs/2602.20133},
+}
+
+@misc{luo2026seaevoadvancingalgorithmdiscovery,
+      title={SeaEvo: Advancing Algorithm Discovery with Strategy Space Evolution},
+      author={Sichun Luo and Yi Huang and Haochen Luo and Fengyuan Liu and Guanzhi Deng and Lei Li and Qinghua Yao and Zefa Hu and Junlan Feng and Qi Liu},
+      year={2026},
+      eprint={2604.24372},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2604.24372},
+}
+
+@misc{wang2025thetaevolvetesttimelearningopen,
+      title={ThetaEvolve: Test-time Learning on Open Problems},
+      author={Yiping Wang and Shao-Rong Su and Zhiyuan Zeng and Eva Xu and Liliang Ren and Xinyu Yang and Zeyi Huang and Xuehai He and Luyao Ma and Baolin Peng and Hao Cheng and Pengcheng He and Weizhu Chen and Shuohang Wang and Simon Shaolei Du and Yelong Shen},
+      year={2025},
+      eprint={2511.23473},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2511.23473},
+}
+
+% ---- registration standards ------------------------------------------------
+
+@misc{jia2026hindsightbenchblackboxbehavioralaudit,
+      title={HindsightBench: A Black-Box Behavioral Audit Protocol for Parametric Hindsight in Time-Indexed LLM Decision Tasks},
+      author={Haozhe Jia},
+      year={2026},
+      eprint={2607.18867},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2607.18867},
+}
+
+@misc{williams2026predictingllmsafetyrelease,
+      title={Predicting LLM Safety Before Release by Simulating Deployment},
+      author={Marcus Williams and Hannah Sheahan and Cameron Raymond and Tomek Korbak and Deng Pan and Peilin Yang and Leon Maksin and Ningyi Xie and Phillip Guo and Ian Kivlichan and Micah Carroll},
+      year={2026},
+      eprint={2607.07184},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2607.07184},
+}
+
+@misc{thomas2026mitigatingllmbasedphackingpreregistering,
+      title={Mitigating LLM-based p-Hacking by Preregistering for the Next LLM},
+      author={Maria Thomas and Kristina Gligoric and Nihar B. Shah},
+      year={2026},
+      eprint={2606.27687},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2606.27687},
+}
+
+@misc{vaccaro2026preregistrationexperimentsaiagents,
+      title={Preregistration for Experiments with AI Agents},
+      author={Michelle Vaccaro},
+      year={2026},
+      eprint={2606.11217},
+      archivePrefix={arXiv},
+      primaryClass={cs.CY},
+      url={https://arxiv.org/abs/2606.11217},
+}
+
+% ---- diversity-measurement paragraph (sec_forensic_repair.tex §7), added 2026-08-16 ----
+
+@misc{li2016diversitypromotingobjectivefunctionneural,
+      title={A Diversity-Promoting Objective Function for Neural Conversation Models},
+      author={Jiwei Li and Michel Galley and Chris Brockett and Jianfeng Gao and Bill Dolan},
+      year={2016},
+      eprint={1510.03055},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/1510.03055},
+}
+
+@misc{zhu2018texygenbenchmarkingplatformtext,
+      title={Texygen: A Benchmarking Platform for Text Generation Models},
+      author={Yaoming Zhu and Sidi Lu and Lei Zheng and Jiaxian Guo and Weinan Zhang and Jun Wang and Yong Yu},
+      year={2018},
+      eprint={1802.01886},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/1802.01886},
+}
+
+@misc{friedman2023vendiscorediversityevaluation,
+      title={The Vendi Score: A Diversity Evaluation Metric for Machine Learning},
+      author={Dan Friedman and Adji Bousso Dieng},
+      year={2023},
+      eprint={2210.02410},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2210.02410},
+}
+
+@misc{mouret2015illuminatingsearchspacesmapping,
+      title={Illuminating search spaces by mapping elites},
+      author={Jean-Baptiste Mouret and Jeff Clune},
+      year={2015},
+      eprint={1504.04909},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/1504.04909},
+}
+
+@article{lehman2011abandoningobjectives,
+      title={Abandoning Objectives: Evolution Through the Search for Novelty Alone},
+      author={Joel Lehman and Kenneth O. Stanley},
+      journal={Evolutionary Computation},
+      volume={19},
+      number={2},
+      pages={189--223},
+      year={2011},
+}
+
+@article{romeraparedes2024mathematicaldiscoveries,
+      title={Mathematical discoveries from program search with large language models},
+      author={Bernardino Romera-Paredes and Mohammadamin Barekatain and Alexander Novikov and Matej Balog and M. Pawan Kumar and Emilien Dupont and Francisco J. R. Ruiz and Jordan S. Ellenberg and Pengming Wang and Omar Fawzi and Pushmeet Kohli and Alhussein Fawzi},
+      journal={Nature},
+      volume={625},
+      pages={468--475},
+      year={2024},
+}

@@ -1,0 +1,48 @@
+ARM T PREREGISTRATION - scaled paired trace intervention
+Written 2026-08-01, BEFORE any arm-T proposal was sampled.
+Proposer alias: haiku (claude-haiku-4-5-20251001 in force on this date).
+Runtime: Claude Code Max-plan subagents; sampling params not exposed (disclosed, same as arm F).
+
+DESIGN
+Cells: N in {13, 21, 31} (two predicted trap cells + one prior-pilot cell).
+Arms: bare (verbatim arm-F PROMPT_TEMPLATE, pooled with existing arm-F bare samples,
+      new sample ids s6+ at N=13/31, s11+ at N=21) and trace_v2 (below, sample ids t101+).
+Target 20 per arm per N. Bare new runs: 13:+15, 21:+10, 31:+15. Trace_v2: 20 per N.
+
+PILOT DISCLOSURE (pre-scaling honesty note)
+The N=21 pilot trace arm (t1-t10) used a prompt whose BASE wording also drifted from
+the bare template (missing [0,1]x[0,1] tokens, reworded output line). The pilot's
+intervention was therefore method-line + incidental rewording, bundled. trace_v2 is a
+minimal diff against the bare template: ONE inserted METHOD line, and 'After the METHOD
+line, ' prepended to the output line ('no other text' -> 'no other text after the list').
+Pilot samples are NEVER pooled with trace_v2. Pilot remains reported as pilot.
+
+TRACE_V2 TEMPLATE (verbatim, {n} parameterised)
+Pack exactly {n} non-overlapping circles inside the unit square [0,1]x[0,1] so that the sum of their radii is as large as possible.
+MUST hold: exactly {n} circles; every circle fully inside the unit square [0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap (distance between centers >= sum of the two radii; touching is allowed).
+Do not write or execute code - construct the packing by reasoning alone.
+First write one line beginning "METHOD:" naming the construction you used. Do not use square brackets anywhere in that line.
+After the METHOD line, output ONLY the raw Python list of {n} [x, y, r] lists. No explanation, no code fences, no other text after the list.
+
+PROMPT HASHES (sha256)
+  bare     N=13: 32db485bea625ff9f39f4723ebf1a01f337559a9e2cf567fb486928f71f7f8df
+  trace_v2 N=13: a920f1c9e1b988edc9468bd60fc607758e15ff27bb653752e2122e32c4c2ff06
+  bare     N=21: a415425b4ed5a57ea9b6f09c2328508f12370e1624734e1c5ed32913741795a9
+  trace_v2 N=21: 9120572793cda1e3b8e1210486513ccc4f6a5154f25288e83da07bcc138d9f49
+  bare     N=31: a664d003cbf1c0eca51bae5b3a1d072071eb34756725a7491d6a2e8fa3b78e92
+  trace_v2 N=31: bd490b7b02cbdcdb60699fab5010c77fb0fea9ad293baf9f2c65bcdbf33adf06
+
+Dispatch wrapper (both arms, not part of hashed task prompt):
+  "Do not use any tools. Your entire final message must be the answer and nothing else."
+
+REGISTERED PREDICTIONS (evaluated at 20/arm/N; scoring = arm_f_repro.py unchanged)
+P-T1 Validity: trace_v2 validity rate >= bare validity rate at EACH N, and pooled
+     one-sided Fisher (valid vs invalid, trace_v2 vs bare) p < 0.05.
+P-T2 Rival suppression: among VALID samples, rival-construction hits (value within 2e-3
+     of rival_argmax) rarer in trace_v2 than bare, pooled across N; directional.
+P-T3 Anchor concentration: among VALID samples, on-prediction rate (within 2e-3 of the
+     registered arm-F prediction for that N) higher in trace_v2 than bare, pooled.
+P-T4 Faithfulness: >= 90% of scoreable METHOD claims (numeric dims present) match the
+     emitted layout under arm_f_repro.trace_faithfulness().
+FALSIFIER: if trace_v2 validity <= bare at 2+ of 3 N, the pilot effect was the bundled
+     rewording, not the method-line request - reported as such, not reframed.

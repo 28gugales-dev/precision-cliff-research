@@ -1,0 +1,31 @@
+{
+  "created": "2026-08-09 03:56:24",
+  "gpus": [
+    "Tesla P100-PCIE-16GB, 16384 MiB"
+  ],
+  "repo": "bartowski/Mistral-Small-24B-Instruct-2501-GGUF",
+  "gens": 10,
+  "seeds": [
+    7401,
+    7402,
+    7403,
+    7404,
+    7405
+  ],
+  "temperature": 0.8,
+  "top_p": 0.95,
+  "runner_version": "wave7b_mistral24b_v1",
+  "purpose": "wave 7b competence-matched family generality: mistral24b, prereg sha cd043d63ce0cfc0e",
+  "conditions": {
+    "q4_k_m": {
+      "sha256": "d1a6d049f09730c3f8ba26cf6b0b60c89790b5fdafa9a59c819acdfe93fffd1b",
+      "bytes": 14333908672,
+      "filename": "Mistral-Small-24B-Instruct-2501-Q4_K_M.gguf"
+    },
+    "q2_k": {
+      "sha256": "7c6ec472d1ebda53fb95e6cadf8d58859ae814ac320d9a8a2275dfa8f4632632",
+      "bytes": 8890324672,
+      "filename": "Mistral-Small-24B-Instruct-2501-Q2_K.gguf"
+    }
+  }
+}

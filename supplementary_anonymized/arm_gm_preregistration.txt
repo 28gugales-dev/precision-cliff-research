@@ -1,0 +1,78 @@
+ARM GM PREREGISTRATION — cross-vendor replication, Gemini weak tier
+Registered: 2026-08-01, BEFORE any task-prompt sampling of the model below.
+(One connectivity test call was made prior to this registration: prompt
+"Reply with exactly: ok", response "ok". No task prompt was sent.)
+
+Model: gemini-2.5-flash-lite (Google, direct API generativelanguage.googleapis.com,
+  v1beta generateContent; responses echo modelVersion — recorded per invocation).
+Vendor attribution: direct vendor endpoint, no router/gateway. This arm exists to
+  test whether the nearest-square template-anchoring law (paper 1) is a property of
+  one vendor's weak tier or of weak-tier LLMs generally.
+Sampling params (controlled, unlike arms F/S/O/T where the runtime did not expose
+  them): temperature 1.0 (API default), top_p/top_k API defaults, maxOutputTokens 4096.
+Samples: 20 per cell x 7 cells = 140 invocations. No resampling, no exclusions
+  except: empty response or safety block -> recorded as-is, excluded from valid_n
+  only by the same parse/validity pipeline as arm F.
+
+Cells: N in {13, 17, 21, 31, 35, 37, 43} — identical to the seven N reported in
+  paper 1's mode analysis (p11_mode_baseline.json).
+Prompts: byte-identical to arm F bare prompts. sha256 per N:
+  13: 32db485bea625ff9f39f4723ebf1a01f337559a9e2cf567fb486928f71f7f8df
+  17: 8437df753f98cf7c263869a6f6813f19a6e8a2cda206affab8d7ef7ad1c6d942
+  21: a415425b4ed5a57ea9b6f09c2328508f12370e1624734e1c5ed32913741795a9
+  31: a664d003cbf1c0eca51bae5b3a1d072071eb34756725a7491d6a2e8fa3b78e92
+  35: (as in arm_f_prompts.json)
+  37: (as in arm_f_prompts.json)
+  43: 1208e7d2a004ede312bcf4ba95b337a2ab94243bc52bc296d43620f19573f41c
+  (35/37 hashes in arm_f_prompts.json; 21/43 regenerated from the same template,
+   43 verified byte-identical to the v1 ledger hash, 21 to the bare-arm ledger hash.)
+
+Scoring: identical pipeline to arm F (arm_f_repro.py): parse raw Python list,
+  validity at 1e-6 primary tolerance (ladder also reported), sum of radii rounded
+  to 4dp, on-prediction window +/- 0.002.
+
+Point predictions (V(k*,m) closed form, k* = round(sqrt(N)), unchanged from paper 1):
+  N=13: 1.625
+  N=17: 2.0518   (2.0517767)
+  N=21: 2.1
+  N=31: 2.5833   (2.5833333)
+  N=35: 2.9167   (2.9166667)
+  N=37: 3.0345   (3.0345178)
+  N=43: 3.0714   (3.0714286)
+
+Definitions (registered exactly, to prevent operationalization drift — see paper 1
+  section on falsifier operator drift):
+  - valid sample: passes validity at 1e-6.
+  - cell mode: the most frequent 4dp-rounded sum among valid samples in the cell.
+  - MODE-MATCH: a cell where the predicted value (4dp) is a mode of the cell.
+    If several values tie for most frequent, the cell is a MODE-MATCH if and only
+    if the prediction is among the tied values (tie-inclusive, stated here once,
+    implemented exactly).
+  - cell with fewer than 3 valid samples: UNSCOREABLE for mode analysis (reported,
+    not counted for or against).
+
+Predictions:
+  P-GM1 (primary): MODE-MATCH in at least 5 of the scoreable cells, with at least
+    5 cells scoreable. If fewer than 5 cells are scoreable the arm is reported as
+    underpowered, with no confirmatory claim in either direction.
+  P-GM2: pooled on-prediction rate among valid samples >= 30%.
+  P-GM3 (structural): among on-prediction samples, at least half consist of
+    exactly two distinct radii values (grid radius 1/(2k), filler (sqrt2-1)/(2k),
+    each within 1e-3) — the grid-with-corner-fillers signature.
+
+FALSIFIER (registered, tie-inclusive definitions above apply): MODE-MATCH fails
+  in 4 or more scoreable cells. If triggered: the nearest-square law is
+  vendor-specific, reported as such; no post hoc rescue analyses.
+
+Outputs: arm_gm_raw.json (full API responses incl. modelVersion, responseId,
+  usageMetadata), arm_gm_candidates.jsonl (one row per invocation: n, sample_idx,
+  prompt_sha256, raw text, parsed, validity ladder, sum_4dp, on_prediction,
+  timestamps). Files immutable after run; corrections only as versioned siblings.
+
+Stopping rule: one run of 140. No additional Gemini sampling for paper 1 claims
+  after this run, except verbatim rerun of failed-transport calls (HTTP errors,
+  not content), each disclosed in the ledger.
+
+Relation to paper 1 stopping rule: that rule closed data-dependent analyses of
+  existing arms. This is a new preregistered arm, disclosed as a post-review
+  extension; its analysis is confined to the predictions above.

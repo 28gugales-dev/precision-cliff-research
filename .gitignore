@@ -1,0 +1,9 @@
+
+.gstack/
+*.replay.jsonl
+__pycache__/
+~$*.pdf
+latex-tmlr/main.aux
+latex-tmlr/main.log
+latex-tmlr/main.blg
+latex-tmlr/main.out

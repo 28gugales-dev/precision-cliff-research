@@ -1212,15 +1212,15 @@
     '<h3>A Closed Form for What the Model Emits</h3>',
     '<p class="paper-sub">Template anchoring in unconditioned zero-shot circle packing.</p>',
     '<p>Asked to place N circles in a unit square with no parent program, no fitness feedback and no evaluator in context, a weak-tier model does not search. It reaches for a k×k grid of radius 1/(2k), sometimes with corner fillers, and truncates it when N does not fill the grid. Which template it reaches for is predictable in closed form: a nearest-square order k*(N) = round(√N) plus a value function over grid order and filler count fixes the modal output, and therefore its score, before any sampling. The predicted mode matched the empirical mode at all seven tested N; per-sample agreement runs 56–86% by cell, which is the modal frequency itself. Across three tiers, constructive ambition rises with nominal tier while execution validity rises then collapses — 78% → 100% → 13% valid at the primary 1e-6 tolerance. The anchoring is a property of unconditioned calls only: given a provably better in-family parent, 0 of 26 valid mutation samples return to the template, which is the regime discovery loops actually run in. A probe that lists the whole recipe family in the prompt separates choice from execution — the model picks the recipe the stated score table favours, then cannot build it, failing off-template in 30 of 31 invalid attempts. Point predictions and prompt hashes were registered before sampling, and two registered falsifiers triggered; both are reported as such.</p>',
-    '<p class="paper-links"><a href="paper1.pdf" target="_blank" rel="noopener">Read the paper (PDF)</a></p>',
+    '<p class="paper-links"><a href="paper1.pdf" target="_blank" rel="noopener">Read the paper (PDF)</a> · <a href="https://github.com/28gugales-dev/precision-cliff-research" target="_blank" rel="noopener">Code, ledgers &amp; preregistrations</a></p>',
     '</div>',
 
     '<div class="card paper-card">',
-    '<div class="paper-tag">Paper 2</div>',
+    '<div class="paper-tag">Paper 2 · under review at TMLR</div>',
     '<h3>Served Precision Is Part of the Model</h3>',
     '<p class="paper-sub">A quantization cliff in proposal variation, and the limits of alias-addressed study.</p>',
     '<p>Quantizing a proposer\'s weights can leave every metric a discovery loop watches unchanged while collapsing the variation the loop depends on. Down a quantization ladder at 14B, viability and validity move by no amount detectable at n = 50 per rung, but at the 2-bit rung the proposer largely stops departing from its parent. Two registered outcomes carry the claim: an echo bound written into the runner before the run held on five never-sampled seeds at 79% (19/24) coordinate-verified parent-echo against 6% (1/17), and a must-differ probe returned coordinate-identical copies in 5 of 5 valid outputs under an explicit instruction not to copy. The failed proposals are coherent, well-formed near-copies, which is why every pass/fail instrument reports health. The cost is visible only at loop level: the 2-bit rung takes 1 accepted hill-climb step in 50 calls against 14–16 at the upper rungs, while final best score separates the rungs nowhere. The second half asks what this means for studies that address a model by alias, since served quantization is one of several serving-path variables an alias leaves unattested — and one the dependent measure is now known to be sensitive to. A forensic arm addressed only as <code>opus_alias</code> became untestable within six days: byte-identical prompts returned 30/30 valid against the original 4/30, so the hypothesis pair under test turned out to presuppose a stable referent it does not have. The paper closes with a repair protocol audited against itself, including one proposed instrument that was run on its own rows and withdrawn.</p>',
-    '<p class="paper-links"><a href="paper2.pdf" target="_blank" rel="noopener">Read the paper (PDF)</a></p>',
+    '<p class="paper-links"><a href="paper2.pdf" target="_blank" rel="noopener">Read the paper (PDF)</a> · <a href="https://github.com/28gugales-dev/precision-cliff-research" target="_blank" rel="noopener">Code, ledgers &amp; preregistrations</a></p>',
     '</div>',
 
     '<div class="card">',
@@ -1237,7 +1237,7 @@
 
     '<div class="card">',
     '<h3>Provenance</h3>',
-    '<p>Every figure on this map traces to a released script and a raw ledger row. Preregistrations are git ancestors of the sampling they govern, so the registration date is checkable rather than asserted. Prose in both papers was model-assisted under the author\'s direction and disclosed there.</p>',
+    '<p>Every figure on this map traces to a released script and a raw ledger row. Preregistrations are git ancestors of the sampling they govern, so the registration date is checkable rather than asserted — the full repository, including every ledger, replay script and preregistration, is public at <a href="https://github.com/28gugales-dev/precision-cliff-research" target="_blank" rel="noopener">github.com/28gugales-dev/precision-cliff-research</a>. Prose in both papers was model-assisted under the author\'s direction and disclosed there.</p>',
     '<p class="muted small">This atlas is generated from two data files: <code>arms.json</code>, the per-paper experiment ledger, and <code>graph.json</code>, a node-link export of the extracted concept graph. Both load at runtime.</p>',
     '<p id="about-status" class="muted small"></p>',
     '</div>',

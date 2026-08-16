@@ -1,0 +1,35 @@
+ARM GM2 PREREGISTRATION — second cross-family replication, Gemma weak tier
+Registered: 2026-08-02, BEFORE any task-prompt sampling of the model below.
+(One connectivity test call preceded this registration: prompt "Reply with
+exactly: ok". No task prompt was sent.)
+
+Model: gemma-4-26b-a4b-it (Google/DeepMind Gemma family, 26B MoE with ~4B
+  active parameters — weak tier by active-parameter count; direct API
+  generativelanguage.googleapis.com v1beta generateContent).
+Motivation: arm GM (gemini-2.5-flash-lite, prereg commit 37b3adb) is quota-
+  throttled to ~20 requests/day on the free tier; it continues as registered.
+  Arm GM2 adds a second, quota-unconstrained weak-tier model from a different
+  model family. Model choice is quota-driven logistics, not data-dependent:
+  no gemma task output has been observed. Arm GM's 28 collected responses have
+  NOT been analyzed (no parsing, no scoring, no reading of packing contents).
+
+Design: identical to arm GM in every registered respect —
+  same 7 cells (N in {13,17,21,31,35,37,43}), 20 samples per cell,
+  byte-identical arm F bare prompts (same sha256 list as arm GM prereg),
+  temperature 1.0, maxOutputTokens 4096,
+  same scoring pipeline (arm_f_repro.py, validity 1e-6 primary, 4dp sums,
+  on-prediction window +/- 0.002),
+  same point predictions V(k*,m),
+  same definitions (tie-inclusive MODE-MATCH, <3 valid = UNSCOREABLE),
+  same predictions P-GM1/P-GM2/P-GM3 (named P-GM2.1/P-GM2.2/P-GM2.3),
+  same FALSIFIER (MODE-MATCH fails in >= 4 scoreable cells),
+  same transport-rerun clause, same stopping rule (one run of 140).
+
+One anticipated deviation, registered up front: Gemma instruction-tuned models
+  sometimes emit deliberation text before complying. Parse failures count as
+  unparsed/invalid under the same pipeline rules as every other arm — no
+  Gemma-specific parsing accommodations will be added after seeing outputs.
+
+Outputs: arm_gm2_raw.json, arm_gm2_candidates.jsonl, arm_gm2_report.json.
+Relation to paper 1: reported alongside arm GM as preregistered cross-family
+  extensions; neither arm's analysis feeds back into the other's design.

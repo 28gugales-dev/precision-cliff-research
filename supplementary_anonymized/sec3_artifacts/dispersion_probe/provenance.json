@@ -1,0 +1,72 @@
+{
+  "created": "2026-07-28 08:08:19",
+  "gpus": [
+    "Tesla P100-PCIE-16GB, 16384 MiB"
+  ],
+  "repo": "Qwen/Qwen2.5-Coder-14B-Instruct-GGUF",
+  "rungs": [
+    "q4_k_m",
+    "q2_k",
+    "q8_0",
+    "q3_k_m"
+  ],
+  "n_parents": 6,
+  "n_samples": 16,
+  "temperature": 0.8,
+  "top_p": 0.95,
+  "runner_version": "dispersion_probe_v1",
+  "behaviour_descriptor": "20x20 binned radius_CV vs mean_pairwise_center_distance (fallback \u2014 no existing descriptor found in codebase)",
+  "parent_ids": [
+    "p0_baseline",
+    "p1_low",
+    "p2_mid_a",
+    "p3_mid_b",
+    "p4_high_a",
+    "p5_high_b"
+  ],
+  "parent_scores": [
+    0.89999,
+    0.880168,
+    1.040183,
+    1.30005,
+    1.55045,
+    1.650407
+  ],
+  "conditions": {
+    "q4_k_m": {
+      "sha256": "c1e659736d89ac1065fb495330fb824d94001974a4bfa78e7270e43476a8d940",
+      "bytes": 8988110272,
+      "filename": "qwen2.5-coder-14b-instruct-q4_k_m.gguf"
+    },
+    "q2_k": {
+      "sha256": "4542a8bb0c0ae6fb3dafeb305c61a8d6b2f894e96bb667d60cda105a1f313176",
+      "bytes": 5770497408,
+      "filename": "qwen2.5-coder-14b-instruct-q2_k.gguf"
+    },
+    "q8_0": {
+      "skipped": "needs 2 gpus, have 1"
+    },
+    "q3_k_m": {
+      "sha256": "93b69ebf2883dcd4d8fa0ebd4b4589ae0f3eedc721ac391a46d36d90762f4640",
+      "bytes": 7339203968,
+      "filename": "qwen2.5-coder-14b-instruct-q3_k_m.gguf",
+      "metrics": {
+        "rung": "q3_k_m",
+        "total_samples": 96,
+        "viable": 57,
+        "valid": 51,
+        "viability_rate": 0.5938,
+        "validity_rate": 0.5312,
+        "mean_score_valid": 1.228887,
+        "max_score_valid": 1.650407,
+        "mean_score_delta_vs_parent": -0.003286,
+        "text_dispersion_mean_4gram_ratio": 0.1834,
+        "text_dispersion_mean_pairwise_ned": -0.3558,
+        "behaviour_unique_cells": 5,
+        "behaviour_cells_per_valid": 0.098,
+        "coordinate_echo_rate": 0.3229,
+        "echo_count": 31
+      }
+    }
+  }
+}

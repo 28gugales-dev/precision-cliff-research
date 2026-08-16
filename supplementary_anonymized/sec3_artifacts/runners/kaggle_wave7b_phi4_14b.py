@@ -1,0 +1,497 @@
+#!/usr/bin/env python
+# ============================================================================
+# WAVE 7b — FAMILY GENERALITY, COMPETENCE-MATCHED. Registration:
+# wave7b_prereg_families_14b.md, SHA-256
+# cd043d63ce0cfc0eef8ec3bc587b314014451709090d6f95467493731c002cd9
+# pushed as public Kaggle dataset ANON-KAGGLE-OWNER/wave7b-prereg-families-14b and
+# as this public kernel BEFORE any row was sampled. Predictions = wave 7's,
+# verbatim, per family (see the prereg; 7b.1 echo contrast NOT floor-gated,
+# HELD if gap >= 15pp AND echo(q2_k) >= 30%, REFUTED if gap <= 5pp,
+# UNDERPOWERED below 20 valid rows at either rung; 7b.2 floor-gated search
+# progress; 7b.3 must-differ rule; disconfirmation: REFUTED in both families
+# -> the cliff is reported as Qwen-family-specific including in the abstract).
+# PRIOR STATE: wave 7's two 8-9B arms both UNDERPOWERED (format lottery);
+# no Phi-4 / Mistral-Small rows exist anywhere in this corpus.
+# Protocol byte-identical to kaggle_precision_sweep_14b_fresh.py.
+# ============================================================================
+# --- batch-kernel bootstrap: script kernels have no %pip -------------------
+import subprocess as _sp
+import sys as _sys
+
+def _pip(*a):
+    return _sp.run([_sys.executable, "-m", "pip", "install", "-q", *a]).returncode
+
+_pip("huggingface_hub")
+_pip("llama-cpp-python",
+     "--extra-index-url", "https://abetlen.github.io/llama-cpp-python/whl/cu122")
+try:
+    import llama_cpp  # noqa: F401
+except Exception:
+    print("[bootstrap] prebuilt wheel failed; building from source (slow)...")
+    import os as _os
+    _env = dict(_os.environ, CMAKE_ARGS="-DGGML_CUDA=on")
+    _sp.run([_sys.executable, "-m", "pip", "install", "-q",
+             "--force-reinstall", "--no-cache-dir", "llama-cpp-python"],
+            env=_env, check=True)
+    import llama_cpp  # noqa: F401
+print("[bootstrap] llama_cpp ready:", llama_cpp.__version__)
+# ---------------------------------------------------------------------------
+"""
+PRECISION SWEEP 14B — FRESH-SEED REPLICATION + MUST-DIFFER MECHANISM PROBE.
+
+Two conditions only (q4_k_m contrast rung, q2_k cliff rung), five seeds never
+sampled in any prior run. Protocol otherwise IDENTICAL to the archived 14B
+runs (same repo, prompts, sampling params, generation-major order, durable
+logging: JSONL| console echo, per-candidate coordinates, per-condition zip).
+
+Additions vs v2:
+  1. SEEDS = [2222, 3333, 5555, 7777, 9999] (fresh draws -> falsifiable stats).
+  2. Zero-shot probes DROPPED (already established 0/24 valid at 14B).
+  3. MUST-DIFFER probe block: 10 single-shot invocations per quant; the
+     baseline packing is shown as parent and the prompt explicitly forbids
+     returning it unchanged. Discriminates degraded-novelty vs
+     instruction-following explanations of the verbatim echo at q2_k.
+
+Budget: 2 quants x 5 seeds x 10 gens = 100 loop + 2 x 10 must-differ = 120
+generations. Expected wall on T4 x2: ~1.5-2 h including model downloads.
+"""
+
+import ast
+import gc
+import hashlib
+import json
+import math
+import os
+import re
+import shutil
+import subprocess
+import time
+
+# ----------------------------- configuration --------------------------------
+
+REPO = "bartowski/phi-4-GGUF"
+PRECISIONS = [  # (label, filename, min_gpus_required)
+    ("q4_k_m", "phi-4-Q4_K_M.gguf", 1),
+    ("q2_k",   "phi-4-Q2_K.gguf",   1),
+]
+SEEDS = [7301, 7302, 7303, 7304, 7305]  # FRESH — never used in any prior run (grep-verified)
+GENS = 10
+MUSTDIFFER_PER_PRECISION = 10
+N = 26
+EPS = 1e-6
+N_CTX = 4096
+MAX_TOKENS = 1200
+TEMPERATURE = 0.8
+TOP_P = 0.95
+RUNNER_VERSION = "wave7b_phi4_14b_v1"
+
+WORK = "/kaggle/working/wave7b_phi4_14b"
+MODELS_DIR = "/kaggle/tmp/models"
+ZIP_BASE = "/kaggle/working/wave7b_phi4_14b_partial"
+STATE_DIR = os.path.join(WORK, "state")
+CAND_LOG = os.path.join(WORK, "candidates_wave7b_phi4_14b.jsonl")
+MUSTDIFFER_LOG = os.path.join(WORK, "mustdiffer_wave7b_phi4_14b.jsonl")
+PROVENANCE = os.path.join(WORK, "provenance.json")
+RESULTS = os.path.join(WORK, "results_wave7b_phi4_14b.json")
+
+if not os.path.isdir("/kaggle"):
+    WORK = os.path.abspath("./wave7b_phi4_14b")
+    MODELS_DIR = os.path.abspath("./models")
+    ZIP_BASE = os.path.abspath("./wave7b_phi4_14b_partial")
+    STATE_DIR = os.path.join(WORK, "state")
+    CAND_LOG = os.path.join(WORK, "candidates_wave7b_phi4_14b.jsonl")
+    MUSTDIFFER_LOG = os.path.join(WORK, "mustdiffer_wave7b_phi4_14b.jsonl")
+    PROVENANCE = os.path.join(WORK, "provenance.json")
+    RESULTS = os.path.join(WORK, "results_wave7b_phi4_14b.json")
+
+# ------------------------- evaluator (mirrors harness.py) --------------------
+
+def parse_proposal(raw):
+    if raw is None:
+        return None, "no_output"
+    text = raw.strip()
+    text = re.sub(r"```(?:python|json)?", "", text).replace("```", "").strip()
+    start = text.find("[")
+    end = text.rfind("]")
+    if start == -1 or end == -1 or end <= start:
+        return None, "no_list_found"
+    text = text[start:end + 1]
+    try:
+        obj = ast.literal_eval(text)
+    except (ValueError, SyntaxError) as e:
+        return None, f"literal_eval: {type(e).__name__}"
+    if not isinstance(obj, (list, tuple)):
+        return None, "not_a_list"
+    circles = []
+    for item in obj:
+        if not isinstance(item, (list, tuple)) or len(item) != 3:
+            return None, "bad_triple"
+        try:
+            circles.append(tuple(float(v) for v in item))
+        except (TypeError, ValueError):
+            return None, "non_numeric"
+    return circles, None
+
+
+def evaluate(circles):
+    res = {"viable": False, "valid": False, "score": 0.0,
+           "mean_radius": 0.0, "density": 0.0,
+           "n": 0 if circles is None else len(circles)}
+    if circles is None:
+        return res
+    if len(circles) != N or any(r <= 0 for (_, _, r) in circles):
+        return res
+    res["viable"] = True
+    radii = [r for (_, _, r) in circles]
+    res["mean_radius"] = sum(radii) / N
+    res["density"] = sum(math.pi * r * r for r in radii)
+    inside = all(x - r >= -EPS and x + r <= 1 + EPS and
+                 y - r >= -EPS and y + r <= 1 + EPS for (x, y, r) in circles)
+    overlap = False
+    for i in range(N):
+        xi, yi, ri = circles[i]
+        for j in range(i + 1, N):
+            xj, yj, rj = circles[j]
+            if math.hypot(xi - xj, yi - yj) + EPS < ri + rj:
+                overlap = True
+                break
+        if overlap:
+            break
+    if inside and not overlap:
+        res["valid"] = True
+        res["score"] = sum(radii)
+    return res
+
+
+def baseline_packing():
+    r = round(0.9 / N, 6)
+    pts = []
+    for row in range(5):
+        for col in range(6):
+            if len(pts) >= N:
+                break
+            pts.append([round((col + 0.5) / 6.0, 6), round((row + 0.5) / 5.0, 6), r])
+    return pts
+
+
+def self_test():
+    base = baseline_packing()
+    ev = evaluate([tuple(c) for c in base])
+    assert ev["valid"], "baseline must be valid"
+    assert abs(ev["score"] - 0.89999) < 1e-4, f"baseline score {ev['score']}"
+    bad = [tuple(c) for c in base]
+    bad[0] = (bad[0][0], bad[0][1], 0.5)
+    assert not evaluate(bad)["valid"], "overlap must invalidate"
+    c, err = parse_proposal("junk before [[0.1, 0.1, 0.05]] junk after")
+    assert err is None and len(c) == 1, "parser must extract bracketed list"
+    print("[selftest] evaluator + parser OK")
+
+
+# ------------------------------ prompts --------------------------------------
+
+def loop_prompt(best_circles, best_score):
+    packing = json.dumps([[round(x, 6), round(y, 6), round(r, 6)]
+                          for (x, y, r) in best_circles])
+    return (
+        "You are the proposal step of an evolutionary search for circle packings.\n"
+        f"Current best packing (sum of radii = {best_score:.6f}):\n{packing}\n\n"
+        f"Produce a packing of exactly {N} circles with a HIGHER sum of radii.\n"
+        "MUST hold: exactly 26 circles; every circle fully inside the unit square "
+        "[0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap "
+        "(distance between centers >= sum of the two radii; touching is allowed).\n"
+        "Output ONLY the raw Python list of 26 [x, y, r] lists. No explanation, "
+        "no code fences, no other text."
+    )
+
+
+def must_differ_prompt(best_circles, best_score):
+    """Identical to loop_prompt except the appended must-differ constraint —
+    the single manipulated variable of the mechanism probe."""
+    return (
+        loop_prompt(best_circles, best_score) + "\n"
+        "IMPORTANT: your packing MUST NOT be identical to the current best "
+        "packing shown above. Change the position or radius of at least three "
+        "circles. Returning the same packing again counts as failure."
+    )
+
+# ------------------------------ plumbing -------------------------------------
+
+def sha256_file(path, buf=1 << 22):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        while True:
+            b = f.read(buf)
+            if not b:
+                break
+            h.update(b)
+    return h.hexdigest()
+
+
+def gpu_info():
+    try:
+        out = subprocess.run(
+            ["nvidia-smi", "--query-gpu=name,memory.total", "--format=csv,noheader"],
+            capture_output=True, text=True, timeout=30).stdout.strip()
+        return [l.strip() for l in out.splitlines() if l.strip()]
+    except Exception:
+        return []
+
+
+def append_jsonl(path, row):
+    """Append to file AND echo to console ("JSONL|" prefix) — console echo is
+    the durability layer (version history survives /kaggle/working wipes)."""
+    line = json.dumps(row)
+    with open(path, "a") as f:
+        f.write(line + "\n")
+        f.flush()
+        os.fsync(f.fileno())
+    print("JSONL|" + line, flush=True)
+
+
+def snapshot_zip():
+    try:
+        shutil.make_archive(ZIP_BASE, "zip", WORK)
+        print(f"[zip] snapshot -> {ZIP_BASE}.zip")
+    except Exception as e:
+        print(f"[zip] FAILED (non-fatal): {type(e).__name__}: {e}")
+
+
+def load_provenance():
+    if os.path.exists(PROVENANCE):
+        with open(PROVENANCE) as f:
+            return json.load(f)
+    return {"created": time.strftime("%Y-%m-%d %H:%M:%S"), "gpus": gpu_info(),
+            "repo": REPO, "gens": GENS, "seeds": SEEDS,
+            "temperature": TEMPERATURE, "top_p": TOP_P,
+            "runner_version": RUNNER_VERSION,
+            "purpose": "wave 7b competence-matched family generality: phi4_14b, prereg sha cd043d63ce0cfc0e",
+            "conditions": {}}
+
+
+def save_provenance(p):
+    with open(PROVENANCE, "w") as f:
+        json.dump(p, f, indent=2)
+
+
+def spath(quant, seed):
+    return os.path.join(STATE_DIR, f"{quant}_seed_{seed}.json")
+
+
+def load_state(quant, seed):
+    p = spath(quant, seed)
+    if os.path.exists(p):
+        with open(p) as f:
+            return json.load(f)
+    base = baseline_packing()
+    ev = evaluate([tuple(c) for c in base])
+    return {"quant": quant, "seed": seed, "gen": 0,
+            "best_circles": base, "best_score": ev["score"]}
+
+
+def save_state(st):
+    with open(spath(st["quant"], st["seed"]), "w") as f:
+        json.dump(st, f)
+
+
+def count_mustdiffer_done(quant):
+    if not os.path.exists(MUSTDIFFER_LOG):
+        return 0
+    with open(MUSTDIFFER_LOG) as f:
+        return sum(1 for l in f if json.loads(l)["quant"] == quant)
+
+
+# --------------------------- model management --------------------------------
+
+def download_model(fname):
+    from huggingface_hub import hf_hub_download
+    os.makedirs(MODELS_DIR, exist_ok=True)
+    print(f"[download] {fname} ...")
+    t0 = time.time()
+    path = hf_hub_download(repo_id=REPO, filename=fname, local_dir=MODELS_DIR)
+    print(f"[download] done in {time.time()-t0:.0f}s -> {path}")
+    return path
+
+
+def load_llm(path, n_gpus):
+    from llama_cpp import Llama
+    kwargs = dict(model_path=path, n_gpu_layers=-1, n_ctx=N_CTX, verbose=False)
+    if n_gpus > 1:
+        kwargs["split_mode"] = 1
+    print(f"[load] {os.path.basename(path)} (gpus={n_gpus})")
+    t0 = time.time()
+    llm = Llama(**kwargs)
+    print(f"[load] ready in {time.time()-t0:.0f}s")
+    smoke = llm.create_chat_completion(
+        messages=[{"role": "user", "content": "Reply with the single word OK."}],
+        max_tokens=8, temperature=0.0)
+    stext = smoke["choices"][0]["message"]["content"]
+    assert isinstance(stext, str) and stext.strip(), "smoke generation empty"
+    print(f"[load] smoke generation OK: {stext.strip()[:40]!r}")
+    return llm
+
+
+def generate(llm, prompt, seed_val):
+    t0 = time.time()
+    try:
+        out = llm.create_chat_completion(
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=MAX_TOKENS, temperature=TEMPERATURE, top_p=TOP_P,
+            seed=seed_val)
+        text = out["choices"][0]["message"]["content"]
+        usage = out.get("usage", {})
+    except Exception as e:
+        return None, f"gen_error: {type(e).__name__}: {e}", 0, time.time() - t0
+    return text, None, usage.get("completion_tokens", 0), time.time() - t0
+
+
+# ------------------------------ main sweep -----------------------------------
+
+def run_condition(quant, fname, min_gpus, provenance):
+    n_gpus = len(provenance["gpus"])
+    if n_gpus < min_gpus:
+        print(f"[skip] {quant}: needs {min_gpus} GPU(s), have {n_gpus}")
+        provenance["conditions"].setdefault(quant, {})["skipped"] = \
+            f"needs {min_gpus} gpus, have {n_gpus}"
+        save_provenance(provenance)
+        return
+
+    states = {s: load_state(quant, s) for s in SEEDS}
+    md_done = count_mustdiffer_done(quant)
+    loop_done = all(st["gen"] >= GENS for st in states.values())
+    if loop_done and md_done >= MUSTDIFFER_PER_PRECISION:
+        print(f"[done] {quant}: already complete, skipping")
+        return
+
+    path = download_model(fname)
+    cond = provenance["conditions"].setdefault(quant, {})
+    if "sha256" not in cond:
+        print(f"[hash] {quant} ...")
+        cond["sha256"] = sha256_file(path)
+        cond["bytes"] = os.path.getsize(path)
+        cond["filename"] = fname
+        save_provenance(provenance)
+        print(f"[hash] {cond['sha256'][:16]}... ({cond['bytes']/1e9:.2f} GB)")
+
+    llm = load_llm(path, n_gpus)
+    try:
+        # Loop candidates: generation-major order so a dead session leaves every
+        # seed at a comparable depth.
+        for gen in range(GENS):
+            for s in SEEDS:
+                st = states[s]
+                if st["gen"] != gen:
+                    continue
+                prompt = loop_prompt([tuple(c) for c in st["best_circles"]],
+                                     st["best_score"])
+                text, gerr, ctoks, wall = generate(llm, prompt, s * 1000 + gen)
+                circles, perr = parse_proposal(text) if gerr is None else (None, gerr)
+                ev = evaluate(circles)
+                row = {"arm": "wave7b_phi4_14b",
+                       "proposer": f"phi-4-14b-{quant}",
+                       "quant": quant, "seed": s, "gen": gen,
+                       "parent_score": round(st["best_score"], 6),
+                       "score": round(ev["score"], 6), "viable": ev["viable"],
+                       "valid": ev["valid"], "n_circles": ev["n"],
+                       "mean_radius": round(ev["mean_radius"], 6),
+                       "density": round(ev["density"], 6),
+                       "parse_error": perr, "completion_tokens": ctoks,
+                       "wall_s": round(wall, 2), "reconstructed": False,
+                       "circles": ([[round(x, 6), round(y, 6), round(r, 6)]
+                                    for (x, y, r) in circles]
+                                   if circles is not None else None),
+                       "raw": (None if circles is not None
+                               else (text or "")[:3000])}
+                append_jsonl(CAND_LOG, row)
+                if ev["valid"] and ev["score"] > st["best_score"]:
+                    st["best_score"] = ev["score"]
+                    st["best_circles"] = [list(c) for c in circles]
+                st["gen"] = gen + 1
+                save_state(st)
+                print(f"[{quant}] seed {s} gen {gen}: score={ev['score']:.6f} "
+                      f"viable={ev['viable']} valid={ev['valid']} "
+                      f"best={st['best_score']:.6f} ({wall:.0f}s)")
+
+        # Must-differ mechanism probes: single-shot, baseline parent, explicit
+        # differ demand. Echo classification happens offline (coordinates logged).
+        base = baseline_packing()
+        base_score = evaluate([tuple(c) for c in base])["score"]
+        for k in range(md_done, MUSTDIFFER_PER_PRECISION):
+            prompt = must_differ_prompt([tuple(c) for c in base], base_score)
+            text, gerr, ctoks, wall = generate(llm, prompt, 880000 + k)
+            circles, perr = parse_proposal(text) if gerr is None else (None, gerr)
+            ev = evaluate(circles)
+            append_jsonl(MUSTDIFFER_LOG, {
+                "kind": "must_differ_probe", "quant": quant, "probe": k,
+                "parent_score": round(base_score, 6),
+                "score": round(ev["score"], 6), "viable": ev["viable"],
+                "valid": ev["valid"], "n_circles": ev["n"], "parse_error": perr,
+                "completion_tokens": ctoks, "wall_s": round(wall, 2),
+                "reconstructed": False,
+                "circles": ([[round(x, 6), round(y, 6), round(r, 6)]
+                             for (x, y, r) in circles]
+                            if circles is not None else None),
+                "raw": (None if circles is not None else (text or "")[:3000])})
+            print(f"[{quant}] must-differ {k}: score={ev['score']:.6f} "
+                  f"viable={ev['viable']} valid={ev['valid']}")
+    finally:
+        del llm
+        gc.collect()
+        try:
+            os.remove(path)
+            print(f"[cleanup] removed {fname}")
+        except OSError:
+            pass
+    snapshot_zip()
+
+
+def summarize():
+    rows = [json.loads(l) for l in open(CAND_LOG)] if os.path.exists(CAND_LOG) else []
+    md = [json.loads(l) for l in open(MUSTDIFFER_LOG)] if os.path.exists(MUSTDIFFER_LOG) else []
+    out = {}
+    for quant, _, _ in PRECISIONS:
+        qr = [r for r in rows if r["quant"] == quant]
+        if not qr:
+            continue
+        per = []
+        for s in SEEDS:
+            sr = [r for r in qr if r["seed"] == s]
+            best = max((r["score"] for r in sr if r["valid"]), default=0.0)
+            per.append({"seed": s, "best": round(best, 6), "gens": len(sr),
+                        "viable": sum(1 for r in sr if r["viable"]),
+                        "valid": sum(1 for r in sr if r["valid"])})
+        bests = [p["best"] for p in per]
+        mean = sum(bests) / len(bests)
+        qm = [p for p in md if p["quant"] == quant]
+        out[quant] = {
+            "per_seed": per, "mean_best": round(mean, 6),
+            "pop_std_best": round(math.sqrt(
+                sum((b - mean) ** 2 for b in bests) / len(bests)), 6),
+            "viability": f"{sum(1 for r in qr if r['viable'])}/{len(qr)}",
+            "validity": f"{sum(1 for r in qr if r['valid'])}/{len(qr)}",
+            "mustdiffer_n": len(qm),
+            "mustdiffer_valid": sum(1 for p in qm if p["valid"]),
+        }
+    with open(RESULTS, "w") as f:
+        json.dump(out, f, indent=2)
+    print(json.dumps(out, indent=2))
+
+
+def main():
+    os.makedirs(WORK, exist_ok=True)
+    os.makedirs(STATE_DIR, exist_ok=True)
+    self_test()
+    provenance = load_provenance()
+    if not provenance["gpus"]:
+        provenance["gpus"] = gpu_info()
+    save_provenance(provenance)
+    print(f"[gpus] {provenance['gpus'] or 'NONE DETECTED (will be very slow)'}")
+    for quant, fname, min_gpus in PRECISIONS:
+        print(f"\n===== condition: {quant} =====")
+        run_condition(quant, fname, min_gpus, provenance)
+        summarize()
+    snapshot_zip()
+    print("\n[done] fresh-seed sweep + must-differ probes complete.")
+
+
+if __name__ == "__main__":
+    main()

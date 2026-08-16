@@ -1,0 +1,8 @@
+
+P-S1  Sonnet anchors on nearest-square LESS than Haiku: on-prediction rate at
+      N=13/21 strictly below Haiku's 7/11 pooled rate.
+P-S2  Sonnet reaches the rival-argmax construction at N=13 at least once
+      (already observed in s2 - counted as confirmed-in-part, disclosed).
+P-S3  Sonnet emits more distinct-radii constructions: fraction of valid samples
+      with >=2 distinct radii exceeds Haiku's (Haiku bare: 2/32 valid).
+P-S4  N=31 (unsampled): Sonnet on-trap rate below Haiku's 5/5.
