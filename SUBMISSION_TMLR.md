@@ -1,9 +1,12 @@
 # TMLR submission plan — Paper 2 first
 
-Decision (from venue analysis, 2026-08-12): Paper 2 → TMLR now; Paper 1 →
-hold for GM3 cross-vendor completion, then ACM TELO (quota-free). TMLR solo
-quota is 2 submissions per calendar year and desk-rejects burn a slot, so
-Paper 1 does not go to TMLR unless Paper 2's review round argues for it.
+Decision (revised with owner 2026-08-16, supersedes 2026-08-12): BOTH papers
+→ TMLR (solo quota 2/yr covers both), then GECCO Hot-off-the-Press for
+Paper 1 once its TMLR acceptance lands (HOP presents recently published
+journal work; deadline ~Feb for GECCO 2027). TELO dropped as primary: TMLR
+speed serves the HOP timeline better and Paper 1's measurement style fits
+TMLR's rubric. Desk-rejects burn a quota slot — both papers get the full
+review loop before submission.
 
 Source of truth: `paper2_short.md` (git 3c52e40 — deliberate shortened
 submission build, 20.6k words; `paper2_draft.md` stays the archival long
@@ -79,8 +82,10 @@ never submit them.
   (https://git.overleaf.com/<id>), then push is scripted. Token should be
   REGENERATED after use — it passed through chat transcript.
 
-## Paper 1 (parked)
-- Wait for GM3 arm; fold result in (preregistered, both branches reportable).
-- Target ACM TELO (rolling, no quota). GECCO 2027 (abstract ~late Jan) is
-  the fallback; page limit would force cutting appendices.
-- No TMLR conversion built for Paper 1 on purpose.
+## Paper 1 (active as of 2026-08-16)
+- GM3 arm complete and folded in (v57–v60: §3.6 results section, Figure 2,
+  abstract elevation, provenance chain).
+- Target: TMLR (owner decision 2026-08-16), then GECCO 2027 Hot-off-the-Press
+  from the published paper.
+- TMLR LaTeX conversion for Paper 1: build after the wave-7c integration and
+  review loop, same fan-out pattern as Paper 2's.
