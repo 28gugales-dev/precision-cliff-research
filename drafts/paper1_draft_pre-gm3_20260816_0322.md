@@ -39,10 +39,9 @@ family, carried by one of three cells and confounded with a collection-wave spli
 size), with no detectable validity change (p = 0.30,
 n = 60/arm; not powered to exclude an effect of the observed size). Method lines are checkable
 against emitted coordinates: 54 of 56 scoreable claims (96.4%) describe the object actually
-built. Two scope conditions are load-bearing: the closed form is a weak-tier regularity —
-established within one vendor lineage, with a second family now matching it at the pooled
-level (57.5% of valid packings on the predicted sum) but not at cell-level mode structure
-(§8) — that does not describe the two higher tiers sampled; and it describes what an *unconditioned* call emits, not what a loop converges
+built. Two scope conditions are load-bearing: the closed form is a weak-tier regularity,
+established so far within a single vendor lineage (§8), that does not describe the two higher
+tiers sampled; and it describes what an *unconditioned* call emits, not what a loop converges
 to. A preregistered extension run after external review (arm M, §3.4) sharpens the scope in
 both directions: the branch rule's fifth k confirmed out of sample at N = 57 (modal output
 T(8,57) = 3.5625000, 0 of 10 valid samples on the rival), while the registered falsifier for
@@ -650,8 +649,7 @@ distinct radii per sample 1 → 2 → 3 (means 1.33 → 2.40 → 3.37) and media
 fraction 0.08 → 0.43 → 0.95 across the three tiers — monotone on both operationalizations. At
 the canonical and plausibly contaminated cell N = 26 all tiers converge on the same 2.5414
 attractor; they diverge only at withheld trap cells. The branch rule of §2 is therefore a
-weak-tier regularity — cross-vendor at the pooled level only, cell-level modes confirmed in
-one lineage (arm GM3, §8) — and
+weak-tier regularity — single-vendor evidence until a cross-vendor arm completes (§8) — and
 this is a **boundary condition on the main result**, not an independent
 second finding. It also cuts against §1's framing: the discovery systems cited there run
 frontier or mid-tier proposers, so the tier at which our regularity holds is the tier they do not use,
@@ -982,35 +980,24 @@ training data. We ran no canary-string test, no comparison against N values abse
 literature, and no perturbed-container test preserving difficulty while destroying lexical
 overlap. The rectangle arm is the nearest thing we have, at n = 11 valid.
 
-**Single vendor, partially resolved.** All tiers in the main study come from one provider.
-Three preregistered cross-vendor extensions were registered before sampling and are disclosed
-regardless of outcome. Arm GM (gemini-2.5-flash-lite, direct vendor API, prereg commit
-`37b3adb`) is quota-throttled and incomplete; no collected output has been analyzed. Arm GM2
-(gemma-4-26b-a4b-it, prereg `3019aab`) completed 140/140 invocations with a null-compliance
-outcome: 0 of 140 responses were parseable under the registered pipeline. Revision 2 flagged
-two readings of that outcome — format inability versus budget truncation — and deferred the
-call to arm GM3 (same design, output budget 16,384 versus 4,096, registered before sampling).
-GM3 has now reported, and the truncation reading was correct: the vendor API returns the
-model's deliberation as a separate thought channel, the 4,096-token budget of GM2 died
-entirely inside that channel, and at 16,384 tokens the same model emits a parseable
-coordinate list in 118 of 140 invocations (the remaining unparsed rows are overflow of the
-enlarged budget, not format failures). On the anchoring question the registered outcomes
-split. The pooled prediction held with margin: 46 of 80 valid packings (57.5%) land within
-0.002 of the registered predicted sum, against a 30% bar. Two of the five scoreable cells
-lock onto the predicted mode nearly completely (19/20 at N = 17, 15/15 at N = 35). But the
-cell-level prediction — predicted mode is modal in at least five scoreable cells — failed at
-2 of 5, with the registered falsifier (failure in four or more) also not triggered. The three
-off-prediction cells miss *upward*: the modal sum exceeds the registered construction's value
-(2.2589 vs. 2.1 at N = 21), so the family departs from the predicted attractor by finding
-better packings, not degraded ones. The two largest cells (N = 37, 43) are UNSCOREABLE under
-the registered <3-valid rule — validity collapses with N in this family. One mechanical
-deviation is on record (amendment registered before resumption): the final 41 of 140 cells
-were collected through a routed third-party serving path after the first-party quota stalled,
-with the serving provider logged per row and both accountings computed — the deviation moves
-the pooled rate from 59.0% (first-party only) to 57.5% (mixed) and changes no verdict. The
-anchoring law is therefore no longer single-vendor at the pooled level, while its cell-level
-mode structure remains confirmed in full only within the original family; the cross-family
-evidence is partial and stated as such.
+**Single vendor.** All tiers in the main study come from one provider. Two preregistered
+cross-vendor extensions are in progress at submission time, both registered before sampling and
+disclosed regardless of outcome. Arm GM (gemini-2.5-flash-lite, direct vendor API,
+prereg commit `37b3adb`) is quota-throttled and incomplete; no collected output has been
+analyzed. Arm GM2 (gemma-4-26b-a4b-it, prereg `3019aab`) completed 140/140 invocations with a
+null-compliance outcome: 0 of 140 responses were parseable under the registered pipeline —
+the model consumed its entire 4,096-token output budget on visible deliberation and never
+emitted the required coordinate list, under a prompt with which the weak-tier arm F model
+complied at 100% parse rate. Per the registered rule, all cells are UNSCOREABLE and no
+confirmatory claim is made in either direction; a follow-up with an enlarged output budget
+(arm GM3, registered before sampling) is running. The anchoring law therefore remains
+single-vendor evidence at this time — but the format-compliance cliff between families under
+an identical prompt is itself a preregistered observation, and it is consistent with §6.1's
+point that output-format constraints are load-bearing. We flag one reading the design cannot
+yet exclude: a 0/140 parse rate at a 4,096-token cap is also the signature of budget
+truncation — a verbose model cut off before its answer — rather than format inability. Arm
+GM3's enlarged budget separates the two, and we defer any characterization of the cliff's
+cause until it reports.
 
 **Sampling parameters unpinned.** The runtime does not expose pinned decoding parameters, so
 every effect is a distributional claim over the observed sampling regime, and §3.2's
@@ -1044,11 +1031,7 @@ revision 1 is tabled in Appendix C. Provenance, in list form:
   `arm_m_prompts.json` (committed `e528c6b` before sampling), and
   `arm_mu_preregistration.txt` with `arm_mu_prompts.json` (committed `2b7d202` before
   sampling; decision thresholds, power analysis, tie conventions and falsifier F-MU1 all
-  registered), and the cross-vendor chain `arm_gm_preregistration.txt` (commit `37b3adb`),
-  `arm_gm2_preregistration.txt` (`3019aab`), `arm_gm3_preregistration.txt` with its
-  serving-path deviation registered in `arm_gm3_amendment1_openrouter.md` before the
-  affected cells were sampled. The rectangle transfer was registered before collection and
-  never refitted.
+  registered). The rectangle transfer was registered before collection and never refitted.
 - **Four limits on that claim.** (i) The digests cover the task prompt only; the subagent
   inherits instruction files outside it, so what is locked is a *fragment* of the conditioning
   context, a replicator cannot reconstruct those files, and we cannot establish they were
@@ -1078,10 +1061,8 @@ revision 1 is tabled in Appendix C. Provenance, in list form:
 - **Analysis artifacts.** Raw outputs are stored verbatim (`arm_f_raw.json`,
   `arm_f_candidates.jsonl`, `arm_f_candidates_v2.jsonl`, `arm_g_candidates.jsonl`,
   `arm_m_collect.jsonl` scored by `arm_m_analysis.py`, `arm_mu_collect.jsonl` scored by
-  `arm_mu_analysis.py` with frozen output `arm_mu_results.txt`, and the GM3 ledger
-  `arm_gm_gm3_checkpoint.jsonl` — every row's raw API response verbatim, serving path and
-  provider tagged per row — scored by `arm_gm3_analysis.py` into `arm_gm3_report.json`
-  with both serving-path accountings) and scoring is deterministic and local. Value claims are gated on an independent LP oracle rather than on the
+  `arm_mu_analysis.py` with frozen output `arm_mu_results.txt`) and scoring is
+  deterministic and local. Value claims are gated on an independent LP oracle rather than on the
   closed form being tested: `n_sweep_forecast.py` with `verify_against_lp` checks 83
   configurations to within 10⁻⁹, and the same oracle produced §4.2's negative result. The
   faithfulness rubric (`p7_faithfulness_rubric.md`) was frozen by git commit `e181d2a`
