@@ -33,6 +33,13 @@ Selection rule (registered in screen_s_doc.md before screen sampling):
 
 ADVANCERS_PLACEHOLDER
 
+One registered category qualifier: an advancer whose Q4_K_M weight file
+exceeds free-tier hardware (Kaggle T4x2, 32 GB VRAM total) is recorded as
+ADVANCED-NOT-RUN (hardware) — its screen passage is part of the selection
+record, its ladder is deferred until suitable hardware is available, and no
+claim about it is made in either direction. This applies to
+nemotron-3-super-120b-a12b (Q4_K_M ~65 GB) if it advances.
+
 Weight SHA-256 + byte length recorded in provenance at download time, as every
 prior wave. Seeds per family (grep-verified never sampled in any prior runner):
 first advancing family [7501-7505], second [7601-7605], third [7701-7705],
