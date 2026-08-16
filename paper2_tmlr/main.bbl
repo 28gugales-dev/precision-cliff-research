@@ -1,0 +1,329 @@
+\begin{thebibliography}{47}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[adaevolve()]{adaevolve}
+adaevolve.
+\newblock {AdaEvolve}.
+\newblock arXiv:2602.20133, 2026.
+\newblock System name and arXiv identifier as given in the source manuscript.
+
+\bibitem[alphaevolve()]{alphaevolve}
+alphaevolve.
+\newblock Alphaevolve, 2025.
+\newblock Named without an identifier in the source manuscript (circle-packing
+  value 2.635 at $N$ = 26).
+
+\bibitem[arxiv260529268()]{arxiv260529268}
+arxiv260529268.
+\newblock arxiv:2605.29268.
+\newblock arXiv:2605.29268, 2026.
+\newblock Cited by identifier only in the source manuscript; no author, title
+  or venue metadata is asserted here.
+
+\bibitem[arxiv260611217()]{arxiv260611217}
+arxiv260611217.
+\newblock arxiv:2606.11217.
+\newblock arXiv:2606.11217, 2026.
+\newblock Cited by identifier only in the source manuscript, in the
+  preregistration lineage.
+
+\bibitem[arxiv260627687()]{arxiv260627687}
+arxiv260627687.
+\newblock arxiv:2606.27687.
+\newblock arXiv:2606.27687, 2026.
+\newblock Cited by identifier only in the source manuscript, in the
+  preregistration lineage.
+
+\bibitem[arxiv260707184()]{arxiv260707184}
+arxiv260707184.
+\newblock arxiv:2607.07184.
+\newblock arXiv:2607.07184, 2026.
+\newblock Cited by identifier only in the source manuscript, in the
+  preregistration lineage.
+
+\bibitem[Baltes et~al.(2025)Baltes, Angermeir, Arora, Barón, Chen, Böhme,
+  Calefato, Ernst, Falessi, Fitzgerald, Fucci, He, Treude, Kalinowski,
+  Lambiase, Russo, Lungu, Montes, Prechelt, Ralph, van Tonder, and
+  Wagner]{baltes2025guidelin}
+Sebastian Baltes, Florian Angermeir, Chetan Arora, Marvin~Muñoz Barón,
+  Chunyang Chen, Lukas Böhme, Fabio Calefato, Neil Ernst, Davide Falessi,
+  Brian Fitzgerald, Davide Fucci, Junda He, Christoph Treude, Marcos
+  Kalinowski, Stefano Lambiase, Daniel Russo, Mircea Lungu, Cristina~Martinez
+  Montes, Lutz Prechelt, Paul Ralph, Rijnard van Tonder, and Stefan Wagner.
+\newblock Guidelines for empirical studies in software engineering involving
+  large language models.
+\newblock \emph{arXiv preprint arXiv:2508.15503}, 2025.
+
+\bibitem[Bruckner(2026)]{bruckner2026one}
+Tomas Bruckner.
+\newblock One token is enough: Fingerprinting and verifying large language
+  models from single-token output distributions.
+\newblock \emph{arXiv preprint arXiv:2607.10252}, 2026.
+
+\bibitem[Cai et~al.(2025)Cai, Shi, Zhao, and Song]{cai2025are}
+Will Cai, Tianneng Shi, Xuandong Zhao, and Dawn Song.
+\newblock Are you getting what you pay for? auditing model substitution in llm
+  apis.
+\newblock \emph{arXiv preprint arXiv:2504.04715}, 2025.
+
+\bibitem[Chang et~al.(2025)Chang, Zhang, Thomason, and Jia]{chang2025why}
+Ting-Yun Chang, Muru Zhang, Jesse Thomason, and Robin Jia.
+\newblock Why do some inputs break low-bit llm quantization?
+\newblock \emph{arXiv preprint arXiv:2506.12044}, 2025.
+
+\bibitem[Chen et~al.(2023)Chen, Zaharia, and Zou]{chen2023how}
+Lingjiao Chen, Matei Zaharia, and James Zou.
+\newblock How is chatgpt's behavior changing over time?
+\newblock \emph{arXiv preprint arXiv:2307.09009}, 2023.
+
+\bibitem[Frantar et~al.(2022)Frantar, Ashkboos, Hoefler, and
+  Alistarh]{frantar2023gptq}
+Elias Frantar, Saleh Ashkboos, Torsten Hoefler, and Dan Alistarh.
+\newblock {GPTQ}: Accurate post-training quantization for generative
+  pre-trained transformers.
+\newblock arXiv:2210.17323, 2022.
+\newblock ICLR 2023.
+
+\bibitem[Friedman \& Dieng(2022)Friedman and Dieng]{friedman2022the}
+Dan Friedman and Adji~Bousso Dieng.
+\newblock The vendi score: A diversity evaluation metric for machine learning.
+\newblock \emph{arXiv preprint arXiv:2210.02410}, 2022.
+
+\bibitem[gigaevo()]{gigaevo}
+gigaevo.
+\newblock {GigaEvo}.
+\newblock arXiv:2511.17592, 2025.
+\newblock System name and arXiv identifier as given in the source manuscript.
+
+\bibitem[He et~al.(2025)]{he2025defeating}
+Horace He et~al.
+\newblock Defeating nondeterminism in {LLM} inference.
+\newblock Thinking Machines Lab blog, September 2025.
+\newblock URL
+  \url{https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/}.
+
+\bibitem[helix()]{helix}
+helix.
+\newblock {HELIX}.
+\newblock arXiv:2603.07642, 2026.
+\newblock System name and arXiv identifier as given in the source manuscript.
+
+\bibitem[hindsightbench()]{hindsightbench}
+hindsightbench.
+\newblock {HindsightBench}.
+\newblock arXiv:2607.18867, 2026.
+\newblock Cited as concurrent work in the source manuscript.
+
+\bibitem[Korn et~al.(2026)Korn, Zaruchas, Arora, Metzger, Smolka, Wang, and
+  Vogelsang]{korn2026reportin}
+Alexander Korn, Lea Zaruchas, Chetan Arora, Andreas Metzger, Sven Smolka, Fanyu
+  Wang, and Andreas Vogelsang.
+\newblock Reporting llm prompting in automated software engineering: A
+  guideline based on current practices and expectations.
+\newblock \emph{arXiv preprint arXiv:2601.01954}, 2026.
+
+\bibitem[Kurt(2026)]{kurt2026which}
+Uygar Kurt.
+\newblock Which quantization should i use? a unified evaluation of llama.cpp
+  quantization on llama-3.1-8b-instruct.
+\newblock \emph{arXiv preprint arXiv:2601.14277}, 2026.
+
+\bibitem[Lange et~al.(2025)Lange, Imajuku, and Cetin]{lange2025shinkaev}
+Robert~Tjarko Lange, Yuki Imajuku, and Edoardo Cetin.
+\newblock Shinkaevolve: Towards open-ended and sample-efficient program
+  evolution.
+\newblock \emph{arXiv preprint arXiv:2509.19349}, 2025.
+
+\bibitem[Lehman \& Stanley(2011)Lehman and Stanley]{lehman2011abandoning}
+Joel Lehman and Kenneth~O. Stanley.
+\newblock Abandoning objectives: Evolution through the search for novelty
+  alone.
+\newblock \emph{Evolutionary Computation}, 19\penalty0 (2):\penalty0 189--223,
+  2011.
+
+\bibitem[Leshin et~al.(2026)Leshin, Shah, Timmis, and Kang]{leshin2026behavior}
+Jonah Leshin, Manish Shah, Ian Timmis, and Daniel Kang.
+\newblock Behavioral fingerprints for llm endpoint stability and identity.
+\newblock \emph{arXiv preprint arXiv:2603.19022}, 2026.
+
+\bibitem[Li et~al.(2015)Li, Galley, Brockett, Gao, and Dolan]{li2015a}
+Jiwei Li, Michel Galley, Chris Brockett, Jianfeng Gao, and Bill Dolan.
+\newblock A diversity-promoting objective function for neural conversation
+  models.
+\newblock \emph{arXiv preprint arXiv:1510.03055}, 2015.
+
+\bibitem[Li et~al.(2025{\natexlab{a}})Li, Su, Wang, Yang, Xie, Liu, Li, Cao,
+  Xie, Wong, and Yang]{li2025quantiza}
+Zhen Li, Yupeng Su, Songmiao Wang, Runming Yang, Congkai Xie, Aofan Liu, Ming
+  Li, Jiannong Cao, Yuan Xie, Ngai Wong, and Hongxia Yang.
+\newblock Quantization meets reasoning: Exploring and mitigating degradation of
+  low-bit llms in mathematical reasoning.
+\newblock \emph{arXiv preprint arXiv:2505.11574}, 2025{\natexlab{a}}.
+
+\bibitem[Li et~al.(2025{\natexlab{b}})Li, Su, Yang, Xie, Wang, Xie, Wong, and
+  Yang]{li2025quantizb}
+Zhen Li, Yupeng Su, Runming Yang, Congkai Xie, Zheng Wang, Zhongwei Xie, Ngai
+  Wong, and Hongxia Yang.
+\newblock Quantization meets reasoning: Exploring llm low-bit quantization
+  degradation for mathematical reasoning.
+\newblock \emph{arXiv preprint arXiv:2501.03035}, 2025{\natexlab{b}}.
+
+\bibitem[Lin et~al.(2023)Lin, Tang, Tang, Yang, Chen, Wang, Xiao, Dang, Gan,
+  and Han]{lin2024awq}
+Ji~Lin, Jiaming Tang, Haotian Tang, Shang Yang, Wei-Ming Chen, Wei-Chen Wang,
+  Guangxuan Xiao, Xingyu Dang, Chuang Gan, and Song Han.
+\newblock {AWQ}: Activation-aware weight quantization for {LLM} compression and
+  acceleration.
+\newblock arXiv:2306.00978, 2023.
+\newblock MLSys 2024.
+
+\bibitem[Lin(2026)]{lin2026selfimpr}
+Jianzhe Lin.
+\newblock Self-improvement can self-regress: The rise-and-collapse failure mode
+  of llm self-training.
+\newblock \emph{arXiv preprint arXiv:2606.21090}, 2026.
+
+\bibitem[Lu et~al.(2026)Lu, Chen, Fang, Ma, and Wang]{lu2026mixquant}
+Haiquan Lu, Zigeng Chen, Gongfan Fang, Xinyin Ma, and Xinchao Wang.
+\newblock Mix-quant: Quantized prefilling, precise decoding for agentic llms.
+\newblock \emph{arXiv preprint arXiv:2605.20315}, 2026.
+
+\bibitem[Lv et~al.(2026)Lv, Zhang, Xia, Ni, Yan, Yu, Hou, Yuan, and
+  Bai]{lv2026what}
+Keyu Lv, Manyi Zhang, Xiaobo Xia, Jingchen Ni, Shannan Yan, Xianzhi Yu, Lu~Hou,
+  Chun Yuan, and Haoli Bai.
+\newblock What makes low-bit quantization-aware training work for reasoning
+  llms? a systematic study.
+\newblock \emph{arXiv preprint arXiv:2601.14888}, 2026.
+
+\bibitem[Madaan et~al.(2024)Madaan, Singh, Schaeffer, Poulton, Koyejo,
+  Stenetorp, Narang, and Hupkes]{madaan2024variance}
+Lovish Madaan, Aaditya~K. Singh, Rylan Schaeffer, Andrew Poulton, Sanmi Koyejo,
+  Pontus Stenetorp, Sharan Narang, and Dieuwke Hupkes.
+\newblock Quantifying variance in evaluation benchmarks.
+\newblock arXiv:2406.10229, 2024.
+
+\bibitem[Marchisio et~al.(2024)Marchisio, Dash, Chen, Aumiller, {\"U}st{\"u}n,
+  Hooker, and Ruder]{marchisio2024quantization}
+Kelly Marchisio, Saurabh Dash, Hongyu Chen, Dennis Aumiller, Ahmet
+  {\"U}st{\"u}n, Sara Hooker, and Sebastian Ruder.
+\newblock How does quantization affect multilingual {LLMs}?
+\newblock arXiv:2407.03211, 2024.
+
+\bibitem[Miller(2024)]{miller2024errorbars}
+Evan Miller.
+\newblock Adding error bars to evals: A statistical approach to language model
+  evaluations.
+\newblock arXiv:2411.00640, 2024.
+
+\bibitem[Mouret \& Clune(2015)Mouret and Clune]{mouret2015illumina}
+Jean-Baptiste Mouret and Jeff Clune.
+\newblock Illuminating search spaces by mapping elites.
+\newblock \emph{arXiv preprint arXiv:1504.04909}, 2015.
+
+\bibitem[Pineau et~al.(2021)Pineau, Vincent-Lamarre, Sinha, Larivi{\`e}re,
+  Beygelzimer, d'Alch{\'e} Buc, Fox, and Larochelle]{pineau2021reproducibility}
+Joelle Pineau, Philippe Vincent-Lamarre, Koustuv Sinha, Vincent Larivi{\`e}re,
+  Alina Beygelzimer, Florence d'Alch{\'e} Buc, Emily Fox, and Hugo Larochelle.
+\newblock Improving reproducibility in machine learning research (a report from
+  the {NeurIPS} 2019 reproducibility program).
+\newblock \emph{Journal of Machine Learning Research}, 22\penalty0 (164), 2021.
+\newblock URL \url{https://www.jmlr.org/papers/v22/20-303.html}.
+\newblock arXiv:2003.12206.
+
+\bibitem[Rababah et~al.(2026)Rababah, Akcora, and Leung]{rababah2026the}
+Baha Rababah, Cuneyt~Gurcan Akcora, and Carson~K. Leung.
+\newblock The illusion of equivalency: Statistical characterization of
+  quantization effects in llms.
+\newblock \emph{arXiv preprint arXiv:2607.08734}, 2026.
+
+\bibitem[Romera-Paredes et~al.(2024)Romera-Paredes, Barekatain, Novikov, Balog,
+  Kumar, Dupont, Ruiz, Ellenberg, Wang, Fawzi, Kohli, and
+  Fawzi]{romeraparedes2024funsearch}
+Bernardino Romera-Paredes, Mohammadamin Barekatain, Alexander Novikov, Matej
+  Balog, M.~Pawan Kumar, Emilien Dupont, Francisco J.~R. Ruiz, Jordan~S.
+  Ellenberg, Pengming Wang, Omar Fawzi, Pushmeet Kohli, and Alhussein Fawzi.
+\newblock Mathematical discoveries from program search with large language
+  models.
+\newblock \emph{Nature}, 625:\penalty0 468--475, 2024.
+
+\bibitem[Schnabl et~al.(2025)Schnabl, Hugenroth, Marino, and
+  Beresford]{schnabl2025attestab}
+Christoph Schnabl, Daniel Hugenroth, Bill Marino, and Alastair~R. Beresford.
+\newblock Attestable audits: Verifiable ai safety benchmarks using trusted
+  execution environments.
+\newblock \emph{arXiv preprint arXiv:2506.23706}, 2025.
+
+\bibitem[seaevo()]{seaevo}
+seaevo.
+\newblock {SeaEvo}.
+\newblock arXiv:2604.24372, 2026.
+\newblock System name and arXiv identifier as given in the source manuscript.
+
+\bibitem[Siddiq et~al.(2025)Siddiq, Islam-Gomes, Sekerak, and
+  Santos]{siddiq2025large}
+Mohammed~Latif Siddiq, Arvin Islam-Gomes, Natalie Sekerak, and Joanna C.~S.
+  Santos.
+\newblock Large language models for software engineering: A reproducibility
+  crisis.
+\newblock \emph{arXiv preprint arXiv:2512.00651}, 2025.
+
+\bibitem[thetaevolve()]{thetaevolve}
+thetaevolve.
+\newblock {ThetaEvolve}.
+\newblock arXiv:2511.23473, 2025.
+\newblock System name and arXiv identifier as given in the source manuscript.
+
+\bibitem[Wimbauer et~al.(2026)Wimbauer, M{\"o}ller, Imgrund, and
+  Rieck]{wimbauer2026fingerprinting}
+Anna Wimbauer, Jonas M{\"o}ller, Erik Imgrund, and Konrad Rieck.
+\newblock Fingerprinting inference systems of large language models.
+\newblock arXiv:2605.29979, May 2026.
+
+\bibitem[Yan et~al.(2026)Yan, Peng, Coleman, Chen, Xie, Chen, He, Sachdeva, Ye,
+  Wang, Wang, Chi, Pereira, Kang, Cheng, and Wang]{yan2026pacevolv}
+Minghao Yan, Bo~Peng, Benjamin Coleman, Ziqi Chen, Zhouhang Xie, Shuo Chen,
+  Zhankui He, Noveen Sachdeva, Isabella Ye, Weili Wang, Chi Wang, Ed~H. Chi,
+  Fernando Pereira, Wang-Cheng Kang, Derek~Zhiyuan Cheng, and Beidou Wang.
+\newblock Pacevolve: Enabling long-horizon progress-aware consistent evolution.
+\newblock \emph{arXiv preprint arXiv:2601.10657}, 2026.
+
+\bibitem[Yuan et~al.(2025)Yuan, Li, Ding, Xie, Li, Zhao, Wan, Shi, Hu, and
+  Liu]{yuan2025nondeterminism}
+Jiayi Yuan, Hao Li, Xinheng Ding, Wenya Xie, Yu-Jhe Li, Wentian Zhao, Kun Wan,
+  Jing Shi, Xia Hu, and Zirui Liu.
+\newblock Understanding and mitigating numerical sources of nondeterminism in
+  {LLM} inference.
+\newblock arXiv:2506.09501, 2025.
+\newblock NeurIPS 2025.
+
+\bibitem[Zhang et~al.(2026)Zhang, Zhang, and Qin]{zhang2026which}
+Yuewei Zhang, Zhi-Hai Zhang, and Hanzhang Qin.
+\newblock Which model is actually serving you? iris: Budgeted black-box
+  auditing of model substitution and routing dilution in llm gateways.
+\newblock \emph{arXiv preprint arXiv:2607.20860}, 2026.
+
+\bibitem[Zhou et~al.(2026)Zhou, Cao, Li, Yu, Ye, Zhao, and Liu]{zhou2026from}
+Chenxi Zhou, Pengfei Cao, Jiang Li, Bohan Yu, Jinyu Ye, Jun Zhao, and Kang Liu.
+\newblock From signal degradation to computation collapse: Uncovering the two
+  failure modes of llm quantization.
+\newblock \emph{arXiv preprint arXiv:2604.19884}, 2026.
+
+\bibitem[{Zhou et al.}(2024)]{zhou2024reliability}
+{Zhou et al.}
+\newblock Larger and more instructable language models become less reliable.
+\newblock Nature, 2024.
+\newblock cited in the source manuscript as ``Zhou et al. (Nature, 2024)''.
+
+\bibitem[Zhu et~al.(2018)Zhu, Lu, Zheng, Guo, Zhang, Wang, and
+  Yu]{zhu2018texygen}
+Yaoming Zhu, Sidi Lu, Lei Zheng, Jiaxian Guo, Weinan Zhang, Jun Wang, and Yong
+  Yu.
+\newblock Texygen: A benchmarking platform for text generation models.
+\newblock \emph{arXiv preprint arXiv:1802.01886}, 2018.
+
+\end{thebibliography}

@@ -1867,6 +1867,19 @@ different amount of work at another, with no signal that the amount changed. We 
 shown this varies smoothly with bit width, and the fixed-parent control is the reason to
 state the endpoint rather than a gradient.
 
+Output variation has its own measurement tradition — distinct-n (Li et al.,
+arXiv:1510.03055), Self-BLEU (Zhu et al., arXiv:1802.01886), the Vendi score (Friedman and
+Dieng, arXiv:2210.02410) — and evolutionary computation made variation a first-class
+objective long before LLM proposers existed: novelty search (Lehman and Stanley,
+Evolutionary Computation 19(2), 2011), MAP-Elites (Mouret and Clune, arXiv:1504.04909), and
+FunSearch's island model (Romera-Paredes et al., Nature 625, 2024), which engineers against
+proposal-diversity decay operationally. None of these instruments is run as a serving-path
+health check, and none has been connected to served precision as the independent variable.
+Parent-echo is deliberately narrower than a corpus diversity score: it names the mechanism —
+reproduction of the conditioning input — rather than the symptom of samples resembling one
+another, which is what lets the must-differ probe separate cannot-depart from narrow-
+sampling.
+
 The LLM-evolution literature has meanwhile begun cataloguing its own failure modes, and
 the catalogue does not contain ours. PACEvolve (Yan et al., arXiv:2601.10657) names three
 — context pollution, mode collapse in sampling, and weak inter-generation collaboration —

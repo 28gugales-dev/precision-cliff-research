@@ -266,12 +266,17 @@ def trace_faithfulness(raw, circles):
             "faithful": verdict}
 
 
-def ingest(samples, out_name="arm_f_candidates.jsonl"):
+def ingest(samples, out_name="arm_f_candidates.REPRO.jsonl"):
     """samples: list of {n, sample_id, raw}. Writes one jsonl row per invocation.
 
     Every invocation produces a row, including unparsed ones. Nothing is dropped
     on the floor - a silently discarded failure is how validity rates get
     inflated.
+
+    Output goes to a .REPRO path by default so a verification run never
+    overwrites the committed arm_f_candidates.jsonl artifact in place; diff the
+    two to confirm reproduction (pass out_name explicitly to regenerate the
+    artifact itself).
     """
     rows = []
     for s in samples:
