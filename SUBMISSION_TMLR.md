@@ -43,9 +43,16 @@ never submit them.
 - [x] Compiled locally (MiKTeX installed): 31 pp, 0 errors, 0 undefined
       refs, GUIDE-LLM in bibliography. 8 overfull hboxes remain — cosmetic,
       fix at proof stage if desired.
-- [ ] Proof the rendered PDF against `paper2_short.pdf` section by section —
-      conversion was agent-assisted; registered numbers + table-row parity
-      already machine-checked, human read still recommended.
+- [x] Proof of rendered PDF vs `paper2_short.md`, prose-parity pass
+      (2026-08-16, agent): all 124 prose paragraphs shingle-checked against
+      the rendered text. 112 matched verbatim; 12 flagged and each resolved
+      as a deliberate transformation with content verified present —
+      inline citations rendered via natbib \citet (4), unicode math
+      normalisation (2), SHA/ellipsis line-rendering (3), and scientific
+      notation re-typeset (`7.8e-13` → $7.8\times10^{-13}$, `1.6e-4` →
+      $1.6\times10^{-4}$) (2), plus one long-digest wrap. No dropped or
+      altered content found. Human skim still worthwhile but no longer
+      load-bearing.
 - [x] §7 related-work paragraph added (2026-08-16, mirrored in
       `paper2_short.md`, `paper2_draft.md`, `sec_forensic_repair.tex`):
       situates parent-echo against diversity metrics (distinct-n, Self-BLEU,
