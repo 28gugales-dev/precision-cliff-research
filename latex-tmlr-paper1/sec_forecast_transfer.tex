@@ -224,7 +224,7 @@ Raw rows verbatim in \texttt{arm\_mu\_collect.jsonl} (180 of 180 launched invoca
 runtime deaths); scoring in \texttt{arm\_mu\_analysis.py}, committed before sampling completed; frozen
 output in \texttt{arm\_mu\_results.txt}. This arm brings the study corpus to 468 invocations.
 
-\subsection{Preregistered extension (arm GM3): the attractor crosses vendors at the pooled level, and departures from it point up}
+\subsection{Preregistered extension (arm GM3): the attractor crosses vendors at the pooled level, and departures from it land on the family rival}
 
 Every arm above addresses one vendor's models. Arm GM3 asks whether the anchoring law is a
 fact about that lineage or about weak-tier models as a class, by re-running the
@@ -257,36 +257,56 @@ $N$ & predicted (4 dp) & Gemma modal sum & mode freq & valid $n$ & on-prediction
 \includegraphics[width=\linewidth]{fig_gm3_anchoring.png}
 \caption{\emph{Arm GM3 modal sums against the registered prediction.} Green cells match the
 predicted mode (frequencies annotated); red cells miss --- every miss lands above the
-prediction; the two largest cells are UNSCOREABLE under the registered $<$3-valid rule.
+prediction, on the rival argmax (the modal packings carry the rival's two-radius structure,
+27/27 --- \S3.6); the two largest cells are UNSCOREABLE under the registered $<$3-valid rule.
 Regenerates via \texttt{fig\_gm3\_anchoring.py} from \texttt{arm\_gm3\_report.json} (itself replayed from the
 raw ledger by \texttt{arm\_gm3\_analysis.py}, no arguments).}
 \label{fig:gm3anchoring}
 \end{figure}
 
-Three registered outcomes. \textbf{The pooled prediction held with margin}: 46 of 80 valid
+Three registered outcomes. \textbf{The pooled prediction held}: 46 of 80 valid
 packings (57.5\%) land within $2\times10^{-3}$ of the value predicted by \S2's rule, against a
 registered 30\% bar --- for a rule fitted entirely on another vendor's models, before this
-family was ever sampled. \textbf{The cell-level prediction did not}: the predicted value is modal
-in 2 of 5 scoreable cells, short of the registered 5, though the registered falsifier
-(failure in $\ge$4) also did not trigger --- and where the family locks on, it locks on almost
-completely (19/20 at $N = 17$, 15/15 at $N = 35$). \textbf{The structural signature came in under its
+family was ever sampled. The registered metric pools all cells, and the pass rides on that:
+by \S3.2's own convention --- arm F's pooled rate excludes non-discriminating cells \emph{because
+prediction equals the family argmax there} --- the decomposition must be stated. 35 of the 46
+on-prediction packings sit in the two non-discriminating cells (19/20 at $N = 17$, 15/15 at
+$N = 35$); on the three discriminating cells the rate is 11 of 43 (25.6\%), below the bar the
+pooled metric passes. The registered verdict stands as registered; what it measures at the
+discriminating cells is the next finding. \textbf{The cell-level prediction did not hold}: the
+predicted value is modal in 2 of 5 scoreable cells, short of the registered 5, though the
+registered falsifier (failure in $\ge$4) also did not trigger --- and where the family locks on,
+it locks on almost completely. \textbf{The structural signature came in under its
 bar}: 20 of 46 on-prediction samples (43\%, bar: half) carry the exact two-radius grid-plus-
 filler decomposition, so on-prediction Gemma samples reach the predicted \emph{value} through the
-predicted \emph{construction} slightly less than half the time. The direction of the three
-cell-level misses is the informative part: every one misses \emph{upward} --- the family's modal
-packing beats the registered construction (2.2589 against 2.1000 at $N = 21$). The attractor
-this vendor's family escapes toward is better packings, not noise, which is what the
-tractability reading of \S8 predicts for a family with different arithmetic reach: the
-rule's value marks where construction-by-mental-arithmetic lands, and a family that can
-execute slightly harder constructions leaves it in the only direction available. Validity
+predicted \emph{construction} slightly less than half the time.
+
+The three cell-level misses are not noise, and ``misses upward'' understates them: \textbf{the
+family's modal output at every discriminating cell is the rival argmax itself} --- 1.7761,
+2.2589 and 2.7485 against rivals 1.7761424, 2.2588835 and 2.7485281 --- and a post-hoc
+structural diagnostic (disclosed as such; \texttt{diagnostics\_gm3\_rival.py}, read-only over the
+ledger) finds all 27 of 27 rival-valued packings carrying the rival's exact two-radius
+decomposition, the $(k^*{-}1)$ grid radius with the $(k^*{-}1)$ filler radius. The registered
+signature instrument could not see this: it tests radii against the \emph{predicted} order $k^*$,
+so it is structurally blind to $(k^*{-}1)$ constructions --- which is why the 43\% signature figure
+above coexists with a 100\% rival-structure rate on the miss side. In \S2.3's terms,
+gemma-4-26b performs precisely the drop-to-$(k^*{-}1)$-and-fill move that ``a proposer with any
+local search would'' perform and that the original family performs in 2 of 57 valid samples:
+27 of 43 valid discriminating-cell packings (63\%) are the rival construction. Read against
+\S8's tractability alternative, the anchor value marks where construction-by-mental-arithmetic
+lands, and a family with more arithmetic reach executes the harder in-family construction
+rather than truncating --- same recipe family, other branch. Validity
 collapsing at the two largest cells (2 then 0 valid of 20) bounds the family's competence
 window on this task; both cells are UNSCOREABLE under the registered rule and claim nothing.
 
-\subsection{Preregistered extension (arm V): under the zero-shot protocol, anchoring transfers by vendor --- and fails by family}
+\subsection{Preregistered extension (arm V): anchoring transfers by vendor --- and fails by family}
 
-Arm GM3 varied the vendor under the unconditioned-call protocol; arm V varies it under the
-zero-shot statement protocol of arm F, byte-identical prompts (SHA-256 per $N$ restated in the
-registration and recomputed at call time, aborting on mismatch), against free-tier aliases
+Arm GM3 varied the vendor while holding the instrument close to laboratory grade ---
+first-party API, pinned temperature, explicit output budget, seven cells at twenty samples.
+Arm V varies vendor and serving class at once, under the same byte-identical arm-F prompts
+both arms inherit (SHA-256 per $N$ restated in the registration and recomputed at call time,
+aborting on mismatch; the GM-chain registration pins the identical hashes), at five cells and
+five samples per (model, $N$), against free-tier aliases
 across five vendors (\texttt{arm\_v\_preregistration.md}, committed before sampling; three amendments,
 each committed before the sampling it governs, expanded the original three-alias design to
 thirteen aliases across two serving paths --- the opencode CLI and OpenRouter chat-completions ---
@@ -297,8 +317,12 @@ reports them, every invocation appended live to \texttt{arm\_v\_candidates\_raw.
 invocations, failures and refusals included. Scoring is \texttt{arm\_f\_repro.py}'s
 parse/validate/classify unchanged, tolerances registered in arm F before its sampling.
 
-Registered floor: $\ge$10 of a model's 25 cells valid at $10^{-6}$; below it, no anchoring claim in
-either direction. Ten of thirteen aliases finished BELOW-FLOOR --- including all three
+Registered floor: $\ge$10 of a model's 25 registered invocations valid at $10^{-6}$; below it, no
+anchoring claim in either direction. Execution retried each invocation slot until content
+arrived, per amendment 3's registered transport-repair and accounting rule, so the ledger
+holds many more attempt rows than slots --- gemma-4-31b's 25 slots, for instance, took 190
+attempt rows, 165 of them transport failures --- and the floor is evaluated on the 25 slots,
+not the attempts. Ten of thirteen aliases finished BELOW-FLOOR --- including all three
 originally-registered opencode aliases, whose logged failure taxonomies are
 transport-dominated for one (CLI build banners, timeouts, ``Unknown model'' errors as the
 free tier rotated its catalogue) and roughly half transport, half parse-failure for the
@@ -319,12 +343,14 @@ alias (vendor) & valid & V1 on-prediction & V1 verdict (bar: $\ge$50\%) & V2 riv
 \end{tabular}
 \end{center}
 
-This is the registration's most informative branch pair. Anchoring under the zero-shot
-protocol is not an artifact of the original family --- two further vendors' models land the
+This is the registration's most informative branch pair. Anchoring under this instrument
+is not an artifact of the original family --- two further vendors' models land the
 registered construction values at 61--67\% of valid outputs, and the strong form holds
-everywhere evaluable: zero rival-argmax emissions in 16 discriminating-cell validities
-(the registration recorded the original family's prior for the same statistic as 0/21). And it is not universal: gemma-4-31b, clearing
-the same floor, lands the prediction never. Its valid packings are unanchored and low
+everywhere evaluable \emph{within this arm}: zero rival-argmax emissions in 16
+discriminating-cell validities (the registration recorded the original family's prior for
+the same statistic as 0/21; \S3.6's gemma-4-26b, under the GM-chain instrument, is the
+standing exception --- its discriminating-cell mode \emph{is} the rival). And it is not universal:
+gemma-4-31b, clearing the same floor, lands the prediction never. Its valid packings are unanchored and low
 (bests 0.88--1.85 against predictions 1.63--3.03) --- not the rival, not the template, just
 weaker de-novo construction. Under the registration's falsification map, the family-specific branch fires --- any model
 clearing the floor with DOES-NOT-TRANSFER makes the closed form a family property, stated
@@ -332,16 +358,21 @@ in \S5 with data rather than a caveat --- while the map's all-transfer branch fa
 alone, so the reading that anchoring is an artifact of the original family is defeated by
 the same table that bounds its generality.
 
-The gemma pair needs stating precisely, because this family now appears on both sides. Under
-GM3's unconditioned protocol, gemma-4-\textbf{26b} pooled-HELD at 57.5\% (the mixed-serving
-accounting; first-party-only, 59.0\% --- \S8's registered deviation applies to this figure);
-under arm V's zero-shot statement protocol, gemma-4-\textbf{31b} through a rate-starved
-alias (Google AI Studio upstream; 27--38 of each cell's attempts returned as shared-pool 429s
-before content arrived) transfers nothing. Protocol, parameter count, and serving path all
-differ, so the pair bounds the family's behaviour rather than contradicting itself --- but the
-conjunction is exactly the shape \S8's tractability reading predicts: a family whose
-arithmetic reach differs from the original's tracks the attractor under one elicitation and
-escapes it under another, and no single-protocol measurement would have seen the boundary.
+The gemma pair needs stating precisely, because this family now appears on both sides, and
+the prompts are identical across the two arms --- what differs is parameter count, serving
+path and sample budget, not the elicitation. Under the GM-chain instrument (first-party,
+pinned temperature, $7 \times 20$), gemma-4-\textbf{26b} pooled-HELD at 57.5\% (the mixed-serving
+accounting; first-party-only, 59.0\% --- \S8's registered deviation applies to this figure)
+while emitting the \emph{rival} construction at 63\% of discriminating-cell validities; under arm
+V's free-tier instrument ($5 \times 5$), gemma-4-\textbf{31b} through a rate-starved alias (Google AI
+Studio upstream; 27--38 of each cell's attempts returned as shared-pool 429s before content
+arrived) lands neither the prediction nor the rival --- its valid packings are weaker de-novo
+constructions. The pair bounds the family's behaviour rather than contradicting itself ---
+one member sits \emph{above} the template's execution reach (far enough to build the
+drop-and-fill rival the original family cannot), the other lands below it --- but model
+variant and instrument quality change together across the two measurements, so which
+difference carries the split is not attributable from this pair; either way, no
+single-model measurement would have seen the boundary.
 
 \section{Rectangle transfer}
 

@@ -100,8 +100,16 @@ never submit them.
 - **Paper 1**: arm V complete (877 invocations) and integrated as §3.7 —
   anchoring TRANSFERS in north-mini-code 8/12 and gpt-oss-20b 11/18,
   DOES-NOT-TRANSFER in gemma-4-31b 0/15, V2 HOLDS 0/16; adversarial pass
-  (5 defects) fixed. `latex-tmlr-paper1/` compiles clean, **28 pp**,
-  fidelity-audited against the markdown (5/5 fragments PASS).
+  (5 defects) fixed. 2026-08-17 council round (5 Opus advisors + Fable
+  verification) landed 9 further fixes: GM3 pooled-bar decomposition
+  disclosed (discriminating cells 11/43 = 25.6%), GM3 misses identified as
+  the rival construction (27/27 structure-verified, new
+  `diagnostics_gm3_rival.py`), abstract arm-V elevation ("Three scope
+  conditions"), phantom GM3-vs-V protocol split removed (prompts
+  byte-identical, real axes: model variant + serving + budget), arm V floor
+  wording corrected to slot accounting, corpus sentence de-staled, GM3
+  prereg SHAs cited, 4 Table 4 rows added. `latex-tmlr-paper1/` compiles
+  clean, **29 pp**, fidelity-audited (all greps PASS).
 - **Supplementary**: `build_anon_bundle.py` regenerated
   `supplementary_anonymized.zip` (6.2 MB, 0 identity leaks post-scan) now
   covering wave-7c, screen S, the full arm surface (F→V, GM chain) and all
@@ -134,8 +142,9 @@ never submit them.
 - **Abstract**: paste from `latex-tmlr-paper1/main.tex` abstract block.
 - **TLDR**: Weak-tier language models emit circle packings whose scores land
   on a closed-form template value predictable before sampling — a regularity
-  that is preregistered, cross-vendor under two protocols, family-bounded,
-  and absent at the frontier tier.
+  that is preregistered, cross-vendor under two instruments, family-bounded
+  in both directions (one family escapes to the in-family rival, another
+  anchors nowhere), and absent at the frontier tier.
 - **Keywords**: template anchoring; zero-shot generation; circle packing;
   preregistration; closed-form prediction; model families; capability tiers
 - **Supplementary**: same bundle (arm surface F→V and GM chain included).

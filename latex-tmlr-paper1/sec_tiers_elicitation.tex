@@ -121,9 +121,11 @@ distinct radii per sample 1 $\rightarrow$ 2 $\rightarrow$ 3 (means 1.33 $\righta
 fraction 0.08 $\rightarrow$ 0.43 $\rightarrow$ 0.95 across the three tiers --- monotone on both operationalizations. At
 the canonical and plausibly contaminated cell $N = 26$ all tiers converge on the same 2.5414
 attractor; they diverge only at withheld trap cells. The branch rule of \S2 is therefore a
-weak-tier regularity --- cross-vendor under both protocols (pooled under GM3's, at 61--67\% of
-valid outputs in two further vendors under arm V's, \S3.6--3.7), family-bounded (absent in
-gemma-4-31b at the same floor), cell-level modes confirmed in one lineage --- and
+weak-tier regularity --- cross-vendor under two instruments (a registered pooled bar under
+GM3's, carried by its non-discriminating cells, \S3.6; 61--67\% of valid outputs in two further
+vendors under arm V's, \S3.7), family-bounded in both directions (absent in gemma-4-31b at
+the same floor, escaped \emph{upward} to the family rival by gemma-4-26b, \S3.6), cell-level modes
+confirmed in one lineage --- and
 this is a \textbf{boundary condition on the main result}, not an independent
 second finding. It also cuts against \S1's framing: the discovery systems cited there run
 frontier or mid-tier proposers, so the tier at which our regularity holds is the tier they do not use,
@@ -158,7 +160,10 @@ the corpus to 215 logged square invocations (85 bare = 45 original + 40 new; 70 
 60 trace\_v2; 30 sonnet; 30 \texttt{opus\_alias}), plus 16 rectangle invocations, 231 total at the
 close of revision 2 (Table 5, item 27); the post-review arm M (\S3.4) later added 57 sampled
 weak-tier invocations (60 launched), bringing the study corpus to 288, and the post-council
-arms MU and CH (\S3.5) added 180 more (180 launched, none lost), for a final corpus of 468. One disclosure revision 1 did not carry: \textbf{20 of the 60 bare samples are pre-existing arm-F
+arms MU and CH (\S3.5) added 180 more (180 launched, none lost), bringing the
+unconditioned-and-elicitation corpus to 468; the cross-vendor chain is scored under its own
+registrations and adds 420 GM-chain invocations (\S3.6, \S8) and 877 arm-V attempt rows over
+325 registered invocation slots (\S3.7). One disclosure revision 1 did not carry: \textbf{20 of the 60 bare samples are pre-existing arm-F
 rows} ($N = 13$ ids 1--5, $N = 21$ ids 1--10, $N = 31$ ids 1--5) whose results were known when P-T1--P-T3
 were written; only trace\_v2 is fully fresh (\S6.4). Scoring used \texttt{arm\_f\_repro.py} unchanged with
 the registered $2\times10^{-3}$ window; the Fisher exact test comes from the hypergeometric tail in

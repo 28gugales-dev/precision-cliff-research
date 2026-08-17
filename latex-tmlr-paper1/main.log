@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  17 AUG 2026 13:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  17 AUG 2026 18:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -584,23 +584,23 @@ ham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}
 {C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}
 {C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
 (sec_intro_task.tex [2]
-<fig1_trapzones.png, id=186, 505.89pt x 260.172pt>
+Underfull \vbox (badness 5175) has occurred while \output is active []
+
+ [3{C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.e
+nc}]
+<fig1_trapzones.png, id=204, 505.89pt x 260.172pt>
 File: fig1_trapzones.png Graphic file (type png)
 <use fig1_trapzones.png>
 Package pdftex.def Info: fig1_trapzones.png  used on input line 113.
 (pdftex.def)             Requested size: 469.75499pt x 241.59221pt.
- [3{C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.e
-nc}] [4 <./fig1_trapzones.png>])
-(sec_forecast_transfer.tex [5]
+
+[4 <./fig1_trapzones.png>]) (sec_forecast_transfer.tex [5]
 Underfull \hbox (badness 1062) in paragraph at lines 59--65
 []$[]$ \T1/lmr/m/n/10 (+20) Post-hoc struc-tural check, not pre-reg-is-tered, p
 rompted by an ex-ter-nal re-view of this re-vi-sion
  []
 
-
-Underfull \vbox (badness 1286) has occurred while \output is active []
-
- [6]
+[6]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 110.
@@ -617,10 +617,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 110.
 
-
-Underfull \vbox (badness 6332) has occurred while \output is active []
-
- [7]
+[7]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8]
@@ -630,24 +627,26 @@ File: fig_gm3_anchoring.png Graphic file (type png)
 Package pdftex.def Info: fig_gm3_anchoring.png  used on input line 257.
 (pdftex.def)             Requested size: 469.75499pt x 293.61378pt.
 
-[9 <./fig_gm3_anchoring.png>]
+Underfull \vbox (badness 1360) has occurred while \output is active []
+
+ [9]
+Underfull \vbox (badness 5475) has occurred while \output is active []
+
+ [10 <./fig_gm3_anchoring.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 311.
+(Font)              <8> on input line 335.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 311.
- [10]
+(Font)              <6> on input line 335.
+ [11]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 402.
-) (sec_tiers_elicitation.tex [11]
+(Font)              <9> on input line 433.
+) (sec_tiers_elicitation.tex
 Underfull \hbox (badness 7151) in paragraph at lines 17--24
 []\T1/lmr/bx/n/10 (+20) The mid-dle tier per-turbs and mixes. \T1/lmr/m/n/10 (+
 20) The Sonnet-tier arm was pre-reg-is-tered in
  []
 
-
-Underfull \vbox (badness 1173) has occurred while \output is active []
-
- [12]
+[12]
 Underfull \hbox (badness 1087) in paragraph at lines 88--88
 []|\T1/lmr/m/n/8 (+20) Attempted fam-
  []
@@ -752,50 +751,40 @@ Underfull \hbox (badness 10000) in paragraph at lines 93--93
 \T1/lmr/m/n/8 (+20) coarse grid +
  []
 
-<fig2_packings.png, id=259, 505.89pt x 187.902pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [13]
+<fig2_packings.png, id=264, 505.89pt x 187.902pt>
 File: fig2_packings.png Graphic file (type png)
 <use fig2_packings.png>
 Package pdftex.def Info: fig2_packings.png  used on input line 106.
 (pdftex.def)             Requested size: 469.75499pt x 174.48326pt.
 
-Underfull \vbox (badness 5064) has occurred while \output is active []
-
- [13]
-[14 <./fig2_packings.png>]
-<fig3_armT.png, id=276, 332.442pt x 216.81pt>
+[14 <./fig2_packings.png>] [15]
+<fig3_armT.png, id=280, 332.442pt x 216.81pt>
 File: fig3_armT.png Graphic file (type png)
 <use fig3_armT.png>
-Package pdftex.def Info: fig3_armT.png  used on input line 224.
+Package pdftex.def Info: fig3_armT.png  used on input line 229.
 (pdftex.def)             Requested size: 469.75499pt x 306.36378pt.
-
-Underfull \vbox (badness 1776) has occurred while \output is active []
-
- [15]
-[16 <./fig3_armT.png>]
-Underfull \vbox (badness 4505) has occurred while \output is active []
-
- [17])
-(sec_related_repro.tex [18] [19]
+ [16] [17 <./fig3_armT.png>])
+(sec_related_repro.tex [18] [19] [20]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 147.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [20]
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 148.
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-67.
+68.
 
 (C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [21{C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.en
 c}]
-Underfull \hbox (badness 6396) in paragraph at lines 213--227
+Underfull \hbox (badness 6396) in paragraph at lines 214--228
 \T1/lmtt/m/n/10 arm_f_candidates_v2.jsonl\T1/lmr/m/n/10 (+20) , \T1/lmtt/m/n/10
  arm_g_candidates.jsonl\T1/lmr/m/n/10 (+20) , \T1/lmtt/m/n/10 arm_m_collect.jso
 nl \T1/lmr/m/n/10 (+20) scored by
  []
 
-) (main.bbl [22] [23] [24]) (sec_appendices.tex [25]
+[22]) (main.bbl [23] [24] [25]) (sec_appendices.tex [26]
 Underfull \hbox (badness 6592) in paragraph at lines 70--70
 []|\T1/lmr/m/n/8 (+20) yes, plus cor-
  []
@@ -815,14 +804,96 @@ Underfull \hbox (badness 10000) in paragraph at lines 75--75
 []|\T1/lmr/m/n/8 (+20) yes (reg-is-tered
  []
 
-ignored error: Infinite glue shrinkage found in box being split [26]
-Underfull \hbox (badness 1478) in paragraph at lines 90--90
+
+Underfull \hbox (badness 7468) in paragraph at lines 76--76
+\T1/lmr/m/n/8 (+20) is-tered \T1/lmr/bx/n/8 (+20) be-fore
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--76
+\T1/lmr/bx/n/8 (+20) re-sump-tion
+ []
+
+
+Overfull \hbox (78.30704pt too wide) in paragraph at lines 76--76
+\T1/lmr/m/n/8 (-20) (\T1/lmtt/m/n/8 arm_gm3_amendment1_openrouter.md\T1/lmr/m/n
+/8 (-20) ,
+ []
+
+
+Underfull \hbox (badness 3838) in paragraph at lines 77--77
+\T1/lmr/m/n/8 (+20) 1--2, each reg-
+ []
+
+
+Underfull \hbox (badness 7468) in paragraph at lines 77--77
+\T1/lmr/m/n/8 (+20) is-tered \T1/lmr/bx/n/8 (+20) be-fore
+ []
+
+
+Underfull \hbox (badness 2856) in paragraph at lines 77--77
+\T1/lmr/bx/n/8 (+20) the sam-pling
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--78
+[]|\T1/lmr/m/n/8 (+20) amendment
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--78
+\T1/lmr/m/n/8 (+20) 3 reg-is-tered
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--78
+\T1/lmr/bx/n/8 (+20) be-fore re-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--78
+\T1/lmr/m/n/8 (+20) chan-i-cal only:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--78
+\T1/lmr/m/n/8 (+20) 24,576 bud-get,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--78
+\T1/lmr/m/n/8 (+20) retry/backoff,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--78
+\T1/lmr/m/n/8 (+20) censored-row
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[]|\T1/lmr/bx/n/8 (+20) post hoc\T1/lmr/m/n/8 (+20) ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+\T1/lmr/m/n/8 (+20) dis-closed
+ []
+
+
+Overfull \hbox (46.41415pt too wide) in paragraph at lines 79--79
+\T1/lmr/m/n/8 (-20) (\T1/lmtt/m/n/8 diagnostics_gm3_rival.py\T1/lmr/m/n/8 (-20)
+ )| 
+ []
+
+ignored error: Infinite glue shrinkage found in box being split [27]
+Underfull \hbox (badness 1478) in paragraph at lines 94--94
 []\T1/lmr/m/n/8 (+20) Table 5: Cor-rec-tions to re-vi-sion 1. Ev-ery claim that
  changed be-
  []
 
 
-Underfull \hbox (badness 1038) in paragraph at lines 90--90
+Underfull \hbox (badness 1038) in paragraph at lines 94--94
 \T1/lmtt/m/n/8 stats \T1/lmr/m/n/8 (+20) = \T1/lmtt/m/n/8 p4_review_stats.md\T1
 /lmr/m/n/8 (+20) , \T1/lmtt/m/n/8 R2 \T1/lmr/m/n/8 (+20) = \T1/lmtt/m/n/8 p4_re
 view_reviewer2.md\T1/lmr/m/n/8 (+20) , \T1/lmtt/m/n/8 GECCO \T1/lmr/m/n/8 (+20)
@@ -830,48 +901,38 @@ view_reviewer2.md\T1/lmr/m/n/8 (+20) , \T1/lmtt/m/n/8 GECCO \T1/lmr/m/n/8 (+20)
  []
 
 
-Underfull \hbox (badness 1629) in paragraph at lines 104--104
+Underfull \hbox (badness 1629) in paragraph at lines 108--108
 []|\T1/lmr/m/n/8 (+20) ``recall'' a tem-plate; ``tem-plate
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 106--106
+Underfull \hbox (badness 10000) in paragraph at lines 110--110
 []|\T1/lmr/m/n/8 (+20) 1.1,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 106--107
+Underfull \hbox (badness 10000) in paragraph at lines 110--111
 []|\T1/lmr/m/n/8 (+20) GECCO M14;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--109
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
 []|\T1/lmr/m/n/8 (+20) R2 #13;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 110--110
+Underfull \hbox (badness 10000) in paragraph at lines 114--114
 []|\T1/lmr/m/n/8 (+20) Abs,
  []
 
 
-Underfull \hbox (badness 2418) in paragraph at lines 111--112
+Underfull \hbox (badness 2418) in paragraph at lines 115--116
 []|\T1/lmr/m/n/8 (+20) stats F16; R2
  []
 
 
-Underfull \hbox (badness 5260) in paragraph at lines 111--112
+Underfull \hbox (badness 5260) in paragraph at lines 115--116
 \T1/lmr/m/n/8 (+20) #17; GECCO
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 112--112
-[]|\T1/lmr/m/n/8 (+20) Abs,
- []
-
-
-Underfull \hbox (badness 2418) in paragraph at lines 113--114
-[]|\T1/lmr/m/n/8 (+20) stats F12; R2
  []
 
 
@@ -880,117 +941,127 @@ Underfull \hbox (badness 10000) in paragraph at lines 116--116
  []
 
 
-Underfull \hbox (badness 1960) in paragraph at lines 121--121
-[]|\T1/lmr/m/n/8 (+20) SeaEvo (2604.24372) re-ports a
+Underfull \hbox (badness 2418) in paragraph at lines 117--118
+[]|\T1/lmr/m/n/8 (+20) stats F12; R2
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--123
-[]|\T1/lmr/m/n/8 (+20) both are causal-decoupling re-sults; only
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
-[]|\T1/lmr/m/n/8 (+20) GECCO M3c,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 126--127
-[]|\T1/lmr/m/n/8 (+20) GECCO m10,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 127--127
-[]|\T1/lmr/m/n/8 (+20) ``EvoDiverse (2606.10587)'';
- []
-
-
-Underfull \hbox (badness 8019) in paragraph at lines 127--127
-[]|\T1/lmr/m/n/8 (+20) cited by ti-tle, method name un-ver-i-fied;
- []
-
-
-Underfull \hbox (badness 5519) in paragraph at lines 128--128
-[]|\T1/lmr/m/n/8 (+20) HindsightBench freezes ``un-der
- []
-
-
-Underfull \hbox (badness 3364) in paragraph at lines 129--129
-[]|\T1/lmr/m/n/8 (+20) ``Mutation With-out Vari-a-tion'':
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 130--130
+Underfull \hbox (badness 10000) in paragraph at lines 120--120
 []|\T1/lmr/m/n/8 (+20) Abs,
  []
 
 
+Underfull \hbox (badness 1960) in paragraph at lines 125--125
+[]|\T1/lmr/m/n/8 (+20) SeaEvo (2604.24372) re-ports a
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--127
+[]|\T1/lmr/m/n/8 (+20) both are causal-decoupling re-sults; only
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
+[]|\T1/lmr/m/n/8 (+20) GECCO M3c,
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 130--131
-[]|\T1/lmr/m/n/8 (+20) R2 #30;
+[]|\T1/lmr/m/n/8 (+20) GECCO m10,
  []
 
 
-Underfull \hbox (badness 2418) in paragraph at lines 131--132
-[]|\T1/lmr/m/n/8 (+20) stats F13; R2
+Underfull \hbox (badness 10000) in paragraph at lines 131--131
+[]|\T1/lmr/m/n/8 (+20) ``EvoDiverse (2606.10587)'';
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--132
-\T1/lmr/m/n/8 (+20) #4; GECCO
+Underfull \hbox (badness 8019) in paragraph at lines 131--131
+[]|\T1/lmr/m/n/8 (+20) cited by ti-tle, method name un-ver-i-fied;
  []
 
 
-Underfull \hbox (badness 1642) in paragraph at lines 132--132
-[]|\T1/lmr/m/n/8 (+20) Sonnet multi-radius ``against a
+Underfull \hbox (badness 5519) in paragraph at lines 132--132
+[]|\T1/lmr/m/n/8 (+20) HindsightBench freezes ``un-der
  []
 
 
-Underfull \hbox (badness 2418) in paragraph at lines 133--134
-[]|\T1/lmr/m/n/8 (+20) stats F17; R2
+Underfull \hbox (badness 3364) in paragraph at lines 133--133
+[]|\T1/lmr/m/n/8 (+20) ``Mutation With-out Vari-a-tion'':
  []
 
 
-Underfull \hbox (badness 1337) in paragraph at lines 134--134
-\T1/lmr/m/n/8 (+20) never de-liv-ered; ``cryp-to-graphic
+Underfull \hbox (badness 10000) in paragraph at lines 134--134
+[]|\T1/lmr/m/n/8 (+20) Abs,
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 134--135
-[]|\T1/lmr/m/n/8 (+20) stats F21;
- []
-
-
-Underfull \hbox (badness 1968) in paragraph at lines 135--135
-[]|\T1/lmr/m/n/8 (+20) five HTML work-ing com-ments
+[]|\T1/lmr/m/n/8 (+20) R2 #30;
  []
 
 
 Underfull \hbox (badness 2418) in paragraph at lines 135--136
+[]|\T1/lmr/m/n/8 (+20) stats F13; R2
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 135--136
+\T1/lmr/m/n/8 (+20) #4; GECCO
+ []
+
+
+Underfull \hbox (badness 1642) in paragraph at lines 136--136
+[]|\T1/lmr/m/n/8 (+20) Sonnet multi-radius ``against a
+ []
+
+
+Underfull \hbox (badness 2418) in paragraph at lines 137--138
+[]|\T1/lmr/m/n/8 (+20) stats F17; R2
+ []
+
+
+Underfull \hbox (badness 1337) in paragraph at lines 138--138
+\T1/lmr/m/n/8 (+20) never de-liv-ered; ``cryp-to-graphic
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 138--139
+[]|\T1/lmr/m/n/8 (+20) stats F21;
+ []
+
+
+Underfull \hbox (badness 1968) in paragraph at lines 139--139
+[]|\T1/lmr/m/n/8 (+20) five HTML work-ing com-ments
+ []
+
+
+Underfull \hbox (badness 2418) in paragraph at lines 139--140
 []|\T1/lmr/m/n/8 (+20) stats F22; R2
  []
 
 
-Underfull \hbox (badness 5260) in paragraph at lines 135--136
+Underfull \hbox (badness 5260) in paragraph at lines 139--140
 \T1/lmr/m/n/8 (+20) #29; GECCO
  []
 
-ignored error: Infinite glue shrinkage found in box being split [27]) [28]
+ignored error: Infinite glue shrinkage found in box being split [28]) [29]
 (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 7D5361F2FAEE46CC892503E2B1979D40;8302.
+(rerunfilecheck)             Checksum: 8943EFE7367806B47860D5BF59F3A6C6;8229.
  ) 
 Here is how much of TeX's memory you used:
- 14269 strings out of 467871
- 228113 string characters out of 5418376
- 708413 words of memory out of 5000000
+ 14282 strings out of 467871
+ 228246 string characters out of 5418376
+ 706511 words of memory out of 5000000
  42388 multiletter control sequences out of 15000+600000
- 726820 words of font info for 301 fonts, out of 8000000 for 9000
+ 727436 words of font info for 307 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,90p,1003b,673s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,90p,1003b,658s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
 b><C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb
 ><C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx9.pfb>
@@ -1016,9 +1087,9 @@ m/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/Users/soham
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/soham
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/soham/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on main.pdf (28 pages, 949287 bytes).
+Output written on main.pdf (29 pages, 955609 bytes).
 PDF statistics:
- 668 PDF objects out of 1000 (max. 8388607)
- 120 named destinations out of 1000 (max. 500000)
+ 673 PDF objects out of 1000 (max. 8388607)
+ 121 named destinations out of 1000 (max. 500000)
  52485 words of extra memory for PDF output out of 61914 (max. 10000000)
 

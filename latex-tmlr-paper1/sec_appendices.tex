@@ -73,6 +73,10 @@ P-M4 & $N = 57$ modal $= T(8,57)$, rival count 0 & yes & confirmed (6/10 on-pred
 F-M1 (arm M falsifier, filler branch) & modal $\ne V(k^*, m)$ at 2+ of 3 converge cells, ties count as NOT & yes, tie-stated in registration & \textbf{triggered at 3 of 3}; $V(k, m)$ restricted to $m \le 1$ (\S3.4) \\
 F-M2 (arm M falsifier, truncate branch) & $N = 57$ modal $\ne T(8,57)$ & yes & not triggered \\
 Arm M rejection rule & runtime deaths excluded, counted & yes (registered for this arm) & 3 $N = 41$ invocations excluded, cell reported as 12 of 15 \\
+GM3 serving path & first-party API only & amendment registered \textbf{before resumption} (\texttt{arm\_gm3\_amendment1\_openrouter.md}, \texttt{67cc4a1}) & final 41 of 140 cells via routed path, provider logged per row; dual accounting 59.0\% / 57.5\%, no verdict change (\S3.6, \S8) \\
+Arm V proposer set & 3 opencode aliases & expanded 3 $\rightarrow$ 13 by amendments 1--2, each registered \textbf{before the sampling it governs} & verdicts in \S3.7; \texttt{big-pickle} disclosed as vendor-unattested in amendment 1 \\
+Arm V transport repair & single pass, \texttt{max\_tokens} 8192 & amendment 3 registered \textbf{before resumption} (mechanical only: 24,576 budget, retry/backoff, censored-row accounting) & 877 attempt rows over 325 slots; floor evaluated per slot (\S3.7) \\
+GM3 rival-structure check & --- & \textbf{post hoc}, disclosed (\texttt{diagnostics\_gm3\_rival.py}) & 27/27 rival-valued discriminating-cell packings carry the rival's two-radius structure (\S3.6); the registered signature is scoped to $k^*$ and cannot see $(k^*{-}1)$ structure \\
 Falsifier & trace\_v2 validity \texttt{<=} bare at 2+ of 3 $N$ & \textbf{both readings reported} & \textbf{triggered} under the registered tie-inclusive reading (2/3 cells); not triggered under the strict \texttt{<} the code implemented (\S6.3) \\
 Ladder inclusion & --- & \textbf{post hoc} & \texttt{opus\_alias} initially excluded, later included after results known; ladder reported both ways (\S5) \\
 Cap exclusion & --- & \textbf{not registered} & five records excluded; both rates reported (\S3.3) \\
