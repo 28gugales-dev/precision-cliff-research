@@ -1,0 +1,16 @@
+﻿resume: 167 completed invocations skipped
+gemma-4-31b-it:free                N=13 s3  len=    0 180.7s HTTPError: HTTP Error 429: Too Many Requests {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Google AI Studio","is_byok":false,"provider_error_code":"429","limit_source":"upstream_provider_shared_pool","remedy_hint":"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to
+gemma-4-31b-it:free                N=13 s5  len=  234 142.2s 
+gemma-4-31b-it:free                N=35 s1  len=  805  20.9s 
+gemma-4-31b-it:free                N=35 s3  len=  625  61.8s 
+gemma-4-31b-it:free                N=37 s1  len=    0 180.7s HTTPError: HTTP Error 429: Too Many Requests {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Google AI Studio","is_byok":false,"provider_error_code":"429","limit_source":"upstream_provider_shared_pool","remedy_hint":"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to
+gpt-oss-20b:free                   N=17 s2  len=    0 699.1s 
+north-mini-code:free               N=13 s1  len=    0 713.5s 
+gemma-4-31b-it:free                N=37 s3  len=  740 110.0s 
+north-mini-code:free               N=13 s2  len=    0 823.8s 
+north-mini-code:free               N=13 s4  len=    0 766.5s 
+gpt-oss-20b:free                   N=17 s3  len=    0 1615.8s 
+north-mini-code:free               N=17 s1  len=    0 691.2s 
+gpt-oss-20b:free                   N=17 s5  len=    0 1160.4s 
+north-mini-code:free               N=17 s2  len=    0 578.1s 
+done

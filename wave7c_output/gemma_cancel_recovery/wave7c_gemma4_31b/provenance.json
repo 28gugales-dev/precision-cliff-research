@@ -1,0 +1,21 @@
+{
+  "created": "2026-08-16 17:50:47",
+  "gpus": [
+    "Tesla T4, 15360 MiB",
+    "Tesla T4, 15360 MiB"
+  ],
+  "repo": "mradermacher/gemma-4-31B-it-GGUF",
+  "gens": 10,
+  "seeds": [
+    7501,
+    7502,
+    7503,
+    7504,
+    7505
+  ],
+  "temperature": 0.8,
+  "top_p": 0.95,
+  "runner_version": "wave7c_gemma4_31b_v1",
+  "purpose": "wave 7c screened family generality: gemma4_31b (31B), prereg sha b1fc9ee9c706a3eb",
+  "conditions": {}
+}

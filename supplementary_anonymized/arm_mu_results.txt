@@ -1,0 +1,29 @@
+﻿rows: 180
+tie-break convention: descriptive per-cell 'modal' lines break count-ties by first-encountered bucket (Counter insertion order over file order). CH modal detection is tie-aware and counts ties as neither prediction. Known ties on this data: A_anchor N=31 (2.594 vs 2.584, both n=2) and C_offfamily N=13 (all valid buckets n=1); the latter makes P-MU4's N=13 entry tie-sensitive - an alternative tie-break could flip it False->True, which would only strengthen the template reading; the reported False is the conservative pick. The MU decision rule and F-MU1 use anchor-rates, not modals, and are tie-free.
+
+== ARM MU ==
+A_anchor: valid 28/45, anchor-rate 7/28 = 25.00% CI[0.13,0.43]
+  N=13: anchor 4/12, modal 1.625 (4), k_emp {'3': 2, '4': 10}
+  N=21: anchor 1/5, modal 2.13 (1), k_emp {'5': 4, '4': 1}
+  N=31: anchor 2/11, modal 2.593749 (2), k_emp {'5': 3, '6': 8}
+B_rival: valid 26/45, anchor-rate 0/26 = 0.00% CI[0.00,0.13] keep-or-improve 26/26; k-inherit 26/26
+  N=13: anchor 0/8, modal 1.7761429 (8), k_emp {'3': 8}
+  N=21: anchor 0/7, modal 2.2588836 (7), k_emp {'4': 7}
+  N=31: anchor 0/11, modal 2.7485284 (11), k_emp {'5': 11}
+C_offfamily: valid 34/45, anchor-rate 20/34 = 58.82% CI[0.42,0.74]
+  N=13: anchor 1/7, modal 1.3 (1), k_emp {'5': 3, '10': 1, '9': 1, '3': 1, '4': 1}
+  N=21: anchor 7/13, modal 2.1 (7), k_emp {'5': 9, '7': 3, '15': 1}
+  N=31: anchor 12/14, modal 2.5833323 (12), k_emp {'6': 14}
+
+DECISION (registered rule): DISSOLVES -> F-MU1 TRIGGERED
+P-MU1 (A anchor-rate >= 50%): NOT MET (25%)
+P-MU2 (B anchor-rate >= 35%): NOT MET (0%)
+P-MU3 (B k-inheritance < 50%): NOT MET (100%)
+P-MU4 (C modal on k* grid, per cell): [False, True, True]
+
+== ARM CH ==
+N=13: valid 2, modal 1.625 (2), anchor=1.625, argmax=1.7761424 -> T-anchor
+N=21: valid 5, modal 2.2588835 (3), anchor=2.1, argmax=2.2588835 -> ARGMAX
+N=31: valid 7, modal 2.5833307 (4), anchor=2.5833333, argmax=2.7485281 -> T-anchor
+P-CH1 (template, modal=T(k*,N) at >=2/3): HOLDS (2/3)
+P-CH2 (tractability, modal=argmax at >=2/3): no (1/3)
