@@ -1,6 +1,33 @@
 % 1:1 markup translation of paper1_draft.md lines 251-589 (S3, S4).
 \section{Preregistered forecast, out of sample}
 
+Twelve registered arms appear in this paper. Each was registered before its sampling, each
+is reported regardless of outcome, and the falsifiers that fired are flagged in place:
+
+\begin{center}
+\begin{small}
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}p{0.14\linewidth}p{0.05\linewidth}p{0.11\linewidth}p{0.12\linewidth}p{0.16\linewidth}p{0.27\linewidth}@{}}
+\toprule
+Arm & \S & Proposer(s) & Design & Registered test & Outcome \\
+\midrule
+F (square, bare) & 3.2--3.3 & weak tier & 7 $N$ $\times$ 5--20 & P1--P5 exact-value modes & modal at 7/7 $N$ \\
+S (mid tier) & 5 & Sonnet tier & 3 $N$ $\times$ 10 & P-S1--P-S4 tier contrasts & 1/30 on-prediction, 100\% valid \\
+O (top alias) & 5 & \texttt{opus\_alias} & 3 $N$ $\times$ 10 & P-O1--P-O4 & 13\% valid; 3 predictions not evaluable (deviation, Table 4) \\
+T (trace) & 6 & weak tier & 3 $N$ $\times$ 20 $\times$ 2 arms & P-T1--P-T4 + falsifier & falsifier \textbf{triggered} (tie reading); P-T3 fragile \\
+G (rectangle) & 4 & 16 proposers & 2 cells & out-of-sample transfer & partial, 5/11; formula negative result kept \\
+M (branch stress) & 3.4 & weak tier & 4 $N$ $\times$ 15 & P-M1--P-M4 + F-M1/F-M2 & F-M1 \textbf{triggered 3/3}: extend branch dies at $m \ge 4$; fifth $k$ confirms \\
+MU (mutation) & 3.5 & weak tier & 3 parents $\times$ 3 $N$ $\times$ 15 & P-MU1--P-MU4 + F-MU1 & F-MU1 \textbf{triggered}: anchor dissolves under conditioning \\
+CH (choice) & 3.5 & weak tier & 3 $N$ $\times$ 15 & P-CH1 vs P-CH2 & choice follows score table; execution fails off-template 30/31 \\
+GM (gemini-flash-lite) & 8 & 2nd vendor & 7 $N$ $\times$ 20 & GM-chain bars & UNDERPOWERED (20 valid / 140) \\
+GM2 (gemma, 4k budget) & 8 & 2nd vendor & 7 $N$ $\times$ 20 & GM-chain bars & 0/140 parseable --- budget confound, diagnosed by GM3 \\
+GM3 (gemma, 16k budget) & 3.6 & gemma-4-26b & 7 $N$ $\times$ 20 & P-GM3.1--.3 + falsifier & pooled bar met; misses are the rival construction \\
+V (cross-vendor zero-shot) & 3.6 & 13 free-tier aliases & 5 $N$ $\times$ 5 & floor + V1/V2 & 2 vendors TRANSFER, gemma-4-31b DOES-NOT-TRANSFER, V2 HOLDS \\
+\bottomrule
+\end{tabular}
+\end{small}
+\end{center}
+
 \subsection{Registration protocol}
 
 For each cell the prompt is pinned and its SHA-256 digest written to disk first --- the $N = 13$
@@ -144,6 +171,27 @@ analogous arm F exclusion was not (\S9) --- and counted here: the cell is $n = 1
 launched. Raw rows verbatim in
 \texttt{arm\_m\_collect.jsonl}; scoring in \texttt{arm\_m\_analysis.py}, conventions identical to arm F.
 
+\textbf{Table M --- Arm M, forecast versus outcome (all four registered cells).}
+
+\begin{center}
+\begin{small}
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}ccp{0.09\linewidth}p{0.16\linewidth}p{0.20\linewidth}ccp{0.16\linewidth}@{}}
+\toprule
+$N$ & $k^*$ & Branch & Registered prediction & Modal valid output & Freq & Valid / sampled & Verdict \\
+\midrule
+20 & 4 & extend, $m = 4$ & $V(4,4) = 2.2071068$ & $T(5,20) = 2.0000000$ ($5 \times 4$ exact) & 12/15 & 15/15 & P-M1 \textbf{disconfirmed} \\
+30 & 5 & extend, $m = 5$ & $V(5,5) = 2.7071068$ & $T(6,30) = 2.5000000$ ($6 \times 5$ exact) & 11/14 & 14/15 & P-M2 \textbf{disconfirmed} \\
+41 & 6 & extend, $m = 5$ & $V(6,5) = 3.1725890$ & $T(7,41) = 2.9285714$ ($7 \times 6 - 1$) & 6/7 & 7/12 & P-M3 \textbf{disconfirmed} \\
+57 & 8 & truncate & $T(8,57) = 3.5625000$, rival count 0 & $T(8,57) = 3.5625000$ & 6/10 & 10/15 & P-M4 confirmed; rival 0/10 \\
+\bottomrule
+\end{tabular}
+\end{small}
+\end{center}
+
+Exactly one $V(k^*, m)$ construction appears in 36 valid converge-cell rows; filler count is 0
+in 35 of 36. Regenerates from \texttt{arm\_m\_collect.jsonl} via \texttt{arm\_m\_analysis.py}.
+
 The net effect on the paper's claim is a sharpening. Arm M does not rescue $V(k, m)$; the closed form now reads
 ``$k^* = \mathrm{round}(\sqrt{N})$ names the grid family; at $k^{*2} > N$ the model truncates that grid (five $k$
 confirmed); at $k^{*2} \le N$ it extends only to $m \le 1$ --- beyond that it prefers the $(k^*{+}1)$
@@ -220,14 +268,75 @@ and right about instantiation. This is the same asymmetry arm MU found from the 
 direction, and it narrows the paper's central claim to its defensible core: the template is
 not what the model prefers; it is what the model can build.
 
+\textbf{Table MU --- Arm MU, registered thresholds versus outcome, by parent condition (pooled
+over $N = 13$, 21, 31).}
+
+\begin{center}
+\begin{small}
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}p{0.15\linewidth}cp{0.13\linewidth}p{0.13\linewidth}p{0.10\linewidth}p{0.08\linewidth}p{0.24\linewidth}@{}}
+\toprule
+Parent & Valid & Anchor-rate (CI) & Registered threshold & Keep-or-improve & $k$-inheritance & Reading \\
+\midrule
+\emph{B\_rival} (in-family argmax) & 26 & 0/26 (0\%, $[0.00, 0.13]$) & DISSOLVES if $\le$ 20\% & 26/26 (bar $\ge$ 50\%) & 26/26 & \textbf{F-MU1 triggered} --- anchoring does not transfer to one-parent calls \\
+\emph{A\_anchor} (model's own anchor) & 28 & 7/28 (25\%, $[0.13, 0.43]$) & P-MU1 predicted $\ge$ 50\% & --- & --- & not met --- even the anchor-as-parent does not hold the anchor \\
+\emph{C\_offfamily} (diagonal, $\approx$0.6) & 34 & 20/34 abandon parent for $k^*$-grid (58.8\%, $[0.42, 0.74]$) & P-MU4: template reasserts & --- & --- & holds at $N = 21$, 31; not at $N = 13$ (1/7) \\
+\bottomrule
+\end{tabular}
+\end{small}
+\end{center}
+
+\textbf{Table CH --- Arm CH, valid-conditioned verdict versus attempt-level decomposition.}
+
+\begin{center}
+\begin{small}
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}ccp{0.24\linewidth}cp{0.22\linewidth}p{0.21\linewidth}@{}}
+\toprule
+$N$ & Stated argmax & Modal valid output & Valid & Invalid rows attempting argmax & Registered verdict \\
+\midrule
+13 & 1.7761424 & $T(4,13) = 1.6250000$ & 2/15 & all & P-CH1 holds \\
+21 & 2.2588835 & argmax, 3/5 & 5/15 & all & P-CH2 (argmax) \\
+31 & 2.7485281 & $T(6,31) \approx 2.5833$ (4/7, one-sample margin) & 7/15 & all & P-CH1 holds \\
+pooled & --- & template 2 of 3 cells & 14/45 & \textbf{31/31} (30 misplaced fillers, 1 unevaluable radicals) & choice follows score table; execution fails off-template \\
+\bottomrule
+\end{tabular}
+\end{small}
+\end{center}
+
 Raw rows verbatim in \texttt{arm\_mu\_collect.jsonl} (180 of 180 launched invocations collected, no
 runtime deaths); scoring in \texttt{arm\_mu\_analysis.py}, committed before sampling completed; frozen
 output in \texttt{arm\_mu\_results.txt}. This arm brings the study corpus to 468 invocations.
 
-\subsection{Preregistered extension (arm GM3): the attractor crosses vendors at the pooled level, and departures from it land on the family rival}
+\subsection{Preregistered cross-vendor chain (arms GM3 and V): the attractor is a family property, and its boundary runs both ways}
 
-Every arm above addresses one vendor's models. Arm GM3 asks whether the anchoring law is a
-fact about that lineage or about weak-tier models as a class, by re-running the
+Every arm above addresses one vendor's models. Two registered arms take the same
+byte-identical prompts across vendors --- arm GM3 under a laboratory-grade instrument against
+one second-vendor family, arm V under free-tier serving against thirteen aliases spanning
+five vendors. One table carries the chain's verdicts; the two instruments are then reported
+in full.
+
+\textbf{Table CV --- Cross-vendor verdicts, both instruments.}
+
+\begin{center}
+\begin{small}
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}p{0.10\linewidth}p{0.13\linewidth}p{0.14\linewidth}p{0.20\linewidth}p{0.32\linewidth}@{}}
+\toprule
+Vendor & Model & Instrument & Registered test & Verdict \\
+\midrule
+Google & gemma-4-26b & first-party API, 7 $N$ $\times$ 20 & pooled $\ge$ 30\%; cell-level $\ge$ 5; falsifier $\ge$ 4 fails & pooled \textbf{HELD} (57.5\%; discriminating cells 11/43); cell-level short (2/5, falsifier not triggered); all three misses are the \emph{rival construction} (27/43) \\
+Cohere & north-mini-code & free-tier alias, 5 $N$ $\times$ 5 & V1 $\ge$ 50\% of valid on-prediction; V2 rival $\le$ 10\% & \textbf{TRANSFERS} (8/12 = 67\%); V2 HOLDS (0/4) \\
+OpenAI (open-weight) & gpt-oss-20b & free-tier alias, 5 $N$ $\times$ 5 & same & \textbf{TRANSFERS} (11/18 = 61\%); V2 HOLDS (0/9) \\
+Google & gemma-4-31b & free-tier alias, 5 $N$ $\times$ 5 & same & \textbf{DOES-NOT-TRANSFER} (0/15); V2 HOLDS (0/3) \\
+10 further aliases & (5 vendors) & free-tier & floor: $\ge$ 10 of 25 invocations valid & BELOW-FLOOR; failure taxonomies logged, no claim in either direction \\
+\bottomrule
+\end{tabular}
+\end{small}
+\end{center}
+
+\textbf{Arm GM3.} Arm GM3 asks whether the anchoring law is a
+fact about the original lineage or about weak-tier models as a class, by re-running the
 unconditioned-call protocol against a second vendor's open-weight family
 (gemma-4-26b-a4b-it) through its first-party API: seven $N$ cells, twenty samples each,
 registered predictions and falsifier fixed before sampling (prereg chain in \S9; the
@@ -297,11 +406,10 @@ local search would'' perform and that the original family performs in 2 of 57 va
 lands, and a family with more arithmetic reach executes the harder in-family construction
 rather than truncating --- same recipe family, other branch. Validity
 collapsing at the two largest cells (2 then 0 valid of 20) bounds the family's competence
-window on this task; both cells are UNSCOREABLE under the registered rule and claim nothing.
+window on this task; both cells are UNSCOREABLE under the registered rule ($<$ 3 valid
+samples, fixed in the GM-chain registration before sampling) and claim nothing.
 
-\subsection{Preregistered extension (arm V): anchoring transfers by vendor --- and fails by family}
-
-Arm GM3 varied the vendor while holding the instrument close to laboratory grade ---
+\textbf{Arm V.} Arm GM3 varied the vendor while holding the instrument close to laboratory grade ---
 first-party API, pinned temperature, explicit output budget, seven cells at twenty samples.
 Arm V varies vendor and serving class at once, under the same byte-identical arm-F prompts
 both arms inherit (SHA-256 per $N$ restated in the registration and recomputed at call time,

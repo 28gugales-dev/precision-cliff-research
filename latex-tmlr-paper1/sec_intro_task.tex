@@ -74,6 +74,19 @@ concentration shift it produced (87\% vs 70\%, $p = 0.0325$ uncorrected) fails m
 correction, is carried by one of three cells and is wave-confounded (\S6.4), so it is reported
 as met-as-registered exploratory material, not a demonstrated effect. Studies collecting
 process descriptors \emph{by request} are nonetheless measuring a perturbed distribution.
+(4) \emph{A family boundary, measured from both sides --- and a near-deterministic strong form.}
+Anchoring is a family property, not a vendor artifact: it transfers to two further vendors'
+weak models (61--67\% of valid outputs, \S3.6), while one further family brackets it ---
+gemma-4-26b escapes \emph{upward} to the in-family rival construction (27/43 discriminating-cell
+validities) and gemma-4-31b, above the same validity floor, anchors on nothing (\S3.6). Where
+anchoring holds, its strong form is near-deterministic: pooling every discriminating-cell
+validity across the original-family and transfer-vendor arms, the provably better in-family
+rival is emitted 3 times in 147 (arm F 2/57, trace 1/53, rectangle 0/11, arm M 0/10, arm V
+0/16 --- a descriptive pool over separately registered arms, each reported at its own bar in
+\S3--\S4; gemma-4-26b, the family that does \emph{not} anchor at its discriminating cells, is the
+counterexample that proves the statistic is a family trait, \S3.6). The mechanism
+decomposition (arm CH, \S3.5) locates the boundary in execution, not selection: the template
+is not what the model prefers but what it can reliably build.
 
 \textbf{Non-claim guard.} Everything here is a behavioral regularity over emitted outputs. We make
 no claim about mechanism inside the weights, and the paper uses that vocabulary throughout: the
@@ -179,3 +192,31 @@ genuine dichotomy, and it is what \S3 and \S4 test. The governing quantity is th
 $N - k^{*2}$. Primality is not the variable --- 13, 23, 31, 43, 47 and 59 trap while 11, 17, 19, 29,
 37, 41 and 53 converge --- refuting the prior work's conjecture about primes near 30 before any
 model is queried.
+
+\subsection{Notation and conventions}
+
+Terms used throughout, gathered here so no verdict table depends on a definition made
+elsewhere:
+
+\begin{center}
+\begin{small}
+\begin{tabular}{@{}p{0.26\linewidth}p{0.68\linewidth}@{}}
+\toprule
+Term & Meaning \\
+\midrule
+$k^*(N)$ & nearest-square grid order, $\mathrm{round}(\sqrt{N})$ (a definition, \S2.3) \\
+$V(k, m)$, $T(k, N)$ & extend-with-$m$-fillers value $k/2 + m(\sqrt{2}-1)/(2k)$; truncated-grid value $N/(2k)$ \\
+anchor & the template the proposal distribution concentrates on at a given $N$ \\
+on-prediction & emitted sum within $2\times10^{-3}$ of the registered predicted value \\
+rival (argmax) & the highest-valued member of the recipe family at that $N$ when it differs from the prediction --- inside a trap zone, $V(k^*{-}1, m)$ \\
+discriminating cell & $N$ where prediction $\ne$ family argmax; only these can distinguish anchoring from family search \\
+validity & non-overlap and containment at $10^{-6}$ (primary) and $10^{-9}$ (logged), both always reported \\
+trap / converge & branch by sign of $N - k^{*2}$: truncate when $k^{*2} > N$, extend when $k^{*2} \le N$ \\
+tier & nominal capability class of the serving alias addressed (weak/mid/top); \texttt{opus\_alias} is a bare alias with no attestable weights binding \\
+BELOW-FLOOR & model failing its arm's registered validity floor; no anchoring claim in either direction \\
+UNSCOREABLE & cell with $<$ 3 valid samples under the GM-chain registration; claims nothing \\
+mixed-serving accounting & pooled rate including cells collected through a registered serving-path amendment; the first-party-only rate is always given beside it \\
+\bottomrule
+\end{tabular}
+\end{small}
+\end{center}

@@ -4,13 +4,10 @@
 Independent Researcher
 `28gugales@gmail.com`
 
-*(Revision 3, 2026-08-17. Revision 2 (2026-08-01) implemented `p4_review_stats.md`,
-`p4_review_reviewer2.md` and `p4_review_gecco.md`, plus the arbitration in `p6_cruxes.md`;
-every claim that changed relative to revision 1 is itemized in Table 5 (Appendix C).
-Revision 3 adds the preregistered extension arms M, MU/CH, GM3 and V (§3.4–3.6), a
-condensed abstract, the notation and arms-index tables (§2.4, §3), and the GM3
-rival-construction analysis (§3.6); the deviations table is Table 4 (Appendix B), and the
-ledger correction, the review-process disclosure and the stopping rule are in §9.)*
+*(Revision 2, 2026-08-01. Implements `p4_review_stats.md`, `p4_review_reviewer2.md` and
+`p4_review_gecco.md`, plus the arbitration in `p6_cruxes.md`. Every claim that changed relative
+to revision 1 is itemized in Table 5 (Appendix C); the deviations table is Table 4 (Appendix B),
+and the ledger correction, the review-process disclosure and the stopping rule are in §9.)*
 
 ---
 

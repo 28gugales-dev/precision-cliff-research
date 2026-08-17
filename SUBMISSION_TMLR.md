@@ -108,8 +108,14 @@ never submit them.
   conditions"), phantom GM3-vs-V protocol split removed (prompts
   byte-identical, real axes: model variant + serving + budget), arm V floor
   wording corrected to slot accounting, corpus sentence de-staled, GM3
-  prereg SHAs cited, 4 Table 4 rows added. `latex-tmlr-paper1/` compiles
-  clean, **29 pp**, fidelity-audited (all greps PASS).
+  prereg SHAs cited, 4 Table 4 rows added. Same-day structural round
+  (council recommendations, all applied): abstract condensed 805 → 363
+  words, Contribution 4 (family boundary + 3/147 strong form), §2.4
+  notation table, §3 arms-index table (12 arms), Tables M/MU/CH for the
+  falsifier-triggered arms, §3.6+§3.7 merged into one cross-vendor
+  section with unified Table CV (all §3.7 refs renumbered), revision note
+  bumped to Revision 3. `latex-tmlr-paper1/` compiles
+  clean, **31 pp**, fidelity-audited (all greps PASS).
 - **Supplementary**: `build_anon_bundle.py` regenerated
   `supplementary_anonymized.zip` (6.2 MB, 0 identity leaks post-scan) now
   covering wave-7c, screen S, the full arm surface (F→V, GM chain) and all

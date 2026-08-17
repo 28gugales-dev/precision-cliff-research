@@ -13,6 +13,10 @@
 %   sec_appendices.tex          lines 1181-end (Appendices A, B, C)
 % NOTE 2026-08-17: S3.7 (arm V) added to the source (~55 lines) and mirrored
 %   into sec_forecast_transfer.tex (+S5/S8/S9 edits); line ranges above shifted.
+% NOTE 2026-08-17 (revision 3): abstract condensed; S1 contribution (4) and
+%   S2.4 notation table added (sec_intro_task.tex); S3 arms-index table,
+%   Tables M/MU/CH/CV added and S3.6+S3.7 merged into one S3.6 cross-vendor
+%   chain (sec_forecast_transfer.tex); all S3.7 cross-refs now S3.6.
 % Title from line 1; revision note lines 7-10 (kept, italic, after
 % \maketitle); abstract lines 15-65.
 % Conversion rules: prose verbatim; pipe tables -> booktabs/longtable;
@@ -67,70 +71,43 @@ Unconditioned Zero-Shot Circle Packing}
 \maketitle
 
 \begin{center}
-\emph{(Revision 2, 2026-08-01. Implements \texttt{p4\_review\_stats.md}, \texttt{p4\_review\_reviewer2.md} and
-\texttt{p4\_review\_gecco.md}, plus the arbitration in \texttt{p6\_cruxes.md}. Every claim that changed relative
-to revision 1 is itemized in Table 5 (Appendix C); the deviations table is Table 4 (Appendix B),
-and the ledger correction, the review-process disclosure and the stopping rule are in \S9.)}
+\emph{(Revision 3, 2026-08-17. Revision 2 (2026-08-01) implemented \texttt{p4\_review\_stats.md},
+\texttt{p4\_review\_reviewer2.md} and \texttt{p4\_review\_gecco.md}, plus the arbitration in \texttt{p6\_cruxes.md};
+every claim that changed relative to revision 1 is itemized in Table 5 (Appendix C). Revision 3
+adds the preregistered extension arms M, MU/CH, GM3 and V (\S3.4--3.6), a condensed abstract,
+the notation and arms-index tables (\S2.4, \S3), and the GM3 rival-construction analysis (\S3.6);
+the deviations table is Table 4 (Appendix B), and the ledger correction, the review-process
+disclosure and the stopping rule are in \S9.)}
 \end{center}
 
 \begin{abstract}
 Language models are increasingly placed in the proposal role of discovery loops such as
 FunSearch and AlphaEvolve, on the assumption that their outputs explore a diverse solution
-space. We characterize one component of that assumption: the \emph{unconditioned} proposal --- a
-single zero-shot, code-free call with no parent program, no fitness feedback and no evaluator
-in context. On a classic constructive-geometry benchmark, maximizing the sum of radii of $N$
-circles in a unit square, a weak-tier proposer does not search. It emits a
-grid-with-corner-fillers template and truncates it, even when a provably better construction is
-one parameter away. The behavior admits a closed form: a nearest-square order $k^* = \mathrm{round}(\sqrt{N})$
-with a value function $V(k, m)$ identifies the \emph{empirical modal output} --- which template, and
-hence its computed value --- at all seven tested $N$, stated before sampling. Per-sample agreement equals that modal frequency --- 56--86\% by
-cell --- while a round-number baseline hits 2 of 69 valid samples: the formula captures
-everything short of sampling entropy. We preregistered these point predictions with prompt
-hashes before sampling and tested them out of sample on two containers, a square and a
-rectangle, for which the rule was restated but never refitted; on the rectangle the informative
-result is negative --- 0 of 11 valid samples reached the provably higher-scoring rival --- while
-on-prediction support is partial (5 of 11, not separable from a uniform-template null). Across three tiers we find three
-attractor families and an inversion: constructive ambition rises monotonically with nominal
-tier while execution validity does not --- it rises then collapses (78\% $\rightarrow$ 100\% $\rightarrow$ 13\% at the
-primary $10^{-6}$ tolerance; the third arm is
-an unattributable serving alias, reported with that caveat throughout). Trace elicitation is an
-intervention rather than an observation: requesting a method line concentrates outputs onto the
-anchor (87\% vs 70\% on-prediction, $p = 0.03$ uncorrected --- failing Holm over the registered
-family, carried by one of three cells and confounded with a collection-wave split of comparable
-size), with no detectable validity change ($p = 0.30$,
-$n = 60$/arm; not powered to exclude an effect of the observed size). Method lines are checkable
-against emitted coordinates: 54 of 56 scoreable claims (96.4\%) describe the object actually
-built. Three scope conditions are load-bearing. The closed form is a weak-tier regularity;
-it does not describe the two higher tiers sampled. It is a \emph{family} property rather than a
-vendor artifact, and the boundary runs both ways: a preregistered second-vendor arm
-(gemma-4-26b, \S3.6) meets its registered pooled bar (57.5\% of valid packings on the
-predicted sum against 30\%) --- but the pass is carried by the two cells where prediction and
-family argmax coincide (19/20 and 15/15), and on the three cells that separate them the
-family lands the prediction in 11 of 43 valid packings while emitting the \emph{rival
-construction} --- the drop-to-$(k^*{-}1)$-and-fill packing the original family reaches twice in
-57 valid samples --- in 27 of 43, every one carrying the rival's exact two-radius structure;
-a further preregistered zero-shot arm (arm V, \S3.7; byte-identical prompts, thirteen
-free-tier aliases across five vendors) then finds the anchor transferring to two additional
-vendors (61--67\% of valid outputs on the registered values, zero rival emissions) while
-gemma-4-31b clears the same validity floor and lands the prediction never. And it describes
-what an \emph{unconditioned} call emits, not what a loop converges
-to. A preregistered extension run after external review (arm M, \S3.4) sharpens the scope in
-both directions: the branch rule's fifth $k$ confirmed out of sample at $N = 57$ (modal output
-$T(8,57) = 3.5625000$, 0 of 10 valid samples on the rival), while the registered falsifier for
-the filler branch \textbf{triggered at 3 of 3 cells} --- at $N = 20$, 30 and 41 the model does not
-extend-and-fill but moves to the $(k^*{+}1)$ grid, so $V(k, m)$ describes behavior only on the
-$m \le 1$ support previously tested, and the extend branch of the rule is disconfirmed at $m \ge 4$.
-A second preregistered extension (arms MU and CH, \S3.5) tested whether the result transfers
-to parent-conditioned calls, and its registered falsifier \textbf{also triggered}: given a
-provably better in-family parent, 0 of 26 valid mutation samples return to the anchor
-(keep-or-improve 26/26, grid-order inheritance 26/26), so the anchoring result is a property
-of unconditioned calls only in the in-family-parent regime --- the one-parent regime that
-discovery loops actually run in is not described by it, and the title of this paper is
-scoped accordingly. The template
-reasserts itself only against a far-worse off-family parent (58.8\% snap-back). A companion
-probe that enumerates the full recipe family in the prompt (arm CH) decomposes the mechanism:
-choice follows the stated score table, but execution fails off-template in 30 of 31 invalid
-attempts --- the template is less what the model prefers than what it can reliably build.
+space. We characterize the \emph{unconditioned} proposal --- a single zero-shot, code-free call
+with no parent program, no fitness feedback and no evaluator in context --- on a classic
+constructive-geometry benchmark: maximize the sum of radii of $N$ circles in a unit square.
+A weak-tier proposer does not search. It emits a grid-with-corner-fillers template whose
+value admits a closed form: a nearest-square order $k^* = \mathrm{round}(\sqrt{N})$ with a value function
+$V(k, m)$ names the empirical modal output --- which template, hence which value --- at all seven
+tested $N$, stated and prompt-hashed before sampling; per-sample agreement equals the modal
+frequency itself (56--86\% by cell), against 3\% for a round-number baseline. Preregistered
+extensions then bound the claim in every direction, and the falsifiers that fired are
+reported as registered: the rule's extend branch is disconfirmed at $m \ge 4$ (arm M); the
+anchor dissolves under parent-conditioned calls (0 of 26 valid rival-parent samples return
+to it), scoping every claim here to unconditioned calls (arm MU); and handed the family's
+value table, the model \emph{chooses} the argmax but fails to execute it off-template in 30 of
+31 invalid attempts (arm CH) --- the template is not what the model prefers but what it can
+reliably build. Cross-vendor arms make the scope a family property: the anchor value
+transfers to two further vendors (61--67\% of valid outputs), while one family brackets it
+from both sides --- gemma-4-26b meets the registered pooled bar (57.5\%) yet emits the
+in-family \emph{rival} construction at 27 of 43 discriminating-cell validities, and gemma-4-31b
+clears the same validity floor anchoring on nothing. Across the original vendor's tiers,
+constructive ambition rises monotonically while execution validity rises then collapses
+(78\% $\rightarrow$ 100\% $\rightarrow$ 13\% at $10^{-6}$; the top arm is an unattributable
+serving alias, reported with that caveat). Requesting a method line is an intervention, not
+an observation --- it concentrates output onto the anchor (87\% vs 70\%, uncorrected,
+wave-confounded) --- yet the lines themselves are checkable and true: 54 of 56 scoreable
+claims describe the object actually built.
 \end{abstract}
 
 \input{sec_intro_task}
