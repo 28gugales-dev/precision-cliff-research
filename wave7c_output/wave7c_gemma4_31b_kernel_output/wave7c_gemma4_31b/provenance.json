@@ -1,0 +1,32 @@
+{
+  "created": "2026-08-17 05:54:53",
+  "gpus": [
+    "Tesla T4, 15360 MiB",
+    "Tesla T4, 15360 MiB"
+  ],
+  "repo": "mradermacher/gemma-4-31B-it-GGUF",
+  "gens": 10,
+  "seeds": [
+    7501,
+    7502,
+    7503,
+    7504,
+    7505
+  ],
+  "temperature": 0.8,
+  "top_p": 0.95,
+  "runner_version": "wave7c_gemma4_31b_v1",
+  "purpose": "wave 7c screened family generality: gemma4_31b (31B), prereg sha b1fc9ee9c706a3eb",
+  "conditions": {
+    "q4_k_m": {
+      "sha256": "d8479251963adb370bc8e544302cb5530a50c1885a2f096e1b3176317819d6cb",
+      "bytes": 18687062336,
+      "filename": "gemma-4-31B-it.Q4_K_M.gguf"
+    },
+    "q2_k": {
+      "sha256": "6705b24cfa225f7d8a2debfe6096fbb1353fa4d6802cc4d4ff4085bc9f4287d0",
+      "bytes": 11916312896,
+      "filename": "gemma-4-31B-it.Q2_K.gguf"
+    }
+  }
+}
