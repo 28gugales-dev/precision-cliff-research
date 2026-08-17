@@ -44,6 +44,22 @@ CONFIGS = {
         "proposer": "north-mini-code-1.0",
         "size_note": "Cohere North code model",
     },
+    # wave7c_addendum1_120b.md condition — split GGUF: q4/q2 name the FIRST
+    # shard, hf_hub_download must also fetch the siblings (the generated
+    # runner's download step handles a list; see addendum). H100-80GB only.
+    "nemotron_super_120b": {
+        "repo": "bartowski/nvidia_Nemotron-3-Super-120B-A12B-GGUF",
+        "q4": "nvidia_Nemotron-3-Super-120B-A12B-Q4_K_M/nvidia_Nemotron-3-Super-120B-A12B-Q4_K_M-00001-of-00003.gguf",
+        "q2": "nvidia_Nemotron-3-Super-120B-A12B-Q2_K/nvidia_Nemotron-3-Super-120B-A12B-Q2_K-00001-of-00002.gguf",
+        "extra_files": {
+            "q4": ["nvidia_Nemotron-3-Super-120B-A12B-Q4_K_M/nvidia_Nemotron-3-Super-120B-A12B-Q4_K_M-00002-of-00003.gguf",
+                    "nvidia_Nemotron-3-Super-120B-A12B-Q4_K_M/nvidia_Nemotron-3-Super-120B-A12B-Q4_K_M-00003-of-00003.gguf"],
+            "q2": ["nvidia_Nemotron-3-Super-120B-A12B-Q2_K/nvidia_Nemotron-3-Super-120B-A12B-Q2_K-00002-of-00002.gguf"],
+        },
+        "seeds": [7901, 7902, 7903, 7904, 7905],
+        "proposer": "nemotron-3-super-120b-a12b",
+        "size_note": "120B MoE A12B, BF16-native (no MXFP4 qualifier)",
+    },
 }
 
 
@@ -76,6 +92,22 @@ def make(family, prereg_sha):
         if a not in src:
             sys.exit(f"substitution anchor missing: {a[:60]!r}")
         src = src.replace(a, b)
+    if "extra_files" in cfg:
+        # split-GGUF family: the runner must fetch sibling shards before
+        # loading via the first shard. Inject a shard map + download loop.
+        shard_map = {cfg["q4"]: cfg["extra_files"]["q4"],
+                     cfg["q2"]: cfg["extra_files"]["q2"]}
+        anchor = ("    path = hf_hub_download(repo_id=REPO, filename=fname, "
+                  "local_dir=MODELS_DIR)")
+        if anchor not in src:
+            sys.exit("download anchor missing for extra_files injection")
+        inject = (anchor + "\n"
+                  f"    _EXTRA_SHARDS = {shard_map!r}\n"
+                  "    for _shard in _EXTRA_SHARDS.get(fname, []):\n"
+                  "        print(f\"[download] shard {_shard} ...\")\n"
+                  "        hf_hub_download(repo_id=REPO, filename=_shard, "
+                  "local_dir=MODELS_DIR)\n")
+        src = src.replace(anchor, inject)
     out = HERE / f"sec3_artifacts/runners/kaggle_wave7c_{family}.py"
     out.write_text(src, encoding="utf-8", newline="\n")
     print(f"wrote {out.name} ({len(src)} bytes)")

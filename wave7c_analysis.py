@@ -29,6 +29,7 @@ FAMILIES = {
     "nemotron_nano_30b": os.path.join(HERE, "wave7c_output", "wave7c_nemotron_nano_30b"),
     "gpt_oss_20b":       os.path.join(HERE, "wave7c_output", "wave7c_gpt_oss_20b"),
     "north_mini_code":   os.path.join(HERE, "wave7c_output", "wave7c_north_mini_code"),
+    "nemotron_super_120b": os.path.join(HERE, "wave7c_output", "wave7c_nemotron_super_120b"),
 }
 
 def canon(circles):
