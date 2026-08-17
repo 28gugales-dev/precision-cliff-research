@@ -70,12 +70,12 @@ import time
 
 # ----------------------------- configuration --------------------------------
 
-REPO = "mradermacher/gemma-4-31B-it-GGUF"
+REPO = "bartowski/nvidia_Nemotron-3-Super-120B-A12B-GGUF"
 PRECISIONS = [  # (label, filename, min_gpus_required)
-    ("q4_k_m", "gemma-4-31B-it.Q4_K_M.gguf", 1),
-    ("q2_k",   "gemma-4-31B-it.Q2_K.gguf",   1),
+    ("q4_k_m", "nvidia_Nemotron-3-Super-120B-A12B-Q4_K_M/nvidia_Nemotron-3-Super-120B-A12B-Q4_K_M-00001-of-00003.gguf", 1),
+    ("q2_k",   "nvidia_Nemotron-3-Super-120B-A12B-Q2_K/nvidia_Nemotron-3-Super-120B-A12B-Q2_K-00001-of-00002.gguf",   1),
 ]
-SEEDS = [7501, 7502, 7503, 7504, 7505]  # FRESH — never used in any prior run (grep-verified)
+SEEDS = [7901, 7902, 7903, 7904, 7905]  # FRESH — never used in any prior run (grep-verified)
 GENS = 10
 MUSTDIFFER_PER_PRECISION = 10
 N = 26
@@ -84,26 +84,26 @@ N_CTX = 4096
 MAX_TOKENS = 1200
 TEMPERATURE = 0.8
 TOP_P = 0.95
-RUNNER_VERSION = "wave7c_gemma4_31b_v1"
+RUNNER_VERSION = "wave7c_nemotron_super_120b_v1"
 
-WORK = "/kaggle/working/wave7c_gemma4_31b"
+WORK = "/kaggle/working/wave7c_nemotron_super_120b"
 MODELS_DIR = "/kaggle/tmp/models"
-ZIP_BASE = "/kaggle/working/wave7c_gemma4_31b_partial"
+ZIP_BASE = "/kaggle/working/wave7c_nemotron_super_120b_partial"
 STATE_DIR = os.path.join(WORK, "state")
-CAND_LOG = os.path.join(WORK, "candidates_wave7c_gemma4_31b.jsonl")
-MUSTDIFFER_LOG = os.path.join(WORK, "mustdiffer_wave7c_gemma4_31b.jsonl")
+CAND_LOG = os.path.join(WORK, "candidates_wave7c_nemotron_super_120b.jsonl")
+MUSTDIFFER_LOG = os.path.join(WORK, "mustdiffer_wave7c_nemotron_super_120b.jsonl")
 PROVENANCE = os.path.join(WORK, "provenance.json")
-RESULTS = os.path.join(WORK, "results_wave7c_gemma4_31b.json")
+RESULTS = os.path.join(WORK, "results_wave7c_nemotron_super_120b.json")
 
 if not os.path.isdir("/kaggle"):
-    WORK = os.path.abspath("./wave7c_gemma4_31b")
+    WORK = os.path.abspath("./wave7c_nemotron_super_120b")
     MODELS_DIR = os.path.abspath("./models")
-    ZIP_BASE = os.path.abspath("./wave7c_gemma4_31b_partial")
+    ZIP_BASE = os.path.abspath("./wave7c_nemotron_super_120b_partial")
     STATE_DIR = os.path.join(WORK, "state")
-    CAND_LOG = os.path.join(WORK, "candidates_wave7c_gemma4_31b.jsonl")
-    MUSTDIFFER_LOG = os.path.join(WORK, "mustdiffer_wave7c_gemma4_31b.jsonl")
+    CAND_LOG = os.path.join(WORK, "candidates_wave7c_nemotron_super_120b.jsonl")
+    MUSTDIFFER_LOG = os.path.join(WORK, "mustdiffer_wave7c_nemotron_super_120b.jsonl")
     PROVENANCE = os.path.join(WORK, "provenance.json")
-    RESULTS = os.path.join(WORK, "results_wave7c_gemma4_31b.json")
+    RESULTS = os.path.join(WORK, "results_wave7c_nemotron_super_120b.json")
 
 # ------------------------- evaluator (mirrors harness.py) --------------------
 
@@ -265,7 +265,7 @@ def load_provenance():
             "repo": REPO, "gens": GENS, "seeds": SEEDS,
             "temperature": TEMPERATURE, "top_p": TOP_P,
             "runner_version": RUNNER_VERSION,
-            "purpose": "wave 7c screened family generality: gemma4_31b (31B), prereg sha b1fc9ee9c706a3eb",
+            "purpose": "wave 7c screened family generality: nemotron_super_120b (120B MoE A12B, BF16-native (no MXFP4 qualifier)), prereg sha b1fc9ee9c706a3eb",
             "conditions": {}}
 
 
@@ -324,6 +324,10 @@ def download_model(fname):
             return hf_hub_download(repo_id=REPO, filename=rel, local_dir=MODELS_DIR)
         return dest
     path = _fetch(fname)
+    _EXTRA_SHARDS = {'nvidia_Nemotron-3-Super-120B-A12B-Q4_K_M/nvidia_Nemotron-3-Super-120B-A12B-Q4_K_M-00001-of-00003.gguf': ['nvidia_Nemotron-3-Super-120B-A12B-Q4_K_M/nvidia_Nemotron-3-Super-120B-A12B-Q4_K_M-00002-of-00003.gguf', 'nvidia_Nemotron-3-Super-120B-A12B-Q4_K_M/nvidia_Nemotron-3-Super-120B-A12B-Q4_K_M-00003-of-00003.gguf'], 'nvidia_Nemotron-3-Super-120B-A12B-Q2_K/nvidia_Nemotron-3-Super-120B-A12B-Q2_K-00001-of-00002.gguf': ['nvidia_Nemotron-3-Super-120B-A12B-Q2_K/nvidia_Nemotron-3-Super-120B-A12B-Q2_K-00002-of-00002.gguf']}
+    for _shard in _EXTRA_SHARDS.get(fname, []):
+        print(f"[download] shard {_shard} ...")
+        _fetch(_shard)
     print(f"[download] done in {time.time()-t0:.0f}s -> {path}")
     return path
 
@@ -402,8 +406,8 @@ def run_condition(quant, fname, min_gpus, provenance):
                 text, gerr, ctoks, wall = generate(llm, prompt, s * 1000 + gen)
                 circles, perr = parse_proposal(text) if gerr is None else (None, gerr)
                 ev = evaluate(circles)
-                row = {"arm": "wave7c_gemma4_31b",
-                       "proposer": f"gemma-4-31b-{quant}",
+                row = {"arm": "wave7c_nemotron_super_120b",
+                       "proposer": f"nemotron-3-super-120b-a12b-{quant}",
                        "quant": quant, "seed": s, "gen": gen,
                        "parent_score": round(st["best_score"], 6),
                        "score": round(ev["score"], 6), "viable": ev["viable"],

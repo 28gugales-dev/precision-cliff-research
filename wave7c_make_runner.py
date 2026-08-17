@@ -92,21 +92,51 @@ def make(family, prereg_sha):
         if a not in src:
             sys.exit(f"substitution anchor missing: {a[:60]!r}")
         src = src.replace(a, b)
+    # Unauthenticated hf_hub_download is throttled to ~500 KB/s per
+    # connection (killed gemma attempt 1: 12 h ceiling spent on a 19 GB
+    # file). Swap in aria2c parallel ranged download with hf_hub_download
+    # as fallback; byte-identity still enforced by the provenance SHA-256.
+    dl_anchor = (
+        "    path = hf_hub_download(repo_id=REPO, filename=fname, "
+        "local_dir=MODELS_DIR)\n")
+    dl_fast = (
+        "    def _fetch(rel):\n"
+        "        dest = os.path.join(MODELS_DIR, rel)\n"
+        "        os.makedirs(os.path.dirname(dest) or MODELS_DIR, exist_ok=True)\n"
+        "        if os.path.exists(dest) and os.path.getsize(dest) > 0:\n"
+        "            return dest\n"
+        "        url = f\"https://huggingface.co/{REPO}/resolve/main/{rel}\"\n"
+        "        r = subprocess.run([\"aria2c\", \"-x8\", \"-s8\", \"-k1M\",\n"
+        "                            \"--file-allocation=none\",\n"
+        "                            \"-d\", os.path.dirname(dest) or MODELS_DIR,\n"
+        "                            \"-o\", os.path.basename(dest), url],\n"
+        "                           capture_output=True, text=True)\n"
+        "        if r.returncode != 0 or not os.path.exists(dest):\n"
+        "            print(f\"[download] aria2c rc={r.returncode}; hf_hub_download fallback\")\n"
+        "            return hf_hub_download(repo_id=REPO, filename=rel, local_dir=MODELS_DIR)\n"
+        "        return dest\n"
+        "    path = _fetch(fname)\n")
+    if dl_anchor not in src:
+        sys.exit("download anchor missing for aria2c injection")
+    src = src.replace(dl_anchor, dl_fast)
+    boot_anchor = '_pip("huggingface_hub")'
+    if boot_anchor not in src:
+        sys.exit("bootstrap anchor missing for aria2 install")
+    src = src.replace(boot_anchor, boot_anchor +
+                      '\n_sp.run(["apt-get", "install", "-y", "-q", "aria2"])')
     if "extra_files" in cfg:
         # split-GGUF family: the runner must fetch sibling shards before
         # loading via the first shard. Inject a shard map + download loop.
         shard_map = {cfg["q4"]: cfg["extra_files"]["q4"],
                      cfg["q2"]: cfg["extra_files"]["q2"]}
-        anchor = ("    path = hf_hub_download(repo_id=REPO, filename=fname, "
-                  "local_dir=MODELS_DIR)")
+        anchor = "    path = _fetch(fname)\n"
         if anchor not in src:
-            sys.exit("download anchor missing for extra_files injection")
-        inject = (anchor + "\n"
+            sys.exit("fetch anchor missing for extra_files injection")
+        inject = (anchor +
                   f"    _EXTRA_SHARDS = {shard_map!r}\n"
                   "    for _shard in _EXTRA_SHARDS.get(fname, []):\n"
                   "        print(f\"[download] shard {_shard} ...\")\n"
-                  "        hf_hub_download(repo_id=REPO, filename=_shard, "
-                  "local_dir=MODELS_DIR)\n")
+                  "        _fetch(_shard)\n")
         src = src.replace(anchor, inject)
     out = HERE / f"sec3_artifacts/runners/kaggle_wave7c_{family}.py"
     out.write_text(src, encoding="utf-8", newline="\n")
