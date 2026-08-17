@@ -110,3 +110,34 @@ never submit them.
   redemption for the registered-but-not-run 120B condition
   (`wave7c_addendum1_120b.md` stays advanced-not-run if never redeemed —
   reportable either way).
+
+## OpenReview form fields (copy-paste at upload)
+
+### Paper 2 (submit first)
+- **Title**: Served Precision Is Part of the Model: A Quantization Cliff in
+  Proposal Variation, and the Limits of Reproducibility in Agent-Runtime LLM
+  Studies
+- **Abstract**: paste from `latex-tmlr/main.tex` abstract block (keep the
+  current version — it carries the wave-7c sixth-family sentence).
+- **TLDR** (one sentence): Quantizing a proposer's weights can collapse the
+  search variation a discovery loop depends on while every health metric the
+  loop watches stays green — and studies that address models through managed
+  runtime aliases cannot even attest the precision they measured.
+- **Keywords**: quantization; reproducibility; LLM-driven discovery;
+  evolutionary search; preregistration; serving transparency; agent runtimes
+- **Supplementary**: `supplementary_anonymized.zip` (replay-tested; README
+  inside discloses redaction and hash-verification path).
+
+### Paper 1 (after paper 2 is in)
+- **Title**: A Closed Form for What the Model Emits: Template Anchoring in
+  Unconditioned Zero-Shot Circle Packing
+- **Abstract**: paste from `latex-tmlr-paper1/main.tex` abstract block.
+- **TLDR**: Weak-tier language models emit circle packings whose scores land
+  on a closed-form template value predictable before sampling — a regularity
+  that is preregistered, cross-vendor under two protocols, family-bounded,
+  and absent at the frontier tier.
+- **Keywords**: template anchoring; zero-shot generation; circle packing;
+  preregistration; closed-form prediction; model families; capability tiers
+- **Supplementary**: same bundle (arm surface F→V and GM chain included).
+
+Quota note: TMLR allows 2 solo submissions/yr — these are both of them.
