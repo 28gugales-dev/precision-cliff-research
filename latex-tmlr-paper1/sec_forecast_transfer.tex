@@ -282,6 +282,67 @@ execute slightly harder constructions leaves it in the only direction available.
 collapsing at the two largest cells (2 then 0 valid of 20) bounds the family's competence
 window on this task; both cells are UNSCOREABLE under the registered rule and claim nothing.
 
+\subsection{Preregistered extension (arm V): under the zero-shot protocol, anchoring transfers by vendor --- and fails by family}
+
+Arm GM3 varied the vendor under the unconditioned-call protocol; arm V varies it under the
+zero-shot statement protocol of arm F, byte-identical prompts (SHA-256 per $N$ restated in the
+registration and recomputed at call time, aborting on mismatch), against free-tier aliases
+across five vendors (\texttt{arm\_v\_preregistration.md}, committed before sampling; three amendments,
+each committed before the sampling it governs, expanded the original three-alias design to
+thirteen aliases across two serving paths --- the opencode CLI and OpenRouter chat-completions ---
+and raised \texttt{max\_tokens} to 24,576 after hidden-reasoning truncation emptied three models'
+replies). Serving disclosures per the companion paper's protocol: aliases on managed paths,
+\texttt{sampling\_params: null} on every row, per-row upstream-provider strings logged where the path
+reports them, every invocation appended live to \texttt{arm\_v\_candidates\_raw.jsonl} --- 877
+invocations, failures and refusals included. Scoring is \texttt{arm\_f\_repro.py}'s
+parse/validate/classify unchanged, tolerances registered in arm F before its sampling.
+
+Registered floor: $\ge$10 of a model's 25 cells valid at $10^{-6}$; below it, no anchoring claim in
+either direction. Ten of thirteen aliases finished BELOW-FLOOR --- including all three
+originally-registered opencode aliases, whose logged failure taxonomies are
+transport-dominated for one (CLI build banners, timeouts, ``Unknown model'' errors as the
+free tier rotated its catalogue) and roughly half transport, half parse-failure for the
+other two --- plus one alias returning all 108 of its attempts without content. Three aliases
+cleared the floor, and their registered verdicts split:
+
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+alias (vendor) & valid & V1 on-prediction & V1 verdict (bar: $\ge$50\%) & V2 rival-argmax (bar: $\le$10\%) \\
+\midrule
+\texttt{north-mini-code} (Cohere) & 12 & 8/12 = 67\% & \textbf{TRANSFERS} & 0/4 $\rightarrow$ \textbf{HOLDS} \\
+\texttt{gpt-oss-20b} (OpenAI, open-weight) & 18 & 11/18 = 61\% & \textbf{TRANSFERS} & 0/9 $\rightarrow$ \textbf{HOLDS} \\
+\texttt{gemma-4-31b-it} (Google) & 15 & 0/15 = 0\% & \textbf{DOES-NOT-TRANSFER} & 0/3 $\rightarrow$ \textbf{HOLDS} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This is the registration's most informative branch pair. Anchoring under the zero-shot
+protocol is not an artifact of the original family --- two further vendors' models land the
+registered construction values at 61--67\% of valid outputs, and the strong form holds
+everywhere evaluable: zero rival-argmax emissions in 16 discriminating-cell validities
+(the registration recorded the original family's prior for the same statistic as 0/21). And it is not universal: gemma-4-31b, clearing
+the same floor, lands the prediction never. Its valid packings are unanchored and low
+(bests 0.88--1.85 against predictions 1.63--3.03) --- not the rival, not the template, just
+weaker de-novo construction. Under the registration's falsification map, the family-specific branch fires --- any model
+clearing the floor with DOES-NOT-TRANSFER makes the closed form a family property, stated
+in \S5 with data rather than a caveat --- while the map's all-transfer branch fails on gemma
+alone, so the reading that anchoring is an artifact of the original family is defeated by
+the same table that bounds its generality.
+
+The gemma pair needs stating precisely, because this family now appears on both sides. Under
+GM3's unconditioned protocol, gemma-4-\textbf{26b} pooled-HELD at 57.5\% (the mixed-serving
+accounting; first-party-only, 59.0\% --- \S8's registered deviation applies to this figure);
+under arm V's zero-shot statement protocol, gemma-4-\textbf{31b} through a rate-starved
+alias (Google AI Studio upstream; 27--38 of each cell's attempts returned as shared-pool 429s
+before content arrived) transfers nothing. Protocol, parameter count, and serving path all
+differ, so the pair bounds the family's behaviour rather than contradicting itself --- but the
+conjunction is exactly the shape \S8's tractability reading predicts: a family whose
+arithmetic reach differs from the original's tracks the attractor under one elicitation and
+escapes it under another, and no single-protocol measurement would have seen the boundary.
+
 \section{Rectangle transfer}
 
 \subsection{Transfer of the rule}
