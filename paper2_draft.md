@@ -26,7 +26,7 @@ not to copy. The failed proposals are not garbage — they are coherent, well-fo
 near-copies, which is why every pass/fail instrument reports health. Those two registered
 outcomes are what the claim rests on; everything that follows in this abstract is
 descriptive or post-hoc and §3 labels it so at each use. At the loop level the consequence
-is a post-hoc measure: the 2-bit rung takes 1 accepted hill-climb step in 50 calls against
+is a post-hoc measure at 14B (§3 reports the 7B reversal): the 2-bit rung takes 1 accepted hill-climb step in 50 calls against
 14-16 at the upper three, four of its five lineages never advancing at all — while final
 best score after ten generations does not separate the rungs anywhere (six lineage-level
 permutation tests across both scales, *p* = 0.12-0.94).
@@ -113,8 +113,9 @@ and a negative result about the whole instrument class.
 The same alias, the same prompt text, the same harness, days apart, returned completions
 one to two orders of magnitude faster than nominally *smaller* models on the same task,
 and produced valid geometry in 4 of 30 attempts where those smaller models produced it in
-30 of 30 and 50 of 60. Nothing in the experimental design predicts either. They are
-properties of the serving path, not of the study, and the first was visible only because
+30 of 30 and 50 of 60. Nothing in the experimental design predicts either. They point to
+the serving path rather than to anything in the study — an attribution §4 weighs but
+cannot decide — and the first was visible only because
 the harness happened to log per-invocation duration.
 
 The weights behind an alias are a promise, not a hash. An alias such as `opus` or
@@ -376,7 +377,7 @@ truncation is ruled out directly: no 24-25-circle proposal came near the 1,200-t
 (maximum 687 tokens, all closing their list bracket naturally). The antecedent study
 names this the **format lottery** and flags it rather than claiming it. No probe was
 valid at any rung (0/30) and the canonical anchored value was never emitted in 280
-opportunities (250 loop rows + 30 probes); the best score in the whole 7B sweep, 1.800,
+opportunities (250 loop rows + 30 probes); the best score in the whole 7B sweep, 1.79998 (written 1.800),
 sits 29% below the canonical anchored value for this benchmark, 2.5414, which the
 frontier-tier arms treat as a floor. At this scale the
 proposer sits below the floor at which precision could matter.
@@ -873,7 +874,7 @@ That points at a repair and immediately complicates it. If frequency is the gate
 forcing departure should recover the search — but the registered must-differ probe did
 exactly that, instructing the proposer that its output must not be identical to the parent
 and that at least three circles must change, and returned 5 of 5 echoes anyway. Whatever
-gates departure at 2 bits is not reachable by instruction, which makes the intervention worth
+gates departure at 2 bits was, on this probe's evidence, not reachable by instruction, which makes the intervention worth
 testing an architectural one — decoding constraints, sampling temperature, explicit
 diversity penalties — rather than a prompt.
 
@@ -1493,8 +1494,8 @@ also diverge.
 Every LLM-evolution, best-of-N and iterative-refinement study run through a managed
 agent harness inherits this list — FunSearch-style program-evolution loops,
 self-refinement pipelines, and any tier-ladder comparison naming "the model" by alias.
-Such studies are not thereby wrong. They are unrepeatable in a specific and
-now-demonstrable way, and §3 establishes that **one** of the unrepeatable variables — served
+Such studies are not thereby wrong. They are unrepeatable in a specific way —
+demonstrated here for one vendor's serving path and one runtime (§8) — and §3 establishes that **one** of the unrepeatable variables — served
 weight precision — is one the outcome is sensitive to. Whether the others on this list
 behave alike is the hypothesis §3 raises and does not test, and the plural should not be
 read into it. The correct response is disclosure, not retraction.
@@ -1691,7 +1692,7 @@ change those arms document is a *checkable* claim in a way §4's original one is
    output-side methods exist and §7 cites them, and a search of size two over coarse
    aggregates proves nothing about the space of instruments. What it shows is that **the
    one instrument class a verifier can compute from what an agent runtime already returns
-   — timing — is ruled out**, and ruled out for a reason that worsens when the verifier
+   — timing — failed every variant we could construct**, for a reason that worsens when the verifier
    loses the hardware. That forecloses the objection a reader raises first, which is that
    the serving path could be inferred from latency without any new field. It does not make
    C3 true, and C3 does not need it.
@@ -1837,8 +1838,8 @@ environments as the only route to provable model integrity; Zhang et al.
 (arXiv:2607.20860) extend the audit to gateway routing dilution under a query budget;
 Schnabl et al. (arXiv:2506.23706) build the TEE half, running verifiable benchmarks
 inside enclaves so that neither provider nor auditor need trust the other. Item 4 of §6's
-standard — attestation of the served decode path — is therefore not our invention: it is
-this line's conclusion restated as a reporting obligation, and what §§3-4 add to it is a
+standard — serving-signature disclosure, standing in for the decode-path attestation
+software alone cannot provide — is therefore not our invention: it is this line's conclusion restated as a reporting obligation, and what §§3-4 add to it is a
 measured demonstration, inside a selection loop, of how much the unattested variable can
 matter.
 
@@ -1962,7 +1963,9 @@ We observed a single vendor and a single agent runtime. Whether other managed ru
 expose more (a dated identifier, a sampling echo, a serving-path flag) is an empirical
 question we did not test; a runtime that exposes more would falsify C3 for that runtime
 without touching §4's specific case. C3 is stated conditionally throughout for that
-reason.
+reason. The ladder itself covers two model scales, 7B and 14B, a bound set by the
+free-tier GPU allocation (32 GB across 2 × T4 — a 70B `q4_k_m` file alone exceeds it);
+whether the cliff exists at larger scales is untested by design, not oversight.
 
 The serving-signature evidence is circumstantial *by construction*, and it is also
 unshipped. Its evidence class is a working session log, not the released artifact (§4),

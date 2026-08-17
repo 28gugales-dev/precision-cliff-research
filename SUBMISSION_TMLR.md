@@ -71,6 +71,20 @@ never submit them.
 - [x] "Use of AI systems" reread: already a single tight disclosure
       paragraph, ordering-checkability stated, no claimed review process.
       Verdict: keep as-is, no trim.
+- [x] Claims-cleanup pass (2026-08-17, agent, mirrored in `paper2_short.md`,
+      `paper2_draft.md`, and all four tex fragments): fixed the stale
+      "abstract's 0.12–0.94 range" cross-references (the short abstract no
+      longer contains the range — reattributed to Appendix C), corrected the
+      stale §7 description of §6 item 4 (it is serving-signature disclosure,
+      not decode-path attestation), renamed Appendix C's "pricing exercise"
+      to horizon-power, scoped the abstract's step-collapse to 14B, softened
+      five overclaiming sentences to the paper's own hedged register (intro
+      serving-path attribution, §6 "every study" opener, timing "ruled out",
+      "any study inherits this", must-differ "not reachable by instruction"),
+      added the wave-6 numbering disclosure, the 7B/14B VRAM scope sentence
+      in §8, and 1.79998-style consistency. Rebuild: 32 pp, 0 errors, same
+      2 overfulls; `latex-tmlr-openreview.zip` rebuilt, leak check clean.
+      USER should proof the reworded sentences (git diff shows them all).
 - [ ] **Before zipping latex-tmlr/ for any upload: delete `main.log`,
       `main.aux`, `main.out`, `main.blg` and `template-reference.tex`.**
       The .log embeds `C:/Users/soham/...` paths on nearly every line and
@@ -96,6 +110,21 @@ never submit them.
   REGENERATED after use — it passed through chat transcript.
 
 ## Paper 1 (parked)
+- Claims-cleanup pass done 2026-08-17 (agent): §9 stopping rule rewritten
+  (it falsely listed arms MU/CH/M/k-back-out as not run), GM+GM2+GM3+V
+  preregs and ledgers added to §9's registration/artifact bullets, corpus
+  468 reconciled (cross-vendor arms ledgered separately), abstract +
+  Contribution 2 now quote the matched 83%→100%→13% triple per Table 2's
+  own note, Contribution 3's "clean, well-powered" replaced with §6.5's
+  actual CI and confound, Fig 1 caption fixed (N=10…60, fifth penalty
+  4.66%), byline revision note de-internalized, arm V disclosed in §8
+  (270 rows, 5 valid, repairs registered, not yet resumed), and four
+  overclaims softened. USER should proof the diff.
+- STILL MISSING for TELO (deliberate, do at conversion time): References
+  section (~50 inline arXiv IDs need bibliography), Conclusion section,
+  CCS concepts/keywords, artifact-availability URL/DOI.
+- Arm V: resume per amendment 3 or report as transport-failed; 5/270 valid
+  supports no analysis either way. GM3: 41 calls left (GM3_RESUME.md).
 - Wait for GM3 arm; fold result in (preregistered, both branches reportable).
 - Target ACM TELO (rolling, no quota). GECCO 2027 (abstract ~late Jan) is
   the fallback; page limit would force cutting appendices.

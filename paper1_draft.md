@@ -4,10 +4,10 @@
 Independent Researcher
 `28gugales@gmail.com`
 
-*(Revision 2, 2026-08-01. Implements `p4_review_stats.md`, `p4_review_reviewer2.md` and
-`p4_review_gecco.md`, plus the arbitration in `p6_cruxes.md`. Every claim that changed relative
+*(Revision 2, 2026-08-01, implementing three model-generated referee reports and their
+arbitration — the review process is disclosed in §9. Every claim that changed relative
 to revision 1 is itemized in Table 5 (Appendix C); the deviations table is Table 4 (Appendix B),
-and the ledger correction, the review-process disclosure and the stopping rule are in §9.)*
+and the ledger correction and the stopping rule are in §9.)*
 
 ---
 
@@ -23,15 +23,15 @@ grid-with-corner-fillers template and truncates it, even when a provably better 
 one parameter away. The behavior admits a closed form: a nearest-square order k\* = round(√N)
 with a value function V(k, m) identifies the *empirical modal output* — which template, and
 hence its computed value — at all seven tested N, stated before sampling. Per-sample agreement equals that modal frequency — 56–86% by
-cell — while a round-number baseline hits 2 of 69 valid samples: the formula captures
-everything short of sampling entropy. We preregistered these point predictions with prompt
+cell — while a round-number baseline hits 2 of 69 valid samples: in the bare weak-tier arm the
+formula captures everything short of sampling entropy. We preregistered these point predictions with prompt
 hashes before sampling and tested them out of sample on two containers, a square and a
 rectangle, for which the rule was restated but never refitted; on the rectangle the informative
 result is negative — 0 of 11 valid samples reached the provably higher-scoring rival — while
 on-prediction support is partial (5 of 11, not separable from a uniform-template null). Across three tiers we find three
 attractor families and an inversion: constructive ambition rises monotonically with nominal
-tier while execution validity does not — it rises then collapses (78% → 100% → 13% at the
-primary 10⁻⁶ tolerance; the third arm is
+tier while execution validity does not — it rises then collapses (83% → 100% → 13% on matched cells at the
+primary 10⁻⁶ tolerance, 78% → 100% → 13% on the full unmatched ladder; the third arm is
 an unattributable serving alias, reported with that caveat throughout). Trace elicitation is an
 intervention rather than an observation: requesting a method line concentrates outputs onto the
 anchor (87% vs 70% on-prediction, p = 0.03 uncorrected — failing Holm over the registered
@@ -104,7 +104,9 @@ that "can be trivial" (FunSearch) or "rudimentary", single-line functions return
 rudimentary program throughout. The unconditioned call is the limiting case these approach as
 seed information goes to zero, and finding that this limit is a template lookup, its value
 computable in advance, is actionable for the people who build these loops — seed
-diversification, forced-k initialization, trap-N avoidance in benchmark selection. Anything about what the loop samples at t > 0 is a
+diversification, forced-k initialization, trap-N avoidance in benchmark selection — though the
+one-parent mutation arm (§3.5) bounds the reach: the conditioned regime is not described by the
+unconditioned rule. Anything about what the loop samples at t > 0 is a
 hypothesis here. The one published result bearing directly on the substitution —
 "Dictionaries, Not Darwin" (2607.04108, Pan Li), reporting parent-conditioned evolution
 indistinguishable from fresh independent sampling at equal budget — is warrant from equation
@@ -126,13 +128,15 @@ p\* = round(√(N·a))) but never refitted. Prior work publishes functional form
 *aggregate* metrics ahead of a run (2001.08361; 2203.15556; 2411.16035); to our knowledge none
 predicts a specific multi-decimal *individual emitted output value* ahead of sampling. The claim
 is scoped to the weak tier (§5). (2) *A tier boundary condition, as three attractor families.*
-Ambition rises monotonically with nominal tier; validity does not — 78% → 100% → 13% at the
-primary tolerance, 64% → 90% → 13% at 10⁻⁹. The most ambitious tier attempts recursive gaskets
+Ambition rises monotonically with nominal tier; validity does not — 83% → 100% → 13% on matched cells at the
+primary tolerance (78% → 100% → 13% on the full unmatched ladder; 64% → 90% → 13% at 10⁻⁹,
+unmatched). The most ambitious tier attempts recursive gaskets
 and mostly fails to produce a valid packing; it was addressed through a bare serving alias and
 appears as `opus_alias` with that caveat everywhere. (3) *Checkable faithfulness, and trace
 requests as interventions.* Method lines are checkable against emitted coordinates, and 54 of
-56 scoreable claims (96.4%) describe the object actually built — a clean, well-powered finding
-(§6.5). Requesting the line at all is an intervention rather than an observation: the
+56 scoreable claims (96.4%) describe the object actually built (96.4%, Wilson 95% CI [88%, 99%]) — reported in §6.5 with
+its limits: the CI's lower bound sits just below the registered 90% threshold, and the audit
+is confounded with the elicitation arm. Requesting the line at all is an intervention rather than an observation: the
 concentration shift it produced (87% vs 70%, p = 0.0325 uncorrected) fails multiplicity
 correction, is carried by one of three cells and is wave-confounded (§6.4), so it is reported
 as met-as-registered exploratory material, not a demonstrated effect. Studies collecting
@@ -166,17 +170,17 @@ configurations, both branches, every k in 2…7, drift below 10⁻⁹.
 Our bound table (`n_sweep_forecast.json`) covers N = 10…30 only, and its N = 26 entry, 2.63598,
 *is* ShinkaEvolve's figure truncated, so the LLM-driven systems are the record on this problem
 (Table 5, item 4). What survives is that the recipe family is never competitive with that
-record: deficit 0.02–0.26 across N = 10…30, and 0.0946 at N = 26
+record where the bound table allows the check: deficit 0.02–0.26 across N = 10…30, and 0.0946 at N = 26
 (2.63598 − 2.5414214 = 0.0945586). Above N = 30 there is no bound table, so both the deficit claim and the LP
 gate's "never exceeds a published bound" abort are unchecked there, covering three of five trap
 zones and four of our seven square cells.
 
 ![Figure 1](fig1_trapzones.png)
 
-**Figure 1.** *Predicted versus optimal value, N = 10…50.* (i) the rule's prediction; (ii) the
+**Figure 1.** *Predicted versus optimal value, N = 10…60.* (i) the rule's prediction; (ii) the
 best value in the recipe family; (iii, dotted) published best-known values, terminating at
 N = 30 because the bound table stops there. Shaded bands are the trap zones, the last being
-[57,63] clipped by `sweep(10,60)`. Worst-in-zone penalties 8.51%, 7.03%, 6.01%, 5.25%; these are
+[57,63] clipped by `sweep(10,60)`. Worst-in-zone penalties 8.51%, 7.03%, 6.01%, 5.25%, 4.66%; these are
 family-internal arithmetic and exact at every N, while the published-bound comparison (curve iii)
 is checkable only up to N = 30, where the bound table stops. The gap
 closes to zero at N = 35 and N = 48 but **not** at N = 24, where 0.59% remains — curve (ii)
@@ -209,8 +213,9 @@ A k×k grid places one circle per cell center with r_grid = 1/(2k); m fillers si
 grid vertices, tangent to their four surrounding grid circles, with r_filler = (√2 − 1)/(2k),
 0 ≤ m ≤ (k−1)². Hence V(k, m) = k/2 + m(√2 − 1)/(2k). When N < k² the observed behavior is not
 to drop to a smaller grid and fill it but to *truncate* — lay out the k×k lattice, occupy N
-cells, leave the radius unchanged — giving T(k, N) = N/(2k). These reproduce every previously
-reported anchor with no fitting: V(5,1) = 2.5414214, V(5,2) = 2.5828427, V(5,0) = 2.500,
+cells, leave the radius unchanged — giving T(k, N) = N/(2k). These reproduce, with no fitting, every anchor reported in the antecedent arms (retained as
+motivation only — those arms are not re-reported here, and §5 gives the self-contained
+version): V(5,1) = 2.5414214, V(5,2) = 2.5828427, V(5,0) = 2.500,
 T(5,23) = 2.300, V(4,7) = 2.3624369.
 
 The finding that 94 of 95 valid proposals in prior arms were grid-plus-filler is retained only as
@@ -686,7 +691,10 @@ the corpus to 215 logged square invocations (85 bare = 45 original + 40 new; 70 
 60 trace_v2; 30 sonnet; 30 `opus_alias`), plus 16 rectangle invocations, 231 total at the
 close of revision 2 (Table 5, item 27); the post-review arm M (§3.4) later added 57 sampled
 weak-tier invocations (60 launched), bringing the study corpus to 288, and the post-council
-arms MU and CH (§3.5) added 180 more (180 launched, none lost), for a final corpus of 468. One disclosure revision 1 did not carry: **20 of the 60 bare samples are pre-existing arm-F
+arms MU and CH (§3.5) added 180 more (180 launched, none lost), for a final corpus of 468. The cross-vendor arms (§8) are ledgered separately under their own
+preregistrations — arm GM2's 140 completed invocations (all unscoreable under its registered
+rule), arm GM's partial collection, arm GM3's in-progress rerun, and arm V's
+transport-degraded first run — and are not counted in the 468. One disclosure revision 1 did not carry: **20 of the 60 bare samples are pre-existing arm-F
 rows** (N = 13 ids 1–5, N = 21 ids 1–10, N = 31 ids 1–5) whose results were known when P-T1–P-T3
 were written; only trace_v2 is fully fresh (§6.4). Scoring used `arm_f_repro.py` unchanged with
 the registered 2×10⁻³ window; the Fisher exact test comes from the hypergeometric tail in
@@ -997,7 +1005,13 @@ point that output-format constraints are load-bearing. We flag one reading the d
 yet exclude: a 0/140 parse rate at a 4,096-token cap is also the signature of budget
 truncation — a verbose model cut off before its answer — rather than format inability. Arm
 GM3's enlarged budget separates the two, and we defer any characterization of the cliff's
-cause until it reports.
+cause until it reports. A third registered attack on the same limitation, arm V
+(`arm_v_preregistration.md` plus three amendments, byte-identical arm-F prompts, thirteen
+alias-addressed proposers across the opencode and OpenRouter free tiers), collapsed
+mechanically on its first run — 270 ledgered rows, 144 transport errors, 5 valid samples —
+with repairs registered in amendment 3 before any resumed sampling; the run has not been
+resumed, no analysis has been performed, and the ledger is released as-is. Whichever way
+these arms resolve, their outcomes are reportable under their own preregistrations.
 
 **Sampling parameters unpinned.** The runtime does not expose pinned decoding parameters, so
 every effect is a distributional claim over the observed sampling regime, and §3.2's
@@ -1031,7 +1045,12 @@ revision 1 is tabled in Appendix C. Provenance, in list form:
   `arm_m_prompts.json` (committed `e528c6b` before sampling), and
   `arm_mu_preregistration.txt` with `arm_mu_prompts.json` (committed `2b7d202` before
   sampling; decision thresholds, power analysis, tie conventions and falsifier F-MU1 all
-  registered). The rectangle transfer was registered before collection and never refitted.
+  registered — a joint registration also covering arm CH). The rectangle transfer was
+  registered before collection and never refitted. The cross-vendor arms carry their own
+  registrations, each committed before the sampling it governs: `arm_gm_preregistration.txt`
+  (commit `37b3adb`), `arm_gm2_preregistration.txt` (`3019aab`),
+  `arm_gm3_preregistration.txt` (registered 2026-08-03), and `arm_v_preregistration.md` with
+  its three amendments.
 - **Four limits on that claim.** (i) The digests cover the task prompt only; the subagent
   inherits instruction files outside it, so what is locked is a *fragment* of the conditioning
   context, a replicator cannot reconstruct those files, and we cannot establish they were
@@ -1061,7 +1080,8 @@ revision 1 is tabled in Appendix C. Provenance, in list form:
 - **Analysis artifacts.** Raw outputs are stored verbatim (`arm_f_raw.json`,
   `arm_f_candidates.jsonl`, `arm_f_candidates_v2.jsonl`, `arm_g_candidates.jsonl`,
   `arm_m_collect.jsonl` scored by `arm_m_analysis.py`, `arm_mu_collect.jsonl` scored by
-  `arm_mu_analysis.py` with frozen output `arm_mu_results.txt`) and scoring is
+  `arm_mu_analysis.py` with frozen output `arm_mu_results.txt`, `arm_gm2_candidates.jsonl`
+  with `arm_gm2_report.json`, the arm GM and GM3 checkpoint ledgers, and `arm_v_scored.jsonl`) and scoring is
   deterministic and local. Value claims are gated on an independent LP oracle rather than on the
   closed form being tested: `n_sweep_forecast.py` with `verify_against_lp` checks 83
   configurations to within 10⁻⁹, and the same oracle produced §4.2's negative result. The
@@ -1097,12 +1117,17 @@ revision 1 is tabled in Appendix C. Provenance, in list form:
   the panel is not peer review, its verdicts carry no external authority, and it shares a family
   resemblance with the system under study — a blind-spot risk disclosed here rather than left
   implicit.
-- **Stopping rule.** This revision closed after implementing the three named referee reports and
-  the arbitration verdict; no further data-dependent analysis was performed. Analyses named but
-  not run — the one-parent mutation arm, the recipe-family choice probe, N = 57, the empirical-k
-  back-out, faithfulness split by on- versus off-prediction, a code-enabled probe, interleaved
-  re-collection of the arm-T pair, and P5 at n = 20 — are recorded in §6.5 and §8 as future work,
-  so that the reported statistics remain the ones the preregistrations governed.
+- **Stopping rule.** Revision 2 closed after implementing the three named referee reports and
+  the arbitration verdict, with no further data-dependent analysis inside it. Four analyses that
+  revision named as future work were subsequently run as preregistered arms and are reported in
+  §3.2 and §3.4–3.5: the one-parent mutation arm (MU), the recipe-family choice probe (CH), the
+  N = 57 cell (arm M), and the empirical-k back-out (`diagnostics_kmatch.py`). The study's
+  stopping boundary is the close of arm CH's registered analysis; the only work open past it is
+  the cross-vendor arms (§8), each reportable under its own preregistration whichever branch
+  obtains. Analyses still not run — faithfulness split by on- versus off-prediction, a
+  code-enabled probe, interleaved re-collection of the arm-T pair, and P5 at n = 20 — remain
+  recorded in §6.5 and §8 as future work, so that the reported statistics are the ones the
+  preregistrations governed.
 
 ---
 
