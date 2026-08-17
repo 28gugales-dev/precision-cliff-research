@@ -89,3 +89,24 @@ never submit them.
   from the published paper.
 - TMLR LaTeX conversion for Paper 1: build after the wave-7c integration and
   review loop, same fan-out pattern as Paper 2's.
+
+## Final state (2026-08-17) — both papers submission-ready
+
+- **Paper 2**: gemma-4-31b wave-7c integrated (7c.2 HELD — first non-Qwen
+  control-floor pass; 7c.1/7c.3 UNDERPOWERED; invalidity channel), 5-reviewer
+  round + area-chair PASS applied (11 + 1 fixes incl. 304-row miscount
+  disclosure, runner-edit commit-pair 8cfaffb→342cdea, amendment-gap named).
+  `latex-tmlr/` compiles clean, **33 pp**, Figure 1 (fig4_family_echo) in.
+- **Paper 1**: arm V complete (877 invocations) and integrated as §3.7 —
+  anchoring TRANSFERS in north-mini-code 8/12 and gpt-oss-20b 11/18,
+  DOES-NOT-TRANSFER in gemma-4-31b 0/15, V2 HOLDS 0/16; adversarial pass
+  (5 defects) fixed. `latex-tmlr-paper1/` compiles clean, **28 pp**,
+  fidelity-audited against the markdown (5/5 fragments PASS).
+- **Supplementary**: `build_anon_bundle.py` regenerated
+  `supplementary_anonymized.zip` (6.2 MB, 0 identity leaks post-scan) now
+  covering wave-7c, screen S, the full arm surface (F→V, GM chain) and all
+  figure scripts. Upload per §Before-upload steps (user action).
+- Remaining user actions: OpenRouter key rotation; optional DigitalOcean
+  redemption for the registered-but-not-run 120B condition
+  (`wave7c_addendum1_120b.md` stays advanced-not-run if never redeemed —
+  reportable either way).
