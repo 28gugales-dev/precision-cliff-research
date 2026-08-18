@@ -1,0 +1,41 @@
+ARM CC (code-channel probe) — frozen results. 2026-08-18.
+Registration: arm_cc_preregistration.txt, commit 285deca (pushed to public
+remote before first invocation). Collection: 45/45 launched invocations
+returned, no runtime deaths (arm_cc_collect.jsonl, verbatim). Scoring:
+arm_cc_analysis.py (committed with registration; smoke test 4/4 bins).
+
+REGISTERED VERDICT: P-CC1 HOLDS (3 of 3 cells) — the modal valid executed
+output remains the T(k*,N) anchor bucket at every cell.
+Margin disclosure (registered convention): N=21 mode is heavy (9/13 valid,
+margin 8 — nine exact 2.1000000 emissions). N=13 and N=31 modes are the
+anchor value at ONE-SAMPLE margins (2/12 and 3/12) over dispersed sub-anchor
+values; the modal-identity claim is thin at those two cells.
+
+Cells (valid / sampled, anchor-rate, argmax-rate, above-rival):
+  N=13: 12/15, anchor 2/12, argmax 1/12, above-rival 0/12
+        sums max = 1.7761424 (the family argmax V(3,4), EXACT)
+  N=21: 13/15, anchor 9/13, argmax 0/13, above-rival 0/13, max = 2.1
+  N=31: 12/15, anchor 3/12, argmax 0/12, above-rival 0/12, max = 2.5833333
+
+MANDATORY DECOMPOSITION ROW (registered): no valid program output exceeds
+the family argmax anywhere (0/37 above rival). Exactly one output exceeds
+the anchor at all: a single N=13 program computing the family argmax
+construction exactly. Sharpens arm CH: chosen argmax cannot be built by
+direct emission (30/31 invalid, S3.5); delegated to an executed program it
+is reached once in 37 and never passed.
+
+Failure taxonomy: valid 37, geom_invalid 7, blocked_import 1 (random,
+against the stated math-only contract), timeout 0, other bins 0.
+
+Structural k = k* in 18/37 valid outputs (3/12, 10/13, 5/12). Versus the
+code-free bare arm (anchor concentration 56-86% by cell): pooled
+code-channel anchor-rate 14/37; the lost mass sits entirely BELOW the
+anchor (greedy radius-growth heuristics) — dispersion, not escape.
+
+Registered framing branch (P-CC1): anchoring extends into the math-only
+code channel at these cells; S2.1's "a code channel routes around the
+anchor" is weakened from an assumption to a measured negative for this
+proposer. Scope: stdlib-math programs only; the library-assisted channel
+(numpy/scipy) is registered as a further arm, not measured here.
+
+Corpus: 468 + 45 = 513 invocations.

@@ -37,6 +37,7 @@ TOP_GLOBS = [
     "n_sweep_forecast.py", "rect_forecast.py",
     "opus_wave2_ledger.jsonl",
     "opus_wave2_raw.json", "HOW_TO_RUN.md", "README.md", "requirements.txt",
+    "corrections_ledger.md",
 ]
 TEXT_EXT = {".py", ".md", ".txt", ".json", ".jsonl", ".yaml", ".yml",
             ".sh", ".ipynb", ".cfg", ".toml"}

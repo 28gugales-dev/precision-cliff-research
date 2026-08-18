@@ -97,6 +97,21 @@ never submit them.
 - TMLR LaTeX conversion for Paper 1: build after the wave-7c integration and
   review loop, same fan-out pattern as Paper 2's.
 
+## Arm CC (code-channel probe) — run pre-submission 2026-08-18
+
+Pre-empts the top predicted reviewer objection (paper measures code-free
+calls; loops elicit programs). Registered at commit 285deca (prereg +
+frozen prompts + executor + smoke test pushed to public remote BEFORE
+sampling); 45/45 weak-tier invocations collected, no losses.
+**P-CC1 HOLDS 3/3 cells** (anchor stays modal; one-sample margins at
+N=13/31 disclosed, N=21 heavy at 9/13). Robust row: **0/37 valid program
+outputs above the family argmax**; one reaches it exactly. Integrated as
+S3.7 + abstract sentence + S2.1 rewrite (rationale now measured) + arms
+index (13 arms) + corpus 513 + S9 registration/stopping-rule entries.
+Paper 1 now **31 pp**, compiles clean. Bundle rebuilt (502 files, includes
+arm_cc_* + corrections_ledger.md, 0 leaks). Library-enabled (numpy/scipy)
+channel stays registered future work.
+
 ## Final state (2026-08-17) — both papers submission-ready
 
 - **Paper 2**: gemma-4-31b wave-7c integrated (7c.2 HELD — first non-Qwen

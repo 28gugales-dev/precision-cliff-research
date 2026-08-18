@@ -1,7 +1,7 @@
 % 1:1 markup translation of paper1_draft.md lines 251-589 (S3, S4).
 \section{Preregistered forecast, out of sample}
 
-Twelve registered arms appear in this paper. Each was registered before its sampling, each
+Thirteen registered arms appear in this paper. Each was registered before its sampling, each
 is reported regardless of outcome, and the falsifiers that fired are flagged in place:
 
 \begin{center}
@@ -23,6 +23,7 @@ GM (gemini-flash-lite) & 8 & 2nd vendor & 7 $N$ $\times$ 20 & GM-chain bars & UN
 GM2 (gemma, 4k budget) & 8 & 2nd vendor & 7 $N$ $\times$ 20 & GM-chain bars & 0/140 parseable --- budget confound, diagnosed by GM3 \\
 GM3 (gemma, 16k budget) & 3.6 & gemma-4-26b & 7 $N$ $\times$ 20 & P-GM3.1--.3 + falsifier & pooled bar met; misses are the rival construction \\
 V (cross-vendor zero-shot) & 3.6 & 13 free-tier aliases & 5 $N$ $\times$ 5 & floor + V1/V2 & 2 vendors TRANSFER, gemma-4-31b DOES-NOT-TRANSFER, V2 HOLDS \\
+CC (code channel) & 3.7 & weak tier & 3 $N$ $\times$ 15 & P-CC1 vs P-CC2 & P-CC1 holds: anchor stays modal; 0/37 above the family argmax \\
 \bottomrule
 \end{tabular}
 \end{small}
@@ -484,6 +485,70 @@ drop-and-fill rival the original family cannot), the other lands below it --- bu
 variant and instrument quality change together across the two measurements, so which
 difference carries the split is not attributable from this pair; either way, no
 single-model measurement would have seen the boundary.
+
+\subsection{Preregistered code-channel probe (arm CC): an executed program does not escape the family}
+
+The code-free design (\S2.1) rests on a rationale this paper had asserted but not measured:
+that a code channel routes construction to an executed optimizer, so the emission distribution
+would reflect the optimizer rather than the model. Deployed discovery loops elicit
+\emph{programs}, so that gap was the standing objection to this paper's loop relevance. Arm CC
+measures it. The design was registered and pushed to the public remote before sampling
+(\texttt{arm\_cc\_preregistration.txt}, commit \texttt{285deca}): the three trap cells
+$N = 13, 21, 31$, $n = 15$ weak-tier invocations per cell, prompt equal to the bare stem with
+exactly two registered line replacements --- the code-free clause becomes a program contract
+(standard-library \texttt{math} only, stated in the prompt) and the output clause asks for
+program source. Programs run sandboxed (\texttt{python -I}, 10-second timeout, registered AST
+allowlist; the executor and its four-bin smoke test were committed with the registration), and
+stdout is scored by arm-F conventions unchanged. Two competing predictions, arm-CH style:
+P-CC1, the modal valid executed output remains the $T(k^*, N)$ bucket at $\ge 2$ of 3 cells;
+P-CC2, it sits strictly above the anchor at $\ge 2$ of 3; ties or mixed modes count as neither.
+
+\begin{center}
+\begin{small}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}ccccc@{}}
+\toprule
+$N$ & Valid & Modal bucket (count, margin) & Anchor-rate & Above anchor \\
+\midrule
+13 & 12/15 & anchor 1.6250000 (2/12, one sample) & 2/12 & 1 --- the family argmax, exactly \\
+21 & 13/15 & anchor 2.1000000 (9/13, margin 8) & 9/13 & 0 \\
+31 & 12/15 & anchor 2.5833333 (3/12, one sample) & 3/12 & 0 \\
+\bottomrule
+\end{tabular}
+\end{small}
+\end{center}
+
+\textbf{P-CC1 holds as registered (3 of 3 cells), and its margins belong next to it.} At
+$N = 21$ the mode is heavy --- nine exact $2.1000000$ emissions, most programs writing the
+$5 \times 5$ grid truncated to 21 circles --- but at $N = 13$ and $N = 31$ the modal bucket is
+the anchor value with a \textbf{one-sample margin} over dispersed sub-anchor values, so the
+modal-identity claim is thin at two of three cells, and this sentence is its registered
+disclosure. The robust result is the registered decomposition row: \textbf{no valid program
+output exceeds the family argmax anywhere} (0 of 37 above the rival), and exactly one exceeds
+the anchor at all --- a single $N = 13$ program that computes the family argmax construction
+$V(3, 4) = 1.7761424$ \emph{exactly}. That row sharpens arm CH rather than repeating it: handed
+the family's values, the model chooses the argmax and cannot build it by direct emission (30 of
+31 invalid, \S3.5); allowed to delegate the arithmetic to an executed program, it reaches the
+same argmax once in 37 valid outputs and never passes it. Failure taxonomy: 7 of 45 programs
+produce geometrically invalid packings, 1 imports \texttt{random} against the stated contract
+(caught by the registered gate), none time out. Structural $k = k^*$ in 18 of 37 valid outputs.
+What the channel changes relative to direct emission is dispersion, not escape: code-free
+anchor concentration at these cells runs 56--86\%, the code channel's pooled anchor-rate is
+14/37, and the lost mass sits entirely \emph{below} the anchor --- greedy radius-growth
+heuristics converging under the lattice.
+
+Scope, registered before sampling: this instrument measures externally-executed
+standard-library arithmetic, not library-assisted optimization --- deployed loops permit
+\texttt{numpy}/\texttt{scipy}, and the antecedent study's unconstrained agents wrote
+\texttt{scipy} optimizers unprompted, which is why the constraint is stated in the prompt
+rather than silently enforced; the library channel remains a further arm. Under the
+registration's framing map the P-CC1 branch reads: anchoring extends into the math-only code
+channel at these cells, and \S2.1's ``a code channel routes around the anchor'' is weakened
+from an assumption to a measured negative --- the routing exists, and for this proposer it does
+not lead out of the family. Raw rows verbatim in \texttt{arm\_cc\_collect.jsonl} (45 of 45
+launched invocations collected, no runtime deaths); scoring \texttt{arm\_cc\_analysis.py};
+frozen report \texttt{arm\_cc\_report.json} and summary \texttt{arm\_cc\_results.txt}. This arm
+brings the study corpus to 513 invocations.
 
 \section{Rectangle transfer}
 

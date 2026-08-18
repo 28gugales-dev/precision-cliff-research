@@ -177,7 +177,10 @@ reviewed draft are summarized in Appendix C. Provenance, in list form:
   its serving-path deviation registered in \texttt{arm\_gm3\_amendment1\_openrouter.md} (\texttt{67cc4a1})
   before the affected cells were sampled, and \texttt{arm\_v\_preregistration.md} (commit \texttt{5444f10},
   ancestry-checked by its runners before any sampling) with its three amendments, each
-  committed before the sampling it governs. The rectangle transfer was registered before
+  committed before the sampling it governs. Arm CC's registration
+  (\texttt{arm\_cc\_preregistration.txt} with frozen prompts, executor and smoke test) was
+  committed and pushed to the public remote at \texttt{285deca} before its first invocation.
+  The rectangle transfer was registered before
   collection and never refitted. On multiplicity: this study now spans many registered arms, and no
   correction across arms is applied --- each arm's predictions were registered with its own
   bars and falsifiers before its sampling, every arm is reported regardless of outcome
@@ -240,9 +243,12 @@ reviewed draft are summarized in Appendix C. Provenance, in list form:
   released ledger, and the corrections that followed are folded into this revision. This is
   quality assurance, not peer review, and carries no external authority.
 \item \textbf{Stopping rule.} This revision closed after implementing the internal-check
-  findings; no further data-dependent analysis was performed. Analyses named but
+  findings; no further data-dependent analysis was performed. Arm CC (\S3.7) was registered,
+  run and scored once under its own preregistration after that close; its analysis script was
+  committed before its sampling and was not modified after. Analyses named but
   not run --- the one-parent mutation arm, the recipe-family choice probe, $N = 57$, the empirical-$k$
-  back-out, faithfulness split by on- versus off-prediction, a code-enabled probe, interleaved
+  back-out, faithfulness split by on- versus off-prediction, a library-enabled code probe
+  (\texttt{numpy}/\texttt{scipy}; the math-only code channel has since run as arm CC), interleaved
   re-collection of the arm-T pair, and P5 at $n = 20$ --- are recorded in \S6.5 and \S8 as future work,
   so that the reported statistics remain the ones the preregistrations governed.
 \end{itemize}
