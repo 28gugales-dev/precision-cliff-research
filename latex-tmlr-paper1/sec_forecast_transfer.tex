@@ -63,7 +63,9 @@ provenance corrections are itemized in \S9 and Appendix A.
 An exact point prediction invites a fair objection: a per-sample hit rate well short of 100\% is
 not ``predicting the exact output'', which is what revision 1's abstract claimed. The number should be read against the sampling entropy of the distribution, computed in
 \texttt{p11\_mode\_baseline.json} (bare arm, $2\times10^{-3}$ buckets). At \textbf{all seven tested $N$ the predicted
-value is the empirical modal output}, and the on-prediction rate equals the modal frequency to
+value is the empirical modal output} --- four discriminating cells plus three where the
+prediction and the family argmax coincide, so the anchoring-specific evidence sits in the
+four --- and the on-prediction rate equals the modal frequency to
 within one sample:
 
 \begin{center}
@@ -296,7 +298,7 @@ $N$ & Stated argmax & Modal valid output & Valid & Invalid rows attempting argma
 \midrule
 13 & 1.7761424 & $T(4,13) = 1.6250000$ & 2/15 & all & P-CH1 holds \\
 21 & 2.2588835 & argmax, 3/5 & 5/15 & all & P-CH2 (argmax) \\
-31 & 2.7485281 & $T(6,31) \approx 2.5833$ (4/7, one-sample margin) & 7/15 & all & P-CH1 holds \\
+31 & 2.7485281 & $T(6,31) \approx 2.5833$ (4/7) & 7/15 & all & P-CH1 holds (one-sample margin) \\
 pooled & --- & template 2 of 3 cells & 14/45 & \textbf{31/31} (30 misplaced fillers, 1 unevaluable radicals) & choice follows score table; execution fails off-template \\
 \bottomrule
 \end{tabular}
