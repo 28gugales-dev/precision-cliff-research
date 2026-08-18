@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  18 AUG 2026 17:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  18 AUG 2026 17:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -858,12 +858,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [11 <./fig_gm3_anchoring.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 442.
-
-Overfull \hbox (16.5048pt too wide) in paragraph at lines 442--451
- [] 
- []
-
-[12] [13]) (sec_tiers_elicitation.tex
+ [12] [13]) (sec_tiers_elicitation.tex
 Underfull \hbox (badness 7151) in paragraph at lines 17--24
 []\T1/lmr/bx/n/10 (+20) The mid-dle tier per-turbs and mixes. \T1/lmr/m/n/10 (+
 20) The Sonnet-tier arm was pre-reg-is-tered in
@@ -975,7 +970,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 93--93
  []
 
 
-Underfull \vbox (badness 5064) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [15]
 <fig2_packings.png, id=278, 505.89pt x 187.902pt>
@@ -1161,7 +1156,7 @@ AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/soham/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/soham/A
 ppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt9.pfb><C:/Users/soham/Ap
 pData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on main.pdf (29 pages, 989691 bytes).
+Output written on main.pdf (29 pages, 989634 bytes).
 PDF statistics:
  681 PDF objects out of 1000 (max. 8388607)
  120 named destinations out of 1000 (max. 500000)
