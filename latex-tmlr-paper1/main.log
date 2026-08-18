@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  17 AUG 2026 18:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  18 AUG 2026 00:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -862,7 +862,10 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [12 <./fig_gm3_anchoring.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 443.
- [13]) (sec_tiers_elicitation.tex [14]
+ [13]) (sec_tiers_elicitation.tex
+Underfull \vbox (badness 1038) has occurred while \output is active []
+
+ [14]
 Underfull \hbox (badness 7151) in paragraph at lines 17--24
 []\T1/lmr/bx/n/10 (+20) The mid-dle tier per-turbs and mixes. \T1/lmr/m/n/10 (+
 20) The Sonnet-tier arm was pre-reg-is-tered in
@@ -1104,9 +1107,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 79--79
  []
 
 
-Overfull \hbox (46.41415pt too wide) in paragraph at lines 79--79
-\T1/lmr/m/n/8 (-20) (\T1/lmtt/m/n/8 diagnostics_gm3_rival.py\T1/lmr/m/n/8 (-20)
- )| 
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+\T1/lmr/m/n/8 (+20) (\T1/lmtt/m/n/8 diagnostics
  []
 
 ignored error: Infinite glue shrinkage found in box being split [29]
@@ -1278,10 +1280,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 3BFDBBB2B0FE4C3D0931DDBF67A0B493;7809.
  ) 
 Here is how much of TeX's memory you used:
- 14325 strings out of 467871
- 228708 string characters out of 5418376
+ 14327 strings out of 467871
+ 228768 string characters out of 5418376
  706511 words of memory out of 5000000
- 42395 multiletter control sequences out of 15000+600000
+ 42397 multiletter control sequences out of 15000+600000
  733364 words of font info for 325 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,12n,90p,1003b,656s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1312,7 +1314,7 @@ AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/soham/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/soham/A
 ppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt9.pfb><C:/Users/soham/Ap
 pData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on main.pdf (31 pages, 1018007 bytes).
+Output written on main.pdf (31 pages, 1018483 bytes).
 PDF statistics:
  692 PDF objects out of 1000 (max. 8388607)
  123 named destinations out of 1000 (max. 500000)

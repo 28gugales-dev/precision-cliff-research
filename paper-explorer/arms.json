@@ -3,12 +3,12 @@
     {
       "id": "paper1",
       "title": "A Closed Form for What the Model Emits",
-      "claim": "In the unconditioned zero-shot, code-free proposal regime — one call, no parent program, no fitness feedback, no evaluator in context — a weak-tier language model does not search the circle-packing solution space; it emits a grid-with-corner-fillers template and truncates it, even where a provably better construction in the same recipe family is one parameter away. The behaviour admits a closed form: a nearest-square order k*(N) = round(√N) with a value function V(k, m) = k/2 + m(√2 − 1)/(2k) and a truncation value T(k, N) = N/(2k) identify the empirical modal output — which template, and hence its exact multi-decimal value — at all seven tested N, stated before sampling, with per-sample agreement equal to the modal frequency itself (56–86% by cell) against a round-number baseline of 2 of 69 valid samples. Two scope conditions are load-bearing and both were established by preregistered extensions whose falsifiers triggered: the extend branch of the rule survives only at m ≤ 1 (at m ≥ 4 the model moves up to the (k*+1) rectangle grid), and the anchoring does not transfer to parent-conditioned calls — given a provably better in-family parent, 0 of 26 valid mutation samples return to the anchor. Across three nominal tiers, constructive ambition rises monotonically while execution validity rises then collapses (78% → 100% → 13%), and a recipe-family choice probe decomposes the mechanism: handed the argmax explicitly the model chooses it but cannot execute it, so the template is less what the model prefers than what it can reliably build."
+      "claim": "In the unconditioned zero-shot, code-free proposal regime — one call, no parent program, no fitness feedback, no evaluator in context — a weak-tier language model does not search the circle-packing solution space; it emits a grid-with-corner-fillers template and truncates it, even where a provably better construction in the same recipe family is one parameter away. The behaviour admits a closed form: a nearest-square order k*(N) = round(√N) with a value function V(k, m) = k/2 + m(√2 − 1)/(2k) and a truncation value T(k, N) = N/(2k) identify the empirical modal output — which template, and hence its exact multi-decimal value — at all seven tested N, stated before sampling, with per-sample agreement equal to the modal frequency itself (56–86% by cell) against a round-number baseline of 2 of 69 valid samples. Two scope conditions are load-bearing and both were established by preregistered extensions whose falsifiers triggered: the extend branch of the rule survives only at m ≤ 1 (at m ≥ 4 the model moves up to the (k*+1) rectangle grid), and the anchoring does not transfer to parent-conditioned calls — given a provably better in-family parent, 0 of 26 valid mutation samples return to the anchor. Cross-vendor arms under two instruments make the scope a family property, bounded in both directions: the anchor value transfers to two further vendors (61–67% of valid outputs), while one family brackets it from both sides — gemma-4-26b meets the registered pooled bar (57.5%) yet emits the in-family rival construction at 27 of 43 discriminating-cell validities, and gemma-4-31b clears the same validity floor anchoring on nothing. Across three nominal tiers, constructive ambition rises monotonically while execution validity rises then collapses (78% → 100% → 13%), and a recipe-family choice probe decomposes the mechanism: handed the argmax explicitly the model chooses it but cannot execute it, so the template is less what the model prefers than what it can reliably build."
     },
     {
       "id": "paper2",
       "title": "Served Precision Is Part of the Model",
-      "claim": "Quantizing a proposer's weights can leave every metric a discovery loop watches unchanged while collapsing the variation the loop depends on. On circle packing at N = 26 with Qwen2.5-Coder-14B served locally through llama.cpp on SHA-256-pinned weight files, degrading the quantization ladder moves viability (22/22/24/19 of 50) and validity (18/20/19/18 of 50) by no amount detectable at n = 50 per rung, while at the Q2_K rung the proposer very largely stops departing from its parent: coordinate-verified parent echo runs 17/18 (94%) at Q2_K against 8/57 (14%) pooled across the upper three rungs, and the registered fresh-seed bound (q2_k ≥ 60%, q4_k_m ≤ 35%), written into the runner before execution, held on five never-sampled seeds at 79% (19/24) against 6% (1/17). A registered must-differ probe returned 5 of 5 echoes under an explicit prohibition, so the failure is not reachable by instruction. The failed proposals are not garbage — they are coherent, well-formed near-copies, which is why every pass/fail instrument reports health, and why final best score after ten generations does not separate the rungs anywhere even though the 2-bit rung takes 1 accepted hill-climb step in 50 calls against 14–16 at the upper three. A fixed-parent control bounds rather than extends the result (33% vs 92% in the matched band), the registered scheme-versus-bit-width control returns its inconclusive branch, and five later registered waves scope the generality: a hosted capability ladder returns DISSOCIATION (0/120 echoes), a Heilbronn transfer holds the 2-bit bound (63.1%) but refutes the reference rung's ceiling (46.9%), and LABS plus four non-Qwen families return UNINFORMATIVE and UNDERPOWERED by their own floors, leaving family generality an open limitation. Because managed agent runtimes address models only by alias, which quantization is served is unattested — and a re-snapshot six days later returned 30/30 valid where the original arm returned 4/30, so the hypothesis pair the forensic case study poses becomes untestable rather than merely open."
+      "claim": "Quantizing a proposer's weights can leave every metric a discovery loop watches unchanged while collapsing the variation the loop depends on. On circle packing at N = 26 with Qwen2.5-Coder-14B served locally through llama.cpp on SHA-256-pinned weight files, degrading the quantization ladder moves viability (22/22/24/19 of 50) and validity (18/20/19/18 of 50) by no amount detectable at n = 50 per rung, while at the Q2_K rung the proposer very largely stops departing from its parent: coordinate-verified parent echo runs 17/18 (94%) at Q2_K against 8/57 (14%) pooled across the upper three rungs, and the registered fresh-seed bound (q2_k ≥ 60%, q4_k_m ≤ 35%), written into the runner before execution, held on five never-sampled seeds at 79% (19/24) against 6% (1/17). A registered must-differ probe returned 5 of 5 echoes under an explicit prohibition, so the failure is not reachable by instruction. The failed proposals are not garbage — they are coherent, well-formed near-copies, which is why every pass/fail instrument reports health, and why final best score after ten generations does not separate the rungs anywhere even though the 2-bit rung takes 1 accepted hill-climb step in 50 calls against 14–16 at the upper three. A fixed-parent control bounds rather than extends the result (33% vs 92% in the matched band), the registered scheme-versus-bit-width control returns its inconclusive branch, and six later registered waves scope the generality: a hosted capability ladder returns DISSOCIATION (0/120 echoes), a Heilbronn transfer holds the 2-bit bound (63.1%) but refutes the reference rung's ceiling (46.9%), LABS plus five non-Qwen families sit below their own registered competence floors, and a sixth family, screen-selected at 31B, becomes the first non-Qwen arm to clear the upper rung's control floor (4.8 accepted steps per seed, every seed improving) and reproduces the 2-bit search-activity collapse under a registered floor-gated secondary (0.0 against 4.8 accepted steps, viability intact at both rungs) — its echo primary underpowered and its collapse channel well-formed invalidity rather than parent echo, so the copying signature, though no longer the search collapse, remains unresolved beyond Qwen. Because managed agent runtimes address models only by alias, which quantization is served is unattested — and a re-snapshot six days later returned 30/30 valid where the original arm returned 4/30, so the hypothesis pair the forensic case study poses becomes untestable rather than merely open."
     }
   ],
   "arms": [
@@ -364,15 +364,39 @@
     {
       "id": "p1_arm_gm3",
       "paper": "paper1",
-      "label": "Arm GM3 — enlarged-budget follow-up",
+      "label": "Arm GM3 — cross-vendor (gemma-4-26b), pooled bar held, misses are the rival",
       "kind": "extension",
-      "design": "A follow-up to arm GM2 with an enlarged output budget, registered before sampling, designed specifically to separate format inability from budget truncation as the cause of GM2's 0/140 parse rate.",
-      "result": "Running at submission time; no outcome reported.",
-      "verdict": "not evaluable — in progress",
-      "caveats": "Until it reports, the anchoring law remains single-vendor evidence and the cause of the GM2 compliance cliff is uncharacterized.",
+      "design": "The enlarged-budget follow-up to GM2 (16,384 tokens against GM2's 4,096), registered before sampling to separate format inability from budget truncation: seven N cells at twenty samples each against gemma-4-26b-a4b-it through its first-party API, byte-identical arm-F prompts. Registered tests: pooled on-prediction ≥ 30%; cell-level mode match in ≥ 5 scoreable cells; falsifier at ≥ 4 failures; cells with < 3 valid samples UNSCOREABLE.",
+      "result": "The pooled prediction HELD: 46 of 80 valid packings (57.5%) within 2×10⁻³ of the predicted value against the 30% bar, for a rule fitted entirely on another vendor's models. The decomposition is the finding: 35 of the 46 hits sit in the two non-discriminating cells (19/20 at N = 17, 15/15 at N = 35); on the three discriminating cells the rate is 11 of 43 (25.6%), and the modal output at every discriminating cell is the rival argmax itself — 1.7761, 2.2589, 2.7485. A post-hoc structural diagnostic (diagnostics_gm3_rival.py, disclosed as such) finds all 27 of 27 rival-valued packings carrying the rival's exact two-radius construction — the (k*−1) grid radius with the (k*−1) filler radius — so 27 of 43 discriminating-cell validities (63%) are the rival construction the original family reaches 2 times in 57. Cell-level mode match 2 of 5 scoreable (registered falsifier at ≥ 4 did not trigger); N = 37 and 43 UNSCOREABLE at 2 then 0 valid of 20.",
+      "verdict": "held as registered (pooled bar), unchanged by the decomposition — and a family-boundary finding: gemma-4-26b escapes upward to the in-family rival, the counterexample proving the anchor statistic is a family trait",
+      "caveats": "The registered signature instrument tests radii against the predicted order k*, so it is structurally blind to (k*−1) constructions — which is why a 43% signature rate among hits coexists with a 100% rival-structure rate among misses. One mechanical deviation on record, amendment registered before resumption: the final 41 of 140 cells ran via a routed serving path, provider logged per row; dual accounting 59.0% first-party-only against 57.5% mixed, no verdict change. Validity collapse at the two largest cells bounds the family's competence window; read against §8's tractability alternative, a family with more arithmetic reach executes the harder in-family construction rather than truncating.",
       "stats": {
-        "status": "running at submission",
-        "purpose": "separates format inability from budget truncation"
+        "samples": "140 (7 N x 20)",
+        "pooled": "46/80 (57.5%) vs >=30% HELD",
+        "discriminating": "11/43 (25.6%) on-prediction",
+        "rival_structure": "27/27 rival-valued packings carry (k*-1) grid + fillers",
+        "cell_level": "mode match 2/5 scoreable",
+        "unscoreable": "N=37 (2 valid), N=43 (0 valid)",
+        "dual_accounting": "59.0% / 57.5%"
+      }
+    },
+    {
+      "id": "p1_arm_v",
+      "paper": "paper1",
+      "label": "Arm V — cross-vendor zero-shot under free-tier serving (13 aliases, 5 vendors)",
+      "kind": "extension",
+      "design": "Varies vendor and serving class at once under the byte-identical arm-F prompts (SHA-256 per N restated in the registration and recomputed at call time, aborting on mismatch): five cells at five samples per (model, N) against free-tier aliases across five vendors. Registered before sampling with three amendments, each committed before the sampling it governs: the alias list expanded 3 → 13 across two serving paths, max_tokens raised to 24,576 after hidden-reasoning truncation emptied three models' replies, and a transport-repair rule retrying each invocation slot until content arrived, with censored-row accounting. Registered floor: ≥ 10 of a model's 25 registered invocation slots valid at 10⁻⁶ — evaluated on slots, not attempts; below it, no anchoring claim in either direction. V1: ≥ 50% of valid on-prediction; V2: rival-argmax ≤ 10%.",
+      "result": "877 attempt rows over 325 registered slots, every invocation appended live to the ledger, failures and refusals included. Ten of thirteen aliases finished BELOW-FLOOR — including all three originally-registered opencode aliases and one alias returning all 108 of its attempts without content; gemma-4-31b's 25 slots took 190 attempt rows, 165 of them transport failures. The three floor-clearers split the registration's most informative branch pair: north-mini-code TRANSFERS (8/12 = 67% on-prediction), gpt-oss-20b TRANSFERS (11/18 = 61%), gemma-4-31b DOES-NOT-TRANSFER (0/15) — its valid packings land neither the prediction nor the rival, just weaker de-novo construction (bests 0.88–1.85 against predictions 1.63–3.03). V2 HOLDS everywhere evaluable: zero rival-argmax emissions in 16 discriminating-cell validities (0/4, 0/9, 0/3).",
+      "verdict": "the family-specific branch fires — anchoring transfers to two further vendors and is absent in a third, making the closed form a family property stated with data rather than a caveat",
+      "caveats": "Free-tier serving: aliases on managed paths, sampling_params null on every row, upstream provider logged only where the path reports it; the slot floor protects against reading transport failure as behavior, but 10 of 13 aliases claim nothing in either direction. The gemma pair — 26b rival-escaping under GM3's instrument, 31b anchoring on nothing here — bounds the family from both sides, but model variant and instrument quality change together across the two arms, so which difference carries the split is not attributable. big-pickle disclosed as vendor-unattested in amendment 1.",
+      "stats": {
+        "slots": "325 registered (13 aliases x 25)",
+        "attempt_rows": 877,
+        "below_floor": "10/13 aliases",
+        "north_mini_code": "8/12 (67%) TRANSFERS, V2 0/4",
+        "gpt_oss_20b": "11/18 (61%) TRANSFERS, V2 0/9",
+        "gemma_4_31b": "0/15 DOES-NOT-TRANSFER, V2 0/3",
+        "gemma_transport": "190 attempts for 25 slots, 165 transport failures"
       }
     },
     {
@@ -884,6 +908,25 @@
       }
     },
     {
+      "id": "p2_wave7c",
+      "paper": "paper2",
+      "label": "Wave 7c — screen-selected sixth family (gemma-4-31b) clears the control floor",
+      "kind": "extension",
+      "design": "Registered in wave7c_prereg_screened_families.md (SHA-256 b1fc9ee9…, public Kaggle dataset pushed before sampling); changes the selection procedure, not the test. A disclosed competence screen — 50 one-shot generation-0 calls per model through OpenRouter free-tier aliases, instrument committed before screen sampling — gates a local pinned-weight ladder: a pass gates, a fail gates nothing, and no screen number is evidence, since the screen's serving path is unattested. Five candidates screened: gemma-4-31b-it 43/50 valid, nemotron-3-super 34/50 (ADVANCE but exceeds free-tier hardware, advanced-not-run), gpt-oss-20b 27/50 ADVANCE; nemotron-nano and north-mini-code below the ≥ 20/50 bar, the latter with 49 of 50 rows reasoning-censored empties. Three registered outcomes on the ladder: 7c.1 echo primary (20-valid floor per rung), 7c.2 floor-gated search-progress secondary (Q4_K_M control floor ≥ 1.0 accepted steps), 7c.3 must-differ probe at Q2_K.",
+      "result": "gemma-4-31b returned the wave's only informative verdicts. 7c.2 HELD: the Q4_K_M control floor passed — the first non-Qwen arm in the programme to clear one, mean accepted steps 4.800 against the ≥ 1.0 floor, all five seeds improving, best 2.08 on every seed — and Q2_K takes 0.000 accepted steps against 4.800, reproducing the 2-bit search-activity collapse under a registered floor-gated prediction. 7c.1 UNDERPOWERED: 0 valid Q2_K packings in 50 against the 20-valid floor (Q4_K_M: 24), no branch claimed. 7c.3 UNDERPOWERED: 0 of 10 probes valid at Q2_K (Q4_K_M 10/10 valid, 0 echoes-under-differ). The collapse channel differs from every family before it: at Q2_K gemma-4 stays viable — 48 of 50 calls parseable, identical to Q4_K_M — while producing nothing valid and echoing nothing (Q4_K_M echo 0/24). Well-formed invalidity is a third failure channel, equally invisible to viability-style health metrics, where Qwen's is parent-copying and gemma-2's 18 valid outputs were all echoes. gpt-oss-20b's ladder returned UNDERPOWERED: 5/50 valid at Q4_K_M — every one a coordinate-exact parent echo — and 0/50 at Q2_K.",
+      "verdict": "7c.2 HELD — one directional replication of the search-activity collapse, not a resolved generalization; 7c.1 and 7c.3 UNDERPOWERED, so the echo-contrast primary remains unresolved beyond Qwen",
+      "caveats": "The gemma retry required a post-registration runner edit with no pre-resumption amendment — unlike every arm-level serving-path deviation in the corpus — so the commit-pair diff (8cfaffb → 342cdea, 18 lines confined to the model-download path; seeds, prompts, sampling parameters and sampling code unchanged) stands as an after-the-fact substitute, a named gap in amendment discipline. Rungs are community GGUF conversions (gpt-oss additionally MXFP4-native, qualifier registered before the run), so 2-bit precision versus conversion quality is not disentangled. The channel taxonomy is descriptive and unregistered, like every cross-family comparison in the section; the screen ledger logged one unchanged alias served by four different providers within a single 50-call run — the serving heterogeneity §5 argues an alias leaves unattested, observed live.",
+      "stats": {
+        "screen": "gemma-4-31b 43/50, nemotron-super 34/50, gpt-oss 27/50 ADVANCE",
+        "7c2": "HELD: 0.000 vs 4.800 accepted steps, floor passed, all 5 seeds improved",
+        "7c1": "UNDERPOWERED: Q2_K 0 valid/50 vs floor 20 (Q4_K_M 24)",
+        "7c3": "UNDERPOWERED: 0/10 valid Q2_K; Q4_K_M 10/10, 0 echo-under-differ",
+        "viability": "48/50 both rungs",
+        "q4_k_m_echo": "0/24",
+        "gpt_oss": "5/50 Q4_K_M all echoes, 0/50 Q2_K"
+      }
+    },
+    {
       "id": "p2_wave8_pilot",
       "paper": "paper2",
       "label": "Wave-8 pilot — seed calibration against wave 3's control-rung floor",
@@ -1112,7 +1155,7 @@
       "source": "p1_arm_gm2",
       "target": "p1_claim_closed_form",
       "type": "scopes",
-      "note": "0 of 140 parseable responses leaves every cell UNSCOREABLE, so the law remains single-vendor evidence."
+      "note": "0 of 140 parseable responses leaves every cell UNSCOREABLE; GM3's enlarged budget later diagnoses the cause as an output-budget confound and moves the law cross-vendor."
     },
     {
       "source": "p1_arm_gm3",
@@ -1455,6 +1498,42 @@
       "target": "p2_quant_ladder",
       "type": "informs",
       "note": "The constructible template family and its exact rational values are why proposals are detectable as echoes at 1e-6 in the quantization study."
+    },
+    {
+      "source": "p1_arm_gm3",
+      "target": "p1_claim_closed_form",
+      "type": "extends",
+      "note": "The pooled bar holds cross-vendor (57.5% vs 30%), but the discriminating-cell decomposition shows gemma-4-26b escaping upward to the in-family rival — the anchor statistic is a family trait."
+    },
+    {
+      "source": "p1_arm_v",
+      "target": "p1_claim_closed_form",
+      "type": "extends",
+      "note": "Two further vendors land the registered construction values at 61–67% of valid outputs while gemma-4-31b clears the same floor anchoring on nothing, so the closed form is family-bounded in both directions."
+    },
+    {
+      "source": "p1_arm_v",
+      "target": "p1_arm_gm3",
+      "type": "contrasts_with",
+      "note": "The gemma pair: 26b emits the rival at its discriminating cells, 31b lands neither prediction nor rival — the family brackets the anchor from both sides, though model variant and instrument quality change together."
+    },
+    {
+      "source": "p2_wave7c",
+      "target": "p2_claim_c1",
+      "type": "extends",
+      "note": "The first non-Qwen arm to clear a control floor reproduces the 2-bit search-activity collapse (0.0 vs 4.8 accepted steps) under a registered floor-gated secondary."
+    },
+    {
+      "source": "p2_wave7c",
+      "target": "p2_wave7b",
+      "type": "extends",
+      "note": "A screen-selected retry at 31B after competence floors excluded every family up to 24B; the screen gates the ladder but is not itself evidence."
+    },
+    {
+      "source": "p2_wave7c",
+      "target": "p2_scope_conditions",
+      "type": "feeds",
+      "note": "The echo primary stays underpowered and the collapse channel is family-shaped — well-formed invalidity, not parent echo — so the copying signature remains unresolved beyond Qwen."
     }
   ]
 }

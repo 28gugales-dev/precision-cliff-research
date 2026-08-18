@@ -2515,6 +2515,62 @@
       "id": "paper2_cite_pineau_reproducibility",
       "community": 0,
       "norm_label": "pineau et al. - neurips reproducibility program (2003.12206)"
+    },
+    {
+      "label": "Arm GM3 — enlarged-budget cross-vendor re-run (pooled bar HELD 57.5%)",
+      "file_type": "rationale",
+      "source_file": "paper1_draft.md",
+      "source_location": "§3.6",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Separates GM2's format-inability reading from budget truncation by raising the output budget to 16,384; the pooled prediction held (46/80 within 2e-3, vs a 30% bar) for a rule fitted entirely on another vendor's models, while the discriminating cells run 11/43 (25.6%).",
+      "id": "paper1_arm_gm3",
+      "community": 5,
+      "norm_label": "arm gm3 — enlarged-budget cross-vendor re-run (pooled bar held 57.5%)"
+    },
+    {
+      "label": "GM3 rival-construction finding (27/27 misses carry the (k*-1) rival structure)",
+      "file_type": "rationale",
+      "source_file": "paper1_draft.md",
+      "source_location": "§3.6",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "gemma-4-26b's modal output at every discriminating cell is the rival argmax itself, and a post-hoc diagnostic (diagnostics_gm3_rival.py, disclosed as such) finds all 27 rival-valued packings carrying the rival's exact two-radius decomposition — the family escapes upward to the in-family rival, the counterexample proving the anchor statistic is a family trait.",
+      "id": "paper1_gm3_rival_finding",
+      "community": 4,
+      "norm_label": "gm3 rival-construction finding (27/27 misses carry the (k*-1) rival structure)"
+    },
+    {
+      "label": "Arm V — cross-vendor zero-shot, free-tier serving (2 TRANSFER, gemma-4-31b DOES-NOT-TRANSFER)",
+      "file_type": "rationale",
+      "source_file": "paper1_draft.md",
+      "source_location": "§3.6",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Thirteen free-tier aliases across five vendors under byte-identical prompts; floor of >=10 valid of 25 registered slots. north-mini-code (8/12) and gpt-oss-20b (11/18) TRANSFER, gemma-4-31b (0/15) DOES-NOT-TRANSFER, V2 rival bound HOLDS at 0/16 — the family-specific branch of the registered falsification map fires.",
+      "id": "paper1_arm_v",
+      "community": 5,
+      "norm_label": "arm v — cross-vendor zero-shot, free-tier serving (2 transfer, gemma-4-31b does-not-transfer)"
+    },
+    {
+      "label": "Wave 7c: screen-selected sixth family, gemma-4-31b (7c.2 HELD, 0.0 vs 4.8 accepted steps)",
+      "file_type": "rationale",
+      "source_file": "paper2_short.md",
+      "source_location": "§8 wave 7c",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "The first non-Qwen arm to clear an upper-rung control floor (4.8 accepted steps per seed, every seed improving) reproduces the 2-bit search-activity collapse under a registered floor-gated secondary, with viability intact at both rungs; its echo primary is UNDERPOWERED and the collapse channel is well-formed invalidity rather than parent echo.",
+      "id": "paper2_wave7c_gemma4_31b",
+      "community": 9,
+      "norm_label": "wave 7c: screen-selected sixth family, gemma-4-31b (7c.2 held, 0.0 vs 4.8 accepted steps)"
     }
   ],
   "links": [
@@ -4797,6 +4853,96 @@
       "weight": 1.0,
       "source": "paper2_contamination_rival_reading",
       "target": "paper2_echo_screen_canary"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "paper1_draft.md",
+      "source_location": "§3.6, §8",
+      "weight": 1.0,
+      "source": "paper1_arm_gm3",
+      "target": "paper1_arm_gm2"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "paper1_draft.md",
+      "source_location": "§3.6",
+      "weight": 1.0,
+      "source": "paper1_arm_gm3",
+      "target": "paper1_gm3_rival_finding"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "paper1_draft.md",
+      "source_location": "§3.6",
+      "weight": 1.0,
+      "source": "paper1_gm3_rival_finding",
+      "target": "paper1_rival_argmax"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "paper1_draft.md",
+      "source_location": "§3.6",
+      "weight": 1.0,
+      "source": "paper1_arm_v",
+      "target": "paper1_anchor"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "paper1_draft.md",
+      "source_location": "§3.6",
+      "weight": 1.0,
+      "source": "paper1_arm_v",
+      "target": "paper1_arm_gm3"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "paper2_short.md",
+      "source_location": "§8 wave 7c",
+      "weight": 1.0,
+      "source": "paper2_wave7c_gemma4_31b",
+      "target": "paper2_precision_cliff"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "paper2_short.md",
+      "source_location": "§8 wave 7c",
+      "weight": 1.0,
+      "source": "paper2_wave7c_gemma4_31b",
+      "target": "paper2_scope_family_generality"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "paper2_short.md",
+      "source_location": "§8 wave 7c",
+      "weight": 1.0,
+      "source": "paper2_wave7c_gemma4_31b",
+      "target": "paper2_wave7b_families_14b"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "paper2_short.md",
+      "source_location": "§3.6, §8 wave 7c",
+      "weight": 1.0,
+      "source": "paper1_arm_v",
+      "target": "paper2_wave7c_gemma4_31b"
     }
   ],
   "hyperedges": [
