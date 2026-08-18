@@ -1,0 +1,32 @@
+{
+  "created": "2026-08-16 17:50:46",
+  "gpus": [
+    "Tesla T4, 15360 MiB",
+    "Tesla T4, 15360 MiB"
+  ],
+  "repo": "unsloth/gpt-oss-20b-GGUF",
+  "gens": 10,
+  "seeds": [
+    7701,
+    7702,
+    7703,
+    7704,
+    7705
+  ],
+  "temperature": 0.8,
+  "top_p": 0.95,
+  "runner_version": "wave7c_gpt_oss_20b_v1",
+  "purpose": "wave 7c screened family generality: gpt_oss_20b (20B MoE (MXFP4-native parent; community GGUF conversion, disclosed in prereg)), prereg sha b1fc9ee9c706a3eb",
+  "conditions": {
+    "q4_k_m": {
+      "sha256": "c27536640e410032865dc68781d80a08b98f8db5e93575919af8ccc0568aeb4f",
+      "bytes": 11624759488,
+      "filename": "gpt-oss-20b-Q4_K_M.gguf"
+    },
+    "q2_k": {
+      "sha256": "129b8e3865517cbba55bbb7d4f0cc2444a014e73a619eafbac247ef6573a19ee",
+      "bytes": 11468317888,
+      "filename": "gpt-oss-20b-Q2_K.gguf"
+    }
+  }
+}

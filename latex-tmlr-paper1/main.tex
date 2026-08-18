@@ -1,0 +1,129 @@
+% ===========================================================================
+% TMLR submission build of paper1_draft.md (canonical source, revision 2 /
+% current v62 line numbering, 1284 lines). Built to mirror latex-tmlr/
+% (paper 2's TMLR build) exactly; see that directory's main.tex for the
+% original statement of the conversion rules.
+%
+% Regeneration: fragments are 1:1 markup translations of paper1_draft.md
+% line ranges:
+%   sec_intro_task.tex          lines  69-247  (S1, S1.1, S2)
+%   sec_forecast_transfer.tex   lines 251-589  (S3, S4)
+%   sec_tiers_elicitation.tex   lines 593-919  (S5, S6)
+%   sec_related_repro.tex       lines 923-1177 (S7, S8, S9)
+%   sec_appendices.tex          lines 1181-end (Appendices A, B, C)
+% NOTE 2026-08-17: S3.7 (arm V) added to the source (~55 lines) and mirrored
+%   into sec_forecast_transfer.tex (+S5/S8/S9 edits); line ranges above shifted.
+% NOTE 2026-08-17 (revision 3): abstract condensed; S1 contribution (4) and
+%   S2.4 notation table added (sec_intro_task.tex); S3 arms-index table,
+%   Tables M/MU/CH/CV added and S3.6+S3.7 merged into one S3.6 cross-vendor
+%   chain (sec_forecast_transfer.tex); all S3.7 cross-refs now S3.6.
+% Title from line 1; revision note lines 7-10 (kept, italic, after
+% \maketitle); abstract lines 15-65.
+% Conversion rules: prose verbatim; pipe tables -> booktabs/longtable;
+% citations converted from the source's inline arXiv ids to natbib
+% \citet/\citep per TMLR's formatting instructions (see the bibliography
+% note below); figures fig1_trapzones.png, fig_gm3_anchoring.png,
+% fig2_packings.png, fig3_armT.png copied from the repo root; anonymized
+% for double-blind (author block below is a placeholder; the source
+% markdown's author name and email removed, see ANONYMIZATION_REPORT.md).
+%
+% Compile: pdflatex -> bibtex -> pdflatex x2 (MiKTeX local toolchain), or
+% upload this directory to Overleaf, compiler pdfLaTeX, main document
+% main.tex.
+%
+% Camera-ready: switch to \usepackage[accepted]{tmlr}, restore the real
+% author block (kept in the source markdown, never in this file), set
+% \month/\year/\openreview below.
+% ===========================================================================
+\documentclass[10pt]{article}
+\usepackage{tmlr}
+% If accepted: \usepackage[accepted]{tmlr}
+% Preprint (arXiv): \usepackage[preprint]{tmlr}
+
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{microtype}
+\usepackage{graphicx} % paper 1 has figures; paper 2's preamble had none
+
+% zero-width, hyphen-free break opportunity, used inside long hex digests
+\newcommand{\bk}{\discretionary{}{}{}}
+
+\title{A Closed Form for What the Model Emits: Template Anchoring in
+Unconditioned Zero-Shot Circle Packing}
+
+% DOUBLE-BLIND: real author block intentionally absent from this file.
+% tmlr.sty hides \author until [accepted]/[preprint], but the source is
+% part of the supplementary upload, so even the source stays anonymous.
+\author{\name Anonymous authors \email anonymous@example.org \\
+      \addr Withheld for double-blind review}
+
+\def\month{MM}  % camera-ready
+\def\year{YYYY} % camera-ready
+\def\openreview{\url{https://openreview.net/forum?id=XXXX}} % camera-ready
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\emph{(Revision 3, 2026-08-17. Revision 2 (2026-08-01) implemented \texttt{p4\_review\_stats.md},
+\texttt{p4\_review\_reviewer2.md} and \texttt{p4\_review\_gecco.md}, plus the arbitration in \texttt{p6\_cruxes.md};
+every claim that changed relative to revision 1 is itemized in Table 5 (Appendix C). Revision 3
+adds the preregistered extension arms M, MU/CH, GM3 and V (\S3.4--3.6), a condensed abstract,
+the notation and arms-index tables (\S2.4, \S3), and the GM3 rival-construction analysis (\S3.6);
+the deviations table is Table 4 (Appendix B), and the ledger correction, the review-process
+disclosure and the stopping rule are in \S9.)}
+\end{center}
+
+\begin{abstract}
+Language models are increasingly placed in the proposal role of discovery loops such as
+FunSearch and AlphaEvolve, on the assumption that their outputs explore a diverse solution
+space. We characterize the \emph{unconditioned} proposal --- a single zero-shot, code-free call
+with no parent program, no fitness feedback and no evaluator in context --- on a classic
+constructive-geometry benchmark: maximize the sum of radii of $N$ circles in a unit square.
+A weak-tier proposer does not search. It emits a grid-with-corner-fillers template whose
+value admits a closed form: a nearest-square order $k^* = \mathrm{round}(\sqrt{N})$ with a value function
+$V(k, m)$ names the empirical modal output --- which template, hence which value --- at all seven
+tested $N$, stated and prompt-hashed before sampling; per-sample agreement equals the modal
+frequency itself (56--86\% by cell), against 3\% for a round-number baseline. Preregistered
+extensions then bound the claim in every direction, and the falsifiers that fired are
+reported as registered: the rule's extend branch is disconfirmed at $m \ge 4$ (arm M); the
+anchor dissolves under parent-conditioned calls (0 of 26 valid rival-parent samples return
+to it), scoping every claim here to unconditioned calls (arm MU); and handed the family's
+value table, the model \emph{chooses} the argmax but fails to execute it off-template in 30 of
+31 invalid attempts (arm CH) --- the template is not what the model prefers but what it can
+reliably build. Cross-vendor arms make the scope a family property: the anchor value
+transfers to two further vendors (61--67\% of valid outputs), while one family brackets it
+from both sides --- gemma-4-26b meets the registered pooled bar (57.5\%) yet emits the
+in-family \emph{rival} construction at 27 of 43 discriminating-cell validities, and gemma-4-31b
+clears the same validity floor anchoring on nothing. Across the original vendor's tiers,
+constructive ambition rises monotonically while execution validity rises then collapses
+(83\% $\rightarrow$ 100\% $\rightarrow$ 13\% on matched cells at $10^{-6}$, 78\% $\rightarrow$ 100\% $\rightarrow$ 13\% on the full unmatched ladder; the top arm is an unattributable
+serving alias, reported with that caveat). Requesting a method line is an intervention, not
+an observation --- it concentrates output onto the anchor (87\% vs 70\%, uncorrected,
+wave-confounded) --- yet the lines themselves are checkable and true: 54 of 56 scoreable
+claims describe the object actually built.
+\end{abstract}
+
+\input{sec_intro_task}
+\input{sec_forecast_transfer}
+\input{sec_tiers_elicitation}
+\input{sec_related_repro}
+
+% Citations use natbib \citet/\citep per TMLR's instructions. \nocite{*} is
+% retained because two works are cited in prose by name rather than by key
+% (OpenEvolve; the o3/o4-mini system card) and would otherwise drop out of
+% the reference list.
+\nocite{*}
+\bibliography{references}
+\bibliographystyle{tmlr}
+
+\appendix
+\input{sec_appendices}
+
+\end{document}

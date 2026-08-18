@@ -1,9 +1,12 @@
 # TMLR submission plan — Paper 2 first
 
-Decision (from venue analysis, 2026-08-12): Paper 2 → TMLR now; Paper 1 →
-hold for GM3 cross-vendor completion, then ACM TELO (quota-free). TMLR solo
-quota is 2 submissions per calendar year and desk-rejects burn a slot, so
-Paper 1 does not go to TMLR unless Paper 2's review round argues for it.
+Decision (revised with owner 2026-08-16, supersedes 2026-08-12): BOTH papers
+→ TMLR (solo quota 2/yr covers both), then GECCO Hot-off-the-Press for
+Paper 1 once its TMLR acceptance lands (HOP presents recently published
+journal work; deadline ~Feb for GECCO 2027). TELO dropped as primary: TMLR
+speed serves the HOP timeline better and Paper 1's measurement style fits
+TMLR's rubric. Desk-rejects burn a quota slot — both papers get the full
+review loop before submission.
 
 Source of truth: `paper2_short.md` (git 3c52e40 — deliberate shortened
 submission build, 20.6k words; `paper2_draft.md` stays the archival long
@@ -62,6 +65,10 @@ never submit them.
       clean (32 pp, 0 errors, same 2 pre-existing 3.5pt overfulls);
       `latex-tmlr-openreview.zip` rebuilt, leak check 0. USER should proof
       the paragraph's wording.
+- [x] Proofread DONE 2026-08-18 (4-agent PDF-vs-markdown parity pass, both
+      papers, every number/table/citation verified exact; 3 layout/typo
+      defects found and fixed, commit d305d02). Overleaf v2 zips are the
+      current builds.
 - [x] Anonymized supplementary bundle built: `supplementary_anonymized.zip`
       (351 files, 22 redacted, 0 identity strings after redaction, includes
       antecedent study). Builder: `build_anon_bundle.py`. Redaction of
@@ -109,23 +116,87 @@ never submit them.
   (https://git.overleaf.com/<id>), then push is scripted. Token should be
   REGENERATED after use — it passed through chat transcript.
 
-## Paper 1 (parked)
-- Claims-cleanup pass done 2026-08-17 (agent): §9 stopping rule rewritten
-  (it falsely listed arms MU/CH/M/k-back-out as not run), GM+GM2+GM3+V
-  preregs and ledgers added to §9's registration/artifact bullets, corpus
-  468 reconciled (cross-vendor arms ledgered separately), abstract +
-  Contribution 2 now quote the matched 83%→100%→13% triple per Table 2's
-  own note, Contribution 3's "clean, well-powered" replaced with §6.5's
-  actual CI and confound, Fig 1 caption fixed (N=10…60, fifth penalty
-  4.66%), byline revision note de-internalized, arm V disclosed in §8
-  (270 rows, 5 valid, repairs registered, not yet resumed), and four
-  overclaims softened. USER should proof the diff.
-- STILL MISSING for TELO (deliberate, do at conversion time): References
-  section (~50 inline arXiv IDs need bibliography), Conclusion section,
-  CCS concepts/keywords, artifact-availability URL/DOI.
-- Arm V: resume per amendment 3 or report as transport-failed; 5/270 valid
-  supports no analysis either way. GM3: 41 calls left (GM3_RESUME.md).
-- Wait for GM3 arm; fold result in (preregistered, both branches reportable).
-- Target ACM TELO (rolling, no quota). GECCO 2027 (abstract ~late Jan) is
-  the fallback; page limit would force cutting appendices.
-- No TMLR conversion built for Paper 1 on purpose.
+## Paper 1 (active as of 2026-08-16)
+- GM3 arm complete and folded in (v57–v60: §3.6 results section, Figure 2,
+  abstract elevation, provenance chain).
+- Target: TMLR (owner decision 2026-08-16), then GECCO 2027 Hot-off-the-Press
+  from the published paper.
+- TMLR LaTeX conversion for Paper 1: build after the wave-7c integration and
+  review loop, same fan-out pattern as Paper 2's.
+
+## Final state (2026-08-17) — both papers submission-ready
+
+- **Paper 2**: gemma-4-31b wave-7c integrated (7c.2 HELD — first non-Qwen
+  control-floor pass; 7c.1/7c.3 UNDERPOWERED; invalidity channel), 5-reviewer
+  round + area-chair PASS applied (11 + 1 fixes incl. 304-row miscount
+  disclosure, runner-edit commit-pair 8cfaffb→342cdea, amendment-gap named).
+  `latex-tmlr/` compiles clean, **33 pp**, Figure 1 (fig4_family_echo) in.
+- **Paper 1**: arm V complete (877 invocations) and integrated as §3.7 —
+  anchoring TRANSFERS in north-mini-code 8/12 and gpt-oss-20b 11/18,
+  DOES-NOT-TRANSFER in gemma-4-31b 0/15, V2 HOLDS 0/16; adversarial pass
+  (5 defects) fixed. 2026-08-17 council round (5 Opus advisors + Fable
+  verification) landed 9 further fixes: GM3 pooled-bar decomposition
+  disclosed (discriminating cells 11/43 = 25.6%), GM3 misses identified as
+  the rival construction (27/27 structure-verified, new
+  `diagnostics_gm3_rival.py`), abstract arm-V elevation ("Three scope
+  conditions"), phantom GM3-vs-V protocol split removed (prompts
+  byte-identical, real axes: model variant + serving + budget), arm V floor
+  wording corrected to slot accounting, corpus sentence de-staled, GM3
+  prereg SHAs cited, 4 Table 4 rows added. Same-day structural round
+  (council recommendations, all applied): abstract condensed 805 → 363
+  words, Contribution 4 (family boundary + 3/147 strong form), §2.4
+  notation table, §3 arms-index table (12 arms), Tables M/MU/CH for the
+  falsifier-triggered arms, §3.6+§3.7 merged into one cross-vendor
+  section with unified Table CV (all §3.7 refs renumbered), revision note
+  bumped to Revision 3. `latex-tmlr-paper1/` compiles
+  clean, **31 pp**, fidelity-audited (all greps PASS).
+- Claims-cleanup fixes re-applied post-merge (2026-08-18, agent), the five
+  rev-3 still carried: matched 83%→100%→13% triple in abstract +
+  Contribution 2 (per Table 2's own note), Contribution 3's "clean,
+  well-powered" replaced with §6.5's CI + confound, §1 actionability
+  scoped by arm MU, "never competitive" scoped to the bound table,
+  antecedent-anchor claim labeled motivation-only, Fig 1 caption fixed
+  (N=10…60, fifth penalty 4.66%) — mirrored in `latex-tmlr-paper1/`.
+  Paper 2's cleanup + §7 paragraph merged with main's wave-7c/proofread
+  state (abstract now carries both the sixth-family result and the 14B
+  scoping; wave-6 numbering note adapted to "six later waves").
+- **Supplementary**: `build_anon_bundle.py` regenerated
+  `supplementary_anonymized.zip` (6.2 MB, 0 identity leaks post-scan) now
+  covering wave-7c, screen S, the full arm surface (F→V, GM chain) and all
+  figure scripts. Upload per §Before-upload steps (user action).
+- Remaining user actions: OpenRouter key rotation; optional DigitalOcean
+  redemption for the registered-but-not-run 120B condition
+  (`wave7c_addendum1_120b.md` stays advanced-not-run if never redeemed —
+  reportable either way).
+
+## OpenReview form fields (copy-paste at upload)
+
+### Paper 2 (submit first)
+- **Title**: Served Precision Is Part of the Model: A Quantization Cliff in
+  Proposal Variation, and the Limits of Reproducibility in Agent-Runtime LLM
+  Studies
+- **Abstract**: paste from `latex-tmlr/main.tex` abstract block (keep the
+  current version — it carries the wave-7c sixth-family sentence).
+- **TLDR** (one sentence): Quantizing a proposer's weights can collapse the
+  search variation a discovery loop depends on while every health metric the
+  loop watches stays green — and studies that address models through managed
+  runtime aliases cannot even attest the precision they measured.
+- **Keywords**: quantization; reproducibility; LLM-driven discovery;
+  evolutionary search; preregistration; serving transparency; agent runtimes
+- **Supplementary**: `supplementary_anonymized.zip` (replay-tested; README
+  inside discloses redaction and hash-verification path).
+
+### Paper 1 (after paper 2 is in)
+- **Title**: A Closed Form for What the Model Emits: Template Anchoring in
+  Unconditioned Zero-Shot Circle Packing
+- **Abstract**: paste from `latex-tmlr-paper1/main.tex` abstract block.
+- **TLDR**: Weak-tier language models emit circle packings whose scores land
+  on a closed-form template value predictable before sampling — a regularity
+  that is preregistered, cross-vendor under two instruments, family-bounded
+  in both directions (one family escapes to the in-family rival, another
+  anchors nowhere), and absent at the frontier tier.
+- **Keywords**: template anchoring; zero-shot generation; circle packing;
+  preregistration; closed-form prediction; model families; capability tiers
+- **Supplementary**: same bundle (arm surface F→V and GM chain included).
+
+Quota note: TMLR allows 2 solo submissions/yr — these are both of them.

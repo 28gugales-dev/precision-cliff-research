@@ -1,0 +1,16 @@
+{
+ "id": "sohamgugalet/precision-sweep-gptoss-20b-wave7c",
+ "title": "precision-sweep-gptoss-20b-wave7c",
+ "code_file": "kaggle_wave7c_gpt_oss_20b.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": "false",
+ "enable_gpu": "true",
+ "enable_tpu": "false",
+ "enable_internet": "true",
+ "machine_shape": "NvidiaTeslaT4",
+ "dataset_sources": [],
+ "competition_sources": [],
+ "kernel_sources": [],
+ "model_sources": []
+}

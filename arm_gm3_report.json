@@ -1,0 +1,176 @@
+{
+ "prereg": "arm_gm3_preregistration.txt",
+ "amendment": "arm_gm3_amendment1_openrouter.md",
+ "model": "gemma-4-26b-a4b-it",
+ "definitions": "tie-inclusive MODE-MATCH; <3 valid = UNSCOREABLE",
+ "row_count": {
+  "total": 140,
+  "first_party": 99,
+  "openrouter": 41
+ },
+ "openrouter_providers": [
+  "Darkbloom"
+ ],
+ "cells": [
+  {
+   "n": 13,
+   "predicted_4dp": 1.625,
+   "valid_n": 9,
+   "on_pred": 0,
+   "sig_two_radii": 0,
+   "modes_4dp": [
+    1.7761
+   ],
+   "mode_freq": "7/9",
+   "MODE_MATCH": false,
+   "top3": [
+    [
+     1.7761,
+     7
+    ],
+    [
+     1.1863,
+     1
+    ],
+    [
+     1.3833,
+     1
+    ]
+   ]
+  },
+  {
+   "n": 17,
+   "predicted_4dp": 2.0518,
+   "valid_n": 20,
+   "on_pred": 20,
+   "sig_two_radii": 20,
+   "modes_4dp": [
+    2.0518
+   ],
+   "mode_freq": "19/20",
+   "MODE_MATCH": true,
+   "top3": [
+    [
+     2.0518,
+     19
+    ],
+    [
+     2.0517,
+     1
+    ]
+   ]
+  },
+  {
+   "n": 21,
+   "predicted_4dp": 2.1,
+   "valid_n": 18,
+   "on_pred": 8,
+   "sig_two_radii": 0,
+   "modes_4dp": [
+    2.2589
+   ],
+   "mode_freq": "9/18",
+   "MODE_MATCH": false,
+   "top3": [
+    [
+     2.2589,
+     9
+    ],
+    [
+     2.1,
+     8
+    ],
+    [
+     2.25,
+     1
+    ]
+   ]
+  },
+  {
+   "n": 31,
+   "predicted_4dp": 2.5833,
+   "valid_n": 16,
+   "on_pred": 3,
+   "sig_two_radii": 0,
+   "modes_4dp": [
+    2.7485
+   ],
+   "mode_freq": "11/16",
+   "MODE_MATCH": false,
+   "top3": [
+    [
+     2.7485,
+     11
+    ],
+    [
+     2.5833,
+     3
+    ],
+    [
+     2.746,
+     1
+    ]
+   ]
+  },
+  {
+   "n": 35,
+   "predicted_4dp": 2.9167,
+   "valid_n": 15,
+   "on_pred": 15,
+   "sig_two_radii": 0,
+   "modes_4dp": [
+    2.9167
+   ],
+   "mode_freq": "15/15",
+   "MODE_MATCH": true,
+   "top3": [
+    [
+     2.9167,
+     15
+    ]
+   ]
+  },
+  {
+   "n": 37,
+   "predicted_4dp": 3.0345,
+   "valid_n": 2,
+   "on_pred": 0,
+   "sig_two_radii": 0,
+   "status": "UNSCOREABLE"
+  },
+  {
+   "n": 43,
+   "predicted_4dp": 3.0714,
+   "valid_n": 0,
+   "on_pred": 0,
+   "sig_two_radii": 0,
+   "status": "UNSCOREABLE"
+  }
+ ],
+ "summary_mixed_path": {
+  "scoreable_cells": 5,
+  "mode_matches": 2,
+  "P_GM3.1_mode_match_ge5": false,
+  "P_GM3.1_underpowered": false,
+  "pooled_valid": 80,
+  "pooled_on_pred": 46,
+  "P_GM3.2_rate": 0.575,
+  "P_GM3.2_ge_30pct": true,
+  "P_GM3.3_sig_frac": "20/46",
+  "P_GM3.3_ge_half": false,
+  "FALSIFIER_triggered": false
+ },
+ "summary_first_party_only": {
+  "scoreable_cells": 5,
+  "mode_matches": 2,
+  "P_GM3.1_mode_match_ge5": false,
+  "P_GM3.1_underpowered": false,
+  "pooled_valid": 78,
+  "pooled_on_pred": 46,
+  "P_GM3.2_rate": 0.5897,
+  "P_GM3.2_ge_30pct": true,
+  "P_GM3.3_sig_frac": "20/46",
+  "P_GM3.3_ge_half": false,
+  "FALSIFIER_triggered": false
+ }
+}

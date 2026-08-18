@@ -1,0 +1,170 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\citation{romeraparedes2024funsearch}
+\citation{novikov2025alphaevolve}
+\citation{lange2025shinkaevolveopenendedsampleefficientprogram}
+\citation{su2026helixevolutionaryreinforcementlearning}
+\citation{khrulkov2025gigaevoopensourceoptimization}
+\citation{cemri2026adaevolveadaptivellmdriven}
+\citation{wang2025thetaevolvetesttimelearningopen}
+\citation{li2026dictionariesdarwinsetlevelselection}
+\citation{huang2026understandinganchoringeffectllm,lou2024anchoringbiaslargelanguage,malberg2025comprehensiveevaluationcognitivebiases}
+\citation{thomas2026mitigatingllmbasedphackingpreregistering,williams2026predictingllmsafetyrelease,vaccaro2026preregistrationexperimentsaiagents,zhang2026testingfrontierlargelanguage}
+\citation{kaplan2020scalinglawsneurallanguage,hoffmann2022trainingcomputeoptimallargelanguage,snell2024predictingemergentcapabilitiesfinetuning}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Trap zones}{3}{subsection.1.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \emph  {Predicted versus optimal value, $N = 10\ldots  60$.} (i) the rule's prediction; (ii) the best value in the recipe family; (iii, dotted) published best-known values, terminating at $N = 30$ because the bound table stops there. Shaded bands are the trap zones, the last being $[57,63]$ clipped by \texttt  {sweep(10,60)}. Worst-in-zone penalties 8.51\%, 7.03\%, 6.01\%, 5.25\%, 4.66\%; these are family-internal arithmetic and exact at every $N$, while the published-bound comparison (curve iii) is checkable only up to $N = 30$, where the bound table stops. The gap closes to zero at $N = 35$ and $N = 48$ but \textbf  {not} at $N = 24$, where 0.59\% remains --- curve (ii) sits strictly above (i) across $[21,24]$.}}{4}{figure.1}\protected@file@percent }
+\newlabel{fig:trapzones}{{1}{4}{\emph {Predicted versus optimal value, $N = 10\ldots 60$.} (i) the rule's prediction; (ii) the best value in the recipe family; (iii, dotted) published best-known values, terminating at $N = 30$ because the bound table stops there. Shaded bands are the trap zones, the last being $[57,63]$ clipped by \texttt {sweep(10,60)}. Worst-in-zone penalties 8.51\%, 7.03\%, 6.01\%, 5.25\%, 4.66\%; these are family-internal arithmetic and exact at every $N$, while the published-bound comparison (curve iii) is checkable only up to $N = 30$, where the bound table stops. The gap closes to zero at $N = 35$ and $N = 48$ but \textbf {not} at $N = 24$, where 0.59\% remains --- curve (ii) sits strictly above (i) across $[21,24]$}{figure.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Task and recipe family}{4}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}The benchmark}{4}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}The recipe family}{4}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}The order rule is a definition; the branch rule is the hypothesis}{5}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Notation and conventions}{5}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Preregistered forecast, out of sample}{5}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Registration protocol}{6}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}The formula sits at the mode ceiling}{7}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Square container}{7}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Preregistered extension (arm M): the filler branch fails at $m > 1$; the fifth $k$ confirms}{8}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Preregistered extension (arms MU and CH): the anchor does not transfer to one-parent calls, and handing the model the argmax does not dislodge the template}{9}{subsection.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Preregistered cross-vendor chain (arms GM3 and V): the attractor is a family property, and its boundary runs both ways}{10}{subsection.3.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \emph  {Arm GM3 modal sums against the registered prediction.} Green cells match the predicted mode (frequencies annotated); red cells miss --- every miss lands above the prediction, on the rival argmax (the modal packings carry the rival's two-radius structure, 27/27 --- \S  3.6); the two largest cells are UNSCOREABLE under the registered $<$3-valid rule. Regenerates via \texttt  {fig\_gm3\_anchoring.py} from \texttt  {arm\_gm3\_report.json} (itself replayed from the raw ledger by \texttt  {arm\_gm3\_analysis.py}, no arguments).}}{12}{figure.2}\protected@file@percent }
+\newlabel{fig:gm3anchoring}{{2}{12}{\emph {Arm GM3 modal sums against the registered prediction.} Green cells match the predicted mode (frequencies annotated); red cells miss --- every miss lands above the prediction, on the rival argmax (the modal packings carry the rival's two-radius structure, 27/27 --- \S 3.6); the two largest cells are UNSCOREABLE under the registered $<$3-valid rule. Regenerates via \texttt {fig\_gm3\_anchoring.py} from \texttt {arm\_gm3\_report.json} (itself replayed from the raw ledger by \texttt {arm\_gm3\_analysis.py}, no arguments)}{figure.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Rectangle transfer}{13}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Transfer of the rule}{13}{subsection.4.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Forecast versus outcome, both containers.}}{14}{table.1}\protected@file@percent }
+\newlabel{tab:forecast}{{1}{14}{Forecast versus outcome, both containers}{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Negative result: the closed form does not survive the move to rectangles}{14}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}The tier ladder: three attractor families}{14}{section.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Three-attractor ladder.}}{16}{table.2}\protected@file@percent }
+\newlabel{tab:ladder}{{2}{16}{Three-attractor ladder}{table.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \emph  {Three attractor families at a single cell, $N = 31$.} One representative packing per tier, ledger sample id in each panel title (weak tier \texttt  {bare} id 1, on-prediction truncation 2.5833333; middle tier \texttt  {sonnet\_bare} id 1, mixed-radius rival 2.7485281; \texttt  {opus\_alias} id 1, invalid, with only the offending circles highlighted). Source: \texttt  {arm\_f\_candidates\_v2.jsonl} via \texttt  {fig\_scripts.py}, deterministic (the exemplar rows' geometry is byte-identical in v1; v2 differs only in provenance metadata).}}{16}{figure.3}\protected@file@percent }
+\newlabel{fig:packings}{{3}{16}{\emph {Three attractor families at a single cell, $N = 31$.} One representative packing per tier, ledger sample id in each panel title (weak tier \texttt {bare} id 1, on-prediction truncation 2.5833333; middle tier \texttt {sonnet\_bare} id 1, mixed-radius rival 2.7485281; \texttt {opus\_alias} id 1, invalid, with only the offending circles highlighted). Source: \texttt {arm\_f\_candidates\_v2.jsonl} via \texttt {fig\_scripts.py}, deterministic (the exemplar rows' geometry is byte-identical in v1; v2 differs only in provenance metadata)}{figure.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Elicitation and faithfulness}{17}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Design and bundling disclosure}{17}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Registered outcomes}{17}{subsection.6.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Paired trace grid (scaled arm only).}}{18}{table.3}\protected@file@percent }
+\newlabel{tab:tracegrid}{{3}{18}{Paired trace grid (scaled arm only)}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}The registered falsifier, both readings}{18}{subsection.6.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \emph  {Bare versus \texttt  {trace\_v2}, by cell and pooled.} Caption caveat: the bars pool the bare arm's two collection waves, which \S  6.4 shows drift materially, so the pooled bare bar is a mixture; the same-wave comparison in \S  6.4 is the wave-controlled picture.}}{19}{figure.4}\protected@file@percent }
+\newlabel{fig:armT}{{4}{19}{\emph {Bare versus \texttt {trace\_v2}, by cell and pooled.} Caption caveat: the bars pool the bare arm's two collection waves, which \S 6.4 shows drift materially, so the pooled bare bar is a mixture; the same-wave comparison in \S 6.4 is the wave-controlled picture}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Limits of P-T3: what the concentration result will and will not carry}{19}{subsection.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Faithfulness with ground truth}{20}{subsection.6.5}\protected@file@percent }
+\citation{meyerson2024languagemodelcrossovervariation}
+\citation{lehman2022evolutionlargemodels}
+\citation{vanstein2025llamealargelanguagemodel}
+\citation{gideoni2026simplebaselinescompetitivecode}
+\citation{berthold2026outoftheboxglobaloptimizationpacking}
+\citation{gurkan2026mutationvariationconvergencedynamics}
+\citation{huang2026understandinganchoringeffectllm}
+\citation{lou2024anchoringbiaslargelanguage}
+\citation{malberg2025comprehensiveevaluationcognitivebiases}
+\citation{chen2026measuringgaphumanllm}
+\citation{jiang2025artificialhivemindopenendedhomogeneity}
+\citation{li2026dictionariesdarwinsetlevelselection}
+\citation{wang2026diversescientifichypothesissearch}
+\citation{zhang2026rethinkingcodesimilarityautomated}
+\citation{yang2026accuracyevaluatingstrategydiversity}
+\citation{herrmann2026indepthstudyllmcontributions,sim2025hypebenchmarkingllmevolvedheuristics}
+\citation{balunovic2025mathconstructchallengingllmreasoning}
+\citation{zhang2024understandingimportanceevolutionarysearch}
+\citation{zhang2026makesllmgoodoptimizer}
+\citation{zhou2024reliability}
+\citation{shojaee2025illusionthinkingunderstandingstrengths}
+\citation{kim2026geobuildbenchbenchmarkinteractiveexecutable}
+\citation{boppana2026reasoningtheaterdisentanglingmodel}
+\citation{khanzadeh2026projectariadnestructuralcausal}
+\citation{scalena2026commitmentboundaryprobingepiphenomenal}
+\citation{li2026chainholdsanswerfolds}
+\citation{arcuschin2026chainofthoughtreasoningwildfaithful}
+\citation{yun2025priceformatdiversitycollapse}
+\citation{tam2024letspeakfreelystudy}
+\citation{abdelnabi2025hawthorneeffectreasoningmodels,zhang2026verbalizedsamplingmitigatemode,wu2025answercentricreasoningdrivenuncoveringlatent}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Related work}{21}{section.7}\protected@file@percent }
+\citation{thomas2026mitigatingllmbasedphackingpreregistering}
+\citation{williams2026predictingllmsafetyrelease}
+\citation{vaccaro2026preregistrationexperimentsaiagents}
+\citation{zhang2026testingfrontierlargelanguage}
+\citation{jia2026hindsightbenchblackboxbehavioralaudit}
+\citation{kaplan2020scalinglawsneurallanguage}
+\citation{hoffmann2022trainingcomputeoptimallargelanguage}
+\citation{snell2024predictingemergentcapabilitiesfinetuning}
+\citation{bradley2023qualitydiversityaifeedback}
+\citation{khrulkov2025gigaevoopensourceoptimization}
+\citation{zhang2024understandingimportanceevolutionarysearch}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Limitations and untested alternatives}{22}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Reproducibility, deviations, and disclosures}{23}{section.9}\protected@file@percent }
+\citation{*}
+\bibdata{references}
+\bibcite{abdelnabi2025hawthorneeffectreasoningmodels}{{1}{2025}{{Abdelnabi \& Salem}}{{Abdelnabi and Salem}}}
+\bibcite{arcuschin2026chainofthoughtreasoningwildfaithful}{{2}{2026}{{Arcuschin et~al.}}{{Arcuschin, Janiak, Krzyzanowski, Rajamanoharan, Nanda, and Conmy}}}
+\bibcite{balunovic2025mathconstructchallengingllmreasoning}{{3}{2025}{{Balunovi{\'c} et~al.}}{{Balunovi{\'c}, Dekoninck, Jovanovi{\'c}, Petrov, and Vechev}}}
+\bibcite{berthold2026outoftheboxglobaloptimizationpacking}{{4}{2026}{{Berthold et~al.}}{{Berthold, Kamp, Mexi, Pokutta, and Polik}}}
+\bibcite{boppana2026reasoningtheaterdisentanglingmodel}{{5}{2026}{{Boppana et~al.}}{{Boppana, Ma, Loeffler, Sarfati, Bigelow, Geiger, Lewis, and Merullo}}}
+\bibcite{bradley2023qualitydiversityaifeedback}{{6}{2023}{{Bradley et~al.}}{{Bradley, Dai, Teufel, Zhang, Oostermeijer, Bellagente, Clune, Stanley, Schott, and Lehman}}}
+\bibcite{cemri2026adaevolveadaptivellmdriven}{{7}{2026}{{Cemri et~al.}}{{Cemri, Agrawal, Gupta, Liu, Cheng, Mang, Naren, Erdogan, Sen, Zaharia, Dimakis, and Stoica}}}
+\bibcite{chen2026measuringgaphumanllm}{{8}{2026}{{Chen et~al.}}{{Chen, Zhao, and Cohan}}}
+\bibcite{gideoni2026simplebaselinescompetitivecode}{{9}{2026}{{Gideoni et~al.}}{{Gideoni, Risi, and Gal}}}
+\bibcite{gurkan2026mutationvariationconvergencedynamics}{{10}{2026}{{Gurkan et~al.}}{{Gurkan, Stonedahl, and Wilensky}}}
+\bibcite{herrmann2026indepthstudyllmcontributions}{{11}{2026}{{Herrmann \& Pallez}}{{Herrmann and Pallez}}}
+\bibcite{hoffmann2022trainingcomputeoptimallargelanguage}{{12}{2022}{{Hoffmann et~al.}}{{Hoffmann, Borgeaud, Mensch, Buchatskaya, Cai, Rutherford, de~Las~Casas, Hendricks, Welbl, Clark, Hennigan, Noland, Millican, van~den Driessche, Damoc, Guy, Osindero, Simonyan, Elsen, Rae, Vinyals, and Sifre}}}
+\bibcite{huang2026understandinganchoringeffectllm}{{13}{2026}{{Huang et~al.}}{{Huang, Bie, Na, Ruan, Lei, Yue, and He}}}
+\bibcite{jia2026hindsightbenchblackboxbehavioralaudit}{{14}{2026}{{Jia}}{{}}}
+\bibcite{jiang2025artificialhivemindopenendedhomogeneity}{{15}{2025}{{Jiang et~al.}}{{Jiang, Chai, Li, Liu, Fok, Dziri, Tsvetkov, Sap, Albalak, and Choi}}}
+\bibcite{kaplan2020scalinglawsneurallanguage}{{16}{2020}{{Kaplan et~al.}}{{Kaplan, McCandlish, Henighan, Brown, Chess, Child, Gray, Radford, Wu, and Amodei}}}
+\bibcite{khanzadeh2026projectariadnestructuralcausal}{{17}{2026}{{Khanzadeh}}{{}}}
+\bibcite{khrulkov2025gigaevoopensourceoptimization}{{18}{2025}{{Khrulkov et~al.}}{{Khrulkov, Galichin, Bashkirov, Vinichenko, Travkin, Alferov, Kuznetsov, and Oseledets}}}
+\bibcite{kim2026geobuildbenchbenchmarkinteractiveexecutable}{{19}{2026}{{Kim et~al.}}{{Kim, Yang, and Zhang}}}
+\bibcite{lange2025shinkaevolveopenendedsampleefficientprogram}{{20}{2025}{{Lange et~al.}}{{Lange, Imajuku, and Cetin}}}
+\bibcite{lehman2022evolutionlargemodels}{{21}{2022}{{Lehman et~al.}}{{Lehman, Gordon, Jain, Ndousse, Yeh, and Stanley}}}
+\bibcite{li2026dictionariesdarwinsetlevelselection}{{22}{2026}{{Li}}{{}}}
+\bibcite{li2026chainholdsanswerfolds}{{23}{2026}{{Li et~al.}}{{Li, Krishnan, and Padman}}}
+\bibcite{lou2024anchoringbiaslargelanguage}{{24}{2024}{{Lou \& Sun}}{{Lou and Sun}}}
+\bibcite{malberg2025comprehensiveevaluationcognitivebiases}{{25}{2025}{{Malberg et~al.}}{{Malberg, Poletukhin, Schuster, and Groh}}}
+\bibcite{meyerson2024languagemodelcrossovervariation}{{26}{2024}{{Meyerson et~al.}}{{Meyerson, Nelson, Bradley, Gaier, Moradi, Hoover, and Lehman}}}
+\bibcite{novikov2025alphaevolve}{{27}{2025}{{Novikov et~al.}}{{Novikov, V{\~u}, Eisenberger, et~al.}}}
+\bibcite{openai2025o3o4systemcard}{{28}{2025}{{OpenAI}}{{}}}
+\bibcite{romeraparedes2024funsearch}{{29}{2024}{{Romera-Paredes et~al.}}{{Romera-Paredes, Barekatain, Novikov, Balog, Kumar, Dupont, Ruiz, Ellenberg, Wang, Fawzi, Kohli, and Fawzi}}}
+\bibcite{scalena2026commitmentboundaryprobingepiphenomenal}{{30}{2026}{{Scalena et~al.}}{{Scalena, Candussio, Bortolussi, Fersini, Nissim, and Sarti}}}
+\bibcite{sharma2025openevolve}{{31}{2025}{{Sharma}}{{}}}
+\bibcite{shojaee2025illusionthinkingunderstandingstrengths}{{32}{2025}{{Shojaee et~al.}}{{Shojaee, Mirzadeh, Alizadeh, Horton, Bengio, and Farajtabar}}}
+\bibcite{sim2025hypebenchmarkingllmevolvedheuristics}{{33}{2025}{{Sim et~al.}}{{Sim, Renau, and Hart}}}
+\bibcite{snell2024predictingemergentcapabilitiesfinetuning}{{34}{2024}{{Snell et~al.}}{{Snell, Wallace, Klein, and Levine}}}
+\bibcite{su2026helixevolutionaryreinforcementlearning}{{35}{2026}{{Su et~al.}}{{Su, Hao, Zhang, Xia, Wu, Su, and Zhu}}}
+\bibcite{tam2024letspeakfreelystudy}{{36}{2024}{{Tam et~al.}}{{Tam, Wu, Tsai, Lin, yi~Lee, and Chen}}}
+\bibcite{thomas2026mitigatingllmbasedphackingpreregistering}{{37}{2026}{{Thomas et~al.}}{{Thomas, Gligoric, and Shah}}}
+\bibcite{vaccaro2026preregistrationexperimentsaiagents}{{38}{2026}{{Vaccaro}}{{}}}
+\bibcite{vanstein2025llamealargelanguagemodel}{{39}{2025}{{van Stein \& B{\"a}ck}}{{van Stein and B{\"a}ck}}}
+\bibcite{wang2026diversescientifichypothesissearch}{{40}{2026}{{Wang et~al.}}{{Wang, Shojaee, Meidani, Sun, Hern{\'a}ndez-Lobato, Head-Gordon, He, Reddy, Zhang, and Du}}}
+\bibcite{wang2025thetaevolvetesttimelearningopen}{{41}{2025}{{Wang et~al.}}{{Wang, Su, Zeng, Xu, Ren, Yang, Huang, He, Ma, Peng, Cheng, He, Chen, Wang, Du, and Shen}}}
+\bibcite{williams2026predictingllmsafetyrelease}{{42}{2026}{{Williams et~al.}}{{Williams, Sheahan, Raymond, Korbak, Pan, Yang, Maksin, Xie, Guo, Kivlichan, and Carroll}}}
+\bibcite{wu2025answercentricreasoningdrivenuncoveringlatent}{{43}{2025}{{Wu et~al.}}{{Wu, Zhang, Wang, Cai, Wu, Wang, Xu, and Cheng}}}
+\bibcite{yang2026accuracyevaluatingstrategydiversity}{{44}{2026}{{Yang et~al.}}{{Yang, Zhang, Hu, and Ji}}}
+\bibcite{yun2025priceformatdiversitycollapse}{{45}{2025}{{Yun et~al.}}{{Yun, An, Wang, Peng, and Shang}}}
+\bibcite{zhang2026testingfrontierlargelanguage}{{46}{2026}{{Zhang}}{{}}}
+\bibcite{zhang2026verbalizedsamplingmitigatemode}{{47}{2026{a}}{{Zhang et~al.}}{{Zhang, Yu, Chong, Sicilia, Tomz, Manning, and Shi}}}
+\bibcite{zhang2026rethinkingcodesimilarityautomated}{{48}{2026}{{Zhang \& Lu}}{{Zhang and Lu}}}
+\bibcite{zhang2024understandingimportanceevolutionarysearch}{{49}{2024}{{Zhang et~al.}}{{Zhang, Liu, Lin, Wang, Lu, and Zhang}}}
+\bibcite{zhang2026makesllmgoodoptimizer}{{50}{2026{b}}{{Zhang et~al.}}{{Zhang, Chen, Portet, and Peyrard}}}
+\bibcite{zhou2024reliability}{{51}{2024}{{Zhou et~al.}}{{Zhou, Schellaert, Mart{\'i}nez-Plumed, Moros-Daval, Ferri, and Hern{\'a}ndez-Orallo}}}
+\bibstyle{tmlr}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Prompts, verbatim}{28}{appendix.A}\protected@file@percent }
+\gdef \LT@i {\LT@entry 
+    {1}{81.1625pt}\LT@entry 
+    {1}{134.13371pt}\LT@entry 
+    {1}{73.07043pt}\LT@entry 
+    {1}{170.4171pt}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Deviations and disclosure table}{29}{appendix.B}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{Deviations from preregistration.}}{29}{table.4}\protected@file@percent }
+\newlabel{tab:deviations}{{4}{29}{Deviations from preregistration}{table.4}{}}
+\gdef \LT@ii {\LT@entry 
+    {1}{15.3971pt}\LT@entry 
+    {1}{35.48918pt}\LT@entry 
+    {1}{138.83585pt}\LT@entry 
+    {1}{190.50919pt}\LT@entry 
+    {1}{67.07043pt}}
+\@writefile{toc}{\contentsline {section}{\numberline {C}Corrections ledger}{30}{appendix.C}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{Corrections to revision 1. Every claim that changed between the reviewed draft and this one, with the finding that forced it. \texttt  {stats} = \texttt  {p4\_review\_stats.md}, \texttt  {R2} = \texttt  {p4\_review\_reviewer2.md}, \texttt  {GECCO} = \texttt  {p4\_review\_gecco.md}, \texttt  {council} = \texttt  {p6\_cruxes.md}.}}{30}{table.5}\protected@file@percent }
+\newlabel{tab:corrections}{{5}{30}{Corrections to revision 1. Every claim that changed between the reviewed draft and this one, with the finding that forced it. \texttt {stats} = \texttt {p4\_review\_stats.md}, \texttt {R2} = \texttt {p4\_review\_reviewer2.md}, \texttt {GECCO} = \texttt {p4\_review\_gecco.md}, \texttt {council} = \texttt {p6\_cruxes.md}}{table.5}{}}
+\gdef \@abspage@last{31}

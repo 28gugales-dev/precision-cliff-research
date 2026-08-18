@@ -17,18 +17,25 @@ ZIP = ROOT / "supplementary_anonymized.zip"
 
 DIRS = [
     "sec3_artifacts", "wave3_output", "wave4_artifacts", "wave5_output",
-    "wave7_output", "wave7b_output", "kaggle_redetermin",
+    "wave7_output", "wave7b_output", "wave7c_output", "kaggle_redetermin",
     "kaggle_wave3_manifest", "kaggle_wave4_lock", "kaggle_wave5",
     "kaggle_wave8_pilot",
 ]
 TOP_GLOBS = [
     "sec3_*.py", "sec4_independent_rescore.py", "sec6_cv_canary_audit.py",
-    "arm_f_repro.py", "arm_f_zero_shot_topup_35.py", "collect_raw.py",
+    "collect_raw.py",
     "echo_screen.py", "wave3_analysis.py", "wave4_analysis.py",
     "wave4_run.py", "wave5_analysis.py", "wave7_analysis.py",
-    "wave7b_analysis.py", "opus_wave2_score.py",
-    "*prereg*", "arm_f_candidates.jsonl", "arm_f_candidates_v2.jsonl",
-    "arm_f_raw.json", "arm_f_prompts.json", "opus_wave2_ledger.jsonl",
+    "wave7b_analysis.py", "wave7c_analysis.py", "wave7c_make_runner.py",
+    "wave7c_launch.py", "opus_wave2_score.py",
+    # arm surface: every runner, analysis script, prereg, amendment,
+    # ledger and frozen report — arm F through arm V and the GM chain.
+    "arm_*.py", "arm_*.md", "arm_*.txt", "arm_*.json", "arm_*.jsonl",
+    "*prereg*", "*amendment*", "*addendum*",
+    "screen_s_doc.md", "screen_s_run.py", "screen_s_raw.jsonl",
+    "fig*.py", "fig*.png", "diagnostics_*.py",
+    "n_sweep_forecast.py", "rect_forecast.py",
+    "opus_wave2_ledger.jsonl",
     "opus_wave2_raw.json", "HOW_TO_RUN.md", "README.md", "requirements.txt",
 ]
 TEXT_EXT = {".py", ".md", ".txt", ".json", ".jsonl", ".yaml", ".yml",

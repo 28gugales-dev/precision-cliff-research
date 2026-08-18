@@ -4,10 +4,13 @@
 Independent Researcher
 `28gugales@gmail.com`
 
-*(Revision 2, 2026-08-01, implementing three model-generated referee reports and their
-arbitration — the review process is disclosed in §9. Every claim that changed relative
-to revision 1 is itemized in Table 5 (Appendix C); the deviations table is Table 4 (Appendix B),
-and the ledger correction and the stopping rule are in §9.)*
+*(Revision 3, 2026-08-17. Revision 2 (2026-08-01) implemented `p4_review_stats.md`,
+`p4_review_reviewer2.md` and `p4_review_gecco.md`, plus the arbitration in `p6_cruxes.md`;
+every claim that changed relative to revision 1 is itemized in Table 5 (Appendix C).
+Revision 3 adds the preregistered extension arms M, MU/CH, GM3 and V (§3.4–3.6), a
+condensed abstract, the notation and arms-index tables (§2.4, §3), and the GM3
+rival-construction analysis (§3.6); the deviations table is Table 4 (Appendix B), and the
+ledger correction, the review-process disclosure and the stopping rule are in §9.)*
 
 ---
 
@@ -15,50 +18,31 @@ and the ledger correction and the stopping rule are in §9.)*
 
 Language models are increasingly placed in the proposal role of discovery loops such as
 FunSearch and AlphaEvolve, on the assumption that their outputs explore a diverse solution
-space. We characterize one component of that assumption: the *unconditioned* proposal — a
-single zero-shot, code-free call with no parent program, no fitness feedback and no evaluator
-in context. On a classic constructive-geometry benchmark, maximizing the sum of radii of N
-circles in a unit square, a weak-tier proposer does not search. It emits a
-grid-with-corner-fillers template and truncates it, even when a provably better construction is
-one parameter away. The behavior admits a closed form: a nearest-square order k\* = round(√N)
-with a value function V(k, m) identifies the *empirical modal output* — which template, and
-hence its computed value — at all seven tested N, stated before sampling. Per-sample agreement equals that modal frequency — 56–86% by
-cell — while a round-number baseline hits 2 of 69 valid samples: in the bare weak-tier arm the
-formula captures everything short of sampling entropy. We preregistered these point predictions with prompt
-hashes before sampling and tested them out of sample on two containers, a square and a
-rectangle, for which the rule was restated but never refitted; on the rectangle the informative
-result is negative — 0 of 11 valid samples reached the provably higher-scoring rival — while
-on-prediction support is partial (5 of 11, not separable from a uniform-template null). Across three tiers we find three
-attractor families and an inversion: constructive ambition rises monotonically with nominal
-tier while execution validity does not — it rises then collapses (83% → 100% → 13% on matched cells at the
-primary 10⁻⁶ tolerance, 78% → 100% → 13% on the full unmatched ladder; the third arm is
-an unattributable serving alias, reported with that caveat throughout). Trace elicitation is an
-intervention rather than an observation: requesting a method line concentrates outputs onto the
-anchor (87% vs 70% on-prediction, p = 0.03 uncorrected — failing Holm over the registered
-family, carried by one of three cells and confounded with a collection-wave split of comparable
-size), with no detectable validity change (p = 0.30,
-n = 60/arm; not powered to exclude an effect of the observed size). Method lines are checkable
-against emitted coordinates: 54 of 56 scoreable claims (96.4%) describe the object actually
-built. Two scope conditions are load-bearing: the closed form is a weak-tier regularity,
-established so far within a single vendor lineage (§8), that does not describe the two higher
-tiers sampled; and it describes what an *unconditioned* call emits, not what a loop converges
-to. A preregistered extension run after external review (arm M, §3.4) sharpens the scope in
-both directions: the branch rule's fifth k confirmed out of sample at N = 57 (modal output
-T(8,57) = 3.5625000, 0 of 10 valid samples on the rival), while the registered falsifier for
-the filler branch **triggered at 3 of 3 cells** — at N = 20, 30 and 41 the model does not
-extend-and-fill but moves to the (k\*+1) grid, so V(k, m) describes behavior only on the
-m ≤ 1 support previously tested, and the extend branch of the rule is disconfirmed at m ≥ 4.
-A second preregistered extension (arms MU and CH, §3.5) tested whether the result transfers
-to parent-conditioned calls, and its registered falsifier **also triggered**: given a
-provably better in-family parent, 0 of 26 valid mutation samples return to the anchor
-(keep-or-improve 26/26, grid-order inheritance 26/26), so the anchoring result is a property
-of unconditioned calls only in the in-family-parent regime — the one-parent regime that
-discovery loops actually run in is not described by it, and the title of this paper is
-scoped accordingly. The template
-reasserts itself only against a far-worse off-family parent (58.8% snap-back). A companion
-probe that enumerates the full recipe family in the prompt (arm CH) decomposes the mechanism:
-choice follows the stated score table, but execution fails off-template in 30 of 31 invalid
-attempts — the template is less what the model prefers than what it can reliably build.
+space. We characterize the *unconditioned* proposal — a single zero-shot, code-free call
+with no parent program, no fitness feedback and no evaluator in context — on a classic
+constructive-geometry benchmark: maximize the sum of radii of N circles in a unit square.
+A weak-tier proposer does not search. It emits a grid-with-corner-fillers template whose
+value admits a closed form: a nearest-square order k\* = round(√N) with a value function
+V(k, m) names the empirical modal output — which template, hence which value — at all seven
+tested N, stated and prompt-hashed before sampling; per-sample agreement equals the modal
+frequency itself (56–86% by cell), against 3% for a round-number baseline. Preregistered
+extensions then bound the claim in every direction, and the falsifiers that fired are
+reported as registered: the rule's extend branch is disconfirmed at m ≥ 4 (arm M); the
+anchor dissolves under parent-conditioned calls (0 of 26 valid rival-parent samples return
+to it), scoping every claim here to unconditioned calls (arm MU); and handed the family's
+value table, the model *chooses* the argmax but fails to execute it off-template in 30 of
+31 invalid attempts (arm CH) — the template is not what the model prefers but what it can
+reliably build. Cross-vendor arms make the scope a family property: the anchor value
+transfers to two further vendors (61–67% of valid outputs), while one family brackets it
+from both sides — gemma-4-26b meets the registered pooled bar (57.5%) yet emits the
+in-family *rival* construction at 27 of 43 discriminating-cell validities, and gemma-4-31b
+clears the same validity floor anchoring on nothing. Across the original vendor's tiers,
+constructive ambition rises monotonically while execution validity rises then collapses
+(83% → 100% → 13% on matched cells at 10⁻⁶, 78% → 100% → 13% on the full unmatched
+ladder; the top arm is an unattributable serving alias, reported with that caveat). Requesting a method line is an intervention, not an observation — it
+concentrates output onto the anchor (87% vs 70%, uncorrected, wave-confounded) — yet the
+lines themselves are checkable and true: 54 of 56 scoreable claims describe the object
+actually built.
 
 ---
 
@@ -134,13 +118,26 @@ unmatched). The most ambitious tier attempts recursive gaskets
 and mostly fails to produce a valid packing; it was addressed through a bare serving alias and
 appears as `opus_alias` with that caveat everywhere. (3) *Checkable faithfulness, and trace
 requests as interventions.* Method lines are checkable against emitted coordinates, and 54 of
-56 scoreable claims (96.4%) describe the object actually built (96.4%, Wilson 95% CI [88%, 99%]) — reported in §6.5 with
+56 scoreable claims (96.4%) describe the object actually built (Wilson 95% CI [88%, 99%]) — reported in §6.5 with
 its limits: the CI's lower bound sits just below the registered 90% threshold, and the audit
 is confounded with the elicitation arm. Requesting the line at all is an intervention rather than an observation: the
 concentration shift it produced (87% vs 70%, p = 0.0325 uncorrected) fails multiplicity
 correction, is carried by one of three cells and is wave-confounded (§6.4), so it is reported
 as met-as-registered exploratory material, not a demonstrated effect. Studies collecting
 process descriptors *by request* are nonetheless measuring a perturbed distribution.
+(4) *A family boundary, measured from both sides — and a near-deterministic strong form.*
+Anchoring is a family property, not a vendor artifact: it transfers to two further vendors'
+weak models (61–67% of valid outputs, §3.6), while one further family brackets it —
+gemma-4-26b escapes *upward* to the in-family rival construction (27/43 discriminating-cell
+validities) and gemma-4-31b, above the same validity floor, anchors on nothing (§3.6). Where
+anchoring holds, its strong form is near-deterministic: pooling every discriminating-cell
+validity across the original-family and transfer-vendor arms, the provably better in-family
+rival is emitted 3 times in 147 (arm F 2/57, trace 1/53, rectangle 0/11, arm M 0/10, arm V
+0/16 — a descriptive pool over separately registered arms, each reported at its own bar in
+§3–§4; gemma-4-26b, the family that does *not* anchor at its discriminating cells, is the
+counterexample that proves the statistic is a family trait, §3.6). The mechanism
+decomposition (arm CH, §3.5) locates the boundary in execution, not selection: the template
+is not what the model prefers but what it can reliably build.
 
 **Non-claim guard.** Everything here is a behavioral regularity over emitted outputs. We make
 no claim about mechanism inside the weights, and the paper uses that vocabulary throughout: the
@@ -247,9 +244,47 @@ N − k\*². Primality is not the variable — 13, 23, 31, 43, 47 and 59 trap wh
 37, 41 and 53 converge — refuting the prior work's conjecture about primes near 30 before any
 model is queried.
 
+### 2.4 Notation and conventions
+
+Terms used throughout, gathered here so no verdict table depends on a definition made
+elsewhere:
+
+| Term | Meaning |
+|---|---|
+| k\*(N) | nearest-square grid order, round(√N) (a definition, §2.3) |
+| V(k, m), T(k, N) | extend-with-m-fillers value k/2 + m(√2−1)/(2k); truncated-grid value N/(2k) |
+| anchor | the template the proposal distribution concentrates on at a given N |
+| on-prediction | emitted sum within 2×10⁻³ of the registered predicted value |
+| rival (argmax) | the highest-valued member of the recipe family at that N when it differs from the prediction — inside a trap zone, V(k\*−1, m) |
+| discriminating cell | N where prediction ≠ family argmax; only these can distinguish anchoring from family search |
+| validity | non-overlap and containment at 10⁻⁶ (primary) and 10⁻⁹ (logged), both always reported |
+| trap / converge | branch by sign of N − k\*²: truncate when k\*² > N, extend when k\*² ≤ N |
+| tier | nominal capability class of the serving alias addressed (weak/mid/top); `opus_alias` is a bare alias with no attestable weights binding |
+| BELOW-FLOOR | model failing its arm's registered validity floor; no anchoring claim in either direction |
+| UNSCOREABLE | cell with < 3 valid samples under the GM-chain registration; claims nothing |
+| mixed-serving accounting | pooled rate including cells collected through a registered serving-path amendment; the first-party-only rate is always given beside it |
+
 ---
 
 ## 3. Preregistered forecast, out of sample
+
+Twelve registered arms appear in this paper. Each was registered before its sampling, each
+is reported regardless of outcome, and the falsifiers that fired are flagged in place:
+
+| Arm | § | Proposer(s) | Design | Registered test | Outcome |
+|---|---|---|---|---|---|
+| F (square, bare) | 3.2–3.3 | weak tier | 7 N × 5–20 | P1–P5 exact-value modes | modal at 7/7 N |
+| S (mid tier) | 5 | Sonnet tier | 3 N × 10 | P-S1–P-S4 tier contrasts | 1/30 on-prediction, 100% valid |
+| O (top alias) | 5 | `opus_alias` | 3 N × 10 | P-O1–P-O4 | 13% valid; 3 predictions not evaluable (deviation, Table 4) |
+| T (trace) | 6 | weak tier | 3 N × 20 × 2 arms | P-T1–P-T4 + falsifier | falsifier **triggered** (tie reading); P-T3 fragile |
+| G (rectangle) | 4 | 16 proposers | 2 cells | out-of-sample transfer | partial, 5/11; formula negative result kept |
+| M (branch stress) | 3.4 | weak tier | 4 N × 15 | P-M1–P-M4 + F-M1/F-M2 | F-M1 **triggered 3/3**: extend branch dies at m ≥ 4; fifth k confirms |
+| MU (mutation) | 3.5 | weak tier | 3 parents × 3 N × 15 | P-MU1–P-MU4 + F-MU1 | F-MU1 **triggered**: anchor dissolves under conditioning |
+| CH (choice) | 3.5 | weak tier | 3 N × 15 | P-CH1 vs P-CH2 | choice follows score table; execution fails off-template 30/31 |
+| GM (gemini-flash-lite) | 8 | 2nd vendor | 7 N × 20 | GM-chain bars | UNDERPOWERED (20 valid / 140) |
+| GM2 (gemma, 4k budget) | 8 | 2nd vendor | 7 N × 20 | GM-chain bars | 0/140 parseable — budget confound, diagnosed by GM3 |
+| GM3 (gemma, 16k budget) | 3.6 | gemma-4-26b | 7 N × 20 | P-GM3.1–.3 + falsifier | pooled bar met; misses are the rival construction |
+| V (cross-vendor zero-shot) | 3.6 | 13 free-tier aliases | 5 N × 5 | floor + V1/V2 | 2 vendors TRANSFER, gemma-4-31b DOES-NOT-TRANSFER, V2 HOLDS |
 
 ### 3.1 Registration protocol
 
@@ -386,6 +421,18 @@ analogous arm F exclusion was not (§9) — and counted here: the cell is n = 12
 launched. Raw rows verbatim in
 `arm_m_collect.jsonl`; scoring in `arm_m_analysis.py`, conventions identical to arm F.
 
+**Table M — Arm M, forecast versus outcome (all four registered cells).**
+
+| N | k\* | Branch | Registered prediction | Modal valid output | Freq | Valid / sampled | Verdict |
+|---|---|---|---|---|---|---|---|
+| 20 | 4 | extend, m = 4 | V(4,4) = 2.2071068 | T(5,20) = 2.0000000 (5×4 exact) | 12/15 | 15/15 | P-M1 **disconfirmed** |
+| 30 | 5 | extend, m = 5 | V(5,5) = 2.7071068 | T(6,30) = 2.5000000 (6×5 exact) | 11/14 | 14/15 | P-M2 **disconfirmed** |
+| 41 | 6 | extend, m = 5 | V(6,5) = 3.1725890 | T(7,41) = 2.9285714 (7×6 − 1) | 6/7 | 7/12 | P-M3 **disconfirmed** |
+| 57 | 8 | truncate | T(8,57) = 3.5625000, rival count 0 | T(8,57) = 3.5625000 | 6/10 | 10/15 | P-M4 confirmed; rival 0/10 |
+
+Exactly one V(k\*, m) construction appears in 36 valid converge-cell rows; filler count is 0
+in 35 of 36. Regenerates from `arm_m_collect.jsonl` via `arm_m_analysis.py`.
+
 The net effect on the paper's claim is a sharpening. Arm M does not rescue V(k, m); the closed form now reads
 "k\* = round(√N) names the grid family; at k\*² > N the model truncates that grid (five k
 confirmed); at k\*² ≤ N it extends only to m ≤ 1 — beyond that it prefers the (k\*+1)
@@ -464,11 +511,175 @@ and right about instantiation. This is the same asymmetry arm MU found from the 
 direction, and it narrows the paper's central claim to its defensible core: the template is
 not what the model prefers; it is what the model can build.
 
+**Table MU — Arm MU, registered thresholds versus outcome, by parent condition (pooled over
+N = 13, 21, 31).**
+
+| Parent | Valid | Anchor-rate (CI) | Registered threshold | Keep-or-improve | k-inheritance | Reading |
+|---|---|---|---|---|---|---|
+| B_rival (in-family argmax) | 26 | 0/26 (0%, [0.00, 0.13]) | DISSOLVES if ≤ 20% | 26/26 (bar ≥ 50%) | 26/26 | **F-MU1 triggered** — anchoring does not transfer to one-parent calls |
+| A_anchor (model's own anchor) | 28 | 7/28 (25%, [0.13, 0.43]) | P-MU1 predicted ≥ 50% | — | — | not met — even the anchor-as-parent does not hold the anchor |
+| C_offfamily (diagonal, ≈0.6) | 34 | 20/34 abandon parent for k\*-grid (58.8%, [0.42, 0.74]) | P-MU4: template reasserts | — | — | holds at N = 21, 31; not at N = 13 (1/7) |
+
+**Table CH — Arm CH, valid-conditioned verdict versus attempt-level decomposition.**
+
+| N | Stated argmax | Modal valid output | Valid | Invalid rows attempting argmax | Registered verdict |
+|---|---|---|---|---|---|
+| 13 | 1.7761424 | T(4,13) = 1.6250000 | 2/15 | all | P-CH1 holds |
+| 21 | 2.2588835 | argmax, 3/5 | 5/15 | all | P-CH2 (argmax) |
+| 31 | 2.7485281 | T(6,31) ≈ 2.5833 (4/7, one-sample margin) | 7/15 | all | P-CH1 holds |
+| pooled | — | template 2 of 3 cells | 14/45 | **31/31** (30 misplaced fillers, 1 unevaluable radicals) | choice follows score table; execution fails off-template |
+
 Raw rows verbatim in `arm_mu_collect.jsonl` (180 of 180 launched invocations collected, no
 runtime deaths); scoring in `arm_mu_analysis.py`, committed before sampling completed; frozen
 output in `arm_mu_results.txt`. This arm brings the study corpus to 468 invocations.
 
----
+### 3.6 Preregistered cross-vendor chain (arms GM3 and V): the attractor is a family property, and its boundary runs both ways
+
+Every arm above addresses one vendor's models. Two registered arms take the same
+byte-identical prompts across vendors — arm GM3 under a laboratory-grade instrument against
+one second-vendor family, arm V under free-tier serving against thirteen aliases spanning
+five vendors. One table carries the chain's verdicts; the two instruments are then reported
+in full.
+
+**Table CV — Cross-vendor verdicts, both instruments.**
+
+| Vendor | Model | Instrument | Registered test | Verdict |
+|---|---|---|---|---|
+| Google | gemma-4-26b | first-party API, 7 N × 20 | pooled ≥ 30%; cell-level ≥ 5; falsifier ≥ 4 fails | pooled **HELD** (57.5%; discriminating cells 11/43); cell-level short (2/5, falsifier not triggered); all three misses are the *rival construction* (27/43) |
+| Cohere | north-mini-code | free-tier alias, 5 N × 5 | V1 ≥ 50% of valid on-prediction; V2 rival ≤ 10% | **TRANSFERS** (8/12 = 67%); V2 HOLDS (0/4) |
+| OpenAI (open-weight) | gpt-oss-20b | free-tier alias, 5 N × 5 | same | **TRANSFERS** (11/18 = 61%); V2 HOLDS (0/9) |
+| Google | gemma-4-31b | free-tier alias, 5 N × 5 | same | **DOES-NOT-TRANSFER** (0/15); V2 HOLDS (0/3) |
+| 10 further aliases | (5 vendors) | free-tier | floor: ≥ 10 of 25 invocations valid | BELOW-FLOOR; failure taxonomies logged, no claim in either direction |
+
+**Arm GM3.** Arm GM3 asks whether the anchoring law is a
+fact about the original lineage or about weak-tier models as a class, by re-running the
+unconditioned-call protocol against a second vendor's open-weight family
+(gemma-4-26b-a4b-it) through its first-party API: seven N cells, twenty samples each,
+registered predictions and falsifier fixed before sampling (prereg chain in §9; the
+instrument's history — a first attempt whose 4,096-token budget was consumed entirely by the
+model's deliberation channel, resolved by a registered re-run at 16,384 — is in §8, and is
+itself a finding about output-budget confounds in cross-vendor comparisons). Per cell,
+recomputable from `arm_gm_gm3_checkpoint.jsonl` by `arm_gm3_analysis.py` with no arguments:
+
+| N | predicted (4 dp) | Gemma modal sum | mode freq | valid n | on-prediction | MODE-MATCH |
+|---|---|---|---|---|---|---|
+| 13 | 1.6250 | 1.7761 | 7/9 | 9 | 0 | no (misses upward) |
+| 17 | 2.0518 | **2.0518** | 19/20 | 20 | 20 | **yes** |
+| 21 | 2.1000 | 2.2589 | 9/18 | 18 | 8 | no (misses upward) |
+| 31 | 2.5833 | 2.7485 | 11/16 | 16 | 3 | no (misses upward) |
+| 35 | 2.9167 | **2.9167** | 15/15 | 15 | 15 | **yes** |
+| 37 | 3.0345 | — | — | 2 | 0 | UNSCOREABLE |
+| 43 | 3.0714 | — | — | 0 | 0 | UNSCOREABLE |
+
+![Figure 2](fig_gm3_anchoring.png)
+
+**Figure 2.** *Arm GM3 modal sums against the registered prediction.* Green cells match the
+predicted mode (frequencies annotated); red cells miss — every miss lands above the
+prediction, on the rival argmax (the modal packings carry the rival's two-radius structure,
+27/27 — §3.6); the two largest cells are UNSCOREABLE under the registered <3-valid rule.
+Regenerates via `fig_gm3_anchoring.py` from `arm_gm3_report.json` (itself replayed from the
+raw ledger by `arm_gm3_analysis.py`, no arguments).
+
+Three registered outcomes. **The pooled prediction held**: 46 of 80 valid
+packings (57.5%) land within 2×10⁻³ of the value predicted by §2's rule, against a
+registered 30% bar — for a rule fitted entirely on another vendor's models, before this
+family was ever sampled. The registered metric pools all cells, and the pass rides on that:
+by §3.2's own convention — arm F's pooled rate excludes non-discriminating cells *because
+prediction equals the family argmax there* — the decomposition must be stated. 35 of the 46
+on-prediction packings sit in the two non-discriminating cells (19/20 at N = 17, 15/15 at
+N = 35); on the three discriminating cells the rate is 11 of 43 (25.6%), below the bar the
+pooled metric passes. The registered verdict stands as registered; what it measures at the
+discriminating cells is the next finding. **The cell-level prediction did not hold**: the
+predicted value is modal in 2 of 5 scoreable cells, short of the registered 5, though the
+registered falsifier (failure in ≥4) also did not trigger — and where the family locks on,
+it locks on almost completely. **The structural signature came in under its
+bar**: 20 of 46 on-prediction samples (43%, bar: half) carry the exact two-radius grid-plus-
+filler decomposition, so on-prediction Gemma samples reach the predicted *value* through the
+predicted *construction* slightly less than half the time.
+
+The three cell-level misses are not noise, and "misses upward" understates them: **the
+family's modal output at every discriminating cell is the rival argmax itself** — 1.7761,
+2.2589 and 2.7485 against rivals 1.7761424, 2.2588835 and 2.7485281 — and a post-hoc
+structural diagnostic (disclosed as such; `diagnostics_gm3_rival.py`, read-only over the
+ledger) finds all 27 of 27 rival-valued packings carrying the rival's exact two-radius
+decomposition, the (k\*−1) grid radius with the (k\*−1) filler radius. The registered
+signature instrument could not see this: it tests radii against the *predicted* order k\*,
+so it is structurally blind to (k\*−1) constructions — which is why the 43% signature figure
+above coexists with a 100% rival-structure rate on the miss side. In §2.3's terms,
+gemma-4-26b performs precisely the drop-to-(k\*−1)-and-fill move that "a proposer with any
+local search would" perform and that the original family performs in 2 of 57 valid samples:
+27 of 43 valid discriminating-cell packings (63%) are the rival construction. Read against
+§8's tractability alternative, the anchor value marks where construction-by-mental-arithmetic
+lands, and a family with more arithmetic reach executes the harder in-family construction
+rather than truncating — same recipe family, other branch. Validity
+collapsing at the two largest cells (2 then 0 valid of 20) bounds the family's competence
+window on this task; both cells are UNSCOREABLE under the registered rule (< 3 valid
+samples, fixed in the GM-chain registration before sampling) and claim nothing.
+
+**Arm V.** Arm GM3 varied the vendor while holding the instrument close to laboratory grade —
+first-party API, pinned temperature, explicit output budget, seven cells at twenty samples.
+Arm V varies vendor and serving class at once, under the same byte-identical arm-F prompts
+both arms inherit (SHA-256 per N restated in the registration and recomputed at call time,
+aborting on mismatch; the GM-chain registration pins the identical hashes), at five cells and
+five samples per (model, N), against free-tier aliases
+across five vendors (`arm_v_preregistration.md`, committed before sampling; three amendments,
+each committed before the sampling it governs, expanded the original three-alias design to
+thirteen aliases across two serving paths — the opencode CLI and OpenRouter chat-completions —
+and raised `max_tokens` to 24,576 after hidden-reasoning truncation emptied three models'
+replies). Serving disclosures per the companion paper's protocol: aliases on managed paths,
+`sampling_params: null` on every row, per-row upstream-provider strings logged where the path
+reports them, every invocation appended live to `arm_v_candidates_raw.jsonl` — 877
+invocations, failures and refusals included. Scoring is `arm_f_repro.py`'s
+parse/validate/classify unchanged, tolerances registered in arm F before its sampling.
+
+Registered floor: ≥10 of a model's 25 registered invocations valid at 10⁻⁶; below it, no
+anchoring claim in either direction. Execution retried each invocation slot until content
+arrived, per amendment 3's registered transport-repair and accounting rule, so the ledger
+holds many more attempt rows than slots — gemma-4-31b's 25 slots, for instance, took 190
+attempt rows, 165 of them transport failures — and the floor is evaluated on the 25 slots,
+not the attempts. Ten of thirteen aliases finished BELOW-FLOOR — including all three
+originally-registered opencode aliases, whose logged failure taxonomies are
+transport-dominated for one (CLI build banners, timeouts, "Unknown model" errors as the
+free tier rotated its catalogue) and roughly half transport, half parse-failure for the
+other two — plus one alias returning all 108 of its attempts without content. Three aliases
+cleared the floor, and their registered verdicts split:
+
+| alias (vendor) | valid | V1 on-prediction | V1 verdict (bar: ≥50%) | V2 rival-argmax (bar: ≤10%) |
+|---|---|---|---|---|
+| `north-mini-code` (Cohere) | 12 | 8/12 = 67% | **TRANSFERS** | 0/4 → **HOLDS** |
+| `gpt-oss-20b` (OpenAI, open-weight) | 18 | 11/18 = 61% | **TRANSFERS** | 0/9 → **HOLDS** |
+| `gemma-4-31b-it` (Google) | 15 | 0/15 = 0% | **DOES-NOT-TRANSFER** | 0/3 → **HOLDS** |
+
+This is the registration's most informative branch pair. Anchoring under this instrument
+is not an artifact of the original family — two further vendors' models land the
+registered construction values at 61–67% of valid outputs, and the strong form holds
+everywhere evaluable *within this arm*: zero rival-argmax emissions in 16
+discriminating-cell validities (the registration recorded the original family's prior for
+the same statistic as 0/21; §3.6's gemma-4-26b, under the GM-chain instrument, is the
+standing exception — its discriminating-cell mode *is* the rival). And it is not universal:
+gemma-4-31b, clearing the same floor, lands the prediction never. Its valid packings are unanchored and low
+(bests 0.88–1.85 against predictions 1.63–3.03) — not the rival, not the template, just
+weaker de-novo construction. Under the registration's falsification map, the family-specific branch fires — any model
+clearing the floor with DOES-NOT-TRANSFER makes the closed form a family property, stated
+in §5 with data rather than a caveat — while the map's all-transfer branch fails on gemma
+alone, so the reading that anchoring is an artifact of the original family is defeated by
+the same table that bounds its generality.
+
+The gemma pair needs stating precisely, because this family now appears on both sides, and
+the prompts are identical across the two arms — what differs is parameter count, serving
+path and sample budget, not the elicitation. Under the GM-chain instrument (first-party,
+pinned temperature, 7 × 20), gemma-4-**26b** pooled-HELD at 57.5% (the mixed-serving
+accounting; first-party-only, 59.0% — §8's registered deviation applies to this figure)
+while emitting the *rival* construction at 63% of discriminating-cell validities; under arm
+V's free-tier instrument (5 × 5), gemma-4-**31b** through a rate-starved alias (Google AI
+Studio upstream; 27–38 of each cell's attempts returned as shared-pool 429s before content
+arrived) lands neither the prediction nor the rival — its valid packings are weaker de-novo
+constructions. The pair bounds the family's behaviour rather than contradicting itself —
+one member sits *above* the template's execution reach (far enough to build the
+drop-and-fill rival the original family cannot), the other lands below it — but model
+variant and instrument quality change together across the two measurements, so which
+difference carries the split is not attributable from this pair; either way, no
+single-model measurement would have seen the boundary.
 
 ## 4. Rectangle transfer
 
@@ -637,9 +848,9 @@ this row is not a statement about any released model version. Tier denominators 
 separately, and it is the matched comparison (83% → 100% → 13%) that should be quoted across
 tiers. Sources: `arm_f_candidates_v2.jsonl`, the three preregistration files.
 
-![Figure 2](fig2_packings.png)
+![Figure 3](fig2_packings.png)
 
-**Figure 2.** *Three attractor families at a single cell, N = 31.* One representative packing
+**Figure 3.** *Three attractor families at a single cell, N = 31.* One representative packing
 per tier, ledger sample id in each panel title (weak tier `bare` id 1, on-prediction truncation
 2.5833333; middle tier `sonnet_bare` id 1, mixed-radius rival 2.7485281; `opus_alias` id 1,
 invalid, with only the offending circles highlighted). Source: `arm_f_candidates_v2.jsonl` via
@@ -654,7 +865,11 @@ distinct radii per sample 1 → 2 → 3 (means 1.33 → 2.40 → 3.37) and media
 fraction 0.08 → 0.43 → 0.95 across the three tiers — monotone on both operationalizations. At
 the canonical and plausibly contaminated cell N = 26 all tiers converge on the same 2.5414
 attractor; they diverge only at withheld trap cells. The branch rule of §2 is therefore a
-weak-tier regularity — single-vendor evidence until a cross-vendor arm completes (§8) — and
+weak-tier regularity — cross-vendor under two instruments (a registered pooled bar under
+GM3's, carried by its non-discriminating cells, §3.6; 61–67% of valid outputs in two further
+vendors under arm V's, §3.6), family-bounded in both directions (absent in gemma-4-31b at
+the same floor, escaped *upward* to the family rival by gemma-4-26b, §3.6), cell-level modes
+confirmed in one lineage — and
 this is a **boundary condition on the main result**, not an independent
 second finding. It also cuts against §1's framing: the discovery systems cited there run
 frontier or mid-tier proposers, so the tier at which our regularity holds is the tier they do not use,
@@ -691,10 +906,10 @@ the corpus to 215 logged square invocations (85 bare = 45 original + 40 new; 70 
 60 trace_v2; 30 sonnet; 30 `opus_alias`), plus 16 rectangle invocations, 231 total at the
 close of revision 2 (Table 5, item 27); the post-review arm M (§3.4) later added 57 sampled
 weak-tier invocations (60 launched), bringing the study corpus to 288, and the post-council
-arms MU and CH (§3.5) added 180 more (180 launched, none lost), for a final corpus of 468. The cross-vendor arms (§8) are ledgered separately under their own
-preregistrations — arm GM2's 140 completed invocations (all unscoreable under its registered
-rule), arm GM's partial collection, arm GM3's in-progress rerun, and arm V's
-transport-degraded first run — and are not counted in the 468. One disclosure revision 1 did not carry: **20 of the 60 bare samples are pre-existing arm-F
+arms MU and CH (§3.5) added 180 more (180 launched, none lost), bringing the
+unconditioned-and-elicitation corpus to 468; the cross-vendor chain is scored under its own
+registrations and adds 420 GM-chain invocations (§3.6, §8) and 877 arm-V attempt rows over
+325 registered invocation slots (§3.6). One disclosure revision 1 did not carry: **20 of the 60 bare samples are pre-existing arm-F
 rows** (N = 13 ids 1–5, N = 21 ids 1–10, N = 31 ids 1–5) whose results were known when P-T1–P-T3
 were written; only trace_v2 is fully fresh (§6.4). Scoring used `arm_f_repro.py` unchanged with
 the registered 2×10⁻³ window; the Fisher exact test comes from the hypergeometric tail in
@@ -748,9 +963,9 @@ Pooled p = 0.0325; Holm threshold over the registered family (m = 3 tested with 
 separately and never summed into any total. Regenerated by `arm_t_analysis.py` over
 `arm_f_candidates_v2.jsonl`.
 
-![Figure 3](fig3_armT.png)
+![Figure 4](fig3_armT.png)
 
-**Figure 3.** *Bare versus `trace_v2`, by cell and pooled.* Caption caveat: the bars pool the
+**Figure 4.** *Bare versus `trace_v2`, by cell and pooled.* Caption caveat: the bars pool the
 bare arm's two collection waves, which §6.4 shows drift materially, so the pooled bare bar is a
 mixture; the same-wave comparison in §6.4 is the wave-controlled picture.
 
@@ -988,30 +1203,38 @@ training data. We ran no canary-string test, no comparison against N values abse
 literature, and no perturbed-container test preserving difficulty while destroying lexical
 overlap. The rectangle arm is the nearest thing we have, at n = 11 valid.
 
-**Single vendor.** All tiers in the main study come from one provider. Two preregistered
-cross-vendor extensions are in progress at submission time, both registered before sampling and
-disclosed regardless of outcome. Arm GM (gemini-2.5-flash-lite, direct vendor API,
-prereg commit `37b3adb`) is quota-throttled and incomplete; no collected output has been
-analyzed. Arm GM2 (gemma-4-26b-a4b-it, prereg `3019aab`) completed 140/140 invocations with a
-null-compliance outcome: 0 of 140 responses were parseable under the registered pipeline —
-the model consumed its entire 4,096-token output budget on visible deliberation and never
-emitted the required coordinate list, under a prompt with which the weak-tier arm F model
-complied at 100% parse rate. Per the registered rule, all cells are UNSCOREABLE and no
-confirmatory claim is made in either direction; a follow-up with an enlarged output budget
-(arm GM3, registered before sampling) is running. The anchoring law therefore remains
-single-vendor evidence at this time — but the format-compliance cliff between families under
-an identical prompt is itself a preregistered observation, and it is consistent with §6.1's
-point that output-format constraints are load-bearing. We flag one reading the design cannot
-yet exclude: a 0/140 parse rate at a 4,096-token cap is also the signature of budget
-truncation — a verbose model cut off before its answer — rather than format inability. Arm
-GM3's enlarged budget separates the two, and we defer any characterization of the cliff's
-cause until it reports. A third registered attack on the same limitation, arm V
-(`arm_v_preregistration.md` plus three amendments, byte-identical arm-F prompts, thirteen
-alias-addressed proposers across the opencode and OpenRouter free tiers), collapsed
-mechanically on its first run — 270 ledgered rows, 144 transport errors, 5 valid samples —
-with repairs registered in amendment 3 before any resumed sampling; the run has not been
-resumed, no analysis has been performed, and the ledger is released as-is. Whichever way
-these arms resolve, their outcomes are reportable under their own preregistrations.
+**Vendor scope, and what the cross-vendor chain cost to learn.** All tiers in the main study
+come from one provider; §3.6 is the arm that moves the pooled-level claim across vendors.
+The instrument's history matters as much as its verdict and is recorded here. Arm GM
+(gemini-2.5-flash-lite, prereg commit `37b3adb`) stalled on first-party quota at 55 of 140
+and was completed through a routed serving path under a registered amendment
+(`arm_gm_amendment1_openrouter.md`, provider logged per row — every resumed row reports
+Google as the upstream). Its registered verdict is UNDERPOWERED in both accountings: 20
+valid packings of 140, three scoreable cells against the five the primary requires, pooled
+on-prediction 15% against the 30% bar, falsifier not triggered
+(`arm_gm_analysis_v2.py`, `arm_gm_v2_report.json`). Two descriptives, claimed as nothing
+more: the one mid-size scoreable cell matches the predicted mode exactly (2.1000 at N = 21,
+3/6), and off-prediction valid sums land far *below* the prediction (0.48–1.55) — the
+opposite direction from GM3's misses, which land on the family rival (§3.6), consistent
+with §5's point that the regularity is
+tier-bound rather than universal. Arm GM2 (gemma-4-26b-a4b-it, prereg
+`3019aab`) completed 140/140 invocations with 0 of 140 parseable — and revision 2's two
+candidate readings (format inability versus budget truncation) were separated by GM3 as
+registered: the vendor API returns deliberation as a separate thought channel, GM2's
+4,096-token budget died entirely inside that channel, and at 16,384 tokens the same model
+parses at 118/140. A cross-vendor null under a fixed output budget is not evidence about the
+model until the budget's interaction with the vendor's response structure is itself checked.
+One mechanical deviation on GM3 is on record (amendment registered before resumption): the
+final 41 of 140 cells were collected through a routed third-party serving path after the
+first-party quota stalled, provider logged per row, both accountings computed — the
+deviation moves the pooled rate from 59.0% (first-party only) to 57.5% (mixed) and changes
+no verdict. Scope after §3.6: the anchoring law is cross-vendor at the pooled level; its
+full cell-level mode structure remains confirmed only within the original family. Arm V
+(§3.6) extends the chain under the zero-shot protocol: registered before sampling with three
+pre-sampling amendments, 877 invocations across thirteen free-tier aliases, ten below the
+registered floor with their failure taxonomies logged, and the three floor-clearing vendors
+splitting TRANSFERS/TRANSFERS/DOES-NOT-TRANSFER (`arm_v_score.py`, no arguments, from the
+live ledger; frozen output `arm_v_score_final.txt`).
 
 **Sampling parameters unpinned.** The runtime does not expose pinned decoding parameters, so
 every effect is a distributional claim over the observed sampling regime, and §3.2's
@@ -1045,12 +1268,19 @@ revision 1 is tabled in Appendix C. Provenance, in list form:
   `arm_m_prompts.json` (committed `e528c6b` before sampling), and
   `arm_mu_preregistration.txt` with `arm_mu_prompts.json` (committed `2b7d202` before
   sampling; decision thresholds, power analysis, tie conventions and falsifier F-MU1 all
-  registered — a joint registration also covering arm CH). The rectangle transfer was
-  registered before collection and never refitted. The cross-vendor arms carry their own
-  registrations, each committed before the sampling it governs: `arm_gm_preregistration.txt`
-  (commit `37b3adb`), `arm_gm2_preregistration.txt` (`3019aab`),
-  `arm_gm3_preregistration.txt` (registered 2026-08-03), and `arm_v_preregistration.md` with
-  its three amendments.
+  registered), and the cross-vendor chain `arm_gm_preregistration.txt` (commit `37b3adb`),
+  `arm_gm2_preregistration.txt` (`3019aab`), `arm_gm3_preregistration.txt` (`c0b5b97`) with
+  its serving-path deviation registered in `arm_gm3_amendment1_openrouter.md` (`67cc4a1`)
+  before the affected cells were sampled, and `arm_v_preregistration.md` (commit `5444f10`,
+  ancestry-checked by its runners before any sampling) with its three amendments, each
+  committed before the sampling it governs. The rectangle transfer was registered before
+  collection and never refitted. On multiplicity: this study now spans many registered arms, and no
+  correction across arms is applied — each arm's predictions were registered with its own
+  bars and falsifiers before its sampling, every arm is reported regardless of outcome
+  (three GM-chain instruments failed or stalled before one succeeded, and §3.4's falsifier
+  fired), and no arm was selected for inclusion on its result. The protection against
+  garden-of-forking-paths here is registration and exhaustive reporting, not a family-wise
+  error rate; a reader who wants one can count arms from this section.
 - **Four limits on that claim.** (i) The digests cover the task prompt only; the subagent
   inherits instruction files outside it, so what is locked is a *fragment* of the conditioning
   context, a replicator cannot reconstruct those files, and we cannot establish they were
@@ -1080,9 +1310,10 @@ revision 1 is tabled in Appendix C. Provenance, in list form:
 - **Analysis artifacts.** Raw outputs are stored verbatim (`arm_f_raw.json`,
   `arm_f_candidates.jsonl`, `arm_f_candidates_v2.jsonl`, `arm_g_candidates.jsonl`,
   `arm_m_collect.jsonl` scored by `arm_m_analysis.py`, `arm_mu_collect.jsonl` scored by
-  `arm_mu_analysis.py` with frozen output `arm_mu_results.txt`, `arm_gm2_candidates.jsonl`
-  with `arm_gm2_report.json`, the arm GM and GM3 checkpoint ledgers, and `arm_v_scored.jsonl`) and scoring is
-  deterministic and local. Value claims are gated on an independent LP oracle rather than on the
+  `arm_mu_analysis.py` with frozen output `arm_mu_results.txt`, and the GM3 ledger
+  `arm_gm_gm3_checkpoint.jsonl` — every row's raw API response verbatim, serving path and
+  provider tagged per row — scored by `arm_gm3_analysis.py` into `arm_gm3_report.json`
+  with both serving-path accountings) and scoring is deterministic and local. Value claims are gated on an independent LP oracle rather than on the
   closed form being tested: `n_sweep_forecast.py` with `verify_against_lp` checks 83
   configurations to within 10⁻⁹, and the same oracle produced §4.2's negative result. The
   faithfulness rubric (`p7_faithfulness_rubric.md`) was frozen by git commit `e181d2a`
@@ -1117,17 +1348,12 @@ revision 1 is tabled in Appendix C. Provenance, in list form:
   the panel is not peer review, its verdicts carry no external authority, and it shares a family
   resemblance with the system under study — a blind-spot risk disclosed here rather than left
   implicit.
-- **Stopping rule.** Revision 2 closed after implementing the three named referee reports and
-  the arbitration verdict, with no further data-dependent analysis inside it. Four analyses that
-  revision named as future work were subsequently run as preregistered arms and are reported in
-  §3.2 and §3.4–3.5: the one-parent mutation arm (MU), the recipe-family choice probe (CH), the
-  N = 57 cell (arm M), and the empirical-k back-out (`diagnostics_kmatch.py`). The study's
-  stopping boundary is the close of arm CH's registered analysis; the only work open past it is
-  the cross-vendor arms (§8), each reportable under its own preregistration whichever branch
-  obtains. Analyses still not run — faithfulness split by on- versus off-prediction, a
-  code-enabled probe, interleaved re-collection of the arm-T pair, and P5 at n = 20 — remain
-  recorded in §6.5 and §8 as future work, so that the reported statistics are the ones the
-  preregistrations governed.
+- **Stopping rule.** This revision closed after implementing the three named referee reports and
+  the arbitration verdict; no further data-dependent analysis was performed. Analyses named but
+  not run — the one-parent mutation arm, the recipe-family choice probe, N = 57, the empirical-k
+  back-out, faithfulness split by on- versus off-prediction, a code-enabled probe, interleaved
+  re-collection of the arm-T pair, and P5 at n = 20 — are recorded in §6.5 and §8 as future work,
+  so that the reported statistics remain the ones the preregistrations governed.
 
 ---
 
@@ -1188,6 +1414,10 @@ at the two registered tolerances.
 | F-M1 (arm M falsifier, filler branch) | modal ≠ V(k\*, m) at 2+ of 3 converge cells, ties count as NOT | yes, tie-stated in registration | **triggered at 3 of 3**; V(k, m) restricted to m ≤ 1 (§3.4) |
 | F-M2 (arm M falsifier, truncate branch) | N = 57 modal ≠ T(8,57) | yes | not triggered |
 | Arm M rejection rule | runtime deaths excluded, counted | yes (registered for this arm) | 3 N = 41 invocations excluded, cell reported as 12 of 15 |
+| GM3 serving path | first-party API only | amendment registered **before resumption** (`arm_gm3_amendment1_openrouter.md`, `67cc4a1`) | final 41 of 140 cells via routed path, provider logged per row; dual accounting 59.0% / 57.5%, no verdict change (§3.6, §8) |
+| Arm V proposer set | 3 opencode aliases | expanded 3 → 13 by amendments 1–2, each registered **before the sampling it governs** | verdicts in §3.6; `big-pickle` disclosed as vendor-unattested in amendment 1 |
+| Arm V transport repair | single pass, `max_tokens` 8192 | amendment 3 registered **before resumption** (mechanical only: 24,576 budget, retry/backoff, censored-row accounting) | 877 attempt rows over 325 slots; floor evaluated per slot (§3.6) |
+| GM3 rival-structure check | — | **post hoc**, disclosed (`diagnostics_gm3_rival.py`) | 27/27 rival-valued discriminating-cell packings carry the rival's two-radius structure (§3.6); the registered signature is scoped to k\* and cannot see (k\*−1) structure |
 | Falsifier | trace_v2 validity `<=` bare at 2+ of 3 N | **both readings reported** | **triggered** under the registered tie-inclusive reading (2/3 cells); not triggered under the strict `<` the code implemented (§6.3) |
 | Ladder inclusion | — | **post hoc** | `opus_alias` initially excluded, later included after results known; ladder reported both ways (§5) |
 | Cap exclusion | — | **not registered** | five records excluded; both rates reported (§3.3) |

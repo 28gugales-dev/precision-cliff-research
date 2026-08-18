@@ -1,0 +1,141 @@
+% 1:1 markup translation of paper1_draft.md lines 1181-1284 (Appendices A, B, C).
+\section{Prompts, verbatim}
+
+\textbf{A.1 Bare template} (\texttt{\{n\}} parameterized; the $N = 13$ instance hashes to
+\texttt{32db485bea\bk{}625ff9f39f\bk{}4723ebf1a0\bk{}1f337559a9\bk{}e2cf567fb4\bk{}86928f71f7\bk{}f8df}):
+
+\begin{verbatim}
+Pack exactly {n} non-overlapping circles inside the unit square [0,1]x[0,1]
+so that the sum of their radii is as large as possible.
+MUST hold: exactly {n} circles; every circle fully inside the unit square
+[0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap
+(distance between centers >= sum of the two radii; touching is allowed).
+Do not write or execute code - construct the packing by reasoning alone.
+Output ONLY the raw Python list of {n} [x, y, r] lists. No explanation, no
+code fences, no other text.
+\end{verbatim}
+
+\textbf{A.2 \texttt{trace\_v2} template} --- identical to A.1 through line 3, then:
+
+\begin{verbatim}
+First write one line beginning "METHOD:" naming the construction you used.
+Do not use square brackets anywhere in that line.
+After the METHOD line, output ONLY the raw Python list of {n} [x, y, r]
+lists. No explanation, no code fences, no other text after the list.
+\end{verbatim}
+
+\textbf{A.3 Dispatch wrapper} (both arms; \emph{not} part of the hashed task prompt, hence an instance of
+the fragment-hashing limitation in \S3.1): \texttt{Do not use any tools. Your entire final message must
+be the answer and nothing else.}
+
+\textbf{A.4 Registered prompt hashes.} bare N=13 \texttt{32db485b\ldots}, N=17 \texttt{8437df75\ldots}, N=21 \texttt{a415425b\ldots},
+N=31 \texttt{a664d003\ldots}, N=35 \texttt{3b08c56e\ldots}, N=37 \texttt{2c0a8819\ldots}; trace\_v2 N=13 \texttt{a920f1c9\ldots}, N=21
+\texttt{91205727\ldots}, N=31 \texttt{bd490b7b\ldots}. The N=43 bare hash \texttt{1208e7d2\ldots} is ledger-only, and the pilot
+prompt was never hashed (\S9).
+
+\textbf{A.5 Parser.} Completions are parsed with \texttt{ast.literal\_eval} after stripping code fences; a
+completion failing to yield a list of $N$ numeric triples is recorded \texttt{literal\_eval\_failed} and
+scored invalid, with the failure mode logged (\S6.2 reports parse and geometric failures
+separately). Radii must be strictly positive; containment and pairwise non-overlap are checked
+at the two registered tolerances.
+
+\section{Deviations and disclosure table}
+
+\begingroup
+\footnotesize
+\begin{longtable}{@{}p{0.16\textwidth}p{0.26\textwidth}p{0.13\textwidth}p{0.35\textwidth}@{}}
+\caption{Deviations from preregistration.}\label{tab:deviations}\\
+\toprule
+\textbf{Prediction} & \textbf{Registered rule} & \textbf{As registered?} & \textbf{Outcome / reason} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Prediction} & \textbf{Registered rule} & \textbf{As registered?} & \textbf{Outcome / reason} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r}{\emph{continued on next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+P1--P3 & exact-value point predictions & yes & \S3.3, Table 1 \\
+P4 (N=37) & converge, 3.0345178 & yes & confirmed \\
+P5 (N=35) & truncate, 2.9166667, structural separation & yes & 3/4 valid; $n = 4$, ``consistent with'' \\
+P-S1\ldots P-S4 & directional tier comparisons & yes & \S5 \\
+P-O1, P-O2, P-O4 & tier comparisons on on-prediction / rival rates & \textbf{no} & declared not evaluable post hoc after a 13\% validity collapse; the registered disconfirmation (regression toward the trap) did not occur \\
+P-O3 & multi-radius fraction $\ge 0.9$ of valid & yes & trivially satisfied on 4/4 valid \\
+P-T1 & direction at each $N$ \textbf{and} pooled $p < 0.05$ & yes & not confirmed, $p = 0.30$ \\
+P-T2 & directional, no alpha & yes & confirmed as registered (1/53 vs 2/50); no inferential weight claimed \\
+P-T3 & directional, no alpha & yes & met as registered; $p = 0.0325$ uncorrected fails Holm; carried by $N = 13$ (\S6.4) \\
+P-T4 & $\ge 90\%$ of scoreable claims match & yes, plus corrected scorer & 38/41 (93\%) original; 54/56 (96.4\%) blind, frozen rubric \\
+P-M1--P-M3 & modal output $= V(k^*, m)$ at $N = 20/30/41$ & yes & \textbf{disconfirmed at all three cells} --- modal outputs are $(k^*{+}1)$-grid values (\S3.4) \\
+P-M4 & $N = 57$ modal $= T(8,57)$, rival count 0 & yes & confirmed (6/10 on-prediction, 0/10 rival) \\
+F-M1 (arm M falsifier, filler branch) & modal $\ne V(k^*, m)$ at 2+ of 3 converge cells, ties count as NOT & yes, tie-stated in registration & \textbf{triggered at 3 of 3}; $V(k, m)$ restricted to $m \le 1$ (\S3.4) \\
+F-M2 (arm M falsifier, truncate branch) & $N = 57$ modal $\ne T(8,57)$ & yes & not triggered \\
+Arm M rejection rule & runtime deaths excluded, counted & yes (registered for this arm) & 3 $N = 41$ invocations excluded, cell reported as 12 of 15 \\
+GM3 serving path & first-party API only & amendment registered \textbf{before resumption} (\texttt{arm\_gm3\_amendment1\_openrouter.md}, \texttt{67cc4a1}) & final 41 of 140 cells via routed path, provider logged per row; dual accounting 59.0\% / 57.5\%, no verdict change (\S3.6, \S8) \\
+Arm V proposer set & 3 opencode aliases & expanded 3 $\rightarrow$ 13 by amendments 1--2, each registered \textbf{before the sampling it governs} & verdicts in \S3.6; \texttt{big-pickle} disclosed as vendor-unattested in amendment 1 \\
+Arm V transport repair & single pass, \texttt{max\_tokens} 8192 & amendment 3 registered \textbf{before resumption} (mechanical only: 24,576 budget, retry/backoff, censored-row accounting) & 877 attempt rows over 325 slots; floor evaluated per slot (\S3.6) \\
+GM3 rival-structure check & --- & \textbf{post hoc}, disclosed (\texttt{diagnostics\bk\_gm3\bk\_rival\bk.py}) & 27/27 rival-valued discriminating-cell packings carry the rival's two-radius structure (\S3.6); the registered signature is scoped to $k^*$ and cannot see $(k^*{-}1)$ structure \\
+Falsifier & trace\_v2 validity \texttt{<=} bare at 2+ of 3 $N$ & \textbf{both readings reported} & \textbf{triggered} under the registered tie-inclusive reading (2/3 cells); not triggered under the strict \texttt{<} the code implemented (\S6.3) \\
+Ladder inclusion & --- & \textbf{post hoc} & \texttt{opus\_alias} initially excluded, later included after results known; ladder reported both ways (\S5) \\
+Cap exclusion & --- & \textbf{not registered} & five records excluded; both rates reported (\S3.3) \\
+\end{longtable}
+\endgroup
+
+\section{Corrections ledger}
+
+\begingroup
+\footnotesize
+\begin{longtable}{@{}p{0.02\textwidth}p{0.05\textwidth}p{0.27\textwidth}p{0.38\textwidth}p{0.13\textwidth}@{}}
+\caption{Corrections to revision 1. Every claim that changed between the reviewed
+draft and this one, with the finding that forced it. \texttt{stats} =
+\texttt{p4\_review\_stats.md}, \texttt{R2} = \texttt{p4\_review\_reviewer2.md}, \texttt{GECCO} =
+\texttt{p4\_review\_gecco.md}, \texttt{council} = \texttt{p6\_cruxes.md}.}\label{tab:corrections}\\
+\toprule
+\textbf{\#} & \textbf{\S} & \textbf{Revision-1 claim} & \textbf{Corrected} & \textbf{Source} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{\#} & \textbf{\S} & \textbf{Revision-1 claim} & \textbf{Corrected} & \textbf{Source} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{\emph{continued on next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+1 & Abs, 1 & ``recall'' a template; ``template memorizer'' & behavioral vocabulary only: emits / concentrates / modal output & R2 \#2; R-E \\
+2 & 2.3 & $\mathrm{round}(\sqrt{N})$ an empirical discovery; ``zero free parameters'' & a definition --- two formalizations of ``nearest'' coincide on the integers; weakly identified selection among four & GECCO M8; R2 \#24 \\
+3 & 1.1, F1 & penalty ``hits exactly zero at the top of each zone'' & zero at $N = 14$, 15, 35, 48; \textbf{0.59\% residual at $N = 24$}; 4 of 22 trap $N$ cost nothing, so branch $\ne$ penalty & GECCO M14; R2 \#19 \\
+4 & 1.1, 7 & ``published bounds sit above all of them'' & withdrawn: the $N = 26$ bound (2.63598) \emph{is} ShinkaEvolve's, so the LLM systems are the record; table stops at $N = 30$, leaving the LP abort gate unchecked above it & GECCO M3; R2 \#20--21 \\
+5 & 3.3 & cap exclusions ``understated validity by 17\%'' & 77.8\% vs 70.0\% --- 7.8 points, 10\% relative; exclusion unregistered, both rates reported & R2 \#13; GECCO m15 \\
+6 & 3.3, 6 & ``two parse failures''; ``two fraction-literal samples'' & three in each case & stats F14, F15 \\
+7 & Abs, 1, 3.2 & ``predicts the exact sum-of-radii the model will emit'' & predicts the \textbf{empirical modal output} at 7/7 $N$; per-sample rate = modal frequency, 56--86\% by cell, 46\% pooled; round-number baseline 2/69 & R2 \#15; R-E \\
+8 & 4.1 & one $a = 3$ sample left the family; rectangle ``confirmed'' & two (3.45, 3.5); all 11 valid samples characterized; partial support, CI $[21\%, 72\%]$, null stated & stats F16; R2 \#17; GECCO M9c \\
+9 & Abs, 1, 5 & $32/45 = 71\%$; inversion 71 $\rightarrow$ 100 $\rightarrow$ 13 & \textbf{$35/45 = 77.8\%$} at $10^{-6}$, 64.4\% at $10^{-9}$; inversion 78 $\rightarrow$ 100 $\rightarrow$ 13 (64 $\rightarrow$ 90 $\rightarrow$ 13 strict); matched-cell 83 $\rightarrow$ 100 $\rightarrow$ 13 given separately & stats F1; R2 \#3; R-F \\
+10 & 5 & Sonnet rival 6/30, 3/10 at $N = 31$ & 5/30 and 2/10 --- the 2.75 escape sits $1.47\times10^{-3}$ from the rival, inside the window; categorical claims now structural or at $10^{-6}$ & stats F12; R2 \#14 \\
+11 & 1 & ``a monotone inversion'' & monotone in ambition only; validity rises then collapses & GECCO m21 \\
+12 & 6.2 & P-T2 ``not confirmed'' ($p = 0.48$); P-T3 ``confirmed'' ($p = 0.0325$) & one rule applied symmetrically: P-T2 \textbf{confirmed as registered} (1/53 vs 2/50, no inferential weight); P-T3 met as registered but fragile & stats F7; R-C \\
+13 & Abs, 1, 6.2 & ``leaving validity unchanged'' & no \emph{detectable} change ($p = 0.30$, $n = 60$/arm, underpowered); the P-T1 direction is entirely parse compliance --- 3 vs 0 parse failures, 7 vs 7 geometric & R2 \#7--8 \\
+14 & 6.3 & ``the registered falsifier was not triggered'' & \textbf{triggered at 2 of 3 $N$} under the registered \texttt{<=}; not under the code's strict \texttt{<}; both reported, registered reading authoritative; pilot validity effect attributed to the bundled rewording & stats F8; R-B \\
+15 & 6.4 & pilot produced two effects, both died at scale & a third ran in the P-T3 direction at the same cell (9/10 vs 4/7, $p = 0.16$): P-T3 replicated a pilot signal & stats F18 \\
+16 & 6.5 & 12 claims excluded as ``no numeric content'' & regex coverage gaps; 9 of 12 carry checkable dimensions, quoted verbatim in \S6.5; worst case $38/53 = 72\%$ & stats F9 \\
+17 & 6.5 & the three mismatches ``are all the same case'' & one of three; all three score MATCH under blind adjudication; the two remaining mismatches are alternation mis-descriptions (rows 11, 33) & stats F10; R-D \\
+18 & 1, 7 & SeaEvo (2604.24372) reports a $\sim$2.636 packing value & removed: SeaEvo does not evaluate circle packing & GECCO M4 \\
+19 & 7 & 2605.29268 reports asymmetric proposal mass in program space & deleted --- that paper is on bandit compute allocation; removing it leaves no cited evidence that the anchoring survives the code channel & GECCO M5 \\
+20 & 7 & 2606.13603, 2605.29087 estimate faithfulness by perturbation / probing & both are causal-decoupling results; only 2503.08679 is an estimator & GECCO M6 \\
+21 & 7, 8 & 2407.10873 and 2604.19440 filed as loop skepticism & 2407.10873 grounds the \emph{importance} of evolutionary search --- evidence against our substitution, engaged in \S8; 2604.19440 recites as ``local refiner'' & GECCO M7, m5 \\
+22 & 1, 7 & AlphaEvolve ``2.635''; FunSearch \emph{Nature} 2023; LMX TELO 2023; AlphaEvolve/ShinkaEvolve unidentified & 2.63586276; \emph{Nature} 625(7995):468--475, 2024; arXiv 2023 / TELO 2024; both systems identified & GECCO M3c, m2, m3 \\
+23 & 1, 7 & ThetaEvolve ``in the same band''; HELIX ordering unremarked & ThetaEvolve claims new best-known bounds; HELIX sits below ShinkaEvolve while claiming SOTA & GECCO m10, m11 \\
+24 & 7 & ``EvoDiverse (2606.10587)''; 2505.15392 as numeric anchoring & cited by title, method name unverified; 2505.15392 is general anchoring & GECCO m4, m9 \\
+25 & 7 & HindsightBench freezes ``under SHA-256''; 2607.07184 ``files OSF preregistrations'' & both unsupported by the sources; restated as frozen preregistrations and registered outcome-blinded predictions & GECCO m7, m8 \\
+26 & 7 & ``Mutation Without Variation'': 87\% of chains and 93\% of mutations & nested, not parallel: in 87\% of chains, over 93\% of mutations revisit a prior form & GECCO m1 \\
+27 & Abs, 6.1 & ``hundreds of invocations''; corpus arithmetic unreconcilable & 231 invocations, itemized in \S6.1 & R2 \#30; GECCO M11c \\
+28 & 3.3, 6 & 18/23 and 35/50 given without stating they are nested subsets & subsets defined in \S3.3 and Table 1; full-ledger 41/57 and 2/57 alongside & stats F13; R2 \#4; GECCO M11b \\
+29 & 5 & Sonnet multi-radius ``against a Haiku baseline of 13/35'' & dropped; that baseline reproduces at no denominator & R2 \#23a \\
+30 & 5 & ``no Haiku sample did [this] in 101 invocations'' & 155 weak-tier rows; two exceeded the family best, both by $\sim$$10^{-7}$ & stats F17; R2 \#23b \\
+31 & 3.1, 9 & dual-tolerance reporting promised, never delivered; ``cryptographic prompt hashes'' & both tolerances in every validity figure; hashes restated as prompt-fragment hashes with coverage gaps itemized above & stats F21; GECCO M12 \\
+32 & all & five HTML working comments and a merge-provenance header shipped & removed; the two load-bearing ones ($k = 8$ clipping, $p$-value convention) promoted into \S1.1, Fig 1 and \S6 & stats F22; R2 \#29; GECCO NIT-1--2 \\
+\end{longtable}
+\endgroup
