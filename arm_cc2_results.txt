@@ -1,0 +1,46 @@
+ARMS CC2 (fresh-draw replication, weak tier) + CCS (Sonnet tier) — frozen
+results. 2026-08-18. Registration: arm_cc2_preregistration.txt, commit
+4d7b7c5 (pushed to public remote before first invocation). Collection:
+45/45 + 45/45 launched invocations returned, no runtime deaths. Scoring:
+arm_cc2_analysis.py (committed with registration, unmodified after; reuses
+arm CC's registered score_row pipeline).
+
+ARM CC2 VERDICT: REPLICATED (registered verdict map).
+- R1 (ceiling, primary): strictly-above-rival 0 pooled — held exactly as
+  predicted (0/41 valid). Falsifier F-CC2.1 does not fire.
+- R2 (modal): anchor bucket modal at 3 of 3 cells — held.
+  N=13: 11 valid, modal anchor x3 (margin 2), anchor 3/11.
+  N=21: 15 valid, modal anchor x6 (margin 4), anchor 6/15.
+  N=31: 15 valid, modal anchor x10 (margin 8), anchor 10/15 — the cell
+  that was ONE-SAMPLE-THIN in arm CC arrives heavy on fresh draws.
+- Taxonomy: 41 valid, 3 geom_invalid, 1 blocked_import.
+- Combined CC+CC2 descriptive (labelled descriptive per registration):
+  0/78 valid weak-tier program outputs above the family argmax; exactly
+  one reaches it (arm CC, N=13, V(3,4)=1.7761424 exact).
+
+ARM CCS VERDICT: P-CCS2 HOLDS — the ceiling is a channel property.
+- Registered competing predictions: P-CCS1 escape (>=20% of valid above
+  rival) vs P-CCS2 zero-count ceiling. Observed: 0/37 (0.0%) — P-CCS2.
+- The Sonnet programs are qualitatively different search: simulated
+  annealing with hand-rolled LCG PRNGs, Halton-sequence multi-restart,
+  force-directed relaxation — versus the weak tier's greedy radius
+  growth. The tier barely anchors (anchor-rate 5/37, consistent with arm
+  S's direct-emission escape from the template; modal buckets thin at
+  every cell) yet its executed math-only search never exceeds the family
+  argmax at any cell.
+- Taxonomy: 37 valid, 7 geom_invalid, 1 timeout (the programme's first).
+
+PROTOCOL NOTE (disclosed): one CC2-wave invocation (N=13 slot 2, weak
+tier) used runtime tools despite the no-tools dispatch wrapper; per the
+arm-M convention its verbatim final message is scored like every other
+row. No other row deviated.
+
+READING: pooled over three registered code-channel arms (CC, CC2, CCS),
+0 of 115 valid program outputs exceed the family argmax. The family
+ceiling in the math-only code channel replicates on fresh weak-tier
+draws and survives a tier whose programs are genuine optimizers — it is
+a property of the channel, not of the weak tier, at these cells. The
+library-assisted channel (numpy/scipy) remains the registered further
+arm.
+
+Corpus: 513 + 90 = 603 invocations.

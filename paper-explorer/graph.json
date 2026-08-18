@@ -2583,6 +2583,30 @@
    "contributor": null,
    "rationale": "Preregistered code-channel probe (commit 285deca before sampling): 3 trap cells x 15 weak-tier program-emission calls, sandboxed execution, arm-F scoring. Anchor value stays modal at all 3 cells (one-sample margins at N=13/31, 9/13 at N=21); no valid output exceeds the family argmax (0/37) and exactly one reaches it. The code-free design's rationale moves from assumption to measured negative: the math-only code channel does not lead out of the family.",
    "id": "paper1_arm_cc"
+  },
+  {
+   "label": "Arm CC2 — code-channel replication: REPLICATED, 0/41 above argmax",
+   "file_type": "rationale",
+   "source_file": "latex-tmlr-paper1/sec_forecast_transfer.tex",
+   "source_location": "§3.7",
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null,
+   "rationale": "Fresh-draw weak-tier replication (commit 4d7b7c5 before sampling): zero-count ceiling held exactly, anchor modal 3/3 cells, N=31 mode firmed from one-sample to margin-8. Pooled weak-tier: 0/78 above the family argmax.",
+   "id": "paper1_arm_cc2"
+  },
+  {
+   "label": "Arm CCS — Sonnet code channel: P-CCS2, ceiling is channel not tier",
+   "file_type": "rationale",
+   "source_file": "latex-tmlr-paper1/sec_forecast_transfer.tex",
+   "source_location": "§3.7",
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null,
+   "rationale": "Sonnet-tier programs (annealing, Halton restarts, force-directed) never exceed the family argmax: 0/37. Tier barely anchors (5/37) yet the ceiling holds — channel property, not tier property. Pooled all three code-channel arms: 0/115.",
+   "id": "paper1_arm_ccs"
   }
  ],
  "links": [
@@ -4985,6 +5009,36 @@
    "weight": 1.0,
    "source": "paper1_arm_cc",
    "target": "paper1_arm_mu"
+  },
+  {
+   "relation": "conceptually_related_to",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "latex-tmlr-paper1/sec_forecast_transfer.tex",
+   "source_location": "§3.7",
+   "weight": 1.0,
+   "source": "paper1_arm_cc2",
+   "target": "paper1_arm_cc"
+  },
+  {
+   "relation": "conceptually_related_to",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "latex-tmlr-paper1/sec_forecast_transfer.tex",
+   "source_location": "§3.7",
+   "weight": 1.0,
+   "source": "paper1_arm_ccs",
+   "target": "paper1_arm_cc"
+  },
+  {
+   "relation": "rationale_for",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "latex-tmlr-paper1/sec_forecast_transfer.tex",
+   "source_location": "§3.7",
+   "weight": 1.0,
+   "source": "paper1_arm_ccs",
+   "target": "paper1_anchor"
   }
  ],
  "hyperedges": [

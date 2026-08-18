@@ -179,7 +179,10 @@ reviewed draft are summarized in Appendix C. Provenance, in list form:
   ancestry-checked by its runners before any sampling) with its three amendments, each
   committed before the sampling it governs. Arm CC's registration
   (\texttt{arm\_cc\_preregistration.txt} with frozen prompts, executor and smoke test) was
-  committed and pushed to the public remote at \texttt{285deca} before its first invocation.
+  committed and pushed to the public remote at \texttt{285deca} before its first invocation;
+  arms CC2 and CCS were registered together (\texttt{arm\_cc2\_preregistration.txt}, commit
+  \texttt{4d7b7c5}, pushed before sampling) after CC's results were known, with that
+  motivation disclosed in the registration itself.
   The rectangle transfer was registered before
   collection and never refitted. On multiplicity: this study now spans many registered arms, and no
   correction across arms is applied --- each arm's predictions were registered with its own
@@ -243,9 +246,9 @@ reviewed draft are summarized in Appendix C. Provenance, in list form:
   released ledger, and the corrections that followed are folded into this revision. This is
   quality assurance, not peer review, and carries no external authority.
 \item \textbf{Stopping rule.} This revision closed after implementing the internal-check
-  findings; no further data-dependent analysis was performed. Arm CC (\S3.7) was registered,
-  run and scored once under its own preregistration after that close; its analysis script was
-  committed before its sampling and was not modified after. Analyses named but
+  findings; no further data-dependent analysis was performed. Arms CC, CC2 and CCS (\S3.7)
+  were each registered, run and scored once under their own preregistrations after that
+  close; each analysis script was committed before its sampling and not modified after. Analyses named but
   not run --- the one-parent mutation arm, the recipe-family choice probe, $N = 57$, the empirical-$k$
   back-out, faithfulness split by on- versus off-prediction, a library-enabled code probe
   (\texttt{numpy}/\texttt{scipy}; the math-only code channel has since run as arm CC), interleaved

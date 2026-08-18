@@ -982,6 +982,22 @@
    "kind": "extension",
    "design": "Measures the paper's standing asserted-not-measured rationale: does delegating construction to an executed program escape the template family? Same three trap cells (N = 13, 21, 31), n = 15 weak-tier invocations per cell; the bare arm-F stem with exactly two registered line replacements turning the code-free contract into a program contract (standard-library math only, stated in the prompt). Programs run sandboxed (python -I, 10 s timeout, registered AST allowlist); stdout scored by arm-F conventions unchanged. Competing predictions arm-CH style: P-CC1 anchor stays modal at >= 2 of 3 cells vs P-CC2 modal bucket strictly above the anchor; ties count as neither. Registration, frozen prompts, executor and four-bin smoke test committed and pushed (commit 285deca) before the first invocation.",
    "result": "P-CC1 HOLDS at 3 of 3 cells — with registered margin disclosure: N = 21 mode heavy (9/13 exact 2.1000000), N = 13 and N = 31 one-sample modal margins (2/12, 3/12). Robust row: no valid program output exceeds the family argmax anywhere (0/37 above rival); exactly one exceeds the anchor — a single N = 13 program computing the family argmax V(3,4) = 1.7761424 exactly. Sharpens arm CH: the chosen argmax the model cannot build by direct emission (30/31 invalid) is reached once in 37 when arithmetic is delegated, and never passed. Taxonomy: 37 valid, 7 geometry-invalid, 1 blocked import (random), 0 timeouts; 45/45 collected. Versus code-free anchor concentration 56–86%, code-channel pooled anchor-rate is 14/37 with all lost mass below the anchor — dispersion, not escape. Scope: math-only programs; the numpy/scipy library channel deployed loops permit remains a further arm. Corpus to 513 invocations."
+  },
+  {
+   "id": "p1_arm_cc2",
+   "paper": "paper1",
+   "label": "Arm CC2 — code-channel fresh-draw replication (weak tier)",
+   "kind": "extension",
+   "design": "Fresh-draw replication of arm CC on byte-identical prompts (hashes cited from arm_cc_prompts.json), registered together with arm CCS at commit 4d7b7c5 AFTER CC's results were known — motivation disclosed in the registration. 3 cells x 15 weak-tier invocations, same sandboxed executor and arm-F scoring, pre-stated verdict map: R1 ceiling (0 above-rival predicted; falsifier at >=2), R2 anchor-modal at >=2 of 3 cells; REPLICATED / PARTIAL / FAILED named in advance.",
+   "result": "REPLICATED. R1: 0/41 valid outputs above the family argmax — the registered zero-count prediction, exactly. R2: anchor bucket modal at 3/3 cells — and N=31, one-sample-thin in arm CC, arrived at 10/15 valid with margin 8, firming the cell CC could not. Pooled weak-tier waves: 0/78 above the argmax, one exact argmax build. Taxonomy: 41 valid, 3 geometry-invalid, 1 blocked import. Protocol note disclosed: one invocation (N=13 slot 2) used runtime tools against the no-tools wrapper; scored verbatim per the arm-M convention."
+  },
+  {
+   "id": "p1_arm_ccs",
+   "paper": "paper1",
+   "label": "Arm CCS — Sonnet-tier code-channel probe (ceiling is channel, not tier)",
+   "kind": "extension",
+   "design": "Same byte-identical program-emission prompts, Sonnet-tier proposer, 3 cells x 15. Competing registered predictions: P-CCS1 escape-is-capability-gated (>=20% of valid outputs strictly above the family argmax) vs P-CCS2 zero-count ceiling. Registered with CC2 at commit 4d7b7c5 before sampling.",
+   "result": "P-CCS2 HOLDS: 0/37 valid Sonnet outputs above the family argmax. The programs are qualitatively different search — simulated annealing over hand-rolled LCG PRNGs, Halton multi-restarts, force-directed relaxation — and the tier barely anchors (5/37, consistent with arm S's direct-emission escape), yet its executed math-only search never passes the family ceiling at any cell. The ceiling is a property of the channel, not the tier. Taxonomy: 37 valid, 7 geometry-invalid, 1 timeout (the programme's first). Pooled over all three code-channel arms: 0/115 above the argmax."
   }
  ],
  "links": [
@@ -1554,6 +1570,24 @@
    "target": "p1_claim_template_executability",
    "type": "extends",
    "note": "The template-is-what-it-can-execute reading survives the code channel: programs are greedy growth heuristics landing at or below the lattice; the anchor value stays the modal executed output at all three cells."
+  },
+  {
+   "source": "p1_arm_cc2",
+   "target": "p1_arm_cc",
+   "type": "extends",
+   "note": "Fresh draws replicate both registered rows: the zero-count ceiling exactly, and the modal identity at all three cells — including the two cells whose CC modes were one-sample-thin."
+  },
+  {
+   "source": "p1_arm_ccs",
+   "target": "p1_arm_cc",
+   "type": "extends",
+   "note": "Tier probe on the same instrument: the family ceiling survives a tier whose programs are genuine optimizers — 0/37 above the argmax at Sonnet, 0/78 at weak tier."
+  },
+  {
+   "source": "p1_arm_ccs",
+   "target": "p1_claim_tier_inversion",
+   "type": "contrasts_with",
+   "note": "Sonnet escapes the anchor as a mode (5/37 anchor-rate, like its direct emissions) but not the family ceiling — tier changes where mass sits below the ceiling, not whether the ceiling holds."
   }
  ]
 }

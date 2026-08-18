@@ -97,6 +97,19 @@ never submit them.
 - TMLR LaTeX conversion for Paper 1: build after the wave-7c integration and
   review loop, same fan-out pattern as Paper 2's.
 
+## Arms CC2 + CCS (replication + tier probe) — run 2026-08-18
+
+Registered together at 4d7b7c5 (pushed before sampling, after CC results
+known, disclosed). Byte-identical prompts, 45+45 invocations, 0 losses.
+**CC2 (haiku fresh draws): REPLICATED** — 0/41 above argmax (zero-count
+prediction exact), anchor modal 3/3 cells, N=31 firmed one-sample -> margin
+8. **CCS (Sonnet): P-CCS2 HOLDS** — 0/37 above argmax despite genuine
+optimizer programs (annealing/Halton/force-directed); ceiling is CHANNEL
+property, not tier. Pooled 3 arms: **0/115 above the family argmax**.
+Protocol note disclosed: 1 CC2 row used tools against wrapper, scored
+verbatim. Integrated into S3.7 + abstract + S2.1 + arms index (15 arms) +
+corpus 603. Paper 1 31 pp clean. Bundle rebuilt (0 leaks).
+
 ## Arm CC (code-channel probe) — run pre-submission 2026-08-18
 
 Pre-empts the top predicted reviewer objection (paper measures code-free
