@@ -46,9 +46,10 @@ never submit them.
 - [x] Compiled locally (MiKTeX installed): 31 pp, 0 errors, 0 undefined
       refs, GUIDE-LLM in bibliography. 8 overfull hboxes remain — cosmetic,
       fix at proof stage if desired.
-- [ ] Proof the rendered PDF against `paper2_short.pdf` section by section —
-      conversion was agent-assisted; registered numbers + table-row parity
-      already machine-checked, human read still recommended.
+- [x] Proofread DONE 2026-08-18 (4-agent PDF-vs-markdown parity pass, both
+      papers, every number/table/citation verified exact; 3 layout/typo
+      defects found and fixed, commit d305d02). Overleaf v2 zips are the
+      current builds.
 - [x] Anonymized supplementary bundle built: `supplementary_anonymized.zip`
       (351 files, 22 redacted, 0 identity strings after redaction, includes
       antecedent study). Builder: `build_anon_bundle.py`. Redaction of
