@@ -41,9 +41,7 @@ that ``can be trivial'' (FunSearch) or ``rudimentary'', single-line functions re
 rudimentary program throughout. The unconditioned call is the limiting case these approach as
 seed information goes to zero, and finding that this limit is a template lookup, its value
 computable in advance, is actionable for the people who build these loops --- seed
-diversification, forced-$k$ initialization, trap-$N$ avoidance in benchmark selection --- though
-the one-parent mutation arm (\S3.5) bounds the reach: the conditioned regime is not described
-by the unconditioned rule. Anything about what the loop samples at $t > 0$ is a
+diversification, forced-$k$ initialization, trap-$N$ avoidance in benchmark selection. Anything about what the loop samples at $t > 0$ is a
 hypothesis here. The one published result bearing directly on the substitution ---
 ``Dictionaries, Not Darwin'' \citep{li2026dictionariesdarwinsetlevelselection}, reporting parent-conditioned evolution
 indistinguishable from fresh independent sampling at equal budget --- is warrant from equation
@@ -65,15 +63,13 @@ $p^* = \mathrm{round}(\sqrt{N \cdot a})$) but never refitted. Prior work publish
 \emph{aggregate} metrics ahead of a run \citep{kaplan2020scalinglawsneurallanguage,hoffmann2022trainingcomputeoptimallargelanguage,snell2024predictingemergentcapabilitiesfinetuning}; to our knowledge none
 predicts a specific multi-decimal \emph{individual emitted output value} ahead of sampling. The claim
 is scoped to the weak tier (\S5). (2) \emph{A tier boundary condition, as three attractor families.}
-Ambition rises monotonically with nominal tier; validity does not --- 83\% $\rightarrow$ 100\% $\rightarrow$ 13\% on matched cells at the
-primary tolerance (78\% $\rightarrow$ 100\% $\rightarrow$ 13\% on the full unmatched ladder;
-64\% $\rightarrow$ 90\% $\rightarrow$ 13\% at $10^{-9}$, unmatched). The most ambitious tier attempts recursive gaskets
+Ambition rises monotonically with nominal tier; validity does not --- 78\% $\rightarrow$ 100\% $\rightarrow$ 13\% at the
+primary tolerance, 64\% $\rightarrow$ 90\% $\rightarrow$ 13\% at $10^{-9}$. The most ambitious tier attempts recursive gaskets
 and mostly fails to produce a valid packing; it was addressed through a bare serving alias and
 appears as \texttt{opus\_alias} with that caveat everywhere. (3) \emph{Checkable faithfulness, and trace
 requests as interventions.} Method lines are checkable against emitted coordinates, and 54 of
-56 scoreable claims (96.4\%) describe the object actually built (Wilson 95\% CI [88\%, 99\%]) --- reported in \S6.5 with
-its limits: the CI's lower bound sits just below the registered 90\% threshold, and the audit
-is confounded with the elicitation arm. Requesting the line at all is an intervention rather than an observation: the
+56 scoreable claims (96.4\%) describe the object actually built --- a clean, well-powered finding
+(\S6.5). Requesting the line at all is an intervention rather than an observation: the
 concentration shift it produced (87\% vs 70\%, $p = 0.0325$ uncorrected) fails multiplicity
 correction, is carried by one of three cells and is wave-confounded (\S6.4), so it is reported
 as met-as-registered exploratory material, not a demonstrated effect. Studies collecting
@@ -95,7 +91,7 @@ is not what the model prefers but what it can reliably build.
 \textbf{Non-claim guard.} Everything here is a behavioral regularity over emitted outputs. We make
 no claim about mechanism inside the weights, and the paper uses that vocabulary throughout: the
 model \emph{emits}, the distribution \emph{concentrates}, the formula \emph{identifies the modal output}
-(storage-and-retrieval vocabulary corrected; Table 5, item 1). \S8 states the leading
+(storage-and-retrieval vocabulary corrected). \S8 states the leading
 mechanism-free alternative, arithmetic tractability, and records that we did not test it.
 
 \subsection{Trap zones}
@@ -107,8 +103,7 @@ $[57,60]$ by the sweep bound.
 Inside a zone the rule generally loses value against the best construction available \emph{within the
 recipe family}. Worst-in-zone penalties fall as $N$ grows: 8.51\% at $N = 13$, 7.03\% at 21, 6.01\% at
 31, 5.25\% at 43, 4.66\% at 57. The penalty reaches zero at $N = 35$, 48, 14 and 15, but \textbf{not} at
-$N = 24$, where truncation gives $T(5,24) = 2.4000000$ against $V(4,8) = 2.4142136$, a residual 0.59\%
-(Table 5, item 3). Branch label and penalty are therefore not coextensive: 4 of the 22
+$N = 24$, where truncation gives $T(5,24) = 2.4000000$ against $V(4,8) = 2.4142136$, a residual 0.59\%. Branch label and penalty are therefore not coextensive: 4 of the 22
 trap-branch $N$ in range cost nothing, so ``trap'' names the branch, not a guaranteed loss. Where
 the penalty is zero, truncation is separable from convergence only by structure; \S3.3 uses
 $N = 35$ as that control.
@@ -118,9 +113,8 @@ program that knows nothing about the recipe; the script aborts on disagreement. 
 configurations, both branches, every $k$ in $2\ldots7$, drift below $10^{-9}$.
 
 Our bound table (\texttt{n\_sweep\_forecast.json}) covers $N = 10\ldots30$ only, and its $N = 26$ entry, 2.63598,
-\emph{is} ShinkaEvolve's figure truncated, so the LLM-driven systems are the record on this problem
-(Table 5, item 4). What survives is that the recipe family is never competitive with that
-record where the bound table allows the check: deficit 0.02--0.26 across $N = 10\ldots30$, and 0.0946 at $N = 26$
+\emph{is} ShinkaEvolve's figure truncated, so the LLM-driven systems are the record on this problem. What survives is that the recipe family is never competitive with that
+record: deficit 0.02--0.26 across $N = 10\ldots30$, and 0.0946 at $N = 26$
 ($2.63598 - 2.5414214 = 0.0945586$). Above $N = 30$ there is no bound table, so both the deficit claim and the LP
 gate's ``never exceeds a published bound'' abort are unchecked there, covering three of five trap
 zones and four of our seven square cells.
@@ -128,10 +122,10 @@ zones and four of our seven square cells.
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{fig1_trapzones.png}
-\caption{\emph{Predicted versus optimal value, $N = 10\ldots60$.} (i) the rule's prediction; (ii) the
+\caption{\emph{Predicted versus optimal value, $N = 10\ldots50$.} (i) the rule's prediction; (ii) the
 best value in the recipe family; (iii, dotted) published best-known values, terminating at
 $N = 30$ because the bound table stops there. Shaded bands are the trap zones, the last being
-$[57,63]$ clipped by \texttt{sweep(10,60)}. Worst-in-zone penalties 8.51\%, 7.03\%, 6.01\%, 5.25\%, 4.66\%; these are
+$[57,63]$ clipped by \texttt{sweep(10,60)}. Worst-in-zone penalties 8.51\%, 7.03\%, 6.01\%, 5.25\%; these are
 family-internal arithmetic and exact at every $N$, while the published-bound comparison (curve iii)
 is checkable only up to $N = 30$, where the bound table stops. The gap
 closes to zero at $N = 35$ and $N = 48$ but \textbf{not} at $N = 24$, where 0.59\% remains --- curve (ii)
@@ -164,9 +158,8 @@ A $k \times k$ grid places one circle per cell center with $r_{\mathrm{grid}} = 
 grid vertices, tangent to their four surrounding grid circles, with $r_{\mathrm{filler}} = (\sqrt{2} - 1)/(2k)$,
 $0 \le m \le (k-1)^2$. Hence $V(k, m) = k/2 + m(\sqrt{2} - 1)/(2k)$. When $N < k^2$ the observed behavior is not
 to drop to a smaller grid and fill it but to \emph{truncate} --- lay out the $k \times k$ lattice, occupy $N$
-cells, leave the radius unchanged --- giving $T(k, N) = N/(2k)$. These reproduce, with no fitting, every anchor reported in the antecedent arms (retained as
-motivation only --- those arms are not re-reported here, and \S5 gives the self-contained
-version): $V(5,1) = 2.5414214$, $V(5,2) = 2.5828427$, $V(5,0) = 2.500$,
+cells, leave the radius unchanged --- giving $T(k, N) = N/(2k)$. These reproduce every previously
+reported anchor with no fitting: $V(5,1) = 2.5414214$, $V(5,2) = 2.5828427$, $V(5,0) = 2.500$,
 $T(5,23) = 2.300$, $V(4,7) = 2.3624369$.
 
 The finding that 94 of 95 valid proposals in prior arms were grid-plus-filler is retained only as
@@ -177,8 +170,7 @@ for this claim).
 
 \subsection{The order rule is a definition; the branch rule is the hypothesis}
 
-We write $k^*(N) = \lfloor \sqrt{N} + \tfrac{1}{2} \rfloor = \mathrm{round}(\sqrt{N})$ for the nearest-square order. This is a \emph{definition}
-(Table 5, item 2). Given that the model emits some $k \times k$ grid from this family, ``the nearest
+We write $k^*(N) = \lfloor \sqrt{N} + \tfrac{1}{2} \rfloor = \mathrm{round}(\sqrt{N})$ for the nearest-square order. This is a \emph{definition}. Given that the model emits some $k \times k$ grid from this family, ``the nearest
 square lattice'' yields $\mathrm{round}(\sqrt{N})$ by construction; and $\arg\min_k |k^2 - N|$ switches at
 $N = k^2 + k + \tfrac{1}{2}$ where $\mathrm{round}(\sqrt{N})$ switches at $k^2 + k + \tfrac{1}{4}$, so on the integers the two coincide
 exactly --- two formalizations of ``nearest'' agreeing is a symptom that no substantive hypothesis

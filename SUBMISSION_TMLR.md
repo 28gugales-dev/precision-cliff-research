@@ -67,8 +67,9 @@ never submit them.
       the paragraph's wording.
 - [x] Proofread DONE 2026-08-18 (4-agent PDF-vs-markdown parity pass, both
       papers, every number/table/citation verified exact; 3 layout/typo
-      defects found and fixed, commit d305d02). Overleaf v2 zips are the
-      current builds.
+      defects found and fixed, commit d305d02). NOTE: the same-day tightening
+      pass then changed abstracts, S9 disclosures, Appendix C (paper 1) and
+      S3.6 (paper 2) — those sections postdate the parity pass.
 - [x] Anonymized supplementary bundle built: `supplementary_anonymized.zip`
       (351 files, 22 redacted, 0 identity strings after redaction, includes
       antecedent study). Builder: `build_anon_bundle.py`. Redaction of
@@ -76,21 +77,26 @@ never submit them.
 - [x] Paper source zip built: `latex-tmlr-openreview.zip` (tex + bib + bbl +
       sty + pdf, no logs/aux). Leak-checked: 0.
 - [x] "Use of AI systems" reread: already a single tight disclosure
-      paragraph, ordering-checkability stated, no claimed review process.
-      Verdict: keep as-is, no trim.
+      paragraph. SUPERSEDED 2026-08-18 tightening pass
+      (external-advisor round): both disclosures trimmed to short paragraphs,
+      "referee/review" framing renamed internal adversarial checks, paper 1
+      Table 5 (corrections ledger) replaced by a summary paragraph pointing at
+      supplementary, both abstracts condensed (~200 words), paper 2 S3.6
+      conditional-quality exclusion withdrawn (question stated open), arm V
+      TRANSFERS cells carry Wilson CIs. Paper 1 now 29 pp, paper 2 33 pp.
+      Overleaf v3 zips are the current builds (v2 stale).
 - [x] Claims-cleanup pass (2026-08-17, agent, mirrored in `paper2_short.md`,
       `paper2_draft.md`, and all four tex fragments): fixed the stale
-      "abstract's 0.12–0.94 range" cross-references (the short abstract no
-      longer contains the range — reattributed to Appendix C), corrected the
-      stale §7 description of §6 item 4 (it is serving-signature disclosure,
-      not decode-path attestation), renamed Appendix C's "pricing exercise"
-      to horizon-power, scoped the abstract's step-collapse to 14B, softened
-      five overclaiming sentences to the paper's own hedged register (intro
-      serving-path attribution, §6 "every study" opener, timing "ruled out",
-      "any study inherits this", must-differ "not reachable by instruction"),
-      added the wave-6 numbering disclosure, the 7B/14B VRAM scope sentence
-      in §8, and 1.79998-style consistency. Rebuild: 32 pp, 0 errors, same
-      2 overfulls; `latex-tmlr-openreview.zip` rebuilt, leak check clean.
+      "abstract's 0.12–0.94 range" cross-references (reattributed to
+      Appendix C — now doubly needed since the tightened abstract dropped the
+      range), corrected the stale §7 description of §6 item 4, renamed
+      Appendix C's "pricing exercise" to horizon-power, softened five
+      overclaiming sentences, added the wave-6 numbering disclosure and the
+      7B/14B VRAM scope sentence in §8. Md keeps the long abstracts (main's
+      tightening was tex-only); tex carries the condensed ones. Paper 2 tex
+      rebuilt post-merge with the §7 diversity paragraph + 6 bib entries on
+      top of the tightened tree; `overleaf_paper2_v3.zip` and
+      `latex-tmlr-openreview.zip` rebuilt, leak-checked.
       USER should proof the reworded sentences (git diff shows them all).
 - [ ] **Before zipping latex-tmlr/ for any upload: delete `main.log`,
       `main.aux`, `main.out`, `main.blg` and `template-reference.tex`.**

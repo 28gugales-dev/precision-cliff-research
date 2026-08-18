@@ -1466,6 +1466,17 @@
 
   el.expand.addEventListener('click', function () { setExpanded(!state.expanded); });
 
+  // phones: legend renders collapsed (CSS); tapping it toggles open.
+  // max-height set inline because some mobile renderers miss the late
+  // class-rule recalc inside the media block.
+  el.legend.addEventListener('click', function () {
+    if (window.matchMedia('(max-width:640px)').matches) {
+      var open = el.legend.classList.toggle('open');
+      el.legend.style.maxHeight = open ? '34vh' : '';
+      el.legend.style.overflow = open ? 'auto' : '';
+    }
+  });
+
   document.addEventListener('keydown', function (e) {
     if (e.key === '/' && document.activeElement !== el.search) {
       e.preventDefault();

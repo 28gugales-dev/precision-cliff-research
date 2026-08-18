@@ -1,7 +1,7 @@
 % 1:1 markup translation of paper1_draft.md lines 923-1177 (S7, S8, S9).
 \section{Related work}
 
-Citation errors in revision 1 are corrected here and itemized in Table 5 (items 18--26).
+Citation errors in revision 1 are corrected here.
 
 \textbf{LLM-driven discovery and the circle-packing scoreboard.} Language Model Crossover
 \citep{meyerson2024languagemodelcrossovervariation}, ELM \citep{lehman2022evolutionlargemodels}, EvoPrompt and LLaMEA \citep{vanstein2025llamealargelanguagemodel}
@@ -161,8 +161,8 @@ converge cells sit on $k^*{+}1$, which is how the filler-branch failure was diag
 
 \section{Reproducibility, deviations, and disclosures}
 
-Deviations from preregistration are tabled in Appendix B; every claim that changed relative to
-revision 1 is tabled in Appendix C. Provenance, in list form:
+Deviations from preregistration are tabled in Appendix B; corrections relative to the
+reviewed draft are summarized in Appendix C. Provenance, in list form:
 
 \begin{itemize}
 \item \textbf{Registration.} Prompts were hashed with SHA-256 and the hashes recorded before sampling,
@@ -197,7 +197,7 @@ revision 1 is tabled in Appendix C. Provenance, in list form:
   carry \texttt{prompt\_sha256: null} in the corrected ledger with an explanatory note. (iv) The
   rectangle ledger (\texttt{arm\_g\_candidates.jsonl}) carries no prompt hashes, no run dates and no
   proposer fields at all.
-\item \textbf{Ledger metadata correction.} Three referee findings established that the shipped ledger's
+\item \textbf{Ledger metadata correction.} Three internal-check findings established that the shipped ledger's
   provenance fields contradicted the paper: trace rows carried the \emph{bare} prompt hash for their
   cell, \texttt{run\_date} was uniformly \texttt{2026-07-30} on all 215 rows, and the Sonnet and \texttt{opus\_alias}
   rows were stamped with the Haiku alias and dated id. All three are corrected in
@@ -225,35 +225,22 @@ revision 1 is tabled in Appendix C. Provenance, in list form:
   \texttt{p7\_blind\_labels.json}. \texttt{arm\_t\_analysis.py}, \texttt{n\_sweep\_forecast.json}, \texttt{rect\_forecast.json},
   \texttt{p11\_mode\_baseline.json} and \texttt{STATE.md} are included; every table regenerates from raw outputs
   by a command documented in \texttt{HOW\_TO\_RUN.md}.
-\item \textbf{Use of AI systems.} This paper studies language-model behaviour and was written with
-  language-model assistance; both facts are stated here so a reader can weigh them together.
-  Claude models (principally the Opus, Fable and Sonnet tiers) wrote the collection harnesses,
-  the scoring, analysis and verification scripts, and the structural-check tooling, and drafted
-  the manuscript prose; the external referee reports came from \texttt{deepseek-v4-pro},
-  \texttt{deepseek-v4-flash} and Gemini under written protocols (next bullet). The human author directed
-  the programme, set the research questions, approved each preregistration before sampling, made
-  the final inclusion, stopping and submission decisions, and is solely responsible for the
-  content; no language model is an author. The claim a reader can check is the ordering, not the
-  authorship: each preregistration commit is a git ancestor of the sampling it governs. The
-  drafting of those preregistration texts, like the rest of this repository, was model-assisted.
-  Two consequences follow from that, and neither is cosmetic. First, the models that wrote the
-  analysis are of the same family as arms
-  under study (\S5), so the blind-spot risk flagged below for the referee panel applies to the
-  analysis code as well --- the LP oracle, the frozen scorer output and the referee panel's
-  independent recomputations exist in part to bound it. Second, every number here was produced
-  by a script a model wrote, which is why the scripts, the raw ledgers and the frozen outputs
-  are all released: what a reader is asked to trust is the artifact, not the author.
-\item \textbf{Review process.} The three referee reports that drove this revision (\texttt{p4\_review\_stats.md},
-  \texttt{p4\_review\_reviewer2.md}, \texttt{p4\_review\_gecco.md}), the arbitration of their conflicting
-  recommendations (\texttt{p6\_cruxes.md}), and the blind faithfulness adjudication of \S6.5 were produced
-  by language models under written protocols, not by human referees. They independently
-  recomputed the paper's statistics from the released ledger and found eight recomputation
-  mismatches, all itemized in Appendix C, and their arithmetic was checkable and was checked. But
-  the panel is not peer review, its verdicts carry no external authority, and it shares a family
-  resemblance with the system under study --- a blind-spot risk disclosed here rather than left
-  implicit.
-\item \textbf{Stopping rule.} This revision closed after implementing the three named referee reports and
-  the arbitration verdict; no further data-dependent analysis was performed. Analyses named but
+\item \textbf{Use of AI systems.} Claude models wrote the collection harnesses, the scoring,
+  analysis and verification scripts, and drafted the manuscript prose; the human author
+  directed the programme, set the research questions, approved each preregistration before
+  sampling, made the final inclusion, stopping and submission decisions, and is solely
+  responsible for the content. The claim a reader can check is the ordering, not the
+  authorship: each preregistration commit is a git ancestor of the sampling it governs.
+  Because the authoring models share a family with arms under study (\S5), what a reader is
+  asked to trust is the released artifact --- the scripts, raw ledgers, LP oracle and frozen
+  outputs --- not the author.
+\item \textbf{Internal checks.} Before submission the manuscript passed an internal adversarial
+  check: language models of other families (\texttt{deepseek-v4-pro}, \texttt{deepseek-v4-flash},
+  Gemini), under written protocols, independently recomputed the paper's statistics from the
+  released ledger, and the corrections that followed are folded into this revision. This is
+  quality assurance, not peer review, and carries no external authority.
+\item \textbf{Stopping rule.} This revision closed after implementing the internal-check
+  findings; no further data-dependent analysis was performed. Analyses named but
   not run --- the one-parent mutation arm, the recipe-family choice probe, $N = 57$, the empirical-$k$
   back-out, faithfulness split by on- versus off-prediction, a code-enabled probe, interleaved
   re-collection of the arm-T pair, and P5 at $n = 20$ --- are recorded in \S6.5 and \S8 as future work,

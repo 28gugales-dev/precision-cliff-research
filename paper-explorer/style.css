@@ -340,6 +340,71 @@ ul.linknotes .note{display:block;color:var(--muted);font-size:12.5px;margin-top:
   .panel{flex:0 0 auto;width:100%;border-left:0;border-top:1px solid var(--line);max-height:44vh}
 }
 
+/* ---------- phones ---------- */
+@media (max-width:640px){
+  .topbar{padding:10px 14px;gap:8px}
+  .brand h1{font-size:15px}
+  .tabs{
+    width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;flex-wrap:nowrap;
+  }
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{padding:8px 13px;flex:0 0 auto}
+  .search input{padding:10px 12px}
+
+  .stage-head{
+    flex-direction:column;align-items:stretch;gap:8px;
+    padding:10px 14px 8px;
+  }
+  .stage-head h2{font-size:15.5px}
+  .stage-head p{font-size:12.5px}
+  .stage-actions{gap:8px}
+  .ghost{padding:7px 11px}
+
+  /* fixed-height canvas so the detail panel keeps real estate below */
+  .stage{flex:0 0 auto}
+  .canvas-wrap{flex:0 0 auto;height:42vh;min-height:280px;margin:0 12px 10px}
+
+  /* legend collapses to a tap-to-open chip */
+  #legend.legend{
+    left:10px;bottom:10px;max-width:60%;
+    max-height:30px;overflow:hidden;padding:6px 30px 6px 12px;
+    cursor:pointer;transition:max-height .2s ease;
+  }
+  #legend.legend::after{
+    content:"\25B8";position:absolute;right:10px;top:5px;
+    color:var(--muted);font-size:13px;transition:transform .2s ease;
+  }
+  #legend.legend.open{max-height:34vh;overflow:auto;padding:12px 14px}
+  #legend.legend.open::after{transform:rotate(90deg);top:9px}
+  #legend.legend h4{margin-bottom:4px}
+
+  .panel{
+    flex:1 1 0;max-height:none;min-height:0;
+    padding:14px 16px;
+  }
+  body.has-selection .panel{border-top:2px solid var(--accent-dim)}
+  .panel-empty p{font-size:12.5px}
+
+  .linktip{max-width:min(260px,80vw)}
+  .toast{bottom:18px;max-width:88vw;text-align:center}
+
+  .about{padding:2px 16px 44px}
+  .about-hero{padding-top:14px}
+  .about-hero h2{font-size:21px}
+  .about-lede{font-size:14.5px}
+  .about .card{padding:16px}
+  .paper-links a{display:block;text-align:center;margin-bottom:8px}
+  .paper-links .updated-tag{display:block;margin:6px 0 0;white-space:normal}
+  .paper-links .updated-tag::before{content:"";margin:0}
+
+  body.is-about .stage{flex:1 1 auto;min-height:0}
+  body.is-about .about{-webkit-overflow-scrolling:touch}
+  body.is-expanded .stage{flex:1 1 auto;min-height:0}
+  body.is-expanded .stage-head{padding:8px 10px 6px}
+  body.is-expanded .canvas-wrap{height:auto;min-height:0;flex:1 1 auto;margin:0 8px 8px}
+}
+
 /* last-updated stamps */
 .updated-tag{font-size:11px;font-weight:400;color:var(--muted);margin-left:10px;white-space:nowrap;letter-spacing:.02em}
 .paper-links .updated-tag::before,.about-foot .updated-tag::before{content:"·";margin-right:10px}

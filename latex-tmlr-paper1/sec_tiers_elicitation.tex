@@ -11,7 +11,7 @@ $1/(2k)$ truncated to $N$ circles, with corner fillers only when the grid underf
 original bare invocations spanning $N \in \{13, 17, 21, 31, 35, 37, 43\}$, \textbf{35 were geometrically
 valid at the primary $10^{-6}$ tolerance (77.8\%), 29 at $10^{-9}$ (64.4\%)} --- recomputed from the ledger,
 correcting the headline validity figure and the inversion triple in the abstract and
-Contribution 2 (Table 5, item 9). At the three discriminating cells 12 of 16 valid samples
+Contribution 2. At the three discriminating cells 12 of 16 valid samples
 landed on the predicted value and the rival was reached twice, both at $N = 21$.
 
 \textbf{The middle tier perturbs and mixes.} The Sonnet-tier arm was preregistered in
@@ -34,7 +34,7 @@ out-of-family value (2.75) differ by $1.47\times10^{-3}$, \emph{inside} the regi
 value classifier counted the escape as a hit on the construction it exceeded. The window was
 chosen for the anchor comparison, where the nearest competing value is $\sim$0.15 away, and reused
 where it does not fit. Classified by structure instead, Sonnet's rival count at $N = 31$ is 2/10
-and pooled 5/30 (Table 5, item 10). Every categorical claim in this paper about ``reached the
+and pooled 5/30. Every categorical claim in this paper about ``reached the
 rival'' or ``left the family'' is made at structure level or at $10^{-6}$, never at $2\times10^{-3}$.
 
 \textbf{The top tier attempts recursive constructions and fails to build them.} The third arm was
@@ -113,7 +113,7 @@ only in provenance metadata).}
 \label{fig:packings}
 \end{figure}
 
-``Monotone'' applies to one axis only (Table 5, item 11): ambition rises monotonically ---
+``Monotone'' applies to one axis only: ambition rises monotonically ---
 truncated template, perturbed hybrid, recursive gasket --- while validity rises then collapses.
 ``Ambition'' is measurable, not merely a qualitative read: a post-hoc diagnostic (disclosed;
 \texttt{diagnostics\_ambition.py}, all samples with emitted geometry, invalid included) gives median
@@ -158,7 +158,7 @@ the confound for which the pilot was discarded, held to the same standard.
 The scaled arm ran 100 new invocations, bringing both arms to 20 per cell at $N \in \{13, 21, 31\}$ and
 the corpus to 215 logged square invocations (85 bare = 45 original + 40 new; 70 trace = 10 pilot +
 60 trace\_v2; 30 sonnet; 30 \texttt{opus\_alias}), plus 16 rectangle invocations, 231 total at the
-close of revision 2 (Table 5, item 27); the post-review arm M (\S3.4) later added 57 sampled
+close of revision 2; the post-review arm M (\S3.4) later added 57 sampled
 weak-tier invocations (60 launched), bringing the study corpus to 288, and the post-council
 arms MU and CH (\S3.5) added 180 more (180 launched, none lost), bringing the
 unconditioned-and-elicitation corpus to 468; the cross-vendor chain is scored under its own
@@ -172,13 +172,13 @@ the registered $2\times10^{-3}$ window; the Fisher exact test comes from the hyp
 \subsection{Registered outcomes}
 
 Preregistered criteria are evaluated exactly as registered, and unregistered alpha thresholds are
-applied nowhere; revision 1 applied one asymmetrically (Table 5, item 12).
+applied nowhere; revision 1 applied one asymmetrically.
 
 \textbf{P-T1, validity: NOT confirmed.} P-T1 is the one prediction that registered an alpha (``validity
 $\ge$ bare at EACH $N$, and pooled one-sided Fisher $p < 0.05$''). Direction held at all three cells, but
 the pooled test gives $p = 0.30$: 53/60 (88\%) trace\_v2 against 50/60 (83\%) bare, a difference whose
 detection needs several hundred samples per arm at 80\% power --- a failure to detect, not a
-demonstration of no effect (Table 5, item 13). The direction that did hold is not geometric: bare
+demonstration of no effect. The direction that did hold is not geometric: bare
 had \textbf{3 parse failures and 7 geometric failures}, trace\_v2 \textbf{0 parse and 7 geometric}, so among
 parsed samples geometric validity is 50/57 (87.7\%) versus 53/60 (88.3\%). The P-T1 direction is
 format compliance, exactly what the reworded output-format line manipulates; validity is reported
@@ -241,7 +241,7 @@ Observed validity: $N = 13$, 18/20 both arms --- \textbf{tie}; $N = 21$, trace\_
 trace higher; $N = 31$, 17/20 both arms --- \textbf{tie}. A tie satisfies \texttt{<=}, so under the registered
 wording the falsifier is \textbf{triggered at 2 of 3 $N$}, and we report it as triggered; the code
 instead evaluated direction as \texttt{t\_rate >= b\_rate}, strict \texttt{<}, under which it fires at 0 of 3
-cells, which is what revision 1 reported (Table 5, item 14). That convention appears nowhere in
+cells, which is what revision 1 reported. That convention appears nowhere in
 the preregistration, was chosen at analysis time, and read the same tie favorably twice --- as
 ``direction held'' for P-T1 and as ``not a falsifier cell'' here.
 
@@ -293,7 +293,7 @@ a requested self-report, should treat this as a reason to check, not a coefficie
 pilot also showed a \emph{third} effect in the P-T3 direction at the same cell (trace 9/10
 on-prediction against bare $N = 21$ at 4/7, one-sided $p = 0.16$), so P-T3 replicated a pilot signal
 rather than testing a blind prediction --- a different status, and the prereg's pilot disclosure
-covered the prompt drift only (Table 5, item 15).
+covered the prompt drift only.
 
 \subsection{Faithfulness with ground truth}
 
@@ -301,7 +301,7 @@ Claim and artifact sit in the same completion and the artifact is fully determin
 line is checkable against the emitted coordinates. \texttt{arm\_f\_repro.trace\_faithfulness()} matches
 numeric dimensions from the method line against the emitted layout signature, returning 38 of 41
 scoreable claims matching (93\%) against the registered 90\% threshold. Its 12 exclusions are regex
-coverage gaps, not claims without numeric content (Table 5, item 16): \texttt{DIMS\_RE} matched only the
+coverage gaps, not claims without numeric content: \texttt{DIMS\_RE} matched only the
 literal \texttt{NxN} form and \texttt{ROWSCOLS\_RE} required rows before columns, so these fell through despite
 carrying explicit checkable dimensions --- ``Regular 3 by 4 grid with one additional circle in row
 4''; ``3 complete rows of 4 circles and 1 centered circle in the top row''; ``rectangular grid 4-4-4-1
@@ -333,7 +333,7 @@ claims rather than 41. The CI's lower bound sits just below the registered thres
 claims ``alternating rows of 4 and 3 circles'' over observed row sizes 4,3,3,3, row 33 claims ``5
 rows alternating between 5 and 4 circles'' over observed 5,4,4,4,4 --- both \emph{mis-descriptions of
 alternation}, a repeating pattern named and built for the first period only. The original scorer's
-three mismatches were three different claim forms, not one (Table 5, item 17); the filler-adds-
+three mismatches were three different claim forms, not one; the filler-adds-
 rows mechanism revision 1 described was real, and the rubric's base-grid convention handles it, so
 all three score MATCH under hand adjudication.
 

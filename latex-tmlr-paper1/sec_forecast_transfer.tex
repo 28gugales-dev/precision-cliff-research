@@ -61,8 +61,7 @@ provenance corrections are itemized in \S9 and Appendix A.
 \subsection{The formula sits at the mode ceiling}
 
 An exact point prediction invites a fair objection: a per-sample hit rate well short of 100\% is
-not ``predicting the exact output'', which is what revision 1's abstract claimed (Table 5, item
-7). The number should be read against the sampling entropy of the distribution, computed in
+not ``predicting the exact output'', which is what revision 1's abstract claimed. The number should be read against the sampling entropy of the distribution, computed in
 \texttt{p11\_mode\_baseline.json} (bare arm, $2\times10^{-3}$ buckets). At \textbf{all seven tested $N$ the predicted
 value is the empirical modal output}, and the on-prediction rate equals the modal frequency to
 within one sample:
@@ -115,7 +114,7 @@ Those figures cover the \textbf{original 45-invocation bare arm only} (ids $\le 
 $N = 21$, all rows at $N = 17/35/37/43$), the corpus that existed when \S3 was written. \S6 later
 added 40 bare rows at $N = 13/21/31$ under the same arm label; over the full shipped ledger the
 same four cells give \textbf{41/57 on-prediction and 2/57 rival}. Both are reported. \S3 and \S6 are
-computed on nested subsets of one arm, not on independent samples (Table 5, item 28), and
+computed on nested subsets of one arm, not on independent samples, and
 Table 1 carries the split.
 
 That the anchor first breaks at $N = 21$ is suggestive --- it is the bottom of a zone carrying a
@@ -130,8 +129,8 @@ than confirmed, and deserves running to $n = 20$.
 Bookkeeping. Five invocations were rejected by the runtime's 20-subagent concurrency cap
 \emph{before reaching a model}. We excluded them under a rule that was not preregistered, so the arm
 is reported both ways --- $35/45 = 77.8\%$, or $35/50 = 70.0\%$ had the rejections been scored as model
-failures (Table 5, item 5) --- and the five records appear in the ledger in no form (\S9). The arm
-also contains three parse failures (Table 5, item 6), and one $N = 37$ proposer derived
+failures --- and the five records appear in the ledger in no form (\S9). The arm
+also contains three parse failures, and one $N = 37$ proposer derived
 $r = (\sqrt{2}-1)/12$ correctly in prose, then transcribed 0.03571429.
 
 \subsection{Preregistered extension (arm M): the filler branch fails at $m > 1$; the fifth $k$ confirms}
@@ -444,8 +443,8 @@ cleared the floor, and their registered verdicts split:
 \toprule
 alias (vendor) & valid & V1 on-prediction & V1 verdict (bar: $\ge$50\%) & V2 rival-argmax (bar: $\le$10\%) \\
 \midrule
-\texttt{north-mini-code} (Cohere) & 12 & 8/12 = 67\% & \textbf{TRANSFERS} & 0/4 $\rightarrow$ \textbf{HOLDS} \\
-\texttt{gpt-oss-20b} (OpenAI, open-weight) & 18 & 11/18 = 61\% & \textbf{TRANSFERS} & 0/9 $\rightarrow$ \textbf{HOLDS} \\
+\texttt{north-mini-code} (Cohere) & 12 & 8/12 [39--86\%] & \textbf{TRANSFERS} & 0/4 $\rightarrow$ \textbf{HOLDS} \\
+\texttt{gpt-oss-20b} (OpenAI, open-weight) & 18 & 11/18 [39--80\%] & \textbf{TRANSFERS} & 0/9 $\rightarrow$ \textbf{HOLDS} \\
 \texttt{gemma-4-31b-it} (Google) & 15 & 0/15 = 0\% & \textbf{DOES-NOT-TRANSFER} & 0/3 $\rightarrow$ \textbf{HOLDS} \\
 \bottomrule
 \end{tabular}
@@ -453,7 +452,9 @@ alias (vendor) & valid & V1 on-prediction & V1 verdict (bar: $\ge$50\%) & V2 riv
 
 This is the registration's most informative branch pair. Anchoring under this instrument
 is not an artifact of the original family --- two further vendors' models land the
-registered construction values at 61--67\% of valid outputs, and the strong form holds
+registered construction values at 61--67\% of valid outputs (point estimates above the
+50\% bar; the bracketed Wilson 95\% intervals include it, so each verdict is a
+point-estimate pass at $n = 12$ and $n = 18$) --- and the strong form holds
 everywhere evaluable \emph{within this arm}: zero rival-argmax emissions in 16
 discriminating-cell validities (the registration recorded the original family's prior for
 the same statistic as 0/21; \S3.6's gemma-4-26b, under the GM-chain instrument, is the
@@ -500,14 +501,12 @@ before: $N = 19$ at $a = 3$ (predicted 3.1666667, rival 3.5749194) and $N = 25$ 
 3.1250000, rival 3.4832492). With all sixteen scored, \textbf{5 of 11 valid proposals landed on the
 predicted value and 0 of 11 reached the rival}.
 
-We characterize all eleven here, since a referee objected that the majority were left
-undescribed. On-prediction: two
+We characterize all eleven here. On-prediction: two
 at $N = 19$/$a = 3$ (3.1666666667 and 3.16666673, the latter agreeing to six decimals not seven) and
 three at $N = 25$/$a = 2$ (3.125 exactly). Off-prediction at $N = 25$/$a = 2$: two samples emitted a
 uniform $5 \times 5$ grid at $r = 0.1$ summing to 2.5000000 --- the \emph{square} rule with no aspect correction,
 $k = \mathrm{round}(\sqrt{25}) = 5$ --- plus one at 3.0 and one at 3.151875. At $N = 19$/$a = 3$, \textbf{two} samples
-exceeded the prediction from outside the family, 3.45 and 3.5, both below the rival (Table 5,
-item 8).
+exceeded the prediction from outside the family, 3.45 and 3.5, both below the rival.
 
 We therefore report the rectangle as \textbf{partial out-of-sample support, not confirmation}:
 $5/11 = 45\%$, Wilson 95\% CI $[21\%, 72\%]$, and a proposer choosing uniformly among the three or so

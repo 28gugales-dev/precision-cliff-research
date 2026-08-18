@@ -54,8 +54,8 @@ inside the released repository.}\\
 \S3.6 search progress: accepted steps per lineage (1/50, 15/50, 16/50, 14/50 on the registered ladder; 3/50 vs 14/50 fresh; 6/50 vs 16/50 IQ2; 7/50, 4/50, 3/50, 2/50, 6/50 at 7B), the identity gaps \emph{k}, the conditional-on-departure rates, final best per lineage, and all twelve exact permutation tails &
 \texttt{sec3\_search\_progress.py}, run with no arguments; replays all four vendored ledgers. The two 7B final-best tails, 0.158 and 0.119, are stated in \S3.6's 7B paragraph. \textbf{Post-hoc} --- labelled as such at every use, and \S3.6 states that the fresh wave's registered \emph{primary} (F1) failed \\
 
-\S3.6 conditional quality: 60/74, 61/70, \textbf{8/10} improved among departures pooled over both probe waves, the per-parent breakdown, Fisher $p = 1.00$, and the exclusion of the collapse branch (95\% lower bound 44.4\% against 40.5 / 42.0 / 43.6\% depending on comparator) &
-\texttt{sec3\_conditional\_quality.py}, run with no arguments, from \texttt{score\_delta} and \texttt{echo} in the two vendored probe ledgers. \textbf{Post-hoc}, UNDERPOWERED against a 25-departure floor specified in an unlocked design note, not a registration; the exclusion's margin against the least favourable comparator (0.8 points) and its reversal if one row flips are stated in \S3.6 \\
+\S3.6 conditional quality: departure counts (10 in 133 valid at Q2\_K against 74 in 164 at Q4\_K\_M) and the per-row \texttt{score\_delta} data behind the open departure-quality question &
+\texttt{sec3\_conditional\_quality.py}, run with no arguments, from \texttt{score\_delta} and \texttt{echo} in the two vendored probe ledgers. \textbf{Post-hoc}; UNDERPOWERED against a 25-departure floor from an unlocked design note, so \S3.6 reports the departure-quality question as open \\
 
 \S3.6 horizon argument: departure rates and offer distributions (6 vs 33 observations), the discarded directional projection, and the \textbf{withdrawn} power figure &
 \texttt{sec3\_horizon\_power.py}, run with no arguments. A \textbf{resampling projection}, not a measurement; detail in Appendix C \\
