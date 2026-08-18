@@ -48,17 +48,23 @@ never submit them.
       fix at proof stage if desired.
 - [x] Proofread DONE 2026-08-18 (4-agent PDF-vs-markdown parity pass, both
       papers, every number/table/citation verified exact; 3 layout/typo
-      defects found and fixed, commit d305d02). Overleaf v2 zips are the
-      current builds.
+      defects found and fixed, commit d305d02). NOTE: the same-day tightening
+      pass then changed abstracts, S9 disclosures, Appendix C (paper 1) and
+      S3.6 (paper 2) — those sections postdate the parity pass.
 - [x] Anonymized supplementary bundle built: `supplementary_anonymized.zip`
       (351 files, 22 redacted, 0 identity strings after redaction, includes
       antecedent study). Builder: `build_anon_bundle.py`. Redaction of
       hash-locked preregs disclosed in BUNDLE_README.md. USER uploads.
 - [x] Paper source zip built: `latex-tmlr-openreview.zip` (tex + bib + bbl +
       sty + pdf, no logs/aux). Leak-checked: 0.
-- [x] "Use of AI systems" reread: already a single tight disclosure
-      paragraph, ordering-checkability stated, no claimed review process.
-      Verdict: keep as-is, no trim.
+- [x] "Use of AI systems" reread: SUPERSEDED 2026-08-18 tightening pass
+      (external-advisor round): both disclosures trimmed to short paragraphs,
+      "referee/review" framing renamed internal adversarial checks, paper 1
+      Table 5 (corrections ledger) replaced by a summary paragraph pointing at
+      supplementary, both abstracts condensed (~200 words), paper 2 S3.6
+      conditional-quality exclusion withdrawn (question stated open), arm V
+      TRANSFERS cells carry Wilson CIs. Paper 1 now 29 pp, paper 2 33 pp.
+      Overleaf v3 zips are the current builds (v2 stale).
 - [ ] **Before zipping latex-tmlr/ for any upload: delete `main.log`,
       `main.aux`, `main.out`, `main.blg` and `template-reference.tex`.**
       The .log embeds `C:/Users/soham/...` paths on nearly every line and

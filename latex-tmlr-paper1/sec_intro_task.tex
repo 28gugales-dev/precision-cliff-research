@@ -91,7 +91,7 @@ is not what the model prefers but what it can reliably build.
 \textbf{Non-claim guard.} Everything here is a behavioral regularity over emitted outputs. We make
 no claim about mechanism inside the weights, and the paper uses that vocabulary throughout: the
 model \emph{emits}, the distribution \emph{concentrates}, the formula \emph{identifies the modal output}
-(storage-and-retrieval vocabulary corrected; Table 5, item 1). \S8 states the leading
+(storage-and-retrieval vocabulary corrected). \S8 states the leading
 mechanism-free alternative, arithmetic tractability, and records that we did not test it.
 
 \subsection{Trap zones}
@@ -103,8 +103,7 @@ $[57,60]$ by the sweep bound.
 Inside a zone the rule generally loses value against the best construction available \emph{within the
 recipe family}. Worst-in-zone penalties fall as $N$ grows: 8.51\% at $N = 13$, 7.03\% at 21, 6.01\% at
 31, 5.25\% at 43, 4.66\% at 57. The penalty reaches zero at $N = 35$, 48, 14 and 15, but \textbf{not} at
-$N = 24$, where truncation gives $T(5,24) = 2.4000000$ against $V(4,8) = 2.4142136$, a residual 0.59\%
-(Table 5, item 3). Branch label and penalty are therefore not coextensive: 4 of the 22
+$N = 24$, where truncation gives $T(5,24) = 2.4000000$ against $V(4,8) = 2.4142136$, a residual 0.59\%. Branch label and penalty are therefore not coextensive: 4 of the 22
 trap-branch $N$ in range cost nothing, so ``trap'' names the branch, not a guaranteed loss. Where
 the penalty is zero, truncation is separable from convergence only by structure; \S3.3 uses
 $N = 35$ as that control.
@@ -114,8 +113,7 @@ program that knows nothing about the recipe; the script aborts on disagreement. 
 configurations, both branches, every $k$ in $2\ldots7$, drift below $10^{-9}$.
 
 Our bound table (\texttt{n\_sweep\_forecast.json}) covers $N = 10\ldots30$ only, and its $N = 26$ entry, 2.63598,
-\emph{is} ShinkaEvolve's figure truncated, so the LLM-driven systems are the record on this problem
-(Table 5, item 4). What survives is that the recipe family is never competitive with that
+\emph{is} ShinkaEvolve's figure truncated, so the LLM-driven systems are the record on this problem. What survives is that the recipe family is never competitive with that
 record: deficit 0.02--0.26 across $N = 10\ldots30$, and 0.0946 at $N = 26$
 ($2.63598 - 2.5414214 = 0.0945586$). Above $N = 30$ there is no bound table, so both the deficit claim and the LP
 gate's ``never exceeds a published bound'' abort are unchecked there, covering three of five trap
@@ -172,8 +170,7 @@ for this claim).
 
 \subsection{The order rule is a definition; the branch rule is the hypothesis}
 
-We write $k^*(N) = \lfloor \sqrt{N} + \tfrac{1}{2} \rfloor = \mathrm{round}(\sqrt{N})$ for the nearest-square order. This is a \emph{definition}
-(Table 5, item 2). Given that the model emits some $k \times k$ grid from this family, ``the nearest
+We write $k^*(N) = \lfloor \sqrt{N} + \tfrac{1}{2} \rfloor = \mathrm{round}(\sqrt{N})$ for the nearest-square order. This is a \emph{definition}. Given that the model emits some $k \times k$ grid from this family, ``the nearest
 square lattice'' yields $\mathrm{round}(\sqrt{N})$ by construction; and $\arg\min_k |k^2 - N|$ switches at
 $N = k^2 + k + \tfrac{1}{2}$ where $\mathrm{round}(\sqrt{N})$ switches at $k^2 + k + \tfrac{1}{4}$, so on the integers the two coincide
 exactly --- two formalizations of ``nearest'' agreeing is a symptom that no substantive hypothesis
