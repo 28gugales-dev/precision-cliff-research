@@ -1,0 +1,124 @@
+{
+ "cells": {
+  "13": {
+   "sampled": 15,
+   "bins": {
+    "valid": 11,
+    "geom_invalid": 3,
+    "blocked_import": 1
+   },
+   "n_valid": 11,
+   "underpowered": false,
+   "modal_value_approx": 1.624,
+   "modal_count": 3,
+   "modal_tie": false,
+   "modal_margin": 2,
+   "anchor_rate": "3/11",
+   "argmax_rate": "1/11",
+   "above_rival_rate": "0/11",
+   "k_struct_dist": {
+    "12": 1,
+    "13": 1,
+    "4": 8,
+    "3": 1
+   },
+   "sums": [
+    1.1378876,
+    1.1397129,
+    1.5,
+    1.52,
+    1.5517767,
+    1.5806764,
+    1.625,
+    1.625,
+    1.625,
+    1.640625,
+    1.7761424
+   ]
+  },
+  "21": {
+   "sampled": 15,
+   "bins": {
+    "valid": 15
+   },
+   "n_valid": 15,
+   "underpowered": false,
+   "modal_value_approx": 2.1,
+   "modal_count": 6,
+   "modal_tie": false,
+   "modal_margin": 4,
+   "anchor_rate": "6/15",
+   "argmax_rate": "0/15",
+   "above_rival_rate": "0/15",
+   "k_struct_dist": {
+    "5": 10,
+    "7": 2,
+    "25": 1,
+    "10": 1,
+    "50": 1
+   },
+   "sums": [
+    0.8361626,
+    1.05,
+    1.2955494,
+    1.5,
+    1.5,
+    1.9699343,
+    1.9708925,
+    1.995,
+    2.0915447,
+    2.1,
+    2.1,
+    2.1,
+    2.1,
+    2.1,
+    2.1
+   ]
+  },
+  "31": {
+   "sampled": 15,
+   "bins": {
+    "valid": 15
+   },
+   "n_valid": 15,
+   "underpowered": false,
+   "modal_value_approx": 2.584,
+   "modal_count": 10,
+   "modal_tie": false,
+   "modal_margin": 8,
+   "anchor_rate": "10/15",
+   "argmax_rate": "0/15",
+   "above_rival_rate": "0/15",
+   "k_struct_dist": {
+    "6": 11,
+    "50": 1,
+    "7": 2,
+    "11": 1
+   },
+   "sums": [
+    0.31,
+    1.5111072,
+    2.2142857,
+    2.2142857,
+    2.5777864,
+    2.5833333,
+    2.5833333,
+    2.5833333,
+    2.5833333,
+    2.5833333,
+    2.5833333,
+    2.5833333,
+    2.5833333,
+    2.5833333,
+    2.5833333
+   ]
+  }
+ },
+ "pooled": {
+  "valid": 41,
+  "above_rival": 0,
+  "anchor": 19,
+  "modal_anchor_cells": 3,
+  "evaluable_cells": 3
+ }
+}

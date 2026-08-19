@@ -1,0 +1,124 @@
+ARM CC (code-channel probe)
+PREREGISTRATION — committed and pushed BEFORE any sampling. 2026-08-18.
+
+PROVENANCE DECLARATION (registered, same conventions as arm MU/CH)
+- This registration is post-hoc-motivated: it responds to the standing
+  objection (paper section 2.1 and section 8; anticipated venue review) that
+  the paper's code-free design measures direct coordinate emission while
+  FunSearch/AlphaEvolve-style loops elicit PROGRAMS, so "a code channel
+  routes around the anchor" is asserted, not measured. This arm measures it.
+  Motivation is disclosed here rather than implied to be a priori.
+- This registration was drafted by the same session agent (an LLM) that runs
+  the study pipeline. We do not claim independent human authorship. External
+  timestamp = this git commit pushed to the public-remote repository
+  (28[ANON]s-dev/precision-cliff-research) BEFORE the first proposer
+  invocation; the commit hash is cited in the paper on integration.
+- Both papers are submission-ready at registration time. Either outcome of
+  this arm is reportable: integration changes framing, not the calendar.
+
+DESIGN
+- Cells: N = 13, 21, 31 (the three hardest-discriminating trap cells).
+- n = 15 invocations per cell = 45 total. Proposer: weak tier (haiku
+  subagent), dispatch wrapper identical to arms M/MU/CH ("Do not use any
+  tools. Your entire final message must be the answer and nothing else.").
+  Serving path is the agent runtime's haiku alias; the same alias-attestation
+  limits disclosed for arms M/MU/CH apply here unchanged.
+- Prompt = the arm-F bare stem (count-substituted per cell) with exactly two
+  line replacements, built deterministically by arm_cc_build.py (each
+  replacement asserts a single occurrence): the code-free clause becomes
+  "Write a Python program that constructs the packing. The program may
+  import only the standard-library module math (no other imports, no file,
+  network or subprocess access). When run it must print exactly one line to
+  stdout: the raw Python list of N [x, y, r] lists." and the output clause
+  becomes "Output ONLY the Python program source. No explanation, no other
+  text." Prompts and SHA-256 hashes are frozen in arm_cc_prompts.json,
+  committed with this registration.
+- SCOPE OF THE INSTRUMENT (registered): this arm measures whether the anchor
+  survives externally-executed arithmetic — a program the model writes and
+  we run. It does NOT measure library-assisted optimization (numpy/scipy),
+  which deployed loops permit; unconstrained agents in this programme's
+  antecedent study autonomously wrote scipy optimizers, which is why the
+  constraint is stated in the prompt rather than silently enforced. A
+  library-enabled arm is a further arm, not this one.
+
+EXECUTION AND SCORING (arm_cc_analysis.py, committed with this registration)
+- Program extraction: fenced or raw program source are BOTH accepted;
+  fence-strip is applied before the AST gate. This is a parse convention,
+  not a compliance metric (the prompt says no fences; fenced responses are
+  not penalized). Registered to avoid operationalization drift.
+- AST gate (registered allowlist): imports permitted for module math only;
+  the names open, exec, eval, compile, __import__, input, breakpoint are
+  forbidden anywhere in the source. Gate failures are recorded, never
+  silently repaired.
+- Execution: python -I -S, fresh subprocess, 10-second timeout, stdout
+  captured. No retries, no edits to model source.
+- Output scoring: stdout parsed with arm-F conventions unchanged
+  (ast.literal_eval after fence strip; validity at 1e-6 primary, 1e-9 also
+  logged; value window 2e-3; structural k from dominant radius
+  round(1/(2 r_dom))).
+- Registered failure taxonomy, one bin per row: no_program (empty or
+  syntactically unparseable), blocked_import, forbidden_name, timeout,
+  exec_error, stdout_parse_fail, geom_invalid, valid. Every row lands in
+  exactly one bin; parse failures logged, never dropped.
+- Rejection rule (same as arms M/MU): invocations that die in the runtime
+  before reaching a model are excluded and counted; cells report
+  sampled-of-launched. Transport failures are not resampled beyond the
+  launcher's normal retry.
+
+REGISTERED QUANTITIES
+- Per-cell failure-taxonomy counts and valid count.
+- anchor-rate = fraction of VALID outputs with |sum - T(k*,N)| <= 2e-3
+  (anchor values 1.6250000, 2.1000000, 2.5833333).
+- argmax-rate = fraction of VALID outputs with |sum - V(k*-1,m)| <= 2e-3
+  (rival values 1.7761424, 2.2588835, 2.7485281).
+- above-rival-rate = fraction of VALID outputs with sum > rival + 2e-3.
+- structural-k distribution over valid outputs.
+- MANDATORY REPORTING ROW (registered, not a verdict): if the modal bucket
+  sits above the anchor, the report MUST decompose the escape — family
+  argmax (choice-follows-value-table, consistent with arm CH) versus beyond
+  the rival (de-novo search) — so "which escape" is answered by the same
+  table that reports it.
+- Comparison row: pooled valid-rate and anchor-rate against the arm-F bare
+  ledger baselines at the same cells (code-free direct emission).
+
+PREDICTIONS (competing, at most one can hold; arm-CH conventions)
+- P-CC1 (anchoring survives the code channel): the modal valid output
+  remains the T(k*,N) bucket at >= 2 of 3 cells despite construction being
+  delegated to executed arithmetic.
+- P-CC2 (the code channel escapes the anchor): the modal valid output
+  bucket sits strictly above T(k*,N) + 2e-3 at >= 2 of 3 cells.
+- Modal = most frequent 2e-3 bucket among valid at 1e-6; ties count as
+  neither prediction holding. If neither prediction holds (mixed modes),
+  the probe is reported INCONCLUSIVE with per-cell modes, no narrative
+  rescue. One-sample modal margins are disclosed per cell (arm-CH
+  convention).
+
+FRAMING UNDER EACH BRANCH (registered before outcomes known)
+- If P-CC1: template anchoring extends into the code channel for this
+  family at these cells; section 2.1's "a code channel routes around the
+  anchor" is weakened and the loop-relevance scope of the paper widens.
+- If P-CC2: section 2.1's scoping rationale is confirmed by measurement —
+  the anchor is a property of direct emission, not of the model's reachable
+  constructions; the paper's claims remain scoped to code-free calls, now
+  by evidence rather than assertion.
+- If INCONCLUSIVE: reported with per-cell modes and taxonomy; no branch is
+  claimed.
+
+POWER (stated before sampling)
+- Verdicts are modal-identity claims (arm-CH style), not rate tests; no
+  alpha is registered. n = 15 per cell is a valid-count CEILING; the
+  code-channel valid-rate is unknown and may sit well below it (the arm-F
+  bare valid-rate at these cells is 50/60 pooled, but execution adds
+  failure bins). Wilson half-width at n = 15, p = 0.5 is +/- 24 points:
+  registered rates are reported with intervals and carry no inferential
+  weight at this n. If a cell produces fewer than 5 valid outputs its modal
+  verdict row is reported UNDERPOWERED for that cell (floor chosen here,
+  before sampling).
+
+DISCLOSURE
+- Raw outputs stored verbatim in arm_cc_collect.jsonl, rows
+  {"arm":"cc","cell","slot","raw","reconstructed":false}, appended live at
+  collection time; scoring in arm_cc_analysis.py committed before sampling;
+  smoke test of the full executor path (valid / blocked-import / timeout /
+  garbage-stdout dummies, arm_cc_smoketest.py) run and committed before the
+  first invocation.

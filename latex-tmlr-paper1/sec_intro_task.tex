@@ -140,13 +140,17 @@ sits strictly above (i) across $[21,24]$.}
 Maximize the sum of radii of $N$ non-overlapping circles in the unit square. Feasibility is
 decidable exactly from emitted coordinates, so proposals score with no human in the loop.
 
-All invocations are zero-shot and code-free. The prompt (Appendix A) fixes the count, states
-containment and non-overlap, forbids writing or executing code, and demands only a raw Python
-list of \texttt{[x, y, r]} triples. Our reason for the code-free design is that a code channel routes
-the task to a numerical optimizer, so the distribution would reflect the optimizer. That reason
-is asserted, not measured --- we ran no code-enabled arm (\S8) --- and it also means the measured
-object is not the object the code-channel systems query, which is why \S1 scopes the claim to
-unconditioned calls.
+All invocations in the core arms are zero-shot and code-free. The prompt (Appendix A) fixes the
+count, states containment and non-overlap, forbids writing or executing code, and demands only a
+raw Python list of \texttt{[x, y, r]} triples. Our reason for the code-free design is that a code
+channel routes the task to an executed optimizer, so the distribution would reflect the
+optimizer. That reason is now measured rather than asserted: three preregistered code-channel
+arms (\S3.7 --- weak tier, a fresh-draw replication, and a Sonnet-tier probe) find that
+delegating construction to a math-only executed program neither escapes the family ceiling
+(0 of 115 valid outputs above the argmax, across both tiers) nor dislodges the anchor as the
+modal weak-tier output, so the code-free scope costs less loop relevance than we had
+assumed --- with the library-assisted channel (\texttt{numpy}/\texttt{scipy}), the one
+deployed loops permit, still unmeasured.
 
 \subsection{The recipe family}
 

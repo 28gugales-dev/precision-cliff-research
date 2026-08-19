@@ -1,0 +1,126 @@
+{
+ "cells": {
+  "13": {
+   "sampled": 15,
+   "bins": {
+    "valid": 13,
+    "geom_invalid": 1,
+    "timeout": 1
+   },
+   "n_valid": 13,
+   "underpowered": false,
+   "modal_value_approx": 1.666,
+   "modal_count": 4,
+   "modal_tie": false,
+   "modal_margin": 2,
+   "anchor_rate": "1/13",
+   "argmax_rate": "1/13",
+   "above_rival_rate": "0/13",
+   "k_struct_dist": {
+    "4": 9,
+    "3": 2,
+    "5": 1,
+    "6": 1
+   },
+   "sums": [
+    1.4397066,
+    1.615547,
+    1.625,
+    1.6390272,
+    1.640625,
+    1.6666667,
+    1.6666667,
+    1.6666667,
+    1.6666667,
+    1.7195554,
+    1.7341,
+    1.7422026,
+    1.7761424
+   ]
+  },
+  "21": {
+   "sampled": 15,
+   "bins": {
+    "valid": 11,
+    "geom_invalid": 4
+   },
+   "n_valid": 11,
+   "underpowered": false,
+   "modal_value_approx": 2.1,
+   "modal_count": 2,
+   "modal_tie": false,
+   "modal_margin": 1,
+   "anchor_rate": "2/11",
+   "argmax_rate": "0/11",
+   "above_rival_rate": "0/11",
+   "k_struct_dist": {
+    "21": 1,
+    "6": 1,
+    "5": 7,
+    "12": 1,
+    "1": 1
+   },
+   "sums": [
+    1.358699,
+    1.3915746,
+    1.7457694,
+    2.0,
+    2.0179835,
+    2.0979,
+    2.099979,
+    2.1,
+    2.1096181,
+    2.1606261,
+    2.196542
+   ]
+  },
+  "31": {
+   "sampled": 15,
+   "bins": {
+    "valid": 13,
+    "geom_invalid": 2
+   },
+   "n_valid": 13,
+   "underpowered": false,
+   "modal_value_approx": 2.584,
+   "modal_count": 2,
+   "modal_tie": false,
+   "modal_margin": 1,
+   "anchor_rate": "2/13",
+   "argmax_rate": "0/13",
+   "above_rival_rate": "0/13",
+   "k_struct_dist": {
+    "11": 1,
+    "27": 1,
+    "6": 6,
+    "500": 1,
+    "12": 1,
+    "34": 1,
+    "null": 1,
+    "5": 1
+   },
+   "sums": [
+    0.5235933,
+    0.785979,
+    1.2380721,
+    1.5111071,
+    1.5366196,
+    1.5813024,
+    2.5611753,
+    2.5714285,
+    2.5833333,
+    2.5833333,
+    2.6175341,
+    2.6362188,
+    2.65
+   ]
+  }
+ },
+ "pooled": {
+  "valid": 37,
+  "above_rival": 0,
+  "anchor": 5,
+  "modal_anchor_cells": 2,
+  "evaluable_cells": 3
+ }
+}

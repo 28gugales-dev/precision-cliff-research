@@ -1,0 +1,92 @@
+ARM CC2 (code-channel fresh-draw replication, weak tier) +
+ARM CCS (code-channel tier probe, Sonnet tier)
+PREREGISTRATION — committed and pushed BEFORE any sampling. 2026-08-18.
+
+PROVENANCE DECLARATION (registered, same conventions as arms MU/CH/CC)
+- Motivation, disclosed: arm CC's P-CC1 verdict rests on one-sample modal
+  margins at 2 of 3 cells (N = 13, 31). CC2 is a fresh-draw replication at
+  the same cells to test whether those thin modes and the 0/37
+  above-argmax ceiling reproduce. CCS asks whether the ceiling is a
+  weak-tier property or a channel property, motivated by arm S's tier
+  contrast (Sonnet direct emission: ambitious, 1/30 on-prediction, 100%
+  valid). Both registered after CC's results were known — this is a
+  replication-and-extension registration, not a priori.
+- Drafted by the same session agent (an LLM) that runs the pipeline.
+  External timestamp = this commit pushed to the public remote
+  (28gugales-dev/precision-cliff-research) before the first invocation.
+- Replication scope: fresh draws through the SAME instrument (agent
+  runtime aliases), not an independent serving path. CC2 shares arm CC's
+  weak-tier alias; CCS uses the runtime's Sonnet-tier alias. The
+  alias-attestation limits disclosed for arms M/MU/CH/CC apply unchanged.
+
+DESIGN (both arms)
+- Cells: N = 13, 21, 31. n = 15 invocations per cell per arm = 45 + 45.
+- Prompts: BYTE-IDENTICAL to arm CC's, frozen in arm_cc_prompts.json
+  (SHA-256 203749ff..., 8f8b2569..., 2a8cd21c...); no rebuild.
+- Dispatch wrapper identical to arms M/MU/CH/CC ("Do not use any tools.
+  Your entire final message must be the answer and nothing else.").
+- Execution and scoring: arm_cc_analysis.py's registered pipeline
+  unchanged (fence-tolerant extraction, AST gate math-only, python -I
+  10-second timeout, arm-F scoring conventions, same failure taxonomy).
+  Runner arm_cc2_analysis.py (committed with this registration) imports
+  score_row from arm_cc_analysis.py unmodified and scores each arm's
+  ledger separately.
+- Ledgers: arm_cc2_collect.jsonl and arm_ccs_collect.jsonl, verbatim rows
+  {"arm","cell","slot","raw","reconstructed":false}, appended live.
+- Rejection rule as before: runtime deaths excluded and counted; cells
+  report sampled-of-launched. UNDERPOWERED floor per cell: < 5 valid.
+
+REGISTERED QUANTITIES (each arm, same definitions as arm CC)
+- Failure-taxonomy counts; anchor-rate; argmax-rate; above-rival-rate;
+  structural-k distribution; modal 2e-3 bucket with count, tie flag and
+  margin (ties count against every prediction row).
+
+ARM CC2 PREDICTIONS (replication of CC; decided per rule below)
+- R1 (ceiling, primary): strictly-above-rival count = 0 pooled across the
+  three cells. FALSIFIER F-CC2.1: >= 2 valid outputs strictly above the
+  rival (> rival + 2e-3) pooled — fires, and the family-ceiling claim is
+  reported as not replicating, no narrative rescue. One above-rival output
+  is reported as an exception without firing the falsifier (one-off
+  tolerance stated here, before sampling).
+- R2 (modal): the anchor bucket is modal at >= 2 of 3 cells (P-CC1's
+  pattern).
+- VERDICT MAP: R1 holds + R2 holds = REPLICATED. R1 holds + R2 fails =
+  PARTIAL, reported with the registered sentence stem "the ceiling
+  replicates; the modal identity does not" (the dispersion reading — the
+  thin CC modes were noise, the ceiling was not). R1 fails = FAILED
+  regardless of R2. No other framings.
+- Pooled-margin note, registered: CC's N=13/31 modes were one-sample; CC2
+  cannot firm them alone at n = 15. The combined-wave descriptive
+  (CC + CC2 pooled per cell) will be reported alongside, labelled
+  descriptive — only the R1/R2 verdicts above are registered.
+
+ARM CCS PREDICTIONS (tier probe; competing, at most one holds)
+- P-CCS1 (escape is capability-gated): the Sonnet-tier arm produces
+  >= 20% of pooled valid outputs strictly above the rival. Reading if it
+  holds: the family ceiling is a weak-tier property; a stronger proposer
+  writing math-only programs searches past the family, consistent with
+  the tier ladder's ambition ordering.
+- P-CCS2 (the ceiling is a channel property): pooled strictly-above-rival
+  rate = 0. Reading if it holds: even a tier that abandons the template
+  under direct emission does not exceed the family argmax through
+  math-only executed programs at these cells.
+- Between 0 and 20% exclusive: PARTIAL, reported with counts and the
+  registered stem "the ceiling leaks at the Sonnet tier without the
+  escape prediction holding" — no stronger framing in either direction.
+  Ties on the 20% threshold count against P-CCS1.
+- Secondary descriptives (registered as reporting, no verdicts): modal
+  bucket location; anchor-rate (arm S's direct-emission anchor-rate at
+  these cells was near zero — whether the code channel pulls Sonnet
+  TOWARD the family is reported either way); structural-k distribution.
+
+POWER (stated before sampling)
+- Verdicts are count-based (R1, P-CCS2: zero-counts; P-CCS1: 20% of
+  ~<=45 valid, Wilson half-width at n = 40, p = 0.2 is ~12 points). The
+  0-vs->=20% separation exceeds two half-widths; the 0-vs-1 one-off
+  tolerance in R1 is a registered convention, not a test.
+
+DISCLOSURE
+- arm_cc2_analysis.py committed with this registration before sampling;
+  it will not be modified after. Raw ledgers, report jsons
+  (arm_cc2_report.json, arm_ccs_report.json) and a frozen summary
+  (arm_cc2_results.txt) released with the corpus.

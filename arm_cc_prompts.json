@@ -1,0 +1,25 @@
+{
+ "cc": {
+  "13": {
+   "prompt": "Pack exactly 13 non-overlapping circles inside the unit square [0,1]x[0,1] so that the sum of their radii is as large as possible.\nMUST hold: exactly 13 circles; every circle fully inside the unit square [0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap (distance between centers >= sum of the two radii; touching is allowed).\nWrite a Python program that constructs the packing. The program may import only the standard-library module math (no other imports, no file, network or subprocess access). When run it must print exactly one line to stdout: the raw Python list of 13 [x, y, r] lists.\nOutput ONLY the Python program source. No explanation, no other text.",
+   "sha256": "203749ff7802105b368ebfceacd40c2a95361ee04fd35f282c0bccab6fff8405",
+   "kstar": 4,
+   "anchor_value": 1.625,
+   "rival_value": 1.7761424
+  },
+  "21": {
+   "prompt": "Pack exactly 21 non-overlapping circles inside the unit square [0,1]x[0,1] so that the sum of their radii is as large as possible.\nMUST hold: exactly 21 circles; every circle fully inside the unit square [0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap (distance between centers >= sum of the two radii; touching is allowed).\nWrite a Python program that constructs the packing. The program may import only the standard-library module math (no other imports, no file, network or subprocess access). When run it must print exactly one line to stdout: the raw Python list of 21 [x, y, r] lists.\nOutput ONLY the Python program source. No explanation, no other text.",
+   "sha256": "8f8b25691cf19f50b442c703d366539cd17496de42f458e1a65bd8ae315df9cf",
+   "kstar": 5,
+   "anchor_value": 2.1,
+   "rival_value": 2.2588835
+  },
+  "31": {
+   "prompt": "Pack exactly 31 non-overlapping circles inside the unit square [0,1]x[0,1] so that the sum of their radii is as large as possible.\nMUST hold: exactly 31 circles; every circle fully inside the unit square [0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap (distance between centers >= sum of the two radii; touching is allowed).\nWrite a Python program that constructs the packing. The program may import only the standard-library module math (no other imports, no file, network or subprocess access). When run it must print exactly one line to stdout: the raw Python list of 31 [x, y, r] lists.\nOutput ONLY the Python program source. No explanation, no other text.",
+   "sha256": "2a8cd21c2aec29c952310e7e085720f3f95d395c2e0115f38c6c6d572ca7962b",
+   "kstar": 6,
+   "anchor_value": 2.5833333,
+   "rival_value": 2.7485281
+  }
+ }
+}
