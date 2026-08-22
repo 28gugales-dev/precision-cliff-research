@@ -2607,6 +2607,18 @@
    "contributor": null,
    "rationale": "Sonnet-tier programs (annealing, Halton restarts, force-directed) never exceed the family argmax: 0/37. Tier barely anchors (5/37) yet the ceiling holds — channel property, not tier property. Pooled all three code-channel arms: 0/115.",
    "id": "paper1_arm_ccs"
+  },
+  {
+   "label": "Arm CN — held-out N: rule predicts the mode, recall alternative fails",
+   "file_type": "rationale",
+   "source_file": "latex-tmlr-paper1/sec_forecast_transfer.tex",
+   "source_location": "§3.8",
+   "source_url": null,
+   "captured_at": null,
+   "author": null,
+   "contributor": null,
+   "rationale": "Five never-published N (50/58/62/65/75): registered value modal at 4/5, all discriminating cells hit, structure 5/5, 0 rivals. Construction reading holds; recall reading predicted the anchor would vanish and it did not.",
+   "id": "paper1_arm_cn"
   }
  ],
  "links": [
@@ -5038,6 +5050,26 @@
    "source_location": "§3.7",
    "weight": 1.0,
    "source": "paper1_arm_ccs",
+   "target": "paper1_anchor"
+  },
+  {
+   "relation": "conceptually_related_to",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "latex-tmlr-paper1/sec_forecast_transfer.tex",
+   "source_location": "§3.8",
+   "weight": 1.0,
+   "source": "paper1_arm_cn",
+   "target": "paper1_arm_m"
+  },
+  {
+   "relation": "rationale_for",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "latex-tmlr-paper1/sec_forecast_transfer.tex",
+   "source_location": "§3.8",
+   "weight": 1.0,
+   "source": "paper1_arm_cn",
    "target": "paper1_anchor"
   }
  ],

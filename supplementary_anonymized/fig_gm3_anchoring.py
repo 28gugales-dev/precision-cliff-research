@@ -34,7 +34,8 @@ def main():
         modal = c["modes_4dp"][0]
         match = c["MODE_MATCH"]
         color = "tab:green" if match else "tab:red"
-        ax.plot(n, modal, "o", color=color, ms=8, zorder=3)
+        ax.plot(n, modal, "o" if match else "^", color=color, ms=8, zorder=3,
+                mfc=color if match else "none", mew=1.6)
         top, tot = c["mode_freq"].split("/")
         ax.annotate(f"{top}/{tot}", (n, modal), textcoords="offset points",
                     xytext=(0, 8), fontsize=7, ha="center", color=color)
@@ -43,7 +44,8 @@ def main():
                         arrowprops=dict(arrowstyle="->", color="tab:red",
                                         lw=1.0, alpha=0.6))
     ax.plot([], [], "o", color="tab:green", label="modal sum = prediction (MODE-MATCH)")
-    ax.plot([], [], "o", color="tab:red", label="modal sum above prediction (miss, upward)")
+    ax.plot([], [], "^", color="tab:red", mfc="none", mew=1.6,
+            label="modal sum above prediction (miss, upward)")
     ax.set_xlabel("N (circles)")
     ax.set_ylabel("sum of radii (modal value among valid samples)")
     ax.set_title("Arm GM3: second-vendor modal sums vs. the registered prediction",

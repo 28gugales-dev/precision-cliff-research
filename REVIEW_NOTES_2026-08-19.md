@@ -1,5 +1,19 @@
 # Review notes — both papers, post-CC/CC2/CCS + tightening pass (2026-08-19, re-confirmed 2026-08-21)
 
+**STATUS UPDATE 2026-08-22 (after main's rev 4.5 merge):** main's ox-alpha QA +
+revisions 4–4.5 independently fixed Paper 1 defects 2 (argmax miscounts removed
+from abstract and §3.7), 6 (named-but-not-run list), 8 ("clean, well-powered"),
+and 9 ("external review" framing). The remaining verified defects were fixed on
+this branch in the same merge commit: Paper 1 defect 1 (CC table above-anchor
+cell 1 → 2), Paper 2 defects 1–3 and 5 (§8 exclusion contradiction, sixth-family
+antecedent, A.3 table pointer, §SS2, fig:family-echo now referenced). Still open:
+defect 3/12 — `ANONYMIZATION_REPORT.md` + `main.log` inside both submission
+folders (excluded from all zips, but must never be uploaded as folders), and
+Paper 1 defects 4 (descriptive label on pooled CC figures), 7 (two sentences
+referencing dropped abstract content), 10–11 (Appendix B deviations rows; md not
+updated for CC/CC2/CCS/CN) — check whether rev 4.5 addressed 4/7/10/11 before
+submitting.
+
 Two-agent editorial review of the current drafts; every finding below was re-verified
 against the frozen data files / tex sources before being recorded. Nothing here
 undermines a headline result — but Paper 1 has two sentences its own frozen reports

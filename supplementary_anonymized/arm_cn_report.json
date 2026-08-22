@@ -1,0 +1,187 @@
+{
+  "verdict": "P-CN1 HOLDS (construction): rule predicts the mode at held-out N",
+  "evaluable": 5,
+  "hits": 4,
+  "disc_hits": 3,
+  "s_cn1": 5,
+  "s_cn2_rival": 0,
+  "cells": {
+    "50": {
+      "N": 50,
+      "kstar": 7,
+      "branch": "V",
+      "discriminating": false,
+      "prediction": 3.5295867,
+      "argmax": 3.5295867,
+      "sampled": 15,
+      "parse_fail": 1,
+      "valid6": 11,
+      "valid9": 8,
+      "validity_ci": [
+        0.48,
+        0.891
+      ],
+      "on_pred": 4,
+      "modal_value": 3.5122554,
+      "modal_count": 6,
+      "runner_up_count": 4,
+      "margin": 2,
+      "tie": false,
+      "evaluable": true,
+      "hit": false,
+      "k_star_structure": "10/11",
+      "s_cn1": true,
+      "rival": 0,
+      "above_argmax": 0,
+      "k_emp_dist": {
+        "8": 1,
+        "7": 10
+      },
+      "invalid_reasons": {
+        "overlap": 3,
+        "literal_eval_failed": 1
+      }
+    },
+    "58": {
+      "N": 58,
+      "kstar": 8,
+      "branch": "T",
+      "discriminating": true,
+      "prediction": 3.625,
+      "argmax": 3.7662801,
+      "sampled": 15,
+      "parse_fail": 0,
+      "valid6": 14,
+      "valid9": 14,
+      "validity_ci": [
+        0.702,
+        0.988
+      ],
+      "on_pred": 12,
+      "modal_value": 3.625,
+      "modal_count": 12,
+      "runner_up_count": 1,
+      "margin": 11,
+      "tie": false,
+      "evaluable": true,
+      "hit": true,
+      "k_star_structure": "14/14",
+      "s_cn1": true,
+      "rival": 0,
+      "above_argmax": 0,
+      "k_emp_dist": {
+        "8": 14
+      },
+      "invalid_reasons": {
+        "overlap": 1
+      }
+    },
+    "62": {
+      "N": 62,
+      "kstar": 8,
+      "branch": "T",
+      "discriminating": true,
+      "prediction": 3.875,
+      "argmax": 3.8846269,
+      "sampled": 15,
+      "parse_fail": 0,
+      "valid6": 13,
+      "valid9": 13,
+      "validity_ci": [
+        0.621,
+        0.963
+      ],
+      "on_pred": 13,
+      "modal_value": 3.875,
+      "modal_count": 13,
+      "runner_up_count": 0,
+      "margin": 13,
+      "tie": false,
+      "evaluable": true,
+      "hit": true,
+      "k_star_structure": "13/13",
+      "s_cn1": true,
+      "rival": 0,
+      "above_argmax": 0,
+      "k_emp_dist": {
+        "8": 13
+      },
+      "invalid_reasons": {
+        "count": 2
+      }
+    },
+    "65": {
+      "N": 65,
+      "kstar": 8,
+      "branch": "V",
+      "discriminating": false,
+      "prediction": 4.0258883,
+      "argmax": 4.0258883,
+      "sampled": 15,
+      "parse_fail": 0,
+      "valid6": 13,
+      "valid9": 11,
+      "validity_ci": [
+        0.621,
+        0.963
+      ],
+      "on_pred": 9,
+      "modal_value": 4.0258871,
+      "modal_count": 9,
+      "runner_up_count": 2,
+      "margin": 7,
+      "tie": false,
+      "evaluable": true,
+      "hit": true,
+      "k_star_structure": "12/13",
+      "s_cn1": true,
+      "rival": 0,
+      "above_argmax": 0,
+      "k_emp_dist": {
+        "8": 12,
+        "9": 1
+      },
+      "invalid_reasons": {
+        "count": 1,
+        "overlap": 1
+      }
+    },
+    "75": {
+      "N": 75,
+      "kstar": 9,
+      "branch": "T",
+      "discriminating": true,
+      "prediction": 4.1666667,
+      "argmax": 4.2847718,
+      "sampled": 15,
+      "parse_fail": 0,
+      "valid6": 12,
+      "valid9": 10,
+      "validity_ci": [
+        0.548,
+        0.93
+      ],
+      "on_pred": 8,
+      "modal_value": 4.1666667,
+      "modal_count": 8,
+      "runner_up_count": 2,
+      "margin": 6,
+      "tie": false,
+      "evaluable": true,
+      "hit": true,
+      "k_star_structure": "8/12",
+      "s_cn1": true,
+      "rival": 0,
+      "above_argmax": 0,
+      "k_emp_dist": {
+        "15": 2,
+        "10": 1,
+        "9": 8,
+        "12": 1
+      },
+      "invalid_reasons": {
+        "overlap": 3
+      }
+    }
+  }
+}

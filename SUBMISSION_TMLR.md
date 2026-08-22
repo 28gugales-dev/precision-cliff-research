@@ -93,12 +93,12 @@ never submit them.
       Appendix C's "pricing exercise" to horizon-power, softened five
       overclaiming sentences, added the wave-6 numbering disclosure and the
       7B/14B VRAM scope sentence in §8. Md keeps the long abstracts (main's
-      tightening was tex-only); tex carries the condensed ones. Paper 2 tex
-      rebuilt post-merge with the §7 diversity paragraph + 6 bib entries on
-      top of the tightened tree; `overleaf_paper2_v3.zip` and
-      `latex-tmlr-openreview.zip` rebuilt, leak-checked.
-      USER should proof the reworded sentences (git diff shows them all).
-- [ ] **Before zipping latex-tmlr/ for any upload: delete `main.log`,
+      tightening was tex-only); tex carries the condensed ones. Post rev-4.5
+      merge: the §7 diversity paragraph + 6 bib entries and the wave-6
+      disclosure (now in the wave-index caption) re-applied on top of main's
+      rewritten Related work / wave table; tex rebuilt, zips rebuilt,
+      leak-checked. USER should proof the reworded sentences.
+- [x] **Before zipping latex-tmlr/ for any upload: delete `main.log`,
       `main.aux`, `main.out`, `main.blg` and `template-reference.tex`.**
       The .log embeds `C:/Users/soham/...` paths on nearly every line and
       would de-anonymize the submission. `main.bbl` is clean — keep it
@@ -234,3 +234,192 @@ channel stays registered future work.
 - **Supplementary**: same bundle (arm surface F→V and GM chain included).
 
 Quota note: TMLR allows 2 solo submissions/yr — these are both of them.
+
+## 2026-08-21 — Revision 4: external QA pass (ox-alpha), both papers
+
+Full LaTeX source of each paper was reviewed by `stealth/ox-alpha` (OpenRouter,
+1M context) under a TMLR-reviewer prompt; raw reviews in `reviews/`. Both came
+back "major revision" on presentation, not science. Every numeric consistency
+claim was grep-verified before editing. Pre-edit state is tagged
+`v3-pre-oxalpha`; revert with `git checkout v3-pre-oxalpha -- latex-tmlr latex-tmlr-paper1`.
+
+Paper 1 (31 pp): abstract rescoped ("all seven N of the original square arm",
+"all 31 invalid attempts (30 by misplaced fillers)", "executed math-only
+program"); untraceable "0/21" sourced to `arm_v_preregistration.md` and marked
+as an undercount vs ledger 2/23; "180 of 180" attributed to MU+CH; ladder
+headline switched to matched-cell 83% -> 100% -> 13% (78% kept as the
+all-cells figure); Table CV gemma verdict relabelled "pooled bar met;
+discriminating 26%, below bar"; arm V verdicts marked point-estimate with CI
+including bar; opus_alias latency/token anomaly paragraph cut to one sentence
+(unreleased, not relied on); every revision-history sentence removed
+(revision note under \maketitle, "revision 1/2" mentions, external/council
+review mentions, Appendix C corrections-ledger section -> one sentence in §9
+Internal checks); stale build notes removed from main.tex header.
+
+Paper 2 (33 pp): abstract carries fixed-parent contrast (92% vs 33%),
+"post-hoc" on the step-count statistic, and "at the power available" on the
+outcome null; F2 echo bound labelled a registered replication target (thresholds
+written after the destroyed first run's estimates were known); 38/200
+denominator defined (7B at Q8_0/Q4_K_M/Q3_K_M/Q2_K = 6+9+7+16); "same three
+rungs (four names)" fixed in §3.5 and App B; inferential-status block in §3
+replaced by two-sentence pointer to App A.4; conditional-quality per-parent
+breakdown in App C reduced to one non-load-bearing sentence; wave index table
+added (Table tab:wave_index) resolving the "wave 2" naming collision;
+`\nocite{*}` removed (bibliography 42 -> 28 entries, all cited); appendix
+[h] floats relaxed, page break before registered-outcomes longtable.
+
+Not applied (reviewer-request territory, new data): contamination probe at
+held-out N, classical-solver baseline, non-GGUF 2-bit arm, longer-horizon run,
+numpy/scipy code probe, same-instrument gemma pair.
+
+Artifacts: `overleaf_paper1_v4.zip`, `overleaf_paper2_v4.zip` (v3 stale),
+`latex-tmlr-openreview.zip`, `supplementary_anonymized.zip` (0 leaks),
+site PDFs + meta.json (Revision 4, 2026-08-21).
+
+## 2026-08-21 — Revision 4.1 (paper 1): family-property softening + contribution reorder
+
+Tag `v4.1-family-scope`. Abstract close now "transfers to two further vendors at
+reduced concentration (61–67% of valid outputs against 56–80% in-family) ... so
+anchoring is not a single-vendor artifact, and its concentration is
+vendor-dependent". §3.6 title and verdict sentence match; one clause added on
+why reduced concentration on byte-identical prompts is what a shared attractor
+predicts. Contributions reordered: (1) choice/execution dissociation (CH + CC
+chain, scope-independent), (2) closed form, (3) tier, (4) faithfulness,
+(5) family boundary. "Contribution 2" cross-ref in §5 updated to 3.
+
+### Pre-drafted rebuttal paragraphs (paper 1) — paste-ready, normal prose
+
+**If a reviewer says the scope is too narrow (generation-0, weak tier, code-free):**
+
+> We agree the measured regime is the unconditioned call, and the paper says so in the abstract, §2.1 and §8. Three registered arms were run specifically to find the edges of that regime rather than to extend the claim past them: arm MU shows the anchor dissolves under one-parent conditioning, the tier ladder shows the frontier tier escapes it, and arms CC/CC2/CCS show that a math-only code channel does not. Each is reported as a boundary, not as a caveat. The contribution that does not depend on the regime is the choice/execution dissociation (contribution 1): the model selects the provably better construction when shown it and cannot instantiate it in text (0/31) or in executed code (0/115), across two tiers. That is a statement about what the model can build, and it holds whether or not any deployed loop issues unconditioned calls. The library-enabled code channel (numpy/scipy) is the one loop-relevant regime we have not measured; it is named as such in §2.1 and §8, and we would run it as a registered arm if the reviewers consider it decisive.
+
+**If a reviewer raises the pipeline provenance (sole author, model-generated harness and prose, same-family QA):**
+
+> Every artifact the claims rest on is checkable without trusting the process that produced it. The scoring path is an exact evaluator verified against a linear-programming oracle on 83 configurations to 1e-9; every registered arm has a preregistration and frozen prompt hashes committed to a public repository before sampling, with the commit serving as the external timestamp; every invocation is in the released ledgers verbatim; and every analysis script was committed before its data arrived and is replayable with no arguments. The internal model-based checks are disclosed as quality assurance, not as review, and the correction ledger they produced is in the supplementary so the reader can see what changed and why. We would rather a reviewer distrust the process and verify the artifact than the reverse, which is why the artifact is built to be verified.
+
+**If a reviewer says the transfer rates show a weaker phenomenon, not the same one:**
+
+> The registered transfer criterion is modal identity on byte-identical prompts, not equal concentration, and the paper now states the concentration gap explicitly (61–67% at the transfer vendors against 56–80% in-family). Reduced concentration on the same modal value at a different vendor is what a shared attractor predicts; matching concentration would be harder to distinguish from shared training text. We claim family-bounded transfer, not a universal, and the gemma pair is reported precisely because it bounds the claim from both sides.
+
+## 2026-08-21 — Revision 4.2 (paper 1): arm CN, held-out-N contamination probe
+
+Tag `v4.2-arm-cn`. Registered at commit `69a1642` (pushed before sampling) in
+response to the ox-alpha review's blocking item B2. Five held-out N (50, 58, 62,
+65, 75 — absent from the cited scoreboard and every prior arm), 15 haiku
+invocations each, bare template A.1 byte-identical to arm M (hash asserted).
+Competing registered predictions: P-CN1 construction (mode at >=4/5 cells incl.
+>=2/3 discriminating) vs P-CN2 recall (<=2/5).
+
+Result: **P-CN1 HOLDS** — mode at 4/5 cells, 3/3 discriminating, margins +6 to
++13; k*-structure majority 5/5 (57/63); 0 rivals in 39 discriminating
+validities; 0/63 above the family argmax; validity 63/75 with no collapse at
+large N. The N=50 miss is filler mis-execution on the selected 7x7 template
+(6 of 11 push the filler into a corner, 0.017 below V(7,1)) — the arm-CH
+pattern. Frozen in `arm_cn_results.txt` / `arm_cn_report.json`.
+
+Paper 1 (32 pp): new §3.8; abstract gains one held-out sentence; arms index
+16 arms; §8 contamination paragraph rewritten from "not probed" to "probed at
+one level" (canary + perturbed-container still unrun); §9 registration and
+stopping-rule entries; App A.4 hashes; corpus 603 -> 678. Stale "N = 57 not
+run" in §9 removed (arm M ran it).
+
+Rebuttal paragraph for contamination now reads: point to §3.8; concede the
+canary/perturbed-container probes remain and offer to run them as a registered
+arm if decisive.
+
+## 2026-08-22 — Revision 4.3: submit-readiness audit, both papers
+
+Tag `v4.3-submit-ready`. Audit script (scratchpad `submit_audit.py`) does a
+clean-room compile of each Overleaf zip and checks: stray log/aux/pdf files
+(none); active `\usepackage{tmlr}` with anonymous author block (both);
+0 LaTeX errors, 0 undefined citations/references, 0 bibtex warnings (both);
+PDF Author/Title metadata empty (both); no "??" in rendered text (both);
+identity strings in sources and rendered text (none); page counts 32 / 33.
+
+Fixes made: seven leftover "revision N" / "post-council" / "external review"
+phrases removed from paper 1; paper-1 abstract condensed 356 -> 293 words;
+bundle builder now redacts `C:/Users/<anything>/` to `~` and the leak scanner
+flags Windows user paths (four files carried `C:/Users/[ANON]/...` -- not
+identity, now gone). Paper 2 unchanged except rebuilt PDF; its "earlier drafts
+omitted" sentences in App A/B are deliberate selective-reporting disclosures
+and stay.
+
+Submit-ready state: `overleaf_paper1_v4.zip`, `overleaf_paper2_v4.zip`,
+`supplementary_anonymized.zip` (518 entries, 0 leaks). Remaining items are
+user-only: Overleaf upload, OpenReview form, key rotation.
+
+## 2026-08-22 — Revision 4.4: five-lens review pass, paper 1
+
+Tag `v4.4-five-lens`. Five independent reviewers (claims/evidence, prose,
+floats, positioning, internal consistency) over the v4.3 sources; every
+accepted finding grep-verified before editing; verdicts unchanged.
+
+Numeric and scope corrections: in-family comparator for the cross-vendor
+transfer restated as 56-76% at arm V's own five cells (was 56-80% in three
+places and 56-86% in two; neither matched the cells compared); "all 31" CH
+execution failures -> 30 of 31 (one unevaluable) in abstract, Contribution 1
+and S8; "well-powered" faithfulness claim replaced by its Wilson interval;
+10^-9 ladder triple labelled all-cells vs matched; strong-form pool extended
+to arm CN (3 in 186, weak-tier only, Sonnet excluded by tier, S6 added to the
+pointer); abstract code-channel sentence scoped "at these cells"; GM3
+decomposition arithmetic 19/20 -> 20/20; P-CH2 wording un-inverted;
+non-claim guard no longer says the tractability alternative went untested;
+stale "correcting the abstract" self-reference removed; Figure 1 caption
+range 10..60 and fifth trap penalty added.
+
+Disclosure added: arm CN N=65 reconstructed rows — discarding them leaves
+the cell below floor and P-CN1 at 3 of 4 evaluable cells, discriminating
+cells untouched (S3.8); n=4 cells in the square arm named as thin (S3.2).
+
+Positioning: EvoPrompt now has its own citation (was attributed to the
+LLaMEA key), EoH added; contamination literature cited at S8
+(Carlini 2021, Golchin & Surdeanu 2024); Friedman's Packing Center cited as
+the source of the bound table (provenance was only in code comments);
+typicality-bias account (Verbalized Sampling) named as a second untested
+mechanism; new limitation paragraph on single-prompt scope (Sclar 2024) and
+RLHF diversity collapse as a candidate account of vendor-dependent
+concentration (Kirk 2024); one paragraph in S1 stating the consequence for
+EC readers (initialization diversity; MAP-Elites, novelty search cited) and
+for evaluation readers (computable floor).
+
+Structure: Contributions paragraph -> enumerate; Figures 2-4 and Table 2
+now pointed to by \ref (were orphaned); Table 2 caption glosses columns;
+"attractor" added to the notation table. Figure 2 regenerated with marker
+shape encoding match/miss (colorblind-safe). HOW_TO_RUN.md gains a paper-1
+table (the S9 claim that it documented the commands was previously false).
+
+Pages 32 -> 33. Audit: 0 errors, 0 undefined, 0 bibtex warnings, metadata
+empty, identity 0, bundle 0 leaks.
+
+Not done, logged for the review stage: redundancy cuts (GM3 numbers in four
+places, provenance in three) and S9 trim — left because each restatement
+carries a traceable count; Table CH N=13 (n=2) left as registered; abstract
+not restructured (sharpened only).
+
+### 4.4b (same day): fresh-eyes pass on the 4.4 diff
+Opus verifier over `git diff v4.3..v4.4`: one real error caught — CN N=65
+caveat said "two valid samples" after discarding reconstructed rows; correct
+figure is three (slot 12 of the reconstructed rows is invalid). Downstream
+"3 of 4 evaluable" unchanged. Plus: weak-tier scope on the S1 floor sentence,
+n=4 cells flagged non-discriminating, typicality-bias sentence softened,
+Friedman dated n.d., five arm headings shortened. Tag `v4.4-five-lens` moved
+to this commit.
+
+## 2026-08-22 - Revision 4.5: second-round review, paper 1
+
+Tag `v4.5-round2`. Two fresh opus reviewers over the 4.4c sources (claims,
+readability). Claims reviewer: ten residuals, all verified against frozen
+reports before editing - pooled argmax-reaching outputs 1 -> 2 (CC 1/12 and
+CC2 1/11 at N=13), CC above-anchor 1 -> 2, GM3 two-radius gloss (instrument
+blind at truncate cells), 56-80 at CC cells, Table CV routed-rows note, arm V
+vendor count (seven attributed + one unattributed), CN "twice", arm S
+100%/90%, dangling S5 attribution -> ledger item 30, two Appendix B rows
+(CN transcription, CC2 tool use). Readability: 8 of 10 proposed rewrites
+applied; two declined (clarity loss). Pages 33 -> 34.
+
+Pre-staged for rebuttal (DRAFT, unregistered, no sampling):
+`arm_cp_preregistration_DRAFT.txt` (container [3,5]^2, values x2, 5 cells
+all discriminating, P-CP1 vs P-CP2) and `arm_rp_preregistration_DRAFT.txt`
+(direct recall of scoreboard values, 3 scoreboard + 3 held-out N, P-RP1 vs
+P-RP2). Both ship in the supplementary bundle with the DRAFT marker.
+

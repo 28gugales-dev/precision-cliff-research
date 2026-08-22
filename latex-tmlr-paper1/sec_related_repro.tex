@@ -1,10 +1,8 @@
 % 1:1 markup translation of paper1_draft.md lines 923-1177 (S7, S8, S9).
 \section{Related work}
 
-Citation errors in revision 1 are corrected here.
-
 \textbf{LLM-driven discovery and the circle-packing scoreboard.} Language Model Crossover
-\citep{meyerson2024languagemodelcrossovervariation}, ELM \citep{lehman2022evolutionlargemodels}, EvoPrompt and LLaMEA \citep{vanstein2025llamealargelanguagemodel}
+\citep{meyerson2024languagemodelcrossovervariation}, ELM \citep{lehman2022evolutionlargemodels}, EvoPrompt \citep{guo2024evoprompt}, EoH \citep{liu2024eoh} and LLaMEA \citep{vanstein2025llamealargelanguagemodel}
 established the LLM call as an EC operator over prompts and programs; FunSearch turned the
 pattern into a discovery claim, and every system in \S1's scoreboard inherits it. Two orderings
 in that scoreboard matter: HELIX's figure is marginally \emph{below} ShinkaEvolve's while being
@@ -86,7 +84,7 @@ predicts and whether the model inherits the parent's $k$. That experiment has no
 the preregistered arm MU (\S3.5), and its registered falsifier triggered: 0 of 26 valid
 rival-parent samples return to the anchor, keep-or-improve and $k$-inheritance are both 26/26,
 and the anchoring result is scoped to unconditioned calls as a stated negative transfer
-result. The concern this paragraph raised in revision 2 was correct.
+result. The concern was correct.
 
 \textbf{A mechanism-free alternative, now directly probed.} Under an explicit ``construct the packing by
 reasoning alone'' constraint, a $k \times k$ grid at $r = 1/(2k)$ is close to the only construction whose
@@ -99,14 +97,17 @@ separating experiment --- hand the model the recipe family explicitly, state $V(
 admissible $k$, and ask it to \emph{choose} $k$; if it picks the argmax, the tractability reading stands
 --- has now been run as the preregistered arm CH (\S3.5). The outcome splits the hypothesis in
 two: the model's \emph{choice} follows the stated score table (so tractability does not explain
-the selection), but its \emph{execution} fails off-template in 30 of 31 invalid attempts (so
+the selection), but its \emph{execution} fails off-template in 30 of the 31 invalid attempts (so
 tractability does explain the instantiation --- the grid is what survives mental arithmetic).
-\S1's vocabulary remains behavioral and no memorization claim is made.
+\S1's vocabulary remains behavioral and no memorization claim is made. A second mechanism-level account, typicality bias in preference-tuned models \citep{zhang2026verbalizedsamplingmitigatemode}, predicts concentration on the most typical construction without reference to geometry; it is not excluded by any observation here and was not tested against the tractability reading.
 
-\textbf{Contamination is not probed.} $N = 26$ is the canonical published cell and plausibly in
-training data. We ran no canary-string test, no comparison against $N$ values absent from the
-literature, and no perturbed-container test preserving difficulty while destroying lexical
-overlap. The rectangle arm is the nearest thing we have, at $n = 11$ valid.
+\textbf{Contamination is probed at one level only.} $N = 26$ is the canonical published cell and
+plausibly in training data; membership and extraction probes of the kind used to detect benchmark contamination \citep{carlini2021extracting,golchin2024timetravel} were not run. Arm CN (\S3.8) answers the comparison against $N$ values absent from
+the literature: at five held-out $N$ the registered value is modal at four cells and the
+template structure at all five, against a registered recall alternative. What remains unrun is
+a canary-string test and a perturbed-container test preserving difficulty while destroying
+lexical overlap; neither can be run on the present ledgers, and absence of the fitted cells from
+the pretraining corpus is not established by any of this.
 
 \textbf{Vendor scope, and what the cross-vendor chain cost to learn.} All tiers in the main study
 come from one provider; \S3.6 is the arm that moves the pooled-level claim across vendors.
@@ -123,7 +124,7 @@ more: the one mid-size scoreable cell matches the predicted mode exactly (2.1000
 opposite direction from GM3's misses, which land on the family rival (\S3.6), consistent
 with \S5's point that the regularity is
 tier-bound rather than universal. Arm GM2 (gemma-4-26b-a4b-it, prereg
-\texttt{3019aab}) completed 140/140 invocations with 0 of 140 parseable --- and revision 2's two
+\texttt{3019aab}) completed 140/140 invocations with 0 of 140 parseable --- and the two
 candidate readings (format inability versus budget truncation) were separated by GM3 as
 registered: the vendor API returns deliberation as a separate thought channel, GM2's
 4,096-token budget died entirely inside that channel, and at 16,384 tokens the same model
@@ -154,15 +155,16 @@ on $N \in [k^2-k+1, k^2-1]$, so every discriminating cell is a trap cell by cons
 truncate arm now has five confirmed $k$ in the square (4, 5, 6, 7, 8 --- the last added by arm M's
 $N = 57$ cell, \S3.4) plus two rectangle cells; the extend arm is confirmed only at $m \le 1$ and
 \textbf{disconfirmed at $m \ge 4$} (\S3.4), which is the sharper scope the abstract now carries. The
-empirical-$k$ back-out named as future work in earlier revisions has since been run twice as
+empirical-$k$ back-out has been run twice as
 disclosed post-hoc diagnostics: \texttt{diagnostics\_kmatch.py} (\S3.2 --- 50/50 on-prediction samples
 $k^*$-structured, 64/69 valid overall) and arm M's per-cell $k_{\mathrm{emp}}$ distributions (\S3.4 --- the
 converge cells sit on $k^*{+}1$, which is how the filler-branch failure was diagnosed).
 
+\textbf{One prompt, one phrasing.} Every arm conditions on a single hash-locked prompt and no paraphrase variant was sampled, so the anchor is established as a property of the (model, prompt string) pair; locking buys reproducibility, not robustness to rewording, and prompt-format sensitivity of the size reported by \citet{sclar2024formatspread} is untested here. Relatedly, the cross-vendor concentration differences in \S3.6 are measured but not explained; alignment-induced diversity loss \citep{kirk2024rlhf} predicts vendor-dependent concentration and is a candidate account we did not test.
+
 \section{Reproducibility, deviations, and disclosures}
 
-Deviations from preregistration are tabled in Appendix B; corrections relative to the
-reviewed draft are summarized in Appendix C. Provenance, in list form:
+Deviations from preregistration are tabled in Appendix B. Provenance, in list form:
 
 \begin{itemize}
 \item \textbf{Registration.} Prompts were hashed with SHA-256 and the hashes recorded before sampling,
@@ -182,7 +184,10 @@ reviewed draft are summarized in Appendix C. Provenance, in list form:
   committed and pushed to the public remote at \texttt{285deca} before its first invocation;
   arms CC2 and CCS were registered together (\texttt{arm\_cc2\_preregistration.txt}, commit
   \texttt{4d7b7c5}, pushed before sampling) after CC's results were known, with that
-  motivation disclosed in the registration itself.
+  motivation disclosed in the registration itself. Arm CN (\texttt{arm\_cn\_preregistration.txt},
+  commit \texttt{69a1642}, pushed before sampling) was registered after the rest of the manuscript was
+  complete, in response to a pre-submission check; its motivation is post-hoc with respect to the paper's results and is
+  disclosed in the registration, and its predictions were fixed before its first invocation.
   The rectangle transfer was registered before
   collection and never refitted. On multiplicity: this study now spans many registered arms, and no
   correction across arms is applied --- each arm's predictions were registered with its own
@@ -243,13 +248,14 @@ reviewed draft are summarized in Appendix C. Provenance, in list form:
 \item \textbf{Internal checks.} Before submission the manuscript passed an internal adversarial
   check: language models of other families (\texttt{deepseek-v4-pro}, \texttt{deepseek-v4-flash},
   Gemini), under written protocols, independently recomputed the paper's statistics from the
-  released ledger, and the corrections that followed are folded into this revision. This is
-  quality assurance, not peer review, and carries no external authority.
-\item \textbf{Stopping rule.} This revision closed after implementing the internal-check
-  findings; no further data-dependent analysis was performed. Arms CC, CC2 and CCS (\S3.7)
+  released ledger; thirty-two claims were corrected as a result, itemized in the supplementary
+  \texttt{corrections\_ledger.md}. This is quality assurance, not peer review, and carries no
+  external authority.
+\item \textbf{Stopping rule.} The manuscript closed after implementing the internal-check
+  findings; no further data-dependent analysis was performed. Arms CC, CC2 and CCS (\S3.7) and CN (\S3.8)
   were each registered, run and scored once under their own preregistrations after that
   close; each analysis script was committed before its sampling and not modified after. Analyses named but
-  not run --- the one-parent mutation arm, the recipe-family choice probe, $N = 57$, the empirical-$k$
+  not run --- the one-parent mutation arm, the recipe-family choice probe, the empirical-$k$
   back-out, faithfulness split by on- versus off-prediction, a library-enabled code probe
   (\texttt{numpy}/\texttt{scipy}; the math-only code channel has since run as arm CC), interleaved
   re-collection of the arm-T pair, and P5 at $n = 20$ --- are recorded in \S6.5 and \S8 as future work,

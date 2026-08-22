@@ -1,4 +1,4 @@
-\begin{thebibliography}{48}
+\begin{thebibliography}{34}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -31,15 +31,6 @@ Will Cai, Tianneng Shi, Xuandong Zhao, and Dawn Song.
   apis, 2025.
 \newblock URL \url{https://arxiv.org/abs/2504.04715}.
 
-\bibitem[Cemri et~al.(2026)Cemri, Agrawal, Gupta, Liu, Cheng, Mang, Naren,
-  Erdogan, Sen, Zaharia, Dimakis, and
-  Stoica]{cemri2026adaevolveadaptivellmdriven}
-Mert Cemri, Shubham Agrawal, Akshat Gupta, Shu Liu, Audrey Cheng, Qiuyang Mang,
-  Ashwin Naren, Lutfi~Eren Erdogan, Koushik Sen, Matei Zaharia, Alex Dimakis,
-  and Ion Stoica.
-\newblock Adaevolve: Adaptive llm driven zeroth-order optimization, 2026.
-\newblock URL \url{https://arxiv.org/abs/2602.20133}.
-
 \bibitem[Chang et~al.(2025)Chang, Zhang, Thomason, and
   Jia]{chang2025inputsbreaklowbitllm}
 Ting-Yun Chang, Muru Zhang, Jesse Thomason, and Robin Jia.
@@ -51,16 +42,6 @@ Ting-Yun Chang, Muru Zhang, Jesse Thomason, and Robin Jia.
 Lingjiao Chen, Matei Zaharia, and James Zou.
 \newblock How is chatgpt's behavior changing over time?, 2023.
 \newblock URL \url{https://arxiv.org/abs/2307.09009}.
-
-\bibitem[Feuerriegel et~al.(2026)Feuerriegel, Forster, Geissler, Maarouf,
-  Maier, Plank, et~al.]{feuerriegel2026guidellm}
-Stefan Feuerriegel, Kerstin Forster, Dominique Geissler, Abdurahman Maarouf,
-  Sebastian Maier, Barbara Plank, et~al.
-\newblock A reporting checklist for large language models in behavioural
-  science.
-\newblock \emph{Nature Human Behaviour}, 10:\penalty0 1182--1186, 2026.
-\newblock \doi{10.1038/s41562-026-02492-7}.
-\newblock GUIDE-LLM.
 
 \bibitem[Frantar et~al.(2023)Frantar, Ashkboos, Hoefler, and
   Alistarh]{frantar2023gptqaccurateposttrainingquantization}
@@ -75,28 +56,6 @@ Dan Friedman and Adji~Bousso Dieng.
 \newblock The vendi score: A diversity evaluation metric for machine learning,
   2023.
 \newblock URL \url{https://arxiv.org/abs/2210.02410}.
-
-\bibitem[He et~al.(2025)]{he2025defeating}
-Horace He et~al.
-\newblock Defeating nondeterminism in {LLM} inference.
-\newblock Thinking Machines Lab blog, September 2025.
-\newblock URL
-  \url{https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/}.
-
-\bibitem[Jia(2026)]{jia2026hindsightbenchblackboxbehavioralaudit}
-Haozhe Jia.
-\newblock Hindsightbench: A black-box behavioral audit protocol for parametric
-  hindsight in time-indexed llm decision tasks, 2026.
-\newblock URL \url{https://arxiv.org/abs/2607.18867}.
-
-\bibitem[Khrulkov et~al.(2025)Khrulkov, Galichin, Bashkirov, Vinichenko,
-  Travkin, Alferov, Kuznetsov, and
-  Oseledets]{khrulkov2025gigaevoopensourceoptimization}
-Valentin Khrulkov, Andrey Galichin, Denis Bashkirov, Dmitry Vinichenko, Oleg
-  Travkin, Roman Alferov, Andrey Kuznetsov, and Ivan Oseledets.
-\newblock Gigaevo: An open source optimization framework powered by llms and
-  evolution algorithms, 2025.
-\newblock URL \url{https://arxiv.org/abs/2511.17592}.
 
 \bibitem[Korn et~al.(2026)Korn, Zaruchas, Arora, Metzger, Smolka, Wang, and
   Vogelsang]{korn2026reportingllmpromptingautomated}
@@ -179,14 +138,6 @@ Haiquan Lu, Zigeng Chen, Gongfan Fang, Xinyin Ma, and Xinchao Wang.
   2026.
 \newblock URL \url{https://arxiv.org/abs/2605.20315}.
 
-\bibitem[Luo et~al.(2026)Luo, Huang, Luo, Liu, Deng, Li, Yao, Hu, Feng, and
-  Liu]{luo2026seaevoadvancingalgorithmdiscovery}
-Sichun Luo, Yi~Huang, Haochen Luo, Fengyuan Liu, Guanzhi Deng, Lei Li, Qinghua
-  Yao, Zefa Hu, Junlan Feng, and Qi~Liu.
-\newblock Seaevo: Advancing algorithm discovery with strategy space evolution,
-  2026.
-\newblock URL \url{https://arxiv.org/abs/2604.24372}.
-
 \bibitem[Lv et~al.(2026)Lv, Zhang, Xia, Ni, Yan, Yu, Hou, Yuan, and
   Bai]{lv2026makeslowbitquantizationawaretraining}
 Keyu Lv, Manyi Zhang, Xiaobo Xia, Jingchen Ni, Shannan Yan, Xianzhi Yu, Lu~Hou,
@@ -221,13 +172,6 @@ Evan Miller.
 Jean-Baptiste Mouret and Jeff Clune.
 \newblock Illuminating search spaces by mapping elites, 2015.
 \newblock URL \url{https://arxiv.org/abs/1504.04909}.
-
-\bibitem[Novikov et~al.(2025)Novikov, V{\~u}, Eisenberger,
-  et~al.]{novikov2025alphaevolve}
-Alexander Novikov, Ng{\^a}n V{\~u}, Marvin Eisenberger, et~al.
-\newblock Alphaevolve: A coding agent for scientific and algorithmic discovery,
-  2025.
-\newblock URL \url{https://arxiv.org/abs/2506.13131}.
 
 \bibitem[Pineau et~al.(2021)Pineau, Vincent-Lamarre, Sinha, Larivi{\`e}re,
   Beygelzimer, d'Alch{\'e} Buc, Fox, and Larochelle]{pineau2021reproducibility}
@@ -271,56 +215,11 @@ Mohammed~Latif Siddiq, Arvin Islam-Gomes, Natalie Sekerak, and Joanna C.~S.
   crisis, 2025.
 \newblock URL \url{https://arxiv.org/abs/2512.00651}.
 
-\bibitem[Su et~al.(2026)Su, Hao, Zhang, Xia, Wu, Su, and
-  Zhu]{su2026helixevolutionaryreinforcementlearning}
-Chang Su, Zhongkai Hao, Zhizhou Zhang, Zeyu Xia, Youjia Wu, Hang Su, and Jun
-  Zhu.
-\newblock Helix: Evolutionary reinforcement learning for open-ended scientific
-  problem solving, 2026.
-\newblock URL \url{https://arxiv.org/abs/2603.07642}.
-
-\bibitem[Thomas et~al.(2026)Thomas, Gligoric, and
-  Shah]{thomas2026mitigatingllmbasedphackingpreregistering}
-Maria Thomas, Kristina Gligoric, and Nihar~B. Shah.
-\newblock Mitigating llm-based p-hacking by preregistering for the next llm,
-  2026.
-\newblock URL \url{https://arxiv.org/abs/2606.27687}.
-
-\bibitem[Vaccaro(2026)]{vaccaro2026preregistrationexperimentsaiagents}
-Michelle Vaccaro.
-\newblock Preregistration for experiments with ai agents, 2026.
-\newblock URL \url{https://arxiv.org/abs/2606.11217}.
-
-\bibitem[Wang et~al.(2025)Wang, Su, Zeng, Xu, Ren, Yang, Huang, He, Ma, Peng,
-  Cheng, He, Chen, Wang, Du, and Shen]{wang2025thetaevolvetesttimelearningopen}
-Yiping Wang, Shao-Rong Su, Zhiyuan Zeng, Eva Xu, Liliang Ren, Xinyu Yang, Zeyi
-  Huang, Xuehai He, Luyao Ma, Baolin Peng, Hao Cheng, Pengcheng He, Weizhu
-  Chen, Shuohang Wang, Simon~Shaolei Du, and Yelong Shen.
-\newblock Thetaevolve: Test-time learning on open problems, 2025.
-\newblock URL \url{https://arxiv.org/abs/2511.23473}.
-
-\bibitem[Williams et~al.(2026)Williams, Sheahan, Raymond, Korbak, Pan, Yang,
-  Maksin, Xie, Guo, Kivlichan, and
-  Carroll]{williams2026predictingllmsafetyrelease}
-Marcus Williams, Hannah Sheahan, Cameron Raymond, Tomek Korbak, Deng Pan,
-  Peilin Yang, Leon Maksin, Ningyi Xie, Phillip Guo, Ian Kivlichan, and Micah
-  Carroll.
-\newblock Predicting llm safety before release by simulating deployment, 2026.
-\newblock URL \url{https://arxiv.org/abs/2607.07184}.
-
 \bibitem[Wimbauer et~al.(2026)Wimbauer, M{\"o}ller, Imgrund, and
   Rieck]{wimbauer2026fingerprintinginferencesystemslarge}
 Anna Wimbauer, Jonas M{\"o}ller, Erik Imgrund, and Konrad Rieck.
 \newblock Fingerprinting inference systems of large language models, 2026.
 \newblock URL \url{https://arxiv.org/abs/2605.29979}.
-
-\bibitem[Xing et~al.(2026)Xing, He, Wu, Yang, Luo, Fu, and
-  Nagarajan]{xing2026computeallocationevolutionarysearch}
-Sixue Xing, Haoyu He, Kerui Wu, Zhuo Yang, Haozheng Luo, Tianfan Fu, and Aarthy
-  Nagarajan.
-\newblock Compute allocation in evolutionary search: From depth-breadth to
-  multi-armed bandits, 2026.
-\newblock URL \url{https://arxiv.org/abs/2605.29268}.
 
 \bibitem[Yan et~al.(2026)Yan, Peng, Coleman, Chen, Xie, Chen, He, Sachdeva, Ye,
   Wang, Wang, Chi, Pereira, Kang, Cheng, and
@@ -353,14 +252,6 @@ Chenxi Zhou, Pengfei Cao, Jiang Li, Bohan Yu, Jinyu Ye, Jun Zhao, and Kang Liu.
 \newblock From signal degradation to computation collapse: Uncovering the two
   failure modes of llm quantization, 2026.
 \newblock URL \url{https://arxiv.org/abs/2604.19884}.
-
-\bibitem[Zhou et~al.(2024)Zhou, Schellaert, Mart{\'i}nez-Plumed, Moros-Daval,
-  Ferri, and Hern{\'a}ndez-Orallo]{zhou2024reliability}
-Lexin Zhou, Wout Schellaert, Fernando Mart{\'i}nez-Plumed, Yael Moros-Daval,
-  C{\`e}sar Ferri, and Jos{\'e} Hern{\'a}ndez-Orallo.
-\newblock Larger and more instructable language models become less reliable.
-\newblock \emph{Nature}, 634\penalty0 (8032):\penalty0 61--68, 2024.
-\newblock \doi{10.1038/s41586-024-07930-y}.
 
 \bibitem[Zhu et~al.(2018)Zhu, Lu, Zheng, Guo, Zhang, Wang, and
   Yu]{zhu2018texygenbenchmarkingplatformtext}

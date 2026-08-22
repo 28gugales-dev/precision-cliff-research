@@ -6,12 +6,11 @@ the three cells that discriminate hardest between prediction and family optimum 
 and 31, each inside a trap zone. The tiers do not merely differ in success rate: they attempt
 qualitatively different constructions.
 
-\textbf{The weak tier truncates templates.} The Haiku-tier proposer produces uniform grids of radius
+\textbf{The weak tier truncates templates.} The Haiku-tier proposer (Figure~\ref{fig:packings}, left panel) produces uniform grids of radius
 $1/(2k)$ truncated to $N$ circles, with corner fillers only when the grid underfills. Across the 45
 original bare invocations spanning $N \in \{13, 17, 21, 31, 35, 37, 43\}$, \textbf{35 were geometrically
 valid at the primary $10^{-6}$ tolerance (77.8\%), 29 at $10^{-9}$ (64.4\%)} --- recomputed from the ledger,
-correcting the headline validity figure and the inversion triple in the abstract and
-Contribution 2. At the three discriminating cells 12 of 16 valid samples
+superseding the figure carried in earlier drafts. At the three discriminating cells 12 of 16 valid samples
 landed on the predicted value and the rival was reached twice, both at $N = 21$.
 
 \textbf{The middle tier perturbs and mixes.} The Sonnet-tier arm was preregistered in
@@ -43,14 +42,9 @@ which weights served it: the runtime accepts only the bare alias and exposes no 
 identifier, so the binding is a vendor promise rather than an attestable fact. No version number
 appears anywhere in this paper.
 
-That caveat matters because of two anomalies. Completion times ran 2.8--9 s across all 30
-invocations against 75--250 s for Haiku and 150--1170 s for Sonnet, and the reported token count
-was uniform at 49,906 across the first 20 completions, $\approx$49.9k thereafter --- a signal of metadata
-that is not per-completion, or of a cache, router-fallback or truncation path. \textbf{Neither anomaly
-appears in any released artifact} --- we therefore treat both as anecdotal context from an
-unreleased session transcript, not as data-supported properties of the tier: the ledger has no
-latency and no token field, and both
-figures come from the runtime session transcript, so a referee cannot check them.
+That caveat matters: completion-time and token-count anomalies were observed in the unreleased
+session transcript for this arm, but the ledger carries no latency or token field, so they
+appear in no released artifact and nothing below relies on them.
 
 Under those caveats the arm --- preregistered fully blind in \texttt{arm\_o\_preregistration.txt} --- was
 valid in 4 of 30 invocations (13\%) at both tolerances. At every cell it attempted a more
@@ -60,10 +54,10 @@ coarse $3 \times 3$ grid at $r \approx 1/6$ with border strips at $N = 31$ (0/10
 rather than numerical --- edge strips at $r = 0.03$ placed 0.138 from an $r = 1/6$ grid circle needing
 0.197 --- and twice the arm padded to count with zero-radius circles. Valid samples score \emph{below}
 the trap they were expected to fall into (1.26--1.41 at $N = 13$ against 1.625). A post-hoc
-diagnostic (not preregistered; labeled as such in the repository) finds no evidence of a tolerance
-artifact behind the 13\% in this sample: 24 of 26 invalid samples overlap grossly (median maximum overlap
+diagnostic (not preregistered; labeled as such in the repository) finds no tolerance
+artifact behind the 13\%: 24 of 26 invalid samples overlap grossly (median maximum overlap
 $3.3\times10^{-2}$; radius-shrink repair costs a median 15\% of sum-of-radii), while tolerance-scale
-near-misses ($< 2.5\times10^{-5}$) occur instead in 5 of 7 geometry-scored weak-tier failures --- the
+near-misses ($< 2.5\times10^{-5}$) fall instead in 5 of 7 geometry-scored weak-tier failures --- the
 exact-tangency grids, not the ambitious constructions.
 
 Two decisions here were made after seeing the data and are recorded as deviations (Table 4).
@@ -73,13 +67,13 @@ this size makes an on-prediction tier comparison uninterpretable; P-O3 is trivia
 De-registering three of four predictions in the one arm that disconfirmed is exactly the move
 preregistration exists to constrain, which is why it is tabled rather than narrated. And the arm
 was initially excluded from the ladder, then included once its results were known; we follow the
-later decision and report the ladder both ways --- with the arm 78\% $\rightarrow$ 100\% $\rightarrow$ 13\%, without it
-78\% $\rightarrow$ 100\% plus the qualitative shift from truncation to perturbed multi-radius hybrids, which
+later decision and report the ladder both ways (Table~\ref{tab:ladder}) --- with the arm 83\% $\rightarrow$ 100\% $\rightarrow$ 13\% on matched cells (78\% over all seven weak-tier cells), without it
+83\% $\rightarrow$ 100\% plus the qualitative shift from truncation to perturbed multi-radius hybrids, which
 is already the publishable contrast.
 
 \begin{table}[t]
 \centering
-\caption{Three-attractor ladder.}
+\caption{Three-attractor ladder. Valid columns count samples passing containment and non-overlap at the $10^{-6}$ and $10^{-9}$ tolerances; On-pred and Rival count valid samples landing on the predicted value and on the rival argmax.}
 \label{tab:ladder}
 \footnotesize
 \setlength{\tabcolsep}{4pt}
@@ -87,10 +81,10 @@ is already the publishable contrast.
 \toprule
 Tier & Cells & $n$ & Attempted family & Valid $10^{-6}$ & Valid $10^{-9}$ & On-pred & Rival & Failure mode \\
 \midrule
-haiku (bare) & 13,17,21, 31,35,37,43 & 45 & uniform grid, truncated; fillers when underfull & 35 (78\%) & 29 (64\%) & 12/16 (3 matched cells) & 2 & overlap 6, outside 1, parse 3 \\
-haiku, matched cells & 13,21,31 & 60 & as above & 50 (83\%) & --- & 35/50 & 2 & overlap 5, outside 2, parse 3 \\
-sonnet & 13,21,31 & 30 & perturbed grid, hexagonal rows, 2--3 radii & 30 (100\%) & 27 (90\%) & 1/30 & 5 (structure) & none \\
-\texttt{opus\_alias} $\ddagger$ & 13,21,31 & 30 & quarter-circle corners, Apollonius fillers, coarse grid + border strips & 4 (13\%) & 4 (13\%) & 0/4 & 0 & overlap 24, nonpositive radius 2 \\
+haiku (bare) & 13, 17, 21, 31, 35, 37, 43 & 45 & uniform grid, truncated; fillers when underfull & 35 (78\%) & 29 (64\%) & 12/16 (3 matched cells) & 2 & overlap 6, outside 1, parse 3 \\
+haiku, matched cells & 13, 21, 31 & 60 & as above & 50 (83\%) & --- & 35/50 & 2 & overlap 5, outside 2, parse 3 \\
+sonnet & 13, 21, 31 & 30 & perturbed grid, hexagonal rows, 2--3 radii & 30 (100\%) & 27 (90\%) & 1/30 & 5 (structure) & none \\
+\texttt{opus\_alias} $\ddagger$ & 13, 21, 31 & 30 & quarter-circle corners, Apollonius fillers, coarse grid + border strips & 4 (13\%) & 4 (13\%) & 0/4 & 0 & overlap 24, nonpositive radius 2 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -157,14 +151,14 @@ the confound for which the pilot was discarded, held to the same standard.
 
 The scaled arm ran 100 new invocations, bringing both arms to 20 per cell at $N \in \{13, 21, 31\}$ and
 the corpus to 215 logged square invocations (85 bare = 45 original + 40 new; 70 trace = 10 pilot +
-60 trace\_v2; 30 sonnet; 30 \texttt{opus\_alias}), plus 16 rectangle invocations, 231 total at the
-close of revision 2; the post-review arm M (\S3.4) later added 57 sampled
-weak-tier invocations (60 launched), bringing the study corpus to 288, and the post-council
+60 trace\_v2; 30 sonnet; 30 \texttt{opus\_alias}), plus 16 rectangle invocations, 231 total before the
+extension arms; arm M (\S3.4) added 57 sampled
+weak-tier invocations (60 launched), bringing the study corpus to 288, and
 arms MU and CH (\S3.5) added 180 more (180 launched, none lost), and the code-channel arms
 CC, CC2 and CCS (\S3.7) added 135 more (135 launched, none lost), bringing the
-unconditioned-and-elicitation corpus to 603; the cross-vendor chain is scored under its own
+unconditioned-and-elicitation corpus to 603, and the held-out-$N$ probe CN (\S3.8) 75 more, to 678; the cross-vendor chain is scored under its own
 registrations and adds 420 GM-chain invocations (\S3.6, \S8) and 877 arm-V attempt rows over
-325 registered invocation slots (\S3.6). One disclosure revision 1 did not carry: \textbf{20 of the 60 bare samples are pre-existing arm-F
+325 registered invocation slots (\S3.6). One disclosure: \textbf{20 of the 60 bare samples are pre-existing arm-F
 rows} ($N = 13$ ids 1--5, $N = 21$ ids 1--10, $N = 31$ ids 1--5) whose results were known when P-T1--P-T3
 were written; only trace\_v2 is fully fresh (\S6.4). Scoring used \texttt{arm\_f\_repro.py} unchanged with
 the registered $2\times10^{-3}$ window; the Fisher exact test comes from the hypergeometric tail in
@@ -173,7 +167,7 @@ the registered $2\times10^{-3}$ window; the Fisher exact test comes from the hyp
 \subsection{Registered outcomes}
 
 Preregistered criteria are evaluated exactly as registered, and unregistered alpha thresholds are
-applied nowhere; revision 1 applied one asymmetrically.
+applied nowhere.
 
 \textbf{P-T1, validity: NOT confirmed.} P-T1 is the one prediction that registered an alpha (``validity
 $\ge$ bare at EACH $N$, and pooled one-sided Fisher $p < 0.05$''). Direction held at all three cells, but
@@ -219,7 +213,7 @@ $N$ & Arm & $n$ & Valid (parse / geom. fail) & On-pred / valid & Rival \\
 \end{tabular}
 \end{table}
 
-Per-cell one-sided Fisher on on-prediction: $N = 13$ $p = 0.030$; $N = 21$ $p = 0.41$; $N = 31$ $p = 0.50$.
+Per-cell one-sided Fisher on on-prediction (Figure~\ref{fig:armT}): $N = 13$ $p = 0.030$; $N = 21$ $p = 0.41$; $N = 31$ $p = 0.50$.
 Pooled $p = 0.0325$; Holm threshold over the registered family ($m = 3$ tested with $p$-values) is
 0.0167. The pilot (10 invocations at $N = 21$, 10/10 valid, 9/10 on-prediction) is reported
 separately and never summed into any total. Regenerated by \texttt{arm\_t\_analysis.py} over
@@ -242,7 +236,7 @@ Observed validity: $N = 13$, 18/20 both arms --- \textbf{tie}; $N = 21$, trace\_
 trace higher; $N = 31$, 17/20 both arms --- \textbf{tie}. A tie satisfies \texttt{<=}, so under the registered
 wording the falsifier is \textbf{triggered at 2 of 3 $N$}, and we report it as triggered; the code
 instead evaluated direction as \texttt{t\_rate >= b\_rate}, strict \texttt{<}, under which it fires at 0 of 3
-cells, which is what revision 1 reported. That convention appears nowhere in
+cells. That convention appears nowhere in
 the preregistration, was chosen at analysis time, and read the same tie favorably twice --- as
 ``direction held'' for P-T1 and as ``not a falsifier cell'' here.
 
@@ -335,7 +329,7 @@ claims ``alternating rows of 4 and 3 circles'' over observed row sizes 4,3,3,3, 
 rows alternating between 5 and 4 circles'' over observed 5,4,4,4,4 --- both \emph{mis-descriptions of
 alternation}, a repeating pattern named and built for the first period only. The original scorer's
 three mismatches were three different claim forms, not one; the filler-adds-
-rows mechanism revision 1 described was real, and the rubric's base-grid convention handles it, so
+rows mechanism the original scorer described was real, and the rubric's base-grid convention handles it, so
 all three score MATCH under hand adjudication.
 
 \textbf{Scope, three ways.} The blind pass covers \emph{invalid} rows too: the original 93\% conditioned on
