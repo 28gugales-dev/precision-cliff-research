@@ -98,7 +98,7 @@ different constructions.
 No predictor of a single value can exceed the modal frequency, and this one attains it at 7 of
 7 cells (at $N = 31$ the on-prediction count exceeds the 4-dp modal bucket by one sample ---
 13/17 against 12/17 --- a bucketing convention, not a violation of the ceiling): the residual is
-dispersion, not misprediction. Three cells ($N = 17$, 35, 37) carry four valid samples each, where a 3/4 mode is thin evidence on its own; the well-populated cells of the held-out probe (\S3.8) are the stronger test of the same rule. As a floor, a naive ``the model emits a
+dispersion, not misprediction. Three cells ($N = 17$, 35, 37), all non-discriminating, carry four valid samples each, where a 3/4 mode is thin evidence on its own; the well-populated cells of the held-out probe (\S3.8) are the stronger test of the same rule. As a floor, a naive ``the model emits a
 round number'' baseline hits 2 of the same 69 valid samples (3\%). Two scope conditions: this is
 the bare weak-tier arm --- pooled over the four discriminating square cells (full ledger), the
 two higher tiers and the rectangle, the on-prediction rate is 46\%
@@ -139,7 +139,7 @@ failures --- and the five records appear in the ledger in no form (\S9). The arm
 also contains three parse failures, and one $N = 37$ proposer derived
 $r = (\sqrt{2}-1)/12$ correctly in prose, then transcribed 0.03571429.
 
-\subsection{Preregistered extension (arm M): the filler branch fails at $m > 1$; the fifth $k$ confirms}
+\subsection{Arm M: the filler branch fails at $m > 1$; the fifth $k$ confirms}
 
 Two gaps remained after the square arm: (i) $V(k, m)$'s filler branch
 was empirically supported only at $m \in \{0, 1\}$ --- the converge cells $N = 17$ and 37 both have
@@ -202,7 +202,7 @@ The net effect on the paper's claim is a sharpening. Arm M does not rescue $V(k,
 confirmed); at $k^{*2} \le N$ it extends only to $m \le 1$ --- beyond that it prefers the $(k^*{+}1)$
 rectangle, and $V(k, m)$ does not describe it.''
 
-\subsection{Preregistered extension (arms MU and CH): the anchor does not transfer to one-parent calls, and handing the model the argmax does not dislodge the template}
+\subsection{Arms MU and CH: no transfer to one-parent calls; the argmax in hand does not dislodge the template}
 
 Two questions were still open after arm M.
 Does the unconditioned anchoring result say anything about calls that carry a parent
@@ -313,7 +313,7 @@ Raw rows verbatim in \texttt{arm\_mu\_collect.jsonl} (180 of 180 launched invoca
 runtime deaths); scoring in \texttt{arm\_mu\_analysis.py}, committed before sampling completed; frozen
 output in \texttt{arm\_mu\_results.txt}. This arm brings the study corpus to 468 invocations.
 
-\subsection{Preregistered cross-vendor chain (arms GM3 and V): the attractor transfers at reduced concentration, and its boundary runs both ways}
+\subsection{Arms GM3 and V: transfer at reduced concentration, with a boundary that runs both ways}
 
 Every arm above addresses one vendor's models. Two registered arms take the same
 byte-identical prompts across vendors --- arm GM3 under a laboratory-grade instrument against
@@ -492,7 +492,7 @@ variant and instrument quality change together across the two measurements, so w
 difference carries the split is not attributable from this pair; either way, no
 single-model measurement would have seen the boundary.
 
-\subsection{Preregistered code-channel probe (arm CC): an executed program does not escape the family}
+\subsection{Arm CC: an executed program does not escape the family}
 
 The code-free design (\S2.1) rests on a rationale this paper had asserted but not measured:
 that a code channel routes construction to an executed optimizer, so the emission distribution
@@ -581,7 +581,7 @@ is scored like every other row. Ledgers \texttt{arm\_cc2\_collect.jsonl} and
 \texttt{arm\_cc2\_analysis.py} reuses CC's registered pipeline unmodified. These arms bring
 the study corpus to 603 invocations.
 
-\subsection{Preregistered held-out-$N$ probe (arm CN): the rule predicts the mode where there is nothing to recall}
+\subsection{Arm CN: the rule predicts the mode where there is nothing to recall}
 
 The rule was fitted on $N = 23/26/27$, and $N = 26$ is the canonical published cell. A
 reader can therefore hold a rival reading of every square-arm result above: the proposer is
@@ -635,7 +635,7 @@ nine overlaps, two count errors and one output of fraction literals the register
 does not evaluate (the CH ``radical literal'' mode). Raw rows in
 \texttt{arm\_cn\_collect.jsonl} (75/75 launched, none lost); eleven $N = 65$ rows were
 transcribed by reconstructing the standard $8 \times 8$ grid string from the emitted filler
-triple, disclosed in \texttt{arm\_cn\_results.txt}; the reconstruction is character-identical for these standard grids, but a reader who discards those rows leaves $N = 65$ with two valid samples, below the five-row floor, and P-CN1 at 3 hits of 4 evaluable cells --- the three discriminating cells, which carry the contamination argument, are untouched. The arm brings the study corpus to 678
+triple, disclosed in \texttt{arm\_cn\_results.txt}; the reconstruction is character-identical for these standard grids, but a reader who discards those rows leaves $N = 65$ with three valid samples, below the five-row floor, and P-CN1 at 3 hits of 4 evaluable cells --- the three discriminating cells, which carry the contamination argument, are untouched. The arm brings the study corpus to 678
 invocations.
 
 \textbf{What this does and does not show.} The recall reading predicted that the anchor

@@ -74,10 +74,10 @@ Ziyu Chen, Yilun Zhao, and Arman Cohan.
 \newblock Measuring the gap between human and llm research ideas, 2026.
 \newblock URL \url{https://arxiv.org/abs/2607.01233}.
 
-\bibitem[Friedman(2026)]{friedman_packing}
+\bibitem[Friedman(n.d.)]{friedman_packing}
 Erich Friedman.
 \newblock Packing center: circles in squares, maximizing the sum of radii.
-\newblock \url{https://erich-friedman.github.io/packing/cirRsqu/}, 2026.
+\newblock \url{https://erich-friedman.github.io/packing/cirRsqu/}, n.d.
 \newblock Best-known values transcribed into \texttt{n\_sweep\_forecast.py};
   accessed 2026.
 

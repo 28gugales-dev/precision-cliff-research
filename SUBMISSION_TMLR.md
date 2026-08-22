@@ -352,3 +352,12 @@ Not done, logged for the review stage: redundancy cuts (GM3 numbers in four
 places, provenance in three) and S9 trim — left because each restatement
 carries a traceable count; Table CH N=13 (n=2) left as registered; abstract
 not restructured (sharpened only).
+
+### 4.4b (same day): fresh-eyes pass on the 4.4 diff
+Opus verifier over `git diff v4.3..v4.4`: one real error caught — CN N=65
+caveat said "two valid samples" after discarding reconstructed rows; correct
+figure is three (slot 12 of the reconstructed rows is invalid). Downstream
+"3 of 4 evaluable" unchanged. Plus: weak-tier scope on the S1 floor sentence,
+n=4 cells flagged non-discriminating, typicality-bias sentence softened,
+Friedman dated n.d., five arm headings shortened. Tag `v4.4-five-lens` moved
+to this commit.
