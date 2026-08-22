@@ -52,4 +52,4 @@ PROTOCOL NOTES. All 75 rows used no tools (tool_uses = 0 on every invocation). E
 (N=65 slots 1, 3, 6, 8, 9, 10, 11, 12, 13, 14, 15) were transcribed into the ledger by reconstructing the
 emitted 8x8 grid string from its fixed template plus the emitted filler triple; the
 reconstruction is character-identical to the emission for these standard grids and is
-disclosed here rather than flagged per row.
+disclosed here; on 2026-08-22 the ledger's per-row `reconstructed` flag was set to true on these eleven rows (it had been written false by the collector), with the raw field untouched.

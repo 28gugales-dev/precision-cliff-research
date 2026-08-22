@@ -423,3 +423,45 @@ all discriminating, P-CP1 vs P-CP2) and `arm_rp_preregistration_DRAFT.txt`
 (direct recall of scoreboard values, 3 scoreboard + 3 held-out N, P-RP1 vs
 P-RP2). Both ship in the supplementary bundle with the DRAFT marker.
 
+### 4.5b (same day): third-round claims pass
+Opus reviewer over sections not yet recomputed (3.3-3.5, 4, 6, 8). Two numeric
+fixes: Table CC N=13 above-anchor cell 1 -> 2 (prose had been fixed in 4.5,
+table not); GM3 16k-budget parse count 118/140 -> 123/140 (recomputed from the
+`parsed` flag; 118 existed only in drafts). Wording: arm V prereg 0/21 recast
+as a scope difference (N in {13,31}) not an undercount; rectangle arm "sixteen
+proposers" -> "sixteen invocations (eight per cell)"; a=2 sample 3.151875
+noted as a third out-of-family above-prediction output; faithfulness
+exclusions "nine of 12" are regex gaps. Reviewer recomputed every other
+fraction in those sections clean. Round 3 yield (2 numeric) < round 2 (6):
+converging.
+
+## 2026-08-22 - Revision 4.6: fourth-round pass (qualitative claims, stats, hashes, figures)
+
+Tag `v4.6-round4`. Reviewer recomputed every p-value, Wilson CI, hash prefix,
+commit id and prereg quotation: all clean. Four findings fixed: (1) S5's
+"only sample in the study to leave the recipe family upward" was false - arm M
+holds three hexagonal converge-cell rows above the family best (N=20 x2 at
+2.2222, N=30 at 2.7273), confirmed by independent re-score; rescoped to the
+swept corpus, reported in S3.4 as a post-hoc sweep, Appendix B row added;
+(2) arm_cn_collect.jsonl `reconstructed` flag set true on the eleven N=65
+rows (collector wrote false), report byte-identical; (3) Figure 2 legend
+V/T; (4) Figure 3 caption "pooled", p marked uncorrected. Round yields
+10 -> 6 -> 2 -> 1 numeric: next round expected dry.
+
+### 4.6c (same day): reproducibility smoke test of the HOW_TO_RUN paper-1 table
+Every command run from a fresh scratch copy of the repo root (no network, no
+keys): 13/14 exit 0; arm_cn verdict, GM3 57.5% and Table M counts regenerate
+exactly. `arm_v_score.py` crashed on a non-ASCII glyph under cp1252 stdout
+after writing its ledger - stdout now forced to UTF-8; verdict counts match
+`arm_v_score_final.txt`. Two table rows had wrong reads/writes (arm M, arm V)
+- corrected. Bundle rebuilt, 0 leaks.
+
+### 4.6d (same day): citation-accuracy pass (web-verified)
+Sonnet agent fetched each primary source: HELIX, GigaEvo, AdaEvolve, ThetaEvolve,
+li2026, zhang2024, Verbalized Sampling, Kirk, Sclar, EvoPrompt, Friedman page
+all VERIFIED. AlphaEvolve 2.63586276 unverifiable from abstract/HTML (lives in
+the linked notebook) - left. ShinkaEvolve digit string replaced by the source
+HTML's two figures (2.6359831 relaxed / 2.6359777 strict); the S7 "HELIX below
+ShinkaEvolve" ordering now says against which. OpenEvolve "~2.635977" not at
+the README checked (2.634292) - restated as the 2.634-2.636 band, repo unpinned.
+

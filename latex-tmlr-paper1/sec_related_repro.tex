@@ -5,10 +5,10 @@
 \citep{meyerson2024languagemodelcrossovervariation}, ELM \citep{lehman2022evolutionlargemodels}, EvoPrompt \citep{guo2024evoprompt}, EoH \citep{liu2024eoh} and LLaMEA \citep{vanstein2025llamealargelanguagemodel}
 established the LLM call as an EC operator over prompts and programs; FunSearch turned the
 pattern into a discovery claim, and every system in \S1's scoreboard inherits it. Two orderings
-in that scoreboard matter: HELIX's figure is marginally \emph{below} ShinkaEvolve's while being
+in that scoreboard matter: HELIX's figure is marginally \emph{below} ShinkaEvolve's relaxed-tolerance figure (and above its strict one) while being
 described as state of the art, and ThetaEvolve claims new best-known bounds, so the benchmark is
 saturated only across the AlphaEvolve--ShinkaEvolve--HELIX cluster and the number is still moving.
-OpenEvolve, the open-source AlphaEvolve reproduction most practitioners run, reports $\approx$2.635977.
+OpenEvolve, the open-source AlphaEvolve reproduction most practitioners run, reports values in the 2.634--2.636 band across its published example runs (2.634292 in the circle-packing example at the time of access; the repository is unpinned).
 \S1.1 records the correction to our record comparison and its $N > 30$ coverage gap. Two critiques
 bear on our framing and are frequently conflated, so we attribute them explicitly: \citet{gideoni2026simplebaselinescompetitivecode}
 show simple baselines recover much of the reported advantage, and \citet{berthold2026outoftheboxglobaloptimizationpacking}
@@ -128,7 +128,7 @@ tier-bound rather than universal. Arm GM2 (gemma-4-26b-a4b-it, prereg
 candidate readings (format inability versus budget truncation) were separated by GM3 as
 registered: the vendor API returns deliberation as a separate thought channel, GM2's
 4,096-token budget died entirely inside that channel, and at 16,384 tokens the same model
-parses at 118/140. A cross-vendor null under a fixed output budget is not evidence about the
+parses at 123/140 (\texttt{parsed} flag in \texttt{arm\_gm3\_candidates.jsonl}). A cross-vendor null under a fixed output budget is not evidence about the
 model until the budget's interaction with the vendor's response structure is itself checked.
 One mechanical deviation on GM3 is on record (amendment registered before resumption): the
 final 41 of 140 cells were collected through a routed third-party serving path after the

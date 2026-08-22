@@ -15,7 +15,7 @@ F (square, bare) & 3.2--3.3 & weak tier & 7 $N$ $\times$ 5--20 & P1--P5 exact-va
 S (mid tier) & 5 & Sonnet tier & 3 $N$ $\times$ 10 & P-S1--P-S4 tier contrasts & 1/30 on-prediction, 100\%/90\% valid ($10^{-6}$/$10^{-9}$) \\
 O (top alias) & 5 & \texttt{opus\_alias} & 3 $N$ $\times$ 10 & P-O1--P-O4 & 13\% valid; 3 predictions not evaluable (deviation, Table 4) \\
 T (trace) & 6 & weak tier & 3 $N$ $\times$ 20 $\times$ 2 arms & P-T1--P-T4 + falsifier & falsifier \textbf{triggered} (tie reading); P-T3 fragile \\
-G (rectangle) & 4 & 16 proposers & 2 cells & out-of-sample transfer & partial, 5/11; formula negative result kept \\
+G (rectangle) & 4 & 16 invocations & 2 cells & out-of-sample transfer & partial, 5/11; formula negative result kept \\
 M (branch stress) & 3.4 & weak tier & 4 $N$ $\times$ 15 & P-M1--P-M4 + F-M1/F-M2 & F-M1 \textbf{triggered 3/3}: extend branch dies at $m \ge 4$; fifth $k$ confirms \\
 MU (mutation) & 3.5 & weak tier & 3 parents $\times$ 3 $N$ $\times$ 15 & P-MU1--P-MU4 + F-MU1 & F-MU1 \textbf{triggered}: anchor dissolves under conditioning \\
 CH (choice) & 3.5 & weak tier & 3 $N$ $\times$ 15 & P-CH1 vs P-CH2 & choice follows score table; execution fails off-template 30/31 \\
@@ -185,7 +185,7 @@ $N$ & $k^*$ & Branch & Registered prediction & Modal valid output & Freq & Valid
 \end{center}
 
 Exactly one $V(k^*, m)$ construction appears in 36 valid converge-cell rows; filler count is 0
-in 35 of 36. Regenerates from \texttt{arm\_m\_collect.jsonl} via \texttt{arm\_m\_analysis.py}.
+in 35 of 36. Three converge-cell rows leave the recipe family \emph{upward} --- two at $N = 20$ (staggered rows of four at $r = 1/9$, sum 2.2222222, against the family best $V(4,4) = 2.2071068$) and one at $N = 30$ ($r = 1/11$, sum 2.7272727, against $V(5,5) = 2.7071068$; valid at $10^{-6}$, not at $10^{-9}$) --- hexagonal layouts the family does not contain, found by a post-hoc sweep (not preregistered) run after a fourth-round check; they are not the modal output at either cell and do not bear on the discriminating-cell claims. Regenerates from \texttt{arm\_m\_collect.jsonl} via \texttt{arm\_m\_analysis.py}.
 
 The net effect on the paper's claim is a sharpening. Arm M does not rescue $V(k, m)$; the closed form now reads
 ``$k^* = \mathrm{round}(\sqrt{N})$ names the grid family; at $k^{*2} > N$ the model truncates that grid (five $k$
@@ -360,7 +360,7 @@ $N$ & predicted (4 dp) & Gemma modal sum & mode freq & valid $n$ & on-prediction
 \centering
 \includegraphics[width=\linewidth]{fig_gm3_anchoring.png}
 \caption{\emph{Arm GM3 modal sums against the registered prediction.} Filled green circles match the
-predicted mode (frequencies annotated); open red triangles miss --- every miss lands above the
+predicted mode (the dashed line is $V(k^*, m)$ at extend cells and $T(k^*, N)$ at truncate cells) (frequencies annotated); open red triangles miss --- every miss lands above the
 prediction, on the rival argmax (the modal packings carry the rival's two-radius structure,
 27/27 --- \S3.6); the two largest cells are UNSCOREABLE under the registered $<$3-valid rule.
 Regenerates via \texttt{fig\_gm3\_anchoring.py} from \texttt{arm\_gm3\_report.json} (itself replayed from the
@@ -452,7 +452,7 @@ registered construction values at 61--67\% of valid outputs (point estimates abo
 point-estimate pass at $n = 12$ and $n = 18$) --- and the strong form holds
 everywhere evaluable \emph{within this arm}: zero rival-argmax emissions in 16
 discriminating-cell validities (the registration, \texttt{arm\_v\_preregistration.md}, recorded the original family's prior for
-the same statistic as 0/21 --- an undercount against the shipped ledger's 2/23 in \S3.3; \S3.6's gemma-4-26b, under the GM-chain instrument, is the
+the same statistic as 0/21 over $N \in \{13, 31\}$ only --- a narrower scope than \S3.3's 2/23, whose two rival hits both sit at $N = 21$, so the two corpora agree at 0 on the registration's own cells; \S3.6's gemma-4-26b, under the GM-chain instrument, is the
 standing exception --- its discriminating-cell mode \emph{is} the rival). The transfer is at reduced
 concentration: 61--67\% on-prediction against 56--76\% in-family at the same five cells (\S3.2). Reduced concentration at
 different vendors, on byte-identical prompts, landing on the same modal value is what a shared
@@ -505,7 +505,7 @@ P-CC2, it sits strictly above the anchor at $\ge 2$ of 3; ties or mixed modes co
 \toprule
 $N$ & Valid & Modal bucket (count, margin) & Anchor-rate & Above anchor \\
 \midrule
-13 & 12/15 & anchor 1.6250000 (2/12, one sample) & 2/12 & 2 --- one the family argmax, exactly \\
+13 & 12/15 & anchor 1.6250000 (2/12, one sample) & 2/12 & 2 --- 1.6614054, and the family argmax exactly \\
 21 & 13/15 & anchor 2.1000000 (9/13, margin 8) & 9/13 & 0 \\
 31 & 12/15 & anchor 2.5833333 (3/12, one sample) & 3/12 & 0 \\
 \bottomrule
@@ -625,7 +625,7 @@ nine overlaps, two count errors and one output of fraction literals the register
 does not evaluate (the CH ``radical literal'' mode). Raw rows in
 \texttt{arm\_cn\_collect.jsonl} (75/75 launched, none lost); eleven $N = 65$ rows were
 transcribed by reconstructing the standard $8 \times 8$ grid string from the emitted filler
-triple, disclosed in \texttt{arm\_cn\_results.txt}; the reconstruction is character-identical for these standard grids, but a reader who discards those rows leaves $N = 65$ with three valid samples, below the five-row floor, and P-CN1 at 3 hits of 4 evaluable cells --- the three discriminating cells, which carry the contamination argument, are untouched. The arm brings the study corpus to 678
+triple, flagged per row (\texttt{reconstructed: true}) and disclosed in \texttt{arm\_cn\_results.txt}; the reconstruction is character-identical for these standard grids, but a reader who discards those rows leaves $N = 65$ with three valid samples, below the five-row floor, and P-CN1 at 3 hits of 4 evaluable cells --- the three discriminating cells, which carry the contamination argument, are untouched. The arm brings the study corpus to 678
 invocations.
 
 \textbf{What this does and does not show.} The recall reading predicted that the anchor
@@ -649,7 +649,7 @@ square file's closed form must equal this file's LP. Shape mismatch grows as $a$
 $N = 10\ldots45$ the count of $N$ whose predicted shape differs from the optimal one rises from 12 at
 $a = 1.0$ to 23 at $a = 1.5$, 20 at $a = 2.0$ and 23 at $a = 3.0$.
 
-We probed the two sharpest cells with sixteen proposers in a container none had been given
+We probed the two sharpest cells with sixteen invocations (eight per cell) in a container none had been given
 before: $N = 19$ at $a = 3$ (predicted 3.1666667, rival 3.5749194) and $N = 25$ at $a = 2$ (predicted
 3.1250000, rival 3.4832492). With all sixteen scored, \textbf{5 of 11 valid proposals landed on the
 predicted value and 0 of 11 reached the rival}.
@@ -658,7 +658,7 @@ We characterize all eleven here. On-prediction: two
 at $N = 19$/$a = 3$ (3.1666666667 and 3.16666673, the latter agreeing to six decimals not seven) and
 three at $N = 25$/$a = 2$ (3.125 exactly). Off-prediction at $N = 25$/$a = 2$: two samples emitted a
 uniform $5 \times 5$ grid at $r = 0.1$ summing to 2.5000000 --- the \emph{square} rule with no aspect correction,
-$k = \mathrm{round}(\sqrt{25}) = 5$ --- plus one at 3.0 and one at 3.151875. At $N = 19$/$a = 3$, \textbf{two} samples
+$k = \mathrm{round}(\sqrt{25}) = 5$ --- plus one at 3.0 and one at 3.151875, the latter above the 3.125 prediction from outside the family and below the rival. At $N = 19$/$a = 3$, \textbf{two} further samples
 exceeded the prediction from outside the family, 3.45 and 3.5, both below the rival.
 
 We therefore report the rectangle as \textbf{partial out-of-sample support, not confirmation}:

@@ -22,7 +22,7 @@ def main():
     pred = [c["predicted_4dp"] for c in cells]
 
     fig, ax = plt.subplots(figsize=(6.4, 4.0))
-    ax.plot(ns, pred, "k--", lw=1.2, label="registered prediction V(k*, m)", zorder=1)
+    ax.plot(ns, pred, "k--", lw=1.2, label="registered prediction V(k*, m) / T(k*, N)", zorder=1)
     for c in cells:
         n = c["n"]
         if c.get("status") == "UNSCOREABLE":

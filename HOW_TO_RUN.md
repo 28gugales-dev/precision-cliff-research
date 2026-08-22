@@ -79,10 +79,10 @@ freezes a JSON/TXT report beside the ledger.
 |---|---|---|---|
 | 3.2 square arm, 3.3 falsifier, Table 1 | `python arm_f_repro.py` | `arm_f_candidates_v2.jsonl` | stdout |
 | 3.2 structural column (post hoc) | `python diagnostics_kmatch.py` | `arm_f_candidates_v2.jsonl` | stdout |
-| 3.4 arm M | `python arm_m_analysis.py` | `arm_m_collect.jsonl` | `arm_m_results.txt` |
+| 3.4 arm M | `python arm_m_analysis.py` | `arm_m_collect.jsonl` | `arm_m_report.json`, `arm_m_scored.json` |
 | 3.5 arms MU and CH (one script, two sections) | `python arm_mu_analysis.py` | `arm_mu_collect.jsonl` | `arm_mu_results.txt` |
 | 3.6 GM chain / GM3, Figure 2 | `python arm_gm3_analysis.py` then `python fig_gm3_anchoring.py` | `arm_gm_gm3_checkpoint.jsonl` | `arm_gm3_report.json`, `fig_gm3_anchoring.png` |
-| 3.6 arm V | `python arm_v_score.py` | `arm_v_collect.jsonl` | `arm_v_report.json` |
+| 3.6 arm V | `python arm_v_score.py` | `arm_v_candidates_raw.jsonl` | `arm_v_scored.jsonl` (stdout verdicts frozen in `arm_v_score_final.txt`) |
 | 3.7 code channel: CC, then CC2 and CCS together | `python arm_cc_analysis.py`, `python arm_cc2_analysis.py` | `arm_cc_collect.jsonl`, `arm_cc2_collect.jsonl`, `arm_ccs_collect.jsonl` | `arm_cc_report.json`, `arm_cc2_report.json`, `arm_ccs_report.json` |
 | 3.8 arm CN | `python arm_cn_analysis.py` | `arm_cn_collect.jsonl` | `arm_cn_report.json`, `arm_cn_scored.json` |
 | 1.1 bound table, 4.2 rectangle, LP oracle | `python n_sweep_forecast.py`, `python rect_forecast.py` | none | `n_sweep_forecast.json`, `rect_forecast.json` |

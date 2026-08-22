@@ -8,6 +8,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import arm_f_repro as A
 
+# Failure-mode strings carry non-ASCII glyphs; a cp1252 console (Windows default)
+# otherwise raises UnicodeEncodeError after the ledger has already been written.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
 ROOT = Path(__file__).resolve().parent
 RAW = ROOT / "arm_v_candidates_raw.jsonl"
 OUT = ROOT / "arm_v_scored.jsonl"
