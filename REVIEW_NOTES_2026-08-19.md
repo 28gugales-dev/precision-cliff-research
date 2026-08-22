@@ -9,10 +9,11 @@ cell 1 → 2), Paper 2 defects 1–3 and 5 (§8 exclusion contradiction, sixth-f
 antecedent, A.3 table pointer, §SS2, fig:family-echo now referenced). Still open:
 defect 3/12 — `ANONYMIZATION_REPORT.md` + `main.log` inside both submission
 folders (excluded from all zips, but must never be uploaded as folders), and
-Paper 1 defects 4 (descriptive label on pooled CC figures), 7 (two sentences
-referencing dropped abstract content), 10–11 (Appendix B deviations rows; md not
-updated for CC/CC2/CCS/CN) — check whether rev 4.5 addressed 4/7/10/11 before
-submitting.
+Paper 1 defect 11 only (paper1_draft.md not updated for CC/CC2/CCS/CN — twelve
+vs fifteen arms; archival md, does not gate submission). Rev 4.5 itself fixed
+defect 10 (Appendix B has the CC2 tool-use deviation row) and the pooled argmax
+sentence; defects 4, 5 and 7 were fixed on this branch post-merge (descriptive
+pool label, §2.1 quote aligned, abstract-scope sentence re-pointed).
 
 Two-agent editorial review of the current drafts; every finding below was re-verified
 against the frozen data files / tex sources before being recorded. Nothing here
