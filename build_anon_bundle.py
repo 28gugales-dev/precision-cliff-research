@@ -44,13 +44,14 @@ TEXT_EXT = {".py", ".md", ".txt", ".json", ".jsonl", ".yaml", ".yml",
 
 # Order matters: most specific first.
 REDACTIONS = [
+    (re.compile(r"[Cc]:[\\/]+Users[\\/]+(soham|\[ANON\])"), "~"),
     (re.compile(r"sohamgugalet"), "ANON-KAGGLE-OWNER"),
     (re.compile(r"Soham Shailesh Gugale"), "[ANONYMIZED AUTHOR]"),
     (re.compile(r"Soham|Gugale", re.I), "[ANON]"),
     (re.compile(r"28gugales@gmail\.com"), "[redacted-email]"),
     (re.compile(r"[Cc]:[\\/]Users[\\/]soham"), "~"),
 ]
-LEAK = re.compile(r"soham|gugale|28gugales", re.I)
+LEAK = re.compile(r"soham|gugale|28gugales|[Cc]:[\\/]+Users[\\/]", re.I)
 
 README = """# Anonymized supplementary bundle
 

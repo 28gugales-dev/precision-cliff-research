@@ -1,6 +1,6 @@
 import json, ast, math, re, collections
 
-ROOT = r"C:\Users\[ANON]\AppData\Local\hermes\research-corpus\precision-cliff"
+ROOT = r"~\AppData\Local\hermes\research-corpus\precision-cliff"
 rows = json.load(open(ROOT + r"\arm_f_raw.json", encoding="utf-8"))
 CELLS = (13, 21, 31)
 

@@ -65,7 +65,7 @@ never submit them.
       conditional-quality exclusion withdrawn (question stated open), arm V
       TRANSFERS cells carry Wilson CIs. Paper 1 now 29 pp, paper 2 33 pp.
       Overleaf v3 zips are the current builds (v2 stale).
-- [ ] **Before zipping latex-tmlr/ for any upload: delete `main.log`,
+- [x] **Before zipping latex-tmlr/ for any upload: delete `main.log`,
       `main.aux`, `main.out`, `main.blg` and `template-reference.tex`.**
       The .log embeds `C:/Users/soham/...` paths on nearly every line and
       would de-anonymize the submission. `main.bbl` is clean — keep it
@@ -283,3 +283,24 @@ run" in §9 removed (arm M ran it).
 Rebuttal paragraph for contamination now reads: point to §3.8; concede the
 canary/perturbed-container probes remain and offer to run them as a registered
 arm if decisive.
+
+## 2026-08-22 — Revision 4.3: submit-readiness audit, both papers
+
+Tag `v4.3-submit-ready`. Audit script (scratchpad `submit_audit.py`) does a
+clean-room compile of each Overleaf zip and checks: stray log/aux/pdf files
+(none); active `\usepackage{tmlr}` with anonymous author block (both);
+0 LaTeX errors, 0 undefined citations/references, 0 bibtex warnings (both);
+PDF Author/Title metadata empty (both); no "??" in rendered text (both);
+identity strings in sources and rendered text (none); page counts 32 / 33.
+
+Fixes made: seven leftover "revision N" / "post-council" / "external review"
+phrases removed from paper 1; paper-1 abstract condensed 356 -> 293 words;
+bundle builder now redacts `C:/Users/<anything>/` to `~` and the leak scanner
+flags Windows user paths (four files carried `C:/Users/[ANON]/...` -- not
+identity, now gone). Paper 2 unchanged except rebuilt PDF; its "earlier drafts
+omitted" sentences in App A/B are deliberate selective-reporting disclosures
+and stay.
+
+Submit-ready state: `overleaf_paper1_v4.zip`, `overleaf_paper2_v4.zip`,
+`supplementary_anonymized.zip` (518 entries, 0 leaks). Remaining items are
+user-only: Overleaf upload, OpenReview form, key rotation.

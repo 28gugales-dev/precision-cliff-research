@@ -1,6 +1,5 @@
 % ===========================================================================
-% TMLR submission build of paper1_draft.md (canonical source, revision 2 /
-% current v62 line numbering, 1284 lines). Built to mirror latex-tmlr/
+% TMLR submission build of paper1_draft.md (canonical source). Built to mirror latex-tmlr/
 % (paper 2's TMLR build) exactly; see that directory's main.tex for the
 % original statement of the conversion rules.
 %
@@ -70,24 +69,21 @@ fitness feedback --- on a constructive-geometry benchmark scored by an exact eva
 maximize the sum of radii of $N$ circles in a unit square. A weak-tier proposer does not
 search. It emits a grid template whose value is predictable in closed form from the problem
 parameters alone --- a nearest-square order $k^* = \mathrm{round}(\sqrt{N})$ with value
-function $V(k, m)$ --- registered before sampling, and that prediction is the empirical
-modal output at all seven $N$ of the original square arm; a held-out probe at five $N$
-absent from every cited scoreboard and every prior arm, registered against a recall
-alternative, recovers the mode at four cells (all three discriminating) and the template
-structure at all five. Preregistered extensions bound the result rather than
-extending it. The anchor dissolves under parent conditioning, which is the regime discovery
-loops actually run in, so every claim here is scoped to unconditioned calls. Handed the
-higher-valued construction and told to use it, the model chooses it and fails to build it
-in all 31 invalid attempts (30 by misplaced fillers): the template is not what the model prefers but what it can
-reliably execute. Delegating construction to an executed math-only program does not escape it either:
-across three registered code-channel arms --- weak tier, a fresh-draw replication, and a
-Sonnet-tier probe whose programs are genuine optimizers --- 0 of 115 valid program outputs
-exceed the family argmax (one reaches it, exactly), and the anchor value remains the modal
-weak-tier output at all three cells in both waves: the ceiling is a property of the
-math-only channel, not of the tier. The behaviour transfers to two further vendors at reduced concentration (61--67\% of
-valid outputs against 56--80\% in-family) and is bracketed by a fourth family --- one member
-escapes to the in-family rival construction, the other anchors on nothing --- so anchoring is
-not a single-vendor artifact, and its concentration is vendor-dependent.
+function $V(k, m)$ --- registered before sampling and modal at all seven $N$ of the original
+square arm, and, in a held-out probe registered against a recall alternative, at four of five
+$N$ absent from every cited scoreboard (all three discriminating cells; template structure at
+all five). Preregistered extensions bound the result: the anchor dissolves under parent
+conditioning, the regime discovery loops actually run in, so every claim is scoped to
+unconditioned calls. Handed the higher-valued construction, the model chooses it and fails to
+build it in all 31 invalid attempts: the template is not what the model prefers but what it
+can reliably execute. Delegating construction to an executed math-only program does not
+escape it: across three registered code-channel arms spanning two tiers, 0 of 115 valid
+program outputs exceed the family argmax and the anchor remains the modal weak-tier output
+--- the ceiling is a property of the channel, not of the tier. The behaviour transfers to two
+further vendors at reduced concentration (61--67\% of valid outputs against 56--80\%
+in-family) and is bracketed by a fourth family, one member escaping upward and the other
+anchoring nowhere: anchoring is not a single-vendor artifact, and its concentration is
+vendor-dependent.
 \end{abstract}
 
 \input{sec_intro_task}

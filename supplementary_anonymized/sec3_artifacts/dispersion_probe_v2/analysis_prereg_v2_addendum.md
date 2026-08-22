@@ -70,8 +70,8 @@ block only; it introduces no rule, metric, threshold, or test.
 
 The line above reading "(no such directory existed - research-corpus/ was not
 found anywhere under ~)" is FALSE and is retracted. The corpus root is
-`C:/Users/[ANON]/AppData/Local/hermes/research-corpus/`, not
-`C:/Users/[ANON]/research-corpus/`. The agent that wrote this addendum searched
+`~/AppData/Local/hermes/research-corpus/`, not
+`~/research-corpus/`. The agent that wrote this addendum searched
 the wrong root, created a decoy tree at the wrong root, and wrote the addendum
 into it. That decoy file has been replaced with a VOID pointer stub; this file
 is the canonical addendum.
