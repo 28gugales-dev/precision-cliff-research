@@ -43,14 +43,9 @@ which weights served it: the runtime accepts only the bare alias and exposes no 
 identifier, so the binding is a vendor promise rather than an attestable fact. No version number
 appears anywhere in this paper.
 
-That caveat matters because of two anomalies. Completion times ran 2.8--9 s across all 30
-invocations against 75--250 s for Haiku and 150--1170 s for Sonnet, and the reported token count
-was uniform at 49,906 across the first 20 completions, $\approx$49.9k thereafter --- a signal of metadata
-that is not per-completion, or of a cache, router-fallback or truncation path. \textbf{Neither anomaly
-appears in any released artifact} --- we therefore treat both as anecdotal context from an
-unreleased session transcript, not as data-supported properties of the tier: the ledger has no
-latency and no token field, and both
-figures come from the runtime session transcript, so a referee cannot check them.
+That caveat matters: completion-time and token-count anomalies were observed in the unreleased
+session transcript for this arm, but the ledger carries no latency or token field, so they
+appear in no released artifact and nothing below relies on them.
 
 Under those caveats the arm --- preregistered fully blind in \texttt{arm\_o\_preregistration.txt} --- was
 valid in 4 of 30 invocations (13\%) at both tolerances. At every cell it attempted a more
@@ -73,8 +68,8 @@ this size makes an on-prediction tier comparison uninterpretable; P-O3 is trivia
 De-registering three of four predictions in the one arm that disconfirmed is exactly the move
 preregistration exists to constrain, which is why it is tabled rather than narrated. And the arm
 was initially excluded from the ladder, then included once its results were known; we follow the
-later decision and report the ladder both ways --- with the arm 78\% $\rightarrow$ 100\% $\rightarrow$ 13\%, without it
-78\% $\rightarrow$ 100\% plus the qualitative shift from truncation to perturbed multi-radius hybrids, which
+later decision and report the ladder both ways --- with the arm 83\% $\rightarrow$ 100\% $\rightarrow$ 13\% on matched cells (78\% over all seven weak-tier cells), without it
+83\% $\rightarrow$ 100\% plus the qualitative shift from truncation to perturbed multi-radius hybrids, which
 is already the publishable contrast.
 
 \begin{table}[t]
@@ -164,7 +159,7 @@ arms MU and CH (\S3.5) added 180 more (180 launched, none lost), and the code-ch
 CC, CC2 and CCS (\S3.7) added 135 more (135 launched, none lost), bringing the
 unconditioned-and-elicitation corpus to 603; the cross-vendor chain is scored under its own
 registrations and adds 420 GM-chain invocations (\S3.6, \S8) and 877 arm-V attempt rows over
-325 registered invocation slots (\S3.6). One disclosure revision 1 did not carry: \textbf{20 of the 60 bare samples are pre-existing arm-F
+325 registered invocation slots (\S3.6). One disclosure: \textbf{20 of the 60 bare samples are pre-existing arm-F
 rows} ($N = 13$ ids 1--5, $N = 21$ ids 1--10, $N = 31$ ids 1--5) whose results were known when P-T1--P-T3
 were written; only trace\_v2 is fully fresh (\S6.4). Scoring used \texttt{arm\_f\_repro.py} unchanged with
 the registered $2\times10^{-3}$ window; the Fisher exact test comes from the hypergeometric tail in

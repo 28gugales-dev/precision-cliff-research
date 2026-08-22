@@ -191,3 +191,44 @@ channel stays registered future work.
 - **Supplementary**: same bundle (arm surface F→V and GM chain included).
 
 Quota note: TMLR allows 2 solo submissions/yr — these are both of them.
+
+## 2026-08-21 — Revision 4: external QA pass (ox-alpha), both papers
+
+Full LaTeX source of each paper was reviewed by `stealth/ox-alpha` (OpenRouter,
+1M context) under a TMLR-reviewer prompt; raw reviews in `reviews/`. Both came
+back "major revision" on presentation, not science. Every numeric consistency
+claim was grep-verified before editing. Pre-edit state is tagged
+`v3-pre-oxalpha`; revert with `git checkout v3-pre-oxalpha -- latex-tmlr latex-tmlr-paper1`.
+
+Paper 1 (31 pp): abstract rescoped ("all seven N of the original square arm",
+"all 31 invalid attempts (30 by misplaced fillers)", "executed math-only
+program"); untraceable "0/21" sourced to `arm_v_preregistration.md` and marked
+as an undercount vs ledger 2/23; "180 of 180" attributed to MU+CH; ladder
+headline switched to matched-cell 83% -> 100% -> 13% (78% kept as the
+all-cells figure); Table CV gemma verdict relabelled "pooled bar met;
+discriminating 26%, below bar"; arm V verdicts marked point-estimate with CI
+including bar; opus_alias latency/token anomaly paragraph cut to one sentence
+(unreleased, not relied on); every revision-history sentence removed
+(revision note under \maketitle, "revision 1/2" mentions, external/council
+review mentions, Appendix C corrections-ledger section -> one sentence in §9
+Internal checks); stale build notes removed from main.tex header.
+
+Paper 2 (33 pp): abstract carries fixed-parent contrast (92% vs 33%),
+"post-hoc" on the step-count statistic, and "at the power available" on the
+outcome null; F2 echo bound labelled a registered replication target (thresholds
+written after the destroyed first run's estimates were known); 38/200
+denominator defined (7B at Q8_0/Q4_K_M/Q3_K_M/Q2_K = 6+9+7+16); "same three
+rungs (four names)" fixed in §3.5 and App B; inferential-status block in §3
+replaced by two-sentence pointer to App A.4; conditional-quality per-parent
+breakdown in App C reduced to one non-load-bearing sentence; wave index table
+added (Table tab:wave_index) resolving the "wave 2" naming collision;
+`\nocite{*}` removed (bibliography 42 -> 28 entries, all cited); appendix
+[h] floats relaxed, page break before registered-outcomes longtable.
+
+Not applied (reviewer-request territory, new data): contamination probe at
+held-out N, classical-solver baseline, non-GGUF 2-bit arm, longer-horizon run,
+numpy/scipy code probe, same-instrument gemma pair.
+
+Artifacts: `overleaf_paper1_v4.zip`, `overleaf_paper2_v4.zip` (v3 stale),
+`latex-tmlr-openreview.zip`, `supplementary_anonymized.zip` (0 leaks),
+site PDFs + meta.json (Revision 4, 2026-08-21).

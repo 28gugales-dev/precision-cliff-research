@@ -28,7 +28,7 @@ Section 3 states the summary of this appendix and points here; nothing below is 
 
 This appendix carries the full protocol, registration text, and complete result tables for the fixed-parent dispersion probe summarized in \S3.5.
 
-\textbf{Design.} The probe runs Qwen2.5-Coder-14B at the same three rungs as the main ladder (Q8\_0, Q4\_K\_M, Q3\_K\_M, Q2\_K --- Q8\_0 registered but never attempted, per \texttt{"q8\_0": \{"skipped": "needs 2 gpus, have 1"\}} in both waves' \texttt{provenance.json}, the single P100 allocated not fitting the 8-bit file), holding the parent constant at each of six preset scores --- 0.88, 0.90, 1.04, 1.30, 1.55, 1.65 --- and logging coordinates and an echo flag per row. Wave 1 (\texttt{sec3\_\bk{}artifacts/\bk{}dispersion\_\bk{}probe/\bk{}probe\_\bk{}samples.jsonl}): 288 rows, 165 valid, 123 invalid, of which 18 are harness failures rather than model failures (\texttt{gen\_error: ValueError: logprobs is not supported}, exactly six per rung --- these neither bias between rungs nor belong in a denominator of model behaviour). Wave 2 (\texttt{sec3\_\bk{}artifacts/\bk{}dispersion\_\bk{}probe\_\bk{}v2/\bk{}}, 432 rows on out-of-sample salted seeds) has none: its rows carry no \texttt{gen\_error} field, and of its 158 invalid rows exactly one records a genuine model parse failure (\texttt{parse\_error: bad\_triple}), which stays in the denominator.
+\textbf{Design.} The probe runs Qwen2.5-Coder-14B at three of the main ladder's four rungs, Q4\_K\_M, Q3\_K\_M and Q2\_K (Q8\_0 registered but never attempted, per \texttt{"q8\_0": \{"skipped": "needs 2 gpus, have 1"\}} in both waves' \texttt{provenance.json}, the single P100 allocated not fitting the 8-bit file), holding the parent constant at each of six preset scores --- 0.88, 0.90, 1.04, 1.30, 1.55, 1.65 --- and logging coordinates and an echo flag per row. Wave 1 (\texttt{sec3\_\bk{}artifacts/\bk{}dispersion\_\bk{}probe/\bk{}probe\_\bk{}samples.jsonl}): 288 rows, 165 valid, 123 invalid, of which 18 are harness failures rather than model failures (\texttt{gen\_error: ValueError: logprobs is not supported}, exactly six per rung --- these neither bias between rungs nor belong in a denominator of model behaviour). Wave 2 (\texttt{sec3\_\bk{}artifacts/\bk{}dispersion\_\bk{}probe\_\bk{}v2/\bk{}}, 432 rows on out-of-sample salted seeds) has none: its rows carry no \texttt{gen\_error} field, and of its 158 invalid rows exactly one records a genuine model parse failure (\texttt{parse\_error: bad\_triple}), which stays in the denominator.
 
 \textbf{Registration.} The probe carries an analysis preregistration (\texttt{analysis\_prereg.md}, written before any metric was read, with an amendment timestamped before any output file was downloaded). Wave 2 carries its own preregistration (\texttt{analysis\_prereg\_v2.md}) plus a truncated-run addendum, and its own registered verdict: \textbf{FAILED}, because addendum rule R2 requires a ceiling rung (q8\_0) to land and it did not, so no trend test is reportable and every wave-2 descriptive is exploratory --- the released analyser prints this unprompted (\texttt{VERDICT: FAILED /\bk{} addendum R2: ceiling rung q8\_\bk{}0 did not land; no trend test reportable}).
 
@@ -36,7 +36,7 @@ This appendix carries the full protocol, registration text, and complete result 
 
 \textbf{The three registered echo-family measures, both waves} (\texttt{sec3\_dispersion\_registered.py}):
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering
 \caption{The three registered echo-family measures, both dispersion-probe waves.}
 \begin{tabular}{p{6.7cm}ccc}
@@ -55,7 +55,7 @@ All six of the probe's ``parents'' share identical centres, differing only in ra
 
 \textbf{Radius-variation decomposition} (post-hoc, constructed after the registered centre measures came back flat, labelled as such everywhere used):
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering
 \caption{Radius-variation decomposition by rung (post-hoc, constructed after the
 registered centre measures came back flat).}
@@ -77,8 +77,10 @@ The middle column is identically the legacy echo count in all six cells, so the 
 
 \textbf{All registered outcomes, wave 1, including those against us.} One disclosure precedes the table: the spread statistic is reconstructed, not replayed (Appendix A.2), so row 1's $p = 0.030$ is the registered test on a reconstruction, and a reader who rejects the reconstruction should treat it as unavailable.
 
+\clearpage
 \begingroup
 \footnotesize
+\setlength{\LTpre}{0pt}
 \begin{longtable}{p{4.3cm}p{6.3cm}p{3cm}}
 \caption{All registered wave-1 outcomes, including those unfavourable to the
 hypothesis.}\\
@@ -105,7 +107,7 @@ Under the registered replacement rule this returns \textbf{no category} (full ad
 
 \textbf{Loop-versus-fixed-parent comparison} (Q8\_0's condition failed, so this three-rung trend has correspondingly less power than preregistered):
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering
 \caption{Loop-versus-fixed-parent echo comparison by rung.}
 \begin{tabular}{lccc}
@@ -123,7 +125,7 @@ At the 2-bit rung the designs agree. At the upper rungs they do not: held to a f
 
 \textbf{Per-parent vectors, in full:}
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering
 \caption{Per-parent echo vectors, in full.}
 \footnotesize
@@ -171,7 +173,7 @@ Q8\_0 & 2, 2, 5, 1, 4 & 14/50 & 18 & 2 & \multicolumn{2}{l}{0.936, 1.300, 0.926,
 
 Four of five Q2\_K lineages take zero steps; their running parent is still the seeded $6 \times 5$ grid at generation nine. Because an echo can never be an accepted improvement (\texttt{accepted <= valid - echo}), the identity gap $k$ between the two --- 0, 1, 1, 2 across the four rungs --- is the count of rows that departed and still failed to beat the parent.
 
-\textbf{Conditional-quality per-parent breakdown} (pooled across both dispersion-probe waves, post-hoc, \texttt{sec3\_conditional\_quality.py}): Q4\_K\_M 164 valid, 74 departures, 60/74 (81\%) improved, 95\% CI [70\%, 89\%]; Q3\_K\_M 142 valid, 70 departures, 61/70 (87\%), CI [77\%, 94\%]; Q2\_K 133 valid, 10 departures, \textbf{8/10 (80\%)}, CI [44\%, 97\%]. Fisher on 8/10 vs 60/74, $p = 1.00$. Per-parent, where Q2\_K has data: 0.880, 2/2 against Q4\_K\_M's 21/23 (91\%); 0.900, 1/2 against 10/11; 1.040, 2/2 against 8/9 (89\%); 1.650, 3/4 against Q4\_K\_M's 6/9 (67\%) and Q3\_K\_M's 4/6. Four of Q2\_K's ten departures sit at the hardest parent (1.650), 40\% of its sample against 12\% of Q4\_K\_M's --- its departures are not drawn from easier parents. Scored against a threshold we wrote ourselves the same day, in an unlocked note (\texttt{wave3\_prereg\_heilbronn.md}, explicitly not a registration): the power floor (25 departures required, 10 observed) is not met, so no branch is confirmed. Which reference is chosen moves the exclusion line --- half of Q4\_K\_M's 81\% is 40.5\%, half of the pooled upper rungs' 84\% is 42.0\%, half of Q3\_K\_M's (the better-performing comparator) 87\% is 43.6\%. The 95\% Clopper-Pearson lower bound on 8/10 is \textbf{44.4\%}, excluding the collapse branch against all three by 3.8, 2.4 and \textbf{0.8} points respectively; had one of the ten departures failed to improve, 7/10 gives a lower bound of 34.8\% and the exclusion fails against every comparator.
+\textbf{Conditional quality.} A post-hoc per-parent breakdown of departure quality (\texttt{sec3\_conditional\_quality.py}) is released with the ledgers but not reported here: it rests on ten 2-bit departures against a floor set in an unlocked note, and \S3.6 records why it is not load-bearing.
 
 \textbf{Replication tests, exact lineage-level permutation} (distinct from the dispersion probes' JT tests --- shares only the word ``permutation''): registered ladder $p = 0.0008$ against the pooled upper three (15,504 splits), $p = 0.0079$ against Q4\_K\_M alone (252 splits --- the floor of a five-versus-five enumeration, the smallest two-sided tail such a design can return whatever the effect size). Fresh seeds: 3 steps against 14, $p = 0.0079$ (also floor-bound). IQ2 control: imatrix Q2\_K 6 steps against IQ2\_M's 16, $p = 0.135$ --- does not replicate. A call-level Fisher test on the same counts returns $p = 0.028$; the lineage-level figure is reported instead because calls within a lineage are not exchangeable (improvement at call $k$ depends on what landed earlier in the same lineage), which costs the IQ2 replication but avoids banking an unsupported significance. A design capable of distinguishing a large effect from an enormous one needs more lineages per rung, not more generations per lineage --- eight per rung would lower the floor to $1.6\times10^{-4}$.
 

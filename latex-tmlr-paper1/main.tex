@@ -11,14 +11,6 @@
 %   sec_tiers_elicitation.tex   lines 593-919  (S5, S6)
 %   sec_related_repro.tex       lines 923-1177 (S7, S8, S9)
 %   sec_appendices.tex          lines 1181-end (Appendices A, B, C)
-% NOTE 2026-08-17: S3.7 (arm V) added to the source (~55 lines) and mirrored
-%   into sec_forecast_transfer.tex (+S5/S8/S9 edits); line ranges above shifted.
-% NOTE 2026-08-17 (revision 3): abstract condensed; S1 contribution (4) and
-%   S2.4 notation table added (sec_intro_task.tex); S3 arms-index table,
-%   Tables M/MU/CH/CV added and S3.6+S3.7 merged into one S3.6 cross-vendor
-%   chain (sec_forecast_transfer.tex); all S3.7 cross-refs now S3.6.
-% Title from line 1; revision note lines 7-10 (kept, italic, after
-% \maketitle); abstract lines 15-65.
 % Conversion rules: prose verbatim; pipe tables -> booktabs/longtable;
 % citations converted from the source's inline arXiv ids to natbib
 % \citet/\citep per TMLR's formatting instructions (see the bibliography
@@ -70,10 +62,6 @@ Unconditioned Zero-Shot Circle Packing}
 
 \maketitle
 
-\begin{center}
-\emph{(Revision 3, 2026-08-17.)}
-\end{center}
-
 \begin{abstract}
 Language models placed in the proposal role of discovery loops such as FunSearch and
 AlphaEvolve are assumed to explore a solution space. We characterize the
@@ -83,12 +71,12 @@ maximize the sum of radii of $N$ circles in a unit square. A weak-tier proposer 
 search. It emits a grid template whose value is predictable in closed form from the problem
 parameters alone --- a nearest-square order $k^* = \mathrm{round}(\sqrt{N})$ with value
 function $V(k, m)$ --- registered before sampling, and that prediction is the empirical
-modal output at every tested $N$. Preregistered extensions bound the result rather than
+modal output at all seven $N$ of the original square arm. Preregistered extensions bound the result rather than
 extending it. The anchor dissolves under parent conditioning, which is the regime discovery
 loops actually run in, so every claim here is scoped to unconditioned calls. Handed the
 higher-valued construction and told to use it, the model chooses it and fails to build it
-in 30 of 31 invalid attempts: the template is not what the model prefers but what it can
-reliably execute. Delegating construction to an executed program does not escape it either:
+in all 31 invalid attempts (30 by misplaced fillers): the template is not what the model prefers but what it can
+reliably execute. Delegating construction to an executed math-only program does not escape it either:
 across three registered code-channel arms --- weak tier, a fresh-draw replication, and a
 Sonnet-tier probe whose programs are genuine optimizers --- 0 of 115 valid program outputs
 exceed the family argmax (one reaches it, exactly), and the anchor value remains the modal

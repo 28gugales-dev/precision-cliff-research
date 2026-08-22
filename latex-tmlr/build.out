@@ -1,0 +1,340 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo))
+(tmlr.sty
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/eso-pic\eso-pic.sty
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg)
+
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+)) (fancyhdr.sty)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty))
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty)))
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+)))
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
+ty) (C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+) (C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+) (C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc
+.sty)))
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
+echeck.sty
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquec
+ounter.sty)))
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty))
+ (C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty)
+ (C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg)))
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.sty
+
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype-pdf
+tex.def)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.cfg
+)) (C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def) (main.aux)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg)) (main.out) (main.out)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmss.fd)
+(sec_intro_cliff.tex
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd)
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg)
+[1{C:/Users/soham/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/so
+ham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Users/soham/
+AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/soham/
+AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}] [2{C:/Users/soham/
+AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
+\T1/lmr/m/n/10 (+20) This sec-tion con-denses the ex-e-cuted quan-ti-za-tion re
+-sults of the an-tecedent study
+[3] [4]
+Underfull \vbox (badness 10000) has occurred while \output is active [5]
+[6]
+Underfull \vbox (badness 10000) has occurred while \output is active [7])
+(sec_forensic_repair.tex
+Underfull \vbox (badness 10000) has occurred while \output is active [8]
+Underfull \vbox (badness 5175) has occurred while \output is active [9]
+Underfull \vbox (badness 10000) has occurred while \output is active [10]
+Overfull \hbox (3.5457pt too wide) in paragraph at lines 47--47
+[]|\T1/lmr/m/n/10 (-20) Repairable?| 
+
+Overfull \hbox (3.5457pt too wide) in paragraph at lines 51--51
+[]|\T1/lmr/m/n/10 (-20) Repairable?| 
+
+Underfull \hbox (badness 7099) in paragraph at lines 57--57
+[]|\T1/lmr/m/n/10 (+20) Hash-locked pre-reg, ex-ter-nally
+
+Underfull \hbox (badness 2626) in paragraph at lines 57--58
+[]|\T1/lmr/m/n/10 (+20) Registration er-rors --- dis-close,
+
+Underfull \hbox (badness 5388) in paragraph at lines 58--59
+[]|\T1/lmr/m/n/10 (+20) Map cov-ers Haiku arm only;
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--59
+[]|\T1/lmr/m/n/10 (+20) Serving-signature
+
+Underfull \hbox (badness 3078) in paragraph at lines 60--60
+[]|\T1/lmr/m/n/10 (+20) Sampling pa-ram-e-
+
+Underfull \hbox (badness 5274) in paragraph at lines 61--61
+[]|\T1/lmr/m/n/10 (+20) Alias $\OMS/lmsy/m/n/10 !$ \T1/lmr/m/n/10 (+20) weights
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--63
+[]|\T1/lmr/m/n/10 (+20) Inherited sys-
+[11] [12] [13] [14]
+Underfull \vbox (badness 10000) has occurred while \output is active [15]
+Overfull \hbox (193.17192pt too wide) in paragraph at lines 133--150
+ [][] 
+[16]
+Underfull \vbox (badness 10000) has occurred while \output is active [17]
+Underfull \vbox (badness 10000) has occurred while \output is active [18])
+(sec_evidence_map.tex [19]
+Underfull \hbox (badness 1924) in paragraph at lines 24--24
+[]|\T1/lmr/m/n/8 (+20) Ÿ3 14B lad-der: vi-a-bil-ity 22/22/24/19, va-lid-ity
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
+[]|\T1/lmtt/m/n/8 sec3_artifacts/precision_sweep_14b_v2_output/**/
+
+Underfull \hbox (badness 7777) in paragraph at lines 25--26
+\T1/lmtt/m/n/8 candidates_precision_14b.jsonl \T1/lmr/m/n/8 (+20) (200 rows), r
+e-played by
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+[]|\T1/lmtt/m/n/8 sec3_artifacts/precision_sweep_14b_fresh_output/**/
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+\T1/lmtt/m/n/8 candidates_precision_14b_fresh.jsonl \T1/lmr/m/n/8 (+20) (100 ro
+ws), same
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--32
+[]|\T1/lmtt/m/n/8 sec3_artifacts/**/mustdiffer_14b.jsonl\T1/lmr/m/n/8 (+20) ,
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+[]|\T1/lmtt/m/n/8 sec3_artifacts/precision_sweep_14b_iq2_output/**/
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--38
+[]|\T1/lmtt/m/n/8 sec3_artifacts/dispersion_probe/probe_samples.jsonl \T1/lmr/m
+/n/8 (+20) (288
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
+[]|\T1/lmtt/m/n/8 sec3_artifacts/precision_sweep_14b_v2_output/**/state/q2_
+
+Underfull \hbox (badness 10000) in paragraph at lines 64--65
+[]|\T1/lmtt/m/n/8 sec3_artifacts/runners/kaggle_precision_sweep_14b_
+
+Underfull \hbox (badness 2293) in paragraph at lines 64--65
+\T1/lmtt/m/n/8 fresh.py \T1/lmr/m/n/8 (+20) header, which reads \T1/lmtt/m/n/8 
+F1 Improvement (seed-level,
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
+[]|\T1/lmtt/m/n/8 wave4_artifacts/wave4_tiers.jsonl \T1/lmr/m/n/8 (+20) (120 ro
+ws), re-
+
+Underfull \hbox (badness 4634) in paragraph at lines 67--68
+\T1/lmr/m/n/8 (+20) played by \T1/lmtt/m/n/8 wave4_analysis.py \T1/lmr/m/n/8 (+
+20) with no ar-gu-ments, which
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
+\T1/lmr/m/n/8 (+20) re-com-putes ev-ery echo and score from stored co-or-
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
+\T1/lmr/m/n/8 (+20) di-nates and prints each ver-dict la-bel. Reg-is-tra-tion
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
+\T1/lmtt/m/n/8 wave4_prereg_tiers_heilbronn.md \T1/lmr/m/n/8 (+20) (SHA-256 \T1
+/lmtt/m/n/8 7b3e67dc...\T1/lmr/m/n/8 (+20) ,
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--71
+[]|\T1/lmtt/m/n/8 sec3_7b_repro.py\T1/lmr/m/n/8 (+20) , run with no ar-gu-ments
+, from
+
+Underfull \hbox (badness 7814) in paragraph at lines 70--71
+\T1/lmtt/m/n/8 sec3_artifacts/precision_sweep/\T1/lmr/m/n/8 (+20) . Nar-ra-tive
+ and scope
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
+[]|\T1/lmtt/m/n/8 wave3_output/precision_sweep_14b_heilbronn/candidates_
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
+\T1/lmtt/m/n/8 precision_14b_heilbronn.jsonl \T1/lmr/m/n/8 (+20) (495 rows), re
+-played by
+
+Underfull \hbox (badness 1838) in paragraph at lines 76--77
+\T1/lmtt/m/n/8 wave3_analysis.py \T1/lmr/m/n/8 (+20) with no ar-gu-ments in ex-
+act arith-metic;
+
+Underfull \hbox (badness 1946) in paragraph at lines 79--80
+\T1/lmr/m/n/8 (+20) te-ger arith-metic. Reg-is-tra-tion \T1/lmtt/m/n/8 wave5_pr
+ereg_labs.md \T1/lmr/m/n/8 (+20) SHA
+
+Underfull \hbox (badness 2529) in paragraph at lines 84--84
+[]|\T1/lmr/m/n/8 (+20) Ÿ8 wave 7b (competence-matched retry): UN-
+
+Underfull \hbox (badness 10000) in paragraph at lines 85--86
+[]|\T1/lmtt/m/n/8 wave7b_output/wave7b_{phi4_14b,mistral24b}/ \T1/lmr/m/n/8 (+2
+0) ledgers (100
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
+[]|\T1/lmtt/m/n/8 arm_f_raw.json \T1/lmr/m/n/8 (+20) rows with \T1/lmtt/m/n/8 a
+rm == "trace"\T1/lmr/m/n/8 (+20) , scored by
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--110
+[]|\T1/lmtt/m/n/8 arm_r_artifacts/b2_alias_n{13,21,31}.jsonl\T1/lmr/m/n/8 (+20)
+ , re-played by
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--125
+[]|\T1/lmtt/m/n/8 sec3_artifacts/dispersion_probe/\T1/lmr/m/n/8 (+20) , \T1/lmt
+t/m/n/8 sec3_
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--125
+\T1/lmtt/m/n/8 artifacts/dispersion_probe_v2/\T1/lmr/m/n/8 (+20) , re-com-puted
+ by
+
+Underfull \hbox (badness 2261) in paragraph at lines 124--125
+\T1/lmtt/m/n/8 sec3_dispersion_registered.py\T1/lmr/m/n/8 (+20) ; the me-dian m
+ea-sure's reg-
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--131
+[]|\T1/lmtt/m/n/8 sec3_artifacts/dispersion_probe_v2/analysis_prereg_v2.md
+
+Underfull \hbox (badness 3482) in paragraph at lines 135--135
+[]|\T1/lmr/m/n/8 (+20) Ÿ3 lad-der reg-is-tra-tions (fresh-seed bound \T1/lmtt/m
+/n/8 q2_k
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
+[]|\T1/lmtt/m/n/8 sec3_artifacts/runners/kaggle_precision_sweep_14b_
+
+Underfull \hbox (badness 10000) in paragraph at lines 142--143
+[]|\T1/lmtt/m/n/8 sec3_artifacts/dispersion_probe/probe_samples.jsonl \T1/lmr/m
+/n/8 (+20) (par-
+
+Underfull \hbox (badness 1400) in paragraph at lines 142--143
+\T1/lmr/m/n/8 (+20) waves' \T1/lmtt/m/n/8 provenance.json\T1/lmr/m/n/8 (+20) , 
+which record \T1/lmtt/m/n/8 "q8_0": {"skipped":
+
+Underfull \hbox (badness 2418) in paragraph at lines 145--146
+[]|\T1/lmtt/m/n/8 sec3_artifacts/dispersion_probe/probe_samples.jsonl\T1/lmr/m/
+n/8 (+20) , rows
+
+Underfull \hbox (badness 2181) in paragraph at lines 159--159
+\T1/lmr/m/n/8 (+20) 2607.10252, 2607.08734, 2604.19884, 2509.19349,
+ignored error: Infinite glue shrinkage found in box being split [20 <./fig4_fam
+ily_echo.png>]
+ignored error: Infinite glue shrinkage found in box being split [21]
+ignored error: Infinite glue shrinkage found in box being split [22]) (main.bbl
+
+Underfull \vbox (badness 10000) has occurred while \output is active [23]
+[24]) (sec_appendices.tex [25] [26]
+Underfull \hbox (badness 2080) in paragraph at lines 23--24
+[]\T1/lmr/bx/n/10 (+20) Nine are two-sided Fisher ex-act tests on counts \T1/lm
+r/m/n/10 (+20) ($\OML/lmm/m/it/10 p \OT1/lmr/m/n/10 (+20) = 5\OML/lmm/m/it/10 :
+\OT1/lmr/m/n/10 (+20) 7 \OMS/lmsy/m/n/10 ^^B \OT1/lmr/m/n/10 (+20) 10[]\OML/lmm
+/m/it/10 ; \OT1/lmr/m/n/10 (+20) 1\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 (+20) 7 \OM
+S/lmsy/m/n/10 ^^B \OT1/lmr/m/n/10 (+20) 10[]\OML/lmm/m/it/10 ; \OT1/lmr/m/n/10 
+(+20) 3\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 (+20) 4 \OMS/lmsy/m/n/10 ^^B
+[27]
+Underfull \hbox (badness 10000) in paragraph at lines 97--98
+[]|\T1/lmr/m/n/8 (+20) wrong sign --- un-
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
+[]|$\OT1/lmr/m/n/8 (+20) +0\OML/lmm/m/it/8 :\OT1/lmr/m/n/8 (+20) 00725 [+0\OML/
+lmm/m/it/8 :\OT1/lmr/m/n/8 (+20) 0018\OML/lmm/m/it/8 ;  \OT1/lmr/m/n/8 (+20) +0
+\OML/lmm/m/it/8 :\OT1/lmr/m/n/8 (+20) 0139]$ \T1/lmr/m/n/8 (+20) /
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
+\OMS/lmsy/m/n/8 ^^@\OT1/lmr/m/n/8 (+20) 0\OML/lmm/m/it/8 :\OT1/lmr/m/n/8 (+20) 
+00329 [\OMS/lmsy/m/n/8 ^^@\OT1/lmr/m/n/8 (+20) 0\OML/lmm/m/it/8 :\OT1/lmr/m/n/8
+ (+20) 0254\OML/lmm/m/it/8 ;  \OT1/lmr/m/n/8 (+20) +0\OML/lmm/m/it/8 :\OT1/lmr/
+m/n/8 (+20) 0113]$ \T1/lmr/m/n/8 (+20) /
+[28] [29]
+Underfull \hbox (badness 10000) in paragraph at lines 174--175
+[]\T1/lmr/bx/n/10 (+20) Conditional qual-ity. \T1/lmr/m/n/10 (+20) A post-hoc p
+er-parent break-down of de-par-ture qual-ity
+[30] [31]) [32] (main.aux) )
+(see the transcript file for additional information)<C:/Users/soham/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/soham/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmbx7.pfb><C:/Users/soham/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Users/soham/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/soham/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/soham/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><C:/Users/soham/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/soham/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/soham/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/soham/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/soham/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/soham/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/soham/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/lm/lmri8.pfb><C:/Users/soham/AppData/Local/Programs/Mi
+KTeX/fonts/type1/public/lm/lmssbo10.pfb><C:/Users/soham/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/soham/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/soham/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/soham/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Users/soham/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/soham/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/soham/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/soham/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/soham/AppData/Local/Programs/Mi
+KTeX/fonts/type1/public/lm/lmtt9.pfb>
+Output written on main.pdf (32 pages, 801537 bytes).
+Transcript written on main.log.
+pdflatex: major issue: So far, you have not checked for MiKTeX updates.

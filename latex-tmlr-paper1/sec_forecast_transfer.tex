@@ -64,7 +64,7 @@ provenance corrections are itemized in \S9 and Appendix A.
 \subsection{The formula sits at the mode ceiling}
 
 An exact point prediction invites a fair objection: a per-sample hit rate well short of 100\% is
-not ``predicting the exact output'', which is what revision 1's abstract claimed. The number should be read against the sampling entropy of the distribution, computed in
+not ``predicting the exact output''. The number should be read against the sampling entropy of the distribution, computed in
 \texttt{p11\_mode\_baseline.json} (bare arm, $2\times10^{-3}$ buckets). At \textbf{all seven tested $N$ the predicted
 value is the empirical modal output} --- four discriminating cells plus three where the
 prediction and the family argmax coincide, so the anchoring-specific evidence sits in the
@@ -140,7 +140,7 @@ $r = (\sqrt{2}-1)/12$ correctly in prose, then transcribed 0.03571429.
 
 \subsection{Preregistered extension (arm M): the filler branch fails at $m > 1$; the fifth $k$ confirms}
 
-Two external reviews of this revision observed, correctly, that (i) $V(k, m)$'s filler branch
+Two gaps remained after the square arm: (i) $V(k, m)$'s filler branch
 was empirically supported only at $m \in \{0, 1\}$ --- the converge cells $N = 17$ and 37 both have
 $m = 1$ --- and (ii) the $k = 8$ trap zone appeared in Figure 1 but was never sampled. Arm M closes
 both gaps and was registered before sampling (\texttt{arm\_m\_preregistration.txt}, commit \texttt{e528c6b};
@@ -203,7 +203,7 @@ rectangle, and $V(k, m)$ does not describe it.''
 
 \subsection{Preregistered extension (arms MU and CH): the anchor does not transfer to one-parent calls, and handing the model the argmax does not dislodge the template}
 
-Two questions were still open after arm M, both pressed by the council review of this revision.
+Two questions were still open after arm M.
 Does the unconditioned anchoring result say anything about calls that carry a parent
 program --- the regime evolutionary loops actually run in --- and does the \S8
 arithmetic-tractability alternative survive a direct probe? Arms MU and CH were registered
@@ -308,7 +308,7 @@ pooled & --- & template 2 of 3 cells & 14/45 & \textbf{31/31} (30 misplaced fill
 \end{small}
 \end{center}
 
-Raw rows verbatim in \texttt{arm\_mu\_collect.jsonl} (180 of 180 launched invocations collected, no
+Raw rows verbatim in \texttt{arm\_mu\_collect.jsonl} (180 of 180 launched invocations collected across arms MU and CH, no
 runtime deaths); scoring in \texttt{arm\_mu\_analysis.py}, committed before sampling completed; frozen
 output in \texttt{arm\_mu\_results.txt}. This arm brings the study corpus to 468 invocations.
 
@@ -329,9 +329,9 @@ in full.
 \toprule
 Vendor & Model & Instrument & Registered test & Verdict \\
 \midrule
-Google & gemma-4-26b & first-party API, 7 $N$ $\times$ 20 & pooled $\ge$ 30\%; cell-level $\ge$ 5; falsifier $\ge$ 4 fails & pooled \textbf{HELD} (57.5\%; discriminating cells 11/43); cell-level short (2/5, falsifier not triggered); all three misses are the \emph{rival construction} (27/43) \\
-Cohere & north-mini-code & free-tier alias, 5 $N$ $\times$ 5 & V1 $\ge$ 50\% of valid on-prediction; V2 rival $\le$ 10\% & \textbf{TRANSFERS} (8/12 = 67\%); V2 HOLDS (0/4) \\
-OpenAI (open-weight) & gpt-oss-20b & free-tier alias, 5 $N$ $\times$ 5 & same & \textbf{TRANSFERS} (11/18 = 61\%); V2 HOLDS (0/9) \\
+Google & gemma-4-26b & first-party API, 7 $N$ $\times$ 20 & pooled $\ge$ 30\%; cell-level $\ge$ 5; falsifier $\ge$ 4 fails & pooled bar met (57.5\%); discriminating cells 11/43 = 26\%, \textbf{below} the bar; cell-level short (2/5, falsifier not triggered); all three misses are the \emph{rival construction} (27/43) \\
+Cohere & north-mini-code & free-tier alias, 5 $N$ $\times$ 5 & V1 $\ge$ 50\% of valid on-prediction; V2 rival $\le$ 10\% & \textbf{TRANSFERS}, point-estimate (8/12 = 67\%; CI includes bar); V2 HOLDS (0/4) \\
+OpenAI (open-weight) & gpt-oss-20b & free-tier alias, 5 $N$ $\times$ 5 & same & \textbf{TRANSFERS}, point-estimate (11/18 = 61\%; CI includes bar); V2 HOLDS (0/9) \\
 Google & gemma-4-31b & free-tier alias, 5 $N$ $\times$ 5 & same & \textbf{DOES-NOT-TRANSFER} (0/15); V2 HOLDS (0/3) \\
 10 further aliases & (5 vendors) & free-tier & floor: $\ge$ 10 of 25 invocations valid & BELOW-FLOOR; failure taxonomies logged, no claim in either direction \\
 \bottomrule
@@ -448,8 +448,8 @@ cleared the floor, and their registered verdicts split:
 \toprule
 alias (vendor) & valid & V1 on-prediction & V1 verdict (bar: $\ge$50\%) & V2 rival-argmax (bar: $\le$10\%) \\
 \midrule
-\texttt{north-mini-code} (Cohere) & 12 & 8/12 [39--86\%] & \textbf{TRANSFERS} & 0/4 $\rightarrow$ \textbf{HOLDS} \\
-\texttt{gpt-oss-20b} (OpenAI, open-weight) & 18 & 11/18 [39--80\%] & \textbf{TRANSFERS} & 0/9 $\rightarrow$ \textbf{HOLDS} \\
+\texttt{north-mini-code} (Cohere) & 12 & 8/12 [39--86\%] & \textbf{TRANSFERS} (point est.) & 0/4 $\rightarrow$ \textbf{HOLDS} \\
+\texttt{gpt-oss-20b} (OpenAI, open-weight) & 18 & 11/18 [39--80\%] & \textbf{TRANSFERS} (point est.) & 0/9 $\rightarrow$ \textbf{HOLDS} \\
 \texttt{gemma-4-31b-it} (Google) & 15 & 0/15 = 0\% & \textbf{DOES-NOT-TRANSFER} & 0/3 $\rightarrow$ \textbf{HOLDS} \\
 \bottomrule
 \end{tabular}
@@ -461,8 +461,8 @@ registered construction values at 61--67\% of valid outputs (point estimates abo
 50\% bar; the bracketed Wilson 95\% intervals include it, so each verdict is a
 point-estimate pass at $n = 12$ and $n = 18$) --- and the strong form holds
 everywhere evaluable \emph{within this arm}: zero rival-argmax emissions in 16
-discriminating-cell validities (the registration recorded the original family's prior for
-the same statistic as 0/21; \S3.6's gemma-4-26b, under the GM-chain instrument, is the
+discriminating-cell validities (the registration, \texttt{arm\_v\_preregistration.md}, recorded the original family's prior for
+the same statistic as 0/21 --- an undercount against the shipped ledger's 2/23 in \S3.3; \S3.6's gemma-4-26b, under the GM-chain instrument, is the
 standing exception --- its discriminating-cell mode \emph{is} the rival). And it is not universal:
 gemma-4-31b, clearing the same floor, lands the prediction never. Its valid packings are unanchored and low
 (bests 0.88--1.85 against predictions 1.63--3.03) --- not the rival, not the template, just
@@ -475,7 +475,7 @@ the same table that bounds its generality.
 The gemma pair needs stating precisely, because this family now appears on both sides, and
 the prompts are identical across the two arms --- what differs is parameter count, serving
 path and sample budget, not the elicitation. Under the GM-chain instrument (first-party,
-pinned temperature, $7 \times 20$), gemma-4-\textbf{26b} pooled-HELD at 57.5\% (the mixed-serving
+pinned temperature, $7 \times 20$), gemma-4-\textbf{26b} met the pooled bar at 57.5\% while its discriminating-cell rate (26\%) fell below it (the mixed-serving
 accounting; first-party-only, 59.0\% --- \S8's registered deviation applies to this figure)
 while emitting the \emph{rival} construction at 63\% of discriminating-cell validities; under arm
 V's free-tier instrument ($5 \times 5$), gemma-4-\textbf{31b} through a rate-starved alias (Google AI
