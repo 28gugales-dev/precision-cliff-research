@@ -232,3 +232,28 @@ numpy/scipy code probe, same-instrument gemma pair.
 Artifacts: `overleaf_paper1_v4.zip`, `overleaf_paper2_v4.zip` (v3 stale),
 `latex-tmlr-openreview.zip`, `supplementary_anonymized.zip` (0 leaks),
 site PDFs + meta.json (Revision 4, 2026-08-21).
+
+## 2026-08-21 — Revision 4.1 (paper 1): family-property softening + contribution reorder
+
+Tag `v4.1-family-scope`. Abstract close now "transfers to two further vendors at
+reduced concentration (61–67% of valid outputs against 56–80% in-family) ... so
+anchoring is not a single-vendor artifact, and its concentration is
+vendor-dependent". §3.6 title and verdict sentence match; one clause added on
+why reduced concentration on byte-identical prompts is what a shared attractor
+predicts. Contributions reordered: (1) choice/execution dissociation (CH + CC
+chain, scope-independent), (2) closed form, (3) tier, (4) faithfulness,
+(5) family boundary. "Contribution 2" cross-ref in §5 updated to 3.
+
+### Pre-drafted rebuttal paragraphs (paper 1) — paste-ready, normal prose
+
+**If a reviewer says the scope is too narrow (generation-0, weak tier, code-free):**
+
+> We agree the measured regime is the unconditioned call, and the paper says so in the abstract, §2.1 and §8. Three registered arms were run specifically to find the edges of that regime rather than to extend the claim past them: arm MU shows the anchor dissolves under one-parent conditioning, the tier ladder shows the frontier tier escapes it, and arms CC/CC2/CCS show that a math-only code channel does not. Each is reported as a boundary, not as a caveat. The contribution that does not depend on the regime is the choice/execution dissociation (contribution 1): the model selects the provably better construction when shown it and cannot instantiate it in text (0/31) or in executed code (0/115), across two tiers. That is a statement about what the model can build, and it holds whether or not any deployed loop issues unconditioned calls. The library-enabled code channel (numpy/scipy) is the one loop-relevant regime we have not measured; it is named as such in §2.1 and §8, and we would run it as a registered arm if the reviewers consider it decisive.
+
+**If a reviewer raises the pipeline provenance (sole author, model-generated harness and prose, same-family QA):**
+
+> Every artifact the claims rest on is checkable without trusting the process that produced it. The scoring path is an exact evaluator verified against a linear-programming oracle on 83 configurations to 1e-9; every registered arm has a preregistration and frozen prompt hashes committed to a public repository before sampling, with the commit serving as the external timestamp; every invocation is in the released ledgers verbatim; and every analysis script was committed before its data arrived and is replayable with no arguments. The internal model-based checks are disclosed as quality assurance, not as review, and the correction ledger they produced is in the supplementary so the reader can see what changed and why. We would rather a reviewer distrust the process and verify the artifact than the reverse, which is why the artifact is built to be verified.
+
+**If a reviewer says the transfer rates show a weaker phenomenon, not the same one:**
+
+> The registered transfer criterion is modal identity on byte-identical prompts, not equal concentration, and the paper now states the concentration gap explicitly (61–67% at the transfer vendors against 56–80% in-family). Reduced concentration on the same modal value at a different vendor is what a shared attractor predicts; matching concentration would be harder to distinguish from shared training text. We claim family-bounded transfer, not a universal, and the gemma pair is reported precisely because it bounds the claim from both sides.

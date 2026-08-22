@@ -55,18 +55,18 @@ standard here, not a contribution in itself \citep{thomas2026mitigatingllmbasedp
 our twist is what is locked --- exact-output point predictions from a closed form, on a held-out
 container.
 
-\textbf{Contributions.} (1) \emph{A closed form that names the modal model output in advance.} $k^*(N)$ with
+\textbf{Contributions.} (1) \emph{A choice/execution dissociation: the model selects the better construction and cannot build it through either channel.} Handed the provably higher-valued in-family construction with its score, the weak tier chooses it, then fails to instantiate it in all 31 invalid attempts (arm CH, \S3.5); delegated to an executed math-only program, the same ceiling holds across two tiers and a fresh-draw replication --- 0 of 115 valid program outputs exceed the family argmax (arms CC/CC2/CCS, \S3.7). The template is not what the model prefers but what it can reliably execute, in text or in code. This finding does not depend on whether any deployed loop runs unconditioned calls. (2) \emph{A closed form that names the modal model output in advance.} $k^*(N)$ with
 $V(k, m)$ and $T(k, N)$ identify the value a weak-tier proposer emits most often at a given $N$,
 verified against a linear-programming oracle on 83 configurations to within $10^{-9}$ and tested out
 of sample on two containers, the rectangle rule restated ($q^* = \mathrm{round}(\sqrt{N/a})$,
 $p^* = \mathrm{round}(\sqrt{N \cdot a})$) but never refitted. Prior work publishes functional forms predicting
 \emph{aggregate} metrics ahead of a run \citep{kaplan2020scalinglawsneurallanguage,hoffmann2022trainingcomputeoptimallargelanguage,snell2024predictingemergentcapabilitiesfinetuning}; to our knowledge none
 predicts a specific multi-decimal \emph{individual emitted output value} ahead of sampling. The claim
-is scoped to the weak tier (\S5). (2) \emph{A tier boundary condition, as three attractor families.}
+is scoped to the weak tier (\S5). (3) \emph{A tier boundary condition, as three attractor families.}
 Ambition rises monotonically with nominal tier; validity does not --- 83\% $\rightarrow$ 100\% $\rightarrow$ 13\% at the
 primary tolerance on matched cells (78\% over all seven weak-tier cells), 64\% $\rightarrow$ 90\% $\rightarrow$ 13\% at $10^{-9}$. The most ambitious tier attempts recursive gaskets
 and mostly fails to produce a valid packing; it was addressed through a bare serving alias and
-appears as \texttt{opus\_alias} with that caveat everywhere. (3) \emph{Checkable faithfulness, and trace
+appears as \texttt{opus\_alias} with that caveat everywhere. (4) \emph{Checkable faithfulness, and trace
 requests as interventions.} Method lines are checkable against emitted coordinates, and 54 of
 56 scoreable claims (96.4\%) describe the object actually built --- a clean, well-powered finding
 (\S6.5). Requesting the line at all is an intervention rather than an observation: the
@@ -74,9 +74,9 @@ concentration shift it produced (87\% vs 70\%, $p = 0.0325$ uncorrected) fails m
 correction, is carried by one of three cells and is wave-confounded (\S6.4), so it is reported
 as met-as-registered exploratory material, not a demonstrated effect. Studies collecting
 process descriptors \emph{by request} are nonetheless measuring a perturbed distribution.
-(4) \emph{A family boundary, measured from both sides --- and a near-deterministic strong form.}
-Anchoring is a family property, not a vendor artifact: it transfers to two further vendors'
-weak models (61--67\% of valid outputs, \S3.6), while one further family brackets it ---
+(5) \emph{A family boundary, measured from both sides --- and a near-deterministic strong form.}
+Anchoring is not a single-vendor artifact: it transfers to two further vendors'
+weak models at reduced concentration (61--67\% of valid outputs against 56--80\% in-family, \S3.6), while one further family brackets it ---
 gemma-4-26b escapes \emph{upward} to the in-family rival construction (27/43 discriminating-cell
 validities) and gemma-4-31b, above the same validity floor, anchors on nothing (\S3.6). Where
 anchoring holds, its strong form is near-deterministic: pooling every discriminating-cell
@@ -84,9 +84,7 @@ validity across the original-family and transfer-vendor arms, the provably bette
 rival is emitted 3 times in 147 (arm F 2/57, trace 1/53, rectangle 0/11, arm M 0/10, arm V
 0/16 --- a descriptive pool over separately registered arms, each reported at its own bar in
 \S3--\S4; gemma-4-26b, the family that does \emph{not} anchor at its discriminating cells, is the
-counterexample that proves the statistic is a family trait, \S3.6). The mechanism
-decomposition (arm CH, \S3.5) locates the boundary in execution, not selection: the template
-is not what the model prefers but what it can reliably build.
+counterexample that proves the statistic is a family trait, \S3.6).
 
 \textbf{Non-claim guard.} Everything here is a behavioral regularity over emitted outputs. We make
 no claim about mechanism inside the weights, and the paper uses that vocabulary throughout: the

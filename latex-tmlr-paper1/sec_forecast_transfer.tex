@@ -312,7 +312,7 @@ Raw rows verbatim in \texttt{arm\_mu\_collect.jsonl} (180 of 180 launched invoca
 runtime deaths); scoring in \texttt{arm\_mu\_analysis.py}, committed before sampling completed; frozen
 output in \texttt{arm\_mu\_results.txt}. This arm brings the study corpus to 468 invocations.
 
-\subsection{Preregistered cross-vendor chain (arms GM3 and V): the attractor is a family property, and its boundary runs both ways}
+\subsection{Preregistered cross-vendor chain (arms GM3 and V): the attractor transfers at reduced concentration, and its boundary runs both ways}
 
 Every arm above addresses one vendor's models. Two registered arms take the same
 byte-identical prompts across vendors --- arm GM3 under a laboratory-grade instrument against
@@ -463,11 +463,14 @@ point-estimate pass at $n = 12$ and $n = 18$) --- and the strong form holds
 everywhere evaluable \emph{within this arm}: zero rival-argmax emissions in 16
 discriminating-cell validities (the registration, \texttt{arm\_v\_preregistration.md}, recorded the original family's prior for
 the same statistic as 0/21 --- an undercount against the shipped ledger's 2/23 in \S3.3; \S3.6's gemma-4-26b, under the GM-chain instrument, is the
-standing exception --- its discriminating-cell mode \emph{is} the rival). And it is not universal:
+standing exception --- its discriminating-cell mode \emph{is} the rival). The transfer is at reduced
+concentration: 61--67\% on-prediction against 56--80\% in-family (\S3.2). Reduced concentration at
+different vendors, on byte-identical prompts, landing on the same modal value is what a shared
+attractor predicts; equal concentration would be harder to separate from shared training text. And it is not universal:
 gemma-4-31b, clearing the same floor, lands the prediction never. Its valid packings are unanchored and low
 (bests 0.88--1.85 against predictions 1.63--3.03) --- not the rival, not the template, just
 weaker de-novo construction. Under the registration's falsification map, the family-specific branch fires --- any model
-clearing the floor with DOES-NOT-TRANSFER makes the closed form a family property, stated
+clearing the floor with DOES-NOT-TRANSFER makes the closed form a family-bounded property, stated
 in \S5 with data rather than a caveat --- while the map's all-transfer branch fails on gemma
 alone, so the reading that anchoring is an artifact of the original family is defeated by
 the same table that bounds its generality.
