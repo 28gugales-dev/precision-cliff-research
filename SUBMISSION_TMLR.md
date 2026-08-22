@@ -46,6 +46,25 @@ never submit them.
 - [x] Compiled locally (MiKTeX installed): 31 pp, 0 errors, 0 undefined
       refs, GUIDE-LLM in bibliography. 8 overfull hboxes remain — cosmetic,
       fix at proof stage if desired.
+- [x] Proof of rendered PDF vs `paper2_short.md`, prose-parity pass
+      (2026-08-16, agent): all 124 prose paragraphs shingle-checked against
+      the rendered text. 112 matched verbatim; 12 flagged and each resolved
+      as a deliberate transformation with content verified present —
+      inline citations rendered via natbib \citet (4), unicode math
+      normalisation (2), SHA/ellipsis line-rendering (3), and scientific
+      notation re-typeset (`7.8e-13` → $7.8\times10^{-13}$, `1.6e-4` →
+      $1.6\times10^{-4}$) (2), plus one long-digest wrap. No dropped or
+      altered content found. Human skim still worthwhile but no longer
+      load-bearing.
+- [x] §7 related-work paragraph added (2026-08-16, mirrored in
+      `paper2_short.md`, `paper2_draft.md`, `sec_forensic_repair.tex`):
+      situates parent-echo against diversity metrics (distinct-n, Self-BLEU,
+      Vendi) and QD search (novelty search, MAP-Elites, FunSearch islands) —
+      pre-empts the "diversity metrics already exist" reviewer objection.
+      Six bib entries appended (official arXiv bibtex); build re-verified
+      clean (32 pp, 0 errors, same 2 pre-existing 3.5pt overfulls);
+      `latex-tmlr-openreview.zip` rebuilt, leak check 0. USER should proof
+      the paragraph's wording.
 - [x] Proofread DONE 2026-08-18 (4-agent PDF-vs-markdown parity pass, both
       papers, every number/table/citation verified exact; 3 layout/typo
       defects found and fixed, commit d305d02). NOTE: the same-day tightening
@@ -57,7 +76,8 @@ never submit them.
       hash-locked preregs disclosed in BUNDLE_README.md. USER uploads.
 - [x] Paper source zip built: `latex-tmlr-openreview.zip` (tex + bib + bbl +
       sty + pdf, no logs/aux). Leak-checked: 0.
-- [x] "Use of AI systems" reread: SUPERSEDED 2026-08-18 tightening pass
+- [x] "Use of AI systems" reread: already a single tight disclosure
+      paragraph. SUPERSEDED 2026-08-18 tightening pass
       (external-advisor round): both disclosures trimmed to short paragraphs,
       "referee/review" framing renamed internal adversarial checks, paper 1
       Table 5 (corrections ledger) replaced by a summary paragraph pointing at
@@ -65,6 +85,19 @@ never submit them.
       conditional-quality exclusion withdrawn (question stated open), arm V
       TRANSFERS cells carry Wilson CIs. Paper 1 now 29 pp, paper 2 33 pp.
       Overleaf v3 zips are the current builds (v2 stale).
+- [x] Claims-cleanup pass (2026-08-17, agent, mirrored in `paper2_short.md`,
+      `paper2_draft.md`, and all four tex fragments): fixed the stale
+      "abstract's 0.12–0.94 range" cross-references (reattributed to
+      Appendix C — now doubly needed since the tightened abstract dropped the
+      range), corrected the stale §7 description of §6 item 4, renamed
+      Appendix C's "pricing exercise" to horizon-power, softened five
+      overclaiming sentences, added the wave-6 numbering disclosure and the
+      7B/14B VRAM scope sentence in §8. Md keeps the long abstracts (main's
+      tightening was tex-only); tex carries the condensed ones. Post rev-4.5
+      merge: the §7 diversity paragraph + 6 bib entries and the wave-6
+      disclosure (now in the wave-index caption) re-applied on top of main's
+      rewritten Related work / wave table; tex rebuilt, zips rebuilt,
+      leak-checked. USER should proof the reworded sentences.
 - [x] **Before zipping latex-tmlr/ for any upload: delete `main.log`,
       `main.aux`, `main.out`, `main.blg` and `template-reference.tex`.**
       The .log embeds `C:/Users/soham/...` paths on nearly every line and
@@ -151,6 +184,16 @@ channel stays registered future work.
   section with unified Table CV (all §3.7 refs renumbered), revision note
   bumped to Revision 3. `latex-tmlr-paper1/` compiles
   clean, **31 pp**, fidelity-audited (all greps PASS).
+- Claims-cleanup fixes re-applied post-merge (2026-08-18, agent), the five
+  rev-3 still carried: matched 83%→100%→13% triple in abstract +
+  Contribution 2 (per Table 2's own note), Contribution 3's "clean,
+  well-powered" replaced with §6.5's CI + confound, §1 actionability
+  scoped by arm MU, "never competitive" scoped to the bound table,
+  antecedent-anchor claim labeled motivation-only, Fig 1 caption fixed
+  (N=10…60, fifth penalty 4.66%) — mirrored in `latex-tmlr-paper1/`.
+  Paper 2's cleanup + §7 paragraph merged with main's wave-7c/proofread
+  state (abstract now carries both the sixth-family result and the 14B
+  scoping; wave-6 numbering note adapted to "six later waves").
 - **Supplementary**: `build_anon_bundle.py` regenerated
   `supplementary_anonymized.zip` (6.2 MB, 0 identity leaks post-scan) now
   covering wave-7c, screen S, the full arm surface (F→V, GM chain) and all

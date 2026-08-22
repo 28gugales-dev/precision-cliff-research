@@ -1,4 +1,4 @@
-\begin{thebibliography}{28}
+\begin{thebibliography}{34}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -50,6 +50,13 @@ Elias Frantar, Saleh Ashkboos, Torsten Hoefler, and Dan Alistarh.
   transformers, 2023.
 \newblock URL \url{https://arxiv.org/abs/2210.17323}.
 
+\bibitem[Friedman \& Dieng(2023)Friedman and
+  Dieng]{friedman2023vendiscorediversityevaluation}
+Dan Friedman and Adji~Bousso Dieng.
+\newblock The vendi score: A diversity evaluation metric for machine learning,
+  2023.
+\newblock URL \url{https://arxiv.org/abs/2210.02410}.
+
 \bibitem[Korn et~al.(2026)Korn, Zaruchas, Arora, Metzger, Smolka, Wang, and
   Vogelsang]{korn2026reportingllmpromptingautomated}
 Alexander Korn, Lea Zaruchas, Chetan Arora, Andreas Metzger, Sven Smolka, Fanyu
@@ -71,12 +78,27 @@ Robert~Tjarko Lange, Yuki Imajuku, and Edoardo Cetin.
   evolution, 2025.
 \newblock URL \url{https://arxiv.org/abs/2509.19349}.
 
+\bibitem[Lehman \& Stanley(2011)Lehman and
+  Stanley]{lehman2011abandoningobjectives}
+Joel Lehman and Kenneth~O. Stanley.
+\newblock Abandoning objectives: Evolution through the search for novelty
+  alone.
+\newblock \emph{Evolutionary Computation}, 19\penalty0 (2):\penalty0 189--223,
+  2011.
+
 \bibitem[Leshin et~al.(2026)Leshin, Shah, Timmis, and
   Kang]{leshin2026behavioralfingerprintsllmendpoint}
 Jonah Leshin, Manish Shah, Ian Timmis, and Daniel Kang.
 \newblock Behavioral fingerprints for llm endpoint stability and identity,
   2026.
 \newblock URL \url{https://arxiv.org/abs/2603.19022}.
+
+\bibitem[Li et~al.(2016)Li, Galley, Brockett, Gao, and
+  Dolan]{li2016diversitypromotingobjectivefunctionneural}
+Jiwei Li, Michel Galley, Chris Brockett, Jianfeng Gao, and Bill Dolan.
+\newblock A diversity-promoting objective function for neural conversation
+  models, 2016.
+\newblock URL \url{https://arxiv.org/abs/1510.03055}.
 
 \bibitem[Li et~al.(2025)Li, Su, Yang, Xie, Wang, Xie, Wong, and
   Yang]{li2025quantizationmeetsreasoningexploring}
@@ -145,6 +167,12 @@ Evan Miller.
   evaluations, 2024.
 \newblock URL \url{https://arxiv.org/abs/2411.00640}.
 
+\bibitem[Mouret \& Clune(2015)Mouret and
+  Clune]{mouret2015illuminatingsearchspacesmapping}
+Jean-Baptiste Mouret and Jeff Clune.
+\newblock Illuminating search spaces by mapping elites, 2015.
+\newblock URL \url{https://arxiv.org/abs/1504.04909}.
+
 \bibitem[Pineau et~al.(2021)Pineau, Vincent-Lamarre, Sinha, Larivi{\`e}re,
   Beygelzimer, d'Alch{\'e} Buc, Fox, and Larochelle]{pineau2021reproducibility}
 Joelle Pineau, Philippe Vincent-Lamarre, Koustuv Sinha, Vincent Larivi{\`e}re,
@@ -161,6 +189,16 @@ Baha Rababah, Cuneyt~Gurcan Akcora, and Carson~K. Leung.
 \newblock The illusion of equivalency: Statistical characterization of
   quantization effects in llms, 2026.
 \newblock URL \url{https://arxiv.org/abs/2607.08734}.
+
+\bibitem[Romera-Paredes et~al.(2024)Romera-Paredes, Barekatain, Novikov, Balog,
+  Kumar, Dupont, Ruiz, Ellenberg, Wang, Fawzi, Kohli, and
+  Fawzi]{romeraparedes2024mathematicaldiscoveries}
+Bernardino Romera-Paredes, Mohammadamin Barekatain, Alexander Novikov, Matej
+  Balog, M.~Pawan Kumar, Emilien Dupont, Francisco J.~R. Ruiz, Jordan~S.
+  Ellenberg, Pengming Wang, Omar Fawzi, Pushmeet Kohli, and Alhussein Fawzi.
+\newblock Mathematical discoveries from program search with large language
+  models.
+\newblock \emph{Nature}, 625:\penalty0 468--475, 2024.
 
 \bibitem[Schnabl et~al.(2025)Schnabl, Hugenroth, Marino, and
   Beresford]{schnabl2025attestableauditsverifiableai}
@@ -214,5 +252,12 @@ Chenxi Zhou, Pengfei Cao, Jiang Li, Bohan Yu, Jinyu Ye, Jun Zhao, and Kang Liu.
 \newblock From signal degradation to computation collapse: Uncovering the two
   failure modes of llm quantization, 2026.
 \newblock URL \url{https://arxiv.org/abs/2604.19884}.
+
+\bibitem[Zhu et~al.(2018)Zhu, Lu, Zheng, Guo, Zhang, Wang, and
+  Yu]{zhu2018texygenbenchmarkingplatformtext}
+Yaoming Zhu, Sidi Lu, Lei Zheng, Jiaxian Guo, Weinan Zhang, Jun Wang, and Yong
+  Yu.
+\newblock Texygen: A benchmarking platform for text generation models, 2018.
+\newblock URL \url{https://arxiv.org/abs/1802.01886}.
 
 \end{thebibliography}

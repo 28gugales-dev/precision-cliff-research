@@ -38,8 +38,8 @@ from both sides — gemma-4-26b meets the registered pooled bar (57.5%) yet emit
 in-family *rival* construction at 27 of 43 discriminating-cell validities, and gemma-4-31b
 clears the same validity floor anchoring on nothing. Across the original vendor's tiers,
 constructive ambition rises monotonically while execution validity rises then collapses
-(78% → 100% → 13% at 10⁻⁶; the top arm is an unattributable serving alias, reported with
-that caveat). Requesting a method line is an intervention, not an observation — it
+(83% → 100% → 13% on matched cells at 10⁻⁶, 78% → 100% → 13% on the full unmatched
+ladder; the top arm is an unattributable serving alias, reported with that caveat). Requesting a method line is an intervention, not an observation — it
 concentrates output onto the anchor (87% vs 70%, uncorrected, wave-confounded) — yet the
 lines themselves are checkable and true: 54 of 56 scoreable claims describe the object
 actually built.
@@ -88,7 +88,9 @@ that "can be trivial" (FunSearch) or "rudimentary", single-line functions return
 rudimentary program throughout. The unconditioned call is the limiting case these approach as
 seed information goes to zero, and finding that this limit is a template lookup, its value
 computable in advance, is actionable for the people who build these loops — seed
-diversification, forced-k initialization, trap-N avoidance in benchmark selection. Anything about what the loop samples at t > 0 is a
+diversification, forced-k initialization, trap-N avoidance in benchmark selection — though the
+one-parent mutation arm (§3.5) bounds the reach: the conditioned regime is not described by the
+unconditioned rule. Anything about what the loop samples at t > 0 is a
 hypothesis here. The one published result bearing directly on the substitution —
 "Dictionaries, Not Darwin" (2607.04108, Pan Li), reporting parent-conditioned evolution
 indistinguishable from fresh independent sampling at equal budget — is warrant from equation
@@ -110,13 +112,15 @@ p\* = round(√(N·a))) but never refitted. Prior work publishes functional form
 *aggregate* metrics ahead of a run (2001.08361; 2203.15556; 2411.16035); to our knowledge none
 predicts a specific multi-decimal *individual emitted output value* ahead of sampling. The claim
 is scoped to the weak tier (§5). (2) *A tier boundary condition, as three attractor families.*
-Ambition rises monotonically with nominal tier; validity does not — 78% → 100% → 13% at the
-primary tolerance, 64% → 90% → 13% at 10⁻⁹. The most ambitious tier attempts recursive gaskets
+Ambition rises monotonically with nominal tier; validity does not — 83% → 100% → 13% on matched cells at the
+primary tolerance (78% → 100% → 13% on the full unmatched ladder; 64% → 90% → 13% at 10⁻⁹,
+unmatched). The most ambitious tier attempts recursive gaskets
 and mostly fails to produce a valid packing; it was addressed through a bare serving alias and
 appears as `opus_alias` with that caveat everywhere. (3) *Checkable faithfulness, and trace
 requests as interventions.* Method lines are checkable against emitted coordinates, and 54 of
-56 scoreable claims (96.4%) describe the object actually built — a clean, well-powered finding
-(§6.5). Requesting the line at all is an intervention rather than an observation: the
+56 scoreable claims (96.4%) describe the object actually built (Wilson 95% CI [88%, 99%]) — reported in §6.5 with
+its limits: the CI's lower bound sits just below the registered 90% threshold, and the audit
+is confounded with the elicitation arm. Requesting the line at all is an intervention rather than an observation: the
 concentration shift it produced (87% vs 70%, p = 0.0325 uncorrected) fails multiplicity
 correction, is carried by one of three cells and is wave-confounded (§6.4), so it is reported
 as met-as-registered exploratory material, not a demonstrated effect. Studies collecting
@@ -163,17 +167,17 @@ configurations, both branches, every k in 2…7, drift below 10⁻⁹.
 Our bound table (`n_sweep_forecast.json`) covers N = 10…30 only, and its N = 26 entry, 2.63598,
 *is* ShinkaEvolve's figure truncated, so the LLM-driven systems are the record on this problem
 (Table 5, item 4). What survives is that the recipe family is never competitive with that
-record: deficit 0.02–0.26 across N = 10…30, and 0.0946 at N = 26
+record where the bound table allows the check: deficit 0.02–0.26 across N = 10…30, and 0.0946 at N = 26
 (2.63598 − 2.5414214 = 0.0945586). Above N = 30 there is no bound table, so both the deficit claim and the LP
 gate's "never exceeds a published bound" abort are unchecked there, covering three of five trap
 zones and four of our seven square cells.
 
 ![Figure 1](fig1_trapzones.png)
 
-**Figure 1.** *Predicted versus optimal value, N = 10…50.* (i) the rule's prediction; (ii) the
+**Figure 1.** *Predicted versus optimal value, N = 10…60.* (i) the rule's prediction; (ii) the
 best value in the recipe family; (iii, dotted) published best-known values, terminating at
 N = 30 because the bound table stops there. Shaded bands are the trap zones, the last being
-[57,63] clipped by `sweep(10,60)`. Worst-in-zone penalties 8.51%, 7.03%, 6.01%, 5.25%; these are
+[57,63] clipped by `sweep(10,60)`. Worst-in-zone penalties 8.51%, 7.03%, 6.01%, 5.25%, 4.66%; these are
 family-internal arithmetic and exact at every N, while the published-bound comparison (curve iii)
 is checkable only up to N = 30, where the bound table stops. The gap
 closes to zero at N = 35 and N = 48 but **not** at N = 24, where 0.59% remains — curve (ii)
@@ -206,8 +210,9 @@ A k×k grid places one circle per cell center with r_grid = 1/(2k); m fillers si
 grid vertices, tangent to their four surrounding grid circles, with r_filler = (√2 − 1)/(2k),
 0 ≤ m ≤ (k−1)². Hence V(k, m) = k/2 + m(√2 − 1)/(2k). When N < k² the observed behavior is not
 to drop to a smaller grid and fill it but to *truncate* — lay out the k×k lattice, occupy N
-cells, leave the radius unchanged — giving T(k, N) = N/(2k). These reproduce every previously
-reported anchor with no fitting: V(5,1) = 2.5414214, V(5,2) = 2.5828427, V(5,0) = 2.500,
+cells, leave the radius unchanged — giving T(k, N) = N/(2k). These reproduce, with no fitting, every anchor reported in the antecedent arms (retained as
+motivation only — those arms are not re-reported here, and §5 gives the self-contained
+version): V(5,1) = 2.5414214, V(5,2) = 2.5828427, V(5,0) = 2.500,
 T(5,23) = 2.300, V(4,7) = 2.3624369.
 
 The finding that 94 of 95 valid proposals in prior arms were grid-plus-filler is retained only as
