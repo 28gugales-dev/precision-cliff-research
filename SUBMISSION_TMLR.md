@@ -405,3 +405,11 @@ rows (collector wrote false), report byte-identical; (3) Figure 2 legend
 V/T; (4) Figure 3 caption "pooled", p marked uncorrected. Round yields
 10 -> 6 -> 2 -> 1 numeric: next round expected dry.
 
+### 4.6c (same day): reproducibility smoke test of the HOW_TO_RUN paper-1 table
+Every command run from a fresh scratch copy of the repo root (no network, no
+keys): 13/14 exit 0; arm_cn verdict, GM3 57.5% and Table M counts regenerate
+exactly. `arm_v_score.py` crashed on a non-ASCII glyph under cp1252 stdout
+after writing its ledger - stdout now forced to UTF-8; verdict counts match
+`arm_v_score_final.txt`. Two table rows had wrong reads/writes (arm M, arm V)
+- corrected. Bundle rebuilt, 0 leaks.
+
