@@ -1,0 +1,91 @@
+{
+  "50": {
+    "prompt": "Pack exactly 50 non-overlapping circles inside the unit square [0,1]x[0,1] so that the sum of their radii is as large as possible.\nMUST hold: exactly 50 circles; every circle fully inside the unit square [0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap (distance between centers >= sum of the two radii; touching is allowed).\nDo not write or execute code - construct the packing by reasoning alone.\nOutput ONLY the raw Python list of 50 [x, y, r] lists. No explanation, no code fences, no other text.",
+    "sha256": "0b85855801b38d5a66ae4de4956a6983b5bf2cee415f525bfe9ee4cc9f016b0f",
+    "N": 50,
+    "kstar": 7,
+    "branch": "V",
+    "m": 1,
+    "prediction": 3.5295867,
+    "argmax_k": 7,
+    "argmax": 3.5295867,
+    "discriminating": false,
+    "family": {
+      "6": 3.4832492,
+      "7": 3.5295867,
+      "8": 3.125,
+      "9": 2.7777778
+    }
+  },
+  "58": {
+    "prompt": "Pack exactly 58 non-overlapping circles inside the unit square [0,1]x[0,1] so that the sum of their radii is as large as possible.\nMUST hold: exactly 58 circles; every circle fully inside the unit square [0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap (distance between centers >= sum of the two radii; touching is allowed).\nDo not write or execute code - construct the packing by reasoning alone.\nOutput ONLY the raw Python list of 58 [x, y, r] lists. No explanation, no code fences, no other text.",
+    "sha256": "200c0bb43406c1043ebbb08eeb902af625c446ee2becc711b9533cae94c39264",
+    "N": 58,
+    "kstar": 8,
+    "branch": "T",
+    "m": null,
+    "prediction": 3.625,
+    "argmax_k": 7,
+    "argmax": 3.7662801,
+    "discriminating": true,
+    "family": {
+      "6": 3.7593915,
+      "7": 3.7662801,
+      "8": 3.625,
+      "9": 3.2222222
+    }
+  },
+  "62": {
+    "prompt": "Pack exactly 62 non-overlapping circles inside the unit square [0,1]x[0,1] so that the sum of their radii is as large as possible.\nMUST hold: exactly 62 circles; every circle fully inside the unit square [0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap (distance between centers >= sum of the two radii; touching is allowed).\nDo not write or execute code - construct the packing by reasoning alone.\nOutput ONLY the raw Python list of 62 [x, y, r] lists. No explanation, no code fences, no other text.",
+    "sha256": "b9854a8452098aaa676190d6c321718ff751181417c4cee87c1ade556d5ffe25",
+    "N": 62,
+    "kstar": 8,
+    "branch": "T",
+    "m": null,
+    "prediction": 3.875,
+    "argmax_k": 7,
+    "argmax": 3.8846269,
+    "discriminating": true,
+    "family": {
+      "7": 3.8846269,
+      "8": 3.875,
+      "9": 3.4444444
+    }
+  },
+  "65": {
+    "prompt": "Pack exactly 65 non-overlapping circles inside the unit square [0,1]x[0,1] so that the sum of their radii is as large as possible.\nMUST hold: exactly 65 circles; every circle fully inside the unit square [0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap (distance between centers >= sum of the two radii; touching is allowed).\nDo not write or execute code - construct the packing by reasoning alone.\nOutput ONLY the raw Python list of 65 [x, y, r] lists. No explanation, no code fences, no other text.",
+    "sha256": "5fb5fefd83d6d3aa0387f8892103c829d27911e86d07646beea13f585b6005cb",
+    "N": 65,
+    "kstar": 8,
+    "branch": "V",
+    "m": 1,
+    "prediction": 4.0258883,
+    "argmax_k": 8,
+    "argmax": 4.0258883,
+    "discriminating": false,
+    "family": {
+      "7": 3.9733869,
+      "8": 4.0258883,
+      "9": 3.6111111,
+      "10": 3.25
+    }
+  },
+  "75": {
+    "prompt": "Pack exactly 75 non-overlapping circles inside the unit square [0,1]x[0,1] so that the sum of their radii is as large as possible.\nMUST hold: exactly 75 circles; every circle fully inside the unit square [0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap (distance between centers >= sum of the two radii; touching is allowed).\nDo not write or execute code - construct the packing by reasoning alone.\nOutput ONLY the raw Python list of 75 [x, y, r] lists. No explanation, no code fences, no other text.",
+    "sha256": "a5db8fc35340e43ea008a82b5313e18b4656fbd78997f083e4ebf4e10af2cb91",
+    "N": 75,
+    "kstar": 9,
+    "branch": "T",
+    "m": null,
+    "prediction": 4.1666667,
+    "argmax_k": 8,
+    "argmax": 4.2847718,
+    "discriminating": true,
+    "family": {
+      "7": 4.2692538,
+      "8": 4.2847718,
+      "9": 4.1666667,
+      "10": 3.75
+    }
+  }
+}
