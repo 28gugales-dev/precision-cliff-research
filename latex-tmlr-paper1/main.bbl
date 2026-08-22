@@ -1,4 +1,4 @@
-\begin{thebibliography}{51}
+\begin{thebibliography}{60}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -51,6 +51,15 @@ Herbie Bradley, Andrew Dai, Hannah Teufel, Jenny Zhang, Koen Oostermeijer,
 \newblock Quality-diversity through ai feedback, 2023.
 \newblock URL \url{https://arxiv.org/abs/2310.13032}.
 
+\bibitem[Carlini et~al.(2021)Carlini, Tram{\`e}r, Wallace, Jagielski,
+  Herbert-Voss, Lee, Roberts, Brown, Song, Erlingsson, Oprea, and
+  Raffel]{carlini2021extracting}
+Nicholas Carlini, Florian Tram{\`e}r, Eric Wallace, Matthew Jagielski, Ariel
+  Herbert-Voss, Katherine Lee, Adam Roberts, Tom Brown, Dawn Song, {\'U}lfar
+  Erlingsson, Alina Oprea, and Colin Raffel.
+\newblock Extracting training data from large language models.
+\newblock In \emph{30th USENIX Security Symposium}, 2021.
+
 \bibitem[Cemri et~al.(2026)Cemri, Agrawal, Gupta, Liu, Cheng, Mang, Naren,
   Erdogan, Sen, Zaharia, Dimakis, and
   Stoica]{cemri2026adaevolveadaptivellmdriven}
@@ -65,11 +74,36 @@ Ziyu Chen, Yilun Zhao, and Arman Cohan.
 \newblock Measuring the gap between human and llm research ideas, 2026.
 \newblock URL \url{https://arxiv.org/abs/2607.01233}.
 
+\bibitem[Friedman(2026)]{friedman_packing}
+Erich Friedman.
+\newblock Packing center: circles in squares, maximizing the sum of radii.
+\newblock \url{https://erich-friedman.github.io/packing/cirRsqu/}, 2026.
+\newblock Best-known values transcribed into \texttt{n\_sweep\_forecast.py};
+  accessed 2026.
+
 \bibitem[Gideoni et~al.(2026)Gideoni, Risi, and
   Gal]{gideoni2026simplebaselinescompetitivecode}
 Yonatan Gideoni, Sebastian Risi, and Yarin Gal.
 \newblock Simple baselines are competitive with code evolution, 2026.
 \newblock URL \url{https://arxiv.org/abs/2602.16805}.
+
+\bibitem[Golchin \& Surdeanu(2024)Golchin and Surdeanu]{golchin2024timetravel}
+Shahriar Golchin and Mihai Surdeanu.
+\newblock Time travel in {LLMs}: Tracing data contamination in large language
+  models.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2024.
+\newblock arXiv:2308.08493.
+
+\bibitem[Guo et~al.(2024)Guo, Wang, Guo, Li, Song, Tan, Liu, Bian, and
+  Yang]{guo2024evoprompt}
+Qingyan Guo, Rui Wang, Junliang Guo, Bei Li, Kaitao Song, Xu~Tan, Guoqing Liu,
+  Jiang Bian, and Yujiu Yang.
+\newblock Connecting large language models with evolutionary algorithms yields
+  powerful prompt optimizers.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2024.
+\newblock arXiv:2309.08532.
 
 \bibitem[Gurkan et~al.(2026)Gurkan, Stonedahl, and
   Wilensky]{gurkan2026mutationvariationconvergencedynamics}
@@ -148,12 +182,29 @@ Jinwoong Kim, Rui Yang, and Huishuai Zhang.
   construction from natural language, 2026.
 \newblock URL \url{https://arxiv.org/abs/2605.13167}.
 
+\bibitem[Kirk et~al.(2024)Kirk, Mediratta, Nalmpantis, Luketina, Hambro,
+  Grefenstette, and Raileanu]{kirk2024rlhf}
+Robert Kirk, Ishita Mediratta, Christoforos Nalmpantis, Jelena Luketina, Eric
+  Hambro, Edward Grefenstette, and Roberta Raileanu.
+\newblock Understanding the effects of {RLHF} on {LLM} generalisation and
+  diversity.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2024.
+\newblock arXiv:2310.06452.
+
 \bibitem[Lange et~al.(2025)Lange, Imajuku, and
   Cetin]{lange2025shinkaevolveopenendedsampleefficientprogram}
 Robert~Tjarko Lange, Yuki Imajuku, and Edoardo Cetin.
 \newblock Shinkaevolve: Towards open-ended and sample-efficient program
   evolution, 2025.
 \newblock URL \url{https://arxiv.org/abs/2509.19349}.
+
+\bibitem[Lehman \& Stanley(2011)Lehman and Stanley]{lehman2011novelty}
+Joel Lehman and Kenneth~O. Stanley.
+\newblock Abandoning objectives: Evolution through the search for novelty
+  alone.
+\newblock \emph{Evolutionary Computation}, 19\penalty0 (2):\penalty0 189--223,
+  2011.
 
 \bibitem[Lehman et~al.(2022)Lehman, Gordon, Jain, Ndousse, Yeh, and
   Stanley]{lehman2022evolutionlargemodels}
@@ -174,6 +225,15 @@ Yubo Li, Ramayya Krishnan, and Rema Padman.
   reasoning models under adversarial pressure, 2026.
 \newblock URL \url{https://arxiv.org/abs/2605.29087}.
 
+\bibitem[Liu et~al.(2024)Liu, Tong, Yuan, Lin, Luo, Wang, Lu, and
+  Zhang]{liu2024eoh}
+Fei Liu, Xialiang Tong, Mingxuan Yuan, Xi~Lin, Fu~Luo, Zhenkun Wang, Zhichao
+  Lu, and Qingfu Zhang.
+\newblock Evolution of heuristics: Towards efficient automatic algorithm design
+  using large language model.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2024.
+\newblock arXiv:2401.02051.
+
 \bibitem[Lou \& Sun(2024)Lou and Sun]{lou2024anchoringbiaslargelanguage}
 Jiaxu Lou and Yifan Sun.
 \newblock Anchoring bias in large language models: An experimental study, 2024.
@@ -191,6 +251,11 @@ Elliot Meyerson, Mark~J. Nelson, Herbie Bradley, Adam Gaier, Arash Moradi,
   Amy~K. Hoover, and Joel Lehman.
 \newblock Language model crossover: Variation through few-shot prompting, 2024.
 \newblock URL \url{https://arxiv.org/abs/2302.12170}.
+
+\bibitem[Mouret \& Clune(2015)Mouret and Clune]{mouret2015mapelites}
+Jean-Baptiste Mouret and Jeff Clune.
+\newblock Illuminating search spaces by mapping elites.
+\newblock \emph{arXiv preprint arXiv:1504.04909}, 2015.
 
 \bibitem[Novikov et~al.(2025)Novikov, V{\~u}, Eisenberger,
   et~al.]{novikov2025alphaevolve}
@@ -222,6 +287,15 @@ Daniel Scalena, Sara Candussio, Luca Bortolussi, Elisabetta Fersini, Malvina
 \newblock Beyond the commitment boundary: Probing epiphenomenal
   chain-of-thought in large reasoning models, 2026.
 \newblock URL \url{https://arxiv.org/abs/2606.13603}.
+
+\bibitem[Sclar et~al.(2024)Sclar, Choi, Tsvetkov, and
+  Suhr]{sclar2024formatspread}
+Melanie Sclar, Yejin Choi, Yulia Tsvetkov, and Alane Suhr.
+\newblock Quantifying language models' sensitivity to spurious features in
+  prompt design or: How i learned to start worrying about prompt formatting.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2024.
+\newblock arXiv:2310.11324.
 
 \bibitem[Sharma(2025)]{sharma2025openevolve}
 Asankhaya Sharma.

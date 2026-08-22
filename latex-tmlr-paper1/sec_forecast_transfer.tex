@@ -98,7 +98,7 @@ different constructions.
 No predictor of a single value can exceed the modal frequency, and this one attains it at 7 of
 7 cells (at $N = 31$ the on-prediction count exceeds the 4-dp modal bucket by one sample ---
 13/17 against 12/17 --- a bucketing convention, not a violation of the ceiling): the residual is
-dispersion, not misprediction. As a floor, a naive ``the model emits a
+dispersion, not misprediction. Three cells ($N = 17$, 35, 37) carry four valid samples each, where a 3/4 mode is thin evidence on its own; the well-populated cells of the held-out probe (\S3.8) are the stronger test of the same rule. As a floor, a naive ``the model emits a
 round number'' baseline hits 2 of the same 69 valid samples (3\%). Two scope conditions: this is
 the bare weak-tier arm --- pooled over the four discriminating square cells (full ledger), the
 two higher tiers and the rectangle, the on-prediction rate is 46\%
@@ -254,7 +254,7 @@ survivorship artifact we disclose rather than exploit.} Under the registered sco
 takes the modal output \emph{among valid samples}, the template reading wins: at $N = 13$ the modal
 valid output is $T(4,13) = 1.6250000$ against a stated argmax of 1.7761424, at $N = 31$ it is
 $T(6,31) \approx 2.5833$ (4 of 7 valid) against 2.7485281 (3 of 7) --- a one-sample margin --- and only
-$N = 21$ goes to the argmax (2.2588835, 3 of 5 valid). P-CH2 is disconfirmed at 1 of 3 cells. Read no further and the tractability
+$N = 21$ goes to the argmax (2.2588835, 3 of 5 valid). P-CH2 holds at only 1 of 3 cells. Read no further and the tractability
 alternative fails the probe. But validity is low in this arm --- 2, 5 and 7 valid of 15 by
 cell --- and the failure modes reverse the picture at the \emph{attempt} level: \textbf{all 31 invalid
 rows attempt the stated argmax} (every one carries the family's filler radius). Of those,
@@ -369,8 +369,8 @@ $N$ & predicted (4 dp) & Gemma modal sum & mode freq & valid $n$ & on-prediction
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{fig_gm3_anchoring.png}
-\caption{\emph{Arm GM3 modal sums against the registered prediction.} Green cells match the
-predicted mode (frequencies annotated); red cells miss --- every miss lands above the
+\caption{\emph{Arm GM3 modal sums against the registered prediction.} Filled green circles match the
+predicted mode (frequencies annotated); open red triangles miss --- every miss lands above the
 prediction, on the rival argmax (the modal packings carry the rival's two-radius structure,
 27/27 --- \S3.6); the two largest cells are UNSCOREABLE under the registered $<$3-valid rule.
 Regenerates via \texttt{fig\_gm3\_anchoring.py} from \texttt{arm\_gm3\_report.json} (itself replayed from the
@@ -378,13 +378,13 @@ raw ledger by \texttt{arm\_gm3\_analysis.py}, no arguments).}
 \label{fig:gm3anchoring}
 \end{figure}
 
-Three registered outcomes. \textbf{The pooled prediction held}: 46 of 80 valid
+Three registered outcomes (Figure~\ref{fig:gm3anchoring}). \textbf{The pooled prediction held}: 46 of 80 valid
 packings (57.5\%) land within $2\times10^{-3}$ of the value predicted by \S2's rule, against a
 registered 30\% bar --- for a rule fitted entirely on another vendor's models, before this
 family was ever sampled. The registered metric pools all cells, and the pass rides on that:
 by \S3.2's own convention --- arm F's pooled rate excludes non-discriminating cells \emph{because
 prediction equals the family argmax there} --- the decomposition must be stated. 35 of the 46
-on-prediction packings sit in the two non-discriminating cells (19/20 at $N = 17$, 15/15 at
+on-prediction packings sit in the two non-discriminating cells (20/20 at $N = 17$, 15/15 at
 $N = 35$); on the three discriminating cells the rate is 11 of 43 (25.6\%), below the bar the
 pooled metric passes. The registered verdict stands as registered; what it measures at the
 discriminating cells is the next finding. \textbf{The cell-level prediction did not hold}: the
@@ -465,7 +465,7 @@ everywhere evaluable \emph{within this arm}: zero rival-argmax emissions in 16
 discriminating-cell validities (the registration, \texttt{arm\_v\_preregistration.md}, recorded the original family's prior for
 the same statistic as 0/21 --- an undercount against the shipped ledger's 2/23 in \S3.3; \S3.6's gemma-4-26b, under the GM-chain instrument, is the
 standing exception --- its discriminating-cell mode \emph{is} the rival). The transfer is at reduced
-concentration: 61--67\% on-prediction against 56--80\% in-family (\S3.2). Reduced concentration at
+concentration: 61--67\% on-prediction against 56--76\% in-family at the same five cells (\S3.2). Reduced concentration at
 different vendors, on byte-identical prompts, landing on the same modal value is what a shared
 attractor predicts; equal concentration would be harder to separate from shared training text. And it is not universal:
 gemma-4-31b, clearing the same floor, lands the prediction never. Its valid packings are unanchored and low
@@ -635,7 +635,7 @@ nine overlaps, two count errors and one output of fraction literals the register
 does not evaluate (the CH ``radical literal'' mode). Raw rows in
 \texttt{arm\_cn\_collect.jsonl} (75/75 launched, none lost); eleven $N = 65$ rows were
 transcribed by reconstructing the standard $8 \times 8$ grid string from the emitted filler
-triple, disclosed in \texttt{arm\_cn\_results.txt}. The arm brings the study corpus to 678
+triple, disclosed in \texttt{arm\_cn\_results.txt}; the reconstruction is character-identical for these standard grids, but a reader who discards those rows leaves $N = 65$ with two valid samples, below the five-row floor, and P-CN1 at 3 hits of 4 evaluable cells --- the three discriminating cells, which carry the contamination argument, are untouched. The arm brings the study corpus to 678
 invocations.
 
 \textbf{What this does and does not show.} The recall reading predicted that the anchor

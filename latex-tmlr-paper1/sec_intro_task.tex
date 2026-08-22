@@ -41,7 +41,7 @@ that ``can be trivial'' (FunSearch) or ``rudimentary'', single-line functions re
 rudimentary program throughout. The unconditioned call is the limiting case these approach as
 seed information goes to zero, and finding that this limit is a template lookup, its value
 computable in advance, is actionable for the people who build these loops --- seed
-diversification, forced-$k$ initialization, trap-$N$ avoidance in benchmark selection. Anything about what the loop samples at $t > 0$ is a
+diversification, forced-$k$ initialization, trap-$N$ avoidance in benchmark selection. For an evolutionary-computation reader the consequence sits at initialization: if generation zero is one template wearing many coordinates, the diversity machinery downstream --- MAP-Elites descriptors \citep{mouret2015mapelites}, novelty pressure \citep{lehman2011novelty}, seed perturbation --- is doing repair rather than exploration. For an evaluation reader it is a floor: the zero-shot mode on this benchmark is computable in advance, so a discovery claim on circle packing has a known value to beat before any search is credited. Anything about what the loop samples at $t > 0$ is a
 hypothesis here. The one published result bearing directly on the substitution ---
 ``Dictionaries, Not Darwin'' \citep{li2026dictionariesdarwinsetlevelselection}, reporting parent-conditioned evolution
 indistinguishable from fresh independent sampling at equal budget --- is warrant from equation
@@ -55,42 +55,48 @@ standard here, not a contribution in itself \citep{thomas2026mitigatingllmbasedp
 our twist is what is locked --- exact-output point predictions from a closed form, on a held-out
 container.
 
-\textbf{Contributions.} (1) \emph{A choice/execution dissociation: the model selects the better construction and cannot build it through either channel.} Handed the provably higher-valued in-family construction with its score, the weak tier chooses it, then fails to instantiate it in all 31 invalid attempts (arm CH, \S3.5); delegated to an executed math-only program, the same ceiling holds across two tiers and a fresh-draw replication --- 0 of 115 valid program outputs exceed the family argmax (arms CC/CC2/CCS, \S3.7). The template is not what the model prefers but what it can reliably execute, in text or in code. This finding does not depend on whether any deployed loop runs unconditioned calls. (2) \emph{A closed form that names the modal model output in advance.} $k^*(N)$ with
+\textbf{Contributions.}
+\begin{enumerate}
+\item \emph{A choice/execution dissociation: the model selects the better construction and cannot build it through either channel.} Handed the provably higher-valued in-family construction with its score, the weak tier chooses it, then fails to instantiate it in 30 of 31 invalid attempts, the last unevaluable (arm CH, \S3.5); delegated to an executed math-only program, the same ceiling holds across two tiers and a fresh-draw replication --- 0 of 115 valid program outputs exceed the family argmax (arms CC/CC2/CCS, \S3.7). The template is not what the model prefers but what it can reliably execute, in text or in code. This finding does not depend on whether any deployed loop runs unconditioned calls.
+\item \emph{A closed form that names the modal model output in advance.} $k^*(N)$ with
 $V(k, m)$ and $T(k, N)$ identify the value a weak-tier proposer emits most often at a given $N$,
 verified against a linear-programming oracle on 83 configurations to within $10^{-9}$ and tested out
 of sample on two containers, the rectangle rule restated ($q^* = \mathrm{round}(\sqrt{N/a})$,
 $p^* = \mathrm{round}(\sqrt{N \cdot a})$) but never refitted. Prior work publishes functional forms predicting
 \emph{aggregate} metrics ahead of a run \citep{kaplan2020scalinglawsneurallanguage,hoffmann2022trainingcomputeoptimallargelanguage,snell2024predictingemergentcapabilitiesfinetuning}; to our knowledge none
 predicts a specific multi-decimal \emph{individual emitted output value} ahead of sampling. The claim
-is scoped to the weak tier (\S5). (3) \emph{A tier boundary condition, as three attractor families.}
+is scoped to the weak tier (\S5).
+\item \emph{A tier boundary condition, as three attractor families.}
 Ambition rises monotonically with nominal tier; validity does not --- 83\% $\rightarrow$ 100\% $\rightarrow$ 13\% at the
-primary tolerance on matched cells (78\% over all seven weak-tier cells), 64\% $\rightarrow$ 90\% $\rightarrow$ 13\% at $10^{-9}$. The most ambitious tier attempts recursive gaskets
+primary tolerance on matched cells (78\% over all seven weak-tier cells), 64\% (all seven weak-tier cells; the matched-cell weak rate at this tolerance was not computed) $\rightarrow$ 90\% $\rightarrow$ 13\% at $10^{-9}$ (Table~\ref{tab:ladder}). The most ambitious tier attempts recursive gaskets
 and mostly fails to produce a valid packing; it was addressed through a bare serving alias and
-appears as \texttt{opus\_alias} with that caveat everywhere. (4) \emph{Checkable faithfulness, and trace
+appears as \texttt{opus\_alias} with that caveat everywhere.
+\item \emph{Checkable faithfulness, and trace
 requests as interventions.} Method lines are checkable against emitted coordinates, and 54 of
-56 scoreable claims (96.4\%) describe the object actually built --- a clean, well-powered finding
-(\S6.5). Requesting the line at all is an intervention rather than an observation: the
+56 scoreable claims (96.4\%) describe the object actually built (Wilson 95\% interval $[88\%, 99\%]$,
+\S6.5). Requesting the line at all is an intervention rather than an observation: the
 concentration shift it produced (87\% vs 70\%, $p = 0.0325$ uncorrected) fails multiplicity
 correction, is carried by one of three cells and is wave-confounded (\S6.4), so it is reported
 as met-as-registered exploratory material, not a demonstrated effect. Studies collecting
 process descriptors \emph{by request} are nonetheless measuring a perturbed distribution.
-(5) \emph{A family boundary, measured from both sides --- and a near-deterministic strong form.}
+\item \emph{A family boundary, measured from both sides --- and a near-deterministic strong form.}
 Anchoring is not a single-vendor artifact: it transfers to two further vendors'
-weak models at reduced concentration (61--67\% of valid outputs against 56--80\% in-family, \S3.6), while one further family brackets it ---
+weak models at reduced concentration (61--67\% of valid outputs against 56--76\% in-family at the same five cells, \S3.2 and \S3.6), while one further family brackets it ---
 gemma-4-26b escapes \emph{upward} to the in-family rival construction (27/43 discriminating-cell
 validities) and gemma-4-31b, above the same validity floor, anchors on nothing (\S3.6). Where
-anchoring holds, its strong form is near-deterministic: pooling every discriminating-cell
+anchoring holds, its strong form is near-deterministic: pooling every weak-tier discriminating-cell
 validity across the original-family and transfer-vendor arms, the provably better in-family
-rival is emitted 3 times in 147 (arm F 2/57, trace 1/53, rectangle 0/11, arm M 0/10, arm V
-0/16 --- a descriptive pool over separately registered arms, each reported at its own bar in
-\S3--\S4; gemma-4-26b, the family that does \emph{not} anchor at its discriminating cells, is the
+rival is emitted 3 times in 186 (arm F 2/57, trace 1/53, rectangle 0/11, arm M 0/10, arm V
+0/16, arm CN 0/39 --- a descriptive pool over separately registered weak-tier arms, each reported at its own bar in
+\S3--\S4 and \S6; the Sonnet tier reaches the rival 5 times in 30 and is excluded by tier, \S5; gemma-4-26b, the family that does \emph{not} anchor at its discriminating cells, is the
 counterexample that proves the statistic is a family trait, \S3.6).
+\end{enumerate}
 
 \textbf{Non-claim guard.} Everything here is a behavioral regularity over emitted outputs. We make
 no claim about mechanism inside the weights, and the paper uses that vocabulary throughout: the
 model \emph{emits}, the distribution \emph{concentrates}, the formula \emph{identifies the modal output}
 (storage-and-retrieval vocabulary corrected). \S8 states the leading
-mechanism-free alternative, arithmetic tractability, and records that we did not test it.
+mechanism-free alternative, arithmetic tractability, and reports its direct probe (arm CH, \S3.5): wrong about selection, right about instantiation.
 
 \subsection{Trap zones}
 
@@ -110,7 +116,7 @@ Every closed-form value is recomputed over the constructed coordinates by an ind
 program that knows nothing about the recipe; the script aborts on disagreement. 83
 configurations, both branches, every $k$ in $2\ldots7$, drift below $10^{-9}$.
 
-Our bound table (\texttt{n\_sweep\_forecast.json}) covers $N = 10\ldots30$ only, and its $N = 26$ entry, 2.63598,
+Our bound table (\texttt{n\_sweep\_forecast.json}, transcribed from \citet{friedman_packing}) covers $N = 10\ldots30$ only, and its $N = 26$ entry, 2.63598,
 \emph{is} ShinkaEvolve's figure truncated, so the LLM-driven systems are the record on this problem. What survives is that the recipe family is never competitive with that
 record: deficit 0.02--0.26 across $N = 10\ldots30$, and 0.0946 at $N = 26$
 ($2.63598 - 2.5414214 = 0.0945586$). Above $N = 30$ there is no bound table, so both the deficit claim and the LP
@@ -120,10 +126,10 @@ zones and four of our seven square cells.
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{fig1_trapzones.png}
-\caption{\emph{Predicted versus optimal value, $N = 10\ldots50$.} (i) the rule's prediction; (ii) the
-best value in the recipe family; (iii, dotted) published best-known values, terminating at
+\caption{\emph{Predicted versus optimal value, $N = 10\ldots60$.} (i) the rule's prediction; (ii) the
+best value in the recipe family; (iii, dotted) published best-known values \citep{friedman_packing}, terminating at
 $N = 30$ because the bound table stops there. Shaded bands are the trap zones, the last being
-$[57,63]$ clipped by \texttt{sweep(10,60)}. Worst-in-zone penalties 8.51\%, 7.03\%, 6.01\%, 5.25\%; these are
+$[57,63]$ clipped by \texttt{sweep(10,60)}. Worst-in-zone penalties 8.51\%, 7.03\%, 6.01\%, 5.25\%, 4.66\%; these are
 family-internal arithmetic and exact at every $N$, while the published-bound comparison (curve iii)
 is checkable only up to $N = 30$, where the bound table stops. The gap
 closes to zero at $N = 35$ and $N = 48$ but \textbf{not} at $N = 24$, where 0.59\% remains --- curve (ii)
@@ -206,6 +212,7 @@ Term & Meaning \\
 $k^*(N)$ & nearest-square grid order, $\mathrm{round}(\sqrt{N})$ (a definition, \S2.3) \\
 $V(k, m)$, $T(k, N)$ & extend-with-$m$-fillers value $k/2 + m(\sqrt{2}-1)/(2k)$; truncated-grid value $N/(2k)$ \\
 anchor & the template the proposal distribution concentrates on at a given $N$ \\
+attractor & the same object, used when the emphasis is on the family a tier converges to rather than on one cell (\S5) \\
 on-prediction & emitted sum within $2\times10^{-3}$ of the registered predicted value \\
 rival (argmax) & the highest-valued member of the recipe family at that $N$ when it differs from the prediction --- inside a trap zone, $V(k^*{-}1, m)$ \\
 discriminating cell & $N$ where prediction $\ne$ family argmax; only these can distinguish anchoring from family search \\

@@ -304,3 +304,51 @@ and stay.
 Submit-ready state: `overleaf_paper1_v4.zip`, `overleaf_paper2_v4.zip`,
 `supplementary_anonymized.zip` (518 entries, 0 leaks). Remaining items are
 user-only: Overleaf upload, OpenReview form, key rotation.
+
+## 2026-08-22 — Revision 4.4: five-lens review pass, paper 1
+
+Tag `v4.4-five-lens`. Five independent reviewers (claims/evidence, prose,
+floats, positioning, internal consistency) over the v4.3 sources; every
+accepted finding grep-verified before editing; verdicts unchanged.
+
+Numeric and scope corrections: in-family comparator for the cross-vendor
+transfer restated as 56-76% at arm V's own five cells (was 56-80% in three
+places and 56-86% in two; neither matched the cells compared); "all 31" CH
+execution failures -> 30 of 31 (one unevaluable) in abstract, Contribution 1
+and S8; "well-powered" faithfulness claim replaced by its Wilson interval;
+10^-9 ladder triple labelled all-cells vs matched; strong-form pool extended
+to arm CN (3 in 186, weak-tier only, Sonnet excluded by tier, S6 added to the
+pointer); abstract code-channel sentence scoped "at these cells"; GM3
+decomposition arithmetic 19/20 -> 20/20; P-CH2 wording un-inverted;
+non-claim guard no longer says the tractability alternative went untested;
+stale "correcting the abstract" self-reference removed; Figure 1 caption
+range 10..60 and fifth trap penalty added.
+
+Disclosure added: arm CN N=65 reconstructed rows — discarding them leaves
+the cell below floor and P-CN1 at 3 of 4 evaluable cells, discriminating
+cells untouched (S3.8); n=4 cells in the square arm named as thin (S3.2).
+
+Positioning: EvoPrompt now has its own citation (was attributed to the
+LLaMEA key), EoH added; contamination literature cited at S8
+(Carlini 2021, Golchin & Surdeanu 2024); Friedman's Packing Center cited as
+the source of the bound table (provenance was only in code comments);
+typicality-bias account (Verbalized Sampling) named as a second untested
+mechanism; new limitation paragraph on single-prompt scope (Sclar 2024) and
+RLHF diversity collapse as a candidate account of vendor-dependent
+concentration (Kirk 2024); one paragraph in S1 stating the consequence for
+EC readers (initialization diversity; MAP-Elites, novelty search cited) and
+for evaluation readers (computable floor).
+
+Structure: Contributions paragraph -> enumerate; Figures 2-4 and Table 2
+now pointed to by \ref (were orphaned); Table 2 caption glosses columns;
+"attractor" added to the notation table. Figure 2 regenerated with marker
+shape encoding match/miss (colorblind-safe). HOW_TO_RUN.md gains a paper-1
+table (the S9 claim that it documented the commands was previously false).
+
+Pages 32 -> 33. Audit: 0 errors, 0 undefined, 0 bibtex warnings, metadata
+empty, identity 0, bundle 0 leaks.
+
+Not done, logged for the review stage: redundancy cuts (GM3 numbers in four
+places, provenance in three) and S9 trim — left because each restatement
+carries a traceable count; Table CH N=13 (n=2) left as registered; abstract
+not restructured (sharpened only).

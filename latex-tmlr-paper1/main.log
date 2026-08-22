@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  22 AUG 2026 01:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  22 AUG 2026 01:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -435,7 +435,8 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 tex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count319
-) (main.aux)
+)
+No file main.aux.
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
@@ -567,42 +568,137 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-(sec_intro_task.tex [1{C:/Users/soham/AppData/Local/MiKTeX/fonts/map/pdftex/pdf
-tex.map}{C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.
-enc}
+(sec_intro_task.tex
+
+Package natbib Warning: Citation `romeraparedes2024funsearch' on page 1 undefin
+ed on input line 23.
+
+
+Package natbib Warning: Citation `novikov2025alphaevolve' on page 1 undefined o
+n input line 24.
+
+
+Package natbib Warning: Citation `lange2025shinkaevolveopenendedsampleefficient
+program' on page 1 undefined on input line 25.
+
+
+Package natbib Warning: Citation `su2026helixevolutionaryreinforcementlearning'
+ on page 1 undefined on input line 26.
+
+
+Package natbib Warning: Citation `khrulkov2025gigaevoopensourceoptimization' on
+ page 1 undefined on input line 26.
+
+
+Package natbib Warning: Citation `cemri2026adaevolveadaptivellmdriven' on page 
+1 undefined on input line 26.
+
+
+Package natbib Warning: Citation `wang2025thetaevolvetesttimelearningopen' on p
+age 1 undefined on input line 27.
+
+[1{C:/Users/soham/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/so
+ham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}
 
 {C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}
 {C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}
 {C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 6
-9.
- (C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
+
+Package natbib Warning: Citation `mouret2015mapelites' on page 2 undefined on i
+nput line 44.
+
+
+Package natbib Warning: Citation `lehman2011novelty' on page 2 undefined on inp
+ut line 44.
+
+
+Package natbib Warning: Citation `li2026dictionariesdarwinsetlevelselection' on
+ page 2 undefined on input line 46.
+
+
+Package natbib Warning: Citation `huang2026understandinganchoringeffectllm' on 
+page 2 undefined on input line 51.
+
+
+Package natbib Warning: Citation `lou2024anchoringbiaslargelanguage' on page 2 
+undefined on input line 51.
+
+
+Package natbib Warning: Citation `malberg2025comprehensiveevaluationcognitivebi
+ases' on page 2 undefined on input line 51.
+
+
+Package natbib Warning: Citation `thomas2026mitigatingllmbasedphackingpreregist
+ering' on page 2 undefined on input line 54.
+
+
+Package natbib Warning: Citation `williams2026predictingllmsafetyrelease' on pa
+ge 2 undefined on input line 54.
+
+
+Package natbib Warning: Citation `vaccaro2026preregistrationexperimentsaiagents
+' on page 2 undefined on input line 54.
+
+
+Package natbib Warning: Citation `zhang2026testingfrontierlargelanguage' on pag
+e 2 undefined on input line 54.
+
+
+Package natbib Warning: Citation `kaplan2020scalinglawsneurallanguage' on page 
+2 undefined on input line 66.
+
+
+Package natbib Warning: Citation `hoffmann2022trainingcomputeoptimallargelangua
+ge' on page 2 undefined on input line 66.
+
+
+Package natbib Warning: Citation `snell2024predictingemergentcapabilitiesfinetu
+ning' on page 2 undefined on input line 66.
+
+
+LaTeX Warning: Reference `tab:ladder' on page 2 undefined on input line 71.
+
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 7
+3.
+(C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [2{C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.e
 nc}]
-<fig1_trapzones.png, id=202, 505.89pt x 260.172pt>
+
+Package natbib Warning: Citation `friedman_packing' on page 3 undefined on inpu
+t line 119.
+
+<fig1_trapzones.png, id=150, 505.89pt x 260.172pt>
 File: fig1_trapzones.png Graphic file (type png)
 <use fig1_trapzones.png>
-Package pdftex.def Info: fig1_trapzones.png  used on input line 122.
+Package pdftex.def Info: fig1_trapzones.png  used on input line 128.
 (pdftex.def)             Requested size: 469.75499pt x 241.59221pt.
 
-Underfull \vbox (badness 2261) has occurred while \output is active []
+Package natbib Warning: Citation `friedman_packing' on page 3 undefined on inpu
+t line 136.
+
+
+Package natbib Warning: Citation `friedman_packing' on page 3 undefined on inpu
+t line 136.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3]
 [4 <./fig1_trapzones.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 202.
+(Font)              <9> on input line 208.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 202.
+(Font)              <6> on input line 208.
 ) (sec_forecast_transfer.tex
+Underfull \vbox (badness 5175) has occurred while \output is active []
+
+ [5]
 Underfull \hbox (badness 10000) in paragraph at lines 14--14
 []|\T1/lmr/m/n/9 (+20) 3.2--
  []
@@ -672,14 +768,7 @@ Underfull \hbox (badness 2005) in paragraph at lines 28--29
 []|\T1/lmr/m/n/9 (+20) P-CCS2 holds: 0/37 above
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [6]
-[7]
+[6] [7]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 142.
@@ -761,11 +850,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 191--192
 []|\T1/lmr/m/n/9 (+20) P-M4 con-firmed;
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8]
-[9]
+[8] [9]
 Underfull \hbox (badness 10000) in paragraph at lines 284--284
 []|\T1/lmr/m/n/9 (+20) Anchor-rate
  []
@@ -875,11 +960,15 @@ Underfull \hbox (badness 5985) in paragraph at lines 337--337
 []|\T1/lmr/m/n/9 (+20) 10 fur-ther
  []
 
-<fig_gm3_anchoring.png, id=249, 462.528pt x 289.08pt>
+<fig_gm3_anchoring.png, id=199, 462.528pt x 289.08pt>
 File: fig_gm3_anchoring.png Graphic file (type png)
 <use fig_gm3_anchoring.png>
 Package pdftex.def Info: fig_gm3_anchoring.png  used on input line 371.
 (pdftex.def)             Requested size: 469.75499pt x 293.61378pt.
+
+LaTeX Warning: Reference `fig:gm3anchoring' on page 11 undefined on input line 
+381.
+
 [11] [12 <./fig_gm3_anchoring.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 448.
@@ -896,158 +985,382 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 584.
 
-[15]) (sec_tiers_elicitation.tex [16]
-Underfull \hbox (badness 7151) in paragraph at lines 17--24
+[15]) (sec_tiers_elicitation.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [16]
+
+LaTeX Warning: Reference `fig:packings' on page 17 undefined on input line 9.
+
+
+Underfull \hbox (badness 7151) in paragraph at lines 16--23
 []\T1/lmr/bx/n/10 (+20) The mid-dle tier per-turbs and mixes. \T1/lmr/m/n/10 (+
 20) The Sonnet-tier arm was pre-reg-is-tered in
  []
 
+[17]
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Warning: Reference `tab:ladder' on page 18 undefined on input line 70.
 
- [17]
-Underfull \hbox (badness 1087) in paragraph at lines 83--83
+
+Underfull \hbox (badness 1087) in paragraph at lines 82--82
 []|\T1/lmr/m/n/8 (+20) Attempted fam-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 83--83
+Underfull \hbox (badness 10000) in paragraph at lines 82--82
 []|\T1/lmr/m/n/8 (+20) Valid
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 83--83
+Underfull \hbox (badness 10000) in paragraph at lines 82--82
 []|\T1/lmr/m/n/8 (+20) Valid
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 85--85
+Underfull \hbox (badness 10000) in paragraph at lines 84--84
 []|\T1/lmr/m/n/8 (+20) 13,17,21,
  []
 
 
-Overfull \hbox (5.90604pt too wide) in paragraph at lines 85--85
+Overfull \hbox (5.90604pt too wide) in paragraph at lines 84--84
 \T1/lmr/m/n/8 (-20) 31,35,37,43| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 85--85
+Underfull \hbox (badness 10000) in paragraph at lines 84--84
 []|\T1/lmr/m/n/8 (+20) uniform grid,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 85--85
+Underfull \hbox (badness 10000) in paragraph at lines 84--84
 []|\T1/lmr/m/n/8 (+20) 35
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 85--85
+Underfull \hbox (badness 10000) in paragraph at lines 84--84
 []|\T1/lmr/m/n/8 (+20) 29
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 85--85
+Underfull \hbox (badness 10000) in paragraph at lines 84--84
 []|\T1/lmr/m/n/8 (+20) 12/16 (3
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 84--84
+\T1/lmr/m/n/8 (+20) matched
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 85--85
+[]|\T1/lmr/m/n/8 (+20) haiku,
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 85--85
 \T1/lmr/m/n/8 (+20) matched
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--86
-[]|\T1/lmr/m/n/8 (+20) haiku,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 86--86
-\T1/lmr/m/n/8 (+20) matched
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 86--86
+Underfull \hbox (badness 10000) in paragraph at lines 85--85
 []|\T1/lmr/m/n/8 (+20) 50
  []
 
 
-Underfull \hbox (badness 7667) in paragraph at lines 87--87
+Underfull \hbox (badness 7667) in paragraph at lines 86--86
 []|\T1/lmr/m/n/8 (+20) perturbed grid,
  []
 
 
-Underfull \hbox (badness 1590) in paragraph at lines 87--87
+Underfull \hbox (badness 1590) in paragraph at lines 86--86
 \T1/lmr/m/n/8 (+20) hexag-o-nal rows,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 87--87
+Underfull \hbox (badness 10000) in paragraph at lines 86--86
 []|\T1/lmr/m/n/8 (+20) 30
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 87--87
+Underfull \hbox (badness 10000) in paragraph at lines 86--86
 []|\T1/lmr/m/n/8 (+20) 27
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--88
+Underfull \hbox (badness 10000) in paragraph at lines 87--87
 []|\T1/lmr/m/n/8 (+20) quarter-circle
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--88
+Underfull \hbox (badness 10000) in paragraph at lines 87--87
 \T1/lmr/m/n/8 (+20) cor-ners, Apol-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--88
+Underfull \hbox (badness 10000) in paragraph at lines 87--87
 \T1/lmr/m/n/8 (+20) lo-nius fillers,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--88
+Underfull \hbox (badness 10000) in paragraph at lines 87--87
 \T1/lmr/m/n/8 (+20) coarse grid +
  []
 
-<fig2_packings.png, id=288, 505.89pt x 187.902pt>
+<fig2_packings.png, id=238, 505.89pt x 187.902pt>
 File: fig2_packings.png Graphic file (type png)
 <use fig2_packings.png>
-Package pdftex.def Info: fig2_packings.png  used on input line 101.
+Package pdftex.def Info: fig2_packings.png  used on input line 100.
 (pdftex.def)             Requested size: 469.75499pt x 174.48326pt.
-[18] [19 <./fig2_packings.png>]
-<fig3_armT.png, id=301, 332.442pt x 216.81pt>
+
+Underfull \vbox (badness 2027) has occurred while \output is active []
+
+ [18]
+[19 <./fig2_packings.png>]
+
+LaTeX Warning: Reference `fig:armT' on page 20 undefined on input line 216.
+
+<fig3_armT.png, id=251, 332.442pt x 216.81pt>
 File: fig3_armT.png Graphic file (type png)
 <use fig3_armT.png>
-Package pdftex.def Info: fig3_armT.png  used on input line 225.
+Package pdftex.def Info: fig3_armT.png  used on input line 224.
 (pdftex.def)             Requested size: 469.75499pt x 306.36378pt.
 
-Underfull \vbox (badness 1521) has occurred while \output is active []
+Underfull \vbox (badness 5519) has occurred while \output is active []
 
  [20]
 Underfull \vbox (badness 7256) has occurred while \output is active []
 
- [21 <./fig3_armT.png>] [22]) (sec_related_repro.tex [23] [24]
+ [21 <./fig3_armT.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [22])
+(sec_related_repro.tex
+
+Package natbib Warning: Citation `meyerson2024languagemodelcrossovervariation' 
+on page 23 undefined on input line 5.
+
+
+Package natbib Warning: Citation `lehman2022evolutionlargemodels' on page 23 un
+defined on input line 5.
+
+
+Package natbib Warning: Citation `guo2024evoprompt' on page 23 undefined on inp
+ut line 5.
+
+
+Package natbib Warning: Citation `liu2024eoh' on page 23 undefined on input lin
+e 5.
+
+
+Package natbib Warning: Citation `vanstein2025llamealargelanguagemodel' on page
+ 23 undefined on input line 5.
+
+
+Package natbib Warning: Citation `gideoni2026simplebaselinescompetitivecode' on
+ page 23 undefined on input line 13.
+
+
+Package natbib Warning: Citation `berthold2026outoftheboxglobaloptimizationpack
+ing' on page 23 undefined on input line 14.
+
+
+Package natbib Warning: Citation `gurkan2026mutationvariationconvergencedynamic
+s' on page 23 undefined on input line 17.
+
+
+Package natbib Warning: Citation `huang2026understandinganchoringeffectllm' on 
+page 23 undefined on input line 21.
+
+
+Package natbib Warning: Citation `lou2024anchoringbiaslargelanguage' on page 23
+ undefined on input line 22.
+
+
+Package natbib Warning: Citation `malberg2025comprehensiveevaluationcognitivebi
+ases' on page 23 undefined on input line 22.
+
+
+Package natbib Warning: Citation `chen2026measuringgaphumanllm' on page 23 unde
+fined on input line 25.
+
+
+Package natbib Warning: Citation `jiang2025artificialhivemindopenendedhomogenei
+ty' on page 23 undefined on input line 31.
+
+
+Package natbib Warning: Citation `li2026dictionariesdarwinsetlevelselection' on
+ page 23 undefined on input line 35.
+
+
+Package natbib Warning: Citation `wang2026diversescientifichypothesissearch' on
+ page 23 undefined on input line 35.
+
+
+Package natbib Warning: Citation `zhang2026rethinkingcodesimilarityautomated' o
+n page 23 undefined on input line 36.
+
+
+Package natbib Warning: Citation `yang2026accuracyevaluatingstrategydiversity' 
+on page 23 undefined on input line 36.
+
+
+Package natbib Warning: Citation `herrmann2026indepthstudyllmcontributions' on 
+page 23 undefined on input line 36.
+
+
+Package natbib Warning: Citation `sim2025hypebenchmarkingllmevolvedheuristics' 
+on page 23 undefined on input line 36.
+
+
+Package natbib Warning: Citation `balunovic2025mathconstructchallengingllmreaso
+ning' on page 23 undefined on input line 36.
+
+
+Package natbib Warning: Citation `zhang2024understandingimportanceevolutionarys
+earch' on page 23 undefined on input line 37.
+
+
+Package natbib Warning: Citation `zhang2026makesllmgoodoptimizer' on page 23 un
+defined on input line 39.
+
+[23]
+
+Package natbib Warning: Citation `zhou2024reliability' on page 24 undefined on 
+input line 43.
+
+
+Package natbib Warning: Citation `shojaee2025illusionthinkingunderstandingstren
+gths' on page 24 undefined on input line 44.
+
+
+Package natbib Warning: Citation `kim2026geobuildbenchbenchmarkinteractiveexecu
+table' on page 24 undefined on input line 45.
+
+
+Package natbib Warning: Citation `boppana2026reasoningtheaterdisentanglingmodel
+' on page 24 undefined on input line 50.
+
+
+Package natbib Warning: Citation `khanzadeh2026projectariadnestructuralcausal' 
+on page 24 undefined on input line 50.
+
+
+Package natbib Warning: Citation `scalena2026commitmentboundaryprobingepiphenom
+enal' on page 24 undefined on input line 51.
+
+
+Package natbib Warning: Citation `li2026chainholdsanswerfolds' on page 24 undef
+ined on input line 52.
+
+
+Package natbib Warning: Citation `arcuschin2026chainofthoughtreasoningwildfaith
+ful' on page 24 undefined on input line 53.
+
+
+Package natbib Warning: Citation `yun2025priceformatdiversitycollapse' on page 
+24 undefined on input line 56.
+
+
+Package natbib Warning: Citation `tam2024letspeakfreelystudy' on page 24 undefi
+ned on input line 59.
+
+
+Package natbib Warning: Citation `abdelnabi2025hawthorneeffectreasoningmodels' 
+on page 24 undefined on input line 60.
+
+
+Package natbib Warning: Citation `zhang2026verbalizedsamplingmitigatemode' on p
+age 24 undefined on input line 60.
+
+
+Package natbib Warning: Citation `wu2025answercentricreasoningdrivenuncoveringl
+atent' on page 24 undefined on input line 60.
+
+
+Package natbib Warning: Citation `thomas2026mitigatingllmbasedphackingpreregist
+ering' on page 24 undefined on input line 62.
+
+
+Package natbib Warning: Citation `williams2026predictingllmsafetyrelease' on pa
+ge 24 undefined on input line 62.
+
+
+Package natbib Warning: Citation `vaccaro2026preregistrationexperimentsaiagents
+' on page 24 undefined on input line 62.
+
+
+Package natbib Warning: Citation `zhang2026testingfrontierlargelanguage' on pag
+e 24 undefined on input line 62.
+
+
+Package natbib Warning: Citation `jia2026hindsightbenchblackboxbehavioralaudit'
+ on page 24 undefined on input line 63.
+
+
+Package natbib Warning: Citation `kaplan2020scalinglawsneurallanguage' on page 
+24 undefined on input line 67.
+
+
+Package natbib Warning: Citation `hoffmann2022trainingcomputeoptimallargelangua
+ge' on page 24 undefined on input line 67.
+
+
+Package natbib Warning: Citation `snell2024predictingemergentcapabilitiesfinetu
+ning' on page 24 undefined on input line 68.
+
+
+Package natbib Warning: Citation `bradley2023qualitydiversityaifeedback' on pag
+e 24 undefined on input line 69.
+
+
+Package natbib Warning: Citation `khrulkov2025gigaevoopensourceoptimization' on
+ page 24 undefined on input line 70.
+
+
+Package natbib Warning: Citation `zhang2024understandingimportanceevolutionarys
+earch' on page 24 undefined on input line 77.
+
+
+Package natbib Warning: Citation `zhang2026verbalizedsamplingmitigatemode' on p
+age 24 undefined on input line 102.
+
+[24]
+
+Package natbib Warning: Citation `carlini2021extracting' on page 25 undefined o
+n input line 105.
+
+
+Package natbib Warning: Citation `golchin2024timetravel' on page 25 undefined o
+n input line 105.
+
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 149.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [25]
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-68.
 
+Package natbib Warning: Citation `sclar2024formatspread' on page 26 undefined o
+n input line 163.
+
+
+Package natbib Warning: Citation `kirk2024rlhf' on page 26 undefined on input l
+ine 163.
+
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
+70.
 (C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [26{C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.en
 c}]
-Underfull \hbox (badness 6396) in paragraph at lines 223--237
+Underfull \hbox (badness 6396) in paragraph at lines 225--239
 \T1/lmtt/m/n/10 arm_f_candidates_v2.jsonl\T1/lmr/m/n/10 (+20) , \T1/lmtt/m/n/10
  arm_g_candidates.jsonl\T1/lmr/m/n/10 (+20) , \T1/lmtt/m/n/10 arm_m_collect.jso
 nl \T1/lmr/m/n/10 (+20) scored by
  []
 
-) (main.bbl [27] [28] [29]) (sec_appendices.tex [30]
+) (main.bbl [27] [28] [29] [30]) (sec_appendices.tex [31]
 Underfull \hbox (badness 6592) in paragraph at lines 70--70
 []|\T1/lmr/m/n/8 (+20) yes, plus cor-
  []
@@ -1148,23 +1461,38 @@ Underfull \hbox (badness 10000) in paragraph at lines 79--79
 \T1/lmr/m/n/8 (+20) (\T1/lmtt/m/n/8 diagnostics
  []
 
-ignored error: Infinite glue shrinkage found in box being split [31]) [32]
-(main.aux)
+ignored error: Infinite glue shrinkage found in box being split [32])
+
+Package natbib Warning: There were undefined citations.
+
+[33] (main.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 79ADAA22DBF26AB83D201C40F9349511;8895.
  ) 
 Here is how much of TeX's memory you used:
- 14292 strings out of 467871
- 228503 string characters out of 5418376
- 684149 words of memory out of 5000000
- 42399 multiletter control sequences out of 15000+600000
- 731751 words of font info for 306 fonts, out of 8000000 for 9000
+ 14341 strings out of 467871
+ 229446 string characters out of 5418376
+ 678019 words of memory out of 5000000
+ 42427 multiletter control sequences out of 15000+600000
+ 732044 words of font info for 310 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,90p,1003b,673s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,90p,1003b,674s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
 b><C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb
 ><C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx9.pfb>
@@ -1192,9 +1520,9 @@ AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/soham/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/soham/A
 ppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt9.pfb><C:/Users/soham/Ap
 pData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on main.pdf (32 pages, 1007567 bytes).
+Output written on main.pdf (33 pages, 990016 bytes).
 PDF statistics:
- 698 PDF objects out of 1000 (max. 8388607)
- 124 named destinations out of 1000 (max. 500000)
+ 593 PDF objects out of 1000 (max. 8388607)
+ 139 named destinations out of 1000 (max. 500000)
  55053 words of extra memory for PDF output out of 61914 (max. 10000000)
 
