@@ -185,7 +185,7 @@ $N$ & $k^*$ & Branch & Registered prediction & Modal valid output & Freq & Valid
 \end{center}
 
 Exactly one $V(k^*, m)$ construction appears in 36 valid converge-cell rows; filler count is 0
-in 35 of 36. Regenerates from \texttt{arm\_m\_collect.jsonl} via \texttt{arm\_m\_analysis.py}.
+in 35 of 36. Three converge-cell rows leave the recipe family \emph{upward} --- two at $N = 20$ (staggered rows of four at $r = 1/9$, sum 2.2222222, against the family best $V(4,4) = 2.2071068$) and one at $N = 30$ ($r = 1/11$, sum 2.7272727, against $V(5,5) = 2.7071068$; valid at $10^{-6}$, not at $10^{-9}$) --- hexagonal layouts the family does not contain, found by a post-hoc sweep (not preregistered) run after a fourth-round check; they are not the modal output at either cell and do not bear on the discriminating-cell claims. Regenerates from \texttt{arm\_m\_collect.jsonl} via \texttt{arm\_m\_analysis.py}.
 
 The net effect on the paper's claim is a sharpening. Arm M does not rescue $V(k, m)$; the closed form now reads
 ``$k^* = \mathrm{round}(\sqrt{N})$ names the grid family; at $k^{*2} > N$ the model truncates that grid (five $k$
@@ -360,7 +360,7 @@ $N$ & predicted (4 dp) & Gemma modal sum & mode freq & valid $n$ & on-prediction
 \centering
 \includegraphics[width=\linewidth]{fig_gm3_anchoring.png}
 \caption{\emph{Arm GM3 modal sums against the registered prediction.} Filled green circles match the
-predicted mode (frequencies annotated); open red triangles miss --- every miss lands above the
+predicted mode (the dashed line is $V(k^*, m)$ at extend cells and $T(k^*, N)$ at truncate cells) (frequencies annotated); open red triangles miss --- every miss lands above the
 prediction, on the rival argmax (the modal packings carry the rival's two-radius structure,
 27/27 --- \S3.6); the two largest cells are UNSCOREABLE under the registered $<$3-valid rule.
 Regenerates via \texttt{fig\_gm3\_anchoring.py} from \texttt{arm\_gm3\_report.json} (itself replayed from the
@@ -624,7 +624,7 @@ nine overlaps, two count errors and one output of fraction literals the register
 does not evaluate (the CH ``radical literal'' mode). Raw rows in
 \texttt{arm\_cn\_collect.jsonl} (75/75 launched, none lost); eleven $N = 65$ rows were
 transcribed by reconstructing the standard $8 \times 8$ grid string from the emitted filler
-triple, disclosed in \texttt{arm\_cn\_results.txt}; the reconstruction is character-identical for these standard grids, but a reader who discards those rows leaves $N = 65$ with three valid samples, below the five-row floor, and P-CN1 at 3 hits of 4 evaluable cells --- the three discriminating cells, which carry the contamination argument, are untouched. The arm brings the study corpus to 678
+triple, flagged per row (\texttt{reconstructed: true}) and disclosed in \texttt{arm\_cn\_results.txt}; the reconstruction is character-identical for these standard grids, but a reader who discards those rows leaves $N = 65$ with three valid samples, below the five-row floor, and P-CN1 at 3 hits of 4 evaluable cells --- the three discriminating cells, which carry the contamination argument, are untouched. The arm brings the study corpus to 678
 invocations.
 
 \textbf{What this does and does not show.} The recall reading predicted that the anchor
