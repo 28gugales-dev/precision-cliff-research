@@ -15,7 +15,7 @@ F (square, bare) & 3.2--3.3 & weak tier & 7 $N$ $\times$ 5--20 & P1--P5 exact-va
 S (mid tier) & 5 & Sonnet tier & 3 $N$ $\times$ 10 & P-S1--P-S4 tier contrasts & 1/30 on-prediction, 100\%/90\% valid ($10^{-6}$/$10^{-9}$) \\
 O (top alias) & 5 & \texttt{opus\_alias} & 3 $N$ $\times$ 10 & P-O1--P-O4 & 13\% valid; 3 predictions not evaluable (deviation, Table 4) \\
 T (trace) & 6 & weak tier & 3 $N$ $\times$ 20 $\times$ 2 arms & P-T1--P-T4 + falsifier & falsifier \textbf{triggered} (tie reading); P-T3 fragile \\
-G (rectangle) & 4 & 16 proposers & 2 cells & out-of-sample transfer & partial, 5/11; formula negative result kept \\
+G (rectangle) & 4 & 16 invocations & 2 cells & out-of-sample transfer & partial, 5/11; formula negative result kept \\
 M (branch stress) & 3.4 & weak tier & 4 $N$ $\times$ 15 & P-M1--P-M4 + F-M1/F-M2 & F-M1 \textbf{triggered 3/3}: extend branch dies at $m \ge 4$; fifth $k$ confirms \\
 MU (mutation) & 3.5 & weak tier & 3 parents $\times$ 3 $N$ $\times$ 15 & P-MU1--P-MU4 + F-MU1 & F-MU1 \textbf{triggered}: anchor dissolves under conditioning \\
 CH (choice) & 3.5 & weak tier & 3 $N$ $\times$ 15 & P-CH1 vs P-CH2 & choice follows score table; execution fails off-template 30/31 \\
@@ -452,7 +452,7 @@ registered construction values at 61--67\% of valid outputs (point estimates abo
 point-estimate pass at $n = 12$ and $n = 18$) --- and the strong form holds
 everywhere evaluable \emph{within this arm}: zero rival-argmax emissions in 16
 discriminating-cell validities (the registration, \texttt{arm\_v\_preregistration.md}, recorded the original family's prior for
-the same statistic as 0/21 --- an undercount against the shipped ledger's 2/23 in \S3.3; \S3.6's gemma-4-26b, under the GM-chain instrument, is the
+the same statistic as 0/21 over $N \in \{13, 31\}$ only --- a narrower scope than \S3.3's 2/23, whose two rival hits both sit at $N = 21$, so the two corpora agree at 0 on the registration's own cells; \S3.6's gemma-4-26b, under the GM-chain instrument, is the
 standing exception --- its discriminating-cell mode \emph{is} the rival). The transfer is at reduced
 concentration: 61--67\% on-prediction against 56--76\% in-family at the same five cells (\S3.2). Reduced concentration at
 different vendors, on byte-identical prompts, landing on the same modal value is what a shared
@@ -505,7 +505,7 @@ P-CC2, it sits strictly above the anchor at $\ge 2$ of 3; ties or mixed modes co
 \toprule
 $N$ & Valid & Modal bucket (count, margin) & Anchor-rate & Above anchor \\
 \midrule
-13 & 12/15 & anchor 1.6250000 (2/12, one sample) & 2/12 & 1 --- the family argmax, exactly \\
+13 & 12/15 & anchor 1.6250000 (2/12, one sample) & 2/12 & 2 --- 1.6614054, and the family argmax exactly \\
 21 & 13/15 & anchor 2.1000000 (9/13, margin 8) & 9/13 & 0 \\
 31 & 12/15 & anchor 2.5833333 (3/12, one sample) & 3/12 & 0 \\
 \bottomrule
@@ -648,7 +648,7 @@ square file's closed form must equal this file's LP. Shape mismatch grows as $a$
 $N = 10\ldots45$ the count of $N$ whose predicted shape differs from the optimal one rises from 12 at
 $a = 1.0$ to 23 at $a = 1.5$, 20 at $a = 2.0$ and 23 at $a = 3.0$.
 
-We probed the two sharpest cells with sixteen proposers in a container none had been given
+We probed the two sharpest cells with sixteen invocations (eight per cell) in a container none had been given
 before: $N = 19$ at $a = 3$ (predicted 3.1666667, rival 3.5749194) and $N = 25$ at $a = 2$ (predicted
 3.1250000, rival 3.4832492). With all sixteen scored, \textbf{5 of 11 valid proposals landed on the
 predicted value and 0 of 11 reached the rival}.
@@ -657,7 +657,7 @@ We characterize all eleven here. On-prediction: two
 at $N = 19$/$a = 3$ (3.1666666667 and 3.16666673, the latter agreeing to six decimals not seven) and
 three at $N = 25$/$a = 2$ (3.125 exactly). Off-prediction at $N = 25$/$a = 2$: two samples emitted a
 uniform $5 \times 5$ grid at $r = 0.1$ summing to 2.5000000 --- the \emph{square} rule with no aspect correction,
-$k = \mathrm{round}(\sqrt{25}) = 5$ --- plus one at 3.0 and one at 3.151875. At $N = 19$/$a = 3$, \textbf{two} samples
+$k = \mathrm{round}(\sqrt{25}) = 5$ --- plus one at 3.0 and one at 3.151875, the latter above the 3.125 prediction from outside the family and below the rival. At $N = 19$/$a = 3$, \textbf{two} further samples
 exceeded the prediction from outside the family, 3.45 and 3.5, both below the rival.
 
 We therefore report the rectangle as \textbf{partial out-of-sample support, not confirmation}:

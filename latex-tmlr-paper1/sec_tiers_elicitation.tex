@@ -295,7 +295,7 @@ covered the prompt drift only.
 Claim and artifact sit in the same completion and the artifact is fully determined, so a method
 line is checkable against the emitted coordinates. \texttt{arm\_f\_repro.trace\_faithfulness()} matches
 numeric dimensions from the method line against the emitted layout signature, returning 38 of 41
-scoreable claims matching (93\%) against the registered 90\% threshold. Its 12 exclusions are regex
+scoreable claims matching (93\%) against the registered 90\% threshold. Nine of its 12 exclusions are regex
 coverage gaps, not claims without numeric content: \texttt{DIMS\_RE} matched only the
 literal \texttt{NxN} form and \texttt{ROWSCOLS\_RE} required rows before columns, so these fell through despite
 carrying explicit checkable dimensions --- ``Regular 3 by 4 grid with one additional circle in row

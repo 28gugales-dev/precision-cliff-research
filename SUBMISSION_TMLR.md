@@ -380,3 +380,15 @@ all discriminating, P-CP1 vs P-CP2) and `arm_rp_preregistration_DRAFT.txt`
 (direct recall of scoreboard values, 3 scoreboard + 3 held-out N, P-RP1 vs
 P-RP2). Both ship in the supplementary bundle with the DRAFT marker.
 
+### 4.5b (same day): third-round claims pass
+Opus reviewer over sections not yet recomputed (3.3-3.5, 4, 6, 8). Two numeric
+fixes: Table CC N=13 above-anchor cell 1 -> 2 (prose had been fixed in 4.5,
+table not); GM3 16k-budget parse count 118/140 -> 123/140 (recomputed from the
+`parsed` flag; 118 existed only in drafts). Wording: arm V prereg 0/21 recast
+as a scope difference (N in {13,31}) not an undercount; rectangle arm "sixteen
+proposers" -> "sixteen invocations (eight per cell)"; a=2 sample 3.151875
+noted as a third out-of-family above-prediction output; faithfulness
+exclusions "nine of 12" are regex gaps. Reviewer recomputed every other
+fraction in those sections clean. Round 3 yield (2 numeric) < round 2 (6):
+converging.
+
