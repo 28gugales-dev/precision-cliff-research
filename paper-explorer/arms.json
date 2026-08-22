@@ -998,6 +998,14 @@
    "kind": "extension",
    "design": "Same byte-identical program-emission prompts, Sonnet-tier proposer, 3 cells x 15. Competing registered predictions: P-CCS1 escape-is-capability-gated (>=20% of valid outputs strictly above the family argmax) vs P-CCS2 zero-count ceiling. Registered with CC2 at commit 4d7b7c5 before sampling.",
    "result": "P-CCS2 HOLDS: 0/37 valid Sonnet outputs above the family argmax. The programs are qualitatively different search — simulated annealing over hand-rolled LCG PRNGs, Halton multi-restarts, force-directed relaxation — and the tier barely anchors (5/37, consistent with arm S's direct-emission escape), yet its executed math-only search never passes the family ceiling at any cell. The ceiling is a property of the channel, not the tier. Taxonomy: 37 valid, 7 geometry-invalid, 1 timeout (the programme's first). Pooled over all three code-channel arms: 0/115 above the argmax."
+  },
+  {
+   "id": "p1_arm_cn",
+   "paper": "paper1",
+   "label": "Arm CN — held-out-N contamination probe (construction vs recall)",
+   "kind": "extension",
+   "design": "Bare template at five N absent from every cited sum-of-radii scoreboard and every prior arm (N = 50, 58, 62, 65, 75; three truncation cells, two m=1 extend cells), 15 weak-tier invocations each. Registered at commit 69a1642 before sampling, in response to an external review that rated the unprobed contamination confound blocking. Competing predictions: P-CN1 construction (registered value modal at >=4/5 cells incl. >=2/3 discriminating) vs P-CN2 recall (<=2/5); UNDERPOWERED floor at 5 valid per cell; ties count against.",
+   "result": "P-CN1 HOLDS. Mode at 4/5 held-out cells, all three discriminating (margins +6 to +13); k*-structure majority at 5/5 (57/63 valid); 0 rival emissions in 39 discriminating validities; 0/63 above the family argmax. The one miss (N=50) is the arm-CH pattern: 10/11 valid are the 7x7 grid plus one filler, 6 of them with the filler pushed into a corner at r~0.0123 (0.017 below V(7,1)). Validity 63/75, no collapse at large N. The closed form describes what the proposer builds where there is nothing to recall; absence of the fitted cells from pretraining text is not established. Corpus 678."
   }
  ],
  "links": [
@@ -1588,6 +1596,18 @@
    "target": "p1_claim_tier_inversion",
    "type": "contrasts_with",
    "note": "Sonnet escapes the anchor as a mode (5/37 anchor-rate, like its direct emissions) but not the family ceiling — tier changes where mass sits below the ceiling, not whether the ceiling holds."
+  },
+  {
+   "source": "p1_arm_cn",
+   "target": "p1_arm_m",
+   "type": "extends",
+   "note": "Same bare template at five new N; recall alternative registered and not supported."
+  },
+  {
+   "source": "p1_arm_cn",
+   "target": "p1_arm_ch",
+   "type": "contrasts_with",
+   "note": "N=50 miss decomposes as filler mis-execution on a selected template — CH's choice/execution dissociation reappears unprompted."
   }
  ]
 }

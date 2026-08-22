@@ -1,7 +1,7 @@
 % 1:1 markup translation of paper1_draft.md lines 251-589 (S3, S4).
 \section{Preregistered forecast, out of sample}
 
-Fifteen registered arms appear in this paper. Each was registered before its sampling, each
+Sixteen registered arms appear in this paper. Each was registered before its sampling, each
 is reported regardless of outcome, and the falsifiers that fired are flagged in place:
 
 \begin{center}
@@ -26,6 +26,7 @@ V (cross-vendor zero-shot) & 3.6 & 13 free-tier aliases & 5 $N$ $\times$ 5 & flo
 CC (code channel) & 3.7 & weak tier & 3 $N$ $\times$ 15 & P-CC1 vs P-CC2 & P-CC1 holds: anchor stays modal; 0/37 above the family argmax \\
 CC2 (fresh-draw replication) & 3.7 & weak tier & 3 $N$ $\times$ 15 & R1 + R2 + F-CC2.1 & \textbf{REPLICATED}: 0/41 above argmax, anchor modal 3/3 \\
 CCS (tier probe) & 3.7 & Sonnet tier & 3 $N$ $\times$ 15 & P-CCS1 vs P-CCS2 & P-CCS2 holds: 0/37 above argmax --- ceiling is channel, not tier \\
+CN (held-out $N$) & 3.8 & weak tier & 5 $N$ $\times$ 15 & P-CN1 vs P-CN2 + S-CN1--3 & P-CN1 holds: mode at 4/5 held-out cells, 3/3 discriminating; structure 5/5 \\
 \bottomrule
 \end{tabular}
 \end{small}
@@ -579,6 +580,71 @@ is scored like every other row. Ledgers \texttt{arm\_cc2\_collect.jsonl} and
 \texttt{arm\_ccs\_collect.jsonl} (45/45 each, no runtime deaths); runner
 \texttt{arm\_cc2\_analysis.py} reuses CC's registered pipeline unmodified. These arms bring
 the study corpus to 603 invocations.
+
+\subsection{Preregistered held-out-$N$ probe (arm CN): the rule predicts the mode where there is nothing to recall}
+
+The rule was fitted on $N = 23/26/27$, and $N = 26$ is the canonical published cell. A
+reader can therefore hold a rival reading of every square-arm result above: the proposer is
+not constructing a $\mathrm{round}(\sqrt{N})$ grid but recalling packings it saw, and the
+closed form happens to describe them. Arm CN separates the two readings by sampling the
+bare template A.1 at five $N$ that appear in no entry of the sum-of-radii scoreboard cited
+in \S7 and in no prior arm of this study --- $N = 50$, 58, 62, 65 and 75, chosen to mirror
+the square arm's branch mix (three truncation cells, two $m = 1$ extend cells; the $m \ge 4$
+branch is already disconfirmed by arm M and was not re-tested). Absence from the pretraining
+corpus cannot be established and is not claimed; what the arm can establish is whether the
+rule predicts the mode where no published sum-of-radii packing exists to recall. Two
+predictions were registered against each other before sampling
+(\texttt{arm\_cn\_preregistration.txt}, commit \texttt{69a1642}, pushed first; motivation
+disclosed as post-review): P-CN1, construction --- the registered value is modal at $\ge 4$
+of 5 cells including $\ge 2$ of the 3 discriminating cells; P-CN2, recall --- modal at
+$\le 2$ of 5. Cells with fewer than five valid outputs were to be reported UNDERPOWERED;
+ties for the mode count against the prediction. $n = 15$ weak-tier invocations per cell,
+scored once by the arm-F pipeline unchanged.
+
+\begin{center}
+\begin{footnotesize}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llllllll}
+\toprule
+$N$ & $k^*$, prediction & disc. & valid [Wilson 95\%] & on-pred. & mode (count, margin) & verdict & $k^*$-struct. \\
+\midrule
+50 & 7, $V(7,1) = 3.5295867$ & no & 11/15 [48--89\%] & 4 & 3.5122554 (6, $+2$) & \textbf{MISS} & 10/11 \\
+58 & 8, $T(8,58) = 3.6250000$ & yes & 14/15 [70--99\%] & 12 & 3.6250000 (12, $+11$) & \textbf{HIT} & 14/14 \\
+62 & 8, $T(8,62) = 3.8750000$ & yes & 13/15 [62--96\%] & 13 & 3.8750000 (13, $+13$) & \textbf{HIT} & 13/13 \\
+65 & 8, $V(8,1) = 4.0258883$ & no & 13/15 [62--96\%] & 9 & 4.0258871 (9, $+7$) & \textbf{HIT} & 12/13 \\
+75 & 9, $T(9,75) = 4.1666667$ & yes & 12/15 [55--93\%] & 8 & 4.1666667 (8, $+6$) & \textbf{HIT} & 8/12 \\
+\bottomrule
+\end{tabular}
+\end{footnotesize}
+\end{center}
+
+\textbf{P-CN1 holds.} The registered value is modal at 4 of 5 cells, at all three
+discriminating cells, with margins of 6 to 13 samples; every cell clears the evaluability
+floor; the family rival is emitted 0 times in 39 discriminating-cell validities and no valid
+output exceeds the family argmax (0/63). The registered structural secondary holds at 5 of 5
+cells: the dominant radius backs out $k = k^*$ in 57 of 63 valid outputs. The one miss is
+$N = 50$, and its decomposition is the arm-CH pattern: 10 of 11 valid outputs are the
+registered $7 \times 7$ grid plus exactly one filler, 4 with the filler at the interstitial
+radius $(\sqrt{2}-1)/14$ (the registered value) and 6 with it pushed into a container corner
+at $r \approx 0.0123$ --- the cell's mode, $0.017$ below the prediction. The template is
+selected; the filler is mis-executed; the value criterion registers a miss, and it is
+reported as one. At the largest cell, $N = 75$, the four off-mode outputs are alternative
+constructions (a $5 \times 15$ grid, a hexagonal layout, a 12-column layout), none of them the
+rival $V(8,11)$. Validity is 63/75 (84\%) with no collapse at large $N$; the invalid rows are
+nine overlaps, two count errors and one output of fraction literals the registered parser
+does not evaluate (the CH ``radical literal'' mode). Raw rows in
+\texttt{arm\_cn\_collect.jsonl} (75/75 launched, none lost); eleven $N = 65$ rows were
+transcribed by reconstructing the standard $8 \times 8$ grid string from the emitted filler
+triple, disclosed in \texttt{arm\_cn\_results.txt}. The arm brings the study corpus to 678
+invocations.
+
+\textbf{What this does and does not show.} The recall reading predicted that the anchor
+would not survive the move to $N$ with nothing to recall; it survived at four of five cells
+and structurally at all five. The closed form is therefore a description of what the
+proposer builds, not of what it has seen, at the branches where it was already supported.
+This does not establish that the fitted cells are absent from training text, does not
+extend to the $m \ge 4$ branch, and leaves the canary and perturbed-container probes in
+\S8 unrun.
 
 \section{Rectangle transfer}
 

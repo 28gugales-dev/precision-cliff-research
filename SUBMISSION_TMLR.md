@@ -257,3 +257,29 @@ chain, scope-independent), (2) closed form, (3) tier, (4) faithfulness,
 **If a reviewer says the transfer rates show a weaker phenomenon, not the same one:**
 
 > The registered transfer criterion is modal identity on byte-identical prompts, not equal concentration, and the paper now states the concentration gap explicitly (61–67% at the transfer vendors against 56–80% in-family). Reduced concentration on the same modal value at a different vendor is what a shared attractor predicts; matching concentration would be harder to distinguish from shared training text. We claim family-bounded transfer, not a universal, and the gemma pair is reported precisely because it bounds the claim from both sides.
+
+## 2026-08-21 — Revision 4.2 (paper 1): arm CN, held-out-N contamination probe
+
+Tag `v4.2-arm-cn`. Registered at commit `69a1642` (pushed before sampling) in
+response to the ox-alpha review's blocking item B2. Five held-out N (50, 58, 62,
+65, 75 — absent from the cited scoreboard and every prior arm), 15 haiku
+invocations each, bare template A.1 byte-identical to arm M (hash asserted).
+Competing registered predictions: P-CN1 construction (mode at >=4/5 cells incl.
+>=2/3 discriminating) vs P-CN2 recall (<=2/5).
+
+Result: **P-CN1 HOLDS** — mode at 4/5 cells, 3/3 discriminating, margins +6 to
++13; k*-structure majority 5/5 (57/63); 0 rivals in 39 discriminating
+validities; 0/63 above the family argmax; validity 63/75 with no collapse at
+large N. The N=50 miss is filler mis-execution on the selected 7x7 template
+(6 of 11 push the filler into a corner, 0.017 below V(7,1)) — the arm-CH
+pattern. Frozen in `arm_cn_results.txt` / `arm_cn_report.json`.
+
+Paper 1 (32 pp): new §3.8; abstract gains one held-out sentence; arms index
+16 arms; §8 contamination paragraph rewritten from "not probed" to "probed at
+one level" (canary + perturbed-container still unrun); §9 registration and
+stopping-rule entries; App A.4 hashes; corpus 603 -> 678. Stale "N = 57 not
+run" in §9 removed (arm M ran it).
+
+Rebuttal paragraph for contamination now reads: point to §3.8; concede the
+canary/perturbed-container probes remain and offer to run them as a registered
+arm if decisive.

@@ -1,0 +1,74 @@
+ARM CN PREREGISTRATION — held-out-N contamination probe (construction vs recall)
+Registered: 2026-08-21, before any sampling. Committed and pushed to the public repository
+before the first invocation; the push is the external timestamp.
+
+MOTIVATION (disclosed). §8 of the anchoring paper states "Contamination is not probed": the
+closed form was fitted on N = 23/26/27, N = 26 is the canonical published cell, and no arm
+separates the construction reading (the proposer builds a round(sqrt(N)) grid) from the recall
+reading (the proposer reproduces packings it saw in training). An external QA review of
+revision 4 (reviews/2026-08-21_oxalpha_paper1_review.md, item B2) rated that gap blocking.
+This arm is registered in response to that review; the motivation is post-hoc with respect to
+the paper's results, the predictions are not.
+
+WHAT "HELD-OUT" MEANS HERE. An N is held out if it appears (i) in no entry of the sum-of-radii
+scoreboard cited in §7 (N = 13, 21, 26, 32, 43, 57) and (ii) in no prior arm of this programme
+(F/S/O/T/M/MU/CH/CC/CC2/CCS/GM/GM2/GM3/V/G: N = 13, 17, 20, 21, 23, 26, 27, 30, 31, 35, 37, 41,
+43, 57). Absence from the pretraining corpus cannot be established and is not claimed; what the
+arm can establish is whether the rule predicts the mode where no published sum-of-radii packing
+exists to recall. Packomania-style tables for EQUAL circles exist at every N; they maximise the
+common radius, not the sum of radii, and do not contain the V(k, m) / T(k, N) values.
+
+CELLS (five), chosen to mirror the original square arm's branch mix (truncation cells and
+m = 1 extend cells; the m >= 4 extend branch is already disconfirmed by arm M and is not
+re-tested here):
+  N=50  k*=7  V(7,1)  = 3.5295867  family argmax 3.5295867 (k=7)   non-discriminating
+  N=58  k*=8  T(8,58) = 3.6250000  family argmax 3.7662801 (k=7)   discriminating
+  N=62  k*=8  T(8,62) = 3.8750000  family argmax 3.8846269 (k=7)   discriminating
+  N=65  k*=8  V(8,1)  = 4.0258883  family argmax 4.0258883 (k=8)   non-discriminating
+  N=75  k*=9  T(9,75) = 4.1666667  family argmax 4.2847718 (k=8)   discriminating
+Values computed by arm_cn_build.py, which self-checks against the registered arm M values at
+N = 20 and N = 57 and the original-arm anchor/rival pair at N = 13.
+
+PROPOSER. Same weak-tier (Haiku-class) subagent channel as arms F and M: bare prompt, zero-shot,
+code-free, no tools; dispatch wrapper A.3 verbatim ("Do not use any tools. Your entire final
+message must be the answer and nothing else."). n = 15 invocations per cell, 75 total, launched
+in waves under the runtime's concurrency cap. Runtime rejections that never reach a model are
+excluded and counted separately; every completed final message is logged verbatim and scored,
+including rows that used tools against the wrapper (disclosed as a protocol note, scored as
+emitted — the arm-M / CC2 convention).
+
+PROMPTS. Bare template A.1 verbatim with {n} substituted; byte-identity with arm M's template is
+asserted by reproducing arm M's registered N=20 hash (7fb87eb5...) from the same string.
+SHA-256 per cell in arm_cn_prompts.json:
+  N=50 0b85855801b38d5a...   N=58 200c0bb43406c104...   N=62 b9854a8452098aaa...
+  N=65 5fb5fefd83d6d3aa...   N=75 a5db8fc35340e43e...
+
+SCORING (arm_cn_analysis.py, committed with this file, not modified after sampling). Arm-F
+conventions unchanged: fence-strip, ast.literal_eval, validity at 1e-9 and 1e-6 (1e-6
+primary), value window 2e-3, "modal" = most frequent 2e-3 bucket among valid samples, ties for
+the mode count as NOT the prediction, structural k from the dominant radius (k = round(1/(2 r_dom))).
+A cell is EVALUABLE only with >= 5 valid samples at 1e-6; otherwise UNDERPOWERED for that cell.
+A cell is HIT when its modal valid value is the registered prediction. One-sample margins
+(modal count exceeding runner-up by 1) are disclosed in the verdict cell.
+
+COMPETING PREDICTIONS.
+  P-CN1 (construction): the rule is generative. HIT at >= 4 of 5 evaluable cells, including
+    >= 2 of the 3 discriminating cells. Predicted.
+  P-CN2 (recall): the anchor is memory of published packings. HIT at <= 2 of 5 evaluable cells.
+  3 of 5 (or 4 of 5 with < 2 discriminating) = PARTIAL, reported as such with no claim either way.
+  Fewer than 4 evaluable cells = UNDERPOWERED; the arm is reported and no branch is claimed.
+  FALSIFIER F-CN1: P-CN2 satisfied. Consequence: the abstract's closed-form claim is rescoped to
+  "at published N" and §8's contamination paragraph becomes a positive finding of recall.
+
+SECONDARY (registered, reported, not load-bearing).
+  S-CN1 (structure): at each evaluable cell, a majority of valid samples have dominant-radius
+    k equal to k*. Predicted at >= 4 of 5.
+  S-CN2 (strong form): pooled over the three discriminating cells, the family argmax (rival)
+    is emitted in <= 1 valid sample. Predicted, consistent with 3/147 across prior arms.
+  S-CN3 (validity): validity at these larger N is reported per cell with a Wilson 95% interval;
+    a validity collapse is a distinct finding about count-lottery at large N and does not
+    bear on P-CN1/P-CN2, which are conditioned on valid rows.
+
+ANALYSIS RUN ONCE on the complete ledger (arm_cn_collect.jsonl). Output frozen in
+arm_cn_report.json and arm_cn_results.txt. Paper integration: new §3.8 (or an extension of
+§3.4) and the §8 contamination paragraph rewritten to report the outcome, whichever branch.
