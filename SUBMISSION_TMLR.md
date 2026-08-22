@@ -361,3 +361,22 @@ figure is three (slot 12 of the reconstructed rows is invalid). Downstream
 n=4 cells flagged non-discriminating, typicality-bias sentence softened,
 Friedman dated n.d., five arm headings shortened. Tag `v4.4-five-lens` moved
 to this commit.
+
+## 2026-08-22 - Revision 4.5: second-round review, paper 1
+
+Tag `v4.5-round2`. Two fresh opus reviewers over the 4.4c sources (claims,
+readability). Claims reviewer: ten residuals, all verified against frozen
+reports before editing - pooled argmax-reaching outputs 1 -> 2 (CC 1/12 and
+CC2 1/11 at N=13), CC above-anchor 1 -> 2, GM3 two-radius gloss (instrument
+blind at truncate cells), 56-80 at CC cells, Table CV routed-rows note, arm V
+vendor count (seven attributed + one unattributed), CN "twice", arm S
+100%/90%, dangling S5 attribution -> ledger item 30, two Appendix B rows
+(CN transcription, CC2 tool use). Readability: 8 of 10 proposed rewrites
+applied; two declined (clarity loss). Pages 33 -> 34.
+
+Pre-staged for rebuttal (DRAFT, unregistered, no sampling):
+`arm_cp_preregistration_DRAFT.txt` (container [3,5]^2, values x2, 5 cells
+all discriminating, P-CP1 vs P-CP2) and `arm_rp_preregistration_DRAFT.txt`
+(direct recall of scoreboard values, 3 scoreboard + 3 held-out N, P-RP1 vs
+P-RP2). Both ship in the supplementary bundle with the DRAFT marker.
+

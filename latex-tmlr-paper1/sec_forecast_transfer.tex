@@ -12,7 +12,7 @@ is reported regardless of outcome, and the falsifiers that fired are flagged in 
 Arm & \S & Proposer(s) & Design & Registered test & Outcome \\
 \midrule
 F (square, bare) & 3.2--3.3 & weak tier & 7 $N$ $\times$ 5--20 & P1--P5 exact-value modes & modal at 7/7 $N$ \\
-S (mid tier) & 5 & Sonnet tier & 3 $N$ $\times$ 10 & P-S1--P-S4 tier contrasts & 1/30 on-prediction, 100\% valid \\
+S (mid tier) & 5 & Sonnet tier & 3 $N$ $\times$ 10 & P-S1--P-S4 tier contrasts & 1/30 on-prediction, 100\%/90\% valid ($10^{-6}$/$10^{-9}$) \\
 O (top alias) & 5 & \texttt{opus\_alias} & 3 $N$ $\times$ 10 & P-O1--P-O4 & 13\% valid; 3 predictions not evaluable (deviation, Table 4) \\
 T (trace) & 6 & weak tier & 3 $N$ $\times$ 20 $\times$ 2 arms & P-T1--P-T4 + falsifier & falsifier \textbf{triggered} (tie reading); P-T3 fragile \\
 G (rectangle) & 4 & 16 proposers & 2 cells & out-of-sample transfer & partial, 5/11; formula negative result kept \\
@@ -308,7 +308,7 @@ output in \texttt{arm\_mu\_results.txt}. This arm brings the study corpus to 468
 Every arm above addresses one vendor's models. Two registered arms take the same
 byte-identical prompts across vendors --- arm GM3 under a laboratory-grade instrument against
 one second-vendor family, arm V under free-tier serving against thirteen aliases spanning
-five vendors. One table carries the chain's verdicts; the two instruments are then reported
+seven attributed vendors and one unattributed alias. One table carries the chain's verdicts; the two instruments are then reported
 in full.
 
 \textbf{Table CV --- Cross-vendor verdicts, both instruments.}
@@ -320,11 +320,11 @@ in full.
 \toprule
 Vendor & Model & Instrument & Registered test & Verdict \\
 \midrule
-Google & gemma-4-26b & first-party API, 7 $N$ $\times$ 20 & pooled $\ge$ 30\%; cell-level $\ge$ 5; falsifier $\ge$ 4 fails & pooled bar met (57.5\%); discriminating cells 11/43 = 26\%, \textbf{below} the bar; cell-level short (2/5, falsifier not triggered); all three misses are the \emph{rival construction} (27/43) \\
+Google & gemma-4-26b & first-party API, 7 $N$ $\times$ 20 (41/140 rows routed under amendment; dual accounting) & pooled $\ge$ 30\%; cell-level $\ge$ 5; falsifier $\ge$ 4 fails & pooled bar met (57.5\%); discriminating cells 11/43 = 26\%, \textbf{below} the bar; cell-level short (2/5, falsifier not triggered); all three misses are the \emph{rival construction} (27/43) \\
 Cohere & north-mini-code & free-tier alias, 5 $N$ $\times$ 5 & V1 $\ge$ 50\% of valid on-prediction; V2 rival $\le$ 10\% & \textbf{TRANSFERS}, point-estimate (8/12 = 67\%; CI includes bar); V2 HOLDS (0/4) \\
 OpenAI (open-weight) & gpt-oss-20b & free-tier alias, 5 $N$ $\times$ 5 & same & \textbf{TRANSFERS}, point-estimate (11/18 = 61\%; CI includes bar); V2 HOLDS (0/9) \\
 Google & gemma-4-31b & free-tier alias, 5 $N$ $\times$ 5 & same & \textbf{DOES-NOT-TRANSFER} (0/15); V2 HOLDS (0/3) \\
-10 further aliases & (5 vendors) & free-tier & floor: $\ge$ 10 of 25 invocations valid & BELOW-FLOOR; failure taxonomies logged, no claim in either direction \\
+10 further aliases & (NVIDIA, Liquid, Poolside, inclusionAI, others; one unattributed) & free-tier & floor: $\ge$ 10 of 25 invocations valid & BELOW-FLOOR; failure taxonomies logged, no claim in either direction \\
 \bottomrule
 \end{tabular}
 \end{small}
@@ -382,8 +382,7 @@ predicted value is modal in 2 of 5 scoreable cells, short of the registered 5, t
 registered falsifier (failure in $\ge$4) also did not trigger --- and where the family locks on,
 it locks on almost completely. \textbf{The structural signature came in under its
 bar}: 20 of 46 on-prediction samples (43\%, bar: half) carry the exact two-radius grid-plus-
-filler decomposition, so on-prediction Gemma samples reach the predicted \emph{value} through the
-predicted \emph{construction} slightly less than half the time.
+filler decomposition. The instrument is blind by construction at truncate cells, whose prediction is single-radius: all 20 signatures come from $N = 17$ (20 of 20), the one extend cell among the matches, while $N = 35$'s 15 on-prediction truncations carry no filler to detect (0 of 15). The registered verdict stands as registered; read per eligible cell, the construction matches wherever it can be seen.
 
 The three cell-level misses are not noise, and ``misses upward'' understates them: \textbf{the
 family's modal output at every discriminating cell is the rival argmax itself} --- 1.7761,
@@ -410,7 +409,7 @@ Arm V varies vendor and serving class at once, under the same byte-identical arm
 both arms inherit (SHA-256 per $N$ restated in the registration and recomputed at call time,
 aborting on mismatch; the GM-chain registration pins the identical hashes), at five cells and
 five samples per (model, $N$), against free-tier aliases
-across five vendors (\texttt{arm\_v\_preregistration.md}, committed before sampling; three amendments,
+across seven attributed vendors (\texttt{arm\_v\_preregistration.md}, committed before sampling; three amendments,
 each committed before the sampling it governs, expanded the original three-alias design to
 thirteen aliases across two serving paths --- the opencode CLI and OpenRouter chat-completions ---
 and raised \texttt{max\_tokens} to 24,576 after hidden-reasoning truncation emptied three models'
@@ -520,8 +519,8 @@ $5 \times 5$ grid truncated to 21 circles --- but at $N = 13$ and $N = 31$ the m
 the anchor value with a \textbf{one-sample margin} over dispersed sub-anchor values, so the
 modal-identity claim is thin at two of three cells, and this sentence is its registered
 disclosure. The robust result is the registered decomposition row: \textbf{no valid program
-output exceeds the family argmax anywhere} (0 of 37 above the rival), and exactly one exceeds
-the anchor at all --- a single $N = 13$ program that computes the family argmax construction
+output exceeds the family argmax anywhere} (0 of 37 above the rival), and only two exceed
+the anchor at all, both at $N = 13$ --- one at 1.6614054, and one program that computes the family argmax construction
 $V(3, 4) = 1.7761424$ \emph{exactly}. That row sharpens arm CH rather than repeating it: handed
 the family's values, the model chooses the argmax and cannot build it by direct emission (30 of
 31 invalid, \S3.5); allowed to delegate the arithmetic to an executed program, it reaches the
@@ -529,7 +528,7 @@ same argmax once in 37 valid outputs and never passes it. Failure taxonomy: 7 of
 produce geometrically invalid packings, 1 imports \texttt{random} against the stated contract
 (caught by the registered gate), none time out. Structural $k = k^*$ in 18 of 37 valid outputs.
 What the channel changes relative to direct emission is dispersion, not escape: code-free
-anchor concentration at these cells runs 56--86\%, the code channel's pooled anchor-rate is
+anchor concentration at these cells runs 56--80\%, the code channel's pooled anchor-rate is
 14/37, and the lost mass sits entirely \emph{below} the anchor --- greedy radius-growth
 heuristics converging under the lattice.
 
@@ -554,7 +553,7 @@ byte-identical prompts. \textbf{CC2 returned REPLICATED} under its pre-stated ve
 the anchor bucket modal at 3 of 3 cells --- including $N = 31$, where the mode that was
 one-sample-thin in CC arrived at 10 of 15 valid with a margin of 8, firming the cell CC
 could not. Pooled over both weak-tier waves, 0 of 78 valid program outputs exceed the
-family argmax and exactly one reaches it. \textbf{CCS returned P-CCS2}: against competing
+family argmax and exactly two reach it, one per wave, both at $N = 13$. \textbf{CCS returned P-CCS2}: against competing
 registered predictions (escape at $\ge 20\%$ above-rival versus a zero-count ceiling),
 \textbf{0 of 37 valid Sonnet-tier outputs exceed the argmax}. The Sonnet programs are
 qualitatively different search --- simulated annealing over hand-rolled linear-congruential
@@ -619,7 +618,7 @@ radius $(\sqrt{2}-1)/14$ (the registered value) and 6 with it pushed into a cont
 at $r \approx 0.0123$ --- the cell's mode, $0.017$ below the prediction. The template is
 selected; the filler is mis-executed; the value criterion registers a miss, and it is
 reported as one. At the largest cell, $N = 75$, the four off-mode outputs are alternative
-constructions (a $5 \times 15$ grid, a hexagonal layout, a 12-column layout), none of them the
+constructions (a $5 \times 15$ grid, twice; a hexagonal layout; a 12-column layout), none of them the
 rival $V(8,11)$. Validity is 63/75 (84\%) with no collapse at large $N$; the invalid rows are
 nine overlaps, two count errors and one output of fraction literals the registered parser
 does not evaluate (the CH ``radical literal'' mode). Raw rows in

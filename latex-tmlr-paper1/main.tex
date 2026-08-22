@@ -67,11 +67,11 @@ AlphaEvolve are assumed to explore a solution space. We characterize the
 \emph{unconditioned} proposal --- a single zero-shot call with no parent program and no
 fitness feedback --- on a constructive-geometry benchmark scored by an exact evaluator:
 maximize the sum of radii of $N$ circles in a unit square. A weak-tier proposer does not
-search. It emits a grid template whose value is predictable in closed form from the problem
-parameters alone --- a nearest-square order $k^* = \mathrm{round}(\sqrt{N})$ with value
-function $V(k, m)$ --- registered before sampling and modal at all seven $N$ of the original
-square arm, and, in a held-out probe registered against a recall alternative, at four of five
-$N$ absent from every cited scoreboard (all three discriminating cells; template structure at
+search. It emits a grid template whose value follows in closed form from the problem
+parameters: a nearest-square order $k^* = \mathrm{round}(\sqrt{N})$ and a value function
+$V(k, m)$ over grid order and filler count. Registered before sampling, the prediction is modal at all seven $N$ of the original
+square arm and, in a held-out probe registered against a recall alternative, at four of five
+$N$ absent from every cited scoreboard (all three cells where the prediction differs from the family argmax; template structure at
 all five). Preregistered extensions bound the result: the anchor dissolves under parent
 conditioning, the regime discovery loops actually run in, so every claim is scoped to
 unconditioned calls. Handed the higher-valued construction, the model chooses it and fails to

@@ -31,16 +31,15 @@ ThetaEvolve \citep{wang2025thetaevolvetesttimelearningopen} claiming new best-kn
 $p(\text{coordinates} \mid \text{task description, no parent, no code channel, no feedback, generation 0})$. These
 differ on four axes at once --- parent conditioning, output modality, feedback, generation index
 --- and we do not claim to have measured the in-loop distribution. What we characterize is the
-\emph{unconditioned} call. A source audit finds no loop stage in the cited systems that makes
-precisely this call: FunSearch reseeds emptied islands by cloning a best surviving program,
-ShinkaEvolve's stagnation restart re-seeds from its own archive (``initial'', ``best'' or
+\emph{unconditioned} call. A source audit finds no cited system making this call: FunSearch reseeds emptied islands by cloning a surviving program,
+ShinkaEvolve's restart re-seeds from its own archive (``initial'', ``best'' or
 ``archive\_random''), and OpenEvolve islands copy the user-provided seed --- every in-loop call is
 program-conditioned. The nearest deployed relatives are initializations conditioned on a seed
 that ``can be trivial'' (FunSearch) or ``rudimentary'', single-line functions returning constants
 (AlphaEvolve), plus AlphaEvolve's ``No evolution'' ablation, which re-prompts from the same
-rudimentary program throughout. The unconditioned call is the limiting case these approach as
-seed information goes to zero, and finding that this limit is a template lookup, its value
-computable in advance, is actionable for the people who build these loops --- seed
+rudimentary program throughout. The unconditioned call is the limit these approach as
+seed information goes to zero; that this limit is a template lookup with a computable value
+is actionable for loop builders --- seed
 diversification, forced-$k$ initialization, trap-$N$ avoidance in benchmark selection. For an evolutionary-computation reader the consequence sits at initialization: if generation zero is one template wearing many coordinates, the diversity machinery downstream --- MAP-Elites descriptors \citep{mouret2015mapelites}, novelty pressure \citep{lehman2011novelty}, seed perturbation --- is doing repair rather than exploration. For an evaluation reader it is a floor: the weak-tier zero-shot mode on this benchmark is computable in advance, so a discovery claim on circle packing has a known value to beat before any search is credited. Anything about what the loop samples at $t > 0$ is a
 hypothesis here. The one published result bearing directly on the substitution ---
 ``Dictionaries, Not Darwin'' \citep{li2026dictionariesdarwinsetlevelselection}, reporting parent-conditioned evolution
@@ -59,7 +58,7 @@ container.
 \begin{enumerate}
 \item \emph{A choice/execution dissociation: the model selects the better construction and cannot build it through either channel.} Handed the provably higher-valued in-family construction with its score, the weak tier chooses it, then fails to instantiate it in 30 of 31 invalid attempts, the remaining one unevaluable (arm CH, \S3.5); delegated to an executed math-only program, the same ceiling holds across two tiers and a fresh-draw replication --- 0 of 115 valid program outputs exceed the family argmax (arms CC/CC2/CCS, \S3.7). The template is not what the model prefers but what it can reliably execute, in text or in code. This finding does not depend on whether any deployed loop runs unconditioned calls.
 \item \emph{A closed form that names the modal model output in advance.} $k^*(N)$ with
-$V(k, m)$ and $T(k, N)$ identify the value a weak-tier proposer emits most often at a given $N$,
+$V(k, m)$ and $T(k, N)$ (the extend-with-fillers and truncated-grid values, \S2.2) identify the value a weak-tier proposer emits most often at a given $N$,
 verified against a linear-programming oracle on 83 configurations to within $10^{-9}$ and tested out
 of sample on two containers, the rectangle rule restated ($q^* = \mathrm{round}(\sqrt{N/a})$,
 $p^* = \mathrm{round}(\sqrt{N \cdot a})$) but never refitted. Prior work publishes functional forms predicting
@@ -67,8 +66,7 @@ $p^* = \mathrm{round}(\sqrt{N \cdot a})$) but never refitted. Prior work publish
 predicts a specific multi-decimal \emph{individual emitted output value} ahead of sampling. The claim
 is scoped to the weak tier (\S5).
 \item \emph{A tier boundary condition, as three attractor families.}
-Ambition rises monotonically with nominal tier; validity does not --- 83\% $\rightarrow$ 100\% $\rightarrow$ 13\% at the
-primary tolerance on matched cells (78\% over all seven weak-tier cells), 64\% (all seven weak-tier cells; the matched-cell weak rate at this tolerance was not computed) $\rightarrow$ 90\% $\rightarrow$ 13\% at $10^{-9}$ (Table~\ref{tab:ladder}). The most ambitious tier attempts recursive gaskets
+Ambition rises monotonically with nominal tier; validity does not. Matched cells, primary tolerance: 83\% $\rightarrow$ 100\% $\rightarrow$ 13\% (78\% over all seven weak-tier cells). At $10^{-9}$: 64\% $\rightarrow$ 90\% $\rightarrow$ 13\%, the 64\% over all seven weak-tier cells, its matched-cell counterpart not computed (Table~\ref{tab:ladder}). The most ambitious tier attempts recursive gaskets
 and mostly fails to produce a valid packing; it was addressed through a bare serving alias and
 appears as \texttt{opus\_alias} with that caveat everywhere.
 \item \emph{Checkable faithfulness, and trace
@@ -82,8 +80,7 @@ process descriptors \emph{by request} are nonetheless measuring a perturbed dist
 \item \emph{A family boundary, measured from both sides --- and a near-deterministic strong form.}
 Anchoring is not a single-vendor artifact: it transfers to two further vendors'
 weak models at reduced concentration (61--67\% of valid outputs against 56--76\% in-family at the same five cells, \S3.2 and \S3.6), while one further family brackets it ---
-gemma-4-26b escapes \emph{upward} to the in-family rival construction (27/43 discriminating-cell
-validities) and gemma-4-31b, above the same validity floor, anchors on nothing (\S3.6). Where
+gemma-4-26b escapes \emph{upward} to the in-family rival construction (27/43 valid outputs at discriminating cells, those where prediction and family argmax differ) and gemma-4-31b, above the same validity floor, anchors on nothing (\S3.6). Where
 anchoring holds, its strong form is near-deterministic: pooling every weak-tier discriminating-cell
 validity across the original-family and transfer-vendor arms, the provably better in-family
 rival is emitted 3 times in 186 (arm F 2/57, trace 1/53, rectangle 0/11, arm M 0/10, arm V
@@ -148,13 +145,13 @@ All invocations in the core arms are zero-shot and code-free. The prompt (Append
 count, states containment and non-overlap, forbids writing or executing code, and demands only a
 raw Python list of \texttt{[x, y, r]} triples. Our reason for the code-free design is that a code
 channel routes the task to an executed optimizer, so the distribution would reflect the
-optimizer. That reason is now measured rather than asserted: three preregistered code-channel
-arms (\S3.7 --- weak tier, a fresh-draw replication, and a Sonnet-tier probe) find that
-delegating construction to a math-only executed program neither escapes the family ceiling
-(0 of 115 valid outputs above the argmax, across both tiers) nor dislodges the anchor as the
-modal weak-tier output, so the code-free scope costs less loop relevance than we had
-assumed --- with the library-assisted channel (\texttt{numpy}/\texttt{scipy}), the one
-deployed loops permit, still unmeasured.
+optimizer. That reason is now measured. Three preregistered code-channel
+arms (\S3.7: weak tier, a fresh-draw replication, a Sonnet-tier probe) show that
+a math-only executed program neither clears the family ceiling
+(0 of 115 valid outputs above the argmax, both tiers) nor unseats the anchor as the
+modal weak-tier output, so the code-free scope costs less loop relevance than
+assumed. The library-assisted channel (\texttt{numpy}/\texttt{scipy}), the one
+deployed loops permit, stays unmeasured.
 
 \subsection{The recipe family}
 
@@ -171,17 +168,17 @@ reported anchor with no fitting: $V(5,1) = 2.5414214$, $V(5,2) = 2.5828427$, $V(
 $T(5,23) = 2.300$, $V(4,7) = 2.3624369$.
 
 The finding that 94 of 95 valid proposals in prior arms were grid-plus-filler is retained only as
-motivation, since those arms are not reported here; the self-contained version is \S5's
-observation that across the 155 weak-tier rows collected before arm M only two exceeded the
-family best, both by $\sim$$10^{-7}$ (arm M's 57 rows are scored separately in \S3.4 and were not swept
+motivation, since those arms are not reported here; the self-contained version is the ledger
+observation (\texttt{corrections\_ledger.md}, item 30) that across the 155 weak-tier rows collected before arm M only two exceeded the
+family best, both by $\sim$$10^{-7}$ --- below the $10^{-6}$ bar, so neither counts as leaving the family under \S5's convention (arm M's 57 rows are scored separately in \S3.4 and were not swept
 for this claim).
 
 \subsection{The order rule is a definition; the branch rule is the hypothesis}
 
-We write $k^*(N) = \lfloor \sqrt{N} + \tfrac{1}{2} \rfloor = \mathrm{round}(\sqrt{N})$ for the nearest-square order. This is a \emph{definition}. Given that the model emits some $k \times k$ grid from this family, ``the nearest
-square lattice'' yields $\mathrm{round}(\sqrt{N})$ by construction; and $\arg\min_k |k^2 - N|$ switches at
-$N = k^2 + k + \tfrac{1}{2}$ where $\mathrm{round}(\sqrt{N})$ switches at $k^2 + k + \tfrac{1}{4}$, so on the integers the two coincide
-exactly --- two formalizations of ``nearest'' agreeing is a symptom that no substantive hypothesis
+We write $k^*(N) = \lfloor \sqrt{N} + \tfrac{1}{2} \rfloor = \mathrm{round}(\sqrt{N})$ for the nearest-square order. This is a \emph{definition}. Given some $k \times k$ grid from this family, ``the nearest
+square lattice'' yields $\mathrm{round}(\sqrt{N})$ by construction; $\arg\min_k |k^2 - N|$ switches at
+$N = k^2 + k + \tfrac{1}{2}$, $\mathrm{round}(\sqrt{N})$ at $k^2 + k + \tfrac{1}{4}$, so on the integers the two coincide
+--- two formalizations of ``nearest'' agreeing signals that no substantive hypothesis
 is being selected. Scoring four candidate orders against the three fitting anchors gave
 \texttt{nearest} 3/3, \texttt{floor} 2/3, \texttt{argmax} 2/3, \texttt{ceil} 1/3; under a null where each candidate matches
 each anchor with probability $\tfrac{1}{2}$, some candidate among four goes 3/3 about 40\% of the time, so
