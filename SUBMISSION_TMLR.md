@@ -413,3 +413,12 @@ after writing its ledger - stdout now forced to UTF-8; verdict counts match
 `arm_v_score_final.txt`. Two table rows had wrong reads/writes (arm M, arm V)
 - corrected. Bundle rebuilt, 0 leaks.
 
+### 4.6d (same day): citation-accuracy pass (web-verified)
+Sonnet agent fetched each primary source: HELIX, GigaEvo, AdaEvolve, ThetaEvolve,
+li2026, zhang2024, Verbalized Sampling, Kirk, Sclar, EvoPrompt, Friedman page
+all VERIFIED. AlphaEvolve 2.63586276 unverifiable from abstract/HTML (lives in
+the linked notebook) - left. ShinkaEvolve digit string replaced by the source
+HTML's two figures (2.6359831 relaxed / 2.6359777 strict); the S7 "HELIX below
+ShinkaEvolve" ordering now says against which. OpenEvolve "~2.635977" not at
+the README checked (2.634292) - restated as the 2.634-2.636 band, repo unpinned.
+
