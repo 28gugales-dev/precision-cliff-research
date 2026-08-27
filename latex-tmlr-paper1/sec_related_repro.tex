@@ -120,7 +120,7 @@ valid packings of 140, three scoreable cells against the five the primary requir
 on-prediction 15\% against the 30\% bar, falsifier not triggered
 (\texttt{arm\_gm\_analysis\_v2.py}, \texttt{arm\_gm\_v2\_report.json}). Two descriptives, claimed as nothing
 more: the one mid-size scoreable cell matches the predicted mode exactly (2.1000 at $N = 21$,
-3/6), and off-prediction valid sums land far \emph{below} the prediction (0.48--1.55) --- the
+3/6), and off-prediction valid sums land far \emph{below} the prediction (0.48--1.55 over the three scoreable cells) --- the
 opposite direction from GM3's misses, which land on the family rival (\S3.6), consistent
 with \S5's point that the regularity is
 tier-bound rather than universal. Arm GM2 (gemma-4-26b-a4b-it, prereg
@@ -154,7 +154,7 @@ effect, and the supporting anomalies live only in the runtime transcript.
 on $N \in [k^2-k+1, k^2-1]$, so every discriminating cell is a trap cell by construction. The
 truncate arm now has five confirmed $k$ in the square (4, 5, 6, 7, 8 --- the last added by arm M's
 $N = 57$ cell, \S3.4) plus two rectangle cells; the extend arm is confirmed only at $m \le 1$ and
-\textbf{disconfirmed at $m \ge 4$} (\S3.4), which is the sharper scope \S1's contributions now carry. The
+\textbf{disconfirmed at $m \ge 4$} (\S3.4), which is the sharper scope the abstract now carries. The
 empirical-$k$ back-out has been run twice as
 disclosed post-hoc diagnostics: \texttt{diagnostics\_kmatch.py} (\S3.2 --- 50/50 on-prediction samples
 $k^*$-structured, 64/69 valid overall) and arm M's per-cell $k_{\mathrm{emp}}$ distributions (\S3.4 --- the
@@ -244,7 +244,7 @@ Deviations from preregistration are tabled in Appendix B. Provenance, in list fo
   authorship: each preregistration commit is a git ancestor of the sampling it governs.
   Because the authoring models share a family with arms under study (\S5), what a reader is
   asked to trust is the released artifact --- the scripts, raw ledgers, LP oracle and frozen
-  outputs --- not the author.
+  outputs, all of which accompany this submission as anonymized supplementary material --- not the author.
 \item \textbf{Internal checks.} Before submission the manuscript passed an internal adversarial
   check: language models of other families (\texttt{deepseek-v4-pro}, \texttt{deepseek-v4-flash},
   Gemini), under written protocols, independently recomputed the paper's statistics from the

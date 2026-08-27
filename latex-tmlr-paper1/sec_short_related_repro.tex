@@ -1,0 +1,148 @@
+% Short variant of sec_related_repro.tex (S7, S8, S9). Related work is trimmed;
+% the GM/GM2 instrument history, the full future-work list and the full
+% provenance itemize are relocated verbatim to Appendix F; nothing is dropped.
+\section{Related work}
+
+\textbf{LLM-driven discovery and the circle-packing scoreboard.} Language Model Crossover
+\citep{meyerson2024languagemodelcrossovervariation}, ELM \citep{lehman2022evolutionlargemodels}, EvoPrompt \citep{guo2024evoprompt}, EoH \citep{liu2024eoh} and LLaMEA \citep{vanstein2025llamealargelanguagemodel}
+established the LLM call as an EC operator over prompts and programs; FunSearch turned the
+pattern into a discovery claim, and every system in \S1's scoreboard inherits it. Two orderings
+in that scoreboard matter: HELIX's figure is marginally \emph{below} ShinkaEvolve's
+relaxed-tolerance figure (and above its strict one) while being described as state of the art, and
+ThetaEvolve claims new best-known bounds, so the benchmark is saturated only across the
+AlphaEvolve--ShinkaEvolve--HELIX cluster and the number is still moving. OpenEvolve, the
+open-source AlphaEvolve reproduction most practitioners run, reports values in the 2.634--2.636
+band across its published example runs (2.634292 in the circle-packing example at the time of
+access; the repository is unpinned). Appendix~C.2 records the correction to our record comparison
+and its $N > 30$ coverage gap. Two critiques bear on our framing and are frequently conflated, so
+we attribute them explicitly: \citet{gideoni2026simplebaselinescompetitivecode} show simple
+baselines recover much of the reported advantage, and
+\citet{berthold2026outoftheboxglobaloptimizationpacking} show classical solvers do too.
+
+\textbf{Template convergence and diversity collapse.} ``Mutation Without Variation'' \citep{gurkan2026mutationvariationconvergencedynamics}
+finds iterated LLM program mutation collapsing onto previously
+seen structural templates --- in 87\% of chains, over 93\% of mutations revisit a previously seen
+form --- the same bias family in a different regime: mutation loops, program space, no closed form,
+no preregistration. On anchoring, \citet{huang2026understandinganchoringeffectllm} treats anchoring
+as a general bias over initial information while \citet{lou2024anchoringbiaslargelanguage} and
+\citet{malberg2025comprehensiveevaluationcognitivebiases} document numeric primes dragging point
+estimates; our modality is the difference, since a construction template has a computable value
+where a scalar anchor has only a measurable pull. \citet{chen2026measuringgaphumanllm} report the
+same collapse in idea space: across 11,683 paired proposals, LLM research ideas concentrate on
+bridge-and-synthesis framings (47--64\% versus 12\% for humans; normalized entropy down to 0.55
+versus $>$0.92), and chain-of-thought pushes the distribution \emph{further} from the human one;
+``Artificial Hivemind'' \citep{jiang2025artificialhivemindopenendedhomogeneity} documents the same
+homogeneity across open-ended domains at survey scale. Those results are distributional, making
+cross-domain generality of the collapse the expected default; ours is the limiting case where the
+collapsed distribution's mode is a single closed-form-predictable object, stated before sampling.
+Converging skepticism about what the proposer contributes comes from ``Dictionaries, Not Darwin'' \citep{li2026dictionariesdarwinsetlevelselection}, \citet{wang2026diversescientifichypothesissearch}, BehaveSim
+\citep{zhang2026rethinkingcodesimilarityautomated}, Strategy Diversity \citep{yang2026accuracyevaluatingstrategydiversity}, the bin-packing critiques \citep{herrmann2026indepthstudyllmcontributions,sim2025hypebenchmarkingllmevolvedheuristics} and MathConstruct \citep{balunovic2025mathconstructchallengingllmreasoning}. Two results cut the other way: \citet{zhang2024understandingimportanceevolutionarysearch} grounds the
+\emph{importance} of evolutionary search, evidence against our substitution engaged in \S8; and
+\citet{zhang2026makesllmgoodoptimizer} finds strong LLM optimizers act as \emph{local refiners},
+which is what a parent-conditioned call would be, so it bears on \S8's mutation arm.
+
+\textbf{Scaling inversions.} \citet{zhou2024reliability} show larger and more instructable models
+becoming less reliable; the o3/o4-mini system card shows the same on PersonQA; \citet{shojaee2025illusionthinkingunderstandingstrengths}
+reports collapse past a complexity threshold; GeoBuildBench \citep{kim2026geobuildbenchbenchmarkinteractiveexecutable} finds geometric
+construction a regime where nominal capability and executed correctness diverge --- our
+instantiation being \emph{attractor family} versus executability.
+
+\textbf{Trace faithfulness, and what our result is not.} One cluster intervenes \emph{on trace
+content} and finds answers do not move
+\citep{boppana2026reasoningtheaterdisentanglingmodel,khanzadeh2026projectariadnestructuralcausal,scalena2026commitmentboundaryprobingepiphenomenal,li2026chainholdsanswerfolds};
+a second \emph{estimates} faithfulness without observing the process
+\citep{arcuschin2026chainofthoughtreasoningwildfaithful}, and \S6.5 reports the case where ground
+truth for the described artifact exists. Our result sits at a third intervention point: we vary
+whether a trace is \emph{requested} rather than editing its content, which is measurement
+reactivity, not causal faithfulness. The closest cousin is ``The Price of Format''
+\citep{yun2025priceformatdiversitycollapse}, showing format constraints collapse generation
+diversity --- and as \S6.1 concedes, our manipulation includes a small output-format change, so we
+commit a miniature version of the confound we cite. Format-restriction performance costs are
+documented at scale in \citet{tam2024letspeakfreelystudy}. Related:
+\citep{abdelnabi2025hawthorneeffectreasoningmodels,zhang2026verbalizedsamplingmitigatemode,wu2025answercentricreasoningdrivenuncoveringlatent}.
+
+\textbf{Preregistration lineage.} \citet{thomas2026mitigatingllmbasedphackingpreregistering}, \citet{williams2026predictingllmsafetyrelease}, \citet{vaccaro2026preregistrationexperimentsaiagents} and \citet{zhang2026testingfrontierlargelanguage} preregister
+recipes, outcome-blinded predictions and agent protocols; HindsightBench \citep{jia2026hindsightbenchblackboxbehavioralaudit} releases
+frozen preregistrations of directional aggregate hypotheses. We adopt the standard rather than
+claim it; what we add is the object locked --- exact closed-form point predictions of specific
+output values --- and, from \S6.3, that locked prose and executing scorer can disagree at the
+boundary. Structurally, \citet{kaplan2020scalinglawsneurallanguage} and \citet{hoffmann2022trainingcomputeoptimallargelanguage} publish a functional
+form then run the confirming instance, and \citet{snell2024predictingemergentcapabilitiesfinetuning} is the closest twin. QDAIF
+\citep{bradley2023qualitydiversityaifeedback} is the QD-descriptor setting most affected by our \S6 result, and GigaEvo
+\citep{khrulkov2025gigaevoopensourceoptimization} the concrete in-scope system running MAP-Elites with LLM-driven mutation.
+
+\section{Limitations and untested alternatives}
+
+\textbf{The measured distribution is not the in-loop distribution.} We sample generation-0,
+parent-free, code-free, feedback-free calls; the systems in \S7 sample parent-conditioned program
+proposals under selection, and \citet{zhang2024understandingimportanceevolutionarysearch} is
+published evidence that evolutionary search contributes materially, cutting against any stronger
+reading. The decisive cheap experiment --- a one-parent mutation arm under three parent conditions
+--- has now been run as the preregistered arm MU (\S3.5), its registered falsifier triggered, and
+the anchoring result is scoped to unconditioned calls as a stated negative transfer result.
+
+\textbf{A mechanism-free alternative, now directly probed.} Under an explicit ``construct the
+packing by reasoning alone'' constraint, a $k \times k$ grid at $r = 1/(2k)$ is close to the only
+construction whose coordinates can be emitted from mental arithmetic without error accumulation,
+and $\mathrm{round}(\sqrt{N})$ is the arithmetically nearest such grid --- a hypothesis that
+predicts every observation in \S2--\S3 without appeal to stored templates, and \S5's inversion too.
+The separating experiment --- state the family and ask the model to \emph{choose} $k$ --- ran as
+the preregistered arm CH (\S3.5) and split the hypothesis in two: the model's \emph{choice} follows
+the stated score table, so tractability does not explain the selection, but its \emph{execution}
+fails off-template in 30 of the 31 invalid attempts, so tractability does explain the
+instantiation. \S1's vocabulary remains behavioral and no memorization claim is made. A second
+mechanism-level account, typicality bias in preference-tuned models
+\citep{zhang2026verbalizedsamplingmitigatemode}, predicts concentration on the most typical
+construction without reference to geometry; it is not excluded by any observation here and was not
+tested against the tractability reading.
+
+\textbf{Contamination is probed at one level only.} $N = 26$ is the canonical published cell and
+plausibly in training data; membership and extraction probes
+\citep{carlini2021extracting,golchin2024timetravel} were not run. Arm CN (\S3.8) answers the
+comparison against $N$ absent from the literature. What remains unrun is a canary-string test and a
+perturbed-container test preserving difficulty while destroying lexical overlap; neither can be run
+on the present ledgers, and absence of the fitted cells from the pretraining corpus is not
+established by any of this.
+
+\textbf{Vendor scope, and what the cross-vendor chain cost to learn.} All tiers in the main study
+come from one provider; \S3.6 is the arm that moves the pooled-level claim across vendors. The
+chain's instrument history matters as much as its verdict: arm GM stalled on first-party quota and
+returned UNDERPOWERED, arm GM2 returned 0 of 140 parseable rows under a 4,096-token budget consumed
+entirely inside the vendor's separate deliberation channel, and GM3 diagnosed that confound as
+registered by re-running the same model at 16,384 tokens. A cross-vendor null under a fixed output
+budget is not evidence about the model until the budget's interaction with the vendor's response
+structure is itself checked (Appendix~F.1). Scope after \S3.6: the anchoring law is cross-vendor at
+the pooled level; its full cell-level mode structure remains confirmed only within the original
+family.
+
+\textbf{Three further provenance limits, and the confirmatory base.} Sampling parameters are
+unpinned, so every effect is a distributional claim over the observed sampling regime and \S3.2's
+mode-ceiling result inherits that scope; \texttt{opus\_alias} names a serving alias, not an
+identified model version, so a model-tier effect cannot be separated from a serving-path effect;
+and every arm conditions on a single hash-locked prompt with no paraphrase variant
+\citep{sclar2024formatspread}, so the anchor is a property of the (model, prompt string) pair. The
+cross-vendor concentration differences in \S3.6 are measured but not explained; alignment-induced
+diversity loss \citep{kirk2024rlhf} is a candidate account we did not test. The confirmatory base
+after arm M --- five confirmed $k$ on the truncate arm, the extend arm confirmed only at
+$m \le 1$ and \textbf{disconfirmed at $m \ge 4$}, and the two disclosed post-hoc empirical-$k$
+back-outs --- is set out in Appendix~F.2.
+
+\section{Reproducibility, deviations, and disclosures}
+
+Deviations are tabled in Appendix B; the arm-by-arm registration list, the four limits on it (the
+$N = 43$ bare hash that appears in no preregistration, the never-hashed pilot prompt, and two
+more), the ledger-metadata correction, the excluded and unreleased records, the analysis artifacts,
+the use-of-AI-systems statement, the internal adversarial check that corrected thirty-two claims,
+and the stopping rule are in Appendix~F.3. Four points belong here because claims elsewhere depend
+on them. Prompts were hashed with SHA-256 before sampling with the predicted values they were to be
+tested against, and every preregistration commit is a git ancestor of the sampling it governs. No
+correction \emph{across} arms is applied: every arm was registered with its own bars and falsifiers,
+is reported regardless of outcome, and none was selected on its result, so the protection against
+garden-of-forking-paths is registration and exhaustive reporting, not a family-wise error rate. The
+digests cover the task prompt only, so we cannot establish the inherited instruction files were
+identical across the arm-F and arm-T windows (the confound \S6.4 identifies), and the five
+concurrency-cap rejections appear in the ledger in no form under an unregistered exclusion rule,
+with both rates reported in \S3.3. Finally, value claims are gated on an LP oracle rather than on
+the closed form being tested --- \texttt{n\_sweep\_forecast.py} checks 83 configurations to within
+$10^{-9}$, and the same oracle produced \S4.2's negative result. Every table regenerates from raw
+outputs by a command documented in \texttt{HOW\_TO\_RUN.md}.

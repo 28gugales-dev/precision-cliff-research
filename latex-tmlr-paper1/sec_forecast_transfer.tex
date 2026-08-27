@@ -246,7 +246,7 @@ valid output is $T(4,13) = 1.6250000$ against a stated argmax of 1.7761424, at $
 $T(6,31) \approx 2.5833$ (4 of 7 valid) against 2.7485281 (3 of 7) --- a one-sample margin --- and only
 $N = 21$ goes to the argmax (2.2588835, 3 of 5 valid). P-CH2 holds at only 1 of 3 cells. Read no further and the tractability
 alternative fails the probe. But validity is low in this arm --- 2, 5 and 7 valid of 15 by
-cell --- and the failure modes reverse the picture at the \emph{attempt} level: \textbf{all 31 invalid
+cell --- and the failure modes reverse the picture at the \emph{attempt} level (a disclosed post-hoc reading): \textbf{all 31 invalid
 rows attempt the stated argmax} (every one carries the family's filler radius). Of those,
 30 misplace the fillers --- typically at the container corners, where radius $(\sqrt{2}-1)/(2k)$
 overlaps the adjacent grid circle; the correct construction places them at the grid
@@ -303,7 +303,7 @@ Raw rows verbatim in \texttt{arm\_mu\_collect.jsonl} (180 of 180 launched invoca
 runtime deaths); scoring in \texttt{arm\_mu\_analysis.py}, committed before sampling completed; frozen
 output in \texttt{arm\_mu\_results.txt}. This arm brings the study corpus to 468 invocations.
 
-\subsection{Arms GM3 and V: transfer at reduced concentration, with a boundary that runs both ways}
+\subsection{Arms GM3 and V: transfer, with a boundary that runs both ways}
 
 Every arm above addresses one vendor's models. Two registered arms take the same
 byte-identical prompts across vendors --- arm GM3 under a laboratory-grade instrument against
@@ -453,8 +453,9 @@ point-estimate pass at $n = 12$ and $n = 18$) --- and the strong form holds
 everywhere evaluable \emph{within this arm}: zero rival-argmax emissions in 16
 discriminating-cell validities (the registration, \texttt{arm\_v\_preregistration.md}, recorded the original family's prior for
 the same statistic as 0/21 over $N \in \{13, 31\}$ only --- a narrower scope than \S3.3's 2/23, whose two rival hits both sit at $N = 21$, so the two corpora agree at 0 on the registration's own cells; \S3.6's gemma-4-26b, under the GM-chain instrument, is the
-standing exception --- its discriminating-cell mode \emph{is} the rival). The transfer is at reduced
-concentration: 61--67\% on-prediction against 56--76\% in-family at the same five cells (\S3.2). Reduced concentration at
+standing exception --- its discriminating-cell mode \emph{is} the rival). The transfer's point estimates sit at or below
+the in-family rates: 61--67\% on-prediction against 56--76\% in-family at the same five cells (\S3.2) --- overlapping
+ranges, so reduced concentration is a directional reading these $n$ cannot separate. Directionally lower concentration at
 different vendors, on byte-identical prompts, landing on the same modal value is what a shared
 attractor predicts; equal concentration would be harder to separate from shared training text. And it is not universal:
 gemma-4-31b, clearing the same floor, lands the prediction never. Its valid packings are unanchored and low

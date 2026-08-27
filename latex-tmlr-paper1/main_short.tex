@@ -1,30 +1,23 @@
 % ===========================================================================
-% TMLR submission build of paper1_draft.md (canonical source). Built to mirror latex-tmlr/
-% (paper 2's TMLR build) exactly; see that directory's main.tex for the
-% original statement of the conversion rules.
+% SHORT VARIANT of main.tex. Same paper, 8-15pp main body.
 %
-% Regeneration: fragments are 1:1 markup translations of paper1_draft.md
-% line ranges:
-%   sec_intro_task.tex          lines  69-247  (S1, S1.1, S2)
-%   sec_forecast_transfer.tex   lines 251-589  (S3, S4)
-%   sec_tiers_elicitation.tex   lines 593-919  (S5, S6)
-%   sec_related_repro.tex       lines 923-1177 (S7, S8, S9)
-%   sec_appendices.tex          lines 1181-end (Appendices A, B, C)
-% Conversion rules: prose verbatim; pipe tables -> booktabs/longtable;
-% citations converted from the source's inline arXiv ids to natbib
-% \citet/\citep per TMLR's formatting instructions (see the bibliography
-% note below); figures fig1_trapzones.png, fig_gm3_anchoring.png,
-% fig2_packings.png, fig3_armT.png copied from the repo root; anonymized
-% for double-blind (author block below is a placeholder; the source
-% markdown's author name and email removed, see ANONYMIZATION_REPORT.md).
+% Design rule: MOVE, NEVER DELETE. Every number, count, disclosure and caveat
+% present in main.tex's build survives in this one -- either in the condensed
+% main body or, verbatim, in the relocated appendices C-F
+% (sec_short_appendix_moved.tex). Preregistration-status qualifiers travel
+% with the claims they label; no claim migrates away from its post-hoc or
+% disclosed tag.
 %
-% Compile: pdflatex -> bibtex -> pdflatex x2 (MiKTeX local toolchain), or
-% upload this directory to Overleaf, compiler pdfLaTeX, main document
-% main.tex.
+% The nine-section skeleton of main.tex is preserved exactly (S1, S1.1, S2.1-
+% S2.4, S3.1-S3.8, S4.1-S4.2, S5, S6.1-S6.5, S7, S8, S9), because the prose
+% cites sections by literal number throughout; only the amount of text under
+% each heading changes.
 %
-% Camera-ready: switch to \usepackage[accepted]{tmlr}, restore the real
-% author block (kept in the source markdown, never in this file), set
-% \month/\year/\openreview below.
+% Appendix order: A and B are sec_appendices.tex unchanged (prose refers to
+% "Appendix A" and "Appendix B" by letter). C-F are the relocated material.
+%
+% Compile: pdflatex -> bibtex -> pdflatex x2 (MiKTeX), main document
+% main_short.tex.
 % ===========================================================================
 \documentclass[10pt]{article}
 \usepackage{tmlr}
@@ -39,7 +32,7 @@
 \usepackage{array}
 \usepackage{longtable}
 \usepackage{microtype}
-\usepackage{graphicx} % paper 1 has figures; paper 2's preamble had none
+\usepackage{graphicx}
 
 % zero-width, hyphen-free break opportunity, used inside long hex digests
 \newcommand{\bk}{\discretionary{}{}{}}
@@ -48,8 +41,6 @@
 Unconditioned Zero-Shot Circle Packing}
 
 % DOUBLE-BLIND: real author block intentionally absent from this file.
-% tmlr.sty hides \author until [accepted]/[preprint], but the source is
-% part of the supplementary upload, so even the source stays anonymous.
 \author{\name Anonymous authors \email anonymous@example.org \\
       \addr Withheld for double-blind review}
 
@@ -87,10 +78,13 @@ anchoring nowhere: anchoring is not a single-vendor artifact, and its concentrat
 vendor-dependent.
 \end{abstract}
 
-\input{sec_intro_task}
-\input{sec_forecast_transfer}
-\input{sec_tiers_elicitation}
-\input{sec_related_repro}
+\input{sec_short_intro_task}
+\input{sec_short_forecast_transfer}
+\input{sec_short_tiers_elicitation}
+\input{sec_short_related_repro}
+
+\label{sec:endofmain}
+\clearpage
 
 % Citations use natbib \citet/\citep per TMLR's instructions. \nocite{*} is
 % retained because two works are cited in prose by name rather than by key
@@ -101,6 +95,9 @@ vendor-dependent.
 \bibliographystyle{tmlr}
 
 \appendix
+% A and B, unchanged from the full build: the prose refers to them by letter.
 \input{sec_appendices}
+% C-F: material relocated out of the main body by the short variant.
+\input{sec_short_appendix_moved}
 
 \end{document}

@@ -1,0 +1,327 @@
+% Short variant of sec_forecast_transfer.tex (S3, S4). Per-arm tables, the
+% per-arm disclosure paragraphs and Figure fig:gm3anchoring are relocated
+% verbatim to Appendix D; nothing is dropped.
+\section{Preregistered forecast, out of sample}
+
+Sixteen registered arms appear in this paper. Each was registered before its sampling, each
+is reported regardless of outcome, and the falsifiers that fired are flagged in place. This is
+the paper's single verdict table; the per-arm tables it summarizes are in Appendix~D.
+
+\begin{center}
+\begin{scriptsize}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.13\linewidth}p{0.04\linewidth}p{0.10\linewidth}p{0.11\linewidth}p{0.16\linewidth}p{0.31\linewidth}@{}}
+\toprule
+Arm & \S & Proposer(s) & Design & Registered test & Outcome \\
+\midrule
+F (square, bare) & 3.2--3.3 & weak tier & 7 $N$ $\times$ 5--20 & P1--P5 exact-value modes & modal at 7/7 $N$ \\
+S (mid tier) & 5 & Sonnet tier & 3 $N$ $\times$ 10 & P-S1--P-S4 tier contrasts & 1/30 on-prediction, 100\%/90\% valid ($10^{-6}$/$10^{-9}$) \\
+O (top alias) & 5 & \texttt{opus\_alias} & 3 $N$ $\times$ 10 & P-O1--P-O4 & 13\% valid; 3 predictions not evaluable (deviation, Table~\ref{tab:deviations}) \\
+T (trace) & 6 & weak tier & 3 $N$ $\times$ 20 $\times$ 2 arms & P-T1--P-T4 + falsifier & falsifier \textbf{triggered} (tie reading); P-T3 fragile \\
+G (rectangle) & 4 & 16 invocations & 2 cells & out-of-sample transfer & partial, 5/11; formula negative result kept \\
+M (branch stress) & 3.4 & weak tier & 4 $N$ $\times$ 15 & P-M1--P-M4 + F-M1/F-M2 & F-M1 \textbf{triggered 3/3}: extend branch dies at $m \ge 4$; fifth $k$ confirms \\
+MU (mutation) & 3.5 & weak tier & 3 parents $\times$ 3 $N$ $\times$ 15 & P-MU1--P-MU4 + F-MU1 & F-MU1 \textbf{triggered}: anchor dissolves under conditioning \\
+CH (choice) & 3.5 & weak tier & 3 $N$ $\times$ 15 & P-CH1 vs P-CH2 & choice follows score table; execution fails off-template 30/31 \\
+GM (gemini-flash-lite) & 8 & 2nd vendor & 7 $N$ $\times$ 20 & GM-chain bars & UNDERPOWERED (20 valid / 140) \\
+GM2 (gemma, 4k budget) & 8 & 2nd vendor & 7 $N$ $\times$ 20 & GM-chain bars & 0/140 parseable --- budget confound, diagnosed by GM3 \\
+GM3 (gemma, 16k budget) & 3.6 & gemma-4-26b & 7 $N$ $\times$ 20 & P-GM3.1--.3 + falsifier & pooled bar met; misses are the rival construction \\
+V (cross-vendor zero-shot) & 3.6 & 13 free-tier aliases & 5 $N$ $\times$ 5 & floor + V1/V2 & 2 vendors TRANSFER, gemma-4-31b DOES-NOT-TRANSFER, V2 HOLDS \\
+CC (code channel) & 3.7 & weak tier & 3 $N$ $\times$ 15 & P-CC1 vs P-CC2 & P-CC1 holds: anchor stays modal; 0/37 above the family argmax \\
+CC2 (fresh-draw replication) & 3.7 & weak tier & 3 $N$ $\times$ 15 & R1 + R2 + F-CC2.1 & \textbf{REPLICATED}: 0/41 above argmax, anchor modal 3/3 \\
+CCS (tier probe) & 3.7 & Sonnet tier & 3 $N$ $\times$ 15 & P-CCS1 vs P-CCS2 & P-CCS2 holds: 0/37 above argmax --- ceiling is channel, not tier \\
+CN (held-out $N$) & 3.8 & weak tier & 5 $N$ $\times$ 15 & P-CN1 vs P-CN2 + S-CN1--3 & P-CN1 holds: mode at 4/5 held-out cells, 3/3 discriminating; structure 5/5 \\
+\bottomrule
+\end{tabular}
+\end{scriptsize}
+\end{center}
+
+\subsection{Registration protocol}
+
+For each cell the prompt is pinned and its SHA-256 digest written to disk first --- the $N = 13$
+square prompt hashes to \texttt{32db485b\ldots}; predictions P1--P5 are registered in the header of
+\texttt{arm\_f\_repro.py}, and the full registration list, arm by arm with its commit, is in
+Appendix~F.3. Raw outputs are stored verbatim, failures included; scoring is deterministic and
+local. Four properties are disclosed, not repaired: temperature, top-p and top-k are not exposed by
+the runtime; the alias-to-weights binding is a promise, not a hash; the subagent inherits
+instruction files outside the task prompt, so the digests lock a \emph{fragment} of the
+conditioning context; and hash coverage is incomplete (\S9). Two scoring conventions were fixed in
+advance. Validity is reported at $10^{-9}$ and $10^{-6}$, both logged, $10^{-6}$ primary: proposers
+print six to eight decimals, so an eight-decimal tangency misses contact by $\sim$$5\times10^{-9}$,
+while $10^{-6}$ sits far below the $\sim$$10^{-2}$ gap between rival constructions. Value matching
+uses a $2\times10^{-3}$ window; \S5 records where that window is too loose for the distinction it
+was asked to carry.
+
+\subsection{The formula sits at the mode ceiling}
+
+An exact point prediction invites a fair objection: a per-sample hit rate well short of 100\% is
+not ``predicting the exact output''. It should be read against the sampling entropy of the
+distribution (\texttt{p11\_mode\_baseline.json}, bare arm, $2\times10^{-3}$ buckets). At \textbf{all
+seven tested $N$ the predicted value is the empirical modal output} --- four discriminating cells
+plus three where prediction and family argmax coincide, so the anchoring-specific evidence sits in
+the four --- and the on-prediction rate equals the modal frequency to within one sample:
+
+\begin{center}
+\begin{footnotesize}
+\begin{tabular}{@{}cccccc@{}}
+\toprule
+$N$ & predicted & empirical mode & modal freq & on-prediction / valid & $k^*$-structure / valid$^\dagger$ \\
+\midrule
+13 & 1.6250000 & 1.6250 & 10/18 & 10/18 (56\%) & 17/18 \\
+17 & 2.0517767 & 2.0518 & 3/4 & 3/4 (75\%) & 3/4 \\
+21 & 2.1000000 & 2.1000 & 12/15 & 12/15 (80\%) & 13/15 \\
+31 & 2.5833333 & 2.5833 & 12/17 & 13/17 (76\%) & 17/17 \\
+35 & 2.9166667 & 2.9167 & 3/4 & 3/4 (75\%) & 3/4 \\
+37 & 3.0345178 & 3.0345 & 3/4 & 3/4 (75\%) & 4/4 \\
+43 & 3.0714286 & 3.0714 & 6/7 & 6/7 (86\%) & 7/7 \\
+\bottomrule
+\end{tabular}
+\end{footnotesize}
+\end{center}
+
+$^\dagger$ Post-hoc structural check, not preregistered (\texttt{diagnostics\_kmatch.py}): the grid
+order backed out of each sample's dominant radius equals $k^*(N)$ in 50 of 50 on-prediction samples
+and 64 of 69 valid samples overall (93\%). Details, Appendix~D.1.
+
+No predictor of a single value can exceed the modal frequency, and this one attains it at 7 of 7
+cells (at $N = 31$ the on-prediction count exceeds the 4-dp modal bucket by one sample, 13/17
+against 12/17 --- a bucketing convention, not a violation of the ceiling). A naive ``the model
+emits a round number'' baseline hits 2 of the same 69 valid samples (3\%). Two scope conditions,
+stated in full in Appendix~D.1: this is the bare weak-tier arm, and pooling in the higher tiers and
+the rectangle drops the rate to 46\%; and ``modal'' is a property of the observed sampling regime,
+not of a pinned decoding configuration (\S8). Three of the seven cells, all non-discriminating,
+carry only four valid samples each, so the held-out probe (\S3.8) is the stronger test of the rule.
+
+\subsection{Square container}
+
+The square arm sampled Haiku-tier proposers at $N = 13$, 17, 21, 31, 35, 37 and 43. The rule was
+fitted on $N = 23/26/27$ only, so every cell is out of sample, and four are \emph{discriminating}.
+Across those cells ($N = 13$, 21, 31, 43), \textbf{18 of 23 valid invocations landed on the
+predicted construction} and the rival-argmax value was reached \textbf{2 times in 23} --- both at
+$N = 21$, both the $4 \times 4$ grid plus five fillers at 2.2588835. Those figures cover the
+\textbf{original 45-invocation bare arm only}; over the full shipped ledger, after \S6 added 40 bare
+rows at $N = 13/21/31$ under the same arm label, the same four cells give \textbf{41/57
+on-prediction and 2/57 rival}. Both are reported; \S3 and \S6 are computed on nested subsets of one
+arm, not on independent samples, and Table~\ref{tab:forecast} (Appendix~D.2) carries the split.
+\textbf{P4} registered $N = 37$ as converging on 3.0345178, a prime predicted clean, contradicting
+the prior work's guess; it confirmed. \textbf{P5} registered $N = 35$ at 2.9166667, the top-of-zone
+control; three of four valid samples landed there, the fourth using a $7 \times 7$ lattice truncated
+to 35 (sum 2.5) --- at $n = 4$ ``consistent with'' rather than confirmed, and it deserves running to
+$n = 20$. Arm bookkeeping --- the five concurrency-cap rejections excluded under an unregistered
+rule, the arm reported both ways at $35/45 = 77.8\%$ and $35/50 = 70.0\%$, the three parse failures
+and the mis-transcribed $N = 37$ sample --- is in Appendix~D.2 and \S9.
+
+\subsection{Arm M: the filler branch fails at $m > 1$; the fifth $k$ confirms}
+
+Arm M closes two gaps left by the square arm: $V(k, m)$'s filler branch was supported only at
+$m \in \{0, 1\}$, and the $k = 8$ trap zone was never sampled. It was registered before sampling
+with an explicit tie-stated falsifier for each half --- $n = 15$ bare weak-tier invocations at each
+of three converge cells and one trap cell, registered predictions in Appendix~D.3.
+
+\textbf{The falsifier for the filler branch triggered at 3 of 3 cells}, and \textbf{P-M4 confirmed.}
+P-M1--P-M3 are disconfirmed: not one converge cell has $V(k^*, m)$ as its modal output. The model
+moves \emph{up} to the $(k^*{+}1)$ grid and truncates or exactly fills it --- modal outputs
+$2.0 = T(5,20)$ (12 of 15 valid), $2.5 = T(6,30)$ (11 of 14) and $2.9285714 = T(7,41)$ (6 of 7).
+Exactly one sample in 36 valid converge-cell rows emitted the registered construction, and filler
+count is 0 in 35 of 36. Per the registered falsifier wording, \textbf{$V(k, m)$ is restricted to the
+$m \le 1$ support previously observed}. At $N = 57$ the modal valid output is $T(8,57) = 3.5625000$
+(6 of 10 valid at $10^{-6}$) and 0 of 10 valid samples reached the rival, against a registered rival
+prediction of 0, so the truncate arm now has five confirmed $k$ (4, 5, 6, 7, 8) and the $k = 8$ zone of
+Figure~\ref{fig:trapzones} (Appendix~C.2) is sampled. Table~M, the per-cell validity figures, the registered rejection rule for
+three $N = 41$ runtime deaths, the arithmetic-rectangle reading ($20 = 5 \times 4$,
+$30 = 6 \times 5$) and the three post-hoc-swept out-of-family converge rows are in Appendix~D.3. The
+net effect is a sharpening: $k^* = \mathrm{round}(\sqrt{N})$ names the grid family; at $k^{*2} > N$
+the model truncates that grid (five $k$ confirmed); at $k^{*2} \le N$ it extends only to $m \le 1$,
+and beyond that it prefers the $(k^*{+}1)$ rectangle, which $V(k, m)$ does not describe.
+
+\subsection{Arms MU and CH: no transfer to one-parent calls; the argmax in hand does not dislodge the template}
+
+Arms MU and CH were registered together before sampling, with numeric decision thresholds, a power
+analysis, tie-against conventions, and a falsifier (F-MU1) whose consequence --- title and abstract
+scoped to \emph{unconditioned} calls only --- was written down before the first invocation. Arm MU
+issues one-parent mutation calls at $N = 13$, 21, 31 ($n = 15$ per condition-cell, 135 invocations)
+under three parents: the model's own anchor $T(k^*, N)$; the provably better in-family rival
+$V(k^*{-}1, m)$; and a far worse off-family diagonal chain (Appendix~D.4).
+
+\textbf{F-MU1 triggered; the anchoring result dissolves under conditioning.} Under the rival parent
+the pooled anchor-rate is 0 of 26 valid (0\%, CI $[0.00, 0.13]$) against a registered DISSOLVES
+threshold of $\le 20\%$; keep-or-improve is 26 of 26 against a threshold of $\ge 50\%$, and
+$k$-inheritance is 26/26, disconfirming P-MU3's $< 50\%$ prediction. With the model's \emph{own}
+anchor as parent, only 7 of 28 valid samples (25\%, CI $[0.13, 0.43]$) stay on the anchor, so
+P-MU1's $\ge 50\%$ prediction is not met, and per the registered falsifier wording this paper's
+claims are scoped to unconditioned calls throughout. The one condition where the template reasserts
+itself is the one the registration predicted: given the off-family parent, 20 of 34 valid samples
+(58.8\%, CI $[0.42, 0.74]$) abandon it for a $k^*$-grid construction --- P-MU4 holds at $N = 21$
+(7/13) and $N = 31$ (12/14) but not at $N = 13$ (1/7). The attractor captures the trajectory only
+when the parent is worse than what the template supplies.
+
+\textbf{Arm CH} hands the model the entire recipe family --- every admissible $T(k, N)$ and
+$V(k, m)$ enumerated, including the family argmax, with the instruction to use whichever scores
+highest or anything better ($n = 15$ per cell, 45 invocations). \textbf{Registered verdict: P-CH1
+holds (2 of 3 cells) --- but the registered metric carries a survivorship artifact we disclose
+rather than exploit.} Under the registered scorer, which takes the modal output \emph{among valid
+samples}, the template wins at $N = 13$ ($T(4,13) = 1.6250000$ against a stated argmax of 1.7761424)
+and at $N = 31$ ($T(6,31) \approx 2.5833$, 4 of 7 valid, against 2.7485281, 3 of 7 --- a one-sample
+margin), and only $N = 21$ goes to the argmax (2.2588835, 3 of 5 valid); P-CH2 holds at 1 of 3
+cells. But validity is low (2, 5 and 7 valid of 15) and --- a disclosed post-hoc reading --- \textbf{all 31 invalid rows attempt the
+stated argmax}: 30 misplace the fillers, 1 emits radical literals the registered scorer cannot
+evaluate. We report the registered verdict as registered --- and flag that it conditions on exactly
+the variable (execution success) separating the two readings. The honest summary is a
+decomposition: handed the argmax, the model's choice follows the score table, its execution fails
+off-template in 30 of the 31 invalid attempts, and \S8's tractability alternative is wrong about
+selection and right about instantiation (Appendix~D.4; corpus now 468 invocations).
+
+\subsection{Arms GM3 and V: transfer, with a boundary that runs both ways}
+
+Two registered arms take byte-identical prompts across vendors: arm GM3 under a laboratory-grade
+instrument (first-party API, pinned temperature, seven $N$ $\times$ twenty samples) against
+gemma-4-26b-a4b-it, and arm V under free-tier serving against thirteen aliases spanning seven
+attributed vendors and one unattributed alias (five $N$ $\times$ five samples per model, plus three
+amendments each committed before the sampling it governs). Table~CV, the per-cell tables,
+Figure~\ref{fig:gm3anchoring} and the serving disclosures are in Appendix~D.5.
+
+\textbf{Arm GM3: the pooled prediction held, the cell-level prediction did not, and the misses are
+the rival construction.} 46 of 80 valid packings (57.5\%) land within $2\times10^{-3}$ of the value
+predicted by \S2's rule against a registered 30\% bar --- for a rule fitted entirely on another
+vendor's models. The registered metric pools all cells and the pass rides on that: 35 of the 46
+on-prediction packings sit in the two non-discriminating cells (20/20 at $N = 17$, 15/15 at
+$N = 35$), so on the three discriminating cells the rate is 11 of 43 (25.6\%), below the bar the
+pooled metric passes. The registered verdict stands as registered. The predicted value is modal in
+2 of 5 scoreable cells, short of the registered 5, though the registered falsifier (failure in
+$\ge$4) did not trigger; the registered structural signature came in under its bar at 20 of 46
+(43\%, bar: half), an instrument blind by construction at truncate cells (Appendix~D.5). The three
+cell-level misses are not noise: \textbf{the family's modal output at every discriminating cell is
+the rival argmax itself} --- 1.7761, 2.2589 and 2.7485 against rivals 1.7761424, 2.2588835 and
+2.7485281 --- and a disclosed post-hoc structural diagnostic finds all 27 of 27 rival-valued
+packings carrying the rival's exact two-radius decomposition. In \S2.3's terms, gemma-4-26b performs
+the drop-to-$(k^*{-}1)$-and-fill move that the original family performs in 2 of 57 valid samples:
+27 of 43 valid discriminating-cell packings (63\%) are the rival construction. Validity collapses
+at the two largest cells (2 then 0 valid of 20), both UNSCOREABLE under the registered $<$3-valid
+rule, which bounds the family's competence window and claims nothing.
+
+\textbf{Arm V: two vendors transfer, one does not.} Under a registered floor of $\ge$10 of a
+model's 25 registered invocation slots valid at $10^{-6}$, ten of thirteen aliases finished
+BELOW-FLOOR with their failure taxonomies logged and no claim in either direction. The three that
+cleared split: \texttt{north-mini-code} (Cohere) 8/12 = 67\% on-prediction [39--86\%] and
+\texttt{gpt-oss-20b} (OpenAI, open-weight) 11/18 = 61\% [39--80\%] both \textbf{TRANSFER} on the
+point estimate against the $\ge$50\% bar --- the bracketed Wilson 95\% intervals include the bar, so
+each is a point-estimate pass at $n = 12$ and $n = 18$ --- while \texttt{gemma-4-31b-it} (Google) is
+0/15 = 0\%, \textbf{DOES-NOT-TRANSFER}. V2 HOLDS everywhere evaluable within arm V: zero rival-argmax emissions
+in 16 discriminating-cell validities (0/4, 0/9, 0/3). The transfer's point estimates sit at or below the in-family rates ---
+61--67\% on-prediction against 56--76\% in-family at the same five cells (\S3.2), overlapping ranges
+these $n$ cannot separate --- and directionally lower concentration on the same modal value is what a
+shared attractor predicts on byte-identical prompts. Under the registration's falsification map the
+family-specific branch fires, making the closed form a family-bounded property, stated in \S5 with
+data rather than a caveat, while the map's all-transfer branch fails on gemma alone: the reading
+that anchoring is an artifact of the original family is defeated by the same table that bounds its
+generality. The gemma pair bounds the family's behaviour from both sides --- 26b sits \emph{above}
+the template's execution reach, 31b below it --- but model variant and instrument quality change
+together, so which difference carries the split is not attributable from this pair. Appendix~D.5
+gives the pair in full, including the mixed-serving accounting (57.5\% pooled against 59.0\%
+first-party-only) and the rate-starved serving path behind gemma-4-31b.
+
+\subsection{Arm CC: an executed program does not escape the family}
+
+The code-free design (\S2.1) rests on a rationale this paper had asserted but not measured. Arm CC
+measures it, registered and pushed to the public remote before sampling: the three trap cells
+$N = 13, 21, 31$, $n = 15$ weak-tier invocations per cell, the bare stem with two registered line
+replacements (a standard-library \texttt{math}-only program contract, and program source as the
+output), programs run sandboxed with stdout scored by arm-F conventions unchanged (Appendix~D.6).
+P-CC1 predicted the modal valid executed output stays the $T(k^*, N)$ bucket at $\ge 2$ of 3 cells;
+P-CC2, that it sits strictly above the anchor.
+
+\textbf{P-CC1 holds as registered (3 of 3 cells), and its margins belong next to it.} At $N = 21$
+the mode is heavy --- nine exact 2.1000000 emissions out of 13 valid --- but at $N = 13$ (2/12) and
+$N = 31$ (3/12) the modal bucket is the anchor value with a \textbf{one-sample margin} over
+dispersed sub-anchor values, so the modal-identity claim is thin at two of three cells, and this
+sentence is its registered disclosure. The robust result is the registered decomposition row:
+\textbf{no valid program output exceeds the family argmax anywhere} (0 of 37 above the rival), and
+only two exceed the anchor at all, both at $N = 13$ --- one at 1.6614054, and one program computing
+the family argmax construction $V(3, 4) = 1.7761424$ \emph{exactly}. What the channel changes is
+dispersion, not escape: code-free anchor concentration at these cells runs 56--80\%, the code
+channel's pooled anchor-rate is 14/37, and the lost mass sits entirely \emph{below} the anchor.
+\textbf{Both registered follow-ups hold.} CC2, a fresh-draw replication, and CCS, a Sonnet-tier
+probe, were registered together (commit \texttt{4d7b7c5}, pushed before sampling; registered after
+CC's results were known and disclosed as such), 45 invocations each on byte-identical prompts.
+\textbf{CC2 returned REPLICATED}: 0 of 41 valid outputs above the rival, the anchor bucket modal at
+3 of 3 cells including $N = 31$, where the one-sample-thin mode arrived at 10 of 15 valid with a
+margin of 8; pooled over both weak-tier waves, 0 of 78 valid program outputs exceed the family
+argmax and exactly two reach it, one per wave, both at $N = 13$. \textbf{CCS returned P-CCS2}:
+\textbf{0 of 37 valid Sonnet-tier outputs exceed the argmax}, though the Sonnet programs run
+qualitatively different search and the tier barely anchors (5 of 37 on the anchor value). At these
+cells the ceiling is a property of the channel, not of the tier. The per-cell table, the failure
+taxonomies, the registered scope statement (math-only, not library-assisted) and the disclosed CC2
+tool-use protocol note are in Appendix~D.6; these arms bring the corpus to 603 invocations.
+
+\subsection{Arm CN: the rule predicts the mode where there is nothing to recall}
+
+The rule was fitted on $N = 23/26/27$, and $N = 26$ is the canonical published cell, so a reader can
+hold a rival reading of every square-arm result above: the proposer is not constructing a
+$\mathrm{round}(\sqrt{N})$ grid but recalling packings it saw. Arm CN separates the two readings by
+sampling the bare template A.1 at five $N$ absent from the sum-of-radii scoreboard cited in \S7 and
+from every prior arm --- $N = 50$, 58, 62, 65 and 75, mirroring the square arm's branch mix (three
+truncation cells, two $m = 1$ extend cells). Absence from the pretraining corpus cannot be
+established and is not claimed. Two predictions were registered against each other before sampling
+(commit \texttt{69a1642}, pushed first; motivation disclosed as post-review): P-CN1, construction
+--- modal at $\ge 4$ of 5 cells including $\ge 2$ of the 3 discriminating cells; P-CN2, recall ---
+modal at $\le 2$ of 5. $n = 15$ weak-tier invocations per cell, scored once by the arm-F pipeline.
+
+\textbf{P-CN1 holds.} The registered value is modal at 4 of 5 cells, at all three discriminating
+cells, with margins of 6 to 13 samples; every cell clears the evaluability floor; the family rival
+is emitted 0 times in 39 discriminating-cell validities and no valid output exceeds the family
+argmax (0/63). The registered structural secondary holds at 5 of 5 cells: the dominant radius backs
+out $k = k^*$ in 57 of 63 valid outputs. The one miss is $N = 50$, and its decomposition is the
+arm-CH pattern --- 10 of 11 valid outputs are the registered $7 \times 7$ grid plus exactly one
+filler, 4 at the registered interstitial radius $(\sqrt{2}-1)/14$ and 6 with the filler pushed into
+a container corner at $r \approx 0.0123$, the cell's mode, 0.017 below the prediction: the template
+is selected, the filler is mis-executed, and the value criterion registers a miss. Validity is
+63/75 (84\%) with no collapse at large $N$. The recall reading predicted the anchor would not
+survive the move to $N$ with nothing to recall; it survived at four of five cells and structurally
+at all five, so the closed form describes what the proposer builds, not what it has seen, at the
+branches where it was already supported --- though this does not establish that the fitted cells
+are absent from training text, does not extend to the $m \ge 4$ branch, and leaves \S8's canary and
+perturbed-container probes unrun. The per-cell table, the invalid-row taxonomy and the disclosed
+reconstruction of eleven $N = 65$ ledger rows --- which, if discarded, leave $N = 65$ below the
+five-row floor and P-CN1 at 3 hits of 4 evaluable cells, the three discriminating cells untouched
+--- are in Appendix~D.7; the arm brings the corpus to 678 invocations.
+
+\section{Rectangle transfer}
+
+\subsection{Transfer of the rule}
+
+For a $1 \times a$ rectangle the template has two parameters: $q^* = \mathrm{round}(\sqrt{N/a})$
+columns across the width, $p^* = \mathrm{round}(\sqrt{N \cdot a})$ rows across the height. At $a = 1$
+both collapse to $\mathrm{round}(\sqrt{N})$ --- the same rule with the aspect ratio put back, not a
+new rule fitted to new data, and no rectangle model output existed when it was written. It was
+verified against an independent LP at 213 configurations, drift below $10^{-9}$, including a
+cross-domain check at $a = 1$ with $p = q = k$ against the square file's closed form. Shape
+mismatch grows as $a$ leaves 1 --- over $N = 10\ldots45$ the count of $N$ whose predicted shape
+differs from the optimal one rises from 12 at $a = 1.0$ to 23 at $a = 1.5$, 20 at $a = 2.0$ and 23
+at $a = 3.0$.
+
+We probed the two sharpest cells with sixteen invocations (eight per cell) in a container none had
+been given before: $N = 19$ at $a = 3$ (predicted 3.1666667, rival 3.5749194) and $N = 25$ at
+$a = 2$ (predicted 3.1250000, rival 3.4832492). With all sixteen scored, \textbf{5 of 11 valid
+proposals landed on the predicted value and 0 of 11 reached the rival}. We therefore report the
+rectangle as \textbf{partial out-of-sample support, not confirmation}: $5/11 = 45\%$, Wilson 95\% CI
+$[21\%, 72\%]$, and a proposer choosing uniformly among the three or so plausible template shapes
+would land on-prediction about a third of the time, so 5/11 does not separate cleanly from that
+null. Two qualifications: validity degrades in the
+tall container (4/8 at $a = 3$ against 7/8 at $a = 2$, three of four $a = 3$ failures being
+overlaps), a confound on that cell at $n = 8$; and the rectangle ledger carries no prompt hashes,
+run dates or proposer fields, so the arm with the strongest transfer claim has the least provenance
+(\S9). All eleven valid proposals are characterized one by one in Appendix~D.8.
+
+\subsection{Negative result: the closed form does not survive the move to rectangles}
+
+The rectangle generalizes the \emph{rule} but not the \emph{formula}, and we keep the failure
+because it is what a verification gate is for. In the square every interior vertex has four
+identical neighbors, so one expression covers every filler. In a $1 \times a$ rectangle, with
+half-spacings $h_x = 1/(2q)$ and $h_y = a/(2p)$, a filler is also capped by spacing to
+\emph{adjacent fillers} --- constraints inactive when $h_x = h_y$, which is why the square case
+could not have revealed them, and binding only when neighboring vertices are occupied, so the cap
+depends on $m$ and on which vertices a construction uses and no expression in $(p, q, m, a)$
+reproduces it. The LP gate caught this on the first run: at $a = 1$, $p = 2$, $q = 4$, $m = 1$ the
+natural generalization $\texttt{rf} = \min(\texttt{diag}, h_x, h_y)$ returns \textbf{1.125} against
+a true \textbf{1.1545085}, capping against a neighboring filler that does not exist. We retain
+closed forms only where provably exact (full grid and truncated grid) and use the LP as the value
+oracle for the extend branch, so what \S4.1 tests is the LP-backed prediction.

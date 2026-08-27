@@ -1,0 +1,219 @@
+% Short variant of sec_tiers_elicitation.tex (S5, S6). The opus_alias
+% diagnostics, the ambition diagnostic, Figures fig:packings and fig:armT,
+% Table tab:tracegrid, the P-T3 limits arithmetic, the bundling disclosure,
+% the falsifier discussion and the faithfulness exclusion list are relocated
+% verbatim to Appendix E; nothing is dropped.
+\section{The tier ladder: three attractor families}
+
+Holding prompt, container and scoring fixed, we varied only the nominal proposer tier across the
+three cells that discriminate hardest between prediction and family optimum --- $N = 13$, 21 and
+31, each inside a trap zone. The tiers do not merely differ in success rate: they attempt
+qualitatively different constructions (Figure~\ref{fig:packings}, Appendix~E.1).
+
+\textbf{The weak tier truncates templates.} The Haiku-tier proposer produces uniform grids of
+radius $1/(2k)$ truncated to $N$ circles, with corner fillers only when the grid underfills. Across
+the 45 original bare invocations spanning $N \in \{13, 17, 21, 31, 35, 37, 43\}$, \textbf{35 were
+geometrically valid at the primary $10^{-6}$ tolerance (77.8\%), 29 at $10^{-9}$ (64.4\%)} ---
+recomputed from the ledger, superseding the figure in earlier drafts --- and at the three
+discriminating cells 12 of 16 valid samples landed on the predicted value, the rival being reached
+twice, both at $N = 21$.
+
+\textbf{The middle tier perturbs and mixes.} The Sonnet-tier arm was preregistered in
+\texttt{arm\_s\_preregistration.txt}, disclosing that 5 of 20 samples at $N = 13/21$ had been seen
+before registration and that $N = 31$ was fully blind. It was valid 30/30 at $10^{-6}$ and 27/30
+(90\%) at $10^{-9}$ --- so the ``100\%'' leg is tolerance-dependent and both numbers are stated ---
+and almost never on-prediction: 0/10, 0/10, 1/10, so 1/30 pooled against the weak tier's 12/16 at
+the same cells. Instead of truncating a uniform grid it perturbs one, with enlarged edge rows,
+hexagonal interior rows and two or three distinct radii in the same packing (29/30 multi-radius).
+One Sonnet sample at $N = 31$ summed to 2.7499999991, above 2.7485281, the best the family reaches
+there, and is the only sample in the swept corpus to leave the recipe family upward (arm M's
+converge cells hold three more, \S3.4). That sample also exposes a scoring defect: the two values
+differ by $1.47\times10^{-3}$, \emph{inside} the registered $2\times10^{-3}$ window, so the value
+classifier counted the escape as a hit on the construction it exceeded. Classified by structure
+instead, Sonnet's rival count at $N = 31$ is 2/10 and pooled 5/30, and \textbf{every categorical
+claim in this paper about ``reached the rival'' or ``left the family'' is made at structure level
+or at $10^{-6}$, never at $2\times10^{-3}$} (Appendix~E.2).
+
+\textbf{The top tier attempts recursive constructions and fails to build them.} The third arm was
+invoked through a bare tier alias. We name it \texttt{opus\_alias} throughout and make no claim
+about which weights served it: the runtime accepts only the bare alias and exposes no dated
+identifier, so the binding is a vendor promise rather than an attestable fact, and no version
+number appears anywhere in this paper; completion-time and token-count anomalies were observed in
+the unreleased session transcript, but the ledger carries no latency or token field, so nothing
+here relies on them. Under those caveats the arm --- preregistered fully blind in
+\texttt{arm\_o\_preregistration.txt} --- was valid in 4 of 30 invocations (13\%) at both tolerances,
+attempting at every cell a more ambitious construction than either other tier: quarter-circle
+corners at $r = 0.25$ with Apollonius-style fillers at $N = 13$ (10/10 samples), mixed-radius
+$4 \times 4$-ish grids at $N = 21$, and a coarse $3 \times 3$ grid at $r \approx 1/6$ with border
+strips at $N = 31$ (0/10 valid). Valid samples score \emph{below} the trap they were expected to
+fall into (1.26--1.41 at $N = 13$ against 1.625), and a disclosed post-hoc diagnostic finds no
+tolerance artifact behind the 13\% (Appendix~E.3).
+
+Two decisions here were made after seeing the data and are recorded as deviations
+(Table~\ref{tab:deviations}). P-O1, P-O2 and P-O4 are reported \textbf{not evaluable}, on the
+grounds that a validity collapse of this size makes an on-prediction tier comparison
+uninterpretable; P-O3 is trivially satisfied on 4/4 valid samples; the registered disconfirmation
+--- regression toward the trap --- did not occur. De-registering three of four predictions in the
+one arm that disconfirmed is exactly the move preregistration exists to constrain, which is why it
+is tabled rather than narrated. The arm was also initially excluded from the ladder, then included
+once its results were known; we follow the later decision and report the ladder both ways
+(Table~\ref{tab:ladder}) --- with the arm 83\% $\rightarrow$ 100\% $\rightarrow$ 13\% on matched
+cells (78\% over all seven weak-tier cells), without it 83\% $\rightarrow$ 100\%.
+
+\begin{table}[t]
+\centering
+\caption{Three-attractor ladder. Valid columns count samples passing containment and non-overlap at the $10^{-6}$ and $10^{-9}$ tolerances; On-pred and Rival count valid samples landing on the predicted value and on the rival argmax.}
+\label{tab:ladder}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}p{1.7cm}p{1.2cm}cp{2.2cm}p{1.0cm}p{1.0cm}p{1.5cm}cp{2.0cm}@{}}
+\toprule
+Tier & Cells & $n$ & Attempted family & Valid $10^{-6}$ & Valid $10^{-9}$ & On-pred & Rival & Failure mode \\
+\midrule
+haiku (bare) & 13, 17, 21, 31, 35, 37, 43 & 45 & uniform grid, truncated; fillers when underfull & 35 (78\%) & 29 (64\%) & 12/16 (3 matched cells) & 2 & overlap 6, outside 1, parse 3 \\
+haiku, matched cells & 13, 21, 31 & 60 & as above & 50 (83\%) & --- & 35/50 & 2 & overlap 5, outside 2, parse 3 \\
+sonnet & 13, 21, 31 & 30 & perturbed grid, hexagonal rows, 2--3 radii & 30 (100\%) & 27 (90\%) & 1/30 & 5 (structure) & none \\
+\texttt{opus\_alias} $\ddagger$ & 13, 21, 31 & 30 & quarter-circle corners, Apollonius fillers, coarse grid + border strips & 4 (13\%) & 4 (13\%) & 0/4 & 0 & overlap 24, nonpositive radius 2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+$\ddagger$ Addressed through a bare serving alias; the alias-to-weights binding is not attestable,
+and this row is not a statement about any released model version. Tier denominators are not matched
+(the weak tier spans seven $N$ against three), which is why the matched-cell row is given
+separately and why the matched comparison (83\% $\rightarrow$ 100\% $\rightarrow$ 13\%) is the one to
+quote across tiers.
+
+``Monotone'' applies to one axis only: ambition rises monotonically --- truncated template,
+perturbed hybrid, recursive gasket --- while validity rises then collapses, and ``ambition'' is
+measurable rather than a qualitative read, a disclosed post-hoc diagnostic being monotone on both
+of its operationalizations (Appendix~E.4). At the canonical and plausibly contaminated cell
+$N = 26$ all tiers converge on the same 2.5414 attractor; they diverge only at withheld trap cells.
+The branch rule of \S2 is therefore a weak-tier regularity --- cross-vendor under two instruments
+(GM3's pooled bar carried by its non-discriminating cells, \S3.6),
+family-bounded in both directions, cell-level modes confirmed in one lineage (\S3.6) --- and this
+is a \textbf{boundary condition on the main result}, not an independent second finding. It also
+cuts against \S1's framing: the discovery systems cited there run frontier or mid-tier proposers,
+so the tier at which our regularity holds is the tier they do not use, while the tier closest to
+what they use escapes the trap in our own data.
+
+\section{Elicitation and faithfulness}
+
+This section is explicitly secondary material and the result leans negative: the registered
+validity prediction fails, the concentration effect survives only as a fragile directional
+finding, and the faithfulness audit checks description against artifact, not against process.
+
+\subsection{Design and bundling disclosure}
+
+A ten-versus-ten pilot at $N = 21$ compared the bare prompt against a variant asking the proposer
+to name its construction on a leading \texttt{METHOD:} line: validity rose from 7/10 to 10/10 and
+the higher-scoring rival disappeared, from 2 of 7 valid bare samples to 0 of 10 trace samples. Four
+predictions and an explicit falsifier were registered before any scaled sample was drawn
+(\texttt{arm\_t\_preregistration.txt}, sha256 \texttt{ab7900a8\ldots}), disclosing that the pilot's
+prompt had drifted from the bare template beyond the method line, so the pilot's intervention was
+method-line-plus-rewording, bundled; pilot samples are never pooled with \texttt{trace\_v2}. The
+scaled prompt, \texttt{trace\_v2}, is itself a \textbf{bundled prompt-format-and-trace-request}
+intervention whose output-line rewording is not cosmetic --- \S6.2 shows it doing measurable work
+--- so the measured effect is \emph{method-line-plus-output-line-rewording}, a weaker version of
+the confound for which the pilot was discarded, held to the same standard (Appendix~E.9). The
+scaled arm ran 100 new invocations, bringing both arms to 20 per cell at $N \in \{13, 21, 31\}$;
+the corpus arithmetic, from 215 logged square invocations to the study's 678 unconditioned-and-
+elicitation invocations, is in Appendix~E.5. One disclosure: \textbf{20 of the 60 bare samples are
+pre-existing arm-F rows} whose results were known when P-T1--P-T3 were written, so only trace\_v2
+is fully fresh (\S6.4).
+
+\subsection{Registered outcomes}
+
+Preregistered criteria are evaluated exactly as registered, and unregistered alpha thresholds are
+applied nowhere. The paired per-cell grid is Table~\ref{tab:tracegrid} (Appendix~E.6).
+
+\textbf{P-T1, validity: NOT confirmed.} P-T1 is the one prediction that registered an alpha
+(``validity $\ge$ bare at EACH $N$, and pooled one-sided Fisher $p < 0.05$''). Direction held at all
+three cells, but the pooled test gives $p = 0.30$: 53/60 (88\%) trace\_v2 against 50/60 (83\%) bare,
+a difference whose detection needs several hundred samples per arm at 80\% power --- a failure to
+detect, not a demonstration of no effect. The direction that did hold is not geometric: bare had
+\textbf{3 parse failures and 7 geometric failures}, trace\_v2 \textbf{0 parse and 7 geometric}, so
+among parsed samples geometric validity is 50/57 (87.7\%) versus 53/60 (88.3\%) --- the P-T1
+direction is format compliance, exactly what the reworded output-format line manipulates.
+
+\textbf{P-T2, rival suppression: CONFIRMED as registered} (directional, no alpha): 1 of 53 valid
+trace\_v2 against 2 of 50 valid bare. Counts this near zero carry no inferential weight and we
+claim none (Fisher $p = 0.48$). One trace\_v2 sample at $N = 31$ hit the rival 2.7485281 to within
+$3.6\times10^{-8}$, the first weak-tier rival hit at $N = 31$ in any arm.
+
+\textbf{P-T3, anchor concentration: met as registered (directional), inferentially fragile.} Among
+valid samples, 46 of 53 trace\_v2 (87\%) landed on the registered prediction against 35 of 50 (70\%)
+bare. The $p$-value it never carried is 0.0325, one-sided uncorrected (\S6.4).
+
+\textbf{P-T4, faithfulness: confirmed under a corrected scorer.} The registered scorer gives 38 of
+41 scoreable claims matching (93\%) against a 90\% threshold; blind hand-adjudication under a rubric
+frozen before rescoring gives 54 of 56 (96.4\%). \S6.5 reports both.
+
+\subsection{The registered falsifier, both readings}
+
+The registered falsifier reads: \emph{``if trace\_v2 validity \texttt{<=} bare at 2+ of 3 N, the
+pilot effect was the bundled rewording, not the method-line request --- reported as such, not
+reframed.''} Observed validity: $N = 13$, 18/20 both arms --- \textbf{tie}; $N = 21$, trace\_v2
+18/20 against bare 15/20; $N = 31$, 17/20 both arms --- \textbf{tie}. A tie satisfies \texttt{<=},
+so under the registered wording the falsifier is \textbf{triggered at 2 of 3 $N$} and we report it
+as triggered; the code instead used strict \texttt{<}, under which it fires at 0 of 3 cells --- a
+convention that appears nowhere in the preregistration and read the same tie favorably twice. We
+name the failure mode \textbf{operationalization drift between preregistration text and analysis
+code}. Under the authoritative tie-inclusive reading, \textbf{the pilot's validity effect is
+attributed to the bundled rewording, not to the method-line request}, and P-T1 fails under both
+readings regardless (Appendix~E.10).
+
+\subsection{Limits of P-T3: what the concentration result will and will not carry}
+
+P-T3 met its registered directional criterion. It is not a flagship result, on four counts worked
+through with their arithmetic in Appendix~E.7: it registered \emph{no alpha}, so the $p$-value is a
+post-hoc addition; it fails \emph{multiplicity} correction, since Holm's first threshold is
+$0.05/3 = 0.0167$ and $p = 0.0325$ also fails Bonferroni and Benjamini--Hochberg FDR; it is
+\emph{concentrated in one cell}, the pooled 17-point gap being carried by $N = 13$ and driven by a
+low bare rate there rather than a high trace rate, with $p = 0.31$ once that cell is dropped; and
+it is \emph{wave-confounded}, the control arm's own between-wave drift being comparable to the
+effect attributed to the manipulation. So: a minimal method-naming request does not make the
+proposer better at geometry and does not measurably change which rare constructions it reaches; in
+the registered direction it concentrates output onto the anchor, but that concentration fails
+correction, is carried by one cell, is confounded with collection wave, and is bundled with an
+output-format rewording that demonstrably affects parse compliance --- a reason for studies
+collecting process descriptors \emph{by asking for them} to check, not a coefficient to apply. The
+pilot also showed a \emph{third} effect in the P-T3 direction at the same cell (trace 9/10
+on-prediction against bare $N = 21$ at 4/7, one-sided $p = 0.16$), so P-T3 replicated a pilot signal
+rather than testing a blind prediction.
+
+\subsection{Faithfulness with ground truth}
+
+Claim and artifact sit in the same completion and the artifact is fully determined, so a method
+line is checkable against the emitted coordinates. \texttt{arm\_f\_repro.trace\_faithfulness()}
+matches numeric dimensions from the method line against the emitted layout signature, returning 38
+of 41 scoreable claims matching (93\%) against the registered 90\% threshold. Nine of its 12
+exclusions are regex coverage gaps, not claims without numeric content, and three are closer to
+genuinely unscoreable (Appendix~E.8). The excluded set is enriched for non-canonical phrasings,
+where a mismatch is a priori \emph{more} likely, so the exclusion was not conservative in a known
+direction; worst case, had all 12 been unfaithful, the rate would have been $38/53 = 72\%$.
+
+\textbf{Blind rescore under a frozen rubric.} The rubric (\texttt{p7\_faithfulness\_rubric.md}) was
+committed to git as \texttt{e181d2a} at 03:56:56 on 2026-08-01, \textbf{before} any rescoring run,
+so the freeze is checkable, and it pre-committed the reporting rule: below 90\%, P-T4 reported not
+confirmed, full stop, no consolation framing. Scoring was blind --- claim text and circles only, no
+predicted or rival values, no running tally, no threshold and no sight of the existing 38/41 result
+--- with tallying afterward; all 60 labels are released in \texttt{p7\_blind\_labels.json}.
+\textbf{Result:} over all 60 trace\_v2 rows, \textbf{54 MATCH, 2 MISMATCH, 4 UNSCOREABLE} --- a
+corrected rate of \textbf{54/56 = 96.4\%} of scoreable claims, Wilson 95\% CI $[88\%, 99\%]$,
+passed, and on 56 scoreable claims rather than 41. The CI's lower bound sits just below the
+registered threshold, so ``clears 90\%'' is a statement about the point estimate at this $n$. The
+two mismatches share a form, \emph{mis-descriptions of alternation}, and the original scorer's
+three mismatches all score MATCH under hand adjudication (Appendix~E.11).
+
+\textbf{Scope, three ways} (Appendix~E.11). The blind pass covers \emph{invalid} rows too, scoring
+all 60 including the 7 invalid ones, 4 of the 60 unscoreable, where the original 93\% conditioned
+on completions that produced a correct packing. It verifies the description against the
+\emph{artifact}, not the process, so for a model already emitting grids it is closer to a
+self-consistency check than to the causal question the chain-of-thought literature asks (\S7). And
+it is confounded with the elicitation arm, computed where \S6.2 shows 87\% of valid outputs
+concentrated onto one template and correct description is close to free, while the split by on-
+versus off-prediction is not run here (\S9). What survives is narrow: in a domain where claims are
+checkable, the method lines this proposer emits are, at 54 of 56 scoreable claims, true of the
+object it produced.
+
