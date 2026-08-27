@@ -62,7 +62,7 @@ draft and this one, with the finding that forced it. \texttt{stats} =
 30 & 5 & ``no Haiku sample did [this] in 101 invocations'' & 155 weak-tier rows; two exceeded the family best, both by $\sim$$10^{-7}$ & stats F17; R2 \#23b \\
 31 & 3.1, 9 & dual-tolerance reporting promised, never delivered; ``cryptographic prompt hashes'' & both tolerances in every validity figure; hashes restated as prompt-fragment hashes with coverage gaps itemized above & stats F21; GECCO M12 \\
 32 & all & five HTML working comments and a merge-provenance header shipped & removed; the two load-bearing ones ($k = 8$ clipping, $p$-value convention) promoted into \S1.1, Fig 1 and \S6 & stats F22; R2 \#29; GECCO NIT-1--2 \\
-33 & 2.2 & item 30's magnitude gloss ``both by $\sim$$10^{-7}$'' & independent re-audit (2026-08-27): the two exceedances are $+3.0	imes10^{-7}$ ($N=17$) and $+3.5	imes10^{-9}$ ($N=21$); both remain below the $10^{-6}$ bar, count unchanged & fresh-eyes audit \\
+33 & 2.2 & item 30's magnitude gloss ``both by $\sim$$10^{-7}$'' & independent re-audit (2026-08-27): the two exceedances are $+3.0\times10^{-7}$ ($N=17$) and $+3.5\times10^{-9}$ ($N=21$); both remain below the $10^{-6}$ bar, count unchanged & fresh-eyes audit \\
 \end{longtable}
 \endgroup
 ```
