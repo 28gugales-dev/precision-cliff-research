@@ -1,0 +1,70 @@
+ARM RP PREREGISTRATION — REGISTERED 2026-08-27
+Direct-recall probe: can the proposer STATE the published values it is accused of recalling?
+
+REGISTRATION BLOCK (added at registration; the draft body below is unchanged except
+where noted).
+- Drafted 2026-08-22 as arm_rp_preregistration_DRAFT.txt (committed); registered
+  2026-08-27 by removing the DRAFT marker, generating prompt hashes, and committing
+  arm_rp_build.py + arm_rp_analysis.py + arm_rp_prompts.json alongside this file,
+  pushed BEFORE the first invocation.
+- CELL CHANGE FROM DRAFT, made before any sampling: the draft named N=32 as a
+  scoreboard cell, but no published sum-of-radii value at N=32 is cited anywhere in
+  the paper. The registered scoreboard cells are N=13 (1.829), N=26 (2.63598,
+  anchoring the S1 cluster AlphaEvolve 2.63586276 .. GigaEvo/AdaEvolve 2.636, all
+  inside the registered 2e-3 RECALL window), and N=30 (2.842), all three carried by
+  the vendored bound table n_sweep_forecast.json transcribed from friedman_packing.
+  Held-out cells N=50, 62, 75 unchanged.
+- Prompt SHA-256 per cell: in arm_rp_prompts.json (arm_rp_build.py regenerates,
+  cross-checking the three published values against n_sweep_forecast.json).
+- Sampling channel: the same weak-tier subagent channel as arms F/M/CN (Claude Code
+  Task subagent, claude-3-5-haiku class weak tier, dispatch wrapper A.3 verbatim,
+  zero-shot, no tools, no code). n = 15 per cell, 90 invocations, one pass.
+- No sampling occurred before the registration commit.
+
+MOTIVATION (post-hoc, disclosed). Section 8 names a "canary-string test" as unrun. The classic
+canary design (a unique string planted in a benchmark, later elicited from the model) cannot be
+applied retrospectively to a benchmark we did not author. The nearest applicable test asks the
+recall question directly: if the weak-tier proposer's template values come from memory of
+published packings, it should be able to state those published values when asked for them
+outright — the easiest possible recall task. If instead it returns family values V/T, returns
+nothing, or returns values unrelated to the scoreboard, the recall reading loses its simplest
+prediction. This is a necessary-condition probe, not proof of absence from pretraining.
+
+CELLS. Six N, three with a published sum-of-radii value in the cited scoreboard and three
+without:
+  scoreboard:  N=26 (2.6358...; AlphaEvolve/ShinkaEvolve/HELIX cluster), N=32 (scoreboard
+               value as cited in Section 7), N=13 (scoreboard value as cited in Section 7)
+  held-out:    N=50, N=62, N=75 (no published sum-of-radii value; arm CN cells)
+Exact scoreboard values and their sources are copied into arm_rp_build.py from Section 7's
+citations before registration, with the citation for each.
+
+PROPOSER AND PROTOCOL. Same weak-tier channel as arms F/M/CN, no tools, dispatch wrapper A.3,
+n = 15 per cell, 90 invocations, runtime rejections excluded and counted, every completed
+message logged verbatim.
+
+PROMPT (new, to be hashed). "What is the best-known maximum sum of radii for {n}
+non-overlapping circles packed inside the unit square [0,1]x[0,1]? Answer with the number
+only, to at least six decimal places, and nothing else. If you do not know, answer UNKNOWN."
+
+SCORING (arm_rp_analysis.py). A response RECALLS if it parses as a number within 2e-3 of the
+published value for that N. A response is FAMILY if it is within 2e-3 of V(k*, m) or T(k*, N)
+for that N. UNKNOWN and unparseable responses are counted separately. No geometry is emitted,
+so validity does not apply.
+
+COMPETING PREDICTIONS.
+  P-RP1 (construction): RECALLS in <= 2 of 45 scoreboard-cell responses, and FAMILY responses
+    at scoreboard cells do not exceed FAMILY responses at held-out cells by more than 20
+    percentage points (the family value is a computation, not a memory, so it should not be
+    easier at published N). Predicted.
+  P-RP2 (recall): RECALLS in >= 10 of 45 scoreboard-cell responses (>= 22%), with RECALLS at
+    held-out cells necessarily zero (no value exists); this is the asymmetry memory produces.
+  Between 3 and 9 RECALLS = PARTIAL, reported with no claim.
+  FALSIFIER F-RP1: P-RP2 satisfied. Consequence: Section 8 states that the weak tier can
+    recall scoreboard values on request, and the construction reading of arm CN is weakened to
+    "construction at held-out N, recall not excluded at published N".
+
+STOPPING RULE. 90 invocations, one pass. Analysis run once on the complete ledger.
+
+WHAT THIS ARM CANNOT SHOW. A model that fails to state a value may still have been shaped by
+it; absence of recall on request is not absence from pretraining. The arm bounds the simplest
+recall mechanism only.

@@ -1,0 +1,62 @@
+{
+  "13": {
+    "n": 13,
+    "kind": "scoreboard",
+    "published": 1.829,
+    "published_source": "friedman_packing via n_sweep_forecast.json",
+    "family_prediction": 1.625,
+    "prompt": "What is the best-known maximum sum of radii for 13 non-overlapping circles packed inside the unit square [0,1]x[0,1]? Answer with the number only, to at least six decimal places, and nothing else. If you do not know, answer UNKNOWN.",
+    "wrapper": "Do not use any tools. Your entire final message must be the answer and nothing else.",
+    "sha256": "09881d77c1b5e065355fb5bc8474514c9cd6cd43e2444770eef982f4059524c7"
+  },
+  "26": {
+    "n": 26,
+    "kind": "scoreboard",
+    "published": 2.63598,
+    "published_source": "S1 scoreboard cluster (AlphaEvolve 2.63586276; ShinkaEvolve 2.6359831/2.6359777; HELIX 2.63598308; GigaEvo/AdaEvolve 2.636); bound-table anchor",
+    "family_prediction": 2.5414214,
+    "prompt": "What is the best-known maximum sum of radii for 26 non-overlapping circles packed inside the unit square [0,1]x[0,1]? Answer with the number only, to at least six decimal places, and nothing else. If you do not know, answer UNKNOWN.",
+    "wrapper": "Do not use any tools. Your entire final message must be the answer and nothing else.",
+    "sha256": "c72f4e923ae0bbfb00fc5a8d0f889a3aebd9d404bf365a7f44c97ce70d65eead"
+  },
+  "30": {
+    "n": 30,
+    "kind": "scoreboard",
+    "published": 2.842,
+    "published_source": "friedman_packing via n_sweep_forecast.json",
+    "family_prediction": 2.7071068,
+    "prompt": "What is the best-known maximum sum of radii for 30 non-overlapping circles packed inside the unit square [0,1]x[0,1]? Answer with the number only, to at least six decimal places, and nothing else. If you do not know, answer UNKNOWN.",
+    "wrapper": "Do not use any tools. Your entire final message must be the answer and nothing else.",
+    "sha256": "63015da2b5ebc703ff15e880d93949cbeb6bb9f4aa7d0494e264a6a960b56243"
+  },
+  "50": {
+    "n": 50,
+    "kind": "held_out",
+    "published": null,
+    "published_source": null,
+    "family_prediction": 3.5295867,
+    "prompt": "What is the best-known maximum sum of radii for 50 non-overlapping circles packed inside the unit square [0,1]x[0,1]? Answer with the number only, to at least six decimal places, and nothing else. If you do not know, answer UNKNOWN.",
+    "wrapper": "Do not use any tools. Your entire final message must be the answer and nothing else.",
+    "sha256": "ccc690937bb4e80f063bd6c79d0a1600c93b3be15040095ae0c3e1021e0484a3"
+  },
+  "62": {
+    "n": 62,
+    "kind": "held_out",
+    "published": null,
+    "published_source": null,
+    "family_prediction": 3.875,
+    "prompt": "What is the best-known maximum sum of radii for 62 non-overlapping circles packed inside the unit square [0,1]x[0,1]? Answer with the number only, to at least six decimal places, and nothing else. If you do not know, answer UNKNOWN.",
+    "wrapper": "Do not use any tools. Your entire final message must be the answer and nothing else.",
+    "sha256": "fd782f583a11dcaa9b2352ecb315dffed1a4cc09e37f8074eac4791c1edd6b30"
+  },
+  "75": {
+    "n": 75,
+    "kind": "held_out",
+    "published": null,
+    "published_source": null,
+    "family_prediction": 4.1666667,
+    "prompt": "What is the best-known maximum sum of radii for 75 non-overlapping circles packed inside the unit square [0,1]x[0,1]? Answer with the number only, to at least six decimal places, and nothing else. If you do not know, answer UNKNOWN.",
+    "wrapper": "Do not use any tools. Your entire final message must be the answer and nothing else.",
+    "sha256": "9883f7984cd0b541dfbe4c4d5f8a0ecaac8b09c05792d958314832a30a2e0f87"
+  }
+}
