@@ -95,7 +95,13 @@ No predictor of a single value can exceed the modal frequency, and this one atta
 7 cells (at $N = 31$ the on-prediction count exceeds the 4-dp modal bucket by one sample ---
 13/17 against 12/17 --- a bucketing convention, not a violation of the ceiling): the residual is
 dispersion, not misprediction. Three cells ($N = 17$, 35, 37), all non-discriminating, carry four valid samples each, where a 3/4 mode is thin evidence on its own; the well-populated cells of the held-out probe (\S3.8) are the stronger test of the same rule. As a floor, a naive ``the model emits a
-round number'' baseline hits 2 of the same 69 valid samples (3\%). Two scope conditions: this is
+round number'' baseline hits 2 of the same 69 valid samples (3\%). A stronger baseline, disclosed
+post hoc: a proposer choosing uniformly among the family's plausible template shapes --- one
+branch value per order $k \in \{k^*{-}1, k^*, k^*{+}1\}$ --- lands on-prediction $1/3$ of the
+time; the observed discriminating-cell rates sit above that null with exact binomial upper tails
+$0.043$, $2.9\times10^{-4}$, $3.4\times10^{-4}$ and $6.9\times10^{-3}$ at $N = 13$, 21, 31 and 43
+(\texttt{diagnostics\_template\_null.py}; $N = 13$, the weakest, is uncorrected). The 7-of-7 mode
+identity does not depend on this null. Two scope conditions: this is
 the bare weak-tier arm --- pooled over the four discriminating square cells (full ledger), the
 two higher tiers and the rectangle, the on-prediction rate is 46\%
 ($47/102 = 41/57 + 1/30 + 0/4 + 5/11$; the three non-discriminating square cells, 9/12, are

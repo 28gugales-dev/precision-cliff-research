@@ -28,10 +28,10 @@ Status of each requested change as of Rev 4.7 / 4.7b (tag `v4.7-fresh-eyes` + fo
 
 ## Minor — status and prepared responses
 
-6. **Uniform-template null for the square arm.** DEFERRED. New analysis; if requested,
-   compute P(on-prediction | uniform choice among plausible template shapes) per square
-   discriminating cell and report headline per-sample rates against it. Note for response:
-   the 7/7 mode-identity claim survives this null by the reviewer's own reading.
+6. **Uniform-template null for the square arm.** DONE (Rev 4.7c). `diagnostics_template_null.py`
+   (post hoc, disclosed): null = 1/3 (one branch value per k in {k*-1, k*, k*+1}); observed
+   discriminating-cell rates exceed it with exact binomial tails 0.043 / 2.9e-4 / 3.4e-4 /
+   6.9e-3 at N = 13/21/31/43. In §3.2 (full), Appendix D.1 (short), deviations table row.
 7. **CN reconstructed rows as sensitivity, not primary.** ALREADY THE CASE — respond by
    pointing at §3.8: the eleven flagged rows are discarded from the primary analysis;
    P-CN1 reads 3 of 4 with them excluded. The review misread direction here.

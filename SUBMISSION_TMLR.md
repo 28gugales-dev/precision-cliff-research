@@ -436,3 +436,10 @@ per-sample overclaim softened; corrections_ledger item 33. NEW: `main_short.tex`
 variant (15 pp body, refs p16, 36 pp total; 311/311 numeric tokens preserved; Figure 1 in
 Appendix C.2) ships inside `overleaf_paper1_v4.zip` -- submit either form.
 Rebuttal prep: `REBUTTAL_NOTES_PAPER1.md`.
+
+### Revision 4.7c (2026-08-27, tag `v4.7c-template-null`)
+Reviewer minor #6 implemented: uniform-template null (post hoc, disclosed) --
+`diagnostics_template_null.py`, null 1/3, discriminating-cell binomial tails
+0.043/2.9e-4/3.4e-4/6.9e-3 at N=13/21/31/43. Added to S3.2 (full), Appendix D.1 (short,
+body pointer only -- 15 pp body held), deviations-table row, HOW_TO_RUN row; output frozen
+in `diagnostics_template_null_out.txt`. Short numeric coverage 314/314.

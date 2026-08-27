@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  27 AUG 2026 19:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  27 AUG 2026 19:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -651,19 +651,19 @@ Underfull \hbox (badness 1924) in paragraph at lines 29--29
 [5]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 119.
+(hyperref)                removing `math shift' on input line 118.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 119.
+(hyperref)                removing `math shift' on input line 118.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 119.
+(hyperref)                removing `math shift' on input line 118.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 119.
+(hyperref)                removing `math shift' on input line 118.
 
 [6] [7] [8]) (sec_short_tiers_elicitation.tex [9]
 Underfull \hbox (badness 7151) in paragraph at lines 21--36
@@ -882,6 +882,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 85--85
 \T1/lmtt/m/n/7 _cc2_results
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--86
+[]|\T1/lmr/m/n/7 (+20) Uniform-template
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--86
+[]|\T1/lmr/bx/n/7 (+20) post hoc
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--86
+\T1/lmr/m/n/7 (+20) (\T1/lmtt/m/n/7 diagnostics
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--86
+\T1/lmtt/m/n/7 _template_null
+ []
+
 ignored error: Infinite glue shrinkage found in box being split [20])
 (sec_short_appendix_moved.tex
 <fig1_trapzones.png, id=646, 505.89pt x 260.172pt>
@@ -889,254 +909,247 @@ File: fig1_trapzones.png Graphic file (type png)
 <use fig1_trapzones.png>
 Package pdftex.def Info: fig1_trapzones.png  used on input line 34.
 (pdftex.def)             Requested size: 366.40831pt x 188.44319pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [21]
+[22 <./fig1_trapzones.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 111.
- [22 <./fig1_trapzones.png>] [23]
-Underfull \hbox (badness 10000) in paragraph at lines 194--194
+(Font)              <9> on input line 119.
+ [23]
+Underfull \hbox (badness 10000) in paragraph at lines 202--202
 []|\T1/lmr/m/n/9 (+20) extend,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--194
+Underfull \hbox (badness 10000) in paragraph at lines 202--202
 []|$\OML/lmm/m/it/9 V\OT1/lmr/m/n/9 (+20) (4\OML/lmm/m/it/9 ; \OT1/lmr/m/n/9 (+
 20) 4) =
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--195
+Underfull \hbox (badness 10000) in paragraph at lines 202--203
 []|\T1/lmr/m/n/9 (+20) P-M1 \T1/lmr/bx/n/9 (+20) dis-con-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 195--195
+Underfull \hbox (badness 10000) in paragraph at lines 203--203
 []|\T1/lmr/m/n/9 (+20) extend,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 195--195
+Underfull \hbox (badness 10000) in paragraph at lines 203--203
 []|$\OML/lmm/m/it/9 V\OT1/lmr/m/n/9 (+20) (5\OML/lmm/m/it/9 ; \OT1/lmr/m/n/9 (+
 20) 5) =
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 195--196
+Underfull \hbox (badness 10000) in paragraph at lines 203--204
 []|\T1/lmr/m/n/9 (+20) P-M2 \T1/lmr/bx/n/9 (+20) dis-con-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--196
+Underfull \hbox (badness 10000) in paragraph at lines 204--204
 []|\T1/lmr/m/n/9 (+20) extend,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--196
+Underfull \hbox (badness 10000) in paragraph at lines 204--204
 []|$\OML/lmm/m/it/9 V\OT1/lmr/m/n/9 (+20) (6\OML/lmm/m/it/9 ; \OT1/lmr/m/n/9 (+
 20) 5) =
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--197
+Underfull \hbox (badness 10000) in paragraph at lines 204--205
 []|\T1/lmr/m/n/9 (+20) P-M3 \T1/lmr/bx/n/9 (+20) dis-con-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--197
+Underfull \hbox (badness 10000) in paragraph at lines 205--205
 []|$\OML/lmm/m/it/9 T\OT1/lmr/m/n/9 (+20) (8\OML/lmm/m/it/9 ; \OT1/lmr/m/n/9 (+
 20) 57) =
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--197
+Underfull \hbox (badness 10000) in paragraph at lines 205--205
 \OT1/lmr/m/n/9 (+20) 3\OML/lmm/m/it/9 :\OT1/lmr/m/n/9 (+20) 5625000$\T1/lmr/m/n
 /9 (+20) , ri-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--198
+Underfull \hbox (badness 10000) in paragraph at lines 205--206
 []|\T1/lmr/m/n/9 (+20) P-M4 con-firmed;
  []
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 263--263
+Underfull \hbox (badness 10000) in paragraph at lines 271--271
 []|\T1/lmr/m/n/9 (+20) Anchor-rate
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 263--263
+Underfull \hbox (badness 10000) in paragraph at lines 271--271
 []|\T1/lmr/m/n/9 (+20) Registered
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 263--263
+Underfull \hbox (badness 10000) in paragraph at lines 271--271
 []|\T1/lmr/m/n/9 (+20) Keep-or-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 265--265
+Underfull \hbox (badness 10000) in paragraph at lines 273--273
 []|\T1/lmr/m/it/9 (+20) B_rival \T1/lmr/m/n/9 (+20) (in-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 265--265
+Underfull \hbox (badness 10000) in paragraph at lines 273--273
 []|\T1/lmr/m/n/9 (+20) 0/26 (0%,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 266--266
+Underfull \hbox (badness 10000) in paragraph at lines 274--274
 []|\T1/lmr/m/it/9 (+20) A_anchor
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 266--266
+Underfull \hbox (badness 10000) in paragraph at lines 274--274
 \T1/lmr/m/n/9 (+20) (model's own
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 266--266
+Underfull \hbox (badness 10000) in paragraph at lines 274--274
 []|\T1/lmr/m/n/9 (+20) 7/28 (25%,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 266--266
+Underfull \hbox (badness 10000) in paragraph at lines 274--274
 []|\T1/lmr/m/n/9 (+20) P-MU1 pre-
  []
 
 
-Underfull \hbox (badness 1895) in paragraph at lines 267--267
+Underfull \hbox (badness 1895) in paragraph at lines 275--275
 []|\T1/lmr/m/it/9 (+20) C_offfamily \T1/lmr/m/n/9 (+20) (di-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 267--267
+Underfull \hbox (badness 10000) in paragraph at lines 275--275
 \T1/lmr/m/n/9 (+20) par-ent for
  []
 
 
-Underfull \hbox (badness 1168) in paragraph at lines 267--267
+Underfull \hbox (badness 1168) in paragraph at lines 275--275
 []|\T1/lmr/m/n/9 (+20) P-MU4: tem-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 284--285
+Underfull \hbox (badness 10000) in paragraph at lines 292--293
 []|\T1/lmr/m/n/9 (+20) P-CH1 holds (one-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 285--285
+Underfull \hbox (badness 10000) in paragraph at lines 293--293
 []|\T1/lmr/bx/n/9 (+20) 31/31 \T1/lmr/m/n/9 (+20) (30 mis-placed
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 285--285
+Underfull \hbox (badness 10000) in paragraph at lines 293--293
 \T1/lmr/m/n/9 (+20) fillers, 1 un-evalu-able
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 306--306
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 314--314
 \T1/lmr/m/n/9 (+20) 7 $\OML/lmm/m/it/9 N$ $\OMS/lmsy/m/n/9 ^^B$ \T1/lmr/m/n/9 (
 +20) 20
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 306--306
+Underfull \hbox (badness 10000) in paragraph at lines 314--314
 \T1/lmr/m/n/9 (+20) (41/140 rows
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 306--306
+Underfull \hbox (badness 10000) in paragraph at lines 314--314
 \T1/lmr/m/n/9 (+20) routed un-der
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 306--306
+Underfull \hbox (badness 10000) in paragraph at lines 314--314
 \T1/lmr/m/n/9 (+20) amend-ment;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 306--306
+Underfull \hbox (badness 10000) in paragraph at lines 314--314
 \T1/lmr/m/n/9 (+20) dual ac-count-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 307--307
+Underfull \hbox (badness 10000) in paragraph at lines 315--315
 []|\T1/lmr/m/n/9 (+20) north-mini-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 308--308
+Underfull \hbox (badness 10000) in paragraph at lines 316--316
 []|\T1/lmr/m/n/9 (+20) OpenAI
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 308--308
+Underfull \hbox (badness 10000) in paragraph at lines 316--316
 \T1/lmr/m/n/9 (+20) (open-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 308--309
+Underfull \hbox (badness 10000) in paragraph at lines 316--317
 []|\T1/lmr/bx/n/9 (+20) TRANSFERS\T1/lmr/m/n/9 (+20) , point-estimate
  []
 
 
-Underfull \hbox (badness 5985) in paragraph at lines 310--310
+Underfull \hbox (badness 5985) in paragraph at lines 318--318
 []|\T1/lmr/m/n/9 (+20) 10 fur-ther
  []
 
 
-Underfull \hbox (badness 4132) in paragraph at lines 310--310
+Underfull \hbox (badness 4132) in paragraph at lines 318--318
 \T1/lmr/m/n/9 (+20) uid, Pool-side,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 310--310
+Underfull \hbox (badness 10000) in paragraph at lines 318--318
 \T1/lmr/m/n/9 (+20) in-clu-sionAI,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 310--310
+Underfull \hbox (badness 10000) in paragraph at lines 318--318
 \T1/lmr/m/n/9 (+20) oth-ers; one
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [25]
 <fig_gm3_anchoring.png, id=684, 462.528pt x 289.08pt>
 File: fig_gm3_anchoring.png Graphic file (type png)
 <use fig_gm3_anchoring.png>
-Package pdftex.def Info: fig_gm3_anchoring.png  used on input line 345.
+Package pdftex.def Info: fig_gm3_anchoring.png  used on input line 353.
 (pdftex.def)             Requested size: 469.75499pt x 293.61378pt.
+[26]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Underfull \vbox (badness 3942) has occurred while \output is active []
-
- [26]
-[27 <./fig_gm3_anchoring.png>] [28]
-<fig2_packings.png, id=698, 505.89pt x 187.902pt>
+ [27 <./fig_gm3_anchoring.png>] [28] [29]
+<fig2_packings.png, id=702, 505.89pt x 187.902pt>
 File: fig2_packings.png Graphic file (type png)
 <use fig2_packings.png>
-Package pdftex.def Info: fig2_packings.png  used on input line 547.
+Package pdftex.def Info: fig2_packings.png  used on input line 555.
 (pdftex.def)             Requested size: 469.75499pt x 174.48326pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 557.
+(hyperref)                removing `math shift' on input line 565.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 557.
+(hyperref)                removing `math shift' on input line 565.
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [29]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [30 <./fig2_packings.png>]
+[30 <./fig2_packings.png>]
 <fig3_armT.png, id=708, 332.442pt x 216.81pt>
 File: fig3_armT.png Graphic file (type png)
 <use fig3_armT.png>
-Package pdftex.def Info: fig3_armT.png  used on input line 630.
+Package pdftex.def Info: fig3_armT.png  used on input line 638.
 (pdftex.def)             Requested size: 469.75499pt x 306.36378pt.
  [31]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1147,13 +1160,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [33]
 [34]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 8
-16.
+24.
  (C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 [35{C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}
 ]
-Underfull \hbox (badness 6396) in paragraph at lines 871--885
+Underfull \hbox (badness 6396) in paragraph at lines 879--893
 \T1/lmtt/m/n/10 arm_f_candidates_v2.jsonl\T1/lmr/m/n/10 (+20) , \T1/lmtt/m/n/10
  arm_g_candidates.jsonl\T1/lmr/m/n/10 (+20) , \T1/lmtt/m/n/10 arm_m_collect.jso
 nl \T1/lmr/m/n/10 (+20) scored by
@@ -1168,11 +1181,11 @@ Package rerunfilecheck Info: File `main_short.out' has not changed.
 (rerunfilecheck)             Checksum: A879C93EA781C0542F409B2EDF0832D8;18067.
  ) 
 Here is how much of TeX's memory you used:
- 14445 strings out of 467871
- 231520 string characters out of 5418376
- 690359 words of memory out of 5000000
+ 14447 strings out of 467871
+ 231540 string characters out of 5418376
+ 689359 words of memory out of 5000000
  42467 multiletter control sequences out of 15000+600000
- 736060 words of font info for 323 fonts, out of 8000000 for 9000
+ 736137 words of font info for 324 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,12n,90p,1009b,674s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
@@ -1204,7 +1217,7 @@ ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/soham/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/soham/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/soham/AppDa
 ta/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on main_short.pdf (36 pages, 1110485 bytes).
+Output written on main_short.pdf (36 pages, 1111547 bytes).
 PDF statistics:
  915 PDF objects out of 1000 (max. 8388607)
  172 named destinations out of 1000 (max. 500000)

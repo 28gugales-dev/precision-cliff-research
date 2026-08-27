@@ -50,12 +50,10 @@ print six to eight decimals, so an eight-decimal tangency misses contact by $\si
 while $10^{-6}$ sits far below the $\sim$$10^{-2}$ gap between rival constructions. Value matching
 uses a $2\times10^{-3}$ window; \S5 records where that window is too loose for the distinction it
 was asked to carry.
-One conditioning caveat holds throughout: every on-prediction rate in this paper is computed over
-\emph{valid} outputs, so each conditions on execution success --- the variable \S3.5 shows can
-separate what a model attempts from what it lands. Arm CH is the one arm where the attempt-level
-decomposition is measurable (there, conditioning reverses the reading); for the other arms the
-per-cell validity denominators are reported alongside every rate so the reader can bound the
-exposure.
+One caveat holds throughout: every on-prediction rate conditions on validity (execution success,
+the variable \S3.5 shows can separate what a model attempts from what it lands --- and the one
+arm where that decomposition is measurable); per-cell validity denominators accompany every rate
+so the reader can bound the exposure.
 
 \subsection{The formula sits at the mode ceiling}
 
@@ -91,7 +89,8 @@ and 64 of 69 valid samples overall (93\%). Details, Appendix~D.1.
 No predictor of a single value can exceed the modal frequency, and this one attains it at 7 of 7
 cells (at $N = 31$ the on-prediction count exceeds the 4-dp modal bucket by one sample, 13/17
 against 12/17 --- a bucketing convention, not a violation of the ceiling). A naive ``the model
-emits a round number'' baseline hits 2 of the same 69 valid samples (3\%). Two scope conditions,
+emits a round number'' baseline hits 2 of the same 69 valid samples (3\%); a stronger post-hoc
+uniform-template null ($1/3$) is exceeded at every discriminating cell (Appendix~D.1). Two scope conditions,
 stated in full in Appendix~D.1: this is the bare weak-tier arm, and pooling in the higher tiers and
 the rectangle drops the rate to 46\%; and ``modal'' is a property of the observed sampling regime,
 not of a pinned decoding configuration (\S8). Three of the seven cells, all non-discriminating,

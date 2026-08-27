@@ -79,6 +79,7 @@ freezes a JSON/TXT report beside the ledger.
 |---|---|---|---|
 | 3.2 square arm, 3.3 falsifier, Table 1 | `python arm_f_repro.py` | `arm_f_candidates_v2.jsonl` | stdout |
 | 3.2 structural column (post hoc) | `python diagnostics_kmatch.py` | `arm_f_candidates_v2.jsonl` | stdout |
+| 3.2 uniform-template null (post hoc) | `python diagnostics_template_null.py` | `arm_f_candidates_v2.jsonl` | stdout (frozen in `diagnostics_template_null_out.txt`) |
 | 3.4 arm M | `python arm_m_analysis.py` | `arm_m_collect.jsonl` | `arm_m_report.json`, `arm_m_scored.json` |
 | 3.5 arms MU and CH (one script, two sections) | `python arm_mu_analysis.py` | `arm_mu_collect.jsonl` | `arm_mu_results.txt` |
 | 3.6 GM chain / GM3, Figure 2 | `python arm_gm3_analysis.py` then `python fig_gm3_anchoring.py` | `arm_gm_gm3_checkpoint.jsonl` | `arm_gm3_report.json`, `fig_gm3_anchoring.png` |

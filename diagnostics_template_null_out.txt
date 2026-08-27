@@ -1,0 +1,19 @@
+85 bare rows across N = [13, 17, 21, 31, 35, 37, 43]
+null: uniform choice over one branch value per order k in {k*-1, k*, k*+1} -> p0 = 1/3
+
+N=13 k*=4 pred 1.6250000 candidates [1.3, 1.625, 1.7761424] [DISCRIMINATING]
+      on-pred 10/18 valid; exact binomial upper tail vs 1/3: 0.0433
+N=17 k*=4 pred 2.0517767 candidates [1.7, 2.0517767, 2.0522847] [non-discriminating (pred = family argmax)]
+      on-pred 3/4 valid; exact binomial upper tail vs 1/3: 0.111
+N=21 k*=5 pred 2.1000000 candidates [1.75, 2.1, 2.2588835] [DISCRIMINATING]
+      on-pred 12/15 valid; exact binomial upper tail vs 1/3: 0.000285
+N=31 k*=6 pred 2.5833333 candidates [2.2142857, 2.5833333, 2.7485281] [DISCRIMINATING]
+      on-pred 13/17 valid; exact binomial upper tail vs 1/3: 0.000341
+N=35 k*=6 pred 2.9166667 candidates [2.5, 2.9142136, 2.9166667] [non-discriminating (pred = family argmax)]
+      on-pred 3/4 valid; exact binomial upper tail vs 1/3: 0.111
+N=37 k*=6 pred 3.0345178 candidates [2.6428571, 2.9970563, 3.0345178] [non-discriminating (pred = family argmax)]
+      on-pred 3/4 valid; exact binomial upper tail vs 1/3: 0.111
+N=43 k*=7 pred 3.0714286 candidates [2.6875, 3.0714286, 3.2416246] [DISCRIMINATING]
+      on-pred 6/7 valid; exact binomial upper tail vs 1/3: 0.00686
+
+Post hoc throughout; the registered analyses are unchanged.
