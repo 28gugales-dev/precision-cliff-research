@@ -422,3 +422,17 @@ HTML's two figures (2.6359831 relaxed / 2.6359777 strict); the S7 "HELIX below
 ShinkaEvolve" ordering now says against which. OpenEvolve "~2.635977" not at
 the README checked (2.634292) - restated as the 2.634-2.636 band, repo unpinned.
 
+
+### Revision 4.7 / 4.7b (2026-08-27, tag `v4.7-fresh-eyes`)
+Fresh-eyes validation round: three independent validators (fresh-clone repro of all 14
+pipeline scripts, byte-identical; ~330-assertion ledger re-audit, 3 findings; zero-context
+simulated TMLR review, leaning-accept-conditional). All confirmed findings folded:
+abstract carries the m<=1 falsifier scope and 8-of-11 pooled denominator; concentration
+overlap (61-67 within 56-76) stated honestly everywhere incl. the S3.6 heading;
+supplementary-artifact sentence added; contribution 1 post-hoc label + P-CH2 outcome;
+global validity-conditioning convention in S3.1; magnitude glosses made exact
+(3.0e-7/3.5e-9; 1.5-2.0e-2); arm V 314-of-325 slot qualifier; GM range scoped; S1
+per-sample overclaim softened; corrections_ledger item 33. NEW: `main_short.tex` short
+variant (15 pp body, refs p16, 36 pp total; 311/311 numeric tokens preserved; Figure 1 in
+Appendix C.2) ships inside `overleaf_paper1_v4.zip` -- submit either form.
+Rebuttal prep: `REBUTTAL_NOTES_PAPER1.md`.

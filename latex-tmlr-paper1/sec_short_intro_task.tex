@@ -6,8 +6,8 @@ Ask a language model to place 21 circles in a unit square so as to maximize the 
 radii, and it will not search. It reaches for the nearest square grid --- five by five, radius
 $1/(2k)$ --- then truncates it to 21 circles, leaving four cells empty and their area unclaimed.
 A better construction is one parameter away: drop to a four-by-four grid and add corner fillers of
-radius $(\sqrt{2}-1)/(2k)$, and the sum rises. The model does neither, and behaves the same way on
-the next sample.
+radius $(\sqrt{2}-1)/(2k)$, and the sum rises. The model does neither, and more often than not the
+next sample repeats the same move.
 
 The behavior can be written down. Writing $k^*(N) = \mathrm{round}(\sqrt{N})$ for the nearest-square
 order, a value function $V(k, m)$ over grid order $k$ and filler count $m$ identifies the modal

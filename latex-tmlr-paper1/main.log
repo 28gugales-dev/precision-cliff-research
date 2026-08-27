@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  27 AUG 2026 19:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  27 AUG 2026 19:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -683,88 +683,88 @@ Underfull \hbox (badness 2005) in paragraph at lines 28--29
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 3815) has occurred while \output is active []
 
  [7]
 [8]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 132.
+(hyperref)                removing `math shift' on input line 138.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 132.
+(hyperref)                removing `math shift' on input line 138.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 132.
+(hyperref)                removing `math shift' on input line 138.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 132.
+(hyperref)                removing `math shift' on input line 138.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--178
+Underfull \hbox (badness 10000) in paragraph at lines 184--184
 []|\T1/lmr/m/n/9 (+20) extend,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--178
+Underfull \hbox (badness 10000) in paragraph at lines 184--184
 []|$\OML/lmm/m/it/9 V\OT1/lmr/m/n/9 (+20) (4\OML/lmm/m/it/9 ; \OT1/lmr/m/n/9 (+
 20) 4) =
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--179
+Underfull \hbox (badness 10000) in paragraph at lines 184--185
 []|\T1/lmr/m/n/9 (+20) P-M1 \T1/lmr/bx/n/9 (+20) dis-con-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 179--179
+Underfull \hbox (badness 10000) in paragraph at lines 185--185
 []|\T1/lmr/m/n/9 (+20) extend,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 179--179
+Underfull \hbox (badness 10000) in paragraph at lines 185--185
 []|$\OML/lmm/m/it/9 V\OT1/lmr/m/n/9 (+20) (5\OML/lmm/m/it/9 ; \OT1/lmr/m/n/9 (+
 20) 5) =
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 179--180
+Underfull \hbox (badness 10000) in paragraph at lines 185--186
 []|\T1/lmr/m/n/9 (+20) P-M2 \T1/lmr/bx/n/9 (+20) dis-con-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--180
+Underfull \hbox (badness 10000) in paragraph at lines 186--186
 []|\T1/lmr/m/n/9 (+20) extend,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--180
+Underfull \hbox (badness 10000) in paragraph at lines 186--186
 []|$\OML/lmm/m/it/9 V\OT1/lmr/m/n/9 (+20) (6\OML/lmm/m/it/9 ; \OT1/lmr/m/n/9 (+
 20) 5) =
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
+Underfull \hbox (badness 10000) in paragraph at lines 186--187
 []|\T1/lmr/m/n/9 (+20) P-M3 \T1/lmr/bx/n/9 (+20) dis-con-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--181
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
 []|$\OML/lmm/m/it/9 T\OT1/lmr/m/n/9 (+20) (8\OML/lmm/m/it/9 ; \OT1/lmr/m/n/9 (+
 20) 57) =
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--181
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
 \OT1/lmr/m/n/9 (+20) 3\OML/lmm/m/it/9 :\OT1/lmr/m/n/9 (+20) 5625000$\T1/lmr/m/n
 /9 (+20) , ri-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--182
+Underfull \hbox (badness 10000) in paragraph at lines 187--188
 []|\T1/lmr/m/n/9 (+20) P-M4 con-firmed;
  []
 
@@ -773,77 +773,77 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [9]
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 274--274
+Underfull \hbox (badness 10000) in paragraph at lines 280--280
 []|\T1/lmr/m/n/9 (+20) Anchor-rate
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--274
+Underfull \hbox (badness 10000) in paragraph at lines 280--280
 []|\T1/lmr/m/n/9 (+20) Registered
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--274
+Underfull \hbox (badness 10000) in paragraph at lines 280--280
 []|\T1/lmr/m/n/9 (+20) Keep-or-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--276
+Underfull \hbox (badness 10000) in paragraph at lines 282--282
 []|\T1/lmr/m/it/9 (+20) B_rival \T1/lmr/m/n/9 (+20) (in-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--276
+Underfull \hbox (badness 10000) in paragraph at lines 282--282
 []|\T1/lmr/m/n/9 (+20) 0/26 (0%,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 277--277
+Underfull \hbox (badness 10000) in paragraph at lines 283--283
 []|\T1/lmr/m/it/9 (+20) A_anchor
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 277--277
+Underfull \hbox (badness 10000) in paragraph at lines 283--283
 \T1/lmr/m/n/9 (+20) (model's own
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 277--277
+Underfull \hbox (badness 10000) in paragraph at lines 283--283
 []|\T1/lmr/m/n/9 (+20) 7/28 (25%,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 277--277
+Underfull \hbox (badness 10000) in paragraph at lines 283--283
 []|\T1/lmr/m/n/9 (+20) P-MU1 pre-
  []
 
 
-Underfull \hbox (badness 1895) in paragraph at lines 278--278
+Underfull \hbox (badness 1895) in paragraph at lines 284--284
 []|\T1/lmr/m/it/9 (+20) C_offfamily \T1/lmr/m/n/9 (+20) (di-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--278
+Underfull \hbox (badness 10000) in paragraph at lines 284--284
 \T1/lmr/m/n/9 (+20) par-ent for
  []
 
 
-Underfull \hbox (badness 1168) in paragraph at lines 278--278
+Underfull \hbox (badness 1168) in paragraph at lines 284--284
 []|\T1/lmr/m/n/9 (+20) P-MU4: tem-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 295--296
+Underfull \hbox (badness 10000) in paragraph at lines 301--302
 []|\T1/lmr/m/n/9 (+20) P-CH1 holds (one-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 296--296
+Underfull \hbox (badness 10000) in paragraph at lines 302--302
 []|\T1/lmr/bx/n/9 (+20) 31/31 \T1/lmr/m/n/9 (+20) (30 mis-placed
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 296--296
+Underfull \hbox (badness 10000) in paragraph at lines 302--302
 \T1/lmr/m/n/9 (+20) fillers, 1 un-evalu-able
  []
 
@@ -851,68 +851,68 @@ Underfull \hbox (badness 10000) in paragraph at lines 296--296
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [11]
-Underfull \hbox (badness 10000) in paragraph at lines 323--323
+Underfull \hbox (badness 10000) in paragraph at lines 329--329
 \T1/lmr/m/n/9 (+20) 7 $\OML/lmm/m/it/9 N$ $\OMS/lmsy/m/n/9 ^^B$ \T1/lmr/m/n/9 (
 +20) 20
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 323--323
+Underfull \hbox (badness 10000) in paragraph at lines 329--329
 \T1/lmr/m/n/9 (+20) (41/140 rows
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 323--323
+Underfull \hbox (badness 10000) in paragraph at lines 329--329
 \T1/lmr/m/n/9 (+20) routed un-der
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 323--323
+Underfull \hbox (badness 10000) in paragraph at lines 329--329
 \T1/lmr/m/n/9 (+20) amend-ment;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 323--323
+Underfull \hbox (badness 10000) in paragraph at lines 329--329
 \T1/lmr/m/n/9 (+20) dual ac-count-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 324--324
+Underfull \hbox (badness 10000) in paragraph at lines 330--330
 []|\T1/lmr/m/n/9 (+20) north-mini-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 325--325
+Underfull \hbox (badness 10000) in paragraph at lines 331--331
 []|\T1/lmr/m/n/9 (+20) OpenAI
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 325--325
+Underfull \hbox (badness 10000) in paragraph at lines 331--331
 \T1/lmr/m/n/9 (+20) (open-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 325--326
+Underfull \hbox (badness 10000) in paragraph at lines 331--332
 []|\T1/lmr/bx/n/9 (+20) TRANSFERS\T1/lmr/m/n/9 (+20) , point-estimate
  []
 
 
-Underfull \hbox (badness 5985) in paragraph at lines 327--327
+Underfull \hbox (badness 5985) in paragraph at lines 333--333
 []|\T1/lmr/m/n/9 (+20) 10 fur-ther
  []
 
 
-Underfull \hbox (badness 4132) in paragraph at lines 327--327
+Underfull \hbox (badness 4132) in paragraph at lines 333--333
 \T1/lmr/m/n/9 (+20) uid, Pool-side,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 327--327
+Underfull \hbox (badness 10000) in paragraph at lines 333--333
 \T1/lmr/m/n/9 (+20) in-clu-sionAI,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 327--327
+Underfull \hbox (badness 10000) in paragraph at lines 333--333
 \T1/lmr/m/n/9 (+20) oth-ers; one
  []
 
@@ -923,12 +923,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <fig_gm3_anchoring.png, id=277, 462.528pt x 289.08pt>
 File: fig_gm3_anchoring.png Graphic file (type png)
 <use fig_gm3_anchoring.png>
-Package pdftex.def Info: fig_gm3_anchoring.png  used on input line 361.
+Package pdftex.def Info: fig_gm3_anchoring.png  used on input line 367.
 (pdftex.def)             Requested size: 469.75499pt x 293.61378pt.
 
 [13 <./fig_gm3_anchoring.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 437.
+(Font)              <8> on input line 443.
  [14] [15]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1232,7 +1232,7 @@ Data/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/soham/App
 Data/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/soham/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt9.pfb><C:/Users/soham/AppDa
 ta/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on main.pdf (34 pages, 1069825 bytes).
+Output written on main.pdf (34 pages, 1070278 bytes).
 PDF statistics:
  768 PDF objects out of 1000 (max. 8388607)
  140 named destinations out of 1000 (max. 500000)

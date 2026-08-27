@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  27 AUG 2026 19:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  27 AUG 2026 19:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -648,25 +648,22 @@ Underfull \hbox (badness 1924) in paragraph at lines 29--29
 []|\T1/lmr/m/n/7 (+20) CC (code chan-
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5]
+[5]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 113.
+(hyperref)                removing `math shift' on input line 119.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 113.
+(hyperref)                removing `math shift' on input line 119.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 113.
+(hyperref)                removing `math shift' on input line 119.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 113.
+(hyperref)                removing `math shift' on input line 119.
 
 [6] [7] [8]) (sec_short_tiers_elicitation.tex [9]
 Underfull \hbox (badness 7151) in paragraph at lines 21--36
@@ -1173,7 +1170,7 @@ Package rerunfilecheck Info: File `main_short.out' has not changed.
 Here is how much of TeX's memory you used:
  14445 strings out of 467871
  231520 string characters out of 5418376
- 689359 words of memory out of 5000000
+ 690359 words of memory out of 5000000
  42467 multiletter control sequences out of 15000+600000
  736060 words of font info for 323 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1207,7 +1204,7 @@ ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/soham/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/soham/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/soham/AppDa
 ta/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on main_short.pdf (36 pages, 1110058 bytes).
+Output written on main_short.pdf (36 pages, 1110485 bytes).
 PDF statistics:
  915 PDF objects out of 1000 (max. 8388607)
  172 named destinations out of 1000 (max. 500000)
