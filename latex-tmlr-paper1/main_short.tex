@@ -1,0 +1,102 @@
+% ===========================================================================
+% SHORT VARIANT of main.tex. Same paper, 8-15pp main body.
+%
+% Design rule: MOVE, NEVER DELETE. Every number, count, disclosure and caveat
+% present in main.tex's build survives in this one -- either in the condensed
+% main body or, verbatim, in the relocated appendices C-F
+% (sec_short_appendix_moved.tex). Preregistration-status qualifiers travel
+% with the claims they label; no claim migrates away from its post-hoc or
+% disclosed tag.
+%
+% The nine-section skeleton of main.tex is preserved exactly (S1, S1.1, S2.1-
+% S2.4, S3.1-S3.8, S4.1-S4.2, S5, S6.1-S6.5, S7, S8, S9), because the prose
+% cites sections by literal number throughout; only the amount of text under
+% each heading changes.
+%
+% Appendix order: A and B are sec_appendices.tex unchanged (prose refers to
+% "Appendix A" and "Appendix B" by letter). C-F are the relocated material.
+%
+% Compile: pdflatex -> bibtex -> pdflatex x2 (MiKTeX), main document
+% main_short.tex.
+% ===========================================================================
+\documentclass[10pt]{article}
+\usepackage{tmlr}
+% If accepted: \usepackage[accepted]{tmlr}
+% Preprint (arXiv): \usepackage[preprint]{tmlr}
+
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{microtype}
+\usepackage{graphicx}
+
+% zero-width, hyphen-free break opportunity, used inside long hex digests
+\newcommand{\bk}{\discretionary{}{}{}}
+
+\title{A Closed Form for What the Model Emits: Template Anchoring in
+Unconditioned Zero-Shot Circle Packing}
+
+% DOUBLE-BLIND: real author block intentionally absent from this file.
+\author{\name Anonymous authors \email anonymous@example.org \\
+      \addr Withheld for double-blind review}
+
+\def\month{MM}  % camera-ready
+\def\year{YYYY} % camera-ready
+\def\openreview{\url{https://openreview.net/forum?id=XXXX}} % camera-ready
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Language models placed in the proposal role of discovery loops such as FunSearch and
+AlphaEvolve are assumed to explore a solution space. We characterize the
+\emph{unconditioned} proposal --- a single zero-shot call with no parent program and no
+fitness feedback --- on a constructive-geometry benchmark scored by an exact evaluator:
+maximize the sum of radii of $N$ circles in a unit square. A weak-tier proposer does not
+search. It emits a grid template whose value follows in closed form from the problem
+parameters: a nearest-square order $k^* = \mathrm{round}(\sqrt{N})$ and a value function
+$V(k, m)$ over grid order and filler count. Registered before sampling, the prediction is modal at all seven $N$ of the original
+square arm and, in a held-out probe registered against a recall alternative, at four of five
+$N$ absent from every cited scoreboard (all three cells where the prediction differs from the family argmax; template structure at
+all five). Preregistered extensions bound the result: the anchor dissolves under parent
+conditioning, the regime discovery loops actually run in, so every claim is scoped to
+unconditioned calls. Handed the higher-valued construction, the model chooses it and fails to
+build it in 30 of 31 invalid attempts (the remaining one unevaluable): the template is not what the model prefers but what it
+can reliably execute. Delegating construction to an executed math-only program does not
+escape it: across three registered code-channel arms spanning two tiers, 0 of 115 valid
+program outputs exceed the family argmax and the anchor remains the modal weak-tier output
+--- at these cells the ceiling is a property of the channel, not of the tier. The behaviour transfers to two
+further vendors at reduced concentration (61--67\% of valid outputs against 56--76\%
+in-family at the same cells) and is bracketed by a fourth family, one member escaping upward and the other
+anchoring nowhere: anchoring is not a single-vendor artifact, and its concentration is
+vendor-dependent.
+\end{abstract}
+
+\input{sec_short_intro_task}
+\input{sec_short_forecast_transfer}
+\input{sec_short_tiers_elicitation}
+\input{sec_short_related_repro}
+
+\label{sec:endofmain}
+\clearpage
+
+% Citations use natbib \citet/\citep per TMLR's instructions. \nocite{*} is
+% retained because two works are cited in prose by name rather than by key
+% (OpenEvolve; the o3/o4-mini system card) and would otherwise drop out of
+% the reference list.
+\nocite{*}
+\bibliography{references}
+\bibliographystyle{tmlr}
+
+\appendix
+% A and B, unchanged from the full build: the prose refers to them by letter.
+\input{sec_appendices}
+% C-F: material relocated out of the main body by the short variant.
+\input{sec_short_appendix_moved}
+
+\end{document}
