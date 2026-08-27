@@ -1,0 +1,453 @@
+\begin{thebibliography}{60}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Abdelnabi \& Salem(2025)Abdelnabi and
+  Salem]{abdelnabi2025hawthorneeffectreasoningmodels}
+Sahar Abdelnabi and Ahmed Salem.
+\newblock The hawthorne effect in reasoning models: Evaluating and steering
+  test awareness, 2025.
+\newblock URL \url{https://arxiv.org/abs/2505.14617}.
+
+\bibitem[Arcuschin et~al.(2026)Arcuschin, Janiak, Krzyzanowski, Rajamanoharan,
+  Nanda, and Conmy]{arcuschin2026chainofthoughtreasoningwildfaithful}
+Iv{\'a}n Arcuschin, Jett Janiak, Robert Krzyzanowski, Senthooran Rajamanoharan,
+  Neel Nanda, and Arthur Conmy.
+\newblock Chain-of-thought reasoning in the wild is not always faithful, 2026.
+\newblock URL \url{https://arxiv.org/abs/2503.08679}.
+
+\bibitem[Balunovi{\'c} et~al.(2025)Balunovi{\'c}, Dekoninck, Jovanovi{\'c},
+  Petrov, and Vechev]{balunovic2025mathconstructchallengingllmreasoning}
+Mislav Balunovi{\'c}, Jasper Dekoninck, Nikola Jovanovi{\'c}, Ivo Petrov, and
+  Martin Vechev.
+\newblock Mathconstruct: Challenging llm reasoning with constructive proofs,
+  2025.
+\newblock URL \url{https://arxiv.org/abs/2502.10197}.
+
+\bibitem[Berthold et~al.(2026)Berthold, Kamp, Mexi, Pokutta, and
+  Polik]{berthold2026outoftheboxglobaloptimizationpacking}
+Timo Berthold, Dominik Kamp, Gioni Mexi, Sebastian Pokutta, and Imre Polik.
+\newblock Out-of-the-box global optimization for packing problems: New models
+  and improved solutions, 2026.
+\newblock URL \url{https://arxiv.org/abs/2605.04850}.
+
+\bibitem[Boppana et~al.(2026)Boppana, Ma, Loeffler, Sarfati, Bigelow, Geiger,
+  Lewis, and Merullo]{boppana2026reasoningtheaterdisentanglingmodel}
+Siddharth Boppana, Annabel Ma, Max Loeffler, Raphael Sarfati, Eric Bigelow,
+  Atticus Geiger, Owen Lewis, and Jack Merullo.
+\newblock Reasoning theater: Disentangling model beliefs from chain-of-thought,
+  2026.
+\newblock URL \url{https://arxiv.org/abs/2603.05488}.
+
+\bibitem[Bradley et~al.(2023)Bradley, Dai, Teufel, Zhang, Oostermeijer,
+  Bellagente, Clune, Stanley, Schott, and
+  Lehman]{bradley2023qualitydiversityaifeedback}
+Herbie Bradley, Andrew Dai, Hannah Teufel, Jenny Zhang, Koen Oostermeijer,
+  Marco Bellagente, Jeff Clune, Kenneth Stanley, Gr{\'e}gory Schott, and Joel
+  Lehman.
+\newblock Quality-diversity through ai feedback, 2023.
+\newblock URL \url{https://arxiv.org/abs/2310.13032}.
+
+\bibitem[Carlini et~al.(2021)Carlini, Tram{\`e}r, Wallace, Jagielski,
+  Herbert-Voss, Lee, Roberts, Brown, Song, Erlingsson, Oprea, and
+  Raffel]{carlini2021extracting}
+Nicholas Carlini, Florian Tram{\`e}r, Eric Wallace, Matthew Jagielski, Ariel
+  Herbert-Voss, Katherine Lee, Adam Roberts, Tom Brown, Dawn Song, {\'U}lfar
+  Erlingsson, Alina Oprea, and Colin Raffel.
+\newblock Extracting training data from large language models.
+\newblock In \emph{30th USENIX Security Symposium}, 2021.
+
+\bibitem[Cemri et~al.(2026)Cemri, Agrawal, Gupta, Liu, Cheng, Mang, Naren,
+  Erdogan, Sen, Zaharia, Dimakis, and
+  Stoica]{cemri2026adaevolveadaptivellmdriven}
+Mert Cemri, Shubham Agrawal, Akshat Gupta, Shu Liu, Audrey Cheng, Qiuyang Mang,
+  Ashwin Naren, Lutfi~Eren Erdogan, Koushik Sen, Matei Zaharia, Alex Dimakis,
+  and Ion Stoica.
+\newblock Adaevolve: Adaptive llm driven zeroth-order optimization, 2026.
+\newblock URL \url{https://arxiv.org/abs/2602.20133}.
+
+\bibitem[Chen et~al.(2026)Chen, Zhao, and Cohan]{chen2026measuringgaphumanllm}
+Ziyu Chen, Yilun Zhao, and Arman Cohan.
+\newblock Measuring the gap between human and llm research ideas, 2026.
+\newblock URL \url{https://arxiv.org/abs/2607.01233}.
+
+\bibitem[Friedman(n.d.)]{friedman_packing}
+Erich Friedman.
+\newblock Packing center: circles in squares, maximizing the sum of radii.
+\newblock \url{https://erich-friedman.github.io/packing/cirRsqu/}, n.d.
+\newblock Best-known values transcribed into \texttt{n\_sweep\_forecast.py};
+  accessed 2026.
+
+\bibitem[Gideoni et~al.(2026)Gideoni, Risi, and
+  Gal]{gideoni2026simplebaselinescompetitivecode}
+Yonatan Gideoni, Sebastian Risi, and Yarin Gal.
+\newblock Simple baselines are competitive with code evolution, 2026.
+\newblock URL \url{https://arxiv.org/abs/2602.16805}.
+
+\bibitem[Golchin \& Surdeanu(2024)Golchin and Surdeanu]{golchin2024timetravel}
+Shahriar Golchin and Mihai Surdeanu.
+\newblock Time travel in {LLMs}: Tracing data contamination in large language
+  models.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2024.
+\newblock arXiv:2308.08493.
+
+\bibitem[Guo et~al.(2024)Guo, Wang, Guo, Li, Song, Tan, Liu, Bian, and
+  Yang]{guo2024evoprompt}
+Qingyan Guo, Rui Wang, Junliang Guo, Bei Li, Kaitao Song, Xu~Tan, Guoqing Liu,
+  Jiang Bian, and Yujiu Yang.
+\newblock Connecting large language models with evolutionary algorithms yields
+  powerful prompt optimizers.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2024.
+\newblock arXiv:2309.08532.
+
+\bibitem[Gurkan et~al.(2026)Gurkan, Stonedahl, and
+  Wilensky]{gurkan2026mutationvariationconvergencedynamics}
+Can Gurkan, Forrest Stonedahl, and Uri Wilensky.
+\newblock Mutation without variation: Convergence dynamics in llm-driven
+  program evolution, 2026.
+\newblock URL \url{https://arxiv.org/abs/2606.05408}.
+
+\bibitem[Herrmann \& Pallez(2026)Herrmann and
+  Pallez]{herrmann2026indepthstudyllmcontributions}
+Julien Herrmann and Guillaume Pallez.
+\newblock An in-depth study of llm contributions to the bin packing problem,
+  2026.
+\newblock URL \url{https://arxiv.org/abs/2510.27353}.
+
+\bibitem[Hoffmann et~al.(2022)Hoffmann, Borgeaud, Mensch, Buchatskaya, Cai,
+  Rutherford, de~Las~Casas, Hendricks, Welbl, Clark, Hennigan, Noland,
+  Millican, van~den Driessche, Damoc, Guy, Osindero, Simonyan, Elsen, Rae,
+  Vinyals, and Sifre]{hoffmann2022trainingcomputeoptimallargelanguage}
+Jordan Hoffmann, Sebastian Borgeaud, Arthur Mensch, Elena Buchatskaya, Trevor
+  Cai, Eliza Rutherford, Diego de~Las~Casas, Lisa~Anne Hendricks, Johannes
+  Welbl, Aidan Clark, Tom Hennigan, Eric Noland, Katie Millican, George van~den
+  Driessche, Bogdan Damoc, Aurelia Guy, Simon Osindero, Karen Simonyan, Erich
+  Elsen, Jack~W. Rae, Oriol Vinyals, and Laurent Sifre.
+\newblock Training compute-optimal large language models, 2022.
+\newblock URL \url{https://arxiv.org/abs/2203.15556}.
+
+\bibitem[Huang et~al.(2026)Huang, Bie, Na, Ruan, Lei, Yue, and
+  He]{huang2026understandinganchoringeffectllm}
+Yiming Huang, Biquan Bie, Zuqiu Na, Weilin Ruan, Songxin Lei, Yutao Yue, and
+  Xinlei He.
+\newblock Understanding the anchoring effect of llm with synthetic data:
+  Existence, mechanism, and potential mitigations, 2026.
+\newblock URL \url{https://arxiv.org/abs/2505.15392}.
+
+\bibitem[Jia(2026)]{jia2026hindsightbenchblackboxbehavioralaudit}
+Haozhe Jia.
+\newblock Hindsightbench: A black-box behavioral audit protocol for parametric
+  hindsight in time-indexed llm decision tasks, 2026.
+\newblock URL \url{https://arxiv.org/abs/2607.18867}.
+
+\bibitem[Jiang et~al.(2025)Jiang, Chai, Li, Liu, Fok, Dziri, Tsvetkov, Sap,
+  Albalak, and Choi]{jiang2025artificialhivemindopenendedhomogeneity}
+Liwei Jiang, Yuanjun Chai, Margaret Li, Mickel Liu, Raymond Fok, Nouha Dziri,
+  Yulia Tsvetkov, Maarten Sap, Alon Albalak, and Yejin Choi.
+\newblock Artificial hivemind: The open-ended homogeneity of language models
+  (and beyond), 2025.
+\newblock URL \url{https://arxiv.org/abs/2510.22954}.
+
+\bibitem[Kaplan et~al.(2020)Kaplan, McCandlish, Henighan, Brown, Chess, Child,
+  Gray, Radford, Wu, and Amodei]{kaplan2020scalinglawsneurallanguage}
+Jared Kaplan, Sam McCandlish, Tom Henighan, Tom~B. Brown, Benjamin Chess, Rewon
+  Child, Scott Gray, Alec Radford, Jeffrey Wu, and Dario Amodei.
+\newblock Scaling laws for neural language models, 2020.
+\newblock URL \url{https://arxiv.org/abs/2001.08361}.
+
+\bibitem[Khanzadeh(2026)]{khanzadeh2026projectariadnestructuralcausal}
+Sourena Khanzadeh.
+\newblock Project ariadne: A structural causal framework for auditing
+  faithfulness in llm agents, 2026.
+\newblock URL \url{https://arxiv.org/abs/2601.02314}.
+
+\bibitem[Khrulkov et~al.(2025)Khrulkov, Galichin, Bashkirov, Vinichenko,
+  Travkin, Alferov, Kuznetsov, and
+  Oseledets]{khrulkov2025gigaevoopensourceoptimization}
+Valentin Khrulkov, Andrey Galichin, Denis Bashkirov, Dmitry Vinichenko, Oleg
+  Travkin, Roman Alferov, Andrey Kuznetsov, and Ivan Oseledets.
+\newblock Gigaevo: An open source optimization framework powered by llms and
+  evolution algorithms, 2025.
+\newblock URL \url{https://arxiv.org/abs/2511.17592}.
+
+\bibitem[Kim et~al.(2026)Kim, Yang, and
+  Zhang]{kim2026geobuildbenchbenchmarkinteractiveexecutable}
+Jinwoong Kim, Rui Yang, and Huishuai Zhang.
+\newblock Geobuildbench: A benchmark for interactive and executable geometry
+  construction from natural language, 2026.
+\newblock URL \url{https://arxiv.org/abs/2605.13167}.
+
+\bibitem[Kirk et~al.(2024)Kirk, Mediratta, Nalmpantis, Luketina, Hambro,
+  Grefenstette, and Raileanu]{kirk2024rlhf}
+Robert Kirk, Ishita Mediratta, Christoforos Nalmpantis, Jelena Luketina, Eric
+  Hambro, Edward Grefenstette, and Roberta Raileanu.
+\newblock Understanding the effects of {RLHF} on {LLM} generalisation and
+  diversity.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2024.
+\newblock arXiv:2310.06452.
+
+\bibitem[Lange et~al.(2025)Lange, Imajuku, and
+  Cetin]{lange2025shinkaevolveopenendedsampleefficientprogram}
+Robert~Tjarko Lange, Yuki Imajuku, and Edoardo Cetin.
+\newblock Shinkaevolve: Towards open-ended and sample-efficient program
+  evolution, 2025.
+\newblock URL \url{https://arxiv.org/abs/2509.19349}.
+
+\bibitem[Lehman \& Stanley(2011)Lehman and Stanley]{lehman2011novelty}
+Joel Lehman and Kenneth~O. Stanley.
+\newblock Abandoning objectives: Evolution through the search for novelty
+  alone.
+\newblock \emph{Evolutionary Computation}, 19\penalty0 (2):\penalty0 189--223,
+  2011.
+
+\bibitem[Lehman et~al.(2022)Lehman, Gordon, Jain, Ndousse, Yeh, and
+  Stanley]{lehman2022evolutionlargemodels}
+Joel Lehman, Jonathan Gordon, Shawn Jain, Kamal Ndousse, Cathy Yeh, and
+  Kenneth~O. Stanley.
+\newblock Evolution through large models, 2022.
+\newblock URL \url{https://arxiv.org/abs/2206.08896}.
+
+\bibitem[Li(2026)]{li2026dictionariesdarwinsetlevelselection}
+Pan Li.
+\newblock Dictionaries, not darwin: Set-level selection beats llm evolution in
+  scientific equation discovery, 2026.
+\newblock URL \url{https://arxiv.org/abs/2607.04108}.
+
+\bibitem[Li et~al.(2026)Li, Krishnan, and Padman]{li2026chainholdsanswerfolds}
+Yubo Li, Ramayya Krishnan, and Rema Padman.
+\newblock The chain holds, the answer folds: Trace-answer dissociation in
+  reasoning models under adversarial pressure, 2026.
+\newblock URL \url{https://arxiv.org/abs/2605.29087}.
+
+\bibitem[Liu et~al.(2024)Liu, Tong, Yuan, Lin, Luo, Wang, Lu, and
+  Zhang]{liu2024eoh}
+Fei Liu, Xialiang Tong, Mingxuan Yuan, Xi~Lin, Fu~Luo, Zhenkun Wang, Zhichao
+  Lu, and Qingfu Zhang.
+\newblock Evolution of heuristics: Towards efficient automatic algorithm design
+  using large language model.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2024.
+\newblock arXiv:2401.02051.
+
+\bibitem[Lou \& Sun(2024)Lou and Sun]{lou2024anchoringbiaslargelanguage}
+Jiaxu Lou and Yifan Sun.
+\newblock Anchoring bias in large language models: An experimental study, 2024.
+\newblock URL \url{https://arxiv.org/abs/2412.06593}.
+
+\bibitem[Malberg et~al.(2025)Malberg, Poletukhin, Schuster, and
+  Groh]{malberg2025comprehensiveevaluationcognitivebiases}
+Simon Malberg, Roman Poletukhin, Carolin~M. Schuster, and Georg Groh.
+\newblock A comprehensive evaluation of cognitive biases in llms, 2025.
+\newblock URL \url{https://arxiv.org/abs/2410.15413}.
+
+\bibitem[Meyerson et~al.(2024)Meyerson, Nelson, Bradley, Gaier, Moradi, Hoover,
+  and Lehman]{meyerson2024languagemodelcrossovervariation}
+Elliot Meyerson, Mark~J. Nelson, Herbie Bradley, Adam Gaier, Arash Moradi,
+  Amy~K. Hoover, and Joel Lehman.
+\newblock Language model crossover: Variation through few-shot prompting, 2024.
+\newblock URL \url{https://arxiv.org/abs/2302.12170}.
+
+\bibitem[Mouret \& Clune(2015)Mouret and Clune]{mouret2015mapelites}
+Jean-Baptiste Mouret and Jeff Clune.
+\newblock Illuminating search spaces by mapping elites.
+\newblock \emph{arXiv preprint arXiv:1504.04909}, 2015.
+
+\bibitem[Novikov et~al.(2025)Novikov, V{\~u}, Eisenberger,
+  et~al.]{novikov2025alphaevolve}
+Alexander Novikov, Ng{\^a}n V{\~u}, Marvin Eisenberger, et~al.
+\newblock Alphaevolve: A coding agent for scientific and algorithmic discovery,
+  2025.
+\newblock URL \url{https://arxiv.org/abs/2506.13131}.
+
+\bibitem[{OpenAI}(2025)]{openai2025o3o4systemcard}
+{OpenAI}.
+\newblock {OpenAI} o3 and o4-mini system card.
+\newblock \url{https://openai.com/index/o3-o4-mini-system-card/}, 2025.
+
+\bibitem[Romera-Paredes et~al.(2024)Romera-Paredes, Barekatain, Novikov, Balog,
+  Kumar, Dupont, Ruiz, Ellenberg, Wang, Fawzi, Kohli, and
+  Fawzi]{romeraparedes2024funsearch}
+Bernardino Romera-Paredes, Mohammadamin Barekatain, Alexander Novikov, Matej
+  Balog, M.~Pawan Kumar, Emilien Dupont, Francisco J.~R. Ruiz, Jordan~S.
+  Ellenberg, Pengming Wang, Omar Fawzi, Pushmeet Kohli, and Alhussein Fawzi.
+\newblock Mathematical discoveries from program search with large language
+  models.
+\newblock \emph{Nature}, 625\penalty0 (7995):\penalty0 468--475, 2024.
+\newblock \doi{10.1038/s41586-023-06924-6}.
+
+\bibitem[Scalena et~al.(2026)Scalena, Candussio, Bortolussi, Fersini, Nissim,
+  and Sarti]{scalena2026commitmentboundaryprobingepiphenomenal}
+Daniel Scalena, Sara Candussio, Luca Bortolussi, Elisabetta Fersini, Malvina
+  Nissim, and Gabriele Sarti.
+\newblock Beyond the commitment boundary: Probing epiphenomenal
+  chain-of-thought in large reasoning models, 2026.
+\newblock URL \url{https://arxiv.org/abs/2606.13603}.
+
+\bibitem[Sclar et~al.(2024)Sclar, Choi, Tsvetkov, and
+  Suhr]{sclar2024formatspread}
+Melanie Sclar, Yejin Choi, Yulia Tsvetkov, and Alane Suhr.
+\newblock Quantifying language models' sensitivity to spurious features in
+  prompt design or: How i learned to start worrying about prompt formatting.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2024.
+\newblock arXiv:2310.11324.
+
+\bibitem[Sharma(2025)]{sharma2025openevolve}
+Asankhaya Sharma.
+\newblock Openevolve: an open-source implementation of {AlphaEvolve}.
+\newblock GitHub repository, \url{https://github.com/codelion/openevolve},
+  2025.
+
+\bibitem[Shojaee et~al.(2025)Shojaee, Mirzadeh, Alizadeh, Horton, Bengio, and
+  Farajtabar]{shojaee2025illusionthinkingunderstandingstrengths}
+Parshin Shojaee, Iman Mirzadeh, Keivan Alizadeh, Maxwell Horton, Samy Bengio,
+  and Mehrdad Farajtabar.
+\newblock The illusion of thinking: Understanding the strengths and limitations
+  of reasoning models via the lens of problem complexity, 2025.
+\newblock URL \url{https://arxiv.org/abs/2506.06941}.
+
+\bibitem[Sim et~al.(2025)Sim, Renau, and
+  Hart]{sim2025hypebenchmarkingllmevolvedheuristics}
+Kevin Sim, Quentin Renau, and Emma Hart.
+\newblock Beyond the hype: Benchmarking llm-evolved heuristics for bin packing,
+  2025.
+\newblock URL \url{https://arxiv.org/abs/2501.11411}.
+
+\bibitem[Snell et~al.(2024)Snell, Wallace, Klein, and
+  Levine]{snell2024predictingemergentcapabilitiesfinetuning}
+Charlie Snell, Eric Wallace, Dan Klein, and Sergey Levine.
+\newblock Predicting emergent capabilities by finetuning, 2024.
+\newblock URL \url{https://arxiv.org/abs/2411.16035}.
+
+\bibitem[Su et~al.(2026)Su, Hao, Zhang, Xia, Wu, Su, and
+  Zhu]{su2026helixevolutionaryreinforcementlearning}
+Chang Su, Zhongkai Hao, Zhizhou Zhang, Zeyu Xia, Youjia Wu, Hang Su, and Jun
+  Zhu.
+\newblock Helix: Evolutionary reinforcement learning for open-ended scientific
+  problem solving, 2026.
+\newblock URL \url{https://arxiv.org/abs/2603.07642}.
+
+\bibitem[Tam et~al.(2024)Tam, Wu, Tsai, Lin, yi~Lee, and
+  Chen]{tam2024letspeakfreelystudy}
+Zhi~Rui Tam, Cheng-Kuang Wu, Yi-Lin Tsai, Chieh-Yen Lin, Hung yi~Lee, and
+  Yun-Nung Chen.
+\newblock Let me speak freely? a study on the impact of format restrictions on
+  performance of large language models, 2024.
+\newblock URL \url{https://arxiv.org/abs/2408.02442}.
+
+\bibitem[Thomas et~al.(2026)Thomas, Gligoric, and
+  Shah]{thomas2026mitigatingllmbasedphackingpreregistering}
+Maria Thomas, Kristina Gligoric, and Nihar~B. Shah.
+\newblock Mitigating llm-based p-hacking by preregistering for the next llm,
+  2026.
+\newblock URL \url{https://arxiv.org/abs/2606.27687}.
+
+\bibitem[Vaccaro(2026)]{vaccaro2026preregistrationexperimentsaiagents}
+Michelle Vaccaro.
+\newblock Preregistration for experiments with ai agents, 2026.
+\newblock URL \url{https://arxiv.org/abs/2606.11217}.
+
+\bibitem[van Stein \& B{\"a}ck(2025)van Stein and
+  B{\"a}ck]{vanstein2025llamealargelanguagemodel}
+Niki van Stein and Thomas B{\"a}ck.
+\newblock Llamea: A large language model evolutionary algorithm for
+  automatically generating metaheuristics, 2025.
+\newblock URL \url{https://arxiv.org/abs/2405.20132}.
+
+\bibitem[Wang et~al.(2026)Wang, Shojaee, Meidani, Sun, Hern{\'a}ndez-Lobato,
+  Head-Gordon, He, Reddy, Zhang, and
+  Du]{wang2026diversescientifichypothesissearch}
+Haorui Wang, Parshin Shojaee, Kazem Meidani, Kunyang Sun, Jos{\'e}~Miguel
+  Hern{\'a}ndez-Lobato, Teresa Head-Gordon, Jiajun He, Chandan~K. Reddy, Chao
+  Zhang, and Yuanqi Du.
+\newblock Towards diverse scientific hypothesis search with large language
+  models, 2026.
+\newblock URL \url{https://arxiv.org/abs/2606.10587}.
+
+\bibitem[Wang et~al.(2025)Wang, Su, Zeng, Xu, Ren, Yang, Huang, He, Ma, Peng,
+  Cheng, He, Chen, Wang, Du, and Shen]{wang2025thetaevolvetesttimelearningopen}
+Yiping Wang, Shao-Rong Su, Zhiyuan Zeng, Eva Xu, Liliang Ren, Xinyu Yang, Zeyi
+  Huang, Xuehai He, Luyao Ma, Baolin Peng, Hao Cheng, Pengcheng He, Weizhu
+  Chen, Shuohang Wang, Simon~Shaolei Du, and Yelong Shen.
+\newblock Thetaevolve: Test-time learning on open problems, 2025.
+\newblock URL \url{https://arxiv.org/abs/2511.23473}.
+
+\bibitem[Williams et~al.(2026)Williams, Sheahan, Raymond, Korbak, Pan, Yang,
+  Maksin, Xie, Guo, Kivlichan, and
+  Carroll]{williams2026predictingllmsafetyrelease}
+Marcus Williams, Hannah Sheahan, Cameron Raymond, Tomek Korbak, Deng Pan,
+  Peilin Yang, Leon Maksin, Ningyi Xie, Phillip Guo, Ian Kivlichan, and Micah
+  Carroll.
+\newblock Predicting llm safety before release by simulating deployment, 2026.
+\newblock URL \url{https://arxiv.org/abs/2607.07184}.
+
+\bibitem[Wu et~al.(2025)Wu, Zhang, Wang, Cai, Wu, Wang, Xu, and
+  Cheng]{wu2025answercentricreasoningdrivenuncoveringlatent}
+Yang Wu, Yifan Zhang, Yiwei Wang, Yujun Cai, Yurong Wu, Yuran Wang, Ning Xu,
+  and Jian Cheng.
+\newblock Answer-centric or reasoning-driven? uncovering the latent memory
+  anchor in llms, 2025.
+\newblock URL \url{https://arxiv.org/abs/2506.17630}.
+
+\bibitem[Yang et~al.(2026)Yang, Zhang, Hu, and
+  Ji]{yang2026accuracyevaluatingstrategydiversity}
+Xia Yang, Xuanyi Zhang, Hao Hu, and Feng Ji.
+\newblock Beyond accuracy: Evaluating strategy diversity in llm mathematical
+  reasoning, 2026.
+\newblock URL \url{https://arxiv.org/abs/2605.09292}.
+
+\bibitem[Yun et~al.(2025)Yun, An, Wang, Peng, and
+  Shang]{yun2025priceformatdiversitycollapse}
+Longfei Yun, Chenyang An, Zilong Wang, Letian Peng, and Jingbo Shang.
+\newblock The price of format: Diversity collapse in llms, 2025.
+\newblock URL \url{https://arxiv.org/abs/2505.18949}.
+
+\bibitem[Zhang(2026)]{zhang2026testingfrontierlargelanguage}
+Dong Zhang.
+\newblock Testing frontier large language models' physics literacy in parallel
+  physical worlds, 2026.
+\newblock URL \url{https://arxiv.org/abs/2607.00276}.
+
+\bibitem[Zhang et~al.(2026{\natexlab{a}})Zhang, Yu, Chong, Sicilia, Tomz,
+  Manning, and Shi]{zhang2026verbalizedsamplingmitigatemode}
+Jiayi Zhang, Simon Yu, Derek Chong, Anthony Sicilia, Michael~R. Tomz,
+  Christopher~D. Manning, and Weiyan Shi.
+\newblock Verbalized sampling: How to mitigate mode collapse and unlock llm
+  diversity, 2026{\natexlab{a}}.
+\newblock URL \url{https://arxiv.org/abs/2510.01171}.
+
+\bibitem[Zhang \& Lu(2026)Zhang and
+  Lu]{zhang2026rethinkingcodesimilarityautomated}
+Rui Zhang and Zhichao Lu.
+\newblock Rethinking code similarity for automated algorithm design with llms,
+  2026.
+\newblock URL \url{https://arxiv.org/abs/2603.02787}.
+
+\bibitem[Zhang et~al.(2024)Zhang, Liu, Lin, Wang, Lu, and
+  Zhang]{zhang2024understandingimportanceevolutionarysearch}
+Rui Zhang, Fei Liu, Xi~Lin, Zhenkun Wang, Zhichao Lu, and Qingfu Zhang.
+\newblock Understanding the importance of evolutionary search in automated
+  heuristic design with large language models, 2024.
+\newblock URL \url{https://arxiv.org/abs/2407.10873}.
+
+\bibitem[Zhang et~al.(2026{\natexlab{b}})Zhang, Chen, Portet, and
+  Peyrard]{zhang2026makesllmgoodoptimizer}
+Xinhao Zhang, Xi~Chen, Fran{\c{c}}ois Portet, and Maxime Peyrard.
+\newblock What makes an llm a good optimizer? a trajectory analysis of
+  llm-guided evolutionary search, 2026{\natexlab{b}}.
+\newblock URL \url{https://arxiv.org/abs/2604.19440}.
+
+\bibitem[Zhou et~al.(2024)Zhou, Schellaert, Mart{\'i}nez-Plumed, Moros-Daval,
+  Ferri, and Hern{\'a}ndez-Orallo]{zhou2024reliability}
+Lexin Zhou, Wout Schellaert, Fernando Mart{\'i}nez-Plumed, Yael Moros-Daval,
+  C{\`e}sar Ferri, and Jos{\'e} Hern{\'a}ndez-Orallo.
+\newblock Larger and more instructable language models become less reliable.
+\newblock \emph{Nature}, 634\penalty0 (8032):\penalty0 61--68, 2024.
+\newblock \doi{10.1038/s41586-024-07930-y}.
+
+\end{thebibliography}

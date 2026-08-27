@@ -56,7 +56,7 @@ container.
 
 \textbf{Contributions.}
 \begin{enumerate}
-\item \emph{A choice/execution dissociation: the model selects the better construction and cannot build it through either channel.} Handed the provably higher-valued in-family construction with its score, the weak tier chooses it, then fails to instantiate it in 30 of 31 invalid attempts, the remaining one unevaluable (arm CH, \S3.5); delegated to an executed math-only program, the same ceiling holds across two tiers and a fresh-draw replication --- 0 of 115 valid program outputs exceed the family argmax (arms CC/CC2/CCS, \S3.7). The template is not what the model prefers but what it can reliably execute, in text or in code. This finding does not depend on whether any deployed loop runs unconditioned calls.
+\item \emph{A choice/execution dissociation: the model selects the better construction and cannot build it through either channel.} Handed the provably higher-valued in-family construction with its score, the weak tier chooses it, then fails to instantiate it in 30 of 31 invalid attempts, the remaining one unevaluable (arm CH, \S3.5 --- a disclosed post-hoc attempt-level reading whose classifier is the family filler radius; the registered per-cell prediction P-CH2 held at one of three cells); delegated to an executed math-only program, the same ceiling holds across two tiers and a fresh-draw replication --- 0 of 115 valid program outputs exceed the family argmax (arms CC/CC2/CCS, \S3.7). The template is not what the model prefers but what it can reliably execute, in text or in code. This finding does not depend on whether any deployed loop runs unconditioned calls.
 \item \emph{A closed form that names the modal model output in advance.} $k^*(N)$ with
 $V(k, m)$ and $T(k, N)$ (the extend-with-fillers and truncated-grid values, \S2.2) identify the value a weak-tier proposer emits most often at a given $N$,
 verified against a linear-programming oracle on 83 configurations to within $10^{-9}$ and tested out
@@ -79,7 +79,7 @@ as met-as-registered exploratory material, not a demonstrated effect. Studies co
 process descriptors \emph{by request} are nonetheless measuring a perturbed distribution.
 \item \emph{A family boundary, measured from both sides --- and a near-deterministic strong form.}
 Anchoring is not a single-vendor artifact: it transfers to two further vendors'
-weak models at reduced concentration (61--67\% of valid outputs against 56--76\% in-family at the same five cells, \S3.2 and \S3.6), while one further family brackets it ---
+weak models (61--67\% of valid outputs against 56--76\% in-family at the same five cells --- overlapping ranges at these $n$, \S3.2 and \S3.6), while one further family brackets it ---
 gemma-4-26b escapes \emph{upward} to the in-family rival construction (27/43 valid outputs at discriminating cells, those where prediction and family argmax differ) and gemma-4-31b, above the same validity floor, anchors on nothing (\S3.6). Where
 anchoring holds, its strong form is near-deterministic: pooling every weak-tier discriminating-cell
 validity across the original-family and transfer-vendor arms, the provably better in-family
@@ -170,7 +170,7 @@ $T(5,23) = 2.300$, $V(4,7) = 2.3624369$.
 The finding that 94 of 95 valid proposals in prior arms were grid-plus-filler is retained only as
 motivation, since those arms are not reported here; the self-contained version is the ledger
 observation (\texttt{corrections\_ledger.md}, item 30) that across the 155 weak-tier rows collected before arm M only two exceeded the
-family best, both by $\sim$$10^{-7}$ --- below the $10^{-6}$ bar, so neither counts as leaving the family under \S5's convention (arm M's 57 rows are scored separately in \S3.4 and were not swept
+family best, by $3.0\times10^{-7}$ and $3.5\times10^{-9}$ --- both below the $10^{-6}$ bar, so neither counts as leaving the family under \S5's convention (arm M's 57 rows are scored separately in \S3.4 and were not swept
 for this claim).
 
 \subsection{The order rule is a definition; the branch rule is the hypothesis}

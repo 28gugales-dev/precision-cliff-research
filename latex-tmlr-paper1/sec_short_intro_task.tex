@@ -56,7 +56,7 @@ container.
 
 \textbf{Contributions.}
 \begin{enumerate}
-\item \emph{A choice/execution dissociation: the model selects the better construction and cannot build it through either channel.} Handed the provably higher-valued in-family construction with its score, the weak tier chooses it, then fails to instantiate it in 30 of 31 invalid attempts, the remaining one unevaluable (arm CH, \S3.5); delegated to an executed math-only program, the same ceiling holds across two tiers and a fresh-draw replication --- 0 of 115 valid program outputs exceed the family argmax (arms CC/CC2/CCS, \S3.7). The template is not what the model prefers but what it can reliably execute, in text or in code. This finding does not depend on whether any deployed loop runs unconditioned calls.
+\item \emph{A choice/execution dissociation: the model selects the better construction and cannot build it through either channel.} Handed the provably higher-valued in-family construction with its score, the weak tier chooses it, then fails to instantiate it in 30 of 31 invalid attempts, the remaining one unevaluable (arm CH, \S3.5 --- a disclosed post-hoc attempt-level reading whose classifier is the family filler radius; the registered per-cell prediction P-CH2 held at one of three cells); delegated to an executed math-only program, the same ceiling holds across two tiers and a fresh-draw replication --- 0 of 115 valid program outputs exceed the family argmax (arms CC/CC2/CCS, \S3.7). The template is not what the model prefers but what it can reliably execute, in text or in code. This finding does not depend on whether any deployed loop runs unconditioned calls.
 \item \emph{A closed form that names the modal model output in advance.} $k^*(N)$ with $V(k, m)$ and
 $T(k, N)$ (the extend-with-fillers and truncated-grid values, \S2.2) identify the value a weak-tier
 proposer emits most often at a given $N$, verified against a linear-programming oracle on 83
@@ -82,9 +82,9 @@ wave-confounded (\S6.4), so it is reported as met-as-registered exploratory mate
 demonstrated effect. Studies collecting process descriptors \emph{by request} are nonetheless
 measuring a perturbed distribution.
 \item \emph{A family boundary, measured from both sides --- and a near-deterministic strong form.}
-Anchoring is not a single-vendor artifact: it transfers to two further vendors' weak models at
-reduced concentration (61--67\% of valid outputs against 56--76\% in-family at the same five cells,
-\S3.2 and \S3.6), while one further family brackets it --- gemma-4-26b escapes \emph{upward} to the
+Anchoring is not a single-vendor artifact: it transfers to two further vendors' weak models
+(61--67\% of valid outputs against 56--76\% in-family at the same five cells --- overlapping
+ranges at these $n$, \S3.2 and \S3.6), while one further family brackets it --- gemma-4-26b escapes \emph{upward} to the
 in-family rival construction (27/43 valid outputs at discriminating cells, those where prediction
 and family argmax differ) and gemma-4-31b, above the same validity floor, anchors on nothing
 (\S3.6). Where anchoring holds, its strong form is near-deterministic: pooling every weak-tier
@@ -99,7 +99,7 @@ discriminating cells, is the counterexample that proves the statistic is a famil
 \textbf{Non-claim guard.} Everything here is a behavioral regularity over emitted outputs. We make
 no claim about mechanism inside the weights, and the paper uses that vocabulary throughout: the
 model \emph{emits}, the distribution \emph{concentrates}, the formula \emph{identifies the modal
-output}. \S8 states the leading mechanism-free alternative, arithmetic tractability, and its direct
+output} (storage-and-retrieval vocabulary corrected). \S8 states the leading mechanism-free alternative, arithmetic tractability, and its direct
 probe (arm CH, \S3.5): wrong about selection, right about instantiation.
 
 \subsection{Trap zones}
@@ -146,7 +146,7 @@ a smaller grid and fill it but to \emph{truncate} --- lay out the $k \times k$ l
 cells, leave the radius unchanged --- giving $T(k, N) = N/(2k)$. These reproduce every previously
 reported anchor with no fitting: $V(5,1) = 2.5414214$, $V(5,2) = 2.5828427$, $V(5,0) = 2.500$,
 $T(5,23) = 2.300$, $V(4,7) = 2.3624369$. The prior-arm and ledger evidence that the family is where
-the weak tier lives --- including the two $\sim$$10^{-7}$ exceedances among 155 rows --- is in
+the weak tier lives --- including the two sub-$10^{-6}$ exceedances among 155 rows --- is in
 Appendix~C.3.
 
 \subsection{The order rule is a definition; the branch rule is the hypothesis}

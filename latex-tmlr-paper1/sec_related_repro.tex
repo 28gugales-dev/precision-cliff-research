@@ -120,7 +120,7 @@ valid packings of 140, three scoreable cells against the five the primary requir
 on-prediction 15\% against the 30\% bar, falsifier not triggered
 (\texttt{arm\_gm\_analysis\_v2.py}, \texttt{arm\_gm\_v2\_report.json}). Two descriptives, claimed as nothing
 more: the one mid-size scoreable cell matches the predicted mode exactly (2.1000 at $N = 21$,
-3/6), and off-prediction valid sums land far \emph{below} the prediction (0.48--1.55) --- the
+3/6), and off-prediction valid sums land far \emph{below} the prediction (0.48--1.55 over the three scoreable cells) --- the
 opposite direction from GM3's misses, which land on the family rival (\S3.6), consistent
 with \S5's point that the regularity is
 tier-bound rather than universal. Arm GM2 (gemma-4-26b-a4b-it, prereg
@@ -244,7 +244,7 @@ Deviations from preregistration are tabled in Appendix B. Provenance, in list fo
   authorship: each preregistration commit is a git ancestor of the sampling it governs.
   Because the authoring models share a family with arms under study (\S5), what a reader is
   asked to trust is the released artifact --- the scripts, raw ledgers, LP oracle and frozen
-  outputs --- not the author.
+  outputs, all of which accompany this submission as anonymized supplementary material --- not the author.
 \item \textbf{Internal checks.} Before submission the manuscript passed an internal adversarial
   check: language models of other families (\texttt{deepseek-v4-pro}, \texttt{deepseek-v4-flash},
   Gemini), under written protocols, independently recomputed the paper's statistics from the

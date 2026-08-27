@@ -125,8 +125,8 @@ Exactly one sample in 36 valid converge-cell rows emitted the registered constru
 count is 0 in 35 of 36. Per the registered falsifier wording, \textbf{$V(k, m)$ is restricted to the
 $m \le 1$ support previously observed}. At $N = 57$ the modal valid output is $T(8,57) = 3.5625000$
 (6 of 10 valid at $10^{-6}$) and 0 of 10 valid samples reached the rival, against a registered rival
-prediction of 0, so the truncate arm now has five confirmed $k$ (4, 5, 6, 7, 8) and Figure~1's
-$k = 8$ zone is sampled. Table~M, the per-cell validity figures, the registered rejection rule for
+prediction of 0, so the truncate arm now has five confirmed $k$ (4, 5, 6, 7, 8) and the $k = 8$ zone of
+Figure~\ref{fig:trapzones} (Appendix~C.2) is sampled. Table~M, the per-cell validity figures, the registered rejection rule for
 three $N = 41$ runtime deaths, the arithmetic-rectangle reading ($20 = 5 \times 4$,
 $30 = 6 \times 5$) and the three post-hoc-swept out-of-family converge rows are in Appendix~D.3. The
 net effect is a sharpening: $k^* = \mathrm{round}(\sqrt{N})$ names the grid family; at $k^{*2} > N$
@@ -162,7 +162,7 @@ rather than exploit.} Under the registered scorer, which takes the modal output 
 samples}, the template wins at $N = 13$ ($T(4,13) = 1.6250000$ against a stated argmax of 1.7761424)
 and at $N = 31$ ($T(6,31) \approx 2.5833$, 4 of 7 valid, against 2.7485281, 3 of 7 --- a one-sample
 margin), and only $N = 21$ goes to the argmax (2.2588835, 3 of 5 valid); P-CH2 holds at 1 of 3
-cells. But validity is low (2, 5 and 7 valid of 15) and \textbf{all 31 invalid rows attempt the
+cells. But validity is low (2, 5 and 7 valid of 15) and --- a disclosed post-hoc reading --- \textbf{all 31 invalid rows attempt the
 stated argmax}: 30 misplace the fillers, 1 emits radical literals the registered scorer cannot
 evaluate. We report the registered verdict as registered --- and flag that it conditions on exactly
 the variable (execution success) separating the two readings. The honest summary is a
@@ -170,7 +170,7 @@ decomposition: handed the argmax, the model's choice follows the score table, it
 off-template in 30 of the 31 invalid attempts, and \S8's tractability alternative is wrong about
 selection and right about instantiation (Appendix~D.4; corpus now 468 invocations).
 
-\subsection{Arms GM3 and V: transfer at reduced concentration, with a boundary that runs both ways}
+\subsection{Arms GM3 and V: transfer, with a boundary that runs both ways}
 
 Two registered arms take byte-identical prompts across vendors: arm GM3 under a laboratory-grade
 instrument (first-party API, pinned temperature, seven $N$ $\times$ twenty samples) against
@@ -205,9 +205,10 @@ cleared split: \texttt{north-mini-code} (Cohere) 8/12 = 67\% on-prediction [39--
 \texttt{gpt-oss-20b} (OpenAI, open-weight) 11/18 = 61\% [39--80\%] both \textbf{TRANSFER} on the
 point estimate against the $\ge$50\% bar --- the bracketed Wilson 95\% intervals include the bar, so
 each is a point-estimate pass at $n = 12$ and $n = 18$ --- while \texttt{gemma-4-31b-it} (Google) is
-0/15 = 0\%, \textbf{DOES-NOT-TRANSFER}. V2 HOLDS everywhere evaluable: zero rival-argmax emissions
-in 16 discriminating-cell validities (0/4, 0/9, 0/3). The transfer is at reduced concentration ---
-61--67\% on-prediction against 56--76\% in-family at the same five cells (\S3.2) --- which is what a
+0/15 = 0\%, \textbf{DOES-NOT-TRANSFER}. V2 HOLDS everywhere evaluable within arm V: zero rival-argmax emissions
+in 16 discriminating-cell validities (0/4, 0/9, 0/3). The transfer's point estimates sit at or below the in-family rates ---
+61--67\% on-prediction against 56--76\% in-family at the same five cells (\S3.2), overlapping ranges
+these $n$ cannot separate --- and directionally lower concentration on the same modal value is what a
 shared attractor predicts on byte-identical prompts. Under the registration's falsification map the
 family-specific branch fires, making the closed form a family-bounded property, stated in \S5 with
 data rather than a caveat, while the map's all-transfer branch fails on gemma alone: the reading
@@ -303,7 +304,8 @@ $a = 2$ (predicted 3.1250000, rival 3.4832492). With all sixteen scored, \textbf
 proposals landed on the predicted value and 0 of 11 reached the rival}. We therefore report the
 rectangle as \textbf{partial out-of-sample support, not confirmation}: $5/11 = 45\%$, Wilson 95\% CI
 $[21\%, 72\%]$, and a proposer choosing uniformly among the three or so plausible template shapes
-would land on-prediction about a third of the time. Two qualifications: validity degrades in the
+would land on-prediction about a third of the time, so 5/11 does not separate cleanly from that
+null. Two qualifications: validity degrades in the
 tall container (4/8 at $a = 3$ against 7/8 at $a = 2$, three of four $a = 3$ failures being
 overlaps), a confound on that cell at $n = 8$; and the rectangle ledger carries no prompt hashes,
 run dates or proposer fields, so the arm with the strongest transfer claim has the least provenance

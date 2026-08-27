@@ -2,6 +2,7 @@
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
 \citation{romeraparedes2024funsearch}
 \citation{novikov2025alphaevolve}
 \citation{lange2025shinkaevolveopenendedsampleefficientprogram}
@@ -9,7 +10,6 @@
 \citation{khrulkov2025gigaevoopensourceoptimization}
 \citation{cemri2026adaevolveadaptivellmdriven}
 \citation{wang2025thetaevolvetesttimelearningopen}
-\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
 \citation{mouret2015mapelites}
 \citation{lehman2011novelty}
 \citation{li2026dictionariesdarwinsetlevelselection}
@@ -17,14 +17,14 @@
 \citation{thomas2026mitigatingllmbasedphackingpreregistering,williams2026predictingllmsafetyrelease,vaccaro2026preregistrationexperimentsaiagents,zhang2026testingfrontierlargelanguage}
 \citation{kaplan2020scalinglawsneurallanguage,hoffmann2022trainingcomputeoptimallargelanguage,snell2024predictingemergentcapabilitiesfinetuning}
 \citation{friedman_packing}
-\citation{friedman_packing}
-\citation{friedman_packing}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Trap zones}{3}{subsection.1.1}\protected@file@percent }
+\citation{friedman_packing}
+\citation{friedman_packing}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \emph  {Predicted versus optimal value, $N = 10\ldots  60$.} (i) the rule's prediction; (ii) the best value in the recipe family; (iii, dotted) published best-known values \citep  {friedman_packing}, terminating at $N = 30$ because the bound table stops there. Shaded bands are the trap zones, the last being $[57,63]$ clipped by \texttt  {sweep(10,60)}. Worst-in-zone penalties 8.51\%, 7.03\%, 6.01\%, 5.25\%, 4.66\%; these are family-internal arithmetic and exact at every $N$, while the published-bound comparison (curve iii) is checkable only up to $N = 30$, where the bound table stops. The gap closes to zero at $N = 35$ and $N = 48$ but \textbf  {not} at $N = 24$, where 0.59\% remains --- curve (ii) sits strictly above (i) across $[21,24]$.}}{4}{figure.1}\protected@file@percent }
 \newlabel{fig:trapzones}{{1}{4}{\emph {Predicted versus optimal value, $N = 10\ldots 60$.} (i) the rule's prediction; (ii) the best value in the recipe family; (iii, dotted) published best-known values \citep {friedman_packing}, terminating at $N = 30$ because the bound table stops there. Shaded bands are the trap zones, the last being $[57,63]$ clipped by \texttt {sweep(10,60)}. Worst-in-zone penalties 8.51\%, 7.03\%, 6.01\%, 5.25\%, 4.66\%; these are family-internal arithmetic and exact at every $N$, while the published-bound comparison (curve iii) is checkable only up to $N = 30$, where the bound table stops. The gap closes to zero at $N = 35$ and $N = 48$ but \textbf {not} at $N = 24$, where 0.59\% remains --- curve (ii) sits strictly above (i) across $[21,24]$}{figure.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Task and recipe family}{4}{section.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}The benchmark}{4}{subsection.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}The recipe family}{4}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}The recipe family}{5}{subsection.2.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}The order rule is a definition; the branch rule is the hypothesis}{5}{subsection.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Notation and conventions}{5}{subsection.2.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3}Preregistered forecast, out of sample}{6}{section.3}\protected@file@percent }
@@ -33,7 +33,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Square container}{8}{subsection.3.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Arm M: the filler branch fails at $m > 1$; the fifth $k$ confirms}{9}{subsection.3.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Arms MU and CH: no transfer to one-parent calls; the argmax in hand does not dislodge the template}{10}{subsection.3.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Arms GM3 and V: transfer at reduced concentration, with a boundary that runs both ways}{12}{subsection.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Arms GM3 and V: transfer, with a boundary that runs both ways}{12}{subsection.3.6}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \emph  {Arm GM3 modal sums against the registered prediction.} Filled green circles match the predicted mode (the dashed line is $V(k^*, m)$ at extend cells and $T(k^*, N)$ at truncate cells) (frequencies annotated); open red triangles miss --- every miss lands above the prediction, on the rival argmax (the modal packings carry the rival's two-radius structure, 27/27 --- \S  3.6); the two largest cells are UNSCOREABLE under the registered $<$3-valid rule. Regenerates via \texttt  {fig\_gm3\_anchoring.py} from \texttt  {arm\_gm3\_report.json} (itself replayed from the raw ledger by \texttt  {arm\_gm3\_analysis.py}, no arguments).}}{13}{figure.2}\protected@file@percent }
 \newlabel{fig:gm3anchoring}{{2}{13}{\emph {Arm GM3 modal sums against the registered prediction.} Filled green circles match the predicted mode (the dashed line is $V(k^*, m)$ at extend cells and $T(k^*, N)$ at truncate cells) (frequencies annotated); open red triangles miss --- every miss lands above the prediction, on the rival argmax (the modal packings carry the rival's two-radius structure, 27/27 --- \S 3.6); the two largest cells are UNSCOREABLE under the registered $<$3-valid rule. Regenerates via \texttt {fig\_gm3\_anchoring.py} from \texttt {arm\_gm3\_report.json} (itself replayed from the raw ledger by \texttt {arm\_gm3\_analysis.py}, no arguments)}{figure.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Arm CC: an executed program does not escape the family}{15}{subsection.3.7}\protected@file@percent }
@@ -57,6 +57,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Limits of P-T3: what the concentration result will and will not carry}{22}{subsection.6.4}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \emph  {Bare versus \texttt  {trace\_v2}, pooled over cells.} The annotated $p = 0.0325$ is uncorrected and fails the Holm threshold (\S  6.4); per-cell values are in the text. Caption caveat: the bars pool the bare arm's two collection waves, which \S  6.4 shows drift materially, so the pooled bare bar is a mixture; the same-wave comparison in \S  6.4 is the wave-controlled picture.}}{23}{figure.4}\protected@file@percent }
 \newlabel{fig:armT}{{4}{23}{\emph {Bare versus \texttt {trace\_v2}, pooled over cells.} The annotated $p = 0.0325$ is uncorrected and fails the Holm threshold (\S 6.4); per-cell values are in the text. Caption caveat: the bars pool the bare arm's two collection waves, which \S 6.4 shows drift materially, so the pooled bare bar is a mixture; the same-wave comparison in \S 6.4 is the wave-controlled picture}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Faithfulness with ground truth}{24}{subsection.6.5}\protected@file@percent }
 \citation{meyerson2024languagemodelcrossovervariation}
 \citation{lehman2022evolutionlargemodels}
 \citation{guo2024evoprompt}
@@ -64,7 +65,6 @@
 \citation{vanstein2025llamealargelanguagemodel}
 \citation{gideoni2026simplebaselinescompetitivecode}
 \citation{berthold2026outoftheboxglobaloptimizationpacking}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Faithfulness with ground truth}{24}{subsection.6.5}\protected@file@percent }
 \citation{gurkan2026mutationvariationconvergencedynamics}
 \citation{huang2026understandinganchoringeffectllm}
 \citation{lou2024anchoringbiaslargelanguage}
@@ -171,13 +171,13 @@
 \bibcite{zhang2026makesllmgoodoptimizer}{{59}{2026{b}}{{Zhang et~al.}}{{Zhang, Chen, Portet, and Peyrard}}}
 \bibcite{zhou2024reliability}{{60}{2024}{{Zhou et~al.}}{{Zhou, Schellaert, Mart{\'i}nez-Plumed, Moros-Daval, Ferri, and Hern{\'a}ndez-Orallo}}}
 \bibstyle{tmlr}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Prompts, verbatim}{33}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B}Deviations and disclosure table}{33}{appendix.B}\protected@file@percent }
 \gdef \LT@i {\LT@entry 
     {1}{81.1625pt}\LT@entry 
     {1}{134.13371pt}\LT@entry 
     {1}{73.07043pt}\LT@entry 
     {1}{170.4171pt}}
-\@writefile{toc}{\contentsline {section}{\numberline {A}Prompts, verbatim}{33}{appendix.A}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B}Deviations and disclosure table}{33}{appendix.B}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4}{Deviations from preregistration.}}{33}{table.4}\protected@file@percent }
-\newlabel{tab:deviations}{{4}{33}{Deviations from preregistration}{table.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{Deviations from preregistration.}}{34}{table.4}\protected@file@percent }
+\newlabel{tab:deviations}{{4}{34}{Deviations from preregistration}{table.4}{}}
 \gdef \@abspage@last{34}

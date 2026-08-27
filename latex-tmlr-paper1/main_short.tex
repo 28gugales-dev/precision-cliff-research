@@ -60,8 +60,9 @@ fitness feedback --- on a constructive-geometry benchmark scored by an exact eva
 maximize the sum of radii of $N$ circles in a unit square. A weak-tier proposer does not
 search. It emits a grid template whose value follows in closed form from the problem
 parameters: a nearest-square order $k^* = \mathrm{round}(\sqrt{N})$ and a value function
-$V(k, m)$ over grid order and filler count. Registered before sampling, the prediction is modal at all seven $N$ of the original
-square arm and, in a held-out probe registered against a recall alternative, at four of five
+$V(k, m)$ over grid order and filler count; a preregistered branch-stress falsifier restricts
+the extend branch to $m \le 1$, firing at all three converge cells tested (\S3.4). Registered before sampling, the prediction is modal at all seven $N$ of the original
+square arm --- eight of eleven when pooling arm M's branch-stress cells --- and, in a held-out probe registered against a recall alternative, at four of five
 $N$ absent from every cited scoreboard (all three cells where the prediction differs from the family argmax; template structure at
 all five). Preregistered extensions bound the result: the anchor dissolves under parent
 conditioning, the regime discovery loops actually run in, so every claim is scoped to
@@ -71,8 +72,8 @@ can reliably execute. Delegating construction to an executed math-only program d
 escape it: across three registered code-channel arms spanning two tiers, 0 of 115 valid
 program outputs exceed the family argmax and the anchor remains the modal weak-tier output
 --- at these cells the ceiling is a property of the channel, not of the tier. The behaviour transfers to two
-further vendors at reduced concentration (61--67\% of valid outputs against 56--76\%
-in-family at the same cells) and is bracketed by a fourth family, one member escaping upward and the other
+further vendors (61--67\% of valid outputs against 56--76\% in-family at the same cells ---
+overlapping ranges, so the apparent concentration reduction does not separate at these $n$) and is bracketed by a fourth family, one member escaping upward and the other
 anchoring nowhere: anchoring is not a single-vendor artifact, and its concentration is
 vendor-dependent.
 \end{abstract}

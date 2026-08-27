@@ -63,7 +63,7 @@ zones and four of our seven square cells.
 The finding that 94 of 95 valid proposals in prior arms were grid-plus-filler is retained only as
 motivation, since those arms are not reported here; the self-contained version is the ledger
 observation (\texttt{corrections\_ledger.md}, item 30) that across the 155 weak-tier rows collected before arm M only two exceeded the
-family best, both by $\sim$$10^{-7}$ --- below the $10^{-6}$ bar, so neither counts as leaving the family under \S5's convention (arm M's 57 rows are scored separately in \S3.4 and were not swept
+family best, by $3.0\times10^{-7}$ and $3.5\times10^{-9}$ --- both below the $10^{-6}$ bar, so neither counts as leaving the family under \S5's convention (arm M's 57 rows are scored separately in \S3.4 and were not swept
 for this claim).
 
 \subsection{The order rule is a definition, not a fitted law (from \S2.3)}
@@ -98,6 +98,10 @@ higher tiers are almost never on-prediction --- and ``modal'' is a property of t
 sampling regime, not of a pinned decoding configuration (\S8).
 
 \subsection{Forecast versus outcome, and arm F bookkeeping (from \S3.3 and \S4.2)}
+
+That the anchor first breaks at $N = 21$ is suggestive --- it is the bottom of a zone carrying a
+7.03\% penalty, so the anchor looks weak where obeying it costs --- but that is a hypothesis, not
+a finding.
 
 \begin{table}[!ht]
 \centering
@@ -597,7 +601,7 @@ Arm M (\S3.4) added 57 sampled weak-tier invocations (60 launched), bringing the
 and CCS (\S3.7) added 135 more (135 launched, none lost), bringing the unconditioned-and-elicitation
 corpus to 603; and the held-out-$N$ probe CN (\S3.8) 75 more, to 678. The cross-vendor chain is
 scored under its own registrations and adds 420 GM-chain invocations (\S3.6, \S8) and 877 arm-V
-attempt rows over 325 registered invocation slots (\S3.6).
+attempt rows over the 325 registered invocation slots, 314 of which carry rows (\S3.6).
 
 \subsection{The paired trace grid (from \S6.2)}
 
@@ -744,7 +748,7 @@ valid packings of 140, three scoreable cells against the five the primary requir
 on-prediction 15\% against the 30\% bar, falsifier not triggered
 (\texttt{arm\_gm\_analysis\_v2.py}, \texttt{arm\_gm\_v2\_report.json}). Two descriptives, claimed as nothing
 more: the one mid-size scoreable cell matches the predicted mode exactly (2.1000 at $N = 21$,
-3/6), and off-prediction valid sums land far \emph{below} the prediction (0.48--1.55) --- the
+3/6), and off-prediction valid sums land far \emph{below} the prediction (0.48--1.55 over the three scoreable cells) --- the
 opposite direction from GM3's misses, which land on the family rival (\S3.6), consistent
 with \S5's point that the regularity is
 tier-bound rather than universal. Arm GM2 (gemma-4-26b-a4b-it, prereg
@@ -886,7 +890,7 @@ predicts.
   authorship: each preregistration commit is a git ancestor of the sampling it governs.
   Because the authoring models share a family with arms under study (\S5), what a reader is
   asked to trust is the released artifact --- the scripts, raw ledgers, LP oracle and frozen
-  outputs --- not the author.
+  outputs, all of which accompany this submission as anonymized supplementary material --- not the author.
 \item \textbf{Internal checks.} Before submission the manuscript passed an internal adversarial
   check: language models of other families (\texttt{deepseek-v4-pro}, \texttt{deepseek-v4-flash},
   Gemini), under written protocols, independently recomputed the paper's statistics from the
