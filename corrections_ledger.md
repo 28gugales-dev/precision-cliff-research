@@ -63,6 +63,7 @@ draft and this one, with the finding that forced it. \texttt{stats} =
 31 & 3.1, 9 & dual-tolerance reporting promised, never delivered; ``cryptographic prompt hashes'' & both tolerances in every validity figure; hashes restated as prompt-fragment hashes with coverage gaps itemized above & stats F21; GECCO M12 \\
 32 & all & five HTML working comments and a merge-provenance header shipped & removed; the two load-bearing ones ($k = 8$ clipping, $p$-value convention) promoted into \S1.1, Fig 1 and \S6 & stats F22; R2 \#29; GECCO NIT-1--2 \\
 33 & 2.2 & item 30's magnitude gloss ``both by $\sim$$10^{-7}$'' & independent re-audit (2026-08-27): the two exceedances are $+3.0\times10^{-7}$ ($N=17$) and $+3.5\times10^{-9}$ ($N=21$); both remain below the $10^{-6}$ bar, count unchanged & fresh-eyes audit \\
+34 & 3.10 & arm L clearance test compared best-of-run against the seven-decimal family-argmax literal in \texttt{arm\_l\_prompts.json} & at $N = 31$ a proposal landing exactly on the rival ($2.748528137423857$) tested as above the truncated $2.7485281$ by $3.7\times10^{-8}$; the argmax is now recomputed in closed form and no lineage clears the family (difference $1.3\times10^{-15}$, float noise). Only the $10^{-9}$ clearance test was affected; all $2\times10^{-3}$-window comparisons are unchanged & post-sampling, disclosed \\
 \end{longtable}
 \endgroup
 ```

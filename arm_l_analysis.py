@@ -1,6 +1,7 @@
 # Arm L scorer. Registered rules of arm_l_preregistration.txt; run once on the
 # complete ledger. Reuses arm_f_repro parse/validate verbatim.
 import json
+import math
 import sys
 from collections import Counter
 from pathlib import Path
@@ -14,6 +15,26 @@ if hasattr(sys.stdout, "reconfigure"):
 ROOT = Path(__file__).resolve().parent
 CFG = json.loads((ROOT / "arm_l_prompts.json").read_text(encoding="utf-8"))
 WINDOW = 2e-3
+S2 = math.sqrt(2)
+
+# POST-SAMPLING CORRECTION, disclosed (corrections_ledger.md item 34). The
+# registered config stores the family argmax to seven decimals (2.7485281 for
+# N = 31). The clearance test compares at 1e-9, so a proposal landing exactly on
+# the rival, 2.748528137423857, tested as "above" the truncated constant by
+# 3.7e-8 -- an artifact of the literal, not a result. The family argmax is
+# recomputed here in closed form; every other comparison uses the 2e-3 window
+# and is unaffected by the truncation.
+def family_argmax(n):
+    best = None
+    for k in range(1, int(math.isqrt(n)) + 3):
+        if n < k * k:
+            v = n / (2 * k)
+        elif n - k * k <= (k - 1) ** 2:
+            v = k / 2 + (n - k * k) * (S2 - 1) / (2 * k)
+        else:
+            continue
+        best = v if best is None else max(best, v)
+    return best
 
 
 def load_rows():
@@ -41,7 +62,8 @@ def main():
         n_str, regime = lineage.split("-")
         n = int(n_str)
         cell = CFG["cells"][n_str]
-        pred, argmax = cell["predicted"], cell["family_argmax"]
+        pred = cell["predicted"]
+        argmax = family_argmax(n)  # exact; see correction note above
         sub = [r for r in rows if r.get("lineage") == lineage]
         gens = {}
         for r in sub:
