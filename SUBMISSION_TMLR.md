@@ -494,6 +494,15 @@ secondary not met" everywhere incl. abstract (+ PP's 6/75 added for symmetry); p
 label on 30-of-31 in abstract and S8; OpenEvolve + o3/o4 system card get bib keys
 (sharma2025openevolve, openai2025o3o4systemcard), 
 ocite{*} dropped both mains;
-misattached sclar cite moved in short; hardcoded "Table 1" -> Table~ef{tab:forecast};
+misattached sclar cite moved in short; hardcoded "Table 1" -> Table~
+ef{tab:forecast};
 "Related:" citations given a claim. Main 36 pp, short 40 pp, 0 errors/overfull, bibtex 0
 warnings. Coverage intact.
+
+### Revision 4.12 (2026-08-28, tag `v4.12-ai-note`)
+Use-of-AI-systems bullet rewritten at author's instruction in both variants: script
+authorship attribution removed; now "Claude models were used to draft manuscript prose and
+to assist implementation", with the human author credited for study design, instrument
+specification and decision rules. "Authoring models" -> "drafting models" in the
+family-overlap caveat, which is retained along with the artifact-trust sentence. Builds
+clean, 36 / 40 pp.
