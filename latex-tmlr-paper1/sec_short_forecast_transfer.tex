@@ -32,6 +32,7 @@ CCS (tier probe) & 3.7 & Sonnet tier & 3 $N$ $\times$ 15 & P-CCS1 vs P-CCS2 & P-
 CN (held-out $N$) & 3.8 & weak tier & 5 $N$ $\times$ 15 & P-CN1 vs P-CN2 + S-CN1--3 & P-CN1 holds: mode at 4/5 held-out cells, 3/3 discriminating; structure 5/5 \\
 CP (perturbed container) & 3.9 & weak tier & 5 $N$ $\times$ 15 & P-CP1 vs P-CP2 + S/F & P-CP1 holds: mapped prediction modal 4/5; S-CP1 not met (4/61 rival) \\
 RP (direct recall) & 3.9 & weak tier & 6 $N$ $\times$ 15 & P-RP1 vs P-RP2 + F-RP1 & P-RP1 holds: 0/44 recalls; 87/87 scored responses UNKNOWN \\
+PP (paraphrase) & 3.9 & weak tier & 3 rewrites $\times$ 2 $N$ $\times$ 15 & P-PP1 vs P-PP2 + S-PP1/2 & P-PP1 holds 6/6: modal under every paraphrase; S-PP1 not met (6/75 rival) \\
 \bottomrule
 \end{tabular}
 \end{scriptsize}
@@ -291,7 +292,7 @@ reconstruction of eleven $N = 65$ ledger rows --- which, if discarded, leave $N 
 five-row floor and P-CN1 at 3 hits of 4 evaluable cells, the three discriminating cells untouched
 --- are in Appendix~D.7; the arm brings the corpus to 678 invocations.
 
-\subsection{Arms CP and RP: the anchor without its words, and recall asked directly}
+\subsection{Arms CP, RP and PP: the anchor without its words, recall asked directly, and paraphrase}
 
 Two probes drafted at review stage were registered before sampling (\texttt{105e8b7},
 prompt hashes and analysis scripts committed alongside, pushed first) and each run once on
@@ -306,8 +307,13 @@ responses answer UNKNOWN}, 0/44 recalls at the cells where a value exists (P-RP1
 confirmed, F-RP1 not triggered --- bounding the simplest recall mechanism, not exposure;
 a registered positive control at $N = 1$ draws the correct $0.5$ in 14/15, so the format
 permits answering; $N$ itself survives as CP's one
-remaining handle). Protocol, cells, caveats in full and
-the one documented draft change in Appendix~D.9; with the control cell the corpus reaches 858 invocations.
+remaining handle). Arm PP varies the words instead: three semantic-preserving paraphrases
+of the template, fixed and hashed before sampling (\texttt{2e89614}; authored results-aware,
+disclosed), at $N \in \{13, 31\}$ --- P-PP1 \textbf{confirmed at 6 of 6}, the prediction modal at
+every paraphrase-cell (pooled validity 83\%), so the anchor is not keyed to the hash-locked
+string; the strong form again does not carry (6/75 rival against the $\le 2$ bar).
+Protocol, cells, caveats in full and
+the one documented draft change in Appendix~D.9; these arms bring the corpus to 948 invocations.
 
 \section{Rectangle transfer}
 

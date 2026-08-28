@@ -122,8 +122,10 @@ family.
 unpinned, so every effect is a distributional claim over the observed sampling regime and \S3.2's
 mode-ceiling result inherits that scope; \texttt{opus\_alias} names a serving alias, not an
 identified model version, so a model-tier effect cannot be separated from a serving-path effect;
-and every arm conditions on a single hash-locked prompt with no paraphrase variant
-\citep{sclar2024formatspread}, so the anchor is a property of the (model, prompt string) pair. The
+and every arm before the paraphrase probe conditions on a single hash-locked prompt
+\citep{sclar2024formatspread} --- arm PP (\S3.9) shows the prediction stays modal under three
+semantic-preserving paraphrases at all six paraphrase-cells, so the anchor is not keyed to the
+literal string there, though a formatspread-style sweep remains untested. The
 cross-vendor concentration differences in \S3.6 are measured but not explained; alignment-induced
 diversity loss \citep{kirk2024rlhf} is a candidate account we did not test. The confirmatory base
 after arm M --- five confirmed $k$ on the truncate arm, the extend arm confirmed only at

@@ -546,7 +546,7 @@ uniform $5 \times 5$ grid at $r = 0.1$ summing to 2.5000000 --- the \emph{square
 $k = \mathrm{round}(\sqrt{25}) = 5$ --- plus one at 3.0 and one at 3.151875, the latter above the 3.125 prediction from outside the family and below the rival. At $N = 19$/$a = 3$, \textbf{two} further samples
 exceeded the prediction from outside the family, 3.45 and 3.5, both below the rival.
 
-\subsection{Arms CP and RP in full (from \S3.9)}
+\subsection{Arms CP, RP and PP in full (from \S3.9)}
 
 Two probes drafted at review stage (draft files committed 2026-08-22, disclosed as such)
 were registered at commit \texttt{105e8b7} --- prompt hashes in
@@ -596,9 +596,26 @@ C-RP1, the format permits answering, so the scoreboard UNKNOWNs reflect the abse
 statable value under this prompt, not the prompt format. The control is easier in every
 respect, so it shows only that; and the registered caveat stands: a model that fails to
 state a value may still have been shaped by it --- this bounds the simplest mechanism
-only. Raw rows in \texttt{arm\_cp\_collect.jsonl} and
-\texttt{arm\_rp\_collect.jsonl}; frozen reports \texttt{arm\_cp\_report.json},
-\texttt{arm\_rp\_report.json}.
+only.
+
+\textbf{Arm PP} holds the container and varies the words: three semantic-preserving
+paraphrases of template A.1 (clause reorder with synonyms; a declarative numbered-list
+rewrite; compact mathematical phrasing), fixed and hashed before sampling
+(\texttt{arm\_pp\_preregistration.txt}, commit \texttt{2e89614}; the paraphrases were
+authored by the pipeline that had seen all prior results, disclosed there), at the two
+discriminating cells $N = 13$ and $31$, 15 invocations each. P-PP1 \textbf{confirmed at
+6 of 6}: the registered prediction is the modal valid output at every paraphrase-cell
+(valid 11--14 of 15 per cell, pooled validity 83\%, on-prediction 4--12), so the anchor
+is not keyed to the hash-locked prompt string --- \S9's (model, prompt string) scoping
+weakens to the task level at these cells. The strong form again does not carry: 6 of 75
+valid outputs emit the rival against the registered S-PP1 bar of $\le 2$, the third
+frame in which perturbation loosens concentration while leaving the mode fixed;
+$k = k^*$ majority holds at 5 of 6 cells. A formatspread-style sweep
+\citep{sclar2024formatspread} remains out of scope. Raw rows in
+\texttt{arm\_cp\_collect.jsonl}, \texttt{arm\_rp\_collect.jsonl},
+\texttt{arm\_rp\_control\_collect.jsonl} and \texttt{arm\_pp\_collect.jsonl}; frozen
+reports \texttt{arm\_cp\_report.json}, \texttt{arm\_rp\_report.json},
+\texttt{arm\_rp\_control\_report.json}, \texttt{arm\_pp\_report.json}.
 
 \section{Relocated from \S5 and \S6: tier-ladder and elicitation detail}
 
@@ -662,7 +679,7 @@ Arm M (\S3.4) added 57 sampled weak-tier invocations (60 launched), bringing the
 288; arms MU and CH (\S3.5) added 180 more (180 launched, none lost); the code-channel arms CC, CC2
 and CCS (\S3.7) added 135 more (135 launched, none lost), bringing the unconditioned-and-elicitation
 corpus to 603; the held-out-$N$ probe CN (\S3.8) 75 more, to 678; and arms CP and RP (\S3.9,
-75 + 90 + a 15-invocation registered positive control, three runtime rejections counted) 180 more under their own registrations, to 858. The cross-vendor chain is
+75 + 90 + a 15-invocation registered positive control + 90 paraphrase invocations, three runtime rejections counted) 270 more under their own registrations, to 948. The cross-vendor chain is
 scored under its own registrations and adds 420 GM-chain invocations (\S3.6, \S8) and 877 arm-V
 attempt rows over the 325 registered invocation slots, 314 of which carry rows (\S3.6).
 
@@ -900,7 +917,10 @@ predicts.
   Arms CP and RP (\texttt{arm\_cp\_preregistration.txt}, \texttt{arm\_rp\_preregistration.txt},
   each with its prompt-hash JSON and analysis script, commit \texttt{105e8b7}, pushed before
   the first invocation) were drafted at review stage and registered together; RP's one
-  draft-to-registration cell change ($N = 32 \rightarrow 30$) is documented in its registration.
+  draft-to-registration cell change ($N = 32 \rightarrow 30$) is documented in its registration,
+  as is its positive-control amendment (\texttt{15555eb}). Arm PP
+  (\texttt{arm\_pp\_preregistration.txt}, prompt hashes and scorer committed, \texttt{2e89614},
+  pushed before the first invocation) discloses that its paraphrases were authored results-aware.
   The rectangle transfer was registered before
   collection and never refitted. On multiplicity: this study now spans many registered arms, and no
   correction across arms is applied --- each arm's predictions were registered with its own
@@ -972,7 +992,7 @@ predicts.
   in any camera-ready.
 \item \textbf{Stopping rule.} The manuscript closed after implementing the internal-check
   findings; no further data-dependent analysis was performed. Arms CC, CC2 and CCS (\S3.7), CN (\S3.8),
-  and CP and RP (\S3.9)
+  and CP, RP (with its control amendment) and PP (\S3.9)
   were each registered, run and scored once under their own preregistrations after that
   close; each analysis script was committed before its sampling and not modified after. Analyses named but
   not run --- the one-parent mutation arm, the recipe-family choice probe, the empirical-$k$

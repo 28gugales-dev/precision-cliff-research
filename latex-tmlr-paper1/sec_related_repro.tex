@@ -166,7 +166,7 @@ disclosed post-hoc diagnostics: \texttt{diagnostics\_kmatch.py} (\S3.2 --- 50/50
 $k^*$-structured, 64/69 valid overall) and arm M's per-cell $k_{\mathrm{emp}}$ distributions (\S3.4 --- the
 converge cells sit on $k^*{+}1$, which is how the filler-branch failure was diagnosed).
 
-\textbf{One prompt, one phrasing.} Every arm conditions on a single hash-locked prompt and no paraphrase variant was sampled, so the anchor is established as a property of the (model, prompt string) pair; locking buys reproducibility, not robustness to rewording, and prompt-format sensitivity of the size reported by \citet{sclar2024formatspread} is untested here. Relatedly, the cross-vendor concentration differences in \S3.6 are measured but not explained; alignment-induced diversity loss \citep{kirk2024rlhf} predicts vendor-dependent concentration and is a candidate account we did not test.
+\textbf{One prompt, one phrasing --- now bounded by arm PP.} Every arm before \S3.9's paraphrase probe conditions on a single hash-locked prompt; locking buys reproducibility, not robustness to rewording. Arm PP samples three semantic-preserving paraphrases at the two discriminating cells and the registered prediction stays modal at all six paraphrase-cells (\S3.9), so the anchor is not keyed to the literal template string at those cells; a formatspread-style sweep of the size reported by \citet{sclar2024formatspread} remains untested, and every other arm's claim still attaches to its own hashed prompt. Relatedly, the cross-vendor concentration differences in \S3.6 are measured but not explained; alignment-induced diversity loss \citep{kirk2024rlhf} predicts vendor-dependent concentration and is a candidate account we did not test.
 
 \section{Reproducibility, deviations, and disclosures}
 
@@ -197,7 +197,10 @@ Deviations from preregistration are tabled in Appendix B. Provenance, in list fo
   Arms CP and RP (\texttt{arm\_cp\_preregistration.txt}, \texttt{arm\_rp\_preregistration.txt},
   each with its prompt-hash JSON and analysis script, commit \texttt{105e8b7}, pushed before
   the first invocation) were drafted at review stage and registered together; RP's one
-  draft-to-registration cell change ($N = 32 \rightarrow 30$) is documented in its registration.
+  draft-to-registration cell change ($N = 32 \rightarrow 30$) is documented in its registration,
+  as is its positive-control amendment (\texttt{15555eb}). Arm PP
+  (\texttt{arm\_pp\_preregistration.txt}, prompt hashes and scorer committed, \texttt{2e89614},
+  pushed before the first invocation) discloses that its paraphrases were authored results-aware.
   The rectangle transfer was registered before
   collection and never refitted. On multiplicity: this study now spans many registered arms, and no
   correction across arms is applied --- each arm's predictions were registered with its own
@@ -269,7 +272,7 @@ Deviations from preregistration are tabled in Appendix B. Provenance, in list fo
   in any camera-ready.
 \item \textbf{Stopping rule.} The manuscript closed after implementing the internal-check
   findings; no further data-dependent analysis was performed. Arms CC, CC2 and CCS (\S3.7), CN (\S3.8),
-  and CP and RP (\S3.9)
+  and CP, RP (with its control amendment) and PP (\S3.9)
   were each registered, run and scored once under their own preregistrations after that
   close; each analysis script was committed before its sampling and not modified after. Analyses named but
   not run --- the one-parent mutation arm, the recipe-family choice probe, the empirical-$k$

@@ -29,6 +29,7 @@ CCS (tier probe) & 3.7 & Sonnet tier & 3 $N$ $\times$ 15 & P-CCS1 vs P-CCS2 & P-
 CN (held-out $N$) & 3.8 & weak tier & 5 $N$ $\times$ 15 & P-CN1 vs P-CN2 + S-CN1--3 & P-CN1 holds: mode at 4/5 held-out cells, 3/3 discriminating; structure 5/5 \\
 CP (perturbed container) & 3.9 & weak tier & 5 $N$ $\times$ 15 & P-CP1 vs P-CP2 + S/F & P-CP1 holds: mapped prediction modal 4/5; S-CP1 not met (4/61 rival) \\
 RP (direct recall) & 3.9 & weak tier & 6 $N$ $\times$ 15 & P-RP1 vs P-RP2 + F-RP1 & P-RP1 holds: 0/44 recalls; 87/87 scored responses UNKNOWN \\
+PP (paraphrase) & 3.9 & weak tier & 3 rewrites $\times$ 2 $N$ $\times$ 15 & P-PP1 vs P-PP2 + S-PP1/2 & P-PP1 holds 6/6: modal under every paraphrase; S-PP1 not met (6/75 rival) \\
 \bottomrule
 \end{tabular}
 \end{small}
@@ -650,7 +651,7 @@ This does not establish that the fitted cells are absent from training text and 
 extend to the $m \ge 4$ branch; the perturbed-container and direct-recall probes this
 paragraph once left unrun are now arms CP and RP (\S3.9).
 
-\subsection{Arms CP and RP: the anchor without its words, and recall asked directly}
+\subsection{Arms CP, RP and PP: the anchor without its words, recall asked directly, and paraphrase}
 
 Two probes drafted at review stage (draft files committed 2026-08-22, disclosed as such)
 were registered at commit \texttt{105e8b7} --- prompt hashes in
@@ -706,12 +707,27 @@ C-RP1, the format permits answering, so the scoreboard UNKNOWNs reflect the abse
 statable value under this prompt, not the prompt format. The control is easier in every
 respect, so it shows only that; and the registered caveat stands: a model that fails to
 state a value may still have been shaped by it --- this bounds the simplest mechanism
-only. Raw rows in
-\texttt{arm\_cp\_collect.jsonl}, \texttt{arm\_rp\_collect.jsonl} and
-\texttt{arm\_rp\_control\_collect.jsonl}; frozen reports
-\texttt{arm\_cp\_report.json}, \texttt{arm\_rp\_report.json},
-\texttt{arm\_rp\_control\_report.json}. With the control cell these arms bring the
-study corpus to 858 invocations.
+only.
+
+\textbf{Arm PP} holds the container and varies the words: three semantic-preserving
+paraphrases of template A.1 (clause reorder with synonyms; a declarative numbered-list
+rewrite; compact mathematical phrasing), fixed and hashed before sampling
+(\texttt{arm\_pp\_preregistration.txt}, commit \texttt{2e89614}; the paraphrases were
+authored by the pipeline that had seen all prior results, disclosed there), at the two
+discriminating cells $N = 13$ and $31$, 15 invocations each. P-PP1 \textbf{confirmed at
+6 of 6}: the registered prediction is the modal valid output at every paraphrase-cell
+(valid 11--14 of 15 per cell, pooled validity 83\%, on-prediction 4--12), so the anchor
+is not keyed to the hash-locked prompt string --- \S9's (model, prompt string) scoping
+weakens to the task level at these cells. The strong form again does not carry: 6 of 75
+valid outputs emit the rival against the registered S-PP1 bar of $\le 2$, the third
+frame in which perturbation loosens concentration while leaving the mode fixed;
+$k = k^*$ majority holds at 5 of 6 cells. A formatspread-style sweep
+\citep{sclar2024formatspread} remains out of scope. Raw rows in
+\texttt{arm\_cp\_collect.jsonl}, \texttt{arm\_rp\_collect.jsonl},
+\texttt{arm\_rp\_control\_collect.jsonl} and \texttt{arm\_pp\_collect.jsonl}; frozen
+reports \texttt{arm\_cp\_report.json}, \texttt{arm\_rp\_report.json},
+\texttt{arm\_rp\_control\_report.json}, \texttt{arm\_pp\_report.json}. These arms bring
+the study corpus to 948 invocations.
 
 \section{Rectangle transfer}
 

@@ -475,3 +475,13 @@ state 0.5, one UNKNOWN -- abstention-prior alternative rejected with data; the S
 positive-control caveat is replaced by the result in both variants. Corpus 858.
 Deviations row + HOW_TO_RUN row added. This closes the last data-answerable finding of
 the second-round review; its remaining path to plain accept is submission logistics only.
+
+### Revision 4.10 (2026-08-27, tag `v4.10-arm-pp`)
+Arm PP (paraphrase probe) registered before sampling (2e89614; paraphrases authored
+results-aware, disclosed), 90 invocations, 0 rejections, scored once. P-PP1 CONFIRMED
+6/6: registered prediction modal at every paraphrase-cell (pooled validity 83%);
+S-PP1 not met (6/75 rival), S-PP2 5/6. S9's (model, prompt string) limitation rescoped:
+anchor not keyed to hash-locked string at tested cells; formatspread sweep stays out of
+scope. Corpus 948. Folded into S3.9 (retitled CP/RP/PP), abstract ("Three review-stage
+probes"), arm tables, deviations row, registration/stopping bullets, both variants.
+ARMS FROZEN after PP per session decision -- remaining alternatives stay stated non-claims.
