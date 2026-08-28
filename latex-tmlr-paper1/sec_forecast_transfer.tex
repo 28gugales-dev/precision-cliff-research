@@ -27,6 +27,8 @@ CC (code channel) & 3.7 & weak tier & 3 $N$ $\times$ 15 & P-CC1 vs P-CC2 & P-CC1
 CC2 (fresh-draw replication) & 3.7 & weak tier & 3 $N$ $\times$ 15 & R1 + R2 + F-CC2.1 & \textbf{REPLICATED}: 0/41 above argmax, anchor modal 3/3 \\
 CCS (tier probe) & 3.7 & Sonnet tier & 3 $N$ $\times$ 15 & P-CCS1 vs P-CCS2 & P-CCS2 holds: 0/37 above argmax --- ceiling is channel, not tier \\
 CN (held-out $N$) & 3.8 & weak tier & 5 $N$ $\times$ 15 & P-CN1 vs P-CN2 + S-CN1--3 & P-CN1 holds: mode at 4/5 held-out cells, 3/3 discriminating; structure 5/5 \\
+CP (perturbed container) & 3.9 & weak tier & 5 $N$ $\times$ 15 & P-CP1 vs P-CP2 + S/F & P-CP1 holds: mapped prediction modal 4/5; S-CP1 not met (4/61 rival) \\
+RP (direct recall) & 3.9 & weak tier & 6 $N$ $\times$ 15 & P-RP1 vs P-RP2 + F-RP1 & P-RP1 holds: 0/44 recalls; 87/87 scored responses UNKNOWN \\
 \bottomrule
 \end{tabular}
 \end{small}
@@ -644,9 +646,58 @@ invocations.
 would not survive the move to $N$ with nothing to recall; it survived at four of five cells
 and structurally at all five. The closed form is therefore a description of what the
 proposer builds, not of what it has seen, at the branches where it was already supported.
-This does not establish that the fitted cells are absent from training text, does not
-extend to the $m \ge 4$ branch, and leaves the canary and perturbed-container probes in
-\S8 unrun.
+This does not establish that the fitted cells are absent from training text and does not
+extend to the $m \ge 4$ branch; the perturbed-container and direct-recall probes this
+paragraph once left unrun are now arms CP and RP (\S3.9).
+
+\subsection{Arms CP and RP: the anchor without its words, and recall asked directly}
+
+Two probes drafted at review stage (draft files committed 2026-08-22, disclosed as such)
+were registered at commit \texttt{105e8b7} --- prompt hashes in
+\texttt{arm\_cp\_prompts.json} and \texttt{arm\_rp\_prompts.json}, analysis scripts
+committed alongside, pushed before the first invocation --- and each sampled once and
+scored once under its own stopping rule, on the same weak-tier subagent channel as arms
+F, M and CN.
+
+\textbf{Arm CP} destroys every lexical handle while preserving the geometry: the container
+becomes $[3,5] \times [3,5]$, so the model never sees ``unit square'', ``[0,1]'', or any
+published magnitude, while the similarity map $x \mapsto 2x + 3$ leaves the optimum, the
+family and the branch rule invariant (predictions are exactly $2\,V$ or $2\,T$; emitted
+circles are mapped back and scored under the arm-F conventions unchanged). Five cells,
+all discriminating, $15$ each. The registered prediction P-CP1 (modal valid output equals
+the mapped prediction at $\ge 4$ of $5$ evaluable cells) \textbf{confirmed}: all five
+cells clear the five-valid floor and the mapped prediction is modal at four ---
+$N = 13$ (valid 14/15, on-prediction 9), $21$ (13/15, 7), $31$ (9/15, 8) and $58$
+(12/15, 11). At $N = 75$ (13/15 valid) the mode is a tie, five outputs at the mapped
+$T(9,75) = 8.3333333$ against five at the mapped $T(15,75) = 5.0$ --- a deeper truncation
+of the \emph{same} family --- and the registered tie rule counts a tie against the
+prediction, so the cell is a miss as scored. Pooled validity is 81\%, far above the 40\%
+collapse branch of the lexical-keying alternative P-CP2, and the structural secondary
+S-CP2 holds at 5 of 5 cells ($k = k^*$ majority). The strong form S-CP1 (rival-argmax
+emissions $\le 1$) is \textbf{not met}: 4 of 61 discriminating-cell validities emit the
+mapped rival (two at $N = 13$, two at $N = 21$), a higher rate than the original frame's
+3 in 186 --- where anchoring holds it concentrates slightly less tightly in the offset
+frame, and this is reported as registered. The falsifier F-CP1 (lexical keying) did not
+fire: the closed form names the modal output in a container the training text never
+phrased this way.
+
+\textbf{Arm RP} asks the recall question outright: ``What is the best-known maximum sum
+of radii for $\{n\}$ non-overlapping circles packed inside the unit square?'', answer as
+a number or UNKNOWN, at three cells with a published value carried by the paper's own
+citations ($N = 13$, $26$, $30$; the draft named $N = 32$, replaced before registration by
+$N = 30$ because no cited value exists at 32, documented in the registration) and three
+held-out cells ($N = 50$, $62$, $75$). Result: \textbf{every one of the 87 scored
+responses answers UNKNOWN} --- 0 of 44 scoreboard-cell responses recall a published value
+(bar for the recall branch P-RP2: $\ge 10$), zero state a family value, zero state
+anything else; three invocations were runtime-rejected and counted. P-RP1
+\textbf{confirmed} with the family-rate asymmetry trivially zero. The weak tier that
+emits $V(k^*, m)$ to seven decimals when asked to \emph{pack} cannot state a single
+scoreboard value when asked to \emph{recall} one --- the simplest recall mechanism does
+not survive its easiest test. As registered: a model that fails to state a value may
+still have been shaped by it; this bounds the simplest mechanism only. Raw rows in
+\texttt{arm\_cp\_collect.jsonl} and \texttt{arm\_rp\_collect.jsonl}; frozen reports
+\texttt{arm\_cp\_report.json}, \texttt{arm\_rp\_report.json}. These two arms bring the
+study corpus to 843 invocations.
 
 \section{Rectangle transfer}
 

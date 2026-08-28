@@ -99,10 +99,12 @@ tested against the tractability reading.
 \textbf{Contamination is probed at one level only.} $N = 26$ is the canonical published cell and
 plausibly in training data; membership and extraction probes
 \citep{carlini2021extracting,golchin2024timetravel} were not run. Arm CN (\S3.8) answers the
-comparison against $N$ absent from the literature. What remains unrun is a canary-string test and a
-perturbed-container test preserving difficulty while destroying lexical overlap; neither can be run
-on the present ledgers, and absence of the fitted cells from the pretraining corpus is not
-established by any of this.
+comparison against $N$ absent from the literature. The two tests an earlier draft left unrun are
+now arms CP and RP (\S3.9): the mapped prediction stays modal at four of five discriminating cells
+in a container the training text never phrased this way, and the model answers UNKNOWN to 87 of 87
+direct requests for the published values. Arm RP bounds the simplest recall mechanism (stating
+the value on request), not exposure; absence of the fitted cells from the pretraining corpus is
+not established by any of this.
 
 \textbf{Vendor scope, and what the cross-vendor chain cost to learn.} All tiers in the main study
 come from one provider; \S3.6 is the arm that moves the pooled-level claim across vendors. The

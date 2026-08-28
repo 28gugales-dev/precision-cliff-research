@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  27 AUG 2026 19:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  27 AUG 2026 20:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -590,10 +590,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 174.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 174.
-) (sec_short_forecast_transfer.tex
-Underfull \vbox (badness 2941) has occurred while \output is active []
-
- [4]
+) (sec_short_forecast_transfer.tex [4]
 Underfull \hbox (badness 10000) in paragraph at lines 17--17
 []|\T1/lmr/m/n/7 (+20) 3.2--
  []
@@ -648,24 +645,33 @@ Underfull \hbox (badness 1924) in paragraph at lines 29--29
 []|\T1/lmr/m/n/7 (+20) CC (code chan-
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+[]|\T1/lmr/m/n/7 (+20) CP (per-turbed
+ []
+
 [5]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 118.
+(hyperref)                removing `math shift' on input line 120.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 118.
+(hyperref)                removing `math shift' on input line 120.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 118.
+(hyperref)                removing `math shift' on input line 120.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 118.
+(hyperref)                removing `math shift' on input line 120.
 
-[6] [7] [8]) (sec_short_tiers_elicitation.tex [9]
+[6] [7] [8]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9])
+(sec_short_tiers_elicitation.tex
 Underfull \hbox (badness 7151) in paragraph at lines 21--36
 []\T1/lmr/bx/n/10 (+20) The mid-dle tier per-turbs and mixes. \T1/lmr/m/n/10 (+
 20) The Sonnet-tier arm was pre-reg-is-tered in
@@ -781,13 +787,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 76--76
 \T1/lmr/m/n/8 (+20) coarse grid +
  []
 
-[11] [12]) (sec_short_related_repro.tex [13] [14]) [15] (main_short.bbl
-[16
 
-] [17] [18]) (sec_appendices.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11]
+[12] [13]) (sec_short_related_repro.tex [14] [15]) [16] (main_short.bbl
+[17
+
+] [18] [19]) (sec_appendices.tex
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 18.
- [19]
+ [20]
 Underfull \hbox (badness 10000) in paragraph at lines 70--70
 []|\T1/lmr/m/n/7 (+20) yes, plus cor-
  []
@@ -902,21 +912,53 @@ Underfull \hbox (badness 10000) in paragraph at lines 86--86
 \T1/lmtt/m/n/7 _template_null
  []
 
-ignored error: Infinite glue shrinkage found in box being split [20])
+
+Underfull \hbox (badness 10000) in paragraph at lines 87--87
+[]|\T1/lmr/m/n/7 (+20) registered \T1/lmr/bx/n/7 (+20) be-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 87--87
+\T1/lmr/bx/n/7 (+20) fore sam-pling
+ []
+
+
+Underfull \hbox (badness 1389) in paragraph at lines 87--87
+\T1/lmr/m/n/7 (+20) at re-view stage,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--88
+[]|\T1/lmr/m/n/7 (+20) registered \T1/lmr/bx/n/7 (+20) be-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--88
+\T1/lmr/bx/n/7 (+20) fore sam-
+ []
+
+
+Underfull \hbox (badness 4805) in paragraph at lines 88--88
+\T1/lmr/bx/n/7 (+20) pling \T1/lmr/m/n/7 (+20) (\T1/lmtt/m/n/7 105e8b7\T1/lmr/m
+/n/7 (+20) );
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--88
+\T1/lmr/m/n/7 (+20) draft cell
+ []
+
+ignored error: Infinite glue shrinkage found in box being split [21])
 (sec_short_appendix_moved.tex
-<fig1_trapzones.png, id=646, 505.89pt x 260.172pt>
+<fig1_trapzones.png, id=658, 505.89pt x 260.172pt>
 File: fig1_trapzones.png Graphic file (type png)
 <use fig1_trapzones.png>
 Package pdftex.def Info: fig1_trapzones.png  used on input line 34.
 (pdftex.def)             Requested size: 366.40831pt x 188.44319pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [21]
-[22 <./fig1_trapzones.png>]
+ [22] [23 <./fig1_trapzones.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 119.
- [23]
+ [24]
 Underfull \hbox (badness 10000) in paragraph at lines 202--202
 []|\T1/lmr/m/n/9 (+20) extend,
  []
@@ -981,7 +1023,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 205--206
 []|\T1/lmr/m/n/9 (+20) P-M4 con-firmed;
  []
 
-[24]
+[25]
 Underfull \hbox (badness 10000) in paragraph at lines 271--271
 []|\T1/lmr/m/n/9 (+20) Anchor-rate
  []
@@ -1056,7 +1098,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 293--293
 \T1/lmr/m/n/9 (+20) fillers, 1 un-evalu-able
  []
 
-[25]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [26]
 Underfull \hbox (badness 10000) in paragraph at lines 314--314
 \T1/lmr/m/n/9 (+20) 7 $\OML/lmm/m/it/9 N$ $\OMS/lmsy/m/n/9 ^^B$ \T1/lmr/m/n/9 (
 +20) 20
@@ -1122,70 +1167,80 @@ Underfull \hbox (badness 10000) in paragraph at lines 318--318
 \T1/lmr/m/n/9 (+20) oth-ers; one
  []
 
-<fig_gm3_anchoring.png, id=684, 462.528pt x 289.08pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [27]
+<fig_gm3_anchoring.png, id=700, 462.528pt x 289.08pt>
 File: fig_gm3_anchoring.png Graphic file (type png)
 <use fig_gm3_anchoring.png>
 Package pdftex.def Info: fig_gm3_anchoring.png  used on input line 353.
 (pdftex.def)             Requested size: 469.75499pt x 293.61378pt.
-[26]
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [27 <./fig_gm3_anchoring.png>] [28] [29]
-<fig2_packings.png, id=702, 505.89pt x 187.902pt>
+Underfull \vbox (badness 5008) has occurred while \output is active []
+
+ [28 <./fig_gm3_anchoring.png>] [29] [30]
+<fig2_packings.png, id=714, 505.89pt x 187.902pt>
 File: fig2_packings.png Graphic file (type png)
 <use fig2_packings.png>
-Package pdftex.def Info: fig2_packings.png  used on input line 555.
+Package pdftex.def Info: fig2_packings.png  used on input line 598.
 (pdftex.def)             Requested size: 469.75499pt x 174.48326pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 565.
+(hyperref)                removing `math shift' on input line 608.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 565.
+(hyperref)                removing `math shift' on input line 608.
 
-[30 <./fig2_packings.png>]
-<fig3_armT.png, id=708, 332.442pt x 216.81pt>
-File: fig3_armT.png Graphic file (type png)
-<use fig3_armT.png>
-Package pdftex.def Info: fig3_armT.png  used on input line 638.
-(pdftex.def)             Requested size: 469.75499pt x 306.36378pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [31]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [32 <./fig3_armT.png>]
+ [32 <./fig2_packings.png>]
+<fig3_armT.png, id=725, 332.442pt x 216.81pt>
+File: fig3_armT.png Graphic file (type png)
+<use fig3_armT.png>
+Package pdftex.def Info: fig3_armT.png  used on input line 682.
+(pdftex.def)             Requested size: 469.75499pt x 306.36378pt.
+ [33]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [33]
-[34]
+ [34 <./fig3_armT.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [35]
+[36]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 8
-24.
+68.
  (C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-[35{C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}
+[37{C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}
 ]
-Underfull \hbox (badness 6396) in paragraph at lines 879--893
+Underfull \hbox (badness 6396) in paragraph at lines 923--937
 \T1/lmtt/m/n/10 arm_f_candidates_v2.jsonl\T1/lmr/m/n/10 (+20) , \T1/lmtt/m/n/10
  arm_g_candidates.jsonl\T1/lmr/m/n/10 (+20) , \T1/lmtt/m/n/10 arm_m_collect.jso
 nl \T1/lmr/m/n/10 (+20) scored by
  []
 
-) [36] (main_short.aux)
+) [38] (main_short.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `main_short.out' has not changed.
-(rerunfilecheck)             Checksum: A879C93EA781C0542F409B2EDF0832D8;18067.
+(rerunfilecheck)             Checksum: 28686978C92A7081A76C8518155560BC;18775.
  ) 
 Here is how much of TeX's memory you used:
- 14447 strings out of 467871
- 231540 string characters out of 5418376
- 689359 words of memory out of 5000000
- 42467 multiletter control sequences out of 15000+600000
- 736137 words of font info for 324 fonts, out of 8000000 for 9000
+ 14457 strings out of 467871
+ 231654 string characters out of 5418376
+ 692359 words of memory out of 5000000
+ 42469 multiletter control sequences out of 15000+600000
+ 736312 words of font info for 326 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,12n,90p,1009b,674s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
@@ -1217,9 +1272,9 @@ ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/soham/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/soham/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/soham/AppDa
 ta/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on main_short.pdf (36 pages, 1111547 bytes).
+Output written on main_short.pdf (38 pages, 1122063 bytes).
 PDF statistics:
- 915 PDF objects out of 1000 (max. 8388607)
- 172 named destinations out of 1000 (max. 500000)
- 56829 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 935 PDF objects out of 1000 (max. 8388607)
+ 176 named destinations out of 1000 (max. 500000)
+ 56845 words of extra memory for PDF output out of 61914 (max. 10000000)
 

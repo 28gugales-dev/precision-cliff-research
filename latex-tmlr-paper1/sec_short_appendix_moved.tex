@@ -546,6 +546,49 @@ uniform $5 \times 5$ grid at $r = 0.1$ summing to 2.5000000 --- the \emph{square
 $k = \mathrm{round}(\sqrt{25}) = 5$ --- plus one at 3.0 and one at 3.151875, the latter above the 3.125 prediction from outside the family and below the rival. At $N = 19$/$a = 3$, \textbf{two} further samples
 exceeded the prediction from outside the family, 3.45 and 3.5, both below the rival.
 
+\subsection{Arms CP and RP in full (from \S3.9)}
+
+Two probes drafted at review stage (draft files committed 2026-08-22, disclosed as such)
+were registered at commit \texttt{105e8b7} --- prompt hashes in
+\texttt{arm\_cp\_prompts.json} and \texttt{arm\_rp\_prompts.json}, analysis scripts
+committed alongside, pushed before the first invocation --- and each sampled once and
+scored once under its own stopping rule, on the same weak-tier subagent channel as arms
+F, M and CN.
+
+\textbf{Arm CP} destroys every lexical handle while preserving the geometry: the container
+becomes $[3,5] \times [3,5]$, so the model never sees ``unit square'', ``[0,1]'', or any
+published magnitude, while the similarity map $x \mapsto 2x + 3$ leaves the optimum, the
+family and the branch rule invariant (predictions are exactly $2\,V$ or $2\,T$; emitted
+circles are mapped back and scored under the arm-F conventions unchanged). Five cells,
+all discriminating, $15$ each. P-CP1 (modal valid output equals the mapped prediction at
+$\ge 4$ of $5$ evaluable cells) \textbf{confirmed}: all five cells clear the five-valid
+floor and the mapped prediction is modal at four --- $N = 13$ (valid 14/15,
+on-prediction 9), $21$ (13/15, 7), $31$ (9/15, 8) and $58$ (12/15, 11). At $N = 75$
+(13/15 valid) the mode is a tie, five outputs at the mapped $T(9,75) = 8.3333333$ against
+five at the mapped $T(15,75) = 5.0$ --- a deeper truncation of the \emph{same} family ---
+and the registered tie rule counts a tie against the prediction, so the cell is a miss as
+scored. Pooled validity is 81\%, far above the 40\% collapse branch of the lexical-keying
+alternative P-CP2, and the structural secondary S-CP2 holds at 5 of 5 cells ($k = k^*$
+majority). The strong form S-CP1 (rival-argmax emissions $\le 1$) is \textbf{not met}:
+4 of 61 discriminating-cell validities emit the mapped rival (two at $N = 13$, two at
+$N = 21$), a higher rate than the original frame's 3 in 186; reported as registered.
+The falsifier F-CP1 (lexical keying) did not fire.
+
+\textbf{Arm RP} asks the recall question outright: ``What is the best-known maximum sum
+of radii for $\{n\}$ non-overlapping circles packed inside the unit square?'', answer as
+a number or UNKNOWN, at three cells with a published value carried by the paper's own
+citations ($N = 13$, $26$, $30$; the draft named $N = 32$, replaced before registration by
+$N = 30$ because no cited value exists at 32, documented in the registration) and three
+held-out cells ($N = 50$, $62$, $75$). Result: \textbf{every one of the 87 scored
+responses answers UNKNOWN} --- 0 of 44 scoreboard-cell responses recall a published value
+(bar for the recall branch P-RP2: $\ge 10$), zero state a family value, zero state
+anything else; three invocations were runtime-rejected and counted. P-RP1
+\textbf{confirmed} with the family-rate asymmetry trivially zero. As registered: a model
+that fails to state a value may still have been shaped by it; this bounds the simplest
+recall mechanism only. Raw rows in \texttt{arm\_cp\_collect.jsonl} and
+\texttt{arm\_rp\_collect.jsonl}; frozen reports \texttt{arm\_cp\_report.json},
+\texttt{arm\_rp\_report.json}.
+
 \section{Relocated from \S5 and \S6: tier-ladder and elicitation detail}
 
 \subsection{Three attractor families at one cell (from \S5)}
@@ -607,7 +650,8 @@ $N = 13$ ids 1--5, $N = 21$ ids 1--10 and $N = 31$ ids 1--5.
 Arm M (\S3.4) added 57 sampled weak-tier invocations (60 launched), bringing the study corpus to
 288; arms MU and CH (\S3.5) added 180 more (180 launched, none lost); the code-channel arms CC, CC2
 and CCS (\S3.7) added 135 more (135 launched, none lost), bringing the unconditioned-and-elicitation
-corpus to 603; and the held-out-$N$ probe CN (\S3.8) 75 more, to 678. The cross-vendor chain is
+corpus to 603; the held-out-$N$ probe CN (\S3.8) 75 more, to 678; and arms CP and RP (\S3.9,
+75 + 90, three runtime rejections counted) 165 more under their own registrations, to 843. The cross-vendor chain is
 scored under its own registrations and adds 420 GM-chain invocations (\S3.6, \S8) and 877 arm-V
 attempt rows over the 325 registered invocation slots, 314 of which carry rows (\S3.6).
 

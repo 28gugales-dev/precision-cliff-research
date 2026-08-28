@@ -30,6 +30,8 @@ CC (code channel) & 3.7 & weak tier & 3 $N$ $\times$ 15 & P-CC1 vs P-CC2 & P-CC1
 CC2 (fresh-draw replication) & 3.7 & weak tier & 3 $N$ $\times$ 15 & R1 + R2 + F-CC2.1 & \textbf{REPLICATED}: 0/41 above argmax, anchor modal 3/3 \\
 CCS (tier probe) & 3.7 & Sonnet tier & 3 $N$ $\times$ 15 & P-CCS1 vs P-CCS2 & P-CCS2 holds: 0/37 above argmax --- ceiling is channel, not tier \\
 CN (held-out $N$) & 3.8 & weak tier & 5 $N$ $\times$ 15 & P-CN1 vs P-CN2 + S-CN1--3 & P-CN1 holds: mode at 4/5 held-out cells, 3/3 discriminating; structure 5/5 \\
+CP (perturbed container) & 3.9 & weak tier & 5 $N$ $\times$ 15 & P-CP1 vs P-CP2 + S/F & P-CP1 holds: mapped prediction modal 4/5; S-CP1 not met (4/61 rival) \\
+RP (direct recall) & 3.9 & weak tier & 6 $N$ $\times$ 15 & P-RP1 vs P-RP2 + F-RP1 & P-RP1 holds: 0/44 recalls; 87/87 scored responses UNKNOWN \\
 \bottomrule
 \end{tabular}
 \end{scriptsize}
@@ -288,6 +290,21 @@ perturbed-container probes unrun. The per-cell table, the invalid-row taxonomy a
 reconstruction of eleven $N = 65$ ledger rows --- which, if discarded, leave $N = 65$ below the
 five-row floor and P-CN1 at 3 hits of 4 evaluable cells, the three discriminating cells untouched
 --- are in Appendix~D.7; the arm brings the corpus to 678 invocations.
+
+\subsection{Arms CP and RP: the anchor without its words, and recall asked directly}
+
+Two probes drafted at review stage were registered before sampling (\texttt{105e8b7},
+prompt hashes and analysis scripts committed alongside, pushed first) and each run once on
+the weak-tier channel. Arm CP moves the container to $[3,5]^2$ --- every lexical handle
+erased, the family invariant under $x \mapsto 2x + 3$: P-CP1 \textbf{confirmed}, the
+mapped prediction modal at 4 of 5 discriminating cells; the $N = 75$ miss is a registered
+tie against the prediction, five outputs each at the mapped $T(9,75)$ and the deeper
+family truncation $T(15,75)$; pooled validity 81\%, $k^*$ majority 5/5; the strong form
+S-CP1 is not met (4/61 rival emissions, above the original frame's 3-in-186 rate).
+Arm RP asks for the published best-known values outright: \textbf{87 of 87 scored
+responses answer UNKNOWN}, 0/44 recalls at the cells where a value exists (P-RP1
+confirmed --- bounding the simplest recall mechanism, not exposure). Protocol, cells and
+the one documented draft change in Appendix~D.9; the corpus reaches 843 invocations.
 
 \section{Rectangle transfer}
 

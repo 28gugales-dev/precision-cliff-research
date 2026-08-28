@@ -16,8 +16,8 @@
 \citation{huang2026understandinganchoringeffectllm,lou2024anchoringbiaslargelanguage,malberg2025comprehensiveevaluationcognitivebiases}
 \citation{thomas2026mitigatingllmbasedphackingpreregistering,williams2026predictingllmsafetyrelease,vaccaro2026preregistrationexperimentsaiagents,zhang2026testingfrontierlargelanguage}
 \citation{kaplan2020scalinglawsneurallanguage,hoffmann2022trainingcomputeoptimallargelanguage,snell2024predictingemergentcapabilitiesfinetuning}
-\citation{friedman_packing}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Trap zones}{3}{subsection.1.1}\protected@file@percent }
+\citation{friedman_packing}
 \citation{friedman_packing}
 \citation{friedman_packing}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \emph  {Predicted versus optimal value, $N = 10\ldots  60$.} (i) the rule's prediction; (ii) the best value in the recipe family; (iii, dotted) published best-known values \citep  {friedman_packing}, terminating at $N = 30$ because the bound table stops there. Shaded bands are the trap zones, the last being $[57,63]$ clipped by \texttt  {sweep(10,60)}. Worst-in-zone penalties 8.51\%, 7.03\%, 6.01\%, 5.25\%, 4.66\%; these are family-internal arithmetic and exact at every $N$, while the published-bound comparison (curve iii) is checkable only up to $N = 30$, where the bound table stops. The gap closes to zero at $N = 35$ and $N = 48$ but \textbf  {not} at $N = 24$, where 0.59\% remains --- curve (ii) sits strictly above (i) across $[21,24]$.}}{4}{figure.1}\protected@file@percent }
@@ -30,7 +30,7 @@
 \@writefile{toc}{\contentsline {section}{\numberline {3}Preregistered forecast, out of sample}{6}{section.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Registration protocol}{7}{subsection.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}The formula sits at the mode ceiling}{8}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Square container}{8}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Square container}{9}{subsection.3.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Arm M: the filler branch fails at $m > 1$; the fifth $k$ confirms}{9}{subsection.3.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Arms MU and CH: no transfer to one-parent calls; the argmax in hand does not dislodge the template}{10}{subsection.3.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Arms GM3 and V: transfer, with a boundary that runs both ways}{12}{subsection.3.6}\protected@file@percent }
@@ -38,25 +38,26 @@
 \newlabel{fig:gm3anchoring}{{2}{13}{\emph {Arm GM3 modal sums against the registered prediction.} Filled green circles match the predicted mode (the dashed line is $V(k^*, m)$ at extend cells and $T(k^*, N)$ at truncate cells) (frequencies annotated); open red triangles miss --- every miss lands above the prediction, on the rival argmax (the modal packings carry the rival's two-radius structure, 27/27 --- \S 3.6); the two largest cells are UNSCOREABLE under the registered $<$3-valid rule. Regenerates via \texttt {fig\_gm3\_anchoring.py} from \texttt {arm\_gm3\_report.json} (itself replayed from the raw ledger by \texttt {arm\_gm3\_analysis.py}, no arguments)}{figure.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Arm CC: an executed program does not escape the family}{15}{subsection.3.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.8}Arm CN: the rule predicts the mode where there is nothing to recall}{16}{subsection.3.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Rectangle transfer}{17}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Transfer of the rule}{17}{subsection.4.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Forecast versus outcome, both containers.}}{18}{table.1}\protected@file@percent }
-\newlabel{tab:forecast}{{1}{18}{Forecast versus outcome, both containers}{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.9}Arms CP and RP: the anchor without its words, and recall asked directly}{17}{subsection.3.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Rectangle transfer}{18}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Transfer of the rule}{18}{subsection.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Negative result: the closed form does not survive the move to rectangles}{18}{subsection.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}The tier ladder: three attractor families}{18}{section.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Forecast versus outcome, both containers.}}{19}{table.1}\protected@file@percent }
+\newlabel{tab:forecast}{{1}{19}{Forecast versus outcome, both containers}{table.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}The tier ladder: three attractor families}{19}{section.5}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Three-attractor ladder. Valid columns count samples passing containment and non-overlap at the $10^{-6}$ and $10^{-9}$ tolerances; On-pred and Rival count valid samples landing on the predicted value and on the rival argmax.}}{20}{table.2}\protected@file@percent }
 \newlabel{tab:ladder}{{2}{20}{Three-attractor ladder. Valid columns count samples passing containment and non-overlap at the $10^{-6}$ and $10^{-9}$ tolerances; On-pred and Rival count valid samples landing on the predicted value and on the rival argmax}{table.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \emph  {Three attractor families at a single cell, $N = 31$.} One representative packing per tier, ledger sample id in each panel title (weak tier \texttt  {bare} id 1, on-prediction truncation 2.5833333; middle tier \texttt  {sonnet\_bare} id 1, mixed-radius rival 2.7485281; \texttt  {opus\_alias} id 1, invalid, with only the offending circles highlighted). Source: \texttt  {arm\_f\_candidates\_v2.jsonl} via \texttt  {fig\_scripts.py}, deterministic (the exemplar rows' geometry is byte-identical in v1; v2 differs only in provenance metadata).}}{20}{figure.3}\protected@file@percent }
-\newlabel{fig:packings}{{3}{20}{\emph {Three attractor families at a single cell, $N = 31$.} One representative packing per tier, ledger sample id in each panel title (weak tier \texttt {bare} id 1, on-prediction truncation 2.5833333; middle tier \texttt {sonnet\_bare} id 1, mixed-radius rival 2.7485281; \texttt {opus\_alias} id 1, invalid, with only the offending circles highlighted). Source: \texttt {arm\_f\_candidates\_v2.jsonl} via \texttt {fig\_scripts.py}, deterministic (the exemplar rows' geometry is byte-identical in v1; v2 differs only in provenance metadata)}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \emph  {Three attractor families at a single cell, $N = 31$.} One representative packing per tier, ledger sample id in each panel title (weak tier \texttt  {bare} id 1, on-prediction truncation 2.5833333; middle tier \texttt  {sonnet\_bare} id 1, mixed-radius rival 2.7485281; \texttt  {opus\_alias} id 1, invalid, with only the offending circles highlighted). Source: \texttt  {arm\_f\_candidates\_v2.jsonl} via \texttt  {fig\_scripts.py}, deterministic (the exemplar rows' geometry is byte-identical in v1; v2 differs only in provenance metadata).}}{21}{figure.3}\protected@file@percent }
+\newlabel{fig:packings}{{3}{21}{\emph {Three attractor families at a single cell, $N = 31$.} One representative packing per tier, ledger sample id in each panel title (weak tier \texttt {bare} id 1, on-prediction truncation 2.5833333; middle tier \texttt {sonnet\_bare} id 1, mixed-radius rival 2.7485281; \texttt {opus\_alias} id 1, invalid, with only the offending circles highlighted). Source: \texttt {arm\_f\_candidates\_v2.jsonl} via \texttt {fig\_scripts.py}, deterministic (the exemplar rows' geometry is byte-identical in v1; v2 differs only in provenance metadata)}{figure.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Elicitation and faithfulness}{21}{section.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Design and bundling disclosure}{21}{subsection.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Registered outcomes}{21}{subsection.6.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Paired trace grid (scaled arm only).}}{22}{table.3}\protected@file@percent }
-\newlabel{tab:tracegrid}{{3}{22}{Paired trace grid (scaled arm only)}{table.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}The registered falsifier, both readings}{22}{subsection.6.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Limits of P-T3: what the concentration result will and will not carry}{22}{subsection.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Registered outcomes}{22}{subsection.6.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Paired trace grid (scaled arm only).}}{23}{table.3}\protected@file@percent }
+\newlabel{tab:tracegrid}{{3}{23}{Paired trace grid (scaled arm only)}{table.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \emph  {Bare versus \texttt  {trace\_v2}, pooled over cells.} The annotated $p = 0.0325$ is uncorrected and fails the Holm threshold (\S  6.4); per-cell values are in the text. Caption caveat: the bars pool the bare arm's two collection waves, which \S  6.4 shows drift materially, so the pooled bare bar is a mixture; the same-wave comparison in \S  6.4 is the wave-controlled picture.}}{23}{figure.4}\protected@file@percent }
 \newlabel{fig:armT}{{4}{23}{\emph {Bare versus \texttt {trace\_v2}, pooled over cells.} The annotated $p = 0.0325$ is uncorrected and fails the Holm threshold (\S 6.4); per-cell values are in the text. Caption caveat: the bars pool the bare arm's two collection waves, which \S 6.4 shows drift materially, so the pooled bare bar is a mixture; the same-wave comparison in \S 6.4 is the wave-controlled picture}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}The registered falsifier, both readings}{23}{subsection.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Limits of P-T3: what the concentration result will and will not carry}{24}{subsection.6.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Faithfulness with ground truth}{24}{subsection.6.5}\protected@file@percent }
 \citation{meyerson2024languagemodelcrossovervariation}
 \citation{lehman2022evolutionlargemodels}
@@ -65,6 +66,7 @@
 \citation{vanstein2025llamealargelanguagemodel}
 \citation{gideoni2026simplebaselinescompetitivecode}
 \citation{berthold2026outoftheboxglobaloptimizationpacking}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Related work}{25}{section.7}\protected@file@percent }
 \citation{gurkan2026mutationvariationconvergencedynamics}
 \citation{huang2026understandinganchoringeffectllm}
 \citation{lou2024anchoringbiaslargelanguage}
@@ -90,7 +92,6 @@
 \citation{yun2025priceformatdiversitycollapse}
 \citation{tam2024letspeakfreelystudy}
 \citation{abdelnabi2025hawthorneeffectreasoningmodels,zhang2026verbalizedsamplingmitigatemode,wu2025answercentricreasoningdrivenuncoveringlatent}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Related work}{25}{section.7}\protected@file@percent }
 \citation{thomas2026mitigatingllmbasedphackingpreregistering}
 \citation{williams2026predictingllmsafetyrelease}
 \citation{vaccaro2026preregistrationexperimentsaiagents}
@@ -104,10 +105,11 @@
 \citation{zhang2024understandingimportanceevolutionarysearch}
 \citation{zhang2026verbalizedsamplingmitigatemode}
 \citation{carlini2021extracting,golchin2024timetravel}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Limitations and untested alternatives}{26}{section.8}\protected@file@percent }
+\citation{carlini2021extracting}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Limitations and untested alternatives}{27}{section.8}\protected@file@percent }
 \citation{sclar2024formatspread}
 \citation{kirk2024rlhf}
-\@writefile{toc}{\contentsline {section}{\numberline {9}Reproducibility, deviations, and disclosures}{27}{section.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Reproducibility, deviations, and disclosures}{28}{section.9}\protected@file@percent }
 \citation{*}
 \bibdata{references}
 \bibcite{abdelnabi2025hawthorneeffectreasoningmodels}{{1}{2025}{{Abdelnabi \& Salem}}{{Abdelnabi and Salem}}}
@@ -171,13 +173,13 @@
 \bibcite{zhang2026makesllmgoodoptimizer}{{59}{2026{b}}{{Zhang et~al.}}{{Zhang, Chen, Portet, and Peyrard}}}
 \bibcite{zhou2024reliability}{{60}{2024}{{Zhou et~al.}}{{Zhou, Schellaert, Mart{\'i}nez-Plumed, Moros-Daval, Ferri, and Hern{\'a}ndez-Orallo}}}
 \bibstyle{tmlr}
-\@writefile{toc}{\contentsline {section}{\numberline {A}Prompts, verbatim}{33}{appendix.A}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B}Deviations and disclosure table}{33}{appendix.B}\protected@file@percent }
 \gdef \LT@i {\LT@entry 
     {1}{81.1625pt}\LT@entry 
     {1}{134.13371pt}\LT@entry 
     {1}{73.07043pt}\LT@entry 
     {1}{170.4171pt}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Prompts, verbatim}{34}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B}Deviations and disclosure table}{34}{appendix.B}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {4}{Deviations from preregistration.}}{34}{table.4}\protected@file@percent }
 \newlabel{tab:deviations}{{4}{34}{Deviations from preregistration}{table.4}{}}
-\gdef \@abspage@last{34}
+\gdef \@abspage@last{35}
