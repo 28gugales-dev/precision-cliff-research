@@ -1,0 +1,50 @@
+{
+  "A:13": {
+    "paraphrase": "A",
+    "n": 13,
+    "predicted": 1.625,
+    "rival": 1.7761424,
+    "prompt": "Place exactly 13 circles inside the unit square [0,1]x[0,1], none of them overlapping, choosing positions and sizes so the total of all radii is as large as you can make it. Every circle must lie entirely within the square, so its center must be at least its radius away from each side (x-r >= 0, x+r <= 1, and the same for y), and the distance between any two centers must be at least the sum of their radii (touching permitted). Work this out by reasoning alone - writing or running code is not allowed. Reply with ONLY the raw Python list of 13 [x, y, r] lists: no explanation, no code fences, nothing else.",
+    "sha256": "d76133097de9373c7f1956830bf6319a2fcd70a877ae849912d8ad926aa4a3e6"
+  },
+  "A:31": {
+    "paraphrase": "A",
+    "n": 31,
+    "predicted": 2.5833333,
+    "rival": 2.7485281,
+    "prompt": "Place exactly 31 circles inside the unit square [0,1]x[0,1], none of them overlapping, choosing positions and sizes so the total of all radii is as large as you can make it. Every circle must lie entirely within the square, so its center must be at least its radius away from each side (x-r >= 0, x+r <= 1, and the same for y), and the distance between any two centers must be at least the sum of their radii (touching permitted). Work this out by reasoning alone - writing or running code is not allowed. Reply with ONLY the raw Python list of 31 [x, y, r] lists: no explanation, no code fences, nothing else.",
+    "sha256": "c7d83caddb1d8dc86b6e86cf23281a7798182880d3593c476324fa38a50d076b"
+  },
+  "B:13": {
+    "paraphrase": "B",
+    "n": 13,
+    "predicted": 1.625,
+    "rival": 1.7761424,
+    "prompt": "Your task is a circle-packing construction. You are given the unit square [0,1]x[0,1] and must produce exactly 13 circles whose radii add up to the largest total you can achieve.\nRequirements:\n1. Exactly 13 circles.\n2. Each circle fully inside the square: x-r >= 0, x+r <= 1, y-r >= 0, y+r <= 1.\n3. No pair of circles overlaps: center distance >= sum of the two radii; contact is allowed.\n4. No code may be written or executed - the construction must come from reasoning alone.\nYour entire reply must be the raw Python list of 13 [x, y, r] lists, with no explanation, no code fences, and no other text.",
+    "sha256": "d979f573998de7d1bfadfd0c1fd17f9949db9d5dc8479b8d0d935eb2853b1120"
+  },
+  "B:31": {
+    "paraphrase": "B",
+    "n": 31,
+    "predicted": 2.5833333,
+    "rival": 2.7485281,
+    "prompt": "Your task is a circle-packing construction. You are given the unit square [0,1]x[0,1] and must produce exactly 31 circles whose radii add up to the largest total you can achieve.\nRequirements:\n1. Exactly 31 circles.\n2. Each circle fully inside the square: x-r >= 0, x+r <= 1, y-r >= 0, y+r <= 1.\n3. No pair of circles overlaps: center distance >= sum of the two radii; contact is allowed.\n4. No code may be written or executed - the construction must come from reasoning alone.\nYour entire reply must be the raw Python list of 31 [x, y, r] lists, with no explanation, no code fences, and no other text.",
+    "sha256": "2c6865bd87da81e4db7524a5e94e42a3fed62d49bf1e47f33a829f838d79c950"
+  },
+  "C:13": {
+    "paraphrase": "C",
+    "n": 13,
+    "predicted": 1.625,
+    "rival": 1.7761424,
+    "prompt": "Maximize the sum of radii of 13 circles in the unit square [0,1]x[0,1], subject to containment (each center at least its radius from every side) and pairwise non-overlap (inter-center distance at least the sum of the corresponding radii; tangency allowed), with exactly 13 circles. Solve by reasoning alone, without writing or executing code. Output ONLY the raw Python list of 13 [x, y, r] lists - no explanation, no code fences, no other text.",
+    "sha256": "7828b4cd6bb56076e3293e51526624e3d491bdd25a8a7027501a19c34d1d5d40"
+  },
+  "C:31": {
+    "paraphrase": "C",
+    "n": 31,
+    "predicted": 2.5833333,
+    "rival": 2.7485281,
+    "prompt": "Maximize the sum of radii of 31 circles in the unit square [0,1]x[0,1], subject to containment (each center at least its radius from every side) and pairwise non-overlap (inter-center distance at least the sum of the corresponding radii; tangency allowed), with exactly 31 circles. Solve by reasoning alone, without writing or executing code. Output ONLY the raw Python list of 31 [x, y, r] lists - no explanation, no code fences, no other text.",
+    "sha256": "34a5a1a97f33fb883074f4557b18440f76594ddba9e823cf54b52d8b8621f6b7"
+  }
+}
