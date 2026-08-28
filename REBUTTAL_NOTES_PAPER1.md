@@ -66,3 +66,55 @@ UNKNOWN also consistent with an abstention prior; beyond-registration caveat, la
 F-RP1 stated in text; S9 registration/stopping bullets carry CP/RP; contribution 5 flags
 the looser offset-frame strong form. Reviewer's stated path to plain accept was exactly
 these four text edits -- all made.
+
+
+## Prepared response: regime relevance (expected as the strongest objection)
+
+**The objection.** "You characterize unconditioned zero-shot calls. FunSearch and AlphaEvolve
+condition on parent programs and fitness feedback from the first step. Arm MU's falsifier
+fired -- the anchor dissolves under conditioning. So the paper measures a regime the cited
+systems do not run in, and concedes the effect disappears in the one they do."
+
+**Do not contest the scope.** It is in the abstract, in S5, in the contributions, and the arm
+that establishes it is ours, reported as a triggered falsifier. Any reply that softens this
+forfeits the disclosure credit the whole paper rests on. Concede in the first sentence.
+
+**Four moves.**
+
+1. *The contribution is an instrument, not a claim about loop internals.* The closed form
+   gives a computable prior-mode for the task: the value the model emits when nothing
+   conditions it. Its use is diagnostic -- when a discovery system reports a value at a cell
+   where V(k*, m) or T(k*, N) equals that value, the report is not by itself evidence of
+   search, because the unconditioned prior already concentrates there. That inference holds
+   regardless of which regime the loop runs in; it constrains how a *result* may be read,
+   not how a loop works. The objection does not touch it.
+
+2. *The dissolution is a finding about where loop diversity originates.* If the anchor were
+   regime-invariant, conditioning would be doing little. F-MU1 firing says the opposite:
+   variation in these loops is produced by the parent/archive mechanism, not by the
+   proposer's intrinsic exploration. For a loop designer that is actionable -- it locates the
+   diversity budget in the scaffold, and yields a falsifiable prediction: weakening
+   conditioning (small archives, single-island runs, low-diversity parents) should collapse
+   proposals back toward the family.
+
+3. *The ceiling is not an artifact of the unconditioned text channel.* Arms CC, CC2 and CCS
+   delegate construction to an executed math-only program -- the channel closest to what
+   discovery systems actually generate -- across two tiers and a fresh-draw replication:
+   0 of 115 valid program outputs exceed the family argmax. At these cells the program
+   channel does not clear the family on its own.
+
+4. *Scope is what makes a floor usable.* A floor that applied everywhere would say nothing
+   about when to apply it. We report where it holds (unconditioned, weak tier, this
+   container, under paraphrase and an offset frame -- arms CP/PP) and where it stops (parent
+   conditioning, higher tiers, rectangles -- arms MU, S/O, S4.2). The boundary is measured,
+   not asserted.
+
+**What we do not claim, stated plainly.** We have not shown anchoring persists inside a
+running loop and do not claim it. The experiment that would settle it: seed a FunSearch-style
+loop, log every proposal from generation 0 through k, score each against V(k*, m)/T(k*, N) as
+a function of generation and archive size. Offer to add this as specified future work in S8,
+and to soften any sentence the reviewer reads as a claim about deployed loops.
+
+**Optional concession if pressed.** Reframe from the discovery-loop framing toward "the
+unconditioned proposal distribution and its use as an evaluation floor," keeping
+FunSearch/AlphaEvolve as motivation rather than object of study. Costs nothing scientific.
