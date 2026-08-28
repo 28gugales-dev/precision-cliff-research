@@ -1,0 +1,37 @@
+{
+  "cells": {
+    "13": {
+      "k_star": 4,
+      "predicted": 1.625,
+      "family_argmax": 1.7761424,
+      "n": 13,
+      "gen0_prompt": "Pack exactly 13 non-overlapping circles inside the unit square [0,1]x[0,1] so that the sum of their radii is as large as possible.\nMUST hold: exactly 13 circles; every circle fully inside the unit square [0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap (distance between centers >= sum of the two radii; touching is allowed).\nDo not write or execute code - construct the packing by reasoning alone.\nOutput ONLY the raw Python list of 13 [x, y, r] lists. No explanation, no code fences, no other text.",
+      "gen0_sha256": "32db485bea625ff9f39f4723ebf1a01f337559a9e2cf567fb486928f71f7f8df"
+    },
+    "31": {
+      "k_star": 6,
+      "predicted": 2.5833333,
+      "family_argmax": 2.7485281,
+      "n": 31,
+      "gen0_prompt": "Pack exactly 31 non-overlapping circles inside the unit square [0,1]x[0,1] so that the sum of their radii is as large as possible.\nMUST hold: exactly 31 circles; every circle fully inside the unit square [0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap (distance between centers >= sum of the two radii; touching is allowed).\nDo not write or execute code - construct the packing by reasoning alone.\nOutput ONLY the raw Python list of 31 [x, y, r] lists. No explanation, no code fences, no other text.",
+      "gen0_sha256": "a664d003cbf1c0eca51bae5b3a1d072071eb34756725a7491d6a2e8fa3b78e92"
+    }
+  },
+  "templates": {
+    "mutation_tail": "\nHere is an existing packing of {n} circles scoring {score} (sum of radii):\n{parent}\nPropose a modification of this packing that increases the sum of radii. Output ONLY the raw Python list of the modified packing, nothing else.",
+    "mutation_tail_sha256": "37e406b5112ea0e067a8e759a26c931d33f15fed904cd88743facd280b6ee627"
+  },
+  "regimes": {
+    "greedy": 1,
+    "diverse": 5
+  },
+  "pop": 5,
+  "generations": 5,
+  "lineages": [
+    "13-greedy",
+    "13-diverse",
+    "31-greedy",
+    "31-diverse"
+  ],
+  "wrapper": "Do not use any tools. Your entire final message must be the answer and nothing else."
+}

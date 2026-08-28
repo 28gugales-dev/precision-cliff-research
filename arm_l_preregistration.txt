@@ -1,0 +1,70 @@
+ARM L PREREGISTRATION — ITERATED LOOP PROBE — REGISTERED 2026-08-28, BEFORE SAMPLING
+
+MOTIVATION (responds to the paper's own named limitation, disclosed). Section 3.5's arm MU
+established that the anchor dissolves under SINGLE-STEP parent conditioning (F-MU1
+triggered). Sections 5 and 8 concede that discovery loops run in the conditioned regime and
+that the paper does not measure what happens across ITERATIONS. This arm runs the minimal
+generational loop that the concession names: seed, mutate from an archive of scored parents,
+iterate, and score every proposal against V(k*, m) / T(k*, N) as a function of generation and
+archive size.
+
+WHAT THIS IS NOT. A minimal analogue, not a replication of FunSearch, AlphaEvolve,
+ShinkaEvolve or OpenEvolve. Population 5, six rounds, one-parent mutation, no islands, no
+crossover, no program representation, no evaluator feedback beyond the parent's own score.
+Deployed systems run orders of magnitude more samples with richer scaffolds. A null result
+here does not transfer to those configurations, and no claim about any named system follows
+from this arm.
+
+INSTRUMENTS (both reused verbatim; no new instrument, no new tolerance).
+  Generation 0 prompt: bare template A.1 with {n} substituted — byte-identical to arms F,
+    M and CN.
+  Generations 1..5 prompt: arm MU's registered mutation template verbatim — A.1 followed by
+    "Here is an existing packing of {n} circles scoring {score:.7f} (sum of radii):\n{parent}\n
+    Propose a modification of this packing that increases the sum of radii. Output ONLY the
+    raw Python list of the modified packing, nothing else."
+  Scoring: arm_f_repro.py parse/validate/classify, tolerances 1e-6 primary and 1e-9 logged,
+    2e-3 value-matching window, mode = most frequent 2e-3 bucket among valid, ties counted
+    against the prediction.
+  Prompt hashes for both templates in arm_l_prompts.json (arm_l_build.py), written before
+    sampling. Mutation prompts are parent-dependent and therefore generated at run time by
+    arm_l_step.py, committed with this file; the template they instantiate is hashed.
+
+DESIGN. Two cells, both discriminating: N = 13 (prediction T(4,13) = 1.6250000, family
+argmax 1.7761424) and N = 31 (prediction T(6,31) = 2.5833333, family argmax 2.7485281).
+Two archive regimes per cell, giving four lineages:
+  GREEDY  (A = 1): archive holds the single best-scoring valid proposal so far.
+  DIVERSE (A = 5): archive holds up to five best distinct-valued valid proposals so far.
+Population 5 per generation; generation 0 unconditioned; generations 1..5 conditioned, with
+the parent for population slot i taken as archive[i mod len(archive)] — deterministic, no
+sampling randomness. Six rounds x 5 proposals x 4 lineages = 120 invocations, weak-tier
+subagent channel, wrapper A.3, runtime rejections excluded and counted. Invalid proposals
+are logged, scored invalid, and never enter the archive.
+
+PREDICTIONS.
+  L1 (generation-0 replication). At generation 0 the modal valid output equals the registered
+    prediction in both cells. Predicted; replicates arm F inside this harness.
+  L2 (dissolution survives iteration). Pooled on-prediction rate over generations 1..5 is
+    strictly lower than the generation-0 rate, in both cells. Predicted; extends arm MU's
+    single-step result to iteration.
+  L3 (archive-size contrast). Pooled on-prediction rate over generations 1..5 is HIGHER in
+    the GREEDY regime than in the DIVERSE regime in at least one cell and lower in neither.
+    Predicted; this is the falsifiable prediction stated in the paper's response to the
+    regime-relevance objection — that loop diversity is produced by the scaffold, so
+    weakening it should return proposals toward the family.
+  L4 (does the loop clear the family?). OPEN, no direction predicted: report best-of-run
+    against the family argmax per lineage. Either outcome is reported as found.
+  FALSIFIER F-L1. If the pooled generation-1..5 on-prediction rate is greater than or equal
+    to the generation-0 rate in BOTH cells, dissolution does not survive iteration and
+    S3.5's conditioning claim is rescoped in-paper to single-step mutation.
+  EVALUABILITY. A lineage is evaluable if generation 0 yields at least 3 valid proposals and
+    at least 3 of the 5 conditioned generations yield at least 1 valid proposal each;
+    otherwise UNDERPOWERED and no claim in either direction.
+
+STOPPING RULE. 120 invocations, one pass, no top-ups, no lineage restarts. arm_l_analysis.py
+run once on the complete ledger; the frozen report is the only result reported. If a
+generation returns zero valid proposals the archive is carried forward unchanged and the run
+continues; this is recorded, not repaired.
+
+WHAT THIS ARM CANNOT SHOW. Whether anchoring persists in deployed discovery systems; any
+property of tiers above the weak tier; anything about crossover, islands, or evaluator
+feedback richer than the parent score.
