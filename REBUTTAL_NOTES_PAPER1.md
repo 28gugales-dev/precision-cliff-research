@@ -54,3 +54,15 @@ Status of each requested change as of Rev 4.7 / 4.7b (tag `v4.7-fresh-eyes` + fo
   the training text never phrased ([3,5]^2, modal 4/5); RP eliminates the simplest recall
   mechanism (87/87 UNKNOWN, 0/44 recalls). Strongest available answer to any contamination
   weakness a reviewer raises.
+
+## Second-round simulated review (Rev 4.8b -> 4.8c, 2026-08-27)
+
+Verdict: **leaning accept** (up from leaning-accept-conditional). Criticals 1-4 verified
+RESOLVED with quotes; #5 (artifact statement) PARTIAL -> fixed in 4.8c with a standalone
+Artifact-availability bullet addressing the public-remote anonymity question. New-material
+findings all folded in 4.8c: abstract "erases every lexical handle" softened (N survives as
+the retrieval key -- caveat now in S3.9/D.9); RP positive-control caveat added (uniform
+UNKNOWN also consistent with an abstention prior; beyond-registration caveat, labeled);
+F-RP1 stated in text; S9 registration/stopping bullets carry CP/RP; contribution 5 flags
+the looser offset-frame strong form. Reviewer's stated path to plain accept was exactly
+these four text edits -- all made.
