@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  27 AUG 2026 21:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  27 AUG 2026 21:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -586,9 +586,6 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
-Underfull \vbox (badness 2726) has occurred while \output is active []
-
  [3]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 175.
@@ -803,13 +800,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 76--76
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [11]
-[12] [13]) (sec_short_related_repro.tex [14] [15]) [16] (main_short.bbl
-[17
+[12] [13]) (sec_short_related_repro.tex [14] [15])
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-] [18] [19]) (sec_appendices.tex
+ [16]
+[17] (main_short.bbl [18
+
+] [19] [20]) (sec_appendices.tex
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 18.
- [20]
+ [21]
 Underfull \hbox (badness 10000) in paragraph at lines 70--70
 []|\T1/lmr/m/n/7 (+20) yes, plus cor-
  []
@@ -1005,9 +1005,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 90--90
 \T1/lmr/m/n/7 (+20) results-aware,
  []
 
-ignored error: Infinite glue shrinkage found in box being split [21])
+ignored error: Infinite glue shrinkage found in box being split [22])
 (sec_short_appendix_moved.tex
-<fig1_trapzones.png, id=658, 505.89pt x 260.172pt>
+<fig1_trapzones.png, id=667, 505.89pt x 260.172pt>
 File: fig1_trapzones.png Graphic file (type png)
 <use fig1_trapzones.png>
 Package pdftex.def Info: fig1_trapzones.png  used on input line 34.
@@ -1015,11 +1015,11 @@ Package pdftex.def Info: fig1_trapzones.png  used on input line 34.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [22]
-[23 <./fig1_trapzones.png>]
+ [23]
+[24 <./fig1_trapzones.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 119.
- [24]
+ [25]
 Underfull \hbox (badness 10000) in paragraph at lines 202--202
 []|\T1/lmr/m/n/9 (+20) extend,
  []
@@ -1084,7 +1084,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 205--206
 []|\T1/lmr/m/n/9 (+20) P-M4 con-firmed;
  []
 
-[25]
+[26]
 Underfull \hbox (badness 10000) in paragraph at lines 271--271
 []|\T1/lmr/m/n/9 (+20) Anchor-rate
  []
@@ -1147,7 +1147,7 @@ Underfull \hbox (badness 1168) in paragraph at lines 275--275
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [26]
+ [27]
 Underfull \hbox (badness 10000) in paragraph at lines 292--293
 []|\T1/lmr/m/n/9 (+20) P-CH1 holds (one-
  []
@@ -1231,15 +1231,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 318--318
 
 Underfull \vbox (badness 1540) has occurred while \output is active []
 
- [27]
-<fig_gm3_anchoring.png, id=700, 462.528pt x 289.08pt>
+ [28]
+<fig_gm3_anchoring.png, id=709, 462.528pt x 289.08pt>
 File: fig_gm3_anchoring.png Graphic file (type png)
 <use fig_gm3_anchoring.png>
 Package pdftex.def Info: fig_gm3_anchoring.png  used on input line 353.
 (pdftex.def)             Requested size: 469.75499pt x 293.61378pt.
 
-[28 <./fig_gm3_anchoring.png>] [29] [30] [31]
-<fig2_packings.png, id=721, 505.89pt x 187.902pt>
+[29 <./fig_gm3_anchoring.png>] [30] [31] [32]
+<fig2_packings.png, id=730, 505.89pt x 187.902pt>
 File: fig2_packings.png Graphic file (type png)
 <use fig2_packings.png>
 Package pdftex.def Info: fig2_packings.png  used on input line 626.
@@ -1256,25 +1256,25 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [32 <./fig2_packings.png>]
-<fig3_armT.png, id=727, 332.442pt x 216.81pt>
+ [33 <./fig2_packings.png>]
+<fig3_armT.png, id=736, 332.442pt x 216.81pt>
 File: fig3_armT.png Graphic file (type png)
 <use fig3_armT.png>
 Package pdftex.def Info: fig3_armT.png  used on input line 710.
 (pdftex.def)             Requested size: 469.75499pt x 306.36378pt.
- [33] [34 <./fig3_armT.png>]
+ [34] [35 <./fig3_armT.png>]
 Underfull \vbox (badness 2073) has occurred while \output is active []
 
- [35]
+ [36]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [36]
+ [37]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 8
 96.
 
 (C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [37{C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.en
+) [38{C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.en
 c}]
 Underfull \hbox (badness 6396) in paragraph at lines 958--972
 \T1/lmtt/m/n/10 arm_f_candidates_v2.jsonl\T1/lmr/m/n/10 (+20) , \T1/lmtt/m/n/10
@@ -1282,7 +1282,7 @@ Underfull \hbox (badness 6396) in paragraph at lines 958--972
 nl \T1/lmr/m/n/10 (+20) scored by
  []
 
-[38]) [39] (main_short.aux)
+[39]) [40] (main_short.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -1291,11 +1291,11 @@ Package rerunfilecheck Info: File `main_short.out' has not changed.
 (rerunfilecheck)             Checksum: 3CEA5BD39BE43E2E464C22650196A048;18884.
  ) 
 Here is how much of TeX's memory you used:
- 14464 strings out of 467871
- 231717 string characters out of 5418376
+ 14467 strings out of 467871
+ 231746 string characters out of 5418376
  697359 words of memory out of 5000000
  42469 multiletter control sequences out of 15000+600000
- 736570 words of font info for 329 fonts, out of 8000000 for 9000
+ 736653 words of font info for 330 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,12n,90p,1009b,674s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
@@ -1327,9 +1327,9 @@ ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/soham/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/soham/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/soham/AppDa
 ta/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on main_short.pdf (39 pages, 1128311 bytes).
+Output written on main_short.pdf (40 pages, 1130169 bytes).
 PDF statistics:
- 941 PDF objects out of 1000 (max. 8388607)
- 177 named destinations out of 1000 (max. 500000)
+ 950 PDF objects out of 1000 (max. 8388607)
+ 178 named destinations out of 1000 (max. 500000)
  56845 words of extra memory for PDF output out of 61914 (max. 10000000)
 

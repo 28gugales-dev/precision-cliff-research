@@ -485,3 +485,15 @@ anchor not keyed to hash-locked string at tested cells; formatspread sweep stays
 scope. Corpus 948. Folded into S3.9 (retitled CP/RP/PP), abstract ("Three review-stage
 probes"), arm tables, deviations row, registration/stopping bullets, both variants.
 ARMS FROZEN after PP per session decision -- remaining alternatives stay stated non-claims.
+
+### Revision 4.11 (2026-08-27, tag `v4.11-final-read`)
+Final holistic read-through (flow/format/claims/citations, opus, one-pass reader): 8 MUST
++ 3 POLISH, all fixed. Stale "not run" list purged (MU/CH/empirical-k ran); S3.9 opener
+matches three-arm heading; S8 dedup; "looser strong form" -> "registered strong-form
+secondary not met" everywhere incl. abstract (+ PP's 6/75 added for symmetry); post-hoc
+label on 30-of-31 in abstract and S8; OpenEvolve + o3/o4 system card get bib keys
+(sharma2025openevolve, openai2025o3o4systemcard), 
+ocite{*} dropped both mains;
+misattached sclar cite moved in short; hardcoded "Table 1" -> Table~ef{tab:forecast};
+"Related:" citations given a claim. Main 36 pp, short 40 pp, 0 errors/overfull, bibtex 0
+warnings. Coverage intact.

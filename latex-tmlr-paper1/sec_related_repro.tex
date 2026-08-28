@@ -8,7 +8,7 @@ pattern into a discovery claim, and every system in \S1's scoreboard inherits it
 in that scoreboard matter: HELIX's figure is marginally \emph{below} ShinkaEvolve's relaxed-tolerance figure (and above its strict one) while being
 described as state of the art, and ThetaEvolve claims new best-known bounds, so the benchmark is
 saturated only across the AlphaEvolve--ShinkaEvolve--HELIX cluster and the number is still moving.
-OpenEvolve, the open-source AlphaEvolve reproduction most practitioners run, reports values in the 2.634--2.636 band across its published example runs (2.634292 in the circle-packing example at the time of access; the repository is unpinned).
+OpenEvolve \citep{sharma2025openevolve}, the open-source AlphaEvolve reproduction most practitioners run, reports values in the 2.634--2.636 band across its published example runs (2.634292 in the circle-packing example at the time of access; the repository is unpinned).
 \S1.1 records the correction to our record comparison and its $N > 30$ coverage gap. Two critiques
 bear on our framing and are frequently conflated, so we attribute them explicitly: \citet{gideoni2026simplebaselinescompetitivecode}
 show simple baselines recover much of the reported advantage, and \citet{berthold2026outoftheboxglobaloptimizationpacking}
@@ -41,7 +41,7 @@ act as \emph{local refiners}, which is what a parent-conditioned call would be, 
 mutation arm.
 
 \textbf{Scaling inversions.} \citet{zhou2024reliability} show larger and more instructable models
-becoming less reliable; the o3/o4-mini system card shows the same on PersonQA; \citet{shojaee2025illusionthinkingunderstandingstrengths}
+becoming less reliable; the o3/o4-mini system card \citep{openai2025o3o4systemcard} shows the same on PersonQA; \citet{shojaee2025illusionthinkingunderstandingstrengths}
 reports collapse past a complexity threshold; GeoBuildBench \citep{kim2026geobuildbenchbenchmarkinteractiveexecutable} finds geometric
 construction a regime where nominal capability and executed correctness diverge. Our
 instantiation is \emph{attractor family} versus executability.
@@ -56,7 +56,7 @@ whether a trace is \emph{requested} rather than editing its content, which is me
 not causal faithfulness. The closest cousin is ``The Price of Format'' \citep{yun2025priceformatdiversitycollapse}, showing
 format constraints collapse generation diversity --- and as \S6.1 concedes, our manipulation
 includes a small output-format change, so we commit a miniature version of the confound we cite.
-Format-restriction performance costs are documented at scale in \citet{tam2024letspeakfreelystudy}. Related:
+Format-restriction performance costs are documented at scale in \citet{tam2024letspeakfreelystudy}. Related observer-effect and elicitation results:
 \citep{abdelnabi2025hawthorneeffectreasoningmodels,zhang2026verbalizedsamplingmitigatemode,wu2025answercentricreasoningdrivenuncoveringlatent}.
 
 \textbf{Preregistration lineage.} \citet{thomas2026mitigatingllmbasedphackingpreregistering}, \citet{williams2026predictingllmsafetyrelease}, \citet{vaccaro2026preregistrationexperimentsaiagents} and \citet{zhang2026testingfrontierlargelanguage} preregister
@@ -97,7 +97,8 @@ separating experiment --- hand the model the recipe family explicitly, state $V(
 admissible $k$, and ask it to \emph{choose} $k$; if it picks the argmax, the tractability reading stands
 --- has now been run as the preregistered arm CH (\S3.5). The outcome splits the hypothesis in
 two: the model's \emph{choice} follows the stated score table (so tractability does not explain
-the selection), but its \emph{execution} fails off-template in 30 of the 31 invalid attempts (so
+the selection), but its \emph{execution} fails off-template in 30 of the 31 invalid attempts, on \S3.5's
+disclosed post-hoc attempt-level reading (so
 tractability does explain the instantiation --- the grid is what survives mental arithmetic).
 \S1's vocabulary remains behavioral and no memorization claim is made. A second mechanism-level account, typicality bias in preference-tuned models \citep{zhang2026verbalizedsamplingmitigatemode}, predicts concentration on the most typical construction without reference to geometry; it is not excluded by any observation here and was not tested against the tractability reading.
 
@@ -107,11 +108,10 @@ the literature: at five held-out $N$ the registered value is modal at four cells
 template structure at all five, against a registered recall alternative. The perturbed-container
 test an earlier draft left unrun has now been registered and run, alongside a direct-recall
 probe (\S3.9; a planted-canary test remains inapplicable to a benchmark we did not author): the perturbed-container
-arm CP moves the task to $[3,5]^2$, destroying every lexical handle, and the mapped
+arm CP moves the task to $[3,5]^2$, removing the benchmark's phrasing and magnitudes, and the mapped
 prediction stays modal at four of five discriminating cells; the direct-recall arm RP asks
 for the published values outright and receives UNKNOWN in 87 of 87 scored responses, 0 of 44
-recalls at the cells where a value exists to recall. Membership and extraction probes
-\citep{carlini2021extracting} were still not run, and absence of the fitted cells from
+recalls at the cells where a value exists to recall. Absence of the fitted cells from
 the pretraining corpus is not established by any of this --- arm RP bounds the simplest
 recall mechanism (stating the value on request), not exposure.
 
@@ -275,8 +275,7 @@ Deviations from preregistration are tabled in Appendix B. Provenance, in list fo
   and CP, RP (with its control amendment) and PP (\S3.9)
   were each registered, run and scored once under their own preregistrations after that
   close; each analysis script was committed before its sampling and not modified after. Analyses named but
-  not run --- the one-parent mutation arm, the recipe-family choice probe, the empirical-$k$
-  back-out, faithfulness split by on- versus off-prediction, a library-enabled code probe
+  not run --- faithfulness split by on- versus off-prediction, a library-enabled code probe
   (\texttt{numpy}/\texttt{scipy}; the math-only code channel has since run as arm CC), interleaved
   re-collection of the arm-T pair, and P5 at $n = 20$ --- are recorded in \S6.5 and \S8 as future work,
   so that the reported statistics remain the ones the preregistrations governed.

@@ -10,7 +10,7 @@ pattern into a discovery claim, and every system in \S1's scoreboard inherits it
 in that scoreboard matter: HELIX's figure is marginally \emph{below} ShinkaEvolve's
 relaxed-tolerance figure (and above its strict one) while being described as state of the art, and
 ThetaEvolve claims new best-known bounds, so the benchmark is saturated only across the
-AlphaEvolve--ShinkaEvolve--HELIX cluster and the number is still moving. OpenEvolve, the
+AlphaEvolve--ShinkaEvolve--HELIX cluster and the number is still moving. OpenEvolve \citep{sharma2025openevolve}, the
 open-source AlphaEvolve reproduction most practitioners run, reports values in the 2.634--2.636
 band across its published example runs (2.634292 in the circle-packing example at the time of
 access; the repository is unpinned). Appendix~C.2 records the correction to our record comparison
@@ -42,7 +42,7 @@ Converging skepticism about what the proposer contributes comes from ``Dictionar
 which is what a parent-conditioned call would be, so it bears on \S8's mutation arm.
 
 \textbf{Scaling inversions.} \citet{zhou2024reliability} show larger and more instructable models
-becoming less reliable; the o3/o4-mini system card shows the same on PersonQA; \citet{shojaee2025illusionthinkingunderstandingstrengths}
+becoming less reliable; the o3/o4-mini system card \citep{openai2025o3o4systemcard} shows the same on PersonQA; \citet{shojaee2025illusionthinkingunderstandingstrengths}
 reports collapse past a complexity threshold; GeoBuildBench \citep{kim2026geobuildbenchbenchmarkinteractiveexecutable} finds geometric
 construction a regime where nominal capability and executed correctness diverge --- our
 instantiation being \emph{attractor family} versus executability.
@@ -58,7 +58,7 @@ reactivity, not causal faithfulness. The closest cousin is ``The Price of Format
 \citep{yun2025priceformatdiversitycollapse}, showing format constraints collapse generation
 diversity --- and as \S6.1 concedes, our manipulation includes a small output-format change, so we
 commit a miniature version of the confound we cite. Format-restriction performance costs are
-documented at scale in \citet{tam2024letspeakfreelystudy}. Related:
+documented at scale in \citet{tam2024letspeakfreelystudy}. Related observer-effect and elicitation results:
 \citep{abdelnabi2025hawthorneeffectreasoningmodels,zhang2026verbalizedsamplingmitigatemode,wu2025answercentricreasoningdrivenuncoveringlatent}.
 
 \textbf{Preregistration lineage.} \citet{thomas2026mitigatingllmbasedphackingpreregistering}, \citet{williams2026predictingllmsafetyrelease}, \citet{vaccaro2026preregistrationexperimentsaiagents} and \citet{zhang2026testingfrontierlargelanguage} preregister
@@ -89,7 +89,8 @@ predicts every observation in \S2--\S3 without appeal to stored templates, and \
 The separating experiment --- state the family and ask the model to \emph{choose} $k$ --- ran as
 the preregistered arm CH (\S3.5) and split the hypothesis in two: the model's \emph{choice} follows
 the stated score table, so tractability does not explain the selection, but its \emph{execution}
-fails off-template in 30 of the 31 invalid attempts, so tractability does explain the
+fails off-template in 30 of the 31 invalid attempts on \S3.5's disclosed post-hoc
+attempt-level reading, so tractability does explain the
 instantiation. \S1's vocabulary remains behavioral and no memorization claim is made. A second
 mechanism-level account, typicality bias in preference-tuned models
 \citep{zhang2026verbalizedsamplingmitigatemode}, predicts concentration on the most typical
@@ -123,9 +124,9 @@ unpinned, so every effect is a distributional claim over the observed sampling r
 mode-ceiling result inherits that scope; \texttt{opus\_alias} names a serving alias, not an
 identified model version, so a model-tier effect cannot be separated from a serving-path effect;
 and every arm before the paraphrase probe conditions on a single hash-locked prompt
-\citep{sclar2024formatspread} --- arm PP (\S3.9) shows the prediction stays modal under three
+--- arm PP (\S3.9) shows the prediction stays modal under three
 semantic-preserving paraphrases at all six paraphrase-cells, so the anchor is not keyed to the
-literal string there, though a formatspread-style sweep remains untested. The
+literal string there, though a formatspread-style sweep \citep{sclar2024formatspread} remains untested. The
 cross-vendor concentration differences in \S3.6 are measured but not explained; alignment-induced
 diversity loss \citep{kirk2024rlhf} is a candidate account we did not test. The confirmatory base
 after arm M --- five confirmed $k$ on the truncate arm, the extend arm confirmed only at

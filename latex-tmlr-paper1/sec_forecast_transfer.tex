@@ -653,12 +653,11 @@ paragraph once left unrun are now arms CP and RP (\S3.9).
 
 \subsection{Arms CP, RP and PP: the anchor without its words, recall asked directly, and paraphrase}
 
-Two probes drafted at review stage (draft files committed 2026-08-22, disclosed as such)
-were registered at commit \texttt{105e8b7} --- prompt hashes in
-\texttt{arm\_cp\_prompts.json} and \texttt{arm\_rp\_prompts.json}, analysis scripts
-committed alongside, pushed before the first invocation --- and each sampled once and
-scored once under its own stopping rule, on the same weak-tier subagent channel as arms
-F, M and CN.
+Arms CP and RP were drafted at review stage (draft files committed 2026-08-22, disclosed
+as such) and registered together at commit \texttt{105e8b7}; arm PP followed at
+\texttt{2e89614}. Each registration carries its prompt hashes and analysis script,
+pushed before the first invocation, and each arm was sampled once and scored once under
+its own stopping rule, on the same weak-tier subagent channel as arms F, M and CN.
 
 \textbf{Arm CP} destroys every lexical handle while preserving the geometry: the container
 becomes $[3,5] \times [3,5]$, so the model never sees ``unit square'', ``[0,1]'', or any

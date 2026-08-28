@@ -5,6 +5,14 @@ Reallocating 'name_of_file' (item size: 1) to 11 items.
 Reallocating 'name_of_file' (item size: 1) to 5 items.
 The style file: tmlr.bst
 Database file #1: references.bib
+Repeated entry---line 1222 of file references.bib
+ : @misc{sharma2025openevolve
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1230 of file references.bib
+ : @misc{openai2025o3o4systemcard
+ :                               ,
+I'm skipping whatever remains of this entry
 You've used 60 entries,
             2773 wiz_defined-function locations,
             858 strings with 19241 characters,
@@ -46,3 +54,4 @@ warning$ -- 0
 while$ -- 186
 width$ -- 0
 write$ -- 746
+(There were 2 error messages)
