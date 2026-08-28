@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  27 AUG 2026 20:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  27 AUG 2026 20:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -948,6 +948,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 88--88
 \T1/lmr/m/n/7 (+20) draft cell
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--89
+[]|\T1/lmr/m/n/7 (+20) amendment 1
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--89
+\T1/lmr/m/n/7 (+20) reg-is-tered \T1/lmr/bx/n/7 (+20) be-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--89
+\T1/lmr/bx/n/7 (+20) fore sam-pling
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--89
+\T1/lmr/m/n/7 (+20) (\T1/lmtt/m/n/7 15555eb\T1/lmr/m/n/7 (+20) ), re-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--89
+\T1/lmr/m/n/7 (+20) spond-ing to a
+ []
+
 ignored error: Infinite glue shrinkage found in box being split [21])
 (sec_short_appendix_moved.tex
 <fig1_trapzones.png, id=658, 505.89pt x 260.172pt>
@@ -955,7 +980,13 @@ File: fig1_trapzones.png Graphic file (type png)
 <use fig1_trapzones.png>
 Package pdftex.def Info: fig1_trapzones.png  used on input line 34.
 (pdftex.def)             Requested size: 366.40831pt x 188.44319pt.
- [22] [23 <./fig1_trapzones.png>]
+
+Underfull \vbox (badness 5607) has occurred while \output is active []
+
+ [22]
+Underfull \vbox (badness 5802) has occurred while \output is active []
+
+ [23 <./fig1_trapzones.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 119.
  [24]
@@ -1179,32 +1210,29 @@ Package pdftex.def Info: fig_gm3_anchoring.png  used on input line 353.
 
 Underfull \vbox (badness 5008) has occurred while \output is active []
 
- [28 <./fig_gm3_anchoring.png>] [29] [30]
-<fig2_packings.png, id=714, 505.89pt x 187.902pt>
+ [28 <./fig_gm3_anchoring.png>] [29] [30] [31]
+<fig2_packings.png, id=719, 505.89pt x 187.902pt>
 File: fig2_packings.png Graphic file (type png)
 <use fig2_packings.png>
-Package pdftex.def Info: fig2_packings.png  used on input line 604.
+Package pdftex.def Info: fig2_packings.png  used on input line 609.
 (pdftex.def)             Requested size: 469.75499pt x 174.48326pt.
- [31]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 614.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 614.
+(hyperref)                removing `math shift' on input line 619.
 
 
-Underfull \vbox (badness 4441) has occurred while \output is active []
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 619.
 
- [32 <./fig2_packings.png>]
+[32 <./fig2_packings.png>]
 <fig3_armT.png, id=725, 332.442pt x 216.81pt>
 File: fig3_armT.png Graphic file (type png)
 <use fig3_armT.png>
-Package pdftex.def Info: fig3_armT.png  used on input line 688.
+Package pdftex.def Info: fig3_armT.png  used on input line 693.
 (pdftex.def)             Requested size: 469.75499pt x 306.36378pt.
  [33]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 2635) has occurred while \output is active []
 
  [34 <./fig3_armT.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1212,7 +1240,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [35]
 [36]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 8
-74.
+79.
  (C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -1220,7 +1248,7 @@ Underfull \vbox (badness 1708) has occurred while \output is active []
 
  [37{C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc
 }]
-Underfull \hbox (badness 6396) in paragraph at lines 933--947
+Underfull \hbox (badness 6396) in paragraph at lines 938--952
 \T1/lmtt/m/n/10 arm_f_candidates_v2.jsonl\T1/lmr/m/n/10 (+20) , \T1/lmtt/m/n/10
  arm_g_candidates.jsonl\T1/lmr/m/n/10 (+20) , \T1/lmtt/m/n/10 arm_m_collect.jso
 nl \T1/lmr/m/n/10 (+20) scored by
@@ -1237,7 +1265,7 @@ Package rerunfilecheck Info: File `main_short.out' has not changed.
 Here is how much of TeX's memory you used:
  14458 strings out of 467871
  231661 string characters out of 5418376
- 692359 words of memory out of 5000000
+ 693359 words of memory out of 5000000
  42469 multiletter control sequences out of 15000+600000
  736312 words of font info for 326 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1271,7 +1299,7 @@ ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/soham/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/soham/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/soham/AppDa
 ta/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on main_short.pdf (39 pages, 1124451 bytes).
+Output written on main_short.pdf (39 pages, 1125169 bytes).
 PDF statistics:
  939 PDF objects out of 1000 (max. 8388607)
  177 named destinations out of 1000 (max. 500000)

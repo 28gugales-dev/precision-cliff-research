@@ -696,15 +696,22 @@ anything else; three invocations were runtime-rejected and counted. P-RP1
 falsifier F-RP1 (P-RP2 satisfied) did not fire. The weak tier that
 emits $V(k^*, m)$ to seven decimals when asked to \emph{pack} states no
 scoreboard value when asked to \emph{recall} one --- the simplest recall mechanism finds
-no support at its easiest test. Two caveats, the second beyond the registration: as
-registered, a model that fails to state a value may still have been shaped by it (this
-bounds the simplest mechanism only); and the design carries no positive control --- no
-cell where the model demonstrably \emph{can} state a known value under this prompt --- so
-uniform UNKNOWN is also consistent with an abstention prior induced by offering the
-UNKNOWN option. Raw rows in
-\texttt{arm\_cp\_collect.jsonl} and \texttt{arm\_rp\_collect.jsonl}; frozen reports
-\texttt{arm\_cp\_report.json}, \texttt{arm\_rp\_report.json}. These two arms bring the
-study corpus to 843 invocations.
+no support at its easiest test. A second-round review noted the design carried no
+positive control, so uniform UNKNOWN could also reflect an abstention prior induced by
+offering the UNKNOWN option; a registered amendment closed this
+(\texttt{arm\_rp\_amendment1\_positive\_control.txt}, commit \texttt{15555eb}, pushed
+before its sampling): at $N = 1$, where the optimum $0.5$ is elementary and certain, the
+same prompt draws the correct number in \textbf{14 of 15} responses (one UNKNOWN) ---
+C-RP1, the format permits answering, so the scoreboard UNKNOWNs reflect the absence of a
+statable value under this prompt, not the prompt format. The control is easier in every
+respect, so it shows only that; and the registered caveat stands: a model that fails to
+state a value may still have been shaped by it --- this bounds the simplest mechanism
+only. Raw rows in
+\texttt{arm\_cp\_collect.jsonl}, \texttt{arm\_rp\_collect.jsonl} and
+\texttt{arm\_rp\_control\_collect.jsonl}; frozen reports
+\texttt{arm\_cp\_report.json}, \texttt{arm\_rp\_report.json},
+\texttt{arm\_rp\_control\_report.json}. With the control cell these arms bring the
+study corpus to 858 invocations.
 
 \section{Rectangle transfer}
 

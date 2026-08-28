@@ -467,3 +467,11 @@ phrasing and magnitudes" + N-as-retrieval-key caveat added to S3.9/D.9; RP
 positive-control caveat (abstention-prior alternative) + F-RP1 stated in text; S9
 Registration and Stopping-rule bullets updated for CP/RP; contribution 5 flags the
 looser offset-frame strong form (4/61). Main 36 pp, short 39 pp; coverage 321/321.
+
+### Revision 4.9 (2026-08-27, tag `v4.9-rp-control`)
+RP positive control run: amendment 1 registered before sampling (15555eb), N=1 cell
+(optimum 0.5 elementary/certain), 15 invocations same channel. C-RP1 CONFIRMED: 14/15
+state 0.5, one UNKNOWN -- abstention-prior alternative rejected with data; the S3.9
+positive-control caveat is replaced by the result in both variants. Corpus 858.
+Deviations row + HOW_TO_RUN row added. This closes the last data-answerable finding of
+the second-round review; its remaining path to plain accept is submission logistics only.

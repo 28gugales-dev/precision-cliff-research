@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  27 AUG 2026 20:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  27 AUG 2026 20:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -951,11 +951,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [16]
-[17]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [18])
-(sec_tiers_elicitation.tex
+[17] [18]) (sec_tiers_elicitation.tex
 Underfull \hbox (badness 7151) in paragraph at lines 16--23
 []\T1/lmr/bx/n/10 (+20) The mid-dle tier per-turbs and mixes. \T1/lmr/m/n/10 (+
 20) The Sonnet-tier arm was pre-reg-is-tered in
@@ -1080,25 +1076,18 @@ Package pdftex.def Info: fig2_packings.png  used on input line 100.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [20]
-Underfull \vbox (badness 1910) has occurred while \output is active []
-
- [21 <./fig2_packings.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [22]
+ [21 <./fig2_packings.png>] [22]
 <fig3_armT.png, id=340, 332.442pt x 216.81pt>
 File: fig3_armT.png Graphic file (type png)
 <use fig3_armT.png>
 Package pdftex.def Info: fig3_armT.png  used on input line 224.
 (pdftex.def)             Requested size: 469.75499pt x 306.36378pt.
-
+ [23]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [23 <./fig3_armT.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [24])
-(sec_related_repro.tex
+ [24 <./fig3_armT.png>]) (sec_related_repro.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [25]
@@ -1276,6 +1265,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 88--88
 \T1/lmr/m/n/7 (+20) draft cell
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--89
+[]|\T1/lmr/m/n/7 (+20) amendment 1
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--89
+\T1/lmr/m/n/7 (+20) reg-is-tered \T1/lmr/bx/n/7 (+20) be-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--89
+\T1/lmr/bx/n/7 (+20) fore sam-pling
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--89
+\T1/lmr/m/n/7 (+20) (\T1/lmtt/m/n/7 15555eb\T1/lmr/m/n/7 (+20) ), re-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--89
+\T1/lmr/m/n/7 (+20) spond-ing to a
+ []
+
 ignored error: Infinite glue shrinkage found in box being split [35]) [36]
 (main.aux)
  ***********
@@ -1286,11 +1300,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 653DE280C90D0EEED8383D4372C559F9;8138.
  ) 
 Here is how much of TeX's memory you used:
- 14372 strings out of 467871
- 229861 string characters out of 5418376
- 692246 words of memory out of 5000000
+ 14376 strings out of 467871
+ 229907 string characters out of 5418376
+ 693246 words of memory out of 5000000
  42431 multiletter control sequences out of 15000+600000
- 736100 words of font info for 321 fonts, out of 8000000 for 9000
+ 736277 words of font info for 323 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,12n,90p,1003b,676s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
@@ -1323,7 +1337,7 @@ ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/soham/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/soham/AppDa
 ta/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt9.pfb><C:/Users/soham/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on main.pdf (36 pages, 1098787 bytes).
+Output written on main.pdf (36 pages, 1099523 bytes).
 PDF statistics:
  787 PDF objects out of 1000 (max. 8388607)
  143 named destinations out of 1000 (max. 500000)

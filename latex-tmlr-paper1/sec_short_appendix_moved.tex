@@ -586,12 +586,17 @@ responses answers UNKNOWN} --- 0 of 44 scoreboard-cell responses recall a publis
 (bar for the recall branch P-RP2: $\ge 10$), zero state a family value, zero state
 anything else; three invocations were runtime-rejected and counted. P-RP1
 \textbf{confirmed} with the family-rate asymmetry trivially zero, and the registered
-falsifier F-RP1 (P-RP2 satisfied) did not fire. Two caveats, the second beyond the
-registration: as registered, a model that fails to state a value may still have been
-shaped by it (this bounds the simplest mechanism only); and the design carries no
-positive control --- no cell where the model demonstrably \emph{can} state a known value
-under this prompt --- so uniform UNKNOWN is also consistent with an abstention prior
-induced by offering the UNKNOWN option. Raw rows in \texttt{arm\_cp\_collect.jsonl} and
+falsifier F-RP1 (P-RP2 satisfied) did not fire. A second-round review noted the design
+carried no positive control, so uniform UNKNOWN could also reflect an abstention prior
+induced by offering the UNKNOWN option; a registered amendment closed this
+(\texttt{arm\_rp\_amendment1\_positive\_control.txt}, commit \texttt{15555eb}, pushed
+before its sampling): at $N = 1$, where the optimum $0.5$ is elementary and certain, the
+same prompt draws the correct number in \textbf{14 of 15} responses (one UNKNOWN) ---
+C-RP1, the format permits answering, so the scoreboard UNKNOWNs reflect the absence of a
+statable value under this prompt, not the prompt format. The control is easier in every
+respect, so it shows only that; and the registered caveat stands: a model that fails to
+state a value may still have been shaped by it --- this bounds the simplest mechanism
+only. Raw rows in \texttt{arm\_cp\_collect.jsonl} and
 \texttt{arm\_rp\_collect.jsonl}; frozen reports \texttt{arm\_cp\_report.json},
 \texttt{arm\_rp\_report.json}.
 
@@ -657,7 +662,7 @@ Arm M (\S3.4) added 57 sampled weak-tier invocations (60 launched), bringing the
 288; arms MU and CH (\S3.5) added 180 more (180 launched, none lost); the code-channel arms CC, CC2
 and CCS (\S3.7) added 135 more (135 launched, none lost), bringing the unconditioned-and-elicitation
 corpus to 603; the held-out-$N$ probe CN (\S3.8) 75 more, to 678; and arms CP and RP (\S3.9,
-75 + 90, three runtime rejections counted) 165 more under their own registrations, to 843. The cross-vendor chain is
+75 + 90 + a 15-invocation registered positive control, three runtime rejections counted) 180 more under their own registrations, to 858. The cross-vendor chain is
 scored under its own registrations and adds 420 GM-chain invocations (\S3.6, \S8) and 877 arm-V
 attempt rows over the 325 registered invocation slots, 314 of which carry rows (\S3.6).
 
