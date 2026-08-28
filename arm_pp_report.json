@@ -1,0 +1,115 @@
+{
+  "cells": {
+    "A:13": {
+      "paraphrase": "A",
+      "n": 13,
+      "launched": 15,
+      "scored": 15,
+      "valid_1e6": 12,
+      "on_prediction": 9,
+      "on_rival": 1,
+      "modal_is_pred": true,
+      "evaluable": true,
+      "k_star_majority": true,
+      "fails": {
+        "invalid:outside_square": 1,
+        "invalid:overlap": 2
+      },
+      "best": 1.7761423899999993
+    },
+    "A:31": {
+      "paraphrase": "A",
+      "n": 31,
+      "launched": 15,
+      "scored": 15,
+      "valid_1e6": 13,
+      "on_prediction": 10,
+      "on_rival": 1,
+      "modal_is_pred": true,
+      "evaluable": true,
+      "k_star_majority": true,
+      "fails": {
+        "invalid:overlap": 1,
+        "parse:literal_eval_failed:ValueError": 1
+      },
+      "best": 2.7485281374238584
+    },
+    "B:13": {
+      "paraphrase": "B",
+      "n": 13,
+      "launched": 15,
+      "scored": 15,
+      "valid_1e6": 12,
+      "on_prediction": 4,
+      "on_rival": 2,
+      "modal_is_pred": true,
+      "evaluable": true,
+      "k_star_majority": false,
+      "fails": {
+        "invalid:overlap": 2,
+        "invalid:outside_square": 1
+      },
+      "best": 1.7761423749153966
+    },
+    "B:31": {
+      "paraphrase": "B",
+      "n": 31,
+      "launched": 15,
+      "scored": 15,
+      "valid_1e6": 13,
+      "on_prediction": 6,
+      "on_rival": 1,
+      "modal_is_pred": true,
+      "evaluable": true,
+      "k_star_majority": true,
+      "fails": {
+        "parse:literal_eval_failed:ValueError": 1,
+        "invalid:overlap": 1
+      },
+      "best": 2.748526000000002
+    },
+    "C:13": {
+      "paraphrase": "C",
+      "n": 13,
+      "launched": 15,
+      "scored": 15,
+      "valid_1e6": 11,
+      "on_prediction": 6,
+      "on_rival": 1,
+      "modal_is_pred": true,
+      "evaluable": true,
+      "k_star_majority": true,
+      "fails": {
+        "invalid:outside_square": 1,
+        "invalid:overlap": 3
+      },
+      "best": 1.7761423749033902
+    },
+    "C:31": {
+      "paraphrase": "C",
+      "n": 31,
+      "launched": 15,
+      "scored": 15,
+      "valid_1e6": 14,
+      "on_prediction": 12,
+      "on_rival": 0,
+      "modal_is_pred": true,
+      "evaluable": true,
+      "k_star_majority": true,
+      "fails": {
+        "invalid:overlap": 1
+      },
+      "best": 2.713923048
+    }
+  },
+  "pooled": {
+    "evaluable_cells": 6,
+    "modal_hits": 6,
+    "pooled_validity": 0.8333,
+    "S_PP1_rival_leq_2": false,
+    "rival_total": 6,
+    "valid_total": 75,
+    "S_PP2_kstar_cells": 5,
+    "verdict": "P-PP1"
+  }
+}
