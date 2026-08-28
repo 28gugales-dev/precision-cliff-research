@@ -86,6 +86,8 @@ freezes a JSON/TXT report beside the ledger.
 | 3.6 arm V | `python arm_v_score.py` | `arm_v_candidates_raw.jsonl` | `arm_v_scored.jsonl` (stdout verdicts frozen in `arm_v_score_final.txt`) |
 | 3.7 code channel: CC, then CC2 and CCS together | `python arm_cc_analysis.py`, `python arm_cc2_analysis.py` | `arm_cc_collect.jsonl`, `arm_cc2_collect.jsonl`, `arm_ccs_collect.jsonl` | `arm_cc_report.json`, `arm_cc2_report.json`, `arm_ccs_report.json` |
 | 3.8 arm CN | `python arm_cn_analysis.py` | `arm_cn_collect.jsonl` | `arm_cn_report.json`, `arm_cn_scored.json` |
+| 3.9 arm CP (perturbed container) | `python arm_cp_analysis.py` (prompts/values: `python arm_cp_build.py`) | `arm_cp_collect.jsonl`, `arm_cp_prompts.json` | `arm_cp_report.json` |
+| 3.9 arm RP (direct recall) | `python arm_rp_analysis.py` (prompts/values: `python arm_rp_build.py`) | `arm_rp_collect.jsonl`, `arm_rp_prompts.json` | `arm_rp_report.json` |
 | 1.1 bound table, 4.2 rectangle, LP oracle | `python n_sweep_forecast.py`, `python rect_forecast.py` | none | `n_sweep_forecast.json`, `rect_forecast.json` |
 | 6.2 arm T, Table 3 | `python arm_t_analysis.py` | `arm_f_candidates_v2.jsonl` | stdout |
 | Figures 1, 3, 4 | `python fig_scripts.py` | ledgers above | `fig1_trapzones.png`, `fig2_packings.png`, `fig3_armT.png` |

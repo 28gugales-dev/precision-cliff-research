@@ -1,0 +1,102 @@
+{
+  "cells": {
+    "13": {
+      "n": 13,
+      "launched": 15,
+      "runtime_rejections": 0,
+      "scored": 15,
+      "valid_1e6": 14,
+      "valid_1e9": 12,
+      "on_prediction": 9,
+      "on_rival": 2,
+      "modal_is_pred": true,
+      "evaluable": true,
+      "k_star_majority": true,
+      "fails": {
+        "invalid:overlap": 1
+      },
+      "best": 1.7761423749153966
+    },
+    "21": {
+      "n": 21,
+      "launched": 15,
+      "runtime_rejections": 0,
+      "scored": 15,
+      "valid_1e6": 13,
+      "valid_1e9": 13,
+      "on_prediction": 7,
+      "on_rival": 2,
+      "modal_is_pred": true,
+      "evaluable": true,
+      "k_star_majority": true,
+      "fails": {
+        "invalid:overlap": 2
+      },
+      "best": 2.258883476483185
+    },
+    "31": {
+      "n": 31,
+      "launched": 15,
+      "runtime_rejections": 0,
+      "scored": 15,
+      "valid_1e6": 9,
+      "valid_1e9": 7,
+      "on_prediction": 8,
+      "on_rival": 0,
+      "modal_is_pred": true,
+      "evaluable": true,
+      "k_star_majority": true,
+      "fails": {
+        "invalid:overlap": 5,
+        "parse:literal_eval_failed:ValueError": 1
+      },
+      "best": 2.583333384999999
+    },
+    "58": {
+      "n": 58,
+      "launched": 15,
+      "runtime_rejections": 0,
+      "scored": 15,
+      "valid_1e6": 12,
+      "valid_1e9": 11,
+      "on_prediction": 11,
+      "on_rival": 0,
+      "modal_is_pred": true,
+      "evaluable": true,
+      "k_star_majority": true,
+      "fails": {
+        "invalid:overlap": 2,
+        "count_mismatch": 1
+      },
+      "best": 3.625
+    },
+    "75": {
+      "n": 75,
+      "launched": 15,
+      "runtime_rejections": 0,
+      "scored": 15,
+      "valid_1e6": 13,
+      "valid_1e9": 12,
+      "on_prediction": 5,
+      "on_rival": 0,
+      "modal_is_pred": false,
+      "evaluable": true,
+      "k_star_majority": true,
+      "fails": {
+        "parse:literal_eval_failed:ValueError": 1,
+        "invalid:overlap": 1
+      },
+      "best": 4.263494016096183
+    }
+  },
+  "pooled": {
+    "evaluable_cells": 5,
+    "modal_hits": 4,
+    "pooled_validity": 0.8133,
+    "verdict": "P-CP1",
+    "S_CP1_rival_leq_1": false,
+    "rival_hits_disc": 4,
+    "disc_valid": 61,
+    "S_CP2_kstar_cells": 5
+  }
+}
