@@ -443,3 +443,17 @@ Reviewer minor #6 implemented: uniform-template null (post hoc, disclosed) --
 0.043/2.9e-4/3.4e-4/6.9e-3 at N=13/21/31/43. Added to S3.2 (full), Appendix D.1 (short,
 body pointer only -- 15 pp body held), deviations-table row, HOW_TO_RUN row; output frozen
 in `diagnostics_template_null_out.txt`. Short numeric coverage 314/314.
+
+### Revision 4.8 / 4.8b (2026-08-27, tags `v4.8-arms-cp-rp`)
+NEW DATA: arms CP (perturbed container [3,5]^2, 75 invocations) and RP (direct recall, 90)
+registered before sampling (105e8b7, prompt hashes + analysis scripts committed and pushed
+first; RP draft cell N=32 -> N=30 documented), sampled once on the weak-tier subagent
+channel, scored once. CP: P-CP1 CONFIRMED -- mapped prediction modal 4/5 discriminating
+cells (N=75 a registered tie against, five each at mapped T(9,75) and T(15,75)); pooled
+validity 81%; k* majority 5/5; S-CP1 not met (4/61 rival, reported as registered). RP:
+P-RP1 CONFIRMED -- 0/44 recalls, 87/87 scored responses UNKNOWN. Folded into S3.9 (both
+variants + Appendix D.9), S8, abstract, arm table, deviations table, corpus arithmetic
+(843). Main now 35 pp (audit expectation bumped), short 38 pp / 16 pp body (one over old
+target -- new data section, user's call to trim). Fresh-eyes diff verifier re-scored both
+ledgers independently and confirmed registration ancestry; 4.8b fixed one stale "unrun"
+line and scoped the canary-test wording. Numeric coverage 321/321.

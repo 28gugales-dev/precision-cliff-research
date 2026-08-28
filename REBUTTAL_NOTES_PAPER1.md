@@ -50,6 +50,7 @@ Status of each requested change as of Rev 4.7 / 4.7b (tag `v4.7-fresh-eyes` + fo
 - Independent ledger re-audit: ~330 numeric assertions recomputed from raw ledgers with an
   independent parser/validator; 3 findings, all fixed or glossed exactly in 4.7
   (`corrections_ledger.md` item 33).
-- The only further validation that moves the claims is running the pre-staged arm_cp
-  (perturbed container) / arm_rp (direct recall) registrations — author's call, needs API
-  spend; DRAFT registrations already committed and shipped in the bundle.
+- Arms CP and RP have now been RUN (Rev 4.8): CP confirms the anchor survives a container
+  the training text never phrased ([3,5]^2, modal 4/5); RP eliminates the simplest recall
+  mechanism (87/87 UNKNOWN, 0/44 recalls). Strongest available answer to any contamination
+  weakness a reviewer raises.

@@ -104,8 +104,9 @@ tractability does explain the instantiation --- the grid is what survives mental
 \textbf{Contamination is probed at one level only.} $N = 26$ is the canonical published cell and
 plausibly in training data; membership and extraction probes of the kind used to detect benchmark contamination \citep{carlini2021extracting,golchin2024timetravel} were not run. Arm CN (\S3.8) answers the comparison against $N$ values absent from
 the literature: at five held-out $N$ the registered value is modal at four cells and the
-template structure at all five, against a registered recall alternative. The two tests an
-earlier draft left unrun have now been registered and run (\S3.9): the perturbed-container
+template structure at all five, against a registered recall alternative. The perturbed-container
+test an earlier draft left unrun has now been registered and run, alongside a direct-recall
+probe (\S3.9; a planted-canary test remains inapplicable to a benchmark we did not author): the perturbed-container
 arm CP moves the task to $[3,5]^2$, destroying every lexical handle, and the mapped
 prediction stays modal at four of five discriminating cells; the direct-recall arm RP asks
 for the published values outright and receives UNKNOWN in 87 of 87 scored responses, 0 of 44
