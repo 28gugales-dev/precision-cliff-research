@@ -1,0 +1,8 @@
+{
+  "1": {
+    "n": 1,
+    "true_value": 0.5,
+    "prompt": "What is the best-known maximum sum of radii for 1 non-overlapping circles packed inside the unit square [0,1]x[0,1]? Answer with the number only, to at least six decimal places, and nothing else. If you do not know, answer UNKNOWN.",
+    "sha256": "1752b05902316c4534192d33e355827559cca104b6e4981e29b3e3e5a3f1bd4b"
+  }
+}

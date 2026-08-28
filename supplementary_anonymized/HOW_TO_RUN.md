@@ -88,6 +88,7 @@ freezes a JSON/TXT report beside the ledger.
 | 3.8 arm CN | `python arm_cn_analysis.py` | `arm_cn_collect.jsonl` | `arm_cn_report.json`, `arm_cn_scored.json` |
 | 3.9 arm CP (perturbed container) | `python arm_cp_analysis.py` (prompts/values: `python arm_cp_build.py`) | `arm_cp_collect.jsonl`, `arm_cp_prompts.json` | `arm_cp_report.json` |
 | 3.9 arm RP (direct recall) | `python arm_rp_analysis.py` (prompts/values: `python arm_rp_build.py`) | `arm_rp_collect.jsonl`, `arm_rp_prompts.json` | `arm_rp_report.json` |
+| 3.9 arm RP positive control (amendment 1) | `python arm_rp_control_analysis.py` | `arm_rp_control_collect.jsonl` | `arm_rp_control_report.json` |
 | 1.1 bound table, 4.2 rectangle, LP oracle | `python n_sweep_forecast.py`, `python rect_forecast.py` | none | `n_sweep_forecast.json`, `rect_forecast.json` |
 | 6.2 arm T, Table 3 | `python arm_t_analysis.py` | `arm_f_candidates_v2.jsonl` | stdout |
 | Figures 1, 3, 4 | `python fig_scripts.py` | ledgers above | `fig1_trapzones.png`, `fig2_packings.png`, `fig3_armT.png` |
