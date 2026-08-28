@@ -1,0 +1,38 @@
+ARM RP AMENDMENT 1 — POSITIVE CONTROL CELL — REGISTERED 2026-08-27, BEFORE SAMPLING
+
+MOTIVATION (response to a second-round review finding, disclosed). Arm RP returned
+UNKNOWN in 87 of 87 scored responses. That is consistent with absent recall, but also
+with an abstention prior induced by the prompt's own "If you do not know, answer
+UNKNOWN" option: the design had no cell where the model demonstrably CAN state a value
+under this exact prompt. This amendment adds that cell.
+
+CELL (one): N = 1. The optimum is elementary and certain: the single inscribed circle
+has radius 0.5, so the best-known (and provably optimal) maximum sum of radii is
+0.5000000. No scoreboard, no contested figure, no family/rival ambiguity. Any model
+willing to answer numerically under this prompt format can answer here.
+
+PROMPT. The registered arm-RP template verbatim with n = 1; SHA-256 recorded in
+arm_rp_prompts_control.json before sampling. Same channel as the main arm (weak-tier
+Task subagent, wrapper A.3, zero-shot, no tools), n = 15, one pass, runtime rejections
+excluded and counted.
+
+SCORING (arm_rp_control_analysis.py, committed with this file). A response ANSWERS if it
+parses as a single number within 2e-3 of 0.5; UNKNOWN and unparseable counted separately.
+The registered main-arm ledger and verdicts are untouched.
+
+COMPETING READINGS.
+  C-RP1 (compliance): ANSWERS in >= 8 of 15 scored responses. The abstention-prior
+    alternative is rejected: the model answers this prompt format when it has the value,
+    so the 87/87 UNKNOWN at scoreboard cells reflects absence of a statable value, and
+    the positive-control caveat in S3.9 is replaced by this result.
+  C-RP2 (format abstention): ANSWERS in <= 4 of 15. The abstention-prior alternative is
+    supported: UNKNOWN at scoreboard cells cannot be read as absent recall, and the
+    S3.9 caveat is strengthened to a confirmed confound.
+  5-7 ANSWERS: PARTIAL, reported with no claim; the caveat stands as written.
+
+STOPPING RULE. 15 invocations, one pass, scored once. This amendment governs only the
+control cell; no main-arm number changes under any outcome.
+
+WHAT THIS CANNOT SHOW. N = 1 is easier than any scoreboard cell in every respect, not
+only in recall; a pass here does not prove the model would answer at N = 26 if it knew
+the value, only that the prompt format itself does not force UNKNOWN.
