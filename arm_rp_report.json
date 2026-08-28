@@ -1,0 +1,84 @@
+{
+  "cells": {
+    "13": {
+      "n": 13,
+      "kind": "scoreboard",
+      "scored": 14,
+      "runtime_rejections": 1,
+      "RECALLS": 0,
+      "FAMILY": 0,
+      "UNKNOWN": 14,
+      "UNPARSEABLE": 0,
+      "OTHER": 0,
+      "distinct_values": []
+    },
+    "26": {
+      "n": 26,
+      "kind": "scoreboard",
+      "scored": 15,
+      "runtime_rejections": 0,
+      "RECALLS": 0,
+      "FAMILY": 0,
+      "UNKNOWN": 15,
+      "UNPARSEABLE": 0,
+      "OTHER": 0,
+      "distinct_values": []
+    },
+    "30": {
+      "n": 30,
+      "kind": "scoreboard",
+      "scored": 15,
+      "runtime_rejections": 0,
+      "RECALLS": 0,
+      "FAMILY": 0,
+      "UNKNOWN": 15,
+      "UNPARSEABLE": 0,
+      "OTHER": 0,
+      "distinct_values": []
+    },
+    "50": {
+      "n": 50,
+      "kind": "held_out",
+      "scored": 14,
+      "runtime_rejections": 1,
+      "RECALLS": 0,
+      "FAMILY": 0,
+      "UNKNOWN": 14,
+      "UNPARSEABLE": 0,
+      "OTHER": 0,
+      "distinct_values": []
+    },
+    "62": {
+      "n": 62,
+      "kind": "held_out",
+      "scored": 14,
+      "runtime_rejections": 1,
+      "RECALLS": 0,
+      "FAMILY": 0,
+      "UNKNOWN": 14,
+      "UNPARSEABLE": 0,
+      "OTHER": 0,
+      "distinct_values": []
+    },
+    "75": {
+      "n": 75,
+      "kind": "held_out",
+      "scored": 15,
+      "runtime_rejections": 0,
+      "RECALLS": 0,
+      "FAMILY": 0,
+      "UNKNOWN": 15,
+      "UNPARSEABLE": 0,
+      "OTHER": 0,
+      "distinct_values": []
+    }
+  },
+  "pooled": {
+    "recalls_scoreboard": 0,
+    "scoreboard_n": 44,
+    "family_rate_scoreboard": 0.0,
+    "family_rate_held_out": 0.0,
+    "asymmetry_pp": 0.0,
+    "verdict": "P-RP1"
+  }
+}
