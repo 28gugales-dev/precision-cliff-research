@@ -679,7 +679,9 @@ mapped rival (two at $N = 13$, two at $N = 21$), a higher rate than the original
 3 in 186 --- where anchoring holds it concentrates slightly less tightly in the offset
 frame, and this is reported as registered. The falsifier F-CP1 (lexical keying) did not
 fire: the closed form names the modal output in a container the training text never
-phrased this way.
+phrased this way. One handle survives by construction: $N$ itself, the index any memorized
+table would be keyed by --- the arm removes the benchmark's phrasing and magnitudes, not
+the instance identifier.
 
 \textbf{Arm RP} asks the recall question outright: ``What is the best-known maximum sum
 of radii for $\{n\}$ non-overlapping circles packed inside the unit square?'', answer as
@@ -690,11 +692,16 @@ held-out cells ($N = 50$, $62$, $75$). Result: \textbf{every one of the 87 score
 responses answers UNKNOWN} --- 0 of 44 scoreboard-cell responses recall a published value
 (bar for the recall branch P-RP2: $\ge 10$), zero state a family value, zero state
 anything else; three invocations were runtime-rejected and counted. P-RP1
-\textbf{confirmed} with the family-rate asymmetry trivially zero. The weak tier that
-emits $V(k^*, m)$ to seven decimals when asked to \emph{pack} cannot state a single
-scoreboard value when asked to \emph{recall} one --- the simplest recall mechanism does
-not survive its easiest test. As registered: a model that fails to state a value may
-still have been shaped by it; this bounds the simplest mechanism only. Raw rows in
+\textbf{confirmed} with the family-rate asymmetry trivially zero, and the registered
+falsifier F-RP1 (P-RP2 satisfied) did not fire. The weak tier that
+emits $V(k^*, m)$ to seven decimals when asked to \emph{pack} states no
+scoreboard value when asked to \emph{recall} one --- the simplest recall mechanism finds
+no support at its easiest test. Two caveats, the second beyond the registration: as
+registered, a model that fails to state a value may still have been shaped by it (this
+bounds the simplest mechanism only); and the design carries no positive control --- no
+cell where the model demonstrably \emph{can} state a known value under this prompt --- so
+uniform UNKNOWN is also consistent with an abstention prior induced by offering the
+UNKNOWN option. Raw rows in
 \texttt{arm\_cp\_collect.jsonl} and \texttt{arm\_rp\_collect.jsonl}; frozen reports
 \texttt{arm\_cp\_report.json}, \texttt{arm\_rp\_report.json}. These two arms bring the
 study corpus to 843 invocations.

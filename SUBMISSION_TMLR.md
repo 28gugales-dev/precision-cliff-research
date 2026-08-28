@@ -457,3 +457,13 @@ variants + Appendix D.9), S8, abstract, arm table, deviations table, corpus arit
 target -- new data section, user's call to trim). Fresh-eyes diff verifier re-scored both
 ledgers independently and confirmed registration ancestry; 4.8b fixed one stale "unrun"
 line and scoped the canary-test wording. Numeric coverage 321/321.
+
+### Revision 4.8c (2026-08-27, tag `v4.8c-second-round`)
+Second-round simulated review of 4.8b: RECOMMENDATION UP to leaning accept -- criticals
+1-4 verified RESOLVED with quotes, 5 PARTIAL, both minors resolved. All four remaining
+blockers fixed: standalone Artifact-availability bullet in S9 (public-remote anonymity
+addressed); abstract "erases every lexical handle" softened to "removes the benchmark's
+phrasing and magnitudes" + N-as-retrieval-key caveat added to S3.9/D.9; RP
+positive-control caveat (abstention-prior alternative) + F-RP1 stated in text; S9
+Registration and Stopping-rule bullets updated for CP/RP; contribution 5 flags the
+looser offset-frame strong form (4/61). Main 36 pp, short 39 pp; coverage 321/321.

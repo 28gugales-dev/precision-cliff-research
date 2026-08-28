@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  27 AUG 2026 20:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.12)  27 AUG 2026 20:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -587,9 +587,9 @@ Package microtype Info: Loading generic protrusion settings for font family
 [2{C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.en
 c}] [3]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 174.
+(Font)              <8> on input line 175.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 174.
+(Font)              <6> on input line 175.
 ) (sec_short_forecast_transfer.tex [4]
 Underfull \hbox (badness 10000) in paragraph at lines 17--17
 []|\T1/lmr/m/n/7 (+20) 3.2--
@@ -1183,28 +1183,25 @@ Underfull \vbox (badness 5008) has occurred while \output is active []
 <fig2_packings.png, id=714, 505.89pt x 187.902pt>
 File: fig2_packings.png Graphic file (type png)
 <use fig2_packings.png>
-Package pdftex.def Info: fig2_packings.png  used on input line 598.
+Package pdftex.def Info: fig2_packings.png  used on input line 604.
 (pdftex.def)             Requested size: 469.75499pt x 174.48326pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 608.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 608.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [31]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 614.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 614.
+
+
+Underfull \vbox (badness 4441) has occurred while \output is active []
 
  [32 <./fig2_packings.png>]
 <fig3_armT.png, id=725, 332.442pt x 216.81pt>
 File: fig3_armT.png Graphic file (type png)
 <use fig3_armT.png>
-Package pdftex.def Info: fig3_armT.png  used on input line 682.
+Package pdftex.def Info: fig3_armT.png  used on input line 688.
 (pdftex.def)             Requested size: 469.75499pt x 306.36378pt.
  [33]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1215,19 +1212,21 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [35]
 [36]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 8
-68.
+74.
  (C:\Users\soham\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-[37{C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}
-]
-Underfull \hbox (badness 6396) in paragraph at lines 923--937
+Underfull \vbox (badness 1708) has occurred while \output is active []
+
+ [37{C:/Users/soham/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc
+}]
+Underfull \hbox (badness 6396) in paragraph at lines 933--947
 \T1/lmtt/m/n/10 arm_f_candidates_v2.jsonl\T1/lmr/m/n/10 (+20) , \T1/lmtt/m/n/10
  arm_g_candidates.jsonl\T1/lmr/m/n/10 (+20) , \T1/lmtt/m/n/10 arm_m_collect.jso
 nl \T1/lmr/m/n/10 (+20) scored by
  []
 
-) [38] (main_short.aux)
+[38]) [39] (main_short.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -1236,8 +1235,8 @@ Package rerunfilecheck Info: File `main_short.out' has not changed.
 (rerunfilecheck)             Checksum: 28686978C92A7081A76C8518155560BC;18775.
  ) 
 Here is how much of TeX's memory you used:
- 14457 strings out of 467871
- 231654 string characters out of 5418376
+ 14458 strings out of 467871
+ 231661 string characters out of 5418376
  692359 words of memory out of 5000000
  42469 multiletter control sequences out of 15000+600000
  736312 words of font info for 326 fonts, out of 8000000 for 9000
@@ -1272,9 +1271,9 @@ ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/soham/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/soham/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/soham/AppDa
 ta/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on main_short.pdf (38 pages, 1122190 bytes).
+Output written on main_short.pdf (39 pages, 1124451 bytes).
 PDF statistics:
- 935 PDF objects out of 1000 (max. 8388607)
- 176 named destinations out of 1000 (max. 500000)
+ 939 PDF objects out of 1000 (max. 8388607)
+ 177 named destinations out of 1000 (max. 500000)
  56845 words of extra memory for PDF output out of 61914 (max. 10000000)
 

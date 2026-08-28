@@ -572,7 +572,9 @@ alternative P-CP2, and the structural secondary S-CP2 holds at 5 of 5 cells ($k 
 majority). The strong form S-CP1 (rival-argmax emissions $\le 1$) is \textbf{not met}:
 4 of 61 discriminating-cell validities emit the mapped rival (two at $N = 13$, two at
 $N = 21$), a higher rate than the original frame's 3 in 186; reported as registered.
-The falsifier F-CP1 (lexical keying) did not fire.
+The falsifier F-CP1 (lexical keying) did not fire. One handle survives by construction:
+$N$ itself, the index any memorized table would be keyed by --- the arm removes the
+benchmark's phrasing and magnitudes, not the instance identifier.
 
 \textbf{Arm RP} asks the recall question outright: ``What is the best-known maximum sum
 of radii for $\{n\}$ non-overlapping circles packed inside the unit square?'', answer as
@@ -583,9 +585,13 @@ held-out cells ($N = 50$, $62$, $75$). Result: \textbf{every one of the 87 score
 responses answers UNKNOWN} --- 0 of 44 scoreboard-cell responses recall a published value
 (bar for the recall branch P-RP2: $\ge 10$), zero state a family value, zero state
 anything else; three invocations were runtime-rejected and counted. P-RP1
-\textbf{confirmed} with the family-rate asymmetry trivially zero. As registered: a model
-that fails to state a value may still have been shaped by it; this bounds the simplest
-recall mechanism only. Raw rows in \texttt{arm\_cp\_collect.jsonl} and
+\textbf{confirmed} with the family-rate asymmetry trivially zero, and the registered
+falsifier F-RP1 (P-RP2 satisfied) did not fire. Two caveats, the second beyond the
+registration: as registered, a model that fails to state a value may still have been
+shaped by it (this bounds the simplest mechanism only); and the design carries no
+positive control --- no cell where the model demonstrably \emph{can} state a known value
+under this prompt --- so uniform UNKNOWN is also consistent with an abstention prior
+induced by offering the UNKNOWN option. Raw rows in \texttt{arm\_cp\_collect.jsonl} and
 \texttt{arm\_rp\_collect.jsonl}; frozen reports \texttt{arm\_cp\_report.json},
 \texttt{arm\_rp\_report.json}.
 
@@ -886,6 +892,10 @@ predicts.
   commit \texttt{69a1642}, pushed before sampling) was registered after the rest of the manuscript was
   complete, in response to a pre-submission check; its motivation is post-hoc with respect to the paper's results and is
   disclosed in the registration, and its predictions were fixed before its first invocation.
+  Arms CP and RP (\texttt{arm\_cp\_preregistration.txt}, \texttt{arm\_rp\_preregistration.txt},
+  each with its prompt-hash JSON and analysis script, commit \texttt{105e8b7}, pushed before
+  the first invocation) were drafted at review stage and registered together; RP's one
+  draft-to-registration cell change ($N = 32 \rightarrow 30$) is documented in its registration.
   The rectangle transfer was registered before
   collection and never refitted. On multiplicity: this study now spans many registered arms, and no
   correction across arms is applied --- each arm's predictions were registered with its own
@@ -949,8 +959,15 @@ predicts.
   released ledger; thirty-two claims were corrected as a result, itemized in the supplementary
   \texttt{corrections\_ledger.md}. This is quality assurance, not peer review, and carries no
   external authority.
+\item \textbf{Artifact availability.} The complete artifact --- raw ledgers, analysis and
+  reproduction scripts, LP oracle, every preregistration and amendment, frozen reports,
+  corrections ledger --- accompanies this submission as anonymized supplementary material;
+  every number regenerates via \texttt{HOW\_TO\_RUN.md}. The working repository is a public
+  remote whose hashes are quoted for ancestry checking; unlinked here for anonymity, linked
+  in any camera-ready.
 \item \textbf{Stopping rule.} The manuscript closed after implementing the internal-check
-  findings; no further data-dependent analysis was performed. Arms CC, CC2 and CCS (\S3.7) and CN (\S3.8)
+  findings; no further data-dependent analysis was performed. Arms CC, CC2 and CCS (\S3.7), CN (\S3.8),
+  and CP and RP (\S3.9)
   were each registered, run and scored once under their own preregistrations after that
   close; each analysis script was committed before its sampling and not modified after. Analyses named but
   not run --- the one-parent mutation arm, the recipe-family choice probe, the empirical-$k$
