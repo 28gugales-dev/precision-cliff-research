@@ -1,0 +1,85 @@
+ARM CCP (math-only program prompt on the pinned path at 120 seconds, Sonnet tier)
+PREREGISTRATION -- committed and pushed BEFORE any sampling. 2026-09-02.
+
+PROVENANCE DECLARATION (registered, same conventions as arms CC, CL)
+- Post-review-motivated, disclosed as such. Two outside reads of the
+  round-13 draft made the same objection: the paper's headline contrast
+  (Sonnet math-only 0 of 37, arm CCS, agent runtime, 10-second timeout;
+  Sonnet numpy/scipy 23 of 25, arm CL, pinned API, 120-second timeout)
+  changes the serving path and the execution budget together with the
+  import allowlist, so the design does not isolate the library. The paper
+  says so in sections 1, 3.2, 3.5 and 7 and names this arm as the next
+  registration. This arm holds serving path and budget at arm CL's and
+  removes only the libraries.
+- Drafted by the same session agent (an LLM) that runs the study pipeline.
+  No independent human authorship is claimed. External timestamp = this git
+  commit pushed to the public remote (28gugales-dev/precision-cliff-research)
+  BEFORE the first proposer invocation.
+- Written with arm CL's result known. Either outcome is reportable and the
+  integration rule below fixes how each is written before it is known.
+
+DESIGN
+- Prompt: arm CC's registered math-only program prompt, BYTE-IDENTICAL,
+  frozen with its CC hashes in arm_ccp_prompts.json (arm_ccp_build.py
+  asserts the hashes at build time; the runner re-asserts before every
+  call). This is the prompt arms CC, CC2 and CCS used. Arm CCS sent it
+  through the agent runtime with the runtime's dispatch wrapper ("Do not
+  use any tools. ..."); this arm, like arm CL, sends the bare prompt as the
+  single user turn on the pinned path. The one-line difference from arm
+  CL's prompt is the allowlist clause: "may import only the standard-library
+  module math" here, "may import only the modules math, numpy and scipy"
+  there.
+- Model and path: anthropic/claude-sonnet-4.5 via OpenRouter
+  chat-completions (arm CL's Sonnet tier, same alias); served alias logged
+  per row. Decoding: temperature 1.0 (pinned), top_p/top_k not set,
+  max_tokens 16384, no system prompt. One user turn.
+- Cells: N = 13, 21, 31. n = 15 per cell, 45 invocations. Retries on
+  429/5xx only, up to 3, as arm CL. A row whose call fails on HTTP 402
+  (credit) is retried on a resumed run rather than counted; the run stops
+  launching new calls once a 402 is seen so that the ledger never holds a
+  short arm silently. Resume, if any, is disclosed in the report with the
+  timestamps of the two segments.
+- Execution and scoring (arm_ccp_analysis.py, committed with this
+  registration): arm CL's registered pipeline, imported unmodified, with the
+  import allowlist set to arm CC's (math only). numpy/scipy imports are
+  rejected by the AST gate and binned blocked_import, as arm CC does.
+  python -I -S under arm CL's fixed driver, 120-second wall clock (arm
+  CL's, deliberately: the budget is one of the two factors being held), one
+  CPU core, no network. Stdout parsed with arm-F conventions; validity at
+  1e-6 and 1e-9 both reported; clearance by section 2.4's rule (valid at
+  1e-9 AND sum > family argmax + 1e-6, argmax in closed form: 1.776142375,
+  2.258883476, 2.748528137).
+- Failure taxonomy, one bin per row: no_program, blocked_import,
+  forbidden_name, timeout, exec_error, stdout_parse_fail, geom_invalid,
+  valid.
+- Evaluability floor: 5 valid per cell, as arm CL; a cell under the floor
+  is reported and claims nothing.
+
+REGISTERED PREDICTIONS (competing)
+- P-CCP1 (the library is what clears; path and budget do not): no valid
+  output clears the family at any cell.
+- P-CCP2 (path and/or budget, not the library, explain arm CL): clearance
+  at >= 20% of valid outputs at >= 2 of 3 scoreable cells.
+- Middle outcomes (clearance at exactly 1 cell, or below 20% everywhere)
+  are reported as neither and read only by comparison with arm CL's
+  per-cell rates (7 of 9, 11 of 11, 5 of 5).
+
+FALSIFIER
+- F-CCP1: P-CCP2 holds. Consequence, written now: contribution 1 retreats
+  to "a Sonnet-tier program clears the family on the pinned path at 120
+  seconds with or without libraries"; the title's question is answered
+  "capability plus budget", not "the optimizer"; Table 2 gains this row
+  above the library row; the abstract's library sentence is rewritten to
+  say so.
+
+INTEGRATION RULE (registered)
+- One row in Table 1 (registrations) and one in Table 2 (tier x channel),
+  Sonnet / math-only program / pinned API, whichever way it goes.
+- Reported in section 3.5 beside arm CL. The "design does not isolate the
+  library" sentences in sections 1, 3.2, 3.5 and 7 are replaced by this
+  arm's result, not deleted; the 10 s vs 120 s disclosure stays.
+- If P-CCP1 holds, the 0 of 37 (CCS) and this arm's 0 of N are reported as
+  two cells, not pooled: different path and budget.
+- The corpus running total in the ladder table (Appendix G) gains this arm.
+- Pooled 290 (now 281 at 1e-9) unchanged in either direction; this arm is
+  reported by name beside it.
