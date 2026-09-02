@@ -96,7 +96,7 @@
     graphError: null,
     views: {},           // viewId -> {nodes, links, byId, sim, layers, zoom}
     selected: {},        // viewId -> node id
-    modes: { paper1: 'network', paper2: 'network' },  // viewId -> 'network' | 'flow'
+    modes: { paper1: 'network' },  // viewId -> 'network' | 'flow'
     subOpen: {},         // viewId -> summary expanded? (in-memory only)
     expanded: false,     // fullscreen-ish stage
     query: ''
@@ -1219,7 +1219,7 @@
   var ABOUT_HTML = [
     '<header class="about-hero">',
     '<h2>Precision-cliff research programme</h2>',
-    '<p class="about-lede">Two companion papers on what an LLM proposal is actually made of: the template the model emits, and the served precision behind it. Both run on the same benchmark — circle packing, scored by an exact local evaluator rather than a judge — so every source of variance sits on the model side of the interface.</p>',
+    '<p class="about-lede">A paper on what an LLM proposal is actually made of: the template the model emits when it is not told to search. It runs on circle packing, scored by an exact local evaluator rather than a judge, so every source of variance sits on the model side of the interface.</p>',
     '<p class="about-byline">Soham Shailesh Gugale · Independent researcher · <a href="mailto:28gugales@gmail.com">28gugales@gmail.com</a></p>',
     '</header>',
 
@@ -1231,29 +1231,21 @@
     '<p class="paper-links"><a href="paper1.pdf" target="_blank" rel="noopener">Read the paper (PDF)</a> · <a href="https://github.com/28gugales-dev/precision-cliff-research" target="_blank" rel="noopener">Code, ledgers &amp; preregistrations</a><span class="updated-tag" id="upd-p1"></span></p>',
     '</div>',
 
-    '<div class="card paper-card">',
-    '<div class="paper-tag">Paper 2 · under review at TMLR</div>',
-    '<h3>Served Precision Is Part of the Model</h3>',
-    '<p class="paper-sub">A quantization cliff in proposal variation, and the limits of alias-addressed study.</p>',
-    '<p>Quantizing a proposer\'s weights can leave every metric a discovery loop watches unchanged while collapsing the variation the loop depends on. Down a quantization ladder at 14B, viability and validity move by no amount detectable at n = 50 per rung, but at the 2-bit rung the proposer largely stops departing from its parent. Two registered outcomes carry the claim: an echo bound written into the runner before the run held on five never-sampled seeds at 79% (19/24) coordinate-verified parent-echo against 6% (1/17), and a must-differ probe returned coordinate-identical copies in 5 of 5 valid outputs under an explicit instruction not to copy. The failed proposals are coherent, well-formed near-copies, which is why every pass/fail instrument reports health. The cost is visible only at loop level: the 2-bit rung takes 1 accepted hill-climb step in 50 calls against 14–16 at the upper rungs, while final best score separates the rungs nowhere. The second half asks what this means for studies that address a model by alias, since served quantization is one of several serving-path variables an alias leaves unattested — and one the dependent measure is now known to be sensitive to. A forensic arm addressed only as <code>opus_alias</code> became untestable within six days: byte-identical prompts returned 30/30 valid against the original 4/30, so the hypothesis pair under test turned out to presuppose a stable referent it does not have. The paper closes with a repair protocol audited against itself, including one proposed instrument that was run on its own rows and withdrawn.</p>',
-    '<p class="paper-links"><a href="paper2.pdf" target="_blank" rel="noopener">Read the paper (PDF)</a> · <a href="https://github.com/28gugales-dev/precision-cliff-research" target="_blank" rel="noopener">Code, ledgers &amp; preregistrations</a><span class="updated-tag" id="upd-p2"></span></p>',
-    '</div>',
-
     '<div class="card">',
     '<h3>How to read the atlas</h3>',
     '<ul>',
-    '<li><b>Paper 1 atlas / Paper 2 atlas</b> put every arm, wave, control, analysis, extension and headline claim on the map as a node — 55 in total, with 87 directed edges between them.</li>',
+    '<li><b>Paper 1 atlas</b> puts every arm, wave, control, analysis, extension and headline claim on the map as a node — 28 in total, with 42 directed edges between them.</li>',
     '<li><b>Network or Flowchart.</b> Network is a force layout, good for seeing clusters. Flowchart lays the same nodes out left to right by dependency: anything with no prerequisite starts in the first column, everything else sits one column past its deepest prerequisite.</li>',
     '<li><b>Click any node</b> for its design, result, verdict and caveats, plus a lineage strip of what fed it and what it fed. Verdicts are colour-coded — green held, red disconfirmed, amber partial, grey descriptive. Node colour and shape encode kind; claim nodes are larger and gold.</li>',
     '<li><b>Edges are typed</b>: <i>feeds</i> and <i>informs</i> for supply of evidence, <i>controls_for</i> for a probe that bounds a result, <i>replicates</i>, <i>extends</i> and <i>scopes</i> for reach, <i>contrasts_with</i> and <i>disconfirms</i> for tension. Hover an edge to read the annotation behind it.</li>',
-    '<li><b>Concept graph</b> shows 178 concepts auto-extracted across both papers, coloured by community, with edge opacity tracking extraction confidence. It is a reading aid, not a result.</li>',
+    '<li><b>Concept graph</b> shows 82 concepts auto-extracted from the paper, coloured by community, with edge opacity tracking extraction confidence. It is a reading aid, not a result.</li>',
     '<li><b>Search</b> filters the active view — matches stay lit, the rest dims. <b>Expand</b> takes the graph full-window (Esc to leave); <b>Reset view</b> restores the default zoom. Scroll to zoom, drag the background to pan, drag a node to pin it somewhere else.</li>',
     '</ul>',
     '</div>',
 
     '<div class="card">',
     '<h3>Provenance</h3>',
-    '<p>Every figure on this map traces to a released script and a raw ledger row. Preregistrations are git ancestors of the sampling they govern, so the registration date is checkable rather than asserted — the full repository, including every ledger, replay script and preregistration, is public at <a href="https://github.com/28gugales-dev/precision-cliff-research" target="_blank" rel="noopener">github.com/28gugales-dev/precision-cliff-research</a>. Prose in both papers was model-assisted under the author\'s direction and disclosed there.</p>',
+    '<p>Every figure on this map traces to a released script and a raw ledger row. Preregistrations are git ancestors of the sampling they govern, so the registration date is checkable rather than asserted — the full repository, including every ledger, replay script and preregistration, is public at <a href="https://github.com/28gugales-dev/precision-cliff-research" target="_blank" rel="noopener">github.com/28gugales-dev/precision-cliff-research</a>. Prose in the paper was model-assisted under the author\'s direction and disclosed there.</p>',
     '<p class="muted small">This atlas is generated from two data files: <code>arms.json</code>, the per-paper experiment ledger, and <code>graph.json</code>, a node-link export of the extracted concept graph. Both load at runtime.</p>',
     '<p id="about-status" class="muted small"></p>',
     '</div>',
@@ -1292,11 +1284,6 @@
       u1.textContent = 'PDF updated ' + updWhen('paper1_pdf_updated') +
         (updWhen('paper1_revision') ? ' (' + updWhen('paper1_revision') + ')' : '');
     }
-    var u2 = document.getElementById('upd-p2');
-    if (u2 && updWhen('paper2_pdf_updated')) {
-      u2.textContent = 'PDF updated ' + updWhen('paper2_pdf_updated') +
-        (updWhen('paper2_revision') ? ' (' + updWhen('paper2_revision') + ')' : '');
-    }
     var us = document.getElementById('upd-site');
     if (us && updWhen('site_updated')) {
       us.textContent = 'site updated ' + updWhen('site_updated');
@@ -1312,7 +1299,7 @@
     hideLinkTip();
     clearSelection(viewId);
 
-    var isPaper = (viewId === 'paper1' || viewId === 'paper2');
+    var isPaper = (viewId === 'paper1');
     el.viewmode.classList.toggle('hidden', !isPaper);
     if (isPaper) {
       var mode = state.modes[viewId] || 'network';
@@ -1334,11 +1321,11 @@
         return;
       }
       el.stageSub.textContent = model.nodes.length + ' concepts · ' + model.links.length +
-        ' edges · 12 communities. Colour is community, opacity is extraction confidence.';
+        ' edges · 5 communities. Colour is community, opacity is extraction confidence.';
       stampTitle(updWhen('graph_updated'));
     } else {
       var meta = paperMeta(viewId);
-      el.stageTitle.textContent = (viewId === 'paper1' ? 'Paper 1 atlas' : 'Paper 2 atlas');
+      el.stageTitle.textContent = 'Paper 1 atlas';
       model = buildAtlasModel(viewId);
 
       if (!model) {
