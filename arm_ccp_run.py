@@ -39,7 +39,11 @@ TEMPERATURE = 1.0
 MAX_TOKENS = 16384
 CALL_TIMEOUT = 300
 INTRA_GROUP_SPACING_S = 3
-MAX_GROUP_WORKERS = 3
+# Was 3 for rows 1-23 (2026-09-02 19:22-19:23 UTC). OpenRouter then refused new calls with 402
+# "in_flight_budget_exhausted": three concurrent 16384-token reservations exceeded the
+# account's remaining credit, which was not itself exhausted. Set to 1 for the resumed run
+# so one reservation at a time fits; the request body, prompt and decoding are unchanged.
+MAX_GROUP_WORKERS = 1
 MAX_RETRIES = 3  # on 429/5xx
 
 _data = json.loads(PROMPTS_PATH.read_text(encoding="utf-8"))
