@@ -70,7 +70,9 @@ def main():
         if c["valid_1e6"] >= HI:
             s_pd1[cond] = {"modal_is_anchor": c["modal_valid_value"] is not None and abs(c["modal_valid_value"] - ANCHOR) < WINDOW,
                            "on_prediction": f"{c['on_prediction']}/{c['valid_1e6']}"}
-    report["verdict"] = verdict + ("" if full else " (INTERIM: sampling incomplete)")
+    # amendment 1 (arm_pd_amendment1_closed_at_27.md): the arm is closed at 27 of 30 rows; the
+    # three refusals stay in the ledger and the verdict, which they could not change, is final.
+    report["verdict"] = verdict + ("" if full else " (closed at 27 of 30 rows, amendment 1)")
     report["S-PD1"] = s_pd1 or "no condition reached 8 valid"
     print("VERDICT:", report["verdict"], "| S-PD1:", report["S-PD1"])
     (HERE / "arm_pd_report.json").write_text(json.dumps(report, indent=1), encoding="utf-8")

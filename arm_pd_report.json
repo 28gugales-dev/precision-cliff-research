@@ -365,7 +365,7 @@
    "reasoning_len": 0
   }
  ],
- "verdict": "P-PD1 holds: the reasoning budget is the cause (INTERIM: sampling incomplete)",
+ "verdict": "P-PD1 holds: the reasoning budget is the cause (closed at 27 of 30 rows, amendment 1)",
  "S-PD1": {
   "D1": {
    "modal_is_anchor": true,
