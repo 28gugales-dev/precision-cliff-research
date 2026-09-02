@@ -1,3 +1,8 @@
+STATUS UPDATE 2026-09-02 (later the same day)
+- ARM CCP: registered as arm_ccp_preregistration.txt (commit ebf213e), run, scored: 35 valid of 45, 0 clear, none at the argmax. P-CCP1 holds.
+- ARM CL-W: registered as arm_clw_preregistration.txt (commit f73222a) at 45 invocations (credit-limited from the 90 drafted below), run, scored pooled with arm CL: 0 of 19 clear (Wilson upper 16.8%), lenient reading 4 of 41. P-CLW1 holds.
+- ARM P-D: NOT registered, NOT run; needs OpenRouter credit (about 30 Haiku calls with extended thinking). The draft below stands.
+
 ROUND 14 REGISTRATIONS -- DRAFT, NOT YET REGISTERED
 ====================================================
 Status: drafted 2026-09-02 after an outside review of the round-13 draft. None of the three

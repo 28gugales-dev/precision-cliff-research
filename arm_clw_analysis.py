@@ -67,12 +67,26 @@ def main():
     print(f"scoring {len(old)} arm CL weak rows + {len(new)} CL-W rows, 120 s, 4 workers")
     with ThreadPoolExecutor(max_workers=4) as ex:
         scored = list(ex.map(lambda r: score_both(r["raw"], r["n"]), rows))
-    report = {"pooling": "arm CL weak tier + CL-W, registered before CL-W sampled", "cells": {}, "per_ledger": {}}
+    report = {"pooling": "arm CL weak tier + CL-W, registered before CL-W sampled", "cells": {}, "per_ledger": {},
+              "rows": [dict(ledger=r["source_ledger"], n=r["n"], sample_id=r["sample_id"], bin=s["bin"],
+                            sum=s.get("sum"), valid_1e9=s.get("valid_1e9"), cleared=s.get("cleared"),
+                            lenient=s.get("lenient")) for r, s in zip(rows, scored)]}
     for ledger in ("arm_cl_collect.jsonl", "arm_clw_collect.jsonl"):
         sc = [s for r, s in zip(rows, scored) if r["source_ledger"] == ledger]
         report["per_ledger"][ledger] = {"sampled": len(sc), "bins": dict(Counter(s["bin"] for s in sc)),
                                         "valid": sum(s["bin"] == "valid" for s in sc),
-                                        "cleared": sum(s.get("cleared", False) for s in sc)}
+                                        "cleared": sum(s.get("cleared", False) for s in sc),
+                                        "by_cell": {str(n): {"bins": dict(Counter(s["bin"] for r, s in zip(rows, scored)
+                                                                                  if r["source_ledger"] == ledger and r["n"] == n)),
+                                                             "valid": sum(s["bin"] == "valid" for r, s in zip(rows, scored)
+                                                                          if r["source_ledger"] == ledger and r["n"] == n),
+                                                             "lenient_valid": sum(1 for r, s in zip(rows, scored)
+                                                                                  if r["source_ledger"] == ledger and r["n"] == n
+                                                                                  and s["lenient"] and s["lenient"]["bin"] == "valid"),
+                                                             "lenient_cleared": sum(1 for r, s in zip(rows, scored)
+                                                                                    if r["source_ledger"] == ledger and r["n"] == n
+                                                                                    and s["lenient"] and s["lenient"].get("cleared"))}
+                                                    for n in CELLS}}
     pv = pc = lv = lc = 0
     for n in CELLS:
         sc = [s for r, s in zip(rows, scored) if r["n"] == n]
@@ -89,6 +103,7 @@ def main():
             "sums": sorted(s["sum"] for s in valid), "cleared_sums": sorted(s["sum"] for s in cleared),
             "lenient_recovered_valid": len(len_rec), "lenient_recovered_cleared": len(len_clear),
             "lenient_recovered_sums": sorted(s["sum"] for s in len_rec),
+            "lenient_recovered_cleared_sums": sorted(s["sum"] for s in len_clear),
         }
         print(f"n={n}: sampled {len(sc)}, bins {dict(Counter(s['bin'] for s in sc))}, valid {len(valid)}, "
               f"cleared {len(cleared)}; lenient +{len(len_rec)} valid, +{len(len_clear)} clear")
