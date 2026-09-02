@@ -3,7 +3,7 @@
     {
       "id": "paper1",
       "title": "Capability or Optimizer? What Lets an LLM Proposer Leave Its Template Family on Circle Packing",
-      "claim": "Zero-shot LLM proposers on circle packing concentrate on a grid-plus-filler family whose best value follows in closed form from N. We cross two proposer tiers with three output channels (direct emission, math-only code, code with numpy and scipy) and ask what lets a proposer leave that family. One cell clears at rate. A Sonnet-tier program with the libraries beats the family in 23 of 25 valid cases at every cell, median margin 3.6%, best per cell 2.5–4.2%, below the published bounds where they exist. A weak-tier program with the same libraries clears 0 of 11 (0 of 6 above its evaluability floor); a Sonnet-tier program without them clears 0 of 37, on a different serving path and execution budget that the design does not isolate. Every weak-tier trap cell is 0; and 0 of 290 valid outputs across six math-only, held-out and conditioned arms clear. Handed the better construction and its score, the weak tier keeps the template modal at 2 of 3 cells; a post-hoc attempt count shows it reaching for the better construction in 36 of 45 invocations and building it in 6 of 14. The bottleneck is execution, not preference. The zero-shot characterization does not survive one parent-conditioning step, five loop generations, or a change of serving path. Twenty-two preregistered arms, all reported."
+      "claim": "Zero-shot LLM proposers on circle packing concentrate on a grid-plus-filler family whose best value follows in closed form from N. We cross two proposer tiers with three output channels (direct emission, math-only code, code with numpy and scipy) and ask what lets a proposer leave that family. One cell clears at rate: a Sonnet-tier program with the libraries beats the family in 23 of 25 valid cases at every cell, median margin 3.6%, best per cell 2.5-4.2%, below the published bounds where they exist. A weak-tier program with the same libraries clears 0 of 19 valid across 90 invocations under the registered parser, an upper bound of 16.8% against the registered 20% bar; a post-hoc lenient reparse of its malformed outputs, which print numpy scalars, reads 4 of 41. A Sonnet-tier program without them clears 0 of 37 on the agent runtime; on the library arm's own serving path and 120-second budget it clears 0 of 35 and never reaches the argmax, so within the Sonnet tier the library, not the path or the budget, is what clears the family. Every weak-tier trap cell is 0 under the registered scoring, and 0 of 290 valid outputs across six math-only, held-out and conditioned arms clear. Handed the better construction and its score, the weak tier keeps the template modal at 2 of 3 cells; a post-hoc attempt count shows it reaching for the better construction in 36 of 45 invocations and building it in 6 of 14. The bottleneck is execution, not preference. The zero-shot characterization does not survive one parent-conditioning step, five loop generations, or a change of serving path. Twenty-four registered arms are reported, whichever way each went."
     }
   ],
   "arms": [
@@ -465,6 +465,22 @@
       "kind": "extension",
       "design": "Program-emitting proposals allowed numpy and scipy, two tiers (Haiku, Sonnet) x 3 N x 15, 90 invocations, registered at corpus commit aa473ad before sampling. P-CL1: no valid output clears the family argmax. P-CL2: at least 20% do. F-CL1: the ceiling falls at every cell for a tier, which triggers a registered integration rule for the abstract, the title and the pooled ceiling.",
       "result": "Weak tier: 0 of 11 valid clear, P-CL1 holds. Sonnet tier: 23 of 25 valid clear at 3 of 3 cells, by 2.5-4.2%, F-CL1 fired. Sonnet's best per cell sits 0.5% (N = 13) and 0.9% (N = 21) below the published best-known sums. The family ceiling is a property of the math-only channel; it is not a bound on library-enabled search. Corpus 1383."
+    },
+    {
+      "id": "p1_arm_ccp",
+      "paper": "paper1",
+      "label": "Arm CCP - the isolating arm (math-only prompt, pinned path, 120 s, Sonnet)",
+      "kind": "extension",
+      "design": "Arm CC's math-only program prompt, byte-identical, on arm CL's serving path (Sonnet via the pinned API, temperature 1.0, no system prompt) under arm CL's 120-second budget, numpy/scipy blocked by the AST gate. 3 N x 15 = 45 invocations, registered at corpus commit ebf213e and pushed before the first call. P-CCP1: no valid output clears (the library is what clears). P-CCP2: clearance at 20% or more of valid at 2 of 3 cells (path or budget explain arm CL). F-CCP1 rewrites contribution 1 if P-CCP2 holds.",
+      "result": "35 valid of 45 (10, 14, 11 by cell), 0 clear, none reaches the argmax; best per cell 1.625, 2.1, 2.673 - at N = 13 and 21 the template anchor itself. P-CCP1 holds. Within the Sonnet tier the library, not the path or the budget, is what clears the family. Corpus 1428."
+    },
+    {
+      "id": "p1_arm_clw",
+      "paper": "paper1",
+      "label": "Arm CL-W - weak-tier numpy/scipy top-up, pooled with arm CL",
+      "kind": "extension",
+      "design": "Arm CL's weak-tier prompt byte-identical, same path and decoding, 45 more invocations (credit-limited from a drafted 90, disclosed), pooled with arm CL's 45 under a rule fixed before sampling (commit f73222a). Two readings per row registered in advance: the registered parser (primary) and a lenient reading that strips the numpy scalar wrapper np.float64(...) the weak tier prints, which the registered parser rejects. P-CLW1: 0 clear. P-CLW2: 20% or more clear. Dead zone between.",
+      "result": "Pooled 90: 19 valid (6, 3, 10 by cell), 0 clear under the registered parser, Wilson 95% upper bound 16.8%, so the weak library cell now excludes the registered 20% bar (the N = 21 cell stays under the five-valid floor). Lenient reading: 41 valid, 4 clear (9.8%, upper bound 22.5%), inside the dead zone. The weak tier clears never under the registered parser and rarely under the lenient one; not at rate under either. Corpus 1473."
     }
   ],
   "links": [
@@ -743,6 +759,24 @@
       "target": "p1_arm_ccs",
       "type": "extends",
       "note": "Same Sonnet tier, same cells, libraries allowed: 0/37 clear in CCS becomes 23/25 clear in CL."
+    },
+    {
+      "source": "p1_arm_ccp",
+      "target": "p1_arm_cl",
+      "type": "contrasts_with",
+      "note": "Same path, same budget, no libraries: 0 of 35 against 23 of 25. The library is the factor within the Sonnet tier."
+    },
+    {
+      "source": "p1_arm_ccp",
+      "target": "p1_arm_ccs",
+      "type": "extends",
+      "note": "Same math-only prompt moved from the agent runtime (10 s) to the pinned path (120 s): 0 of 37 stays 0 of 35."
+    },
+    {
+      "source": "p1_arm_clw",
+      "target": "p1_arm_cl",
+      "type": "extends",
+      "note": "Weak-tier top-up pooled with arm CL under a pre-stated rule: 0 of 19 registered, 4 of 41 lenient."
     }
   ]
 }
