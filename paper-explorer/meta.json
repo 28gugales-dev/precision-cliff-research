@@ -1,7 +1,7 @@
 {
   "site_updated": "2026-09-02",
   "paper1_pdf_updated": "2026-09-02",
-  "paper1_revision": "Revision 5.14e (round 14: arms CCP, CL-W, P-D interim; twenty-five arms, 49 pp), 2026-09-02",
+  "paper1_revision": "Revision 5.15 (round 15: cut by thread; elicitation, rectangle, cross-vendor detail, arm M extend branch and the pooled-zero table moved to a supplement PDF; twenty-five arms, 35 pp + 12 pp supplement), 2026-09-02",
   "arms_updated": "2026-09-02",
   "graph_updated": "2026-08-18",
   "deploy": "git: push to main deploys (root paper-explorer)"
