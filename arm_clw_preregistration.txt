@@ -1,0 +1,76 @@
+ARM CL-W (weak-tier numpy/scipy top-up, pooled with arm CL's weak tier)
+PREREGISTRATION -- committed and pushed BEFORE any sampling. 2026-09-02.
+
+PROVENANCE DECLARATION (registered, same conventions as arms CC, CL, CCP)
+- Post-review-motivated, disclosed. Arm CL's weak tier is 0 of 11 valid
+  programs clearing (0 of 6 at its one scoreable cell), Wilson 95% upper
+  bound 39%, and cannot exclude the registered 20% bar. Two outside reads
+  named the cell underpowered. This arm powers it.
+- Written with two things known, both disclosed: arm CL's result, and the
+  post-hoc lenient reparse of arm CL's 22 weak-tier stdout failures
+  (paper1-accept-loop/loop/cl_lenient_reparse.py, 2026-09-02), which found
+  every failure to be a numpy 2.x scalar repr (`np.float64(...)`), recovered
+  9 valid programs and 1 clearance at N = 13 (1.812531608). Because of that
+  finding, the lenient reading is registered HERE as a secondary reading of
+  every row, fixed before this arm samples; the registered parser stays
+  primary and decides the verdict.
+- Drafted by the same session agent (an LLM) that runs the study pipeline.
+  External timestamp = this commit pushed to the public remote
+  (28gugales-dev/precision-cliff-research) BEFORE the first invocation.
+- Budget note, disclosed: the draft of this arm (round14_registrations_DRAFT.txt)
+  said 90 invocations; the account's remaining credit after arm CCP allows
+  45, and 45 is what is registered. The pooled unit is therefore 90 rows
+  (45 arm CL + 45 CL-W), about 20 to 25 valid at arm CL's validity rate,
+  and the arm says now that per-cell counts may still sit under the floor;
+  the pooled 3-cell count is the registered unit.
+
+DESIGN
+- Prompt: arm CL's registered weak-tier prompt, BYTE-IDENTICAL (hashes
+  asserted against arm_cl_prompts.json by arm_clw_build.py and by the
+  runner before every call). Model and path: anthropic/claude-haiku-4.5 via
+  OpenRouter chat-completions, temperature 1.0, top_p/top_k not set,
+  max_tokens 16384, no system prompt, one user turn: arm CL's exactly.
+- Cells N = 13, 21, 31; n = 15 per cell; 45 invocations. One worker
+  (OpenRouter in-flight budget), 3 s spacing; retries on 429/5xx only; a
+  402 row is retried on resume and the run stops on the first 402.
+- POOLING RULE, fixed now: CL-W rows are pooled with arm CL's 45 weak-tier
+  rows (same prompt hash, same path, same decoding, same scorer) into one
+  90-row unit, 30 per cell, scored in one pass by arm_clw_analysis.py, which
+  imports arm_cl_analysis.py unmodified (AST gate math/numpy/scipy, python
+  -I -S under the fixed driver, 120 s wall clock, one core, arm-F scoring,
+  same taxonomy). Arm CL's own report is not rewritten; the paper reports
+  arm CL's registered 0 of 11 and this pooled count side by side.
+- Two readings per row, both reported: (1) REGISTERED parser (arm-F
+  conventions, literal_eval of the outermost list), primary; (2) LENIENT
+  reading, secondary: the numpy scalar wrapper `np.float64(` and its
+  closing parenthesis stripped from stdout, nothing else, then the
+  registered parser. Validity at 1e-6 and 1e-9; clearance by section 2.4's
+  rule (valid at 1e-9 AND sum > family argmax + 1e-6, argmax in closed
+  form).
+- Evaluability floor 5 valid per cell for per-cell statements; the pooled
+  count is reported regardless.
+
+REGISTERED PREDICTIONS (competing, on the pooled 90 under the registered parser)
+- P-CLW1: 0 valid outputs clear the family.
+- P-CLW2: >= 20% of valid outputs clear (arm CL's P-CL2 bar).
+- Between 0 and 20%: registered dead zone, reported as "cleared, rarely"
+  with the count; neither prediction credited.
+- Secondary S-CLW1 (lenient reading, no verdict weight): the lenient pooled
+  clearance rate is reported with its Wilson 95% interval beside the
+  registered one; if it is >= 20% while the registered rate is under it,
+  the paper says the weak tier's zero is a print-format artifact.
+
+FALSIFIER
+- F-CLW1: P-CLW2 holds. Consequence, written now: "a weak model with scipy
+  fails" is withdrawn from sections 1 and 3.2 and the abstract; Table 2's
+  weak library row reports the clearing count; the title's answer becomes
+  "the optimizer" rather than "capability plus the optimizer".
+
+INTEGRATION RULE (registered)
+- One row in Table 1. Table 2's weak library row gains the pooled count
+  beside arm CL's registered 0 of 11 under the pooling rule above; the
+  abstract and section 1 state the pooled count.
+- Reported in section 3.5 beside arm CL; the failure taxonomy of the 45
+  new rows is given per cell as arm CL's is.
+- The corpus running total in the ladder table (Appendix G) gains this arm.
+- The pooled 290 / 281 ceiling count is unchanged in either direction.
