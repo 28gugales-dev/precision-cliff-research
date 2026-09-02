@@ -1,0 +1,99 @@
+ARM P (pinned-temperature rerun, new serving path)
+PREREGISTRATION — committed and pushed BEFORE any sampling. 2026-09-02.
+
+PROVENANCE DECLARATION (registered, same conventions as arms MU/CH/CC/CN)
+- This registration is post-review-motivated. An external referee read the
+  paper's instrument disclosure — decoding parameters not exposed by the
+  agent runtime, alias-to-weights binding a vendor promise rather than a
+  hash — and named it the paper's largest remaining instrument hole. This
+  arm answers it the only way it can be answered: the same prompts, sampled
+  through a serving path that exposes and pins temperature. Motivation is
+  disclosed here rather than implied to be a priori.
+- Drafted by the same session agent (an LLM) that runs the study pipeline.
+  No independent human authorship is claimed. External timestamp = this git
+  commit pushed to the public remote (28gugales-dev/precision-cliff-research)
+  BEFORE the first proposer invocation.
+- The paper is submission-ready at registration time. Either outcome is
+  reportable.
+
+WHAT THIS ARM IS, AND IS NOT
+- It is a NEW ARM ON A NEW INSTRUMENT, not a replication of arms F, CN or
+  CC. The prompts are byte-identical to those arms' registered prompts; the
+  serving path is not. Section 3.6 of the paper already establishes that
+  instrument changes outcomes (GM3 versus arm V on the same prompts), so a
+  same-prompt result here is a measurement of the anchor under a pinned,
+  attested serving path, and is reported beside — never merged into — the
+  agent-runtime arms.
+- It does NOT top up any existing cell. Mixing serving paths inside an
+  existing cell is the cross-set comparison trap this study has already
+  been caught on once; thin cells in arm F stay as reported, and this arm's
+  n = 15 per cell is the well-powered version of the same measurement.
+
+DESIGN
+- Serving path: OpenRouter chat-completions, model alias
+  anthropic/claude-haiku-4.5. The response field `model` (served alias) is
+  logged per row, as arm V does. Weights are not attested by this path
+  either; what is attested is the decoding configuration below.
+- Decoding, registered and pinned: temperature 1.0 (the vendor's documented
+  default, chosen so that n = 15 draws remain draws — temperature 0 would
+  collapse each cell to one deterministic sample and measure nothing about
+  the distribution). top_p and top_k are left at provider defaults and are
+  logged as "not set". max_tokens 8192. No system prompt. One user turn.
+- Cells and prompts:
+  (a) square, direct emission: N = 13, 17, 21, 31, 35, 37, 43 — the arm-F
+      bare stem, count-substituted, built by arm_p_build.py from the
+      registered N = 13 template exactly as arm_cc_build.py does. For
+      N = 13, 17, 31, 35, 37 the builder ASSERTS byte-equality with
+      arm_f_prompts.json; for N = 21 it asserts equality with the hash in
+      arm_t_preregistration.txt. N = 43 has never carried a registered hash
+      (paper section 3.1 and section 9 disclose this); this registration
+      supplies one, and the paper will say so.
+  (b) held-out, direct emission: N = 50, 58, 62, 65, 75 — byte-identical to
+      arm_cn_prompts.json, asserted.
+  (c) code channel, math-only: N = 13, 21, 31 — byte-identical to
+      arm_cc_prompts.json, asserted. Executed and scored exactly as arm CC
+      (arm_cc_analysis.py conventions: AST gate, python -I -S, 10 s).
+- n = 15 invocations per cell. 7 + 5 + 3 = 15 cells, 225 invocations.
+- Scoring: arm_f_repro.py conventions unchanged — ast.literal_eval after
+  fence strip; validity at 1e-6 primary, 1e-9 logged; value window 2e-3;
+  structural k from the dominant radius. No retries, no edits to outputs.
+  Evaluability floor: 5 valid per cell, the arm-CN convention (the paper
+  notes floors are not harmonized across arms; this arm adopts the strictest
+  one in use).
+
+REGISTERED PREDICTIONS (competing, fixed before sampling)
+- P-P1 (anchor transfers to the pinned path): the registered closed-form
+  value T(k*, N) is the modal valid output at >= 5 of the 7 square cells,
+  including >= 2 of the 4 discriminating cells (13, 21, 31, 43), AND at
+  >= 4 of the 5 held-out cells.
+- P-P2 (anchor is an artifact of the agent runtime): modal at <= 3 of 7
+  square cells.
+- P-P3 (code-channel ceiling holds on the pinned path): 0 of the valid
+  program outputs at N = 13, 21, 31 exceed the family argmax under the
+  paper's section 2.4 clearance rule (valid at 1e-9 and excess > 1e-6).
+  Competing P-P4: >= 1 program output clears.
+- Outcomes between P-P1 and P-P2 (modal at exactly 4 of 7) are a dead zone
+  and are reported as such — the paper's section 3.6 already documents one
+  such registration gap, and this one is named in advance rather than found.
+
+FALSIFIER
+- F-P1: pooled on-prediction rate over the four discriminating square cells
+  is below 40% of valid outputs. If F-P1 fires, the paper's anchoring claim
+  is reported as NOT surviving the move to a pinned serving path, in the
+  abstract, and the agent-runtime arms are reported as the instrument-bound
+  measurement they then are.
+
+ANALYSIS (arm_p_analysis.py, committed with this registration, run once)
+- Per cell: sampled, valid at 1e-6 and 1e-9, modal valid value and its
+  count, on-prediction count, rival-emission count, k*-structure count,
+  failure taxonomy. Pooled: discriminating-cell on-prediction rate with a
+  Wilson 95% interval; program-channel clearance count.
+- Every row's raw response is stored verbatim (arm_p_collect.jsonl), with
+  served_model, request parameters, latency, and a SHA-256 of the prompt
+  sent. Rows are appended live with fsync; nothing is back-filled.
+
+INTEGRATION RULE (registered)
+- Reported in its own subsection beside arms F, CN and CC. It does not
+  change any number already reported for those arms. It is NOT folded into
+  the pooled 0-of-290 ceiling count; if P-P3 holds the paper states the
+  pinned-path code result as its own line in section 3.11's table, by name.
