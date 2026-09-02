@@ -1,0 +1,68 @@
+{
+ "template_sha256": "af73c017e6f8be46f203e2a3dd1406d098d8dca1a038223d146511de3cd70fcd",
+ "timeout_s": 120,
+ "cells": {
+  "13": {
+   "sampled": 15,
+   "bins": {
+    "blocked_import": 15
+   },
+   "n_valid": 0,
+   "n_valid_1e9": 0,
+   "n_cleared": 0,
+   "clear_rate": null,
+   "underpowered": true,
+   "argmax_closed_form": 1.776142375,
+   "sums": [],
+   "cleared_sums": [],
+   "best_sum": null,
+   "sonnet_best_arm_cl": 1.820699211,
+   "best_exceeds_sonnet_best": false,
+   "k_struct_dist": {}
+  },
+  "21": {
+   "sampled": 15,
+   "bins": {
+    "blocked_import": 15
+   },
+   "n_valid": 0,
+   "n_valid_1e9": 0,
+   "n_cleared": 0,
+   "clear_rate": null,
+   "underpowered": true,
+   "argmax_closed_form": 2.258883476,
+   "sums": [],
+   "cleared_sums": [],
+   "best_sum": null,
+   "sonnet_best_arm_cl": 2.340549845,
+   "best_exceeds_sonnet_best": false,
+   "k_struct_dist": {}
+  },
+  "31": {
+   "sampled": 15,
+   "bins": {
+    "blocked_import": 15
+   },
+   "n_valid": 0,
+   "n_valid_1e9": 0,
+   "n_cleared": 0,
+   "clear_rate": null,
+   "underpowered": true,
+   "argmax_closed_form": 2.748528137,
+   "sums": [],
+   "cleared_sums": [],
+   "best_sum": null,
+   "sonnet_best_arm_cl": 2.864990189,
+   "best_exceeds_sonnet_best": false,
+   "k_struct_dist": {}
+  }
+ },
+ "pooled": {
+  "sampled": 45,
+  "valid": 0,
+  "cleared": 0,
+  "cells_at_20pct": 0,
+  "verdict": "UNSCOREABLE (no valid outputs)",
+  "S_B1_cells_where_baseline_best_exceeds_sonnet_best": []
+ }
+}

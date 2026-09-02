@@ -1,0 +1,8 @@
+template sha256 af73c017e6f8; scoring 45 rows, 120 s wall clock, 4 concurrent subprocesses (one core each)
+n=13: bins {'blocked_import': 15}, valid 0 (1e-9: 0), cleared 0, best None, Sonnet best 1.820699211
+n=21: bins {'blocked_import': 15}, valid 0 (1e-9: 0), cleared 0, best None, Sonnet best 2.340549845
+n=31: bins {'blocked_import': 15}, valid 0 (1e-9: 0), cleared 0, best None, Sonnet best 2.864990189
+POOLED: {'sampled': 45, 'valid': 0, 'cleared': 0, 'cells_at_20pct': 0, 'verdict': 'UNSCOREABLE (no valid outputs)', 'S_B1_cells_where_baseline_best_exceeds_sonnet_best': []}
+VERDICT: UNSCOREABLE (no valid outputs)
+written arm_b_report.json
+B done rc=0

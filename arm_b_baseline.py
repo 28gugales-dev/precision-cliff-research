@@ -1,25 +1,22 @@
 # Arm B: the optimizer alone. A fixed reference program, written by the pipeline before any
 # run and never tuned on a result, that does what a reader would write first: random-restart
 # SLSQP over centre and radius variables, maximising the sum of radii under containment and
-# pairwise non-overlap, restarting until the wall-clock budget is spent. It is executed
-# through arm CL's registered pipeline unmodified (python -I -S, the fixed driver, 120-second
-# wall clock, one core, arm-F scoring, section 2.4's clearance rule), so its rows are scored
-# exactly like the model-written programs it is the baseline for.
+# pairwise non-overlap, for a fixed number of restarts. It is executed through arm CL's
+# registered pipeline unmodified (python -I -S, the fixed driver, 120-second wall clock, one
+# core, arm-F scoring, section 2.4's clearance rule), so its rows are scored exactly like the
+# model-written programs it is the baseline for. Imports are the registered allowlist only
+# (math, numpy, scipy); version 1 imported time and sys and was blocked (amendment 1).
 #
 # Usage inside the pipeline: arm_b_run.py substitutes N and SEED below and hands the source
 # to arm_cl_analysis.score_row as if it were a model completion.
-import sys
-import time
-
 import numpy as np
 from scipy.optimize import minimize
 
 N = __N__
 SEED = __SEED__
-START_CUTOFF_S = 95.0   # no new restart after this many seconds; the 120 s wall clock is the executor's
+RESTARTS = 50   # amendment 1: fixed count; 80 restarts fit in 95 s at N = 31 on one core
 
 rng = np.random.default_rng(SEED)
-t0 = time.time()
 iu = np.triu_indices(N, 1)
 
 
@@ -79,7 +76,7 @@ def repaired(v):
 
 
 best_sum, best = -1.0, None
-while time.time() - t0 < START_CUTOFF_S:
+for _ in range(RESTARTS):
     v0 = np.concatenate([rng.uniform(0.1, 0.9, N), rng.uniform(0.1, 0.9, N), rng.uniform(0.02, 0.08, N)])
     res = minimize(objective, v0, jac=objective_grad, method="SLSQP", bounds=bounds,
                    constraints=cons, options={"maxiter": 400, "ftol": 1e-12})
@@ -91,6 +88,7 @@ while time.time() - t0 < START_CUTOFF_S:
         best_sum, best = s, (x, y, r)
 
 if best is None:
-    sys.exit("no feasible packing found")
-x, y, r = best
-print("[" + ", ".join(f"[{a:.10f}, {b:.10f}, {c:.10f}]" for a, b, c in zip(x, y, r)) + "]")
+    print("[]")
+else:
+    x, y, r = best
+    print("[" + ", ".join(f"[{a:.10f}, {b:.10f}, {c:.10f}]" for a, b, c in zip(x, y, r)) + "]")
