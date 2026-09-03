@@ -1,0 +1,8 @@
+template sha256 298ba71c9f20; scoring 45 rows, 120 s wall clock, 4 concurrent subprocesses (one core each)
+n=13: bins {'valid': 15}, valid 15 (1e-9: 15), cleared 15, best 1.829542412, Sonnet best 1.820699211
+n=21: bins {'valid': 15}, valid 15 (1e-9: 15), cleared 15, best 2.359585843, Sonnet best 2.340549845
+n=31: bins {'valid': 15}, valid 15 (1e-9: 15), cleared 15, best 2.883035274, Sonnet best 2.864990189
+POOLED: {'sampled': 45, 'valid': 45, 'cleared': 45, 'cells_at_20pct': 3, 'verdict': 'P-B1 holds (the reference program clears at >= 20% at >= 2 of 3 cells): the optimizer alone clears the family', 'S_B1_cells_where_baseline_best_exceeds_sonnet_best': [13, 21, 31]}
+VERDICT: P-B1 holds (the reference program clears at >= 20% at >= 2 of 3 cells): the optimizer alone clears the family
+written arm_b_report.json
+B done rc=0
