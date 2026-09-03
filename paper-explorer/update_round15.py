@@ -36,6 +36,7 @@ m = json.loads((HERE / "meta.json").read_text(encoding="utf-8"))
 m["paper1_revision"] = ("Revision 5.15 (round 15: cut by thread; elicitation, rectangle, cross-vendor detail, "
                         "arm M extend branch and the pooled-zero table moved to a supplement PDF; "
                         "twenty-six arms incl. arm B, the optimizer-alone baseline: 45 of 45 clear, program listed in Supplement S7; "
-                        "round 15c: arm B authorship and restart count stated, weak-library cell reported as a gap under both parsers), 2026-09-02")
+                        "round 15c: arm B authorship and restart count stated, weak-library cell reported as a gap under both parsers; "
+                        "round 16: bound table extended to N = 40, Sonnet best 0.8% and arm B 0.2% below the record at N = 31), 2026-09-02")
 (HERE / "meta.json").write_text(json.dumps(m, indent=2) + "\n", encoding="utf-8")
 print("atlas synced to round 15:", len(a["arms"]), "arms,", len(a["links"]), "links")
