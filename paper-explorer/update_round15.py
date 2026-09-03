@@ -33,10 +33,8 @@ for l in [
         a["links"].append(l)
 arms_p.write_text(json.dumps(a, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 m = json.loads((HERE / "meta.json").read_text(encoding="utf-8"))
-m["paper1_revision"] = ("Revision 5.15 (round 15: cut by thread; elicitation, rectangle, cross-vendor detail, "
-                        "arm M extend branch and the pooled-zero table moved to a supplement PDF; "
-                        "twenty-six arms incl. arm B, the optimizer-alone baseline: 45 of 45 clear, program listed in Supplement S7; "
-                        "round 15c: arm B authorship and restart count stated, weak-library cell reported as a gap under both parsers; "
-                        "round 16: bound table extended to N = 40, Sonnet best 0.8% and arm B 0.2% below the record at N = 31), 2026-09-02")
+m["paper1_revision"] = ("Revision 5.16 (round 17: readability; reader text split from audit text, arms named by role, "
+                        "prediction labels out of prose, section 5 and the mode-prediction appendix moved to the supplement, "
+                        "26-arm ledger to Appendix B; twenty-six arms, arm B 45 of 45, bound table to N = 40), 2026-09-03")
 (HERE / "meta.json").write_text(json.dumps(m, indent=2) + "\n", encoding="utf-8")
 print("atlas synced to round 15:", len(a["arms"]), "arms,", len(a["links"]), "links")
