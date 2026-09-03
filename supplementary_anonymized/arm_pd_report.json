@@ -1,0 +1,375 @@
+{
+ "conditions": {
+  "D1": {
+   "sampled": 14,
+   "valid_1e6": 12,
+   "valid_1e9": 11,
+   "parse_fail": 0,
+   "invalid_why": {
+    "overlap": 2
+   },
+   "on_prediction": 5,
+   "rival": 1,
+   "modal_valid_value": 1.624,
+   "k_emp": {
+    "5": 4,
+    "4": 6,
+    "6": 1,
+    "3": 1
+   },
+   "structures": {
+    "uniform_grid_k5": 3,
+    "uniform_grid_k4": 5,
+    "other": 2,
+    "grid_plus_filler_k3_grid9_fill4": 1,
+    "grid_plus_filler_k4_grid12_fill1": 1
+   },
+   "sums": [
+    1.28,
+    1.3,
+    1.3,
+    1.3,
+    1.308,
+    1.55,
+    1.625,
+    1.625,
+    1.625,
+    1.625,
+    1.625,
+    1.7761424
+   ],
+   "median_reasoning_len": 5145
+  },
+  "D2": {
+   "sampled": 13,
+   "valid_1e6": 0,
+   "valid_1e9": 0,
+   "parse_fail": 0,
+   "invalid_why": {
+    "overlap": 13
+   },
+   "on_prediction": 0,
+   "rival": 0,
+   "modal_valid_value": null,
+   "k_emp": {},
+   "structures": {},
+   "sums": [],
+   "median_reasoning_len": 0
+  }
+ },
+ "rows": [
+  {
+   "condition": "D1",
+   "parse_error": null,
+   "valid6": true,
+   "valid9": true,
+   "why6": null,
+   "why9": null,
+   "sum": 1.3,
+   "structure": "uniform_grid_k5",
+   "k_emp": 5,
+   "sample_id": 1,
+   "reasoning_len": 4553
+  },
+  {
+   "condition": "D1",
+   "parse_error": null,
+   "valid6": false,
+   "valid9": false,
+   "why6": "overlap",
+   "why9": "overlap",
+   "sample_id": 2,
+   "reasoning_len": 10238
+  },
+  {
+   "condition": "D1",
+   "parse_error": null,
+   "valid6": true,
+   "valid9": true,
+   "why6": null,
+   "why9": null,
+   "sum": 1.625,
+   "structure": "uniform_grid_k4",
+   "k_emp": 4,
+   "sample_id": 3,
+   "reasoning_len": 4795
+  },
+  {
+   "condition": "D1",
+   "parse_error": null,
+   "valid6": true,
+   "valid9": true,
+   "why6": null,
+   "why9": null,
+   "sum": 1.625,
+   "structure": "uniform_grid_k4",
+   "k_emp": 4,
+   "sample_id": 4,
+   "reasoning_len": 3951
+  },
+  {
+   "condition": "D1",
+   "parse_error": null,
+   "valid6": true,
+   "valid9": true,
+   "why6": null,
+   "why9": null,
+   "sum": 1.625,
+   "structure": "uniform_grid_k4",
+   "k_emp": 4,
+   "sample_id": 5,
+   "reasoning_len": 5147
+  },
+  {
+   "condition": "D1",
+   "parse_error": null,
+   "valid6": true,
+   "valid9": true,
+   "why6": null,
+   "why9": null,
+   "sum": 1.28,
+   "structure": "other",
+   "k_emp": 5,
+   "sample_id": 6,
+   "reasoning_len": 4316
+  },
+  {
+   "condition": "D1",
+   "parse_error": null,
+   "valid6": true,
+   "valid9": true,
+   "why6": null,
+   "why9": null,
+   "sum": 1.625,
+   "structure": "uniform_grid_k4",
+   "k_emp": 4,
+   "sample_id": 7,
+   "reasoning_len": 5145
+  },
+  {
+   "condition": "D1",
+   "parse_error": null,
+   "valid6": true,
+   "valid9": true,
+   "why6": null,
+   "why9": null,
+   "sum": 1.3,
+   "structure": "uniform_grid_k5",
+   "k_emp": 5,
+   "sample_id": 8,
+   "reasoning_len": 4583
+  },
+  {
+   "condition": "D1",
+   "parse_error": null,
+   "valid6": true,
+   "valid9": true,
+   "why6": null,
+   "why9": null,
+   "sum": 1.308,
+   "structure": "other",
+   "k_emp": 6,
+   "sample_id": 9,
+   "reasoning_len": 10422
+  },
+  {
+   "condition": "D1",
+   "parse_error": null,
+   "valid6": true,
+   "valid9": true,
+   "why6": null,
+   "why9": null,
+   "sum": 1.625,
+   "structure": "uniform_grid_k4",
+   "k_emp": 4,
+   "sample_id": 10,
+   "reasoning_len": 4216
+  },
+  {
+   "condition": "D1",
+   "parse_error": null,
+   "valid6": true,
+   "valid9": false,
+   "why6": null,
+   "why9": "overlap",
+   "sum": 1.7761424,
+   "structure": "grid_plus_filler_k3_grid9_fill4",
+   "k_emp": 3,
+   "sample_id": 11,
+   "reasoning_len": 5505
+  },
+  {
+   "condition": "D1",
+   "parse_error": null,
+   "valid6": true,
+   "valid9": true,
+   "why6": null,
+   "why9": null,
+   "sum": 1.3,
+   "structure": "uniform_grid_k5",
+   "k_emp": 5,
+   "sample_id": 12,
+   "reasoning_len": 4675
+  },
+  {
+   "condition": "D1",
+   "parse_error": null,
+   "valid6": true,
+   "valid9": true,
+   "why6": null,
+   "why9": null,
+   "sum": 1.55,
+   "structure": "grid_plus_filler_k4_grid12_fill1",
+   "k_emp": 4,
+   "sample_id": 13,
+   "reasoning_len": 6261
+  },
+  {
+   "condition": "D1",
+   "parse_error": null,
+   "valid6": false,
+   "valid9": false,
+   "why6": "overlap",
+   "why9": "overlap",
+   "sample_id": 14,
+   "reasoning_len": 6627
+  },
+  {
+   "condition": "D2",
+   "parse_error": null,
+   "valid6": false,
+   "valid9": false,
+   "why6": "overlap",
+   "why9": "overlap",
+   "sample_id": 1,
+   "reasoning_len": 0
+  },
+  {
+   "condition": "D2",
+   "parse_error": null,
+   "valid6": false,
+   "valid9": false,
+   "why6": "overlap",
+   "why9": "overlap",
+   "sample_id": 2,
+   "reasoning_len": 0
+  },
+  {
+   "condition": "D2",
+   "parse_error": null,
+   "valid6": false,
+   "valid9": false,
+   "why6": "overlap",
+   "why9": "overlap",
+   "sample_id": 3,
+   "reasoning_len": 0
+  },
+  {
+   "condition": "D2",
+   "parse_error": null,
+   "valid6": false,
+   "valid9": false,
+   "why6": "overlap",
+   "why9": "overlap",
+   "sample_id": 4,
+   "reasoning_len": 0
+  },
+  {
+   "condition": "D2",
+   "parse_error": null,
+   "valid6": false,
+   "valid9": false,
+   "why6": "overlap",
+   "why9": "overlap",
+   "sample_id": 5,
+   "reasoning_len": 0
+  },
+  {
+   "condition": "D2",
+   "parse_error": null,
+   "valid6": false,
+   "valid9": false,
+   "why6": "overlap",
+   "why9": "overlap",
+   "sample_id": 6,
+   "reasoning_len": 0
+  },
+  {
+   "condition": "D2",
+   "parse_error": null,
+   "valid6": false,
+   "valid9": false,
+   "why6": "overlap",
+   "why9": "overlap",
+   "sample_id": 7,
+   "reasoning_len": 0
+  },
+  {
+   "condition": "D2",
+   "parse_error": null,
+   "valid6": false,
+   "valid9": false,
+   "why6": "overlap",
+   "why9": "overlap",
+   "sample_id": 8,
+   "reasoning_len": 0
+  },
+  {
+   "condition": "D2",
+   "parse_error": null,
+   "valid6": false,
+   "valid9": false,
+   "why6": "overlap",
+   "why9": "overlap",
+   "sample_id": 9,
+   "reasoning_len": 0
+  },
+  {
+   "condition": "D2",
+   "parse_error": null,
+   "valid6": false,
+   "valid9": false,
+   "why6": "overlap",
+   "why9": "overlap",
+   "sample_id": 10,
+   "reasoning_len": 0
+  },
+  {
+   "condition": "D2",
+   "parse_error": null,
+   "valid6": false,
+   "valid9": false,
+   "why6": "overlap",
+   "why9": "overlap",
+   "sample_id": 11,
+   "reasoning_len": 0
+  },
+  {
+   "condition": "D2",
+   "parse_error": null,
+   "valid6": false,
+   "valid9": false,
+   "why6": "overlap",
+   "why9": "overlap",
+   "sample_id": 12,
+   "reasoning_len": 0
+  },
+  {
+   "condition": "D2",
+   "parse_error": null,
+   "valid6": false,
+   "valid9": false,
+   "why6": "overlap",
+   "why9": "overlap",
+   "sample_id": 13,
+   "reasoning_len": 0
+  }
+ ],
+ "verdict": "P-PD1 holds: the reasoning budget is the cause (closed at 27 of 30 rows, amendment 1)",
+ "S-PD1": {
+  "D1": {
+   "modal_is_anchor": true,
+   "on_prediction": "5/12"
+  }
+ }
+}

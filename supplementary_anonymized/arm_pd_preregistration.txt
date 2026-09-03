@@ -1,0 +1,72 @@
+ARM P-D (what about the agent runtime makes the weak tier's output valid)
+PREREGISTRATION -- committed and pushed BEFORE any sampling. 2026-09-02.
+
+PROVENANCE DECLARATION (registered, same conventions as arms P, CCP, CL-W)
+- Post-review-motivated, disclosed. Arm P: the registered N = 13 square
+  prompt on the bare pinned API gives 0 of 105 valid packings across the
+  square cells (0 of 15 at N = 13); the same prompt through the agent
+  runtime gives 78% valid and the template in 4 of 6 (same-day control).
+  Temperature was excluded post hoc (0 of 6 at 0.0, 0.5, 1.0). An outside
+  review asked for a diagnostic beyond temperature; two candidate causes
+  remain, each one line of difference: the runtime's reasoning budget, and
+  the runtime's inherited context (a system prompt). This arm manipulates
+  each alone.
+- Drafted by the same session agent (an LLM) that runs the study pipeline.
+  External timestamp = this commit pushed to the public remote
+  (28[ANON]s-dev/precision-cliff-research) BEFORE the first invocation.
+- Budget note, disclosed: the account's remaining credit at registration
+  may not cover all 30 invocations. The runner alternates conditions by
+  sample id (D1 sample 1, D2 sample 1, D1 sample 2, ...) so an interrupted
+  run leaves matched counts; it stops on the first HTTP 402 and resumes,
+  after a top-up, from the first missing row with the request unchanged.
+  Both segments' timestamps stay in the ledger; the report is marked
+  INTERIM until both conditions reach 15.
+
+DESIGN
+- Prompt: arm P's N = 13 square prompt, BYTE-IDENTICAL to arm F's
+  (SHA-256 32db485b..., asserted by arm_pd_build.py and by the runner before
+  every call). Model anthropic/claude-haiku-4.5 via OpenRouter
+  chat-completions, temperature 1.0, top_p/top_k not set, max_tokens 8192
+  (arm P's decoding).
+- Two conditions, n = 15 each, 30 invocations:
+    D1  extended thinking enabled: the request carries
+        "reasoning": {"enabled": true}, i.e. the routing layer's default
+        thinking effort for the vendor (documented as medium, a budget of
+        roughly half of max_tokens); no system prompt. The reasoning text is
+        not scored; its length is logged per row.
+    D2  thinking off; one system message, verbatim:
+        "You are a careful assistant. Think before you answer."
+- Scoring (arm_pd_analysis.py, committed with this registration): arm P's
+  registered direct-emission scorer imported unmodified
+  (arm_p_analysis.score_direct_row: arm-F parse, validity at 1e-6 primary
+  and 1e-9 logged, sum, structure, dominant k). Per condition: valid counts,
+  on-prediction |sum - T(4,13) = 1.625| < 2e-3, rival |sum - 1.7761424| <
+  2e-3, modal valid value under the 2e-3 bucket rule (ties = no mode), k
+  distribution. Every row scored and stored.
+
+REGISTERED PREDICTIONS (competing)
+- P-PD1 (the reasoning budget is the cause): D1 valid >= 8 of 15 AND D2
+  valid <= 3 of 15.
+- P-PD2 (the system prompt / context is the cause): D2 valid >= 8 of 15
+  AND D1 valid <= 3 of 15.
+- P-PD3 (both or neither): any other pattern; reported as "cause not
+  located by these two manipulations"; no further post-hoc conditions run
+  under this registration.
+- Secondary S-PD1 (anchor): in whichever condition reaches >= 8 valid,
+  T(4,13) = 1.625 is the modal valid output (the runtime control's 4 of 6
+  reproduces off the runtime). Reported, no verdict weight.
+
+FALSIFIER
+- None changes a paper claim: arm P's finding (the anchoring result is
+  bound to the agent-runtime instrument) stands whichever way this goes;
+  this arm names the component if it can. Stated now so that no outcome
+  can be read as a confirmation of anything the paper already says.
+
+INTEGRATION RULE (registered)
+- One row in Table 1. Reported in section 5.3 (arm P) as a diagnostic,
+  after the temperature diagnostic, whichever way it goes; the deviations
+  table gains one row marked registered; the ledger listing gains the arm;
+  the corpus ladder gains 30 (or the count actually collected, with the
+  INTERIM mark, if the run is interrupted at press time).
+- The channel table (Table 2) is unchanged: this arm samples one cell of
+  one row and is not a clearance measurement.

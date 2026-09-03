@@ -1,0 +1,103 @@
+ARM CL (library-enabled code channel: numpy and scipy permitted)
+PREREGISTRATION — committed and pushed BEFORE any sampling. 2026-09-02.
+
+PROVENANCE DECLARATION (registered, same conventions as arm CC)
+- This registration is post-review-motivated. Arm CC's own registration
+  (2026-08-18) named this arm as "a further arm, not this one": CC measured
+  externally executed standard-library arithmetic and explicitly did not
+  measure library-assisted optimization, which deployed discovery loops
+  permit. An external referee then put the objection plainly — deployed
+  loops use frontier models with numpy and scipy, and the paper's ceiling
+  is measured in a regime nobody uses. This arm measures the regime.
+  Motivation is disclosed here rather than implied to be a priori.
+- Drafted by the same session agent (an LLM) that runs the study pipeline.
+  No independent human authorship is claimed. External timestamp = this git
+  commit pushed to the public remote (28[ANON]s-dev/precision-cliff-research)
+  BEFORE the first proposer invocation.
+- The paper is submission-ready at registration time. Either outcome is
+  reportable, and the two outcomes lead to different papers: if the family
+  ceiling holds here it extends to the channel deployed loops use; if it
+  does not, the ceiling is a property of the math-only channel and the
+  paper says so in its abstract. The registered integration rule below
+  fixes how each outcome is written before either is known.
+
+DESIGN
+- Cells: N = 13, 21, 31 (arm CC's cells, the hardest-discriminating trap
+  cells). Prompt = arm CC's registered prompt with exactly ONE line
+  replacement, built deterministically by arm_cl_build.py (the replacement
+  asserts a single occurrence): the contract line's allowlist clause
+  "may import only the standard-library module math" becomes "may import
+  only the modules math, numpy and scipy". Everything else, including the
+  "no file, network or subprocess access" clause and the single-line
+  stdout contract, is unchanged. Prompts and SHA-256 hashes are frozen in
+  arm_cl_prompts.json, committed with this registration.
+- Two tiers, run under identical prompts and identical scoring:
+    weak tier   anthropic/claude-haiku-4.5   (arm CC's tier class)
+    Sonnet tier anthropic/claude-sonnet-4.5  (arm CCS's tier class)
+  Serving path: OpenRouter chat-completions; served alias logged per row.
+  Decoding: temperature 1.0 (vendor default, registered and pinned), top_p
+  and top_k provider defaults logged as "not set", max_tokens 16384 (programs
+  with optimizers run longer than coordinate lists; arm CC's budget was
+  sized for the shorter output). No system prompt. One user turn.
+- n = 15 invocations per (tier, cell): 2 x 3 x 15 = 90 programs.
+
+EXECUTION AND SCORING (arm_cl_analysis.py, committed with this registration)
+- Program extraction: as arm CC — fenced or raw source both accepted, fence
+  stripped before the gate. A parse convention, not a compliance metric.
+- AST gate (registered allowlist): imports permitted for the modules math,
+  numpy and scipy only, including "from numpy import ..." and submodule
+  forms such as scipy.optimize; the names open, exec, eval, compile,
+  __import__, input, breakpoint are forbidden anywhere in the source. Gate
+  failures are recorded under their bin, never silently repaired.
+- Execution: python -I -S in a fresh subprocess. Because -I makes the
+  interpreter ignore PYTHONPATH and -S drops site, numpy and scipy are made
+  importable by a fixed driver script (committed with arm_cl_analysis.py)
+  that inserts the interpreter's own site-packages into sys.path and then
+  runs the model's source unmodified via runpy; the driver is not part of
+  the scored source and is identical for every row. The numpy and scipy
+  versions seen by the child are recorded once in the report. (An earlier
+  draft of this paragraph said "via PYTHONPATH"; that is not possible under
+  -I, and the correction was made before any sampling, in the same commit
+  as the analysis script.) Wall-clock timeout 120 seconds — twelve
+  times arm CC's, registered because an optimizer that converges in 60 s is
+  the thing being measured, and a 10 s gate would measure the timeout, not
+  the search. One CPU core. No network (enforced by the AST gate; no socket
+  or urllib import is on the allowlist). No retries, no edits to model
+  source.
+- Output scoring: stdout parsed with arm-F conventions unchanged. Validity
+  at 1e-6 primary, 1e-9 also logged. Clearance is decided by the paper's
+  section 2.4 rule and nothing else: an output leaves the family iff it is
+  valid at 1e-9 AND its sum exceeds the family argmax by more than 1e-6.
+  Family argmax recomputed in closed form (1.776142375, 2.258883476,
+  2.748528137), never from a literal.
+- Registered failure taxonomy, one bin per row: no_program, blocked_import,
+  forbidden_name, timeout, exec_error, stdout_parse_fail, geom_invalid,
+  valid. A program that imports scipy and then times out is "timeout", not
+  a partial credit of any kind.
+- Additionally logged per valid row, not scored: whether the source calls
+  scipy.optimize (any attribute), the number of distinct radii, and the
+  structural k. These are descriptive.
+
+REGISTERED PREDICTIONS (competing, fixed before sampling; evaluated per tier)
+- P-CL1 (ceiling is a channel property that survives libraries): 0 of the
+  valid outputs clear the family under the section 2.4 rule.
+- P-CL2 (ceiling is a math-only property): >= 20% of valid outputs clear
+  the family.
+- Outcomes strictly between 0 and 20% are a registered dead zone: the
+  ceiling is reported as "cleared, rarely" with the count, and neither
+  prediction is credited.
+- Evaluability floor: 5 valid outputs per (tier, cell), else that cell is
+  UNSCOREABLE for the tier and claims nothing.
+
+FALSIFIER
+- F-CL1: at the Sonnet tier, the family is cleared at >= 2 of 3 cells (each
+  by >= 1 valid row under the 2.4 rule). If F-CL1 fires, the abstract's
+  ceiling sentence is rewritten to name the math-only channel as its
+  regime, the title's "computable floor" is scoped the same way, and the
+  pooled 0-of-290 count is reported beside this arm's count with the
+  library arm excluded from the pool BY NAMED REGIME, never silently.
+
+INTEGRATION RULE (registered)
+- Own subsection beside arm CC. Reported per tier. The pooled 290 is not
+  changed by this arm in either direction; section 3.11's table gains one
+  row per tier, by name, with its own clearance count.

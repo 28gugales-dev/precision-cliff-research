@@ -1,0 +1,47 @@
+ARM B PREREGISTRATION -- the optimizer alone (a fixed reference program, no model)
+====================================================================================
+
+Registered 2026-09-02, committed and pushed before the first scored run.
+
+Motivation, disclosed as post-review. A blind reviewer of the round-15 draft wrote: the title
+asks "Capability or Optimizer?" and the paper never runs the optimizer alone; without a
+fixed, human-written scipy.optimize baseline at N = 13, 21, 31, "leaving the family at rate
+took a mid-tier model and a library optimizer" may reduce to "took a library optimizer". Arm
+CCP showed the Sonnet tier fails without the libraries; nothing shows the model added anything
+beyond issuing the call. This arm runs that control. It costs no model invocations.
+
+Design. arm_b_baseline.py is a fixed reference program: random-restart SLSQP
+(scipy.optimize.minimize, method SLSQP, analytic gradients) over 3N variables (centres and
+radii), maximising the sum of radii under containment and pairwise non-overlap, uniform random
+initial centres in [0.1, 0.9]^2 and radii in [0.02, 0.08], restarting until 95 s have elapsed,
+keeping the best strictly feasible packing after a uniform radius shrink by the largest
+constraint violation. It was written by the pipeline (the same authorship as the manuscript
+prose, disclosed in section 8), fixed at the commit that registers this file, and is not tuned
+on any result; one timing run at N = 31 with seed 999, not scored and not reported, was used
+to set START_CUTOFF_S so the program returns inside the 120 s wall clock. Its SHA-256 is
+asserted by arm_b_run.py and recorded in every row.
+
+Execution and scoring: arm CL's registered pipeline unmodified (arm_cl_analysis.score_all:
+python -I -S under the fixed driver, 120 s wall clock, one core per subprocess, arm-F
+validity at 1e-6 and 1e-9, section 2.4's clearance rule: valid at 1e-9 and sum > family
+argmax + 1e-6, argmax in closed form). Cells N = 13, 21, 31 (arm CL's), seeds 1..15 per cell,
+45 runs. Evaluability floor 5 valid per cell, as arm CL. Runs execute concurrently, one core
+each; concurrency can only cost the baseline restarts, never add any.
+
+Predictions, competing:
+  P-B1: the reference program clears the family argmax in >= 20% of valid runs at >= 2 of 3
+        cells (arm CL's rate bar). Reading: the optimizer alone clears the family. Integration
+        rule, fixed now: contribution 1 is rewritten from "took a mid-tier model AND a library
+        optimizer" to "the library optimizer clears the family; what the tiers differ in is
+        whether their programs drive it there", the abstract's headline sentence follows, and
+        the Sonnet programs are characterised against the baseline (S-B1).
+  P-B2: the reference program clears at no cell (0 of valid). Reading: the model-written
+        programs' design carries the clearance; the conjunction stands.
+  Anything else (clearance at exactly one cell, or below 20% where it clears): reported as
+  such, contribution 1 keeps the conjunction and states the baseline's rate beside it.
+Secondary S-B1: at how many cells the baseline's best sum exceeds arm CL's Sonnet best
+  (1.820699211, 2.340549845, 2.864990189).
+
+Reporting: arm_b_collect.jsonl (every substituted source, verbatim), arm_b_report.json (per
+cell: bins, valid at both tolerances, cleared, sums, best, k-structure), one run, one scoring
+pass, reported whichever way it goes, a row in Table 1 and in the deviations table.

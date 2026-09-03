@@ -54,11 +54,17 @@ FILLER_FACTOR = SQRT2 - 1.0
 # https://erich-friedman.github.io/packing/cirRsqu/ via kink-test/square_family.py.
 # Published as 3-decimal LOWER bounds ("2.301+"), so a recipe value ABOVE one of
 # these would be a contradiction and is checked for.
+# Round 16 (2026-09-02): the transcription stopped at N = 30 through round 15c although the
+# source page had listed N = 31 (2.889+, Cantrell, July 2011) since 2011; entries 31..40
+# transcribed from the page as fetched 2026-09-02 (32: Berthold et al., January 2026;
+# 33..40: Haowei Lin, July 2026). The page ends at N = 40.
 PUBLISHED = {
     10: 1.591, 11: 1.680, 12: 1.765, 13: 1.829, 14: 1.905, 15: 1.980,
     16: 2.053, 17: 2.111, 18: 2.178, 19: 2.236, 20: 2.301, 21: 2.362,
     22: 2.420, 23: 2.478, 24: 2.530, 25: 2.587, 26: 2.63598, 27: 2.685,
     28: 2.737, 29: 2.790, 30: 2.842,
+    31: 2.889, 32: 2.939, 33: 2.98728, 34: 3.02979, 35: 3.07403,
+    36: 3.12175, 37: 3.16149, 38: 3.20594, 39: 3.24811, 40: 3.29239,
 }
 
 

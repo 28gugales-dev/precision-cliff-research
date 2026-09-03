@@ -1,0 +1,1386 @@
+{
+ "pooling": "arm CL weak tier + CL-W, registered before CL-W sampled",
+ "cells": {
+  "13": {
+   "sampled": 30,
+   "bins": {
+    "valid": 6,
+    "stdout_parse_fail": 16,
+    "geom_invalid": 6,
+    "no_program": 1,
+    "exec_error": 1
+   },
+   "n_valid": 6,
+   "n_valid_1e9": 6,
+   "n_cleared": 0,
+   "underpowered": false,
+   "argmax_closed_form": 1.776142375,
+   "sums": [
+    0.502851,
+    0.884,
+    1.04,
+    1.04,
+    1.24,
+    1.427346104
+   ],
+   "cleared_sums": [],
+   "lenient_recovered_valid": 8,
+   "lenient_recovered_cleared": 2,
+   "lenient_recovered_sums": [
+    0.181631215,
+    0.62,
+    1.036516,
+    1.071499576,
+    1.355354,
+    1.751027114,
+    1.784872559,
+    1.812531608
+   ],
+   "lenient_recovered_cleared_sums": [
+    1.784872559,
+    1.812531608
+   ]
+  },
+  "21": {
+   "sampled": 30,
+   "bins": {
+    "valid": 3,
+    "exec_error": 4,
+    "stdout_parse_fail": 18,
+    "geom_invalid": 2,
+    "blocked_import": 2,
+    "timeout": 1
+   },
+   "n_valid": 3,
+   "n_valid_1e9": 3,
+   "n_cleared": 0,
+   "underpowered": true,
+   "argmax_closed_form": 2.258883476,
+   "sums": [
+    1.75,
+    1.78,
+    2.01
+   ],
+   "cleared_sums": [],
+   "lenient_recovered_valid": 10,
+   "lenient_recovered_cleared": 1,
+   "lenient_recovered_sums": [
+    0.244101668,
+    1.100620959,
+    1.264347,
+    1.630423031,
+    1.807165346,
+    1.837122844,
+    2.045487749,
+    2.055042133,
+    2.080701,
+    2.331990574
+   ],
+   "lenient_recovered_cleared_sums": [
+    2.331990574
+   ]
+  },
+  "31": {
+   "sampled": 30,
+   "bins": {
+    "stdout_parse_fail": 11,
+    "valid": 10,
+    "geom_invalid": 3,
+    "exec_error": 2,
+    "timeout": 2,
+    "blocked_import": 2
+   },
+   "n_valid": 10,
+   "n_valid_1e9": 10,
+   "n_cleared": 0,
+   "underpowered": false,
+   "argmax_closed_form": 2.748528137,
+   "sums": [
+    0.466505255,
+    0.59,
+    1.640734954,
+    1.70538038,
+    1.771428571,
+    1.83,
+    2.204925239,
+    2.214285714,
+    2.325,
+    2.428637987
+   ],
+   "cleared_sums": [],
+   "lenient_recovered_valid": 4,
+   "lenient_recovered_cleared": 1,
+   "lenient_recovered_sums": [
+    2.212114582,
+    2.220837,
+    2.690471552,
+    2.851728045
+   ],
+   "lenient_recovered_cleared_sums": [
+    2.851728045
+   ]
+  }
+ },
+ "per_ledger": {
+  "arm_cl_collect.jsonl": {
+   "sampled": 45,
+   "bins": {
+    "stdout_parse_fail": 22,
+    "valid": 11,
+    "exec_error": 4,
+    "geom_invalid": 7,
+    "blocked_import": 1
+   },
+   "valid": 11,
+   "cleared": 0,
+   "by_cell": {
+    "13": {
+     "bins": {
+      "valid": 3,
+      "stdout_parse_fail": 8,
+      "geom_invalid": 4
+     },
+     "valid": 3,
+     "lenient_valid": 3,
+     "lenient_cleared": 1
+    },
+    "21": {
+     "bins": {
+      "valid": 2,
+      "exec_error": 3,
+      "stdout_parse_fail": 7,
+      "geom_invalid": 2,
+      "blocked_import": 1
+     },
+     "valid": 2,
+     "lenient_valid": 4,
+     "lenient_cleared": 0
+    },
+    "31": {
+     "bins": {
+      "stdout_parse_fail": 7,
+      "valid": 6,
+      "geom_invalid": 1,
+      "exec_error": 1
+     },
+     "valid": 6,
+     "lenient_valid": 2,
+     "lenient_cleared": 0
+    }
+   }
+  },
+  "arm_clw_collect.jsonl": {
+   "sampled": 45,
+   "bins": {
+    "stdout_parse_fail": 23,
+    "valid": 8,
+    "no_program": 1,
+    "geom_invalid": 4,
+    "exec_error": 3,
+    "blocked_import": 3,
+    "timeout": 3
+   },
+   "valid": 8,
+   "cleared": 0,
+   "by_cell": {
+    "13": {
+     "bins": {
+      "stdout_parse_fail": 8,
+      "valid": 3,
+      "no_program": 1,
+      "geom_invalid": 2,
+      "exec_error": 1
+     },
+     "valid": 3,
+     "lenient_valid": 5,
+     "lenient_cleared": 1
+    },
+    "21": {
+     "bins": {
+      "stdout_parse_fail": 11,
+      "exec_error": 1,
+      "blocked_import": 1,
+      "timeout": 1,
+      "valid": 1
+     },
+     "valid": 1,
+     "lenient_valid": 6,
+     "lenient_cleared": 1
+    },
+    "31": {
+     "bins": {
+      "timeout": 2,
+      "exec_error": 1,
+      "valid": 4,
+      "stdout_parse_fail": 4,
+      "geom_invalid": 2,
+      "blocked_import": 2
+     },
+     "valid": 4,
+     "lenient_valid": 2,
+     "lenient_cleared": 1
+    }
+   }
+  }
+ },
+ "rows": [
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 31,
+   "sample_id": 1,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "nonpositive_radius",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 13,
+   "sample_id": 1,
+   "bin": "valid",
+   "sum": 0.884,
+   "valid_1e9": true,
+   "cleared": false,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 21,
+   "sample_id": 1,
+   "bin": "valid",
+   "sum": 1.78,
+   "valid_1e9": true,
+   "cleared": false,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 31,
+   "sample_id": 2,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "overlap",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 13,
+   "sample_id": 2,
+   "bin": "valid",
+   "sum": 0.502851,
+   "valid_1e9": true,
+   "cleared": false,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 21,
+   "sample_id": 2,
+   "bin": "exec_error",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 31,
+   "sample_id": 3,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "overlap",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 13,
+   "sample_id": 3,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 1.751027114,
+    "valid_1e6": true,
+    "valid_1e9": true,
+    "cleared": false,
+    "n_distinct_radii": 9
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 21,
+   "sample_id": 3,
+   "bin": "valid",
+   "sum": 2.01,
+   "valid_1e9": true,
+   "cleared": false,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 31,
+   "sample_id": 4,
+   "bin": "valid",
+   "sum": 1.83,
+   "valid_1e9": true,
+   "cleared": false,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 13,
+   "sample_id": 4,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "overlap",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 21,
+   "sample_id": 4,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 1.264347,
+    "valid_1e6": true,
+    "valid_1e9": true,
+    "cleared": false,
+    "n_distinct_radii": 21
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 31,
+   "sample_id": 5,
+   "bin": "geom_invalid",
+   "sum": null,
+   "valid_1e9": false,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 13,
+   "sample_id": 5,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "outside_square",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 21,
+   "sample_id": 5,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "overlap",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 13,
+   "sample_id": 6,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 1.812531608,
+    "valid_1e6": true,
+    "valid_1e9": true,
+    "cleared": true,
+    "n_distinct_radii": 13
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 31,
+   "sample_id": 6,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "overlap",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 21,
+   "sample_id": 6,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "nonpositive_radius",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 31,
+   "sample_id": 7,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 2.212114582,
+    "valid_1e6": true,
+    "valid_1e9": true,
+    "cleared": false,
+    "n_distinct_radii": 2
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 13,
+   "sample_id": 7,
+   "bin": "geom_invalid",
+   "sum": null,
+   "valid_1e9": false,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 21,
+   "sample_id": 7,
+   "bin": "exec_error",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 31,
+   "sample_id": 8,
+   "bin": "exec_error",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 13,
+   "sample_id": 8,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 0.181631215,
+    "valid_1e6": true,
+    "valid_1e9": true,
+    "cleared": false,
+    "n_distinct_radii": 8
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 21,
+   "sample_id": 8,
+   "bin": "geom_invalid",
+   "sum": null,
+   "valid_1e9": false,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 31,
+   "sample_id": 9,
+   "bin": "valid",
+   "sum": 2.214285714,
+   "valid_1e9": true,
+   "cleared": false,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 13,
+   "sample_id": 9,
+   "bin": "geom_invalid",
+   "sum": null,
+   "valid_1e9": false,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 21,
+   "sample_id": 9,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "outside_square",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 31,
+   "sample_id": 10,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "outside_square",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 21,
+   "sample_id": 10,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 2.045487749,
+    "valid_1e6": true,
+    "valid_1e9": true,
+    "cleared": false,
+    "n_distinct_radii": 1
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 13,
+   "sample_id": 10,
+   "bin": "valid",
+   "sum": 1.427346104,
+   "valid_1e9": true,
+   "cleared": false,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 31,
+   "sample_id": 11,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 2.690471552,
+    "valid_1e6": true,
+    "valid_1e9": true,
+    "cleared": false,
+    "n_distinct_radii": 31
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 21,
+   "sample_id": 11,
+   "bin": "blocked_import",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 13,
+   "sample_id": 11,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "overlap",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 21,
+   "sample_id": 12,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 2.055042133,
+    "valid_1e6": true,
+    "valid_1e9": true,
+    "cleared": false,
+    "n_distinct_radii": 1
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 13,
+   "sample_id": 12,
+   "bin": "geom_invalid",
+   "sum": null,
+   "valid_1e9": false,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 31,
+   "sample_id": 12,
+   "bin": "valid",
+   "sum": 1.70538038,
+   "valid_1e9": true,
+   "cleared": false,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 21,
+   "sample_id": 13,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 1.837122844,
+    "valid_1e6": true,
+    "valid_1e9": true,
+    "cleared": false,
+    "n_distinct_radii": 1
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 31,
+   "sample_id": 13,
+   "bin": "valid",
+   "sum": 2.325,
+   "valid_1e9": true,
+   "cleared": false,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 13,
+   "sample_id": 13,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "outside_square",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 21,
+   "sample_id": 14,
+   "bin": "geom_invalid",
+   "sum": null,
+   "valid_1e9": false,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 31,
+   "sample_id": 14,
+   "bin": "valid",
+   "sum": 1.771428571,
+   "valid_1e9": true,
+   "cleared": false,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 13,
+   "sample_id": 14,
+   "bin": "geom_invalid",
+   "sum": null,
+   "valid_1e9": false,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 21,
+   "sample_id": 15,
+   "bin": "exec_error",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 13,
+   "sample_id": 15,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "overlap",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_cl_collect.jsonl",
+   "n": 31,
+   "sample_id": 15,
+   "bin": "valid",
+   "sum": 0.466505255,
+   "valid_1e9": true,
+   "cleared": false,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 13,
+   "sample_id": 1,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 1.036516,
+    "valid_1e6": true,
+    "valid_1e9": true,
+    "cleared": false,
+    "n_distinct_radii": 13
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 13,
+   "sample_id": 2,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 1.355354,
+    "valid_1e6": true,
+    "valid_1e9": true,
+    "cleared": false,
+    "n_distinct_radii": 1
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 13,
+   "sample_id": 3,
+   "bin": "valid",
+   "sum": 1.04,
+   "valid_1e9": true,
+   "cleared": false,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 13,
+   "sample_id": 4,
+   "bin": "no_program",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 13,
+   "sample_id": 5,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "overlap",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 13,
+   "sample_id": 6,
+   "bin": "geom_invalid",
+   "sum": null,
+   "valid_1e9": false,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 13,
+   "sample_id": 7,
+   "bin": "exec_error",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 13,
+   "sample_id": 8,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 1.784872559,
+    "valid_1e6": true,
+    "valid_1e9": true,
+    "cleared": true,
+    "n_distinct_radii": 13
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 13,
+   "sample_id": 9,
+   "bin": "geom_invalid",
+   "sum": null,
+   "valid_1e9": false,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 13,
+   "sample_id": 10,
+   "bin": "valid",
+   "sum": 1.24,
+   "valid_1e9": true,
+   "cleared": false,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 13,
+   "sample_id": 11,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "outside_square",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 13,
+   "sample_id": 12,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 1.071499576,
+    "valid_1e6": true,
+    "valid_1e9": true,
+    "cleared": false,
+    "n_distinct_radii": 13
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 13,
+   "sample_id": 13,
+   "bin": "valid",
+   "sum": 1.04,
+   "valid_1e9": true,
+   "cleared": false,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 13,
+   "sample_id": 14,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "outside_square",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 13,
+   "sample_id": 15,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 0.62,
+    "valid_1e6": true,
+    "valid_1e9": true,
+    "cleared": false,
+    "n_distinct_radii": 2
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 21,
+   "sample_id": 1,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "overlap",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 21,
+   "sample_id": 2,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 2.080701,
+    "valid_1e6": true,
+    "valid_1e9": true,
+    "cleared": false,
+    "n_distinct_radii": 1
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 21,
+   "sample_id": 3,
+   "bin": "exec_error",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 21,
+   "sample_id": 4,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 0.244101668,
+    "valid_1e6": true,
+    "valid_1e9": false,
+    "cleared": false,
+    "n_distinct_radii": 13
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 21,
+   "sample_id": 5,
+   "bin": "blocked_import",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 21,
+   "sample_id": 6,
+   "bin": "timeout",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 21,
+   "sample_id": 7,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "overlap",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 21,
+   "sample_id": 8,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 1.807165346,
+    "valid_1e6": true,
+    "valid_1e9": false,
+    "cleared": false,
+    "n_distinct_radii": 21
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 21,
+   "sample_id": 9,
+   "bin": "valid",
+   "sum": 1.75,
+   "valid_1e9": true,
+   "cleared": false,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 21,
+   "sample_id": 10,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "outside_square",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 21,
+   "sample_id": 11,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 2.331990574,
+    "valid_1e6": true,
+    "valid_1e9": true,
+    "cleared": true,
+    "n_distinct_radii": 21
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 21,
+   "sample_id": 12,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "overlap",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 21,
+   "sample_id": 13,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 1.630423031,
+    "valid_1e6": true,
+    "valid_1e9": true,
+    "cleared": false,
+    "n_distinct_radii": 21
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 21,
+   "sample_id": 14,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "overlap",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 21,
+   "sample_id": 15,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 1.100620959,
+    "valid_1e6": true,
+    "valid_1e9": true,
+    "cleared": false,
+    "n_distinct_radii": 7
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 31,
+   "sample_id": 1,
+   "bin": "timeout",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 31,
+   "sample_id": 2,
+   "bin": "exec_error",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 31,
+   "sample_id": 3,
+   "bin": "valid",
+   "sum": 2.204925239,
+   "valid_1e9": true,
+   "cleared": false,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 31,
+   "sample_id": 4,
+   "bin": "valid",
+   "sum": 1.640734954,
+   "valid_1e9": true,
+   "cleared": false,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 31,
+   "sample_id": 5,
+   "bin": "timeout",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 31,
+   "sample_id": 6,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "outside_square",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 31,
+   "sample_id": 7,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "geom_invalid",
+    "why": "overlap",
+    "valid_1e9": false
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 31,
+   "sample_id": 8,
+   "bin": "geom_invalid",
+   "sum": null,
+   "valid_1e9": false,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 31,
+   "sample_id": 9,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 2.851728045,
+    "valid_1e6": true,
+    "valid_1e9": true,
+    "cleared": true,
+    "n_distinct_radii": 31
+   }
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 31,
+   "sample_id": 10,
+   "bin": "valid",
+   "sum": 0.59,
+   "valid_1e9": true,
+   "cleared": false,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 31,
+   "sample_id": 11,
+   "bin": "valid",
+   "sum": 2.428637987,
+   "valid_1e9": true,
+   "cleared": false,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 31,
+   "sample_id": 12,
+   "bin": "blocked_import",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 31,
+   "sample_id": 13,
+   "bin": "geom_invalid",
+   "sum": null,
+   "valid_1e9": false,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 31,
+   "sample_id": 14,
+   "bin": "blocked_import",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": null
+  },
+  {
+   "ledger": "arm_clw_collect.jsonl",
+   "n": 31,
+   "sample_id": 15,
+   "bin": "stdout_parse_fail",
+   "sum": null,
+   "valid_1e9": null,
+   "cleared": null,
+   "lenient": {
+    "bin": "valid",
+    "sum": 2.220837,
+    "valid_1e6": true,
+    "valid_1e9": true,
+    "cleared": false,
+    "n_distinct_radii": 19
+   }
+  }
+ ],
+ "pooled": {
+  "sampled": 90,
+  "valid": 19,
+  "cleared": 0,
+  "clear_rate": 0.0,
+  "wilson_upper_95": 0.1682,
+  "lenient_valid": 41,
+  "lenient_cleared": 4,
+  "lenient_rate": 0.0975609756097561,
+  "verdict": "P-CLW1 holds (0 clear under the registered parser)",
+  "falsifier_F_CLW1": false
+ }
+}

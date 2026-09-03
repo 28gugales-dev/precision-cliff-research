@@ -1,0 +1,48 @@
+{
+ "cl": {
+  "13": {
+   "prompt": "Pack exactly 13 non-overlapping circles inside the unit square [0,1]x[0,1] so that the sum of their radii is as large as possible.\nMUST hold: exactly 13 circles; every circle fully inside the unit square [0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap (distance between centers >= sum of the two radii; touching is allowed).\nWrite a Python program that constructs the packing. The program may import only the modules math, numpy and scipy (no other imports, no file, network or subprocess access). When run it must print exactly one line to stdout: the raw Python list of 13 [x, y, r] lists.\nOutput ONLY the Python program source. No explanation, no other text.",
+   "sha256": "ab631a4d12e4b8413c7f02930febf343ab959f58ebbbd48865906fae62b101fa",
+   "kstar": 4,
+   "anchor_value": 1.625,
+   "rival_value": 1.7761424,
+   "derived_from_cc_sha256": "203749ff7802105b368ebfceacd40c2a95361ee04fd35f282c0bccab6fff8405"
+  },
+  "21": {
+   "prompt": "Pack exactly 21 non-overlapping circles inside the unit square [0,1]x[0,1] so that the sum of their radii is as large as possible.\nMUST hold: exactly 21 circles; every circle fully inside the unit square [0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap (distance between centers >= sum of the two radii; touching is allowed).\nWrite a Python program that constructs the packing. The program may import only the modules math, numpy and scipy (no other imports, no file, network or subprocess access). When run it must print exactly one line to stdout: the raw Python list of 21 [x, y, r] lists.\nOutput ONLY the Python program source. No explanation, no other text.",
+   "sha256": "cad3965a08eac2b7dbc24e54c4ba20b2818014468782b2353e4025f8c5fd11bc",
+   "kstar": 5,
+   "anchor_value": 2.1,
+   "rival_value": 2.2588835,
+   "derived_from_cc_sha256": "8f8b25691cf19f50b442c703d366539cd17496de42f458e1a65bd8ae315df9cf"
+  },
+  "31": {
+   "prompt": "Pack exactly 31 non-overlapping circles inside the unit square [0,1]x[0,1] so that the sum of their radii is as large as possible.\nMUST hold: exactly 31 circles; every circle fully inside the unit square [0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap (distance between centers >= sum of the two radii; touching is allowed).\nWrite a Python program that constructs the packing. The program may import only the modules math, numpy and scipy (no other imports, no file, network or subprocess access). When run it must print exactly one line to stdout: the raw Python list of 31 [x, y, r] lists.\nOutput ONLY the Python program source. No explanation, no other text.",
+   "sha256": "35a8af4ba8b18463d1496efecf8b3dc7ef3ce8e1c4dd7a2c6ec0bb50e89b5da3",
+   "kstar": 6,
+   "anchor_value": 2.5833333,
+   "rival_value": 2.7485281,
+   "derived_from_cc_sha256": "2a8cd21c2aec29c952310e7e085720f3f95d395c2e0115f38c6c6d572ca7962b"
+  }
+ },
+ "tiers": {
+  "weak": "anthropic/claude-haiku-4.5",
+  "sonnet": "anthropic/claude-sonnet-4.5"
+ },
+ "decoding": {
+  "path": "openrouter chat-completions",
+  "temperature": 1.0,
+  "top_p": "not set",
+  "top_k": "not set",
+  "max_tokens": 16384,
+  "system_prompt": null
+ },
+ "execution": {
+  "timeout_s": 120,
+  "allowlist": [
+   "math",
+   "numpy",
+   "scipy"
+  ]
+ }
+}
