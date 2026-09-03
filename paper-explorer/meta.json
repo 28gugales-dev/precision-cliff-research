@@ -1,7 +1,7 @@
 {
   "site_updated": "2026-09-02",
   "paper1_pdf_updated": "2026-09-02",
-  "paper1_revision": "Revision 5.15 (round 15: cut by thread; elicitation, rectangle, cross-vendor detail, arm M extend branch and the pooled-zero table moved to a supplement PDF; twenty-six arms incl. arm B, the optimizer-alone baseline: 45 of 45 clear; 37 pp + 12 pp supplement), 2026-09-02",
+  "paper1_revision": "Revision 5.15 (round 15: cut by thread; elicitation, rectangle, cross-vendor detail, arm M extend branch and the pooled-zero table moved to a supplement PDF; twenty-six arms incl. arm B, the optimizer-alone baseline: 45 of 45 clear, program listed in Supplement S7; round 15c: arm B authorship and restart count stated, weak-library cell reported as a gap under both parsers), 2026-09-02",
   "arms_updated": "2026-09-02",
   "graph_updated": "2026-08-18",
   "deploy": "git: push to main deploys (root paper-explorer)"
