@@ -489,6 +489,14 @@
       "kind": "extension",
       "design": "Arm P's N = 13 square prompt (== arm F, hash 32db485b), Haiku 4.5 on the pinned OpenRouter path, temperature 1.0, two one-line manipulations, 15 each: D1 extended thinking on (routing-layer default effort), no system prompt; D2 thinking off, one system line 'You are a careful assistant. Think before you answer.' Registered at corpus commit 5554cc0 and pushed before the first call. P-PD1: D1 valid >= 8/15 and D2 <= 3/15 (reasoning budget is the cause). P-PD2: the mirror (context is). P-PD3: anything else.",
       "result": "Interim at 27 of 30 rows (credit): D1 valid 12 of 14 (11 at 1e-9), modal value T(4,13) = 1.625 in 5 of 12, k = 4 modal, one output at the family argmax 1.7761424; D2 valid 0 of 13, all overlaps. P-PD1 holds and the three missing rows cannot change it. The reasoning budget is the component of the runtime that carries the template; the runtime's inherited context is not. Corpus 1500."
+    },
+    {
+      "id": "p1_arm_b",
+      "paper": "paper1",
+      "label": "Arm B - the optimizer alone (fixed SLSQP reference program, no model)",
+      "kind": "extension",
+      "design": "A fixed random-restart SLSQP program (analytic gradients, uniform random starts, radius shrink by the largest violation, 50 restarts), written before the run and never tuned, executed through arm CL's pipeline unmodified (python -I -S, 120 s wall clock, one core, arm-F scoring, section 2.4 clearance) at N = 13, 21, 31, 15 seeds each. Registered at corpus commit 1932cc0 after a blind review asked for the optimizer-alone control; amendment 1 (c486843): version 1 imported time and sys, blocked 45/45 by the allowlist, run kept. P-B1: clears >= 20% at >= 2 cells (the optimizer alone clears; contribution 1 rewritten). P-B2: never clears. S-B1: best vs arm CL's Sonnet best.",
+      "result": "45 of 45 valid at both tolerances, 45 clear, 15 of 15 at every cell. Best per cell 1.829542412, 2.359585843, 2.883035274 against the Sonnet best 1.820699211, 2.340549845, 2.864990189: S-B1 at 3 of 3. P-B1 holds: the library optimizer clears the family with no model at all; the Sonnet programs clear because they invoke it and land below the fixed reference; the weak tier's 19 valid programs invoke it and clear nothing. No model invocations; corpus stays at 1500."
     }
   ],
   "links": [
@@ -791,6 +799,18 @@
       "target": "p1_arm_p",
       "type": "extends",
       "note": "Same prompt, same pinned path: thinking on restores 12/14 valid with the template modal; a system line restores 0/13."
+    },
+    {
+      "source": "p1_arm_b",
+      "target": "p1_arm_cl",
+      "type": "extends",
+      "note": "Same pipeline, no model: 45/45 clear vs the Sonnet tier's 23/25; the optimizer is sufficient."
+    },
+    {
+      "source": "p1_arm_b",
+      "target": "p1_arm_ccp",
+      "type": "extends",
+      "note": "CCP: Sonnet without the library, 0/35. B: the library without any model, 45/45."
     }
   ]
 }
