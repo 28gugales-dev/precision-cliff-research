@@ -1,0 +1,19 @@
+{
+  "budget_s": 120.0,
+  "rows": [
+    {
+      "n": 73,
+      "probe_restarts": 3,
+      "seconds_total": 116.12,
+      "seconds_per_restart": 38.706,
+      "restarts_in_120s": 3
+    },
+    {
+      "n": 91,
+      "probe_restarts": 3,
+      "seconds_total": 172.94,
+      "seconds_per_restart": 57.647,
+      "restarts_in_120s": 2
+    }
+  ]
+}
