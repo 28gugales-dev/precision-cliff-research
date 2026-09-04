@@ -9,3 +9,5 @@ latex-tmlr/main.blg
 latex-tmlr/main.out
 
 .vercel
+arm_b2_smoke_*
+arm_b2_offinstrument_*
