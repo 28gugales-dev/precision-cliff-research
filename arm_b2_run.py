@@ -13,11 +13,21 @@
 # admissible (k, m) and every truncation, and refuses to run if they disagree, which is what
 # excludes cells like N = 63 where truncation wins.
 #
-# Usage: python arm_b2_run.py primary | secondary
+# Usage: python arm_b2_run.py primary | secondary [workers]
+#
+# Mechanical note, added after the primary reading ran and before the secondary finished:
+# the secondary is scored cell by cell with a partial report written after each cell, and the
+# worker count is a command-line argument. The primary ran with this file's earlier version
+# (corpus 9fc6e34) at the pipeline's 4 workers; the secondary's first launch at 4 workers was
+# stopped in its N = 73 cell after two hours (heavy seeds fill the 3600 s wall, so 45 rows on
+# 4 workers projected to eight hours) and relaunched at 12 workers on the 22-core machine, one
+# core per subprocess, no core shared. Rows, seeds, program, wall and scorer are unchanged;
+# the worker count is disclosed in the report.
 import hashlib
 import json
 import math
 import sys
+import time
 from collections import Counter
 from pathlib import Path
 
@@ -49,7 +59,7 @@ def family_best(n):
     return best
 
 
-def main(reading):
+def main(reading, workers):
     spec = READINGS[reading]
     for n in spec["cells"]:
         closed = cl.argmax_closed_form(n)
@@ -71,12 +81,27 @@ def main(reading):
             f.write(json.dumps(r) + "\n")
 
     print(f"{reading}: {len(rows)} rows, {spec['timeout_s']} s wall, "
-          f"cells {spec['cells']}, sha {TEMPLATE_SHA[:12]}", flush=True)
-    scored = cl.score_all(rows, timeout_s=spec["timeout_s"])
+          f"cells {spec['cells']}, sha {TEMPLATE_SHA[:12]}, {workers} workers", flush=True)
+    scored = [None] * len(rows)
+    partial = HERE / f"arm_b2_partial_{reading}.json"
+    done = {}
+    for n in spec["cells"]:
+        idx = [i for i, r in enumerate(rows) if r["n"] == n]
+        t0 = time.time()
+        out = cl.score_all([rows[i] for i in idx], timeout_s=spec["timeout_s"], max_workers=workers)
+        for i, s in zip(idx, out):
+            scored[i] = s
+        done[str(n)] = {"rows": len(idx), "wall_s": round(time.time() - t0),
+                        "bins": dict(Counter(s["bin"] for s in out)),
+                        "cleared": sum(1 for s in out if s["bin"] == "valid" and s["cleared"])}
+        partial.write_text(json.dumps({"reading": reading, "workers": workers, "cells_done": done},
+                                      indent=1), encoding="utf-8")
+        print(f"cell {n} scored: {done[str(n)]}", flush=True)
 
     report = {"reading": reading, "in_pipeline": spec["in_pipeline"],
               "timeout_s": spec["timeout_s"], "template_sha256": TEMPLATE_SHA,
-              "restarts_per_cell": spec["cells"], "cells": {}}
+              "restarts_per_cell": spec["cells"], "workers": workers,
+              "wall_s_per_cell": {k: v["wall_s"] for k, v in done.items()}, "cells": {}}
     cells_at_20 = pooled_valid = pooled_clear = 0
     for n in spec["cells"]:
         sc = [s for r, s in zip(rows, scored) if r["n"] == n]
@@ -122,4 +147,4 @@ def main(reading):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    main(sys.argv[1], int(sys.argv[2]) if len(sys.argv) > 2 else cl.MAX_EXEC_WORKERS)

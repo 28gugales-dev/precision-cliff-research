@@ -1,0 +1,9 @@
+secondary: 45 rows, 3600 s wall, cells {57: 50, 73: 50, 91: 50}, sha 298ba71c9f20, 12 workers
+cell 57 scored: {'rows': 15, 'wall_s': 1353, 'bins': {'valid': 15}, 'cleared': 15}
+cell 73 scored: {'rows': 15, 'wall_s': 4678, 'bins': {'timeout': 4, 'valid': 11}, 'cleared': 11}
+cell 91 scored: {'rows': 15, 'wall_s': 7200, 'bins': {'timeout': 15}, 'cleared': 0}
+n=57: {'valid': 15}, valid 15, cleared 15, best 3.917833616, argmax 3.7366935
+n=73: {'timeout': 4, 'valid': 11}, valid 11, cleared 11, best 4.43000727, argmax 4.2329951
+n=91: {'timeout': 15}, valid 0, cleared 0, best None, argmax 4.7301186
+POOLED: {'sampled': 45, 'valid': 26, 'cleared': 26, 'cells_at_20pct': 2, 'verdict': 'S-B2-1 holds (>= 2 of 3 cells at 50 restarts)', 'S_B2_2_best_exceeds_anchor_cells': [57, 73]}
+written arm_b2_report_secondary.json

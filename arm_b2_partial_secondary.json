@@ -1,0 +1,31 @@
+{
+ "reading": "secondary",
+ "workers": 12,
+ "cells_done": {
+  "57": {
+   "rows": 15,
+   "wall_s": 1353,
+   "bins": {
+    "valid": 15
+   },
+   "cleared": 15
+  },
+  "73": {
+   "rows": 15,
+   "wall_s": 4678,
+   "bins": {
+    "timeout": 4,
+    "valid": 11
+   },
+   "cleared": 11
+  },
+  "91": {
+   "rows": 15,
+   "wall_s": 7200,
+   "bins": {
+    "timeout": 15
+   },
+   "cleared": 0
+  }
+ }
+}
