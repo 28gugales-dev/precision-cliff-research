@@ -95,48 +95,44 @@ def build_rows(reading, seeds, template, template_sha):
     return rows
 
 
-def score_reading(reading, rows, timeout_s):
-    """Scores one reading cell by cell through arm CL's pipeline, timing each cell."""
-    cells = {}
-    for n in READINGS[reading]["cells"]:
-        cell_rows = [r for r in rows if r["n"] == n]
-        restarts = READINGS[reading]["cells"][n]
-        print(f"[{reading}] n={n}: {len(cell_rows)} rows, RESTARTS = {restarts}, "
-              f"{timeout_s} s wall, {cl.MAX_EXEC_WORKERS} concurrent", flush=True)
-        t0 = time.perf_counter()
-        scored = cl.score_all(cell_rows, timeout_s=timeout_s)
-        wall = round(time.perf_counter() - t0, 3)
-        bins = Counter(s["bin"] for s in scored)
-        valid = [s for s in scored if s["bin"] == "valid"]
-        cleared = [s for s in valid if s["cleared"]]
-        best = max((s["sum"] for s in valid), default=None)
-        a = anchor(n)
-        cells[str(n)] = {
-            "restarts": restarts, "timeout_s": timeout_s, "wall_clock_s": wall,
-            "sampled": len(cell_rows), "bins": dict(bins),
-            "n_valid_1e6": len(valid),
-            "n_valid_1e9": sum(1 for s in valid if s["valid_1e9"]),
-            "n_cleared": len(cleared),
-            "clear_rate": (len(cleared) / len(valid)) if valid else None,
-            "underpowered": len(valid) < FLOOR,
-            "argmax_closed_form": round(cl.ARGMAX[n], 9),
-            "anchor_T_kstar_N": round(a, 9),
-            "best_sum": round(best, 9) if best is not None else None,
-            "best_exceeds_anchor": (best is not None and best > a),
-            "sums": sorted(round(s["sum"], 9) for s in valid),
-            "cleared_sums": sorted(round(s["sum"], 9) for s in cleared),
-            "k_struct_dist": dict(Counter(s["k_struct"] for s in valid)),
-        }
-        c = cells[str(n)]
-        print(f"[{reading}] n={n}: bins {dict(bins)}, valid {c['n_valid_1e6']} "
-              f"(1e-9: {c['n_valid_1e9']}), cleared {c['n_cleared']}, best {c['best_sum']}, "
-              f"argmax {c['argmax_closed_form']}, anchor {c['anchor_T_kstar_N']}"
-              f"{'  UNSCOREABLE (below the five-valid floor)' if c['underpowered'] else ''}"
-              f"  [{wall} s]", flush=True)
-    return cells
+def score_cell(reading, n, cell_rows, timeout_s):
+    """Scores one cell through arm CL's pipeline, timing it."""
+    restarts = READINGS[reading]["cells"][n]
+    print(f"[{reading}] n={n}: {len(cell_rows)} rows, RESTARTS = {restarts}, "
+          f"{timeout_s} s wall, {cl.MAX_EXEC_WORKERS} concurrent", flush=True)
+    t0 = time.perf_counter()
+    scored = cl.score_all(cell_rows, timeout_s=timeout_s)
+    wall = round(time.perf_counter() - t0, 3)
+    bins = Counter(s["bin"] for s in scored)
+    valid = [s for s in scored if s["bin"] == "valid"]
+    cleared = [s for s in valid if s["cleared"]]
+    best = max((s["sum"] for s in valid), default=None)
+    a = anchor(n)
+    cell = {
+        "restarts": restarts, "timeout_s": timeout_s, "wall_clock_s": wall,
+        "sampled": len(cell_rows), "bins": dict(bins),
+        "n_valid_1e6": len(valid),
+        "n_valid_1e9": sum(1 for s in valid if s["valid_1e9"]),
+        "n_cleared": len(cleared),
+        "clear_rate": (len(cleared) / len(valid)) if valid else None,
+        "underpowered": len(valid) < FLOOR,
+        "argmax_closed_form": round(cl.ARGMAX[n], 9),
+        "anchor_T_kstar_N": round(a, 9),
+        "best_sum": round(best, 9) if best is not None else None,
+        "best_exceeds_anchor": (best is not None and best > a),
+        "sums": sorted(round(s["sum"], 9) for s in valid),
+        "cleared_sums": sorted(round(s["sum"], 9) for s in cleared),
+        "k_struct_dist": dict(Counter(s["k_struct"] for s in valid)),
+    }
+    print(f"[{reading}] n={n}: bins {dict(bins)}, valid {cell['n_valid_1e6']} "
+          f"(1e-9: {cell['n_valid_1e9']}), cleared {cell['n_cleared']}, best {cell['best_sum']}, "
+          f"argmax {cell['argmax_closed_form']}, anchor {cell['anchor_T_kstar_N']}"
+          f"{'  UNSCOREABLE (below the five-valid floor)' if cell['underpowered'] else ''}"
+          f"  [{wall} s]", flush=True)
+    return cell
 
 
-def pooled(cells):
+def pooled(reading, cells):
     valid = sum(c["n_valid_1e6"] for c in cells.values())
     cleared = sum(c["n_cleared"] for c in cells.values())
     at20 = sum(1 for c in cells.values()
@@ -146,8 +142,68 @@ def pooled(cells):
                     if not c["underpowered"] and c["n_cleared"] > 0)
     over_anchor = sum(1 for c in cells.values() if c["best_exceeds_anchor"])
     return {"sampled": sum(c["sampled"] for c in cells.values()), "valid": valid,
-            "cleared": cleared, "cells": len(cells), "cells_at_20pct": at20,
+            "cleared": cleared, "cells_registered": len(READINGS[reading]["cells"]),
+            "cells_scored": len(cells), "cells_at_20pct": at20,
             "cells_with_any_clearance": any_clear, "cells_best_over_anchor": over_anchor}
+
+
+def compute_verdicts(report):
+    """Every verdict comes from the counts. A reading whose registered cells are not all
+    scored yet is marked INCOMPLETE and claims nothing: the registered denominator is the
+    registered cell count, never the number of cells that happen to be on disk."""
+    verdicts = {}
+    readings = report["readings"]
+    partial = {r: readings[r]["pooled"]["cells_scored"] < readings[r]["pooled"]["cells_registered"]
+               for r in readings}
+    mark = lambda r, t: (f"INCOMPLETE ({readings[r]['pooled']['cells_scored']} of "
+                         f"{readings[r]['pooled']['cells_registered']} cells scored) -- " + t
+                         if partial[r] else t)
+    if "primary" in readings:
+        p = readings["primary"]["pooled"]
+        n_cells = p["cells_registered"]
+        scoreable = sum(1 for c in readings["primary"]["cells"].values()
+                        if not c["underpowered"])
+        if scoreable == 0:
+            v = (f"UNSCOREABLE (0 of {n_cells} primary cells reach the five-valid floor; "
+                 f"a cell under the floor claims nothing on its own)")
+        elif p["cells_at_20pct"] >= n_cells:
+            v = (f"P-B2-1 holds (clears >= 20% of valid outputs at {n_cells} of {n_cells} "
+                 f"primary cells): arm B's verdict map carries to the larger trap cells")
+        else:
+            v = (f"P-B2-2 holds (clears at {p['cells_at_20pct']} of {n_cells} primary cells, "
+                 f"below {n_cells} of {n_cells}): contribution 1 is scoped in the paper to the "
+                 f"cells where it was measured, and the scoping sentence is written whether or "
+                 f"not the secondary reading rescues the arm")
+        verdicts["primary"] = mark("primary", v)
+    if "secondary" in readings:
+        s = readings["secondary"]["pooled"]
+        n_cells = s["cells_registered"]
+        verdicts["S-B2-1"] = mark("secondary", (
+            f"{'HOLDS' if s['cells_with_any_clearance'] >= 2 else 'does not hold'} "
+            f"(clearance at {s['cells_with_any_clearance']} of {n_cells} cells at 50 "
+            f"restarts; at >= 20%: {s['cells_at_20pct']} of {n_cells})"))
+        verdicts["S-B2-2"] = mark("secondary", (
+            f"{'HOLDS' if s['cells_best_over_anchor'] >= n_cells else 'does not hold'} "
+            f"(best sum exceeds the anchor T(k*, N) at {s['cells_best_over_anchor']} of "
+            f"{n_cells} cells)"))
+    if len(readings) == 2:
+        p, s = readings["primary"]["pooled"], readings["secondary"]["pooled"]
+        fired = p["cleared"] == 0 and s["cleared"] == 0 and (p["valid"] + s["valid"]) > 0
+        t = (f"{'TRIGGERED' if fired else 'not triggered'} (primary cleared {p['cleared']} of "
+             f"{p['valid']} valid, secondary cleared {s['cleared']} of {s['valid']}). "
+             + ("The generalization fails outright and the paper says so in contribution 1 and "
+                "the abstract, not only in limitations." if fired else
+                "The falsifier fires only when both readings clear nothing."))
+        verdicts["F-B2"] = ("INCOMPLETE -- " + t if any(partial.values()) else t)
+    return verdicts
+
+
+def save(report, path):
+    """Rewrites the report after every cell, so a killed run keeps the cells it finished."""
+    for reading, block in report["readings"].items():
+        block["pooled"] = pooled(reading, block["cells"])
+    report["verdicts"] = compute_verdicts(report)
+    path.write_text(json.dumps(report, indent=1), encoding="utf-8")
 
 
 def main():
@@ -159,6 +215,10 @@ def main():
     ap.add_argument("--smoke", action="store_true",
                     help="mechanical check only: 2 seeds, 60 s wall, arm_b2_smoke_* outputs; "
                          "never a registered run")
+    ap.add_argument("--resume", action="store_true",
+                    help="keep the cells an earlier run already scored into the same report "
+                         "file and score only the ones missing; the secondary reading runs "
+                         "for hours, so a killed run should not cost them")
     args = ap.parse_args()
 
     template = (HERE / "arm_b_baseline.py").read_text(encoding="utf-8")
@@ -190,6 +250,7 @@ def main():
     # registration fixed in advance; anything else writes beside them.
     prefix = "arm_b2" if (matches and not args.smoke) else (
         "arm_b2_smoke" if args.smoke else "arm_b2_offinstrument")
+    report_path = HERE / f"{prefix}_report.json"
 
     rows = []
     for reading in readings:
@@ -207,61 +268,33 @@ def main():
               "instrument_matches_registration": matches,
               "off_instrument_run": bool(args.off_instrument and not matches),
               "smoke": bool(args.smoke), "readings": {}}
+    if args.resume and report_path.exists():
+        prior = json.loads(report_path.read_text(encoding="utf-8"))
+        assert prior.get("template_sha256") == template_sha, "resuming across a template change"
+        assert prior.get("seeds") == seeds, "resuming across a seed change"
+        report["readings"] = prior.get("readings", {})
+        done = {r: sorted(b["cells"]) for r, b in report["readings"].items()}
+        print(f"resuming; already scored: {done}", flush=True)
+
     for reading in readings:
         spec = READINGS[reading]
         timeout_s = 60 if args.smoke else spec["timeout_s"]
-        cells = score_reading(reading, [r for r in rows if r["reading"] == reading], timeout_s)
-        report["readings"][reading] = {"note": spec["note"], "on_pipeline": spec["on_pipeline"],
-                                       "timeout_s": timeout_s, "cells": cells,
-                                       "pooled": pooled(cells)}
-        print(f"[{reading}] POOLED: {report['readings'][reading]['pooled']}", flush=True)
+        block = report["readings"].setdefault(
+            reading, {"note": spec["note"], "on_pipeline": spec["on_pipeline"],
+                      "timeout_s": timeout_s, "cells": {}, "pooled": {}})
+        for n in spec["cells"]:
+            if str(n) in block["cells"]:
+                print(f"[{reading}] n={n}: already scored, kept", flush=True)
+                continue
+            cell_rows = [r for r in rows if r["reading"] == reading and r["n"] == n]
+            block["cells"][str(n)] = score_cell(reading, n, cell_rows, timeout_s)
+            save(report, report_path)   # after every cell, so a kill costs one cell at most
+        print(f"[{reading}] POOLED: {block['pooled']}", flush=True)
 
-    verdicts = {}
-    if "primary" in report["readings"]:
-        p = report["readings"]["primary"]["pooled"]
-        n_cells = p["cells"]
-        scoreable = sum(1 for c in report["readings"]["primary"]["cells"].values()
-                        if not c["underpowered"])
-        if scoreable == 0:
-            verdicts["primary"] = (
-                f"UNSCOREABLE (0 of {n_cells} primary cells reach the five-valid floor; "
-                f"a cell under the floor claims nothing on its own)")
-        elif p["cells_at_20pct"] >= n_cells:
-            verdicts["primary"] = (
-                f"P-B2-1 holds (clears >= 20% of valid outputs at {n_cells} of {n_cells} "
-                f"primary cells): arm B's verdict map carries to the larger trap cells")
-        else:
-            verdicts["primary"] = (
-                f"P-B2-2 holds (clears at {p['cells_at_20pct']} of {n_cells} primary cells, "
-                f"below 2 of 2): contribution 1 is scoped in the paper to the cells where it "
-                f"was measured, and the scoping sentence is written whether or not the "
-                f"secondary reading rescues the arm")
-    if "secondary" in report["readings"]:
-        s = report["readings"]["secondary"]["pooled"]
-        verdicts["S-B2-1"] = (
-            f"{'HOLDS' if s['cells_with_any_clearance'] >= 2 else 'does not hold'} "
-            f"(clearance at {s['cells_with_any_clearance']} of {s['cells']} cells at 50 "
-            f"restarts; at >= 20%: {s['cells_at_20pct']} of {s['cells']})")
-        verdicts["S-B2-2"] = (
-            f"{'HOLDS' if s['cells_best_over_anchor'] >= s['cells'] else 'does not hold'} "
-            f"(best sum exceeds the anchor T(k*, N) at {s['cells_best_over_anchor']} of "
-            f"{s['cells']} cells)")
-    if len(report["readings"]) == 2:
-        p = report["readings"]["primary"]["pooled"]
-        s = report["readings"]["secondary"]["pooled"]
-        fired = p["cleared"] == 0 and s["cleared"] == 0 and (p["valid"] + s["valid"]) > 0
-        verdicts["F-B2"] = (
-            f"{'TRIGGERED' if fired else 'not triggered'} (primary cleared {p['cleared']} of "
-            f"{p['valid']} valid, secondary cleared {s['cleared']} of {s['valid']}). "
-            + ("The generalization fails outright and the paper says so in contribution 1 and "
-               "the abstract, not only in limitations." if fired else
-               "The falsifier fires only when both readings clear nothing."))
-    report["verdicts"] = verdicts
-    for k, v in verdicts.items():
+    save(report, report_path)
+    for k, v in report["verdicts"].items():
         print(f"VERDICT {k}: {v}", flush=True)
-
-    (HERE / f"{prefix}_report.json").write_text(json.dumps(report, indent=1), encoding="utf-8")
-    print(f"written {prefix}_report.json")
+    print(f"written {report_path.name}")
     return 0
 
 
