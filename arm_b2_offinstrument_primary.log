@@ -1,0 +1,10 @@
+instrument: {'cpu_count': 4, 'max_exec_workers': 4, 'numpy': '2.4.6', 'scipy': '1.17.1'}
+INSTRUMENT MISMATCH -- registration pins {'cpu_count': 22, 'max_exec_workers': 4, 'numpy': '2.4.6', 'scipy': '1.17.1'}
+template sha256 298ba71c9f20; 30 rows -> arm_b2_offinstrument_collect.jsonl
+[primary] n=57: 15 rows, RESTARTS = 7, 120 s wall, 4 concurrent
+[primary] n=57: bins {'valid': 14, 'timeout': 1}, valid 14 (1e-9: 14), cleared 14, best 3.893099568, argmax 3.736693464, anchor 3.5625  [287.602 s]
+[primary] n=59: 15 rows, RESTARTS = 5, 120 s wall, 4 concurrent
+[primary] n=59: bins {'valid': 13, 'timeout': 2}, valid 13 (1e-9: 13), cleared 13, best 3.970037569, argmax 3.79586683, anchor 3.6875  [229.205 s]
+[primary] POOLED: {'sampled': 30, 'valid': 27, 'cleared': 27, 'cells': 2, 'cells_at_20pct': 2, 'cells_with_any_clearance': 2, 'cells_best_over_anchor': 2}
+VERDICT primary: P-B2-1 holds (clears >= 20% of valid outputs at 2 of 2 primary cells): arm B's verdict map carries to the larger trap cells
+written arm_b2_offinstrument_report.json

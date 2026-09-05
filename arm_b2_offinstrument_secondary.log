@@ -1,0 +1,19 @@
+instrument: {'cpu_count': 4, 'max_exec_workers': 4, 'numpy': '2.4.6', 'scipy': '1.17.1'}
+INSTRUMENT MISMATCH -- registration pins {'cpu_count': 22, 'max_exec_workers': 4, 'numpy': '2.4.6', 'scipy': '1.17.1'}
+template sha256 298ba71c9f20; 75 rows -> arm_b2_offinstrument_collect.jsonl
+resuming; already scored: {'primary': ['57', '59']}
+[primary] n=57: already scored, kept
+[primary] n=59: already scored, kept
+[primary] POOLED: {'sampled': 30, 'valid': 27, 'cleared': 27, 'cells': 2, 'cells_at_20pct': 2, 'cells_with_any_clearance': 2, 'cells_best_over_anchor': 2}
+[secondary] n=57: 15 rows, RESTARTS = 50, 3600 s wall, 4 concurrent
+[secondary] n=57: bins {'valid': 15}, valid 15 (1e-9: 15), cleared 15, best 3.91639734, argmax 3.736693464, anchor 3.5625  [1746.293 s]
+[secondary] n=73: 15 rows, RESTARTS = 50, 3600 s wall, 4 concurrent
+[secondary] n=73: bins {'valid': 15}, valid 15 (1e-9: 15), cleared 15, best 4.434231416, argmax 4.232995129, anchor 4.055555556  [5559.533 s]
+[secondary] n=91: 15 rows, RESTARTS = 50, 3600 s wall, 4 concurrent
+[secondary] n=91: bins {'timeout': 12, 'valid': 3}, valid 3 (1e-9: 3), cleared 3, best 4.948184231, argmax 4.730118646, anchor 4.55  UNSCOREABLE (below the five-valid floor)  [14322.591 s]
+[secondary] POOLED: {'sampled': 45, 'valid': 33, 'cleared': 33, 'cells_registered': 3, 'cells_scored': 3, 'cells_at_20pct': 2, 'cells_with_any_clearance': 2, 'cells_best_over_anchor': 3}
+VERDICT primary: P-B2-1 holds (clears >= 20% of valid outputs at 2 of 2 primary cells): arm B's verdict map carries to the larger trap cells
+VERDICT S-B2-1: HOLDS (clearance at 2 of 3 cells at 50 restarts; at >= 20%: 2 of 3)
+VERDICT S-B2-2: HOLDS (best sum exceeds the anchor T(k*, N) at 3 of 3 cells)
+VERDICT F-B2: not triggered (primary cleared 27 of 27 valid, secondary cleared 33 of 33). The falsifier fires only when both readings clear nothing.
+written arm_b2_offinstrument_report.json

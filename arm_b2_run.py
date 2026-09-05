@@ -140,10 +140,15 @@ def pooled(reading, cells):
                and c["clear_rate"] >= 0.20)
     any_clear = sum(1 for c in cells.values()
                     if not c["underpowered"] and c["n_cleared"] > 0)
-    over_anchor = sum(1 for c in cells.values() if c["best_exceeds_anchor"])
+    # The floor clause governs every count that carries a claim: a cell under it is
+    # UNSCOREABLE and claims nothing on its own, so it is excluded here and reported beside.
+    over_anchor = sum(1 for c in cells.values()
+                      if not c["underpowered"] and c["best_exceeds_anchor"])
+    unscoreable = sorted(n for n, c in cells.items() if c["underpowered"])
     return {"sampled": sum(c["sampled"] for c in cells.values()), "valid": valid,
             "cleared": cleared, "cells_registered": len(READINGS[reading]["cells"]),
-            "cells_scored": len(cells), "cells_at_20pct": at20,
+            "cells_scored": len(cells), "cells_scoreable": len(cells) - len(unscoreable),
+            "cells_unscoreable": unscoreable, "cells_at_20pct": at20,
             "cells_with_any_clearance": any_clear, "cells_best_over_anchor": over_anchor}
 
 
@@ -180,12 +185,26 @@ def compute_verdicts(report):
         n_cells = s["cells_registered"]
         verdicts["S-B2-1"] = mark("secondary", (
             f"{'HOLDS' if s['cells_with_any_clearance'] >= 2 else 'does not hold'} "
-            f"(clearance at {s['cells_with_any_clearance']} of {n_cells} cells at 50 "
-            f"restarts; at >= 20%: {s['cells_at_20pct']} of {n_cells})"))
-        verdicts["S-B2-2"] = mark("secondary", (
-            f"{'HOLDS' if s['cells_best_over_anchor'] >= n_cells else 'does not hold'} "
-            f"(best sum exceeds the anchor T(k*, N) at {s['cells_best_over_anchor']} of "
-            f"{n_cells} cells)"))
+            f"(registered at >= 2 of {n_cells}; clearance at "
+            f"{s['cells_with_any_clearance']} of {n_cells} cells at 50 restarts, counting only "
+            f"cells at or above the five-valid floor; at >= 20%: {s['cells_at_20pct']} of "
+            f"{n_cells}"
+            + (f"; unscoreable: N = {', '.join(s['cells_unscoreable'])}"
+               if s['cells_unscoreable'] else "") + ")"))
+        # S-B2-2 is registered at 3 of 3. A cell under the floor claims nothing, so if any
+        # registered cell is unscoreable the prediction cannot be met as registered and is
+        # reported NOT EVALUABLE rather than scored on the cells that happen to have survived.
+        if s["cells_scoreable"] < n_cells:
+            v2 = (f"NOT EVALUABLE as registered (it asks for {n_cells} of {n_cells}, and only "
+                  f"{s['cells_scoreable']} of {n_cells} cells reach the five-valid floor; "
+                  f"unscoreable: N = {', '.join(s['cells_unscoreable'])}). Among the scoreable "
+                  f"cells the best sum exceeds the anchor T(k*, N) at "
+                  f"{s['cells_best_over_anchor']} of {s['cells_scoreable']}.")
+        else:
+            v2 = (f"{'HOLDS' if s['cells_best_over_anchor'] >= n_cells else 'does not hold'} "
+                  f"(best sum exceeds the anchor T(k*, N) at {s['cells_best_over_anchor']} of "
+                  f"{n_cells} cells)")
+        verdicts["S-B2-2"] = mark("secondary", v2)
     if len(readings) == 2:
         p, s = readings["primary"]["pooled"], readings["secondary"]["pooled"]
         fired = p["cleared"] == 0 and s["cleared"] == 0 and (p["valid"] + s["valid"]) > 0

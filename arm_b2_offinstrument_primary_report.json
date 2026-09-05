@@ -1,0 +1,174 @@
+{
+ "arm": "B2",
+ "registration": "arm_b2_preregistration.txt",
+ "template_sha256": "298ba71c9f20614ef1d4e0008a5a6e6a6c208d61b873ce135d926e2571799f8c",
+ "seeds": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15
+ ],
+ "floor_valid_per_cell": 5,
+ "instrument": {
+  "cpu_count": 4,
+  "max_exec_workers": 4,
+  "numpy": "2.4.6",
+  "scipy": "1.17.1"
+ },
+ "instrument_registered": {
+  "cpu_count": 22,
+  "max_exec_workers": 4,
+  "numpy": "2.4.6",
+  "scipy": "1.17.1"
+ },
+ "instrument_matches_registration": false,
+ "off_instrument_run": true,
+ "smoke": false,
+ "readings": {
+  "primary": {
+   "note": "budget-matched; arm CL's 120 s wall, RESTARTS = floor(0.75 * 120 / worst-seed restart cost) frozen in the registration",
+   "on_pipeline": true,
+   "timeout_s": 120,
+   "cells": {
+    "57": {
+     "restarts": 7,
+     "timeout_s": 120,
+     "wall_clock_s": 287.602,
+     "sampled": 15,
+     "bins": {
+      "valid": 14,
+      "timeout": 1
+     },
+     "n_valid_1e6": 14,
+     "n_valid_1e9": 14,
+     "n_cleared": 14,
+     "clear_rate": 1.0,
+     "underpowered": false,
+     "argmax_closed_form": 3.736693464,
+     "anchor_T_kstar_N": 3.5625,
+     "best_sum": 3.893099568,
+     "best_exceeds_anchor": true,
+     "sums": [
+      3.857346838,
+      3.858561477,
+      3.859812325,
+      3.872780299,
+      3.874542506,
+      3.879256995,
+      3.88257777,
+      3.887492883,
+      3.888727925,
+      3.888948571,
+      3.890956984,
+      3.89128912,
+      3.891991544,
+      3.893099568
+     ],
+     "cleared_sums": [
+      3.857346838,
+      3.858561477,
+      3.859812325,
+      3.872780299,
+      3.874542506,
+      3.879256995,
+      3.88257777,
+      3.887492883,
+      3.888727925,
+      3.888948571,
+      3.890956984,
+      3.89128912,
+      3.891991544,
+      3.893099568
+     ],
+     "k_struct_dist": {
+      "8": 6,
+      "11": 2,
+      "7": 2,
+      "10": 1,
+      "5": 2,
+      "9": 1
+     }
+    },
+    "59": {
+     "restarts": 5,
+     "timeout_s": 120,
+     "wall_clock_s": 229.205,
+     "sampled": 15,
+     "bins": {
+      "valid": 13,
+      "timeout": 2
+     },
+     "n_valid_1e6": 13,
+     "n_valid_1e9": 13,
+     "n_cleared": 13,
+     "clear_rate": 1.0,
+     "underpowered": false,
+     "argmax_closed_form": 3.79586683,
+     "anchor_T_kstar_N": 3.6875,
+     "best_sum": 3.970037569,
+     "best_exceeds_anchor": true,
+     "sums": [
+      3.895495203,
+      3.922242814,
+      3.922498096,
+      3.922695285,
+      3.926927339,
+      3.931399561,
+      3.942135782,
+      3.944255523,
+      3.950256486,
+      3.951815063,
+      3.957951058,
+      3.968111658,
+      3.970037569
+     ],
+     "cleared_sums": [
+      3.895495203,
+      3.922242814,
+      3.922498096,
+      3.922695285,
+      3.926927339,
+      3.931399561,
+      3.942135782,
+      3.944255523,
+      3.950256486,
+      3.951815063,
+      3.957951058,
+      3.968111658,
+      3.970037569
+     ],
+     "k_struct_dist": {
+      "7": 4,
+      "8": 3,
+      "6": 4,
+      "5": 1,
+      "12": 1
+     }
+    }
+   },
+   "pooled": {
+    "sampled": 30,
+    "valid": 27,
+    "cleared": 27,
+    "cells": 2,
+    "cells_at_20pct": 2,
+    "cells_with_any_clearance": 2,
+    "cells_best_over_anchor": 2
+   }
+  }
+ },
+ "verdicts": {
+  "primary": "P-B2-1 holds (clears >= 20% of valid outputs at 2 of 2 primary cells): arm B's verdict map carries to the larger trap cells"
+ }
+}
