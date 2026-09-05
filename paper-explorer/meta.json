@@ -3,7 +3,7 @@
   "paper1_pdf_updated": "2026-09-05",
   "paper1_revision": "Revision 6.0 (round 22a: the six transfer arms MU, L, V, GM, GM2, GM3 move to Paper 2; body 19 pages; twenty-one arms reported here)",
   "paper2_pdf_updated": "2026-09-05",
-  "paper2_revision": "Revision 1.1 (round 22c: overview table in section 1, per-lineage arm L table in section 5; body 12 pages)",
+  "paper2_revision": "Revision 1.2 (round 22d: section 1 generation-0 counts point at Table 1; body 12 pages)",
   "arms_updated": "2026-09-02",
   "graph_updated": "2026-08-18",
   "deploy": "git: push to main deploys (root paper-explorer)"
