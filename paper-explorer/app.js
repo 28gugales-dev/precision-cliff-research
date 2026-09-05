@@ -1226,9 +1226,17 @@
     '<div class="card paper-card">',
     '<div class="paper-tag">Paper 1</div>',
     '<h3>Capability or Optimizer? What Lets an LLM Proposer Leave Its Template Family on Circle Packing</h3>',
-    '<p class="paper-sub">Template anchoring in unconditioned zero-shot circle packing.</p>',
-    '<p>Asked to place N circles in a unit square with no parent program, no fitness feedback and no evaluator in context, a weak-tier model does not search. It reaches for a k×k grid of radius 1/(2k), sometimes with corner fillers, and truncates it when N does not fill the grid. Which template it reaches for is predictable in closed form: a nearest-square order k*(N) = round(√N) plus a value function over grid order and filler count fixes the modal output, and therefore its score, before any sampling. The predicted mode matched the empirical mode at all seven tested N; per-sample agreement runs 56–86% by cell, which is the modal frequency itself. Across three tiers, constructive ambition rises with nominal tier while execution validity rises then collapses — 78% → 100% → 13% valid at the primary 1e-6 tolerance. The anchoring is a property of unconditioned calls only: given a provably better in-family parent, 0 of 26 valid mutation samples return to the template, which is the regime discovery loops actually run in. A probe that lists the whole recipe family in the prompt separates choice from execution — the model picks the recipe the stated score table favours, then cannot build it, failing off-template in 30 of 31 invalid attempts. Point predictions and prompt hashes were registered before sampling, and two registered falsifiers triggered; both are reported as such.</p>',
+    '<p class="paper-sub">What lets a proposer leave the grid-plus-filler family: the optimizer, not the model tier.</p>',
+    '<p>Zero-shot LLM proposers on circle packing concentrate on a grid-plus-filler family whose best value follows in closed form from N. We ask what lets a proposer leave it. A fixed SLSQP program with no model in the loop clears the family in 45 of 45 runs and beats the best model-written program at every cell: the optimizer does the clearing. Budget-matched at N = 57 and 59 the same program clears 28 of 28 valid outputs of 30 launched, and at N = 73 it cannot complete one restart in the 120-second wall, a limit of the budget, not of the optimizer. Across two proposer tiers and three output channels, the tiers differ in whether their programs drive that optimizer past the family. A Sonnet-tier program with numpy and scipy clears in 23 of 25 valid programs, or 23 of 41 once every invocation is charged; without the libraries, on the same path and budget, it clears none. A weak-tier program with the libraries clears none of its 90 invocations, 4 of 90 when its unreadable output is re-read leniently. Handed the better construction, the weak tier chooses it but builds it in 6 of 14 valid outputs: execution, not preference, is the bottleneck. Twenty-one registered arms are reported, whichever way each went; six more are reported in Paper 2.</p>',
     '<p class="paper-links"><a href="paper1.pdf" target="_blank" rel="noopener">Read the paper (PDF)</a> · <a href="paper1_supplement.pdf" target="_blank" rel="noopener">Supplement (PDF)</a> · <a href="https://github.com/28gugales-dev/precision-cliff-research" target="_blank" rel="noopener">Code, ledgers &amp; preregistrations</a><span class="updated-tag" id="upd-p1"></span></p>',
+    '</div>',
+
+    '<div class="card paper-card">',
+    '<div class="paper-tag">Paper 2</div>',
+    '<h3>Characterize Before You Loop: a Zero-Shot Proposer\'s Template Does Not Survive the Loop\'s Own Conditions</h3>',
+    '<p class="paper-sub">Companion to Paper 1: what happens to the template when the parent, the iteration, the serving path or the vendor changes.</p>',
+    '<p>Paper 1 establishes the grid-plus-filler concentration and its closed form. This paper measures what happens to that characterization when the setting changes. Eight registered arms change four things: the parent, the iteration, the serving path with its reasoning setting, and the vendor. One parent-conditioning step dissolves the template on both halves of the registered rule. Five generations of a minimal archive-and-mutate loop, at population 5 and 49 valid outputs from 100 conditioned invocations, do not restore it at that scale, and two of the loop\'s four predictions were not met. The same prompts on a pinned serving path return no valid packing at the square cells, and a registered follow-up names extended thinking, on against off at the routing layer\'s default effort, as the component that restores validity. At a second vendor the pooled prediction holds; at the cells that can discriminate anchoring from family search it does not. Across thirteen free-tier aliases, ten fall below the registered floor, two transfer at point estimate with Wilson intervals that include 50%, and one does not. The template is contingent on the serving path and the request parameters it carries, the reasoning setting included, so a zero-shot characterization of a proposer licenses no prediction about the same proposer inside a discovery loop without a measurement at that loop\'s own conditions. Every registered arm is reported, whichever way each went.</p>',
+    '<p class="paper-links"><a href="paper2.pdf" target="_blank" rel="noopener">Read the paper (PDF)</a> · <a href="paper2_supplement.pdf" target="_blank" rel="noopener">Supplement (PDF)</a> · <a href="https://github.com/28gugales-dev/precision-cliff-research" target="_blank" rel="noopener">Code, ledgers &amp; preregistrations</a><span class="updated-tag" id="upd-p2"></span></p>',
     '</div>',
 
     '<div class="card">',
@@ -1279,6 +1287,11 @@
       status.innerHTML = bits.join('<br>');
     }
 
+    var u2 = document.getElementById('upd-p2');
+    if (u2 && updWhen('paper2_pdf_updated')) {
+      u2.textContent = 'PDF updated ' + updWhen('paper2_pdf_updated') +
+        (updWhen('paper2_revision') ? ' (' + updWhen('paper2_revision') + ')' : '');
+    }
     var u1 = document.getElementById('upd-p1');
     if (u1 && updWhen('paper1_pdf_updated')) {
       u1.textContent = 'PDF updated ' + updWhen('paper1_pdf_updated') +

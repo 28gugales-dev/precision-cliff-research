@@ -1,7 +1,9 @@
 {
-  "site_updated": "2026-09-02",
-  "paper1_pdf_updated": "2026-09-02",
-  "paper1_revision": "Revision 5.17 (round 18: external review; contribution 1 leads with the optimizer-alone baseline, clearance reported per invocation beside the registered valid-conditioned reading (Sonnet 23 of 41, weak 0 of 90 and 4 of 90 lenient, baseline 45 of 45), lenient counterweight restored to the abstract, library credit taken from the same-instrument pair, top alias demoted out of the mechanism section; twenty-six arms), 2026-09-03",
+  "site_updated": "2026-09-05",
+  "paper1_pdf_updated": "2026-09-05",
+  "paper1_revision": "Revision 6.0 (round 22a: the six transfer arms MU, L, V, GM, GM2, GM3 move to Paper 2; body 19 pages; twenty-one arms reported here)",
+  "paper2_pdf_updated": "2026-09-05",
+  "paper2_revision": "First submission version (round 22b: eight arms MU, L, P, P-D, V, GM, GM2, GM3; three cold reads)",
   "arms_updated": "2026-09-02",
   "graph_updated": "2026-08-18",
   "deploy": "git: push to main deploys (root paper-explorer)"
