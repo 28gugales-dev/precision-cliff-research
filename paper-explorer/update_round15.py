@@ -33,10 +33,9 @@ for l in [
         a["links"].append(l)
 arms_p.write_text(json.dumps(a, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 m = json.loads((HERE / "meta.json").read_text(encoding="utf-8"))
-m["paper1_revision"] = ("Revision 5.17 (round 18: external review; contribution 1 leads with the optimizer-alone baseline, "
-                        "clearance reported per invocation beside the registered valid-conditioned reading "
-                        "(Sonnet 23 of 41, weak 0 of 90 and 4 of 90 lenient, baseline 45 of 45), lenient counterweight "
-                        "restored to the abstract, library credit taken from the same-instrument pair, top alias demoted "
-                        "out of the mechanism section; twenty-six arms), 2026-09-03")
+m["paper1_revision"] = ("Revision 5.18 (round 19: prose pass over the round 18 insertions; the two clearance "
+                        "denominators joined rather than set side by side, the paper's own unit (invocations) "
+                        "throughout, library credit stated as a credit, lenient count tagged with its denominator, "
+                        "per-invocation paragraph leads with the takeaway; twenty-six arms), 2026-09-05")
 (HERE / "meta.json").write_text(json.dumps(m, indent=2) + "\n", encoding="utf-8")
 print("atlas synced to round 15:", len(a["arms"]), "arms,", len(a["links"]), "links")
