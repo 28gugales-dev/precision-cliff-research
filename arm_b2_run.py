@@ -275,6 +275,7 @@ def main():
         report["readings"] = prior.get("readings", {})
         done = {r: sorted(b["cells"]) for r, b in report["readings"].items()}
         print(f"resuming; already scored: {done}", flush=True)
+        save(report, report_path)  # recompute the carried pooled counts and verdicts now
 
     for reading in readings:
         spec = READINGS[reading]
