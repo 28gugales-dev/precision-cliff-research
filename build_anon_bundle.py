@@ -62,11 +62,14 @@ REDACTIONS = [
     (re.compile(r"[Cc]:[\\/]+Users[\\/]+(soham|\[ANON\])"), "~"),
     (re.compile(r"sohamgugalet"), "ANON-KAGGLE-OWNER"),
     (re.compile(r"Soham Shailesh Gugale"), "[ANONYMIZED AUTHOR]"),
-    (re.compile(r"Soham|Gugale", re.I), "[ANON]"),
     (re.compile(r"28gugales@gmail\.com"), "[redacted-email]"),
+    # GitHub owner handles (28gugales-dev, 28gugales-zamp): whole token, before
+    # the name rule below turns them into the reconstructible "28[ANON]s-dev".
+    (re.compile(r"28gugales[\w-]*", re.I), "ANON-GITHUB-OWNER"),
+    (re.compile(r"Soham|Gugale", re.I), "[ANON]"),
     (re.compile(r"[Cc]:[\\/]Users[\\/]soham"), "~"),
 ]
-LEAK = re.compile(r"soham|gugale|28gugales|[Cc]:[\\/]+Users[\\/]", re.I)
+LEAK = re.compile(r"soham|gugale|28gugales|28\[ANON\]|github\.com/28|[Cc]:[\\/]+Users[\\/]", re.I)
 
 README = """# Anonymized supplementary bundle
 

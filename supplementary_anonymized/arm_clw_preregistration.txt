@@ -16,7 +16,7 @@ PROVENANCE DECLARATION (registered, same conventions as arms CC, CL, CCP)
   primary and decides the verdict.
 - Drafted by the same session agent (an LLM) that runs the study pipeline.
   External timestamp = this commit pushed to the public remote
-  (28[ANON]s-dev/precision-cliff-research) BEFORE the first invocation.
+  (ANON-GITHUB-OWNER/precision-cliff-research) BEFORE the first invocation.
 - Budget note, disclosed: the draft of this arm (round14_registrations_DRAFT.txt)
   said 90 invocations; the account's remaining credit after arm CCP allows
   45, and 45 is what is registered. The pooled unit is therefore 90 rows

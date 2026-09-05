@@ -13,7 +13,7 @@ PROVENANCE DECLARATION (registered, same conventions as arms CC, CL)
   removes only the libraries.
 - Drafted by the same session agent (an LLM) that runs the study pipeline.
   No independent human authorship is claimed. External timestamp = this git
-  commit pushed to the public remote (28[ANON]s-dev/precision-cliff-research)
+  commit pushed to the public remote (ANON-GITHUB-OWNER/precision-cliff-research)
   BEFORE the first proposer invocation.
 - Written with arm CL's result known. Either outcome is reportable and the
   integration rule below fixes how each is written before it is known.

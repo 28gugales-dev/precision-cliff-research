@@ -11,7 +11,7 @@ PROVENANCE DECLARATION (registered, same conventions as arm MU/CH)
 - This registration was drafted by the same session agent (an LLM) that runs
   the study pipeline. We do not claim independent human authorship. External
   timestamp = this git commit pushed to the public-remote repository
-  (28[ANON]s-dev/precision-cliff-research) BEFORE the first proposer
+  (ANON-GITHUB-OWNER/precision-cliff-research) BEFORE the first proposer
   invocation; the commit hash is cited in the paper on integration.
 - Both papers are submission-ready at registration time. Either outcome of
   this arm is reportable: integration changes framing, not the calendar.

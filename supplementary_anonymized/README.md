@@ -81,4 +81,4 @@ for the content.
 | `echo_screen.py` | standalone parent-echo canary for practitioners, no dependencies |
 | `STATE.md` | full working log, every session, unedited |
 
-Contact: 28[ANON]s@gmail.com
+Contact: [redacted-email]

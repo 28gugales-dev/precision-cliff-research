@@ -231,7 +231,7 @@
      1 seed re-instantiates recipe as 4x4 grid + 7 fillers = 2.3624369 (observed
      2.362440). Attractor = PARAMETRIC RECIPE. Delivery deviations disclosed
      (3/100 in-message returns, 1 consequent parse failure; tool audit 86/11/3).
-- **Public repo LIVE: github.com/28[ANON]s-zamp/precision-cliff** (MIT, full agent-run/
+- **Public repo LIVE: github.com/ANON-GITHUB-OWNER/precision-cliff** (MIT, full agent-run/
   data + code + paper; excludes superseded/ + internal notes; initial commit timestamps
   Arm E prereg; second commit = all new data + paper v5; third = PDF).
 - Paper v5: title "Five-Arm"; Arm E in §3.3 (table row + protocol) + new §5.10
@@ -294,7 +294,7 @@ Response executed same day, all numbers opus-verified clean:
   replaces bit-width claims; fig1 rebuilt with per-seed offsets; FW#8 names pinned-API
   Arm B rerun + file-writing best-of-N as top revision experiments.
 - Counts now 1,174 distinct proposer invocations / 1,398 total LLM calls (§4, stated once).
-- **Repo moved to github.com/28[ANON]s-dev/precision-cliff** (full history, hashes unchanged
+- **Repo moved to github.com/ANON-GITHUB-OWNER/precision-cliff** (full history, hashes unchanged
   → Arm E prereg timestamp preserved; zamp copy private with MOVED pointer). Paper URLs updated.
 - PDF v6 (37pp): Downloads/precision-cliff-paper-v6-revision.pdf + repo paper/.
 - Deliberately skipped (Claude usage / API billing): file-writing best-of-50 rerun, Arm B
@@ -319,7 +319,7 @@ Response executed same day, all numbers opus-verified clean:
   into trap); 2.348 consistent.
 - Sonnet verifier recomputed everything independently: zero discrepancies, no remaining
   cross-seed comparisons. PDF v7 (38pp): Downloads/precision-cliff-paper-v7-final.pdf +
-  repo. Commit 255ac40 pushed to github.com/28[ANON]s-dev/precision-cliff.
+  repo. Commit 255ac40 pushed to github.com/ANON-GITHUB-OWNER/precision-cliff.
 - Delegation per user directive: subagents sonnet/haiku only, paper prose edits by main
   (fable) only.
 

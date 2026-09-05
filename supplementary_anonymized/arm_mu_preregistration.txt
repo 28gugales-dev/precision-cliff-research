@@ -10,7 +10,7 @@ PROVENANCE DECLARATION (registered, per council review 2026-08-05)
 - This registration was drafted by the same session agent (an LLM) that runs
   the study pipeline. We do not claim independent human authorship. External
   timestamp = this git commit pushed to the public-remote repository
-  (28[ANON]s-dev/precision-cliff-research); the commit hash is cited in the
+  (ANON-GITHUB-OWNER/precision-cliff-research); the commit hash is cited in the
   paper on integration.
 - HARD SUBMISSION DATE (registered): workshop compact + TMLR full paper are
   submitted by 2026-08-12 REGARDLESS of arm MU/CH outcomes. Outcomes change

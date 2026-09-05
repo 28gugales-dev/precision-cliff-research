@@ -13,7 +13,7 @@ PROVENANCE DECLARATION (registered, same conventions as arms P, CCP, CL-W)
   each alone.
 - Drafted by the same session agent (an LLM) that runs the study pipeline.
   External timestamp = this commit pushed to the public remote
-  (28[ANON]s-dev/precision-cliff-research) BEFORE the first invocation.
+  (ANON-GITHUB-OWNER/precision-cliff-research) BEFORE the first invocation.
 - Budget note, disclosed: the account's remaining credit at registration
   may not cover all 30 invocations. The runner alternates conditions by
   sample id (D1 sample 1, D2 sample 1, D1 sample 2, ...) so an interrupted

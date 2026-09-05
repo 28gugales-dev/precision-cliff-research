@@ -13,7 +13,7 @@ PROVENANCE DECLARATION (registered, same conventions as arms MU/CH/CC)
   replication-and-extension registration, not a priori.
 - Drafted by the same session agent (an LLM) that runs the pipeline.
   External timestamp = this commit pushed to the public remote
-  (28[ANON]s-dev/precision-cliff-research) before the first invocation.
+  (ANON-GITHUB-OWNER/precision-cliff-research) before the first invocation.
 - Replication scope: fresh draws through the SAME instrument (agent
   runtime aliases), not an independent serving path. CC2 shares arm CC's
   weak-tier alias; CCS uses the runtime's Sonnet-tier alias. The

@@ -11,7 +11,7 @@ PROVENANCE DECLARATION (registered, same conventions as arms MU/CH/CC/CN)
   disclosed here rather than implied to be a priori.
 - Drafted by the same session agent (an LLM) that runs the study pipeline.
   No independent human authorship is claimed. External timestamp = this git
-  commit pushed to the public remote (28[ANON]s-dev/precision-cliff-research)
+  commit pushed to the public remote (ANON-GITHUB-OWNER/precision-cliff-research)
   BEFORE the first proposer invocation.
 - The paper is submission-ready at registration time. Either outcome is
   reportable.
