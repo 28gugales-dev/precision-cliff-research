@@ -1,0 +1,89 @@
+{
+ "reading": "primary",
+ "in_pipeline": true,
+ "timeout_s": 120,
+ "template_sha256": "298ba71c9f20614ef1d4e0008a5a6e6a6c208d61b873ce135d926e2571799f8c",
+ "restarts_per_cell": {
+  "57": 7,
+  "59": 5
+ },
+ "cells": {
+  "57": {
+   "restarts": 7,
+   "sampled": 15,
+   "bins": {
+    "valid": 14,
+    "timeout": 1
+   },
+   "n_valid": 14,
+   "n_valid_1e9": 14,
+   "n_cleared": 14,
+   "clear_rate": 1.0,
+   "underpowered": false,
+   "argmax_closed_form": 3.736693464,
+   "anchor_truncate": 3.5625,
+   "best_sum": 3.893099568,
+   "best_exceeds_anchor": true,
+   "sums": [
+    3.852125462,
+    3.857039131,
+    3.858561477,
+    3.859812325,
+    3.871810367,
+    3.872537404,
+    3.876745006,
+    3.88059289,
+    3.880944856,
+    3.881386592,
+    3.884491116,
+    3.887492883,
+    3.891991544,
+    3.893099568
+   ]
+  },
+  "59": {
+   "restarts": 5,
+   "sampled": 15,
+   "bins": {
+    "valid": 14,
+    "geom_invalid": 1
+   },
+   "n_valid": 14,
+   "n_valid_1e9": 14,
+   "n_cleared": 14,
+   "clear_rate": 1.0,
+   "underpowered": false,
+   "argmax_closed_form": 3.79586683,
+   "anchor_truncate": 3.6875,
+   "best_sum": 3.968111658,
+   "best_exceeds_anchor": true,
+   "sums": [
+    3.910793055,
+    3.916086519,
+    3.917021543,
+    3.922695285,
+    3.93042074,
+    3.936934008,
+    3.941055552,
+    3.942135782,
+    3.944255523,
+    3.952752131,
+    3.957951058,
+    3.959198587,
+    3.959562716,
+    3.968111658
+   ]
+  }
+ },
+ "pooled": {
+  "sampled": 30,
+  "valid": 28,
+  "cleared": 28,
+  "cells_at_20pct": 2,
+  "verdict": "P-B2-1 holds (clears at >= 20% at 2 of 2 cells)",
+  "S_B2_2_best_exceeds_anchor_cells": [
+   57,
+   59
+  ]
+ }
+}

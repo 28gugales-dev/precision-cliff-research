@@ -38,6 +38,21 @@ TOP_GLOBS = [
     "opus_wave2_ledger.jsonl",
     "opus_wave2_raw.json", "HOW_TO_RUN.md", "README.md", "requirements.txt",
     "corrections_ledger.md",
+    # named in the papers' artifact lists (paper 1 appendix, supplement S6/S9)
+    "STATE.md", "ledger_v2_corrections.md", "n_sweep_forecast.json",
+    "rect_forecast.json", "p11_mode_baseline.json", "p7_blind_labels.json",
+    "p7_faithfulness_rubric.md",
+]
+# Scripts and outputs the papers cite that live in the paper repository's
+# loop/ and evidence/ directories rather than the corpus root. Shipped under
+# paper_repo/ so the citations' "loop/ directory" wording resolves.
+PAPER_REPO = ROOT.parent / "paper1-accept-loop"
+PAPER_REPO_FILES = [
+    "loop/arm_f_attempt_control.py", "loop/arm_f_attempt_uncond.py",
+    "loop/arm_mu_ceiling.py", "loop/cl_lenient_reparse.py",
+    "loop/extend_branch_scope.py", "loop/lp_extend_k89.py",
+    "loop/recount_1e9.py", "loop/recount_cl.py",
+    "evidence/cl_lenient.json", "evidence/cl_recount.json",
 ]
 TEXT_EXT = {".py", ".md", ".txt", ".json", ".jsonl", ".yaml", ".yml",
             ".sh", ".ipynb", ".cfg", ".toml"}
@@ -68,6 +83,13 @@ this bundle. They verify against the public Kaggle datasets named in the
 paper (owner handle withheld for review) and will verify against the
 de-anonymized artifact released at camera-ready. Nothing else about those
 files was changed.
+
+LAYOUT. The corpus root holds every arm's runner, ledger, preregistration,
+amendment and frozen report. paper_repo/loop/ and paper_repo/evidence/ hold
+the scripts and outputs the papers cite as living in the paper repository
+(recount_cl.py, arm_mu_ceiling.py, cl_recount.json and the rest). This
+bundle serves both companion submissions; each ships it with its own
+supplement PDF and an anonymized copy of the other paper.
 """
 
 
@@ -84,9 +106,14 @@ def main():
     for g in TOP_GLOBS:
         files.extend(p for p in ROOT.glob(g) if p.is_file())
 
+    pairs = [(src, src.relative_to(ROOT)) for src in sorted(set(files))]
+    for rel in PAPER_REPO_FILES:
+        src = PAPER_REPO / rel
+        assert src.is_file(), f"paper repo file missing: {src}"
+        pairs.append((src, Path("paper_repo") / rel))
+
     redacted = []
-    for src in sorted(set(files)):
-        rel = src.relative_to(ROOT)
+    for src, rel in pairs:
         dst = OUT / rel
         dst.parent.mkdir(parents=True, exist_ok=True)
         if src.suffix.lower() in TEXT_EXT:

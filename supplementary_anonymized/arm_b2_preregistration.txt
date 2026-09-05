@@ -1,0 +1,96 @@
+ARM B2 -- THE OPTIMIZER ALONE AT LARGER TRAP CELLS
+Registered. Committed before any row of this arm was sampled.
+
+MOTIVATION, DISCLOSED
+An external review of revision 5.16 asked whether "the optimizer does the clearing" survives
+where restart SLSQP no longer saturates the cell. Arm B ran at N = 13, 21 and 31, where the
+solver reaches the published best-known value to within 0.1-0.2 percent. This arm is
+post-review in motivation, like arms P, CCP and P-D, and is disclosed as such. It calls no
+model and uses no serving path.
+
+INSTRUMENT
+Machine: 22 cores, 4 concurrent scoring workers (arm_cl_analysis.MAX_EXEC_WORKERS), numpy
+2.4.6, scipy 1.17.1. NOT the machine that ran arm B. Calibrated before this registration:
+  - Unscored timing probes (armb_timing_probe.py, armb_seed_timing.py, armb_seed_timing2.py):
+    wall clock only, stdout discarded, nothing scored.
+  - Bridge row (arm_b_bridge_run.py): arm B's registered N = 31 cell re-run byte-identically,
+    reproducing it exactly -- 15 of 15 valid, 15 of 15 clear, best sum 2.883035274.
+
+MEASURED COST OF ONE RESTART, SEEDS 1..15, ONE CORE
+    N = 57   min  3.492   median  5.793   worst  12.369
+    N = 59   min  ~3.5    median  6.188   worst  16.503
+    N = 61   min  ~4      median  7.545   worst  58.607
+    N = 73   min 12.819   median 17.128   worst 224.969 (seed 3; re-timed 223.292, 222.599)
+    N = 91   min 42.018   median 54.058   worst 112.803
+Cost is not a function of N: seed variance dominates, and the heavy seeds are hitting the
+program's maxiter = 400 cap. N = 73 seed 3 needs ~223 s for a SINGLE restart and reproduces
+to the second, so at N = 73 the reference program cannot complete one restart inside arm CL's
+120 s wall. That is a property of the frozen program, not of the machine's load.
+
+A TIMING RESULT THAT NEEDS NO SCORED RUN
+The above is reportable on its own and is registered here as such: arm B's 45 of 45 at
+N = 13, 21 and 31 was won with 50 restarts inside 120 s, and the same fixed program under the
+same wall gets 7 restarts at N = 57, 5 at N = 59, 1 at N = 61 and cannot finish one restart at
+N = 73. Contribution 1's claim is therefore budget-scoped, whatever the scored rows say.
+
+CELLS
+Primary, budget-matched: N = 57 and 59, the two discriminating cells of the k = 8 trap zone
+whose worst seed leaves at least five restarts inside the wall.
+    N = 57   anchor T(8,57) = 3.5625000   family argmax V(7,8)  = 3.7366935   margin 4.89%
+    N = 59   anchor T(8,59) = 3.6875000   family argmax V(7,10) = 3.7958670   margin 2.94%
+Secondary, restart-matched: N = 57, 73 and 91, the lowest cells of the k = 8, 9 and 10 trap
+zones, for zone diversity and reach.
+    N = 73   anchor T(9,73)  = 4.0555556  family argmax V(8,9)  = 4.2329953   margin 4.38%
+    N = 91   anchor T(10,91) = 4.5500000  family argmax V(9,10) = 4.7301190   margin 3.96%
+Excluded before sampling: N = 63, 79 and 80, where truncation ties or beats every
+drop-and-fill member, so the family argmax is the anchor itself and the cell cannot
+discriminate; they are among the 6 of 33 non-discriminating trap cells the scope sweep
+reports. N = 61 is excluded from the primary reading: its worst seed leaves one restart.
+
+PROGRAM
+arm_b_baseline.py, byte-identical except the RESTARTS constant. Template sha256 must equal
+298ba71c9f20614ef1d4e0008a5a6e6a6c208d61b873ce135d926e2571799f8c before substitution. No
+other edit is permitted; a needed edit voids the arm. In particular maxiter stays at 400,
+although the heavy seeds are hitting it.
+
+TWO READINGS, FIXED HERE
+Primary, budget-matched. Arm CL's pipeline unmodified: python -I -S, the fixed driver, 120 s
+wall clock, one core per subprocess, arm-F scoring, the section 2.4 clearance rule, validity
+at 1e-9 and 1e-6 with 1e-6 primary. RESTARTS = floor(0.75 x 120 s / worst-seed restart cost),
+frozen here from the measurement above: RESTARTS = 7 at N = 57 and 5 at N = 59.
+Secondary, restart-matched. RESTARTS = 50, the published arm B constant, wall clock lifted to
+3600 s. This leaves arm CL's 120 s pipeline, so it is off-pipeline and reported as such: it
+can carry no claim that arm B's rows are scored like the model-written programs. Estimated
+cost about 5 hours across the 4 workers.
+
+SEEDS
+Seeds 1..15 per cell, the arm B seeds. 30 rows primary, 45 rows secondary, 75 in all.
+
+FLOOR
+Five valid outputs per cell, the floor arms CN, CP, P, CL, CL-W, CCP and P-D carry. A cell
+under it is UNSCOREABLE and claims nothing on its own; pooled counts are reported beside it.
+
+PREDICTIONS
+P-B2-1 (primary): the reference program clears the family argmax in at least 20 percent of
+  valid outputs at 2 of 2 primary cells. Arm B's verdict map, two cells rather than three.
+P-B2-2 (primary): it clears at fewer than 2 of 2 cells. Under P-B2-2 the contribution-1 claim
+  is scoped in the paper to the cells where it was measured, and the scoping sentence is
+  written whether or not the secondary reading rescues the arm.
+S-B2-1 (secondary): clearance at at least 2 of 3 cells at 50 restarts.
+S-B2-2 (secondary): the best sum per cell exceeds the anchor T(k*, N) at 3 of 3 cells.
+F-B2 (falsifier): if the primary clears 0 of 30 valid outputs at both cells AND the secondary
+  clears 0 of 45 at all three, the generalization fails outright and the paper says so in
+  contribution 1 and the abstract, not only in limitations.
+
+WHAT IS NOT CLAIMED
+No comparison to published best-known sums: the bound table stops at N = 40, so at these cells
+the family argmax is the only bar. No claim about any model at these cells; no model is called.
+A gap between the two readings is a statement about restart budget, not about the optimizer's
+reach, and is reported as such. A timeout is a timeout: rows the wall kills are binned invalid
+and counted, and the per-cell validity denominator is reported beside every rate.
+
+ANALYSIS AND ARTIFACTS, NAMED IN ADVANCE
+arm_b2_run.py (runner, both readings), arm_b2_collect.jsonl (substituted sources, verbatim),
+arm_b2_report.json (per cell and reading: sampled, bins, valid at both tolerances, cleared,
+best sum, argmax from the closed form, restarts used, wall clock), and the three probe jsons.
+The verdict is computed by the script from the counts, not written by hand.

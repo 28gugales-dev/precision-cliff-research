@@ -13,3 +13,10 @@ this bundle. They verify against the public Kaggle datasets named in the
 paper (owner handle withheld for review) and will verify against the
 de-anonymized artifact released at camera-ready. Nothing else about those
 files was changed.
+
+LAYOUT. The corpus root holds every arm's runner, ledger, preregistration,
+amendment and frozen report. paper_repo/loop/ and paper_repo/evidence/ hold
+the scripts and outputs the papers cite as living in the paper repository
+(recount_cl.py, arm_mu_ceiling.py, cl_recount.json and the rest). This
+bundle serves both companion submissions; each ships it with its own
+supplement PDF and an anonymized copy of the other paper.

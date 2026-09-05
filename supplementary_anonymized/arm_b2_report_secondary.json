@@ -1,0 +1,110 @@
+{
+ "reading": "secondary",
+ "in_pipeline": false,
+ "timeout_s": 3600,
+ "template_sha256": "298ba71c9f20614ef1d4e0008a5a6e6a6c208d61b873ce135d926e2571799f8c",
+ "restarts_per_cell": {
+  "57": 50,
+  "73": 50,
+  "91": 50
+ },
+ "workers": 12,
+ "wall_s_per_cell": {
+  "57": 1353,
+  "73": 4678,
+  "91": 7200
+ },
+ "cells": {
+  "57": {
+   "restarts": 50,
+   "sampled": 15,
+   "bins": {
+    "valid": 15
+   },
+   "n_valid": 15,
+   "n_valid_1e9": 15,
+   "n_cleared": 15,
+   "clear_rate": 1.0,
+   "underpowered": false,
+   "argmax_closed_form": 3.736693464,
+   "anchor_truncate": 3.5625,
+   "best_sum": 3.917833616,
+   "best_exceeds_anchor": true,
+   "sums": [
+    3.879260686,
+    3.882684837,
+    3.883906597,
+    3.884547314,
+    3.88645591,
+    3.890814506,
+    3.89128912,
+    3.891991544,
+    3.893099568,
+    3.896770073,
+    3.901656952,
+    3.905483257,
+    3.91639734,
+    3.916554233,
+    3.917833616
+   ]
+  },
+  "73": {
+   "restarts": 50,
+   "sampled": 15,
+   "bins": {
+    "timeout": 4,
+    "valid": 11
+   },
+   "n_valid": 11,
+   "n_valid_1e9": 11,
+   "n_cleared": 11,
+   "clear_rate": 1.0,
+   "underpowered": false,
+   "argmax_closed_form": 4.232995129,
+   "anchor_truncate": 4.055555556,
+   "best_sum": 4.43000727,
+   "best_exceeds_anchor": true,
+   "sums": [
+    4.403389721,
+    4.410521656,
+    4.411090352,
+    4.411303056,
+    4.416929736,
+    4.417678667,
+    4.421882512,
+    4.423223997,
+    4.427882261,
+    4.429856641,
+    4.43000727
+   ]
+  },
+  "91": {
+   "restarts": 50,
+   "sampled": 15,
+   "bins": {
+    "timeout": 15
+   },
+   "n_valid": 0,
+   "n_valid_1e9": 0,
+   "n_cleared": 0,
+   "clear_rate": null,
+   "underpowered": true,
+   "argmax_closed_form": 4.730118646,
+   "anchor_truncate": 4.55,
+   "best_sum": null,
+   "best_exceeds_anchor": false,
+   "sums": []
+  }
+ },
+ "pooled": {
+  "sampled": 45,
+  "valid": 26,
+  "cleared": 26,
+  "cells_at_20pct": 2,
+  "verdict": "S-B2-1 holds (>= 2 of 3 cells at 50 restarts)",
+  "S_B2_2_best_exceeds_anchor_cells": [
+   57,
+   73
+  ]
+ }
+}
