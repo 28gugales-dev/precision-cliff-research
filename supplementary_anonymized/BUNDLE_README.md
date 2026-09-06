@@ -5,8 +5,10 @@ paper (see the claim-evidence map and HOW_TO_RUN.md). Built by
 build_anon_bundle.py from the working corpus.
 
 REDACTION DISCLOSURE. Identity strings (author name, e-mail, Kaggle owner
-handle, local paths) were replaced throughout: the Kaggle owner handle
-appears as ANON-KAGGLE-OWNER. Some preregistration files are hash-locked -
+handle, GitHub owner handle and repository name, project web URL, local
+paths) were replaced throughout: the Kaggle owner handle appears as
+ANON-KAGGLE-OWNER, the GitHub owner as ANON-GITHUB-OWNER and the repository
+as ANON-REPO. Some preregistration files are hash-locked -
 their SHA-256 digests are quoted in the paper and were computed over the
 ORIGINAL bytes, so the digests do not verify against the redacted copies in
 this bundle. They verify against the public Kaggle datasets named in the

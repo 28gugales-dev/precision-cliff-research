@@ -6,7 +6,7 @@ and preregistration behind both. Same benchmark throughout (circle packing,
 scored by an exact local evaluator, no LLM judge), so every source of variance
 sits on the model side of the interface.
 
-**Interactive atlas of both papers:** https://[ANON]-research.vercel.app —
+**Interactive atlas of both papers:** [atlas URL withheld for review] —
 every arm, wave, control and claim as a navigable graph.
 
 ## The papers

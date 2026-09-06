@@ -73,10 +73,16 @@ REDACTIONS = [
     # GitHub owner handles (28gugales-dev, 28gugales-zamp): whole token, before
     # the name rule below turns them into the reconstructible "28[ANON]s-dev".
     (re.compile(r"28gugales[\w-]*", re.I), "ANON-GITHUB-OWNER"),
+    # Repo name is GitHub-searchable and never appears in either paper. Match it
+    # only in the owner/repo slot (after the owner rule above), so bundled
+    # filenames such as precision-cliff-kaggle.ipynb stay resolvable.
+    (re.compile(r"ANON-GITHUB-OWNER/precision-cliff(-research)?\b"), "ANON-GITHUB-OWNER/ANON-REPO"),
+    (re.compile(r"precision-cliff-research"), "ANON-REPO"),
     (re.compile(r"Soham|Gugale", re.I), "[ANON]"),
     (re.compile(r"[Cc]:[\\/]Users[\\/]soham"), "~"),
+    (re.compile(r"https://\[ANON\]-research\.vercel\.app\S*"), "[atlas URL withheld for review]"),
 ]
-LEAK = re.compile(r"soham|gugale|28gugales|28\[ANON\]|github\.com/28|[Cc]:[\\/]+Users[\\/]", re.I)
+LEAK = re.compile(r"soham|gugale|28gugales|28\[ANON\]|github\.com/28|precision-cliff-research|vercel\.app|[Cc]:[\\/]+Users[\\/]", re.I)
 
 README = """# Anonymized supplementary bundle
 
@@ -85,8 +91,10 @@ paper (see the claim-evidence map and HOW_TO_RUN.md). Built by
 build_anon_bundle.py from the working corpus.
 
 REDACTION DISCLOSURE. Identity strings (author name, e-mail, Kaggle owner
-handle, local paths) were replaced throughout: the Kaggle owner handle
-appears as ANON-KAGGLE-OWNER. Some preregistration files are hash-locked -
+handle, GitHub owner handle and repository name, project web URL, local
+paths) were replaced throughout: the Kaggle owner handle appears as
+ANON-KAGGLE-OWNER, the GitHub owner as ANON-GITHUB-OWNER and the repository
+as ANON-REPO. Some preregistration files are hash-locked -
 their SHA-256 digests are quoted in the paper and were computed over the
 ORIGINAL bytes, so the digests do not verify against the redacted copies in
 this bundle. They verify against the public Kaggle datasets named in the

@@ -1,6 +1,6 @@
 {
   "site_updated": "2026-09-06",
   "paper2_pdf_updated": "2026-09-06",
-  "paper2_revision": "Revision 1.9 (also served as paper2_v3.pdf and paper2_supplement_v3.pdf for cache-busting; v2 names still carry rev 1.8a; cold-review clarity and wording pass: plain-language two-sentence summary closes the abstract, arm MU granularity split moved to Supplement S2, contribution 2 narrowed to the one system line P-D tested, 'instrument' kept to Table 2's two-path sense; body 12 pages)",
+  "paper2_revision": "Revision 1.10 (also served as paper2_v4.pdf and paper2_supplement_v4.pdf for cache-busting; v3 names carry rev 1.9, v2 names rev 1.8a; submission-prep pass: Section 9 Reproducibility now names the supplementary artifact and its entry point artifact/BUNDLE_README.md, anonymized bundle additionally redacts the repository name; body 12 pages)",
   "deploy": "git: push to main deploys (root paper-explorer)"
 }
