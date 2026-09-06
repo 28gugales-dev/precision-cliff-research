@@ -55,6 +55,12 @@ PAPER_REPO_FILES = [
     "evidence/cl_lenient.json", "evidence/cl_recount.json",
     "evidence/arm_mu_ceiling.json",
 ]
+# Transfer paper's own loop/ files behind its supplement S2 per-row table. The
+# generator resolves arm_mu_prompts.json at the bundle root when run in place.
+PAPER2_REPO = ROOT.parent / "paper2-transfer"
+PAPER2_REPO_FILES = [
+    "loop/r26_mu_rows.py", "loop/r26_mu_rows.json", "loop/round22e_facts.json",
+]
 TEXT_EXT = {".py", ".md", ".txt", ".json", ".jsonl", ".yaml", ".yml",
             ".sh", ".ipynb", ".cfg", ".toml"}
 
@@ -97,7 +103,10 @@ supplement PDF and an anonymized copy of the other paper.
 
 COMPANION (TRANSFER) PAPER FILE MAP. Arm MU: arm_mu_*.py / .jsonl / .json
 and paper_repo/loop/arm_mu_ceiling.py with paper_repo/evidence/
-arm_mu_ceiling.json (the by_arm block separates MU from CH). Arm L:
+arm_mu_ceiling.json (the by_arm block separates MU from CH); the supplement's
+per-row table of the eighteen MU outputs above the family argmax regenerates
+from paper_repo/loop/r26_mu_rows.py (reads paper_repo/loop/round22e_facts.json
+and arm_mu_prompts.json). Arm L:
 arm_l_*.py, arm_l_prompts.json, arm_l_report.json. Arms P and P-D:
 arm_p_*.py / .jsonl / .json, arm_pd_*.py / .jsonl / .json and their
 preregistration and amendment files. Arms GM, GM2, GM3: arm_gm_*.py / .jsonl
@@ -127,6 +136,10 @@ def main():
     for rel in PAPER_REPO_FILES:
         src = PAPER_REPO / rel
         assert src.is_file(), f"paper repo file missing: {src}"
+        pairs.append((src, Path("paper_repo") / rel))
+    for rel in PAPER2_REPO_FILES:
+        src = PAPER2_REPO / rel
+        assert src.is_file(), f"paper 2 repo file missing: {src}"
         pairs.append((src, Path("paper_repo") / rel))
 
     redacted = []

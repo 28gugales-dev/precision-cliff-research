@@ -23,7 +23,10 @@ supplement PDF and an anonymized copy of the other paper.
 
 COMPANION (TRANSFER) PAPER FILE MAP. Arm MU: arm_mu_*.py / .jsonl / .json
 and paper_repo/loop/arm_mu_ceiling.py with paper_repo/evidence/
-arm_mu_ceiling.json (the by_arm block separates MU from CH). Arm L:
+arm_mu_ceiling.json (the by_arm block separates MU from CH); the supplement's
+per-row table of the eighteen MU outputs above the family argmax regenerates
+from paper_repo/loop/r26_mu_rows.py (reads paper_repo/loop/round22e_facts.json
+and arm_mu_prompts.json). Arm L:
 arm_l_*.py, arm_l_prompts.json, arm_l_report.json. Arms P and P-D:
 arm_p_*.py / .jsonl / .json, arm_pd_*.py / .jsonl / .json and their
 preregistration and amendment files. Arms GM, GM2, GM3: arm_gm_*.py / .jsonl

@@ -1,0 +1,209 @@
+{
+ "source": "loop/r26_mu_rows.py over loop/round22e_facts.json c_arm_mu_near_clearances and ../precision-cliff/arm_mu_prompts.json parent_score; generates paper/tab_mu_rows.tex",
+ "n_rows": 18,
+ "n_equal_parent_sum": 13,
+ "n_not_equal_parent_sum": 5,
+ "excess_exceeds_largest_overlap_in_every_row": true,
+ "printed": [
+  "1",
+  "1.05",
+  "1.13",
+  "1.34",
+  "1.52",
+  "1.53",
+  "1.7761427",
+  "1.7761435",
+  "1.7761439",
+  "10",
+  "11",
+  "12",
+  "13",
+  "2",
+  "2.2588840",
+  "2.2588850",
+  "2.63",
+  "2.7485282",
+  "2.7485284",
+  "21",
+  "3",
+  "3.05",
+  "3.25",
+  "3.34",
+  "3.76",
+  "31",
+  "4",
+  "4.34",
+  "4.38",
+  "5",
+  "5.24",
+  "6",
+  "6.26",
+  "7",
+  "8",
+  "9"
+ ],
+ "rows": [
+  {
+   "N": 13,
+   "parent": "argmax parent",
+   "slot": "s1",
+   "sum": "1.7761427",
+   "excess": 3.250846032365473e-07,
+   "largest_overlap": 1.3388538833147834e-07,
+   "parent_sum": 1.7761427
+  },
+  {
+   "N": 13,
+   "parent": "argmax parent",
+   "slot": "s3",
+   "sum": "1.7761427",
+   "excess": 3.250846032365473e-07,
+   "largest_overlap": 1.3388538833147834e-07,
+   "parent_sum": 1.7761427
+  },
+  {
+   "N": 13,
+   "parent": "argmax parent",
+   "slot": "s5",
+   "sum": "1.7761435",
+   "excess": 1.1250846032595518e-06,
+   "largest_overlap": 3.338853883094739e-07,
+   "parent_sum": 1.7761427
+  },
+  {
+   "N": 13,
+   "parent": "argmax parent",
+   "slot": "s7",
+   "sum": "1.7761439",
+   "excess": 1.5250846032710541e-06,
+   "largest_overlap": 4.3388538831234946e-07,
+   "parent_sum": 1.7761427
+  },
+  {
+   "N": 13,
+   "parent": "argmax parent",
+   "slot": "s9",
+   "sum": "1.7761427",
+   "excess": 3.250846032365473e-07,
+   "largest_overlap": 1.3388538833147834e-07,
+   "parent_sum": 1.7761427
+  },
+  {
+   "N": 13,
+   "parent": "argmax parent",
+   "slot": "s13",
+   "sum": "1.7761427",
+   "excess": 3.250846032365473e-07,
+   "largest_overlap": 1.3388538833147834e-07,
+   "parent_sum": 1.7761427
+  },
+  {
+   "N": 21,
+   "parent": "anchor parent",
+   "slot": "s7",
+   "sum": "2.2588850",
+   "excess": 1.5235168153715506e-06,
+   "largest_overlap": 3.047033630965146e-07,
+   "parent_sum": 2.1
+  },
+  {
+   "N": 21,
+   "parent": "argmax parent",
+   "slot": "s11",
+   "sum": "2.2588840",
+   "excess": 5.235168156758618e-07,
+   "largest_overlap": 1.0470336311851902e-07,
+   "parent_sum": 2.2588835
+  },
+  {
+   "N": 31,
+   "parent": "argmax parent",
+   "slot": "s2",
+   "sum": "2.7485284",
+   "excess": 2.625761430508078e-07,
+   "largest_overlap": 4.376269052697168e-08,
+   "parent_sum": 2.7485284
+  },
+  {
+   "N": 31,
+   "parent": "argmax parent",
+   "slot": "s3",
+   "sum": "2.7485284",
+   "excess": 2.625761430508078e-07,
+   "largest_overlap": 4.376269052697168e-08,
+   "parent_sum": 2.7485284
+  },
+  {
+   "N": 31,
+   "parent": "argmax parent",
+   "slot": "s4",
+   "sum": "2.7485284",
+   "excess": 2.625761430508078e-07,
+   "largest_overlap": 4.376269052697168e-08,
+   "parent_sum": 2.7485284
+  },
+  {
+   "N": 31,
+   "parent": "argmax parent",
+   "slot": "s6",
+   "sum": "2.7485284",
+   "excess": 2.625761430508078e-07,
+   "largest_overlap": 4.376269052697168e-08,
+   "parent_sum": 2.7485284
+  },
+  {
+   "N": 31,
+   "parent": "argmax parent",
+   "slot": "s7",
+   "sum": "2.7485284",
+   "excess": 2.625761430508078e-07,
+   "largest_overlap": 4.376269052697168e-08,
+   "parent_sum": 2.7485284
+  },
+  {
+   "N": 31,
+   "parent": "argmax parent",
+   "slot": "s8",
+   "sum": "2.7485284",
+   "excess": 2.625761430508078e-07,
+   "largest_overlap": 4.376269052697168e-08,
+   "parent_sum": 2.7485284
+  },
+  {
+   "N": 31,
+   "parent": "argmax parent",
+   "slot": "s10",
+   "sum": "2.7485284",
+   "excess": 2.625761430508078e-07,
+   "largest_overlap": 4.376269052697168e-08,
+   "parent_sum": 2.7485284
+  },
+  {
+   "N": 31,
+   "parent": "argmax parent",
+   "slot": "s11",
+   "sum": "2.7485284",
+   "excess": 2.625761430508078e-07,
+   "largest_overlap": 4.376269052697168e-08,
+   "parent_sum": 2.7485284
+  },
+  {
+   "N": 31,
+   "parent": "argmax parent",
+   "slot": "s12",
+   "sum": "2.7485282",
+   "excess": 6.257614293403435e-08,
+   "largest_overlap": 3.76269052027034e-09,
+   "parent_sum": 2.7485284
+  },
+  {
+   "N": 31,
+   "parent": "argmax parent",
+   "slot": "s13",
+   "sum": "2.7485284",
+   "excess": 2.625761430508078e-07,
+   "largest_overlap": 4.376269052697168e-08,
+   "parent_sum": 2.7485284
+  }
+ ]
+}

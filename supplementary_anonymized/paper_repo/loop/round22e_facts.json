@@ -1,0 +1,1467 @@
+{
+  "source": {
+    "script": "paper2-transfer/loop/round22e_facts.py",
+    "output": "paper2-transfer/loop/round22e_facts.json",
+    "purpose": "Round 22e fact pack for the drafting agent. Companion to round22e_stats.json. Cite this file from NUMBERS.md for any fact inserted from it.",
+    "generated_utc": "2026-09-05T21:51:38.054132+00:00",
+    "python": "3.11.15",
+    "paper_repo_head": "f7e6ee8",
+    "corpus_repo_head": "dd38fc8",
+    "rule": "Verbatim slices are exact file content. Recomputed values state their convention. Anything absent is under 'not_found', never guessed."
+  },
+  "a_arm_p_registered_predictions": {
+    "file": "precision-cliff/arm_p_preregistration.txt",
+    "registration_commit": "aa473ad",
+    "registration_commit_detail": {
+      "short": "aa473ad",
+      "date": "2026-09-02",
+      "subject": "arms P and CL: registered before sampling -- pinned-temperature rerun, and a numpy/scipy code channel"
+    },
+    "registration_date_stated_in_file": "2026-09-02",
+    "note": "aa473ad registers arms P and CL together; the paper cites it for arm P only (paper/sec_supp.tex:51). The file itself carries no hash of its own contents.",
+    "design_verbatim": "DESIGN\n- Serving path: OpenRouter chat-completions, model alias\n  anthropic/claude-haiku-4.5. The response field `model` (served alias) is\n  logged per row, as arm V does. Weights are not attested by this path\n  either; what is attested is the decoding configuration below.\n- Decoding, registered and pinned: temperature 1.0 (the vendor's documented\n  default, chosen so that n = 15 draws remain draws — temperature 0 would\n  collapse each cell to one deterministic sample and measure nothing about\n  the distribution). top_p and top_k are left at provider defaults and are\n  logged as \"not set\". max_tokens 8192. No system prompt. One user turn.\n- Cells and prompts:\n  (a) square, direct emission: N = 13, 17, 21, 31, 35, 37, 43 — the arm-F\n      bare stem, count-substituted, built by arm_p_build.py from the\n      registered N = 13 template exactly as arm_cc_build.py does. For\n      N = 13, 17, 31, 35, 37 the builder ASSERTS byte-equality with\n      arm_f_prompts.json; for N = 21 it asserts equality with the hash in\n      arm_t_preregistration.txt. N = 43 has never carried a registered hash\n      (paper section 3.1 and section 9 disclose this); this registration\n      supplies one, and the paper will say so.\n  (b) held-out, direct emission: N = 50, 58, 62, 65, 75 — byte-identical to\n      arm_cn_prompts.json, asserted.\n  (c) code channel, math-only: N = 13, 21, 31 — byte-identical to\n      arm_cc_prompts.json, asserted. Executed and scored exactly as arm CC\n      (arm_cc_analysis.py conventions: AST gate, python -I -S, 10 s).\n- n = 15 invocations per cell. 7 + 5 + 3 = 15 cells, 225 invocations.\n- Scoring: arm_f_repro.py conventions unchanged — ast.literal_eval after\n  fence strip; validity at 1e-6 primary, 1e-9 logged; value window 2e-3;\n  structural k from the dominant radius. No retries, no edits to outputs.\n  Evaluability floor: 5 valid per cell, the arm-CN convention (the paper\n  notes floors are not harmonized across arms; this arm adopts the strictest\n  one in use).",
+    "design_summary": {
+      "serving_path": "OpenRouter chat-completions",
+      "model_alias": "anthropic/claude-haiku-4.5",
+      "temperature": "1.0, registered and pinned",
+      "top_p_top_k": "provider defaults, logged as \"not set\"",
+      "max_tokens": 8192,
+      "system_prompt": "none",
+      "turns": "one user turn",
+      "cells": "7 square (N = 13, 17, 21, 31, 35, 37, 43) + 5 held-out (N = 50, 58, 62, 65, 75) + 3 code (N = 13, 21, 31) = 15",
+      "n_per_cell": 15,
+      "total_invocations": 225,
+      "evaluability_floor": "5 valid per cell (the arm-CN convention)"
+    },
+    "predictions_verbatim": {
+      "P-P1": "- P-P1 (anchor transfers to the pinned path): the registered closed-form\n  value T(k*, N) is the modal valid output at >= 5 of the 7 square cells,\n  including >= 2 of the 4 discriminating cells (13, 21, 31, 43), AND at\n  >= 4 of the 5 held-out cells.",
+      "P-P2": "- P-P2 (anchor is an artifact of the agent runtime): modal at <= 3 of 7\n  square cells.",
+      "P-P3_and_competing_P-P4": "- P-P3 (code-channel ceiling holds on the pinned path): 0 of the valid\n  program outputs at N = 13, 21, 31 exceed the family argmax under the\n  paper's section 2.4 clearance rule (valid at 1e-9 and excess > 1e-6).\n  Competing P-P4: >= 1 program output clears.",
+      "dead_zone_clause": "- Outcomes between P-P1 and P-P2 (modal at exactly 4 of 7) are a dead zone\n  and are reported as such — the paper's section 3.6 already documents one\n  such registration gap, and this one is named in advance rather than found.",
+      "F-P1": "FALSIFIER\n- F-P1: pooled on-prediction rate over the four discriminating square cells\n  is below 40% of valid outputs. If F-P1 fires, the paper's anchoring claim\n  is reported as NOT surviving the move to a pinned serving path, in the\n  abstract, and the agent-runtime arms are reported as the instrument-bound\n  measurement they then are."
+    },
+    "dead_zone_note": "The 'exactly 4 of 7' dead zone is registered text, not a post hoc gap: it is named in the registration itself."
+  },
+  "b_arm_pd_sixth_k4_output": {
+    "question": "Which is the sixth k = 4 output in arm P-D condition D1, the one that is not at the registered anchor T(4,13) = 1.625?",
+    "answer": {
+      "row_id": "arm_pd_collect.jsonl condition D1, sample_id 13",
+      "condition": "D1",
+      "sample_id": 13,
+      "sum": 1.55,
+      "k_emp": 4,
+      "structure": "grid_plus_filler_k4_grid12_fill1",
+      "valid_1e6": true,
+      "valid_1e9": true,
+      "reasoning_len": 6261
+    },
+    "why_it_is_off_1.625": {
+      "anchor_T_4_13": 1.625,
+      "deficit": 0.075,
+      "which_circle_differs": "The thirteenth circle. Twelve circles sit on the k = 4 grid at r = 0.125, filling only the three rows y in [0.125, 0.375, 0.625] (the y = 0.875 row is empty). The thirteenth is not a fourth-row grid circle but an interior filler at (0.5, 0.5) with r = 0.05.",
+      "arithmetic": "12 x 0.125 + 0.05 = 1.55, against 13 x 0.125 = 1.625; the shortfall is exactly 0.125 - 0.05 = 0.075.",
+      "second_reason_it_is_not_the_recipe_family": "Even as a filler the radius is short. The recipe family's tangency filler at k = 4 is (sqrt(2)-1)/(2*4) = 0.0517767; this circle is r = 0.05, so the output is neither the truncated anchor nor a family member.",
+      "grid_circles": 12,
+      "filler_circles": 1,
+      "grid_radius": 0.125,
+      "filler_radius": 0.05,
+      "circles_verbatim": [
+        [
+          0.125,
+          0.125,
+          0.125
+        ],
+        [
+          0.375,
+          0.125,
+          0.125
+        ],
+        [
+          0.625,
+          0.125,
+          0.125
+        ],
+        [
+          0.875,
+          0.125,
+          0.125
+        ],
+        [
+          0.125,
+          0.375,
+          0.125
+        ],
+        [
+          0.375,
+          0.375,
+          0.125
+        ],
+        [
+          0.625,
+          0.375,
+          0.125
+        ],
+        [
+          0.875,
+          0.375,
+          0.125
+        ],
+        [
+          0.125,
+          0.625,
+          0.125
+        ],
+        [
+          0.375,
+          0.625,
+          0.125
+        ],
+        [
+          0.625,
+          0.625,
+          0.125
+        ],
+        [
+          0.875,
+          0.625,
+          0.125
+        ],
+        [
+          0.5,
+          0.5,
+          0.05
+        ]
+      ]
+    },
+    "row_metadata": {
+      "prompt_sha256": "32db485bea625ff9f39f4723ebf1a01f337559a9e2cf567fb486928f71f7f8df",
+      "served_model": "anthropic/claude-haiku-4.5",
+      "request_params": {
+        "model": "anthropic/claude-haiku-4.5",
+        "temperature": 1.0,
+        "max_tokens": 8192,
+        "condition": {
+          "reasoning": {
+            "enabled": true
+          },
+          "system_prompt": null,
+          "note": "extended thinking on at OpenRouter's default effort for the vendor; no system prompt"
+        },
+        "path": "openrouter chat-completions"
+      },
+      "finish_reason": "stop",
+      "latency_s": 24.92,
+      "timestamp_utc": "2026-09-02T21:22:45.792203+00:00",
+      "usage": {
+        "prompt_tokens": 192,
+        "completion_tokens": 4483,
+        "total_tokens": 4675,
+        "cost": 0.022607,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.022607,
+          "upstream_inference_prompt_cost": 0.000192,
+          "upstream_inference_completions_cost": 0.022415
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 4282,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    },
+    "the_other_five_k4_rows": [
+      {
+        "sample_id": 3,
+        "sum": 1.625,
+        "structure": "uniform_grid_k4",
+        "valid9": true
+      },
+      {
+        "sample_id": 4,
+        "sum": 1.625,
+        "structure": "uniform_grid_k4",
+        "valid9": true
+      },
+      {
+        "sample_id": 5,
+        "sum": 1.625,
+        "structure": "uniform_grid_k4",
+        "valid9": true
+      },
+      {
+        "sample_id": 7,
+        "sum": 1.625,
+        "structure": "uniform_grid_k4",
+        "valid9": true
+      },
+      {
+        "sample_id": 10,
+        "sum": 1.625,
+        "structure": "uniform_grid_k4",
+        "valid9": true
+      }
+    ],
+    "context_for_the_drafter": "arm_pd_report.json records k_emp {5:4, 4:6, 6:1, 3:1} for D1 and on_prediction 5. The gap between 'k = 4 is modal at 6 of 12' (paper/sec_path.tex:44, paper/sec_supp.tex:261) and 'T(4,13) = 1.625 at 5 of 12' (paper/sec_path.tex:43) is this single row, and nothing else."
+  },
+  "b_arm_pd_amendment": {
+    "file": "precision-cliff/arm_pd_amendment1_closed_at_27.md",
+    "registered_date_stated_in_file": "2026-09-02",
+    "registered_after": "the interim scoring and before any further sampling",
+    "commit": "1932cc0",
+    "commit_detail": {
+      "short": "1932cc0",
+      "date": "2026-09-02",
+      "subject": "arm B registered: the optimizer alone -- a fixed random-restart SLSQP reference program (arm_b_baseline.py, sha asserted by the runner) run through arm CL's pipeline unmodified at N = 13, 21, 31, 15 seeds each, 120 s; P-B1 (clears >= 20% at >= 2 cells: the optimizer alone clears, contribution 1 rewritten by the rule fixed here) vs P-B2 (never clears); S-B1 best vs arm CL's Sonnet best; no model calls. Arm P-D amendment 1: closed at 27 of 30 rows (credit), verdict unchangeable; report regenerated without the INTERIM mark."
+    },
+    "commit_note": "1932cc0 also carries an unrelated arm-B registration; the P-D amendment is the second half of that commit's subject. The paper names the amendment but cites no hash for it.",
+    "interim_scoring_commit": "7782deb",
+    "interim_scoring_commit_detail": {
+      "short": "7782deb",
+      "date": "2026-09-02",
+      "subject": "arm P-D: 27 of 30 collected (D1 14, D2 13; three 402 rows kept for resume), scored INTERIM"
+    },
+    "what_was_amended": [
+      "The registration planned 15 rows per condition (30 total).",
+      "Sampling stopped at 27 rows (14 D1, 13 D2) when the serving path returned HTTP 402 on the next three requests.",
+      "The arm is closed at 27 of 30; the three 402 rows stay in the ledger as refusals.",
+      "arm_pd_report.json is regenerated with the INTERIM mark replaced by \"closed at 27 of 30 (amendment 1)\".",
+      "No further P-D rows will be sampled under this registration; a top-up would be a new arm."
+    ],
+    "why_the_verdict_could_not_change": "D1 held 12 valid of 14 against a bar of >= 8, and D2 held 0 valid of 13 against a bar of <= 3 (D2 could reach at most 2), so no completion of the ledger could move P-PD1.",
+    "verbatim": "# Arm P-D, amendment 1: the arm is closed at 27 of 30 rows\n\nRegistered 2026-09-02, after the interim scoring and before any further sampling.\n\nThe registration (arm_pd_preregistration.txt, commit 5554cc0) planned 15 rows per condition.\nSampling stopped at 27 rows (14 D1, 13 D2) when the serving path returned HTTP 402 on the\nnext three requests, all recorded in arm_pd_collect.jsonl; the credit the resume rule waited\non did not arrive. The registration's own verdict logic makes the remaining three rows\nirrelevant to P-PD1: D1 holds 12 valid of 14 (bar >= 8), D2 holds 0 valid of 13 (bar <= 3 for\nP-PD1; D2 could reach at most 2), so no completion of the ledger can change the verdict.\n\nDecision, fixed here: the arm is closed at 27 of 30. The three 402 rows remain in the ledger\nas refusals. arm_pd_report.json is regenerated with the INTERIM mark replaced by\n\"closed at 27 of 30 (amendment 1)\". The paper reports the arm as closed, credit-limited,\nwith the count 27 of 30 beside every verdict. No further P-D rows will be sampled under this\nregistration; a top-up would be a new arm.\n"
+  },
+  "c_arm_mu_near_clearances": {
+    "question": "For each output that clears validity at 1e-6 but fails at 1e-9, how large is the violation?",
+    "scorer_stores_no_such_field": "arm_mu_scored.json carries only arm, cell, condition, slot, parse_error, valid6, valid9, sum, k_emp, on_anchor, keep_or_improve. There is no overlap-magnitude column anywhere in the MU artifacts, so these magnitudes are RECOMPUTED here from the verbatim coordinates in arm_mu_collect.jsonl, joined on (condition, cell, slot).",
+    "convention": "arm_f_repro.validate flags a pair when hypot < ri + rj - tol, so the deciding quantity is max over pairs of (ri + rj - dist); a row passes at tolerance t iff that maximum is <= t. Containment is handled the same way and reported separately.",
+    "population": "MU rows valid at 1e-6 whose sum exceeds the closed-form family argmax by more than the 5e-8 recorded-sum granularity (arm_mu_ceiling.py's ROUNDING). That is the paper's eighteen.",
+    "count": 18,
+    "all_fail_1e9": true,
+    "all_decided_by_overlap_not_containment": true,
+    "n_decided_by_overlap": 18,
+    "min": 3.76269052027034e-09,
+    "median": 4.376269052697168e-08,
+    "max": 4.3388538831234946e-07,
+    "within_1e-8": 1,
+    "within_1e-7": 10,
+    "between_1e-9_and_1e-6_exclusive": 18,
+    "family_argmax_used": {
+      "13": {
+        "value": 1.7761423749153968,
+        "k": 3,
+        "m": 4
+      },
+      "21": {
+        "value": 2.2588834764831844,
+        "k": 4,
+        "m": 5
+      },
+      "31": {
+        "value": 2.748528137423857,
+        "k": 5,
+        "m": 6
+      }
+    },
+    "rows": [
+      {
+        "cell_N": 31,
+        "condition": "B_rival",
+        "slot": "s12",
+        "sum": 2.7485282,
+        "excess_over_family_argmax": 6.257614293403435e-08,
+        "valid_1e6": true,
+        "valid_1e9": false,
+        "k_emp": 5,
+        "max_pairwise_overlap_magnitude": 3.76269052027034e-09,
+        "min_positive_pairwise_overlap_magnitude": 2.7755575615628914e-17,
+        "n_overlapping_pairs": 44,
+        "max_containment_violation": 0.0,
+        "deciding_violation": 3.76269052027034e-09,
+        "deciding_violation_is": "overlap",
+        "revalidated_1e6": true,
+        "revalidated_1e9": false,
+        "revalidated_1e9_reason": "overlap"
+      },
+      {
+        "cell_N": 31,
+        "condition": "B_rival",
+        "slot": "s6",
+        "sum": 2.7485284,
+        "excess_over_family_argmax": 2.625761430508078e-07,
+        "valid_1e6": true,
+        "valid_1e9": false,
+        "k_emp": 5,
+        "max_pairwise_overlap_magnitude": 4.376269052697168e-08,
+        "min_positive_pairwise_overlap_magnitude": 2.7755575615628914e-17,
+        "n_overlapping_pairs": 44,
+        "max_containment_violation": 0.0,
+        "deciding_violation": 4.376269052697168e-08,
+        "deciding_violation_is": "overlap",
+        "revalidated_1e6": true,
+        "revalidated_1e9": false,
+        "revalidated_1e9_reason": "overlap"
+      },
+      {
+        "cell_N": 31,
+        "condition": "B_rival",
+        "slot": "s2",
+        "sum": 2.7485284,
+        "excess_over_family_argmax": 2.625761430508078e-07,
+        "valid_1e6": true,
+        "valid_1e9": false,
+        "k_emp": 5,
+        "max_pairwise_overlap_magnitude": 4.376269052697168e-08,
+        "min_positive_pairwise_overlap_magnitude": 2.7755575615628914e-17,
+        "n_overlapping_pairs": 44,
+        "max_containment_violation": 0.0,
+        "deciding_violation": 4.376269052697168e-08,
+        "deciding_violation_is": "overlap",
+        "revalidated_1e6": true,
+        "revalidated_1e9": false,
+        "revalidated_1e9_reason": "overlap"
+      },
+      {
+        "cell_N": 31,
+        "condition": "B_rival",
+        "slot": "s4",
+        "sum": 2.7485284,
+        "excess_over_family_argmax": 2.625761430508078e-07,
+        "valid_1e6": true,
+        "valid_1e9": false,
+        "k_emp": 5,
+        "max_pairwise_overlap_magnitude": 4.376269052697168e-08,
+        "min_positive_pairwise_overlap_magnitude": 2.7755575615628914e-17,
+        "n_overlapping_pairs": 44,
+        "max_containment_violation": 0.0,
+        "deciding_violation": 4.376269052697168e-08,
+        "deciding_violation_is": "overlap",
+        "revalidated_1e6": true,
+        "revalidated_1e9": false,
+        "revalidated_1e9_reason": "overlap"
+      },
+      {
+        "cell_N": 31,
+        "condition": "B_rival",
+        "slot": "s3",
+        "sum": 2.7485284,
+        "excess_over_family_argmax": 2.625761430508078e-07,
+        "valid_1e6": true,
+        "valid_1e9": false,
+        "k_emp": 5,
+        "max_pairwise_overlap_magnitude": 4.376269052697168e-08,
+        "min_positive_pairwise_overlap_magnitude": 2.7755575615628914e-17,
+        "n_overlapping_pairs": 44,
+        "max_containment_violation": 0.0,
+        "deciding_violation": 4.376269052697168e-08,
+        "deciding_violation_is": "overlap",
+        "revalidated_1e6": true,
+        "revalidated_1e9": false,
+        "revalidated_1e9_reason": "overlap"
+      },
+      {
+        "cell_N": 31,
+        "condition": "B_rival",
+        "slot": "s7",
+        "sum": 2.7485284,
+        "excess_over_family_argmax": 2.625761430508078e-07,
+        "valid_1e6": true,
+        "valid_1e9": false,
+        "k_emp": 5,
+        "max_pairwise_overlap_magnitude": 4.376269052697168e-08,
+        "min_positive_pairwise_overlap_magnitude": 2.7755575615628914e-17,
+        "n_overlapping_pairs": 44,
+        "max_containment_violation": 0.0,
+        "deciding_violation": 4.376269052697168e-08,
+        "deciding_violation_is": "overlap",
+        "revalidated_1e6": true,
+        "revalidated_1e9": false,
+        "revalidated_1e9_reason": "overlap"
+      },
+      {
+        "cell_N": 31,
+        "condition": "B_rival",
+        "slot": "s8",
+        "sum": 2.7485284,
+        "excess_over_family_argmax": 2.625761430508078e-07,
+        "valid_1e6": true,
+        "valid_1e9": false,
+        "k_emp": 5,
+        "max_pairwise_overlap_magnitude": 4.376269052697168e-08,
+        "min_positive_pairwise_overlap_magnitude": 2.7755575615628914e-17,
+        "n_overlapping_pairs": 44,
+        "max_containment_violation": 0.0,
+        "deciding_violation": 4.376269052697168e-08,
+        "deciding_violation_is": "overlap",
+        "revalidated_1e6": true,
+        "revalidated_1e9": false,
+        "revalidated_1e9_reason": "overlap"
+      },
+      {
+        "cell_N": 31,
+        "condition": "B_rival",
+        "slot": "s10",
+        "sum": 2.7485284,
+        "excess_over_family_argmax": 2.625761430508078e-07,
+        "valid_1e6": true,
+        "valid_1e9": false,
+        "k_emp": 5,
+        "max_pairwise_overlap_magnitude": 4.376269052697168e-08,
+        "min_positive_pairwise_overlap_magnitude": 2.7755575615628914e-17,
+        "n_overlapping_pairs": 44,
+        "max_containment_violation": 0.0,
+        "deciding_violation": 4.376269052697168e-08,
+        "deciding_violation_is": "overlap",
+        "revalidated_1e6": true,
+        "revalidated_1e9": false,
+        "revalidated_1e9_reason": "overlap"
+      },
+      {
+        "cell_N": 31,
+        "condition": "B_rival",
+        "slot": "s11",
+        "sum": 2.7485284,
+        "excess_over_family_argmax": 2.625761430508078e-07,
+        "valid_1e6": true,
+        "valid_1e9": false,
+        "k_emp": 5,
+        "max_pairwise_overlap_magnitude": 4.376269052697168e-08,
+        "min_positive_pairwise_overlap_magnitude": 2.7755575615628914e-17,
+        "n_overlapping_pairs": 44,
+        "max_containment_violation": 0.0,
+        "deciding_violation": 4.376269052697168e-08,
+        "deciding_violation_is": "overlap",
+        "revalidated_1e6": true,
+        "revalidated_1e9": false,
+        "revalidated_1e9_reason": "overlap"
+      },
+      {
+        "cell_N": 31,
+        "condition": "B_rival",
+        "slot": "s13",
+        "sum": 2.7485284,
+        "excess_over_family_argmax": 2.625761430508078e-07,
+        "valid_1e6": true,
+        "valid_1e9": false,
+        "k_emp": 5,
+        "max_pairwise_overlap_magnitude": 4.376269052697168e-08,
+        "min_positive_pairwise_overlap_magnitude": 2.7755575615628914e-17,
+        "n_overlapping_pairs": 44,
+        "max_containment_violation": 0.0,
+        "deciding_violation": 4.376269052697168e-08,
+        "deciding_violation_is": "overlap",
+        "revalidated_1e6": true,
+        "revalidated_1e9": false,
+        "revalidated_1e9_reason": "overlap"
+      },
+      {
+        "cell_N": 21,
+        "condition": "B_rival",
+        "slot": "s11",
+        "sum": 2.258884,
+        "excess_over_family_argmax": 5.235168156758618e-07,
+        "valid_1e6": true,
+        "valid_1e9": false,
+        "k_emp": 4,
+        "max_pairwise_overlap_magnitude": 1.0470336311851902e-07,
+        "min_positive_pairwise_overlap_magnitude": 1.0470336311851902e-07,
+        "n_overlapping_pairs": 20,
+        "max_containment_violation": 0.0,
+        "deciding_violation": 1.0470336311851902e-07,
+        "deciding_violation_is": "overlap",
+        "revalidated_1e6": true,
+        "revalidated_1e9": false,
+        "revalidated_1e9_reason": "overlap"
+      },
+      {
+        "cell_N": 13,
+        "condition": "B_rival",
+        "slot": "s1",
+        "sum": 1.7761427,
+        "excess_over_family_argmax": 3.250846032365473e-07,
+        "valid_1e6": true,
+        "valid_1e9": false,
+        "k_emp": 3,
+        "max_pairwise_overlap_magnitude": 1.3388538833147834e-07,
+        "min_positive_pairwise_overlap_magnitude": 6.317469952721311e-08,
+        "n_overlapping_pairs": 24,
+        "max_containment_violation": 0.0,
+        "deciding_violation": 1.3388538833147834e-07,
+        "deciding_violation_is": "overlap",
+        "revalidated_1e6": true,
+        "revalidated_1e9": false,
+        "revalidated_1e9_reason": "overlap"
+      },
+      {
+        "cell_N": 13,
+        "condition": "B_rival",
+        "slot": "s3",
+        "sum": 1.7761427,
+        "excess_over_family_argmax": 3.250846032365473e-07,
+        "valid_1e6": true,
+        "valid_1e9": false,
+        "k_emp": 3,
+        "max_pairwise_overlap_magnitude": 1.3388538833147834e-07,
+        "min_positive_pairwise_overlap_magnitude": 6.317469952721311e-08,
+        "n_overlapping_pairs": 24,
+        "max_containment_violation": 0.0,
+        "deciding_violation": 1.3388538833147834e-07,
+        "deciding_violation_is": "overlap",
+        "revalidated_1e6": true,
+        "revalidated_1e9": false,
+        "revalidated_1e9_reason": "overlap"
+      },
+      {
+        "cell_N": 13,
+        "condition": "B_rival",
+        "slot": "s9",
+        "sum": 1.7761427,
+        "excess_over_family_argmax": 3.250846032365473e-07,
+        "valid_1e6": true,
+        "valid_1e9": false,
+        "k_emp": 3,
+        "max_pairwise_overlap_magnitude": 1.3388538833147834e-07,
+        "min_positive_pairwise_overlap_magnitude": 6.317469952721311e-08,
+        "n_overlapping_pairs": 24,
+        "max_containment_violation": 0.0,
+        "deciding_violation": 1.3388538833147834e-07,
+        "deciding_violation_is": "overlap",
+        "revalidated_1e6": true,
+        "revalidated_1e9": false,
+        "revalidated_1e9_reason": "overlap"
+      },
+      {
+        "cell_N": 13,
+        "condition": "B_rival",
+        "slot": "s13",
+        "sum": 1.7761427,
+        "excess_over_family_argmax": 3.250846032365473e-07,
+        "valid_1e6": true,
+        "valid_1e9": false,
+        "k_emp": 3,
+        "max_pairwise_overlap_magnitude": 1.3388538833147834e-07,
+        "min_positive_pairwise_overlap_magnitude": 6.317469952721311e-08,
+        "n_overlapping_pairs": 24,
+        "max_containment_violation": 0.0,
+        "deciding_violation": 1.3388538833147834e-07,
+        "deciding_violation_is": "overlap",
+        "revalidated_1e6": true,
+        "revalidated_1e9": false,
+        "revalidated_1e9_reason": "overlap"
+      },
+      {
+        "cell_N": 21,
+        "condition": "A_anchor",
+        "slot": "s7",
+        "sum": 2.258885,
+        "excess_over_family_argmax": 1.5235168153715506e-06,
+        "valid_1e6": true,
+        "valid_1e9": false,
+        "k_emp": 4,
+        "max_pairwise_overlap_magnitude": 3.047033630965146e-07,
+        "min_positive_pairwise_overlap_magnitude": 3.047033630965146e-07,
+        "n_overlapping_pairs": 20,
+        "max_containment_violation": 0.0,
+        "deciding_violation": 3.047033630965146e-07,
+        "deciding_violation_is": "overlap",
+        "revalidated_1e6": true,
+        "revalidated_1e9": false,
+        "revalidated_1e9_reason": "overlap"
+      },
+      {
+        "cell_N": 13,
+        "condition": "B_rival",
+        "slot": "s5",
+        "sum": 1.7761435,
+        "excess_over_family_argmax": 1.1250846032595518e-06,
+        "valid_1e6": true,
+        "valid_1e9": false,
+        "k_emp": 3,
+        "max_pairwise_overlap_magnitude": 3.338853883094739e-07,
+        "min_positive_pairwise_overlap_magnitude": 9.999999994736442e-08,
+        "n_overlapping_pairs": 28,
+        "max_containment_violation": 0.0,
+        "deciding_violation": 3.338853883094739e-07,
+        "deciding_violation_is": "overlap",
+        "revalidated_1e6": true,
+        "revalidated_1e9": false,
+        "revalidated_1e9_reason": "overlap"
+      },
+      {
+        "cell_N": 13,
+        "condition": "B_rival",
+        "slot": "s7",
+        "sum": 1.7761439,
+        "excess_over_family_argmax": 1.5250846032710541e-06,
+        "valid_1e6": true,
+        "valid_1e9": false,
+        "k_emp": 3,
+        "max_pairwise_overlap_magnitude": 4.3388538831234946e-07,
+        "min_positive_pairwise_overlap_magnitude": 9.999999994736442e-08,
+        "n_overlapping_pairs": 28,
+        "max_containment_violation": 0.0,
+        "deciding_violation": 4.3388538831234946e-07,
+        "deciding_violation_is": "overlap",
+        "revalidated_1e6": true,
+        "revalidated_1e9": false,
+        "revalidated_1e9_reason": "overlap"
+      }
+    ]
+  },
+  "d_arm_v_alias_amendment": {
+    "which_amendment": "amendment 2 -- this is the one that introduced all three aliases that ended up evaluable",
+    "file": "precision-cliff/arm_v_preregistration_amendment2.md",
+    "commit": "d579797",
+    "commit_detail": {
+      "short": "d579797",
+      "date": "2026-08-12",
+      "subject": "Arm V amendment 2: five OpenRouter free-tier proposers (Google/OpenAI/Cohere/Liquid/NVIDIA-550B), request-side attestation, registered before their sampling"
+    },
+    "date": "2026-08-12",
+    "the_three_evaluable_aliases": [
+      "cohere/north-mini-code:free",
+      "openai/gpt-oss-20b:free",
+      "google/gemma-4-31b-it:free"
+    ],
+    "all_aliases_added_by_this_amendment": [
+      "cohere/north-mini-code:free",
+      "google/gemma-4-31b-it:free",
+      "liquid/lfm-2.5-2.6b:free",
+      "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "openai/gpt-oss-20b:free"
+    ],
+    "what_it_said": [
+      "Five OpenRouter free-tier proposers are added, registered before any of their sampling.",
+      "Prompts, prompt hashes, the N set, samples per cell, the evaluability floor, rules V1 and V2, and the scorer are all unchanged.",
+      "Request-side attestation only: max_tokens 8192; temperature and top_p are provider defaults and are unattested; served quantization is unattested.",
+      "The response `model` field and the generation id are logged per row."
+    ],
+    "why_it_matters_to_the_paper": "All three aliases carrying an arm-V transfer verdict come from this amendment, so every transfer verdict in arm V rests on amendment-added aliases (paper/sec_vendor.tex:95-96).",
+    "sibling_amendments": {
+      "amendment_1": {
+        "file": "arm_v_preregistration_amendment1.md",
+        "commit": "52751ee",
+        "detail": {
+          "short": "52751ee",
+          "date": "2026-08-12",
+          "subject": "Arm V amendment 1: five added free-tier proposers (incl. stealth alias big-pickle), registered before their sampling; runner gains resume + model args"
+        }
+      },
+      "amendment_3": {
+        "file": "arm_v_preregistration_amendment3.md",
+        "commit": null,
+        "note": "present in the corpus; its commit is not cited by the paper and is not needed for this round"
+      }
+    },
+    "verbatim": "# Arm V — amendment 2 (registered before its sampling)\n\nRegistered 2026-08-12, before any invocation of the models named here.\nOriginal registration `arm_v_preregistration.md` (git 5444f10), amendment 1\n(git 52751ee). Prompts, hashes, N set, samples per cell, floor, V1/V2 rules\nand scorer are unchanged.\n\n## Added proposers — OpenRouter free tier, direct HTTP API\n\n 9. `google/gemma-4-31b-it:free`            (Google)\n10. `openai/gpt-oss-20b:free`               (OpenAI open-weights)\n11. `cohere/north-mini-code:free`           (Cohere)\n12. `liquid/lfm-2.5-2.6b:free`              (Liquid AI)\n13. `nvidia/nemotron-3-ultra-550b-a55b:free` (NVIDIA flagship-scale)\n\n## Why these five\n\nVendor families absent from every prior arm (Google at >9B, OpenAI,\nCohere, Liquid), plus one flagship-scale entry (550B-A55B) as a capability\nanchor: wave 7 found 8-9B open models below the competence floor; this\namendment includes both a tiny model expected below floor (2.6B, included\ndeliberately as a floor control) and models large enough that a floor\nfailure would be informative rather than expected.\n\n## Serving-path disclosures specific to this amendment\n\n- Direct chat-completions API: unlike Arms A-F and the opencode arms, the\n  REQUEST side is fully attested and logged per row (endpoint, model id,\n  request body). The request sets max_tokens=8192 and nothing else;\n  temperature/top_p are provider defaults, unattested, recorded as such.\n- The response's `model` field and generation id are logged per row.\n  Served quantization remains unattested (OpenRouter free variants are\n  routinely served quantized) - which is the paper's point, and these rows\n  inherit that caveat explicitly.\n- `nemotron-3-ultra-550b-a55b` shares a family with amendment 1's\n  nemotron entries; family-level counts treat all nemotron entries as one\n  family (declared before results).\n- Catalog note recorded pre-results: OpenRouter's catalog identifies two\n  opencode aliases by vendor - laguna = Poolside, ling = inclusionAI.\n\n## Rules\n\nV1, V2, floor: per model, exactly as originally registered.\n"
+  },
+  "e_registration_and_scoring_commits": {
+    "MU": {
+      "registration": {
+        "commit": "2b7d202",
+        "artifacts": [
+          "arm_mu_preregistration.txt",
+          "arm_mu_prompts.json"
+        ],
+        "cited_at": "paper/sec_supp.tex:42",
+        "detail": {
+          "short": "2b7d202",
+          "date": "2026-08-05",
+          "subject": "preregister arm MU (one-parent mutation, 135 inv) + arm CH (tractability choice probe, 45 inv) BEFORE sampling"
+        }
+      },
+      "collection_and_analysis": {
+        "commit": "b69344d",
+        "note": "collection complete 180/180 plus the registered analysis output",
+        "detail": {
+          "short": "b69344d",
+          "date": "2026-08-05",
+          "subject": "arm MU/CH: collection complete 180/180 + final registered analysis output"
+        }
+      },
+      "scored_json": {
+        "commit": "211c3f5",
+        "artifacts": [
+          "arm_mu_scored.json"
+        ],
+        "note": "arm_mu_scored.json lands as an analysis byproduct in a GM3 checkpoint commit",
+        "detail": {
+          "short": "211c3f5",
+          "date": "2026-08-05",
+          "subject": "gm3 checkpoint 43/140 + arm_mu_scored.json analysis byproduct"
+        }
+      },
+      "analysis_script_last_touched": {
+        "commit": "6128331",
+        "artifacts": [
+          "arm_mu_analysis.py"
+        ],
+        "detail": {
+          "short": "6128331",
+          "date": "2026-08-05",
+          "subject": "review 12 (deepseek-v4-flash, 98/100): CH N=31 4:3 margin in prose, abstract in-family-parent clause, tie-convention header + regenerated results, ASSESSMENTS entry"
+        }
+      }
+    },
+    "L": {
+      "registration": {
+        "commit": "c9645fe",
+        "cited_at": "paper/sec_supp.tex:50",
+        "detail": {
+          "short": "c9645fe",
+          "date": "2026-08-28",
+          "subject": "register arm L (iterated loop probe) before sampling: 2 cells x 2 archive regimes x 6 generations x pop 5; gen-0 = registered bare prompt (hashes match A.4), mutation step = arm MU template verbatim; predictions L1-L4 + falsifier F-L1; stepper and scorer committed"
+        }
+      },
+      "scoring": {
+        "commit": "750bb32",
+        "cited_at": "paper/sec_supp.tex:51",
+        "note": "scored once; carries the disclosed correction that the clearance test had used a truncated argmax literal",
+        "detail": {
+          "short": "750bb32",
+          "date": "2026-08-28",
+          "subject": "arm L: sampled once (120 invocations, 2 runtime rejections) and scored once. L1 not met (tie at n=4, one lineage); L2 CONFIRMED dissolution survives iteration; L3 disconfirmed with direction reversed (greedy 0.136 vs diverse 0.296); L4 no lineage clears the family argmax; F-L1 not triggered. Disclosed correction: clearance test used a truncated argmax literal, now recomputed in closed form (corrections_ledger item 34)"
+        }
+      }
+    },
+    "P": {
+      "registration": {
+        "commit": "aa473ad",
+        "cited_at": "paper/sec_supp.tex:51",
+        "note": "registers arms P and CL together",
+        "detail": {
+          "short": "aa473ad",
+          "date": "2026-09-02",
+          "subject": "arms P and CL: registered before sampling -- pinned-temperature rerun, and a numpy/scipy code channel"
+        }
+      },
+      "scoring": {
+        "commit": "596b113",
+        "note": "sampled once and scored once; NOT cited in the paper",
+        "detail": {
+          "short": "596b113",
+          "date": "2026-09-02",
+          "subject": "arm P: sampled once and scored once -- validity collapses to 0 of 105 on the bare pinned path"
+        }
+      }
+    },
+    "P-D": {
+      "registration": {
+        "commit": "5554cc0",
+        "cited_at": "paper/sec_supp.tex:53",
+        "detail": {
+          "short": "5554cc0",
+          "date": "2026-09-02",
+          "subject": "arm P-D registration: arm P's N=13 square prompt (== arm F, hash asserted), Haiku 4.5 on the pinned path, two conditions (D1 extended thinking on, D2 one-line system prompt), 15 each; P-PD1/P-PD2/P-PD3 and S-PD1 fixed before sampling; interruption and resume rule stated"
+        }
+      },
+      "scoring_interim": {
+        "commit": "7782deb",
+        "note": "27 of 30 collected, scored INTERIM",
+        "detail": {
+          "short": "7782deb",
+          "date": "2026-09-02",
+          "subject": "arm P-D: 27 of 30 collected (D1 14, D2 13; three 402 rows kept for resume), scored INTERIM"
+        }
+      },
+      "amendment_and_final_report": {
+        "commit": "1932cc0",
+        "note": "amendment 1 closes the arm at 27 of 30 and regenerates the report without the INTERIM mark; the commit also registers arm B",
+        "detail": {
+          "short": "1932cc0",
+          "date": "2026-09-02",
+          "subject": "arm B registered: the optimizer alone -- a fixed random-restart SLSQP reference program (arm_b_baseline.py, sha asserted by the runner) run through arm CL's pipeline unmodified at N = 13, 21, 31, 15 seeds each, 120 s; P-B1 (clears >= 20% at >= 2 cells: the optimizer alone clears, contribution 1 rewritten by the rule fixed here) vs P-B2 (never clears); S-B1 best vs arm CL's Sonnet best; no model calls. Arm P-D amendment 1: closed at 27 of 30 rows (credit), verdict unchangeable; report regenerated without the INTERIM mark."
+        }
+      }
+    },
+    "GM3": {
+      "registration": {
+        "commit": "c0b5b97",
+        "cited_at": "paper/sec_supp.tex:46",
+        "detail": {
+          "short": "c0b5b97",
+          "date": "2026-08-03",
+          "subject": "Preregister arm GM3 (gemma, 16384-token budget) before sampling; runner maxOutputTokens via GM_MAXTOK env"
+        }
+      },
+      "serving_path_amendment": {
+        "commit": "67cc4a1",
+        "artifacts": [
+          "arm_gm3_amendment1_openrouter.md"
+        ],
+        "cited_at": "paper/sec_supp.tex:47",
+        "note": "registered before the affected cells were sampled",
+        "detail": {
+          "short": "67cc4a1",
+          "date": "2026-08-16",
+          "subject": "GM3 amendment 1: complete remaining 41 cells via OpenRouter (serving-path deviation, disclosed; per-row provider logging, dual accounting)"
+        }
+      },
+      "analysis_fix": {
+        "commit": "4cfb52e",
+        "note": "extract the answer from the non-thought Gemini part",
+        "detail": {
+          "short": "4cfb52e",
+          "date": "2026-08-16",
+          "subject": "GM3 analysis: extract answer from non-thought Gemini part (parts[0] was thinking; GM2's truncation hid this)"
+        }
+      },
+      "scoring": {
+        "commit": "4f618c7",
+        "artifacts": [
+          "arm_gm3_report.json"
+        ],
+        "note": "GM3 analysis artifacts, 140/140, dual accounting",
+        "detail": {
+          "short": "4f618c7",
+          "date": "2026-08-16",
+          "subject": "Data: GM3 analysis artifacts (140/140, dual accounting), screen S ledger (322 rows, both gemma passes)"
+        }
+      },
+      "disclosure": {
+        "commit": "5474286",
+        "note": "out-of-ledger timing probe disclosed and excluded",
+        "detail": {
+          "short": "5474286",
+          "date": "2026-08-03",
+          "subject": "Arm GM3: disclose out-of-ledger timing probe (N=13, observed, excluded)"
+        }
+      }
+    },
+    "V": {
+      "registration": {
+        "commit": "5444f10",
+        "artifacts": [
+          "arm_v_preregistration.md"
+        ],
+        "cited_at": "paper/sec_supp.tex:48-49",
+        "note": "ancestry-checked by its runners before any sampling",
+        "detail": {
+          "short": "5444f10",
+          "date": "2026-08-12",
+          "subject": "Arm V preregistration: cross-vendor zero-shot anchoring (deepseek/nemotron/hunyuan), rules V1/V2 + floor, before any sampling"
+        }
+      },
+      "amendment_1": {
+        "commit": "52751ee",
+        "detail": {
+          "short": "52751ee",
+          "date": "2026-08-12",
+          "subject": "Arm V amendment 1: five added free-tier proposers (incl. stealth alias big-pickle), registered before their sampling; runner gains resume + model args"
+        }
+      },
+      "amendment_2": {
+        "commit": "d579797",
+        "note": "the amendment that added all three evaluable aliases",
+        "detail": {
+          "short": "d579797",
+          "date": "2026-08-12",
+          "subject": "Arm V amendment 2: five OpenRouter free-tier proposers (Google/OpenAI/Cohere/Liquid/NVIDIA-550B), request-side attestation, registered before their sampling"
+        }
+      },
+      "scoring_partial": {
+        "commit": "d75b4c0",
+        "note": "raw ledger 339 invocations, 13 models; all BELOW-FLOOR at that point",
+        "detail": {
+          "short": "d75b4c0",
+          "date": "2026-08-13",
+          "subject": "Arm V raw ledger (339 invocations, 13 models) + scored: all models BELOW-FLOOR"
+        }
+      },
+      "scoring_complete": {
+        "commit": "187cc84",
+        "note": "arm V complete, 877 invocations",
+        "detail": {
+          "short": "187cc84",
+          "date": "2026-08-17",
+          "subject": "Arm V complete (877 invocations) and integrated into paper 1 as section 3.7"
+        }
+      },
+      "scorer_touched_after_scoring": {
+        "commit": "9b38540",
+        "note": "mechanical: forces UTF-8 stdout after a cp1252 crash; no scoring logic changed",
+        "detail": {
+          "short": "9b38540",
+          "date": "2026-08-22",
+          "subject": "Reproducibility: arm_v_score.py forces UTF-8 stdout (cp1252 crash after ledger write); HOW_TO_RUN arm M / arm V rows corrected; bundle rebuilt"
+        }
+      }
+    }
+  },
+  "f_family_argmax_names": {
+    "question": "Every distinct name the paper uses for the family argmax construction, as a file:line list.",
+    "names": {
+      "family argmax": {
+        "count": 20,
+        "occurrences": [
+          {
+            "at": "paper/sec_task.tex:24",
+            "text": "The \\textbf{family argmax} at $N$ is the largest value the family can express there,"
+          },
+          {
+            "at": "paper/sec_task.tex:52",
+            "text": "discriminating cell & $N$ where prediction $\\ne$ family argmax; only these can distinguish anchoring from family search \\\\"
+          },
+          {
+            "at": "paper/sec_task.tex:54",
+            "text": "trap cell & an $N$ inside a trap zone, where the branch rule truncates; the discriminating cells are the trap cells where the truncated anchor sits below the family argmax \\\\"
+          },
+          {
+            "at": "paper/sec_task.tex:59",
+            "text": "template anchor $T(k^*, N)$ & the truncated-grid value at the nearest-square order, $N/(2k^*)$, the anchor of the truncate branch; at a discriminating cell it sits below the family"
+          },
+          {
+            "at": "paper/sec_method.tex:37",
+            "text": "family argmax when its verified sum strictly exceeds the closed-form argmax at the tolerance"
+          },
+          {
+            "at": "paper/sec_conditioning.tex:47",
+            "text": "\\textbf{No conditioned output clears the family argmax at $10^{-9}$; the eighteen that clear"
+          },
+          {
+            "at": "paper/sec_conditioning.tex:50",
+            "text": "is asked here, and the reading is post hoc. Recomputing the family argmax from the closed form gives $1.776142375$ at $N = 13$,"
+          },
+          {
+            "at": "paper/sec_conditioning.tex:53",
+            "text": "sit above the family argmax by more than the $5\\times10^{-8}$ granularity at which their own"
+          },
+          {
+            "at": "paper/tab_mu.tex:8",
+            "text": "\\emph{B\\_rival} (in-family argmax) & 26 & 0/26 (0\\%, $[0.00, 0.13]$) & DISSOLVES if $\\le$ 20\\% & 26/26 (bar $\\ge$ 50\\%) & 26/26 \\\\"
+          },
+          {
+            "at": "paper/sec_loop.tex:28",
+            "text": "registered open with no direction predicted: report best-of-run against the family argmax."
+          },
+          {
+            "at": "paper/sec_loop.tex:78",
+            "text": "\\textbf{L4: three of the four lineages reach the family argmax exactly, and none exceeds it.}"
+          },
+          {
+            "at": "paper/sec_loop.tex:81",
+            "text": "exactly on their cell's family argmax, and 31-GREEDY stops short of it. Across the valid"
+          },
+          {
+            "at": "paper/sec_loop.tex:85",
+            "text": "configuration stored the family argmax to seven decimals. The clearance test compares at"
+          },
+          {
+            "at": "paper/sec_path.tex:21",
+            "text": "four summing to 2.5, a full unit below the family argmax there. None clears. The"
+          },
+          {
+            "at": "paper/sec_vendor.tex:43",
+            "text": "prediction equals the family argmax. On the three scoreable discriminating cells the rate is"
+          },
+          {
+            "at": "paper/sec_vendor.tex:110",
+            "text": "prediction equals the family argmax. At the cells that can discriminate, neither pass"
+          },
+          {
+            "at": "paper/sec_supp.tex:106",
+            "text": "Arm L (iterated loop) & L1--L4 & registered \\textbf{before sampling} (\\texttt{c9645fe}), scored once (\\texttt{750bb32}); four per-lineage bars rather than one pooled bar per cell, "
+          },
+          {
+            "at": "paper/sec_supp.tex:226",
+            "text": "held-out & 50 & 15 & 15 & 0 & 4 & all four sum to 2.5, family argmax 3.5295867 \\\\"
+          },
+          {
+            "at": "paper/sec_supp.tex:241",
+            "text": "No valid output at any cell clears the family argmax. The code cells were executed under a"
+          },
+          {
+            "at": "paper/sec_supp.tex:262",
+            "text": "output is the family argmax 1.7761424. Under D2 every failure is an overlap, which is arm P's"
+          }
+        ]
+      },
+      "family-argmax": {
+        "count": 1,
+        "occurrences": [
+          {
+            "at": "paper/sec_loop.tex:79",
+            "text": "The best-of-run and family-argmax columns of"
+          }
+        ]
+      },
+      "in-family argmax": {
+        "count": 1,
+        "occurrences": [
+          {
+            "at": "paper/tab_mu.tex:8",
+            "text": "\\emph{B\\_rival} (in-family argmax) & 26 & 0/26 (0\\%, $[0.00, 0.13]$) & DISSOLVES if $\\le$ 20\\% & 26/26 (bar $\\ge$ 50\\%) & 26/26 \\\\"
+          }
+        ]
+      },
+      "in-family rival": {
+        "count": 1,
+        "occurrences": [
+          {
+            "at": "paper/sec_conditioning.tex:9",
+            "text": "$T(k^*, N)$. \\emph{B\\_rival} is the provably better in-family rival $V(k^*{-}1, m)$."
+          }
+        ]
+      },
+      "rival (argmax)": {
+        "count": 1,
+        "occurrences": [
+          {
+            "at": "paper/sec_task.tex:51",
+            "text": "rival (argmax) & the highest-valued member of the recipe family at that $N$ when it differs from the prediction: inside a trap zone, the drop-and-fill $V(k^*{-}1, m)$ wherever it b"
+          }
+        ]
+      },
+      "rival argmax": {
+        "count": 2,
+        "occurrences": [
+          {
+            "at": "paper/sec_vendor.tex:60",
+            "text": "above the prediction at the rival argmax \\emph{value}. That these are the rival"
+          },
+          {
+            "at": "paper/sec_vendor.tex:94",
+            "text": "rival argmax. V2 is scored only at the discriminating cells, $N = 13$ and 31. All three come from the amendment-added set, so every transfer verdict in this"
+          }
+        ]
+      },
+      "rival construction": {
+        "count": 7,
+        "occurrences": [
+          {
+            "at": "paper/sec_method.tex:35",
+            "text": "below the gap of about $10^{-2}$ between rival constructions. Value matching uses a"
+          },
+          {
+            "at": "paper/sec_conditioning.tex:28",
+            "text": "completeness and not as a second result. Every valid \\emph{B\\_rival} sample keeps or refines the rival construction."
+          },
+          {
+            "at": "paper/sec_vendor.tex:69",
+            "text": "\\textbf{The misses are the rival construction (post hoc, disclosed).} The three cell-level"
+          },
+          {
+            "at": "paper/sec_vendor.tex:75",
+            "text": "the discriminating cells 27 of 43 valid packings are the rival construction. Validity"
+          },
+          {
+            "at": "paper/sec_vendor.tex:122",
+            "text": "chain's first-party instrument, gemma-4-26b emits the rival construction in 63\\% of its valid"
+          },
+          {
+            "at": "paper/sec_supp.tex:35",
+            "text": "GM3 (gemma, 16k budget) & \\ref{sec:gm3-v} & gemma-4-26b & 7 $N$ $\\times$ 20 & P-GM3.1--.3 + falsifier & pooled bar met (57.5\\%) but discriminating cells 11/43 = 26\\%, below it; mis"
+          },
+          {
+            "at": "paper/sec_supp.tex:162",
+            "text": "Google & gemma-4-26b & first-party API, 7 $N$ $\\times$ 20 (41/140 rows routed under amendment; dual accounting) & pooled $\\ge$ 30\\%; cell-level $\\ge$ 5; falsifier $\\ge$ 4 fails & p"
+          }
+        ]
+      },
+      "rival-valued": {
+        "count": 2,
+        "occurrences": [
+          {
+            "at": "paper/sec_vendor.tex:72",
+            "text": "rival-valued packings carrying the rival's exact two-radius decomposition, which is the"
+          },
+          {
+            "at": "paper/sec_supp.tex:105",
+            "text": "GM3 rival-structure check & --- & \\textbf{post hoc}, disclosed (\\texttt{diagnostics\\bk\\_gm3\\bk\\_rival\\bk.py}) & 27/27 rival-valued discriminating-cell packings carry the rival's tw"
+          }
+        ]
+      },
+      "the rival (bare)": {
+        "count": 12,
+        "occurrences": [
+          {
+            "at": "paper/sec_conditioning.tex:28",
+            "text": "completeness and not as a second result. Every valid \\emph{B\\_rival} sample keeps or refines the rival construction."
+          },
+          {
+            "at": "paper/sec_conditioning.tex:29",
+            "text": "Every one also inherits the rival's grid order, so $k$-inheritance is 26 of 26, and P-MU3 is"
+          },
+          {
+            "at": "paper/sec_loop.tex:86",
+            "text": "$10^{-9}$. A proposal landing exactly on the rival at $N = 31$ therefore tested as"
+          },
+          {
+            "at": "paper/sec_vendor.tex:60",
+            "text": "above the prediction at the rival argmax \\emph{value}. That these are the rival"
+          },
+          {
+            "at": "paper/sec_vendor.tex:69",
+            "text": "\\textbf{The misses are the rival construction (post hoc, disclosed).} The three cell-level"
+          },
+          {
+            "at": "paper/sec_vendor.tex:70",
+            "text": "misses are not noise. The family's modal output at every discriminating cell is the rival"
+          },
+          {
+            "at": "paper/sec_vendor.tex:72",
+            "text": "rival-valued packings carrying the rival's exact two-radius decomposition, which is the"
+          },
+          {
+            "at": "paper/sec_vendor.tex:75",
+            "text": "the discriminating cells 27 of 43 valid packings are the rival construction. Validity"
+          },
+          {
+            "at": "paper/sec_vendor.tex:122",
+            "text": "chain's first-party instrument, gemma-4-26b emits the rival construction in 63\\% of its valid"
+          },
+          {
+            "at": "paper/sec_vendor.tex:124",
+            "text": "the prediction nor the rival. Its valid packings are weaker de-novo constructions whose"
+          },
+          {
+            "at": "paper/sec_supp.tex:35",
+            "text": "GM3 (gemma, 16k budget) & \\ref{sec:gm3-v} & gemma-4-26b & 7 $N$ $\\times$ 20 & P-GM3.1--.3 + falsifier & pooled bar met (57.5\\%) but discriminating cells 11/43 = 26\\%, below it; mis"
+          },
+          {
+            "at": "paper/sec_supp.tex:105",
+            "text": "GM3 rival-structure check & --- & \\textbf{post hoc}, disclosed (\\texttt{diagnostics\\bk\\_gm3\\bk\\_rival\\bk.py}) & 27/27 rival-valued discriminating-cell packings carry the rival's tw"
+          }
+        ]
+      },
+      "closed-form argmax": {
+        "count": 1,
+        "occurrences": [
+          {
+            "at": "paper/sec_method.tex:37",
+            "text": "family argmax when its verified sum strictly exceeds the closed-form argmax at the tolerance"
+          }
+        ]
+      },
+      "drop-and-fill": {
+        "count": 2,
+        "occurrences": [
+          {
+            "at": "paper/sec_task.tex:26",
+            "text": "of $V(k^*{-}1, N - (k^*{-}1)^2)$, the drop-and-fill construction, and the truncated anchor"
+          },
+          {
+            "at": "paper/sec_task.tex:51",
+            "text": "rival (argmax) & the highest-valued member of the recipe family at that $N$ when it differs from the prediction: inside a trap zone, the drop-and-fill $V(k^*{-}1, m)$ wherever it b"
+          }
+        ]
+      },
+      "recipe family / the family": {
+        "count": 4,
+        "occurrences": [
+          {
+            "at": "paper/sec_intro.tex:106",
+            "text": "\\emph{What is not claimed.} Nothing about the optimizer, about what clears the recipe family,"
+          },
+          {
+            "at": "paper/sec_task.tex:13",
+            "text": "\\textbf{The recipe family.} Three terms are used throughout. The \\textbf{recipe family} is the"
+          },
+          {
+            "at": "paper/sec_task.tex:51",
+            "text": "rival (argmax) & the highest-valued member of the recipe family at that $N$ when it differs from the prediction: inside a trap zone, the drop-and-fill $V(k^*{-}1, m)$ wherever it b"
+          },
+          {
+            "at": "paper/sec_loop.tex:83",
+            "text": "best value the recipe family can express at $10^{-9}$, the tolerance the clearance test uses. Iteration moves the proposer off the anchor without"
+          }
+        ]
+      },
+      "best value the recipe family can express": {
+        "count": 1,
+        "occurrences": [
+          {
+            "at": "paper/sec_loop.tex:83",
+            "text": "best value the recipe family can express at $10^{-9}$, the tolerance the clearance test uses. Iteration moves the proposer off the anchor without"
+          }
+        ]
+      },
+      "highest-valued member of the recipe family": {
+        "count": 1,
+        "occurrences": [
+          {
+            "at": "paper/sec_task.tex:51",
+            "text": "rival (argmax) & the highest-valued member of the recipe family at that $N$ when it differs from the prediction: inside a trap zone, the drop-and-fill $V(k^*{-}1, m)$ wherever it b"
+          }
+        ]
+      }
+    },
+    "patterns_with_no_hit": [
+      "rival emission / rival-emission"
+    ],
+    "caution_for_a_glossary_drafter": "paper/sec_vendor.tex distinguishes the rival argmax VALUE from the rival CONSTRUCTION on purpose (the pooled value test versus the two-radius structural signature). Consolidating every name onto one term must not collapse that distinction. sec_task.tex:51 is the glossary row that already defines 'rival (argmax)'."
+  },
+  "g_term_first_use_and_definition": {
+    "question": "Where is each term FIRST used and FIRST defined?",
+    "scan_order": [
+      "main.tex",
+      "sec_intro.tex",
+      "sec_task.tex",
+      "sec_method.tex",
+      "sec_conditioning.tex",
+      "tab_mu.tex",
+      "sec_loop.tex",
+      "sec_path.tex",
+      "sec_vendor.tex",
+      "tab_v.tex",
+      "sec_related.tex",
+      "sec_limits.tex",
+      "sec_supp.tex"
+    ],
+    "scan_order_note": "First use is the earliest hit in \\input order: main.tex's abstract, then sec_intro, sec_task, sec_method, sec_conditioning (tab_mu is \\input at sec_conditioning.tex:45), sec_loop, sec_path, sec_vendor (tab_v at sec_vendor.tex:97), sec_related, sec_limits, then supplement.tex -> sec_supp.",
+    "glossary_table": "paper/sec_task.tex:44-59 is the only glossary in the paper; a term not defined there is not defined anywhere.",
+    "terms": [
+      {
+        "term": "square cell",
+        "occurrences_in_paper": 7,
+        "first_use": "paper/main.tex:59",
+        "first_use_text": "the square cells, and a registered follow-up names extended thinking, on against off at the",
+        "first_definition": null,
+        "defined_in_paper": false,
+        "note": "Never defined. The closest the paper comes is paper/sec_path.tex:9, which enumerates 'seven square cells, five held-out cells and three code cells' without saying what makes a cell square. The sense is: a cell whose N is one of the seven values swept in the square direct-emission block.",
+        "all_occurrences": [
+          "paper/main.tex:59",
+          "paper/sec_intro.tex:65",
+          "paper/sec_path.tex:9",
+          "paper/sec_path.tex:12",
+          "paper/sec_path.tex:14",
+          "paper/sec_supp.tex:31",
+          "paper/sec_supp.tex:107"
+        ]
+      },
+      {
+        "term": "code cell",
+        "occurrences_in_paper": 4,
+        "first_use": "paper/sec_path.tex:9",
+        "first_use_text": "runs at $n = 15$ per cell across seven square cells, five held-out cells and three code cells,",
+        "first_definition": null,
+        "defined_in_paper": false,
+        "note": "Never defined. Introduced by enumeration at paper/sec_path.tex:9; the registration calls it the 'code channel, math-only' block (arm_p_preregistration.txt:53-55).",
+        "all_occurrences": [
+          "paper/sec_path.tex:9",
+          "paper/sec_path.tex:24",
+          "paper/sec_supp.tex:232",
+          "paper/sec_supp.tex:241"
+        ]
+      },
+      {
+        "term": "held-out cell",
+        "occurrences_in_paper": 2,
+        "first_use": "paper/sec_path.tex:9",
+        "first_use_text": "runs at $n = 15$ per cell across seven square cells, five held-out cells and three code cells,",
+        "first_definition": null,
+        "defined_in_paper": false,
+        "note": "Never defined. Introduced by enumeration at paper/sec_path.tex:9.",
+        "all_occurrences": [
+          "paper/sec_path.tex:9",
+          "paper/sec_path.tex:20"
+        ]
+      },
+      {
+        "term": "boundary cell",
+        "occurrences_in_paper": 0,
+        "first_use": null,
+        "first_use_text": null,
+        "first_definition": null,
+        "defined_in_paper": false,
+        "note": "DOES NOT OCCUR ANYWHERE IN THE PAPER. The paper speaks of a boundary being 'located, not attributed' (paper/sec_intro.tex:80, :94), never of a boundary cell.",
+        "all_occurrences": []
+      },
+      {
+        "term": "trap cell",
+        "occurrences_in_paper": 4,
+        "first_use": "paper/sec_intro.tex:101",
+        "first_use_text": "another vendor is named. Three trap cells carry the conditioning arm, $N = 13$, 21",
+        "first_definition": "paper/sec_task.tex:54",
+        "defined_in_paper": true,
+        "note": "Glossary row: 'an N inside a trap zone, where the branch rule truncates; the discriminating cells are the trap cells where the truncated anchor sits below the family argmax'. Note the first USE (sec_intro.tex:101) precedes the definition only because the intro table runs ahead of the glossary.",
+        "all_occurrences": [
+          "paper/sec_intro.tex:101",
+          "paper/sec_intro.tex:102",
+          "paper/sec_task.tex:39",
+          "paper/sec_task.tex:54"
+        ]
+      },
+      {
+        "term": "discriminating cell",
+        "occurrences_in_paper": 29,
+        "first_use": "paper/sec_intro.tex:75",
+        "first_use_text": "11 of 43 at the discriminating cells & The pooled bar is met and the discriminating cells miss",
+        "first_definition": "paper/sec_task.tex:52",
+        "defined_in_paper": true,
+        "note": "Glossary row: 'N where prediction != family argmax; only these can distinguish anchoring from family search'.",
+        "all_occurrences": [
+          "paper/sec_intro.tex:75",
+          "paper/sec_task.tex:28",
+          "paper/sec_task.tex:39",
+          "paper/sec_task.tex:52",
+          "paper/sec_task.tex:54",
+          "paper/sec_task.tex:59",
+          "paper/sec_loop.tex:11",
+          "paper/sec_vendor.tex:31",
+          "paper/sec_vendor.tex:42",
+          "paper/sec_vendor.tex:43",
+          "paper/sec_vendor.tex:70",
+          "paper/sec_vendor.tex:75",
+          "paper/sec_vendor.tex:94",
+          "paper/sec_vendor.tex:103",
+          "paper/sec_vendor.tex:115",
+          "paper/sec_vendor.tex:117",
+          "paper/sec_vendor.tex:123",
+          "paper/tab_v.tex:6",
+          "paper/tab_v.tex:14",
+          "paper/sec_limits.tex:22",
+          "paper/sec_limits.tex:62",
+          "paper/sec_supp.tex:35",
+          "paper/sec_supp.tex:162",
+          "paper/sec_supp.tex:163",
+          "paper/sec_supp.tex:191",
+          "paper/sec_supp.tex:192",
+          "paper/sec_supp.tex:282",
+          "paper/sec_supp.tex:283",
+          "paper/sec_supp.tex:284"
+        ]
+      },
+      {
+        "term": "located but not attributed",
+        "occurrences_in_paper": 3,
+        "first_use": "paper/sec_intro.tex:80",
+        "first_use_text": "point estimate, 0 of 15 does not & The boundary is located, not attributed \\\\",
+        "first_definition": null,
+        "defined_in_paper": false,
+        "note": "Used as a verdict phrase, never defined. The first occurrence (sec_intro.tex:80, a results-table cell) uses the variant wording 'located, not attributed'; the exact phrase 'located but not attributed' first appears at sec_intro.tex:94, and its meaning is carried by the surrounding sentence at sec_intro.tex:94-96. Cite :94 for the phrase, :80 only for the variant.",
+        "all_occurrences": [
+          "paper/sec_intro.tex:80",
+          "paper/sec_intro.tex:94",
+          "paper/sec_intro.tex:96"
+        ],
+        "first_use_is_a_variant": true,
+        "first_use_variant_wording": "located, not attributed",
+        "first_use_of_exact_phrase": "paper/sec_intro.tex:94",
+        "first_use_of_exact_phrase_text": "\\item \\emph{A cross-vendor boundary that is located but not attributed.} Two second-vendor"
+      },
+      {
+        "term": "UNSCOREABLE",
+        "occurrences_in_paper": 10,
+        "first_use": "paper/sec_intro.tex:66",
+        "first_use_text": "UNSCOREABLE \\\\",
+        "first_definition": "paper/sec_task.tex:57",
+        "defined_in_paper": true,
+        "note": "Glossary row: 'cell with fewer valid samples than its arm's registered floor; claims nothing'.",
+        "all_occurrences": [
+          "paper/sec_intro.tex:66",
+          "paper/sec_task.tex:57",
+          "paper/sec_method.tex:49",
+          "paper/sec_path.tex:22",
+          "paper/sec_vendor.tex:12",
+          "paper/sec_vendor.tex:62",
+          "paper/sec_vendor.tex:77",
+          "paper/sec_supp.tex:31",
+          "paper/sec_supp.tex:185",
+          "paper/sec_supp.tex:186"
+        ]
+      },
+      {
+        "term": "L1",
+        "occurrences_in_paper": 5,
+        "first_use": "paper/sec_intro.tex:61",
+        "first_use_text": "20 conditioned. $N = 31$: 7 of 8, then 6 of 29 & L2 holds; L1, L3 not met; L4 open (0 of 49",
+        "first_definition": "paper/sec_loop.tex:23",
+        "defined_in_paper": true,
+        "note": "'L1 predicted that the modal valid output at generation 0 equals the registered prediction in every lineage.'",
+        "all_occurrences": [
+          "paper/sec_intro.tex:61",
+          "paper/sec_loop.tex:23",
+          "paper/sec_loop.tex:65",
+          "paper/sec_supp.tex:30",
+          "paper/sec_supp.tex:106"
+        ]
+      },
+      {
+        "term": "L2",
+        "occurrences_in_paper": 6,
+        "first_use": "paper/sec_intro.tex:60",
+        "first_use_text": "generation-0 rate in both cells (L2); falsifier F-L1 & $N = 13$: 4 of 9 at generation 0, 5 of",
+        "first_definition": "paper/sec_loop.tex:24",
+        "defined_in_paper": true,
+        "note": "'L2 predicted that dissolution survives [iteration]...'",
+        "all_occurrences": [
+          "paper/sec_intro.tex:60",
+          "paper/sec_intro.tex:61",
+          "paper/sec_loop.tex:24",
+          "paper/sec_loop.tex:61",
+          "paper/sec_supp.tex:30",
+          "paper/sec_supp.tex:106"
+        ]
+      },
+      {
+        "term": "L3",
+        "occurrences_in_paper": 5,
+        "first_use": "paper/sec_intro.tex:61",
+        "first_use_text": "20 conditioned. $N = 31$: 7 of 8, then 6 of 29 & L2 holds; L1, L3 not met; L4 open (0 of 49",
+        "first_definition": "paper/sec_loop.tex:26",
+        "defined_in_paper": true,
+        "note": "'L3 predicted that the pooled conditioned on-prediction rate is higher under GREEDY than under DIVERSE.'",
+        "all_occurrences": [
+          "paper/sec_intro.tex:61",
+          "paper/sec_loop.tex:26",
+          "paper/sec_loop.tex:72",
+          "paper/sec_supp.tex:30",
+          "paper/sec_supp.tex:106"
+        ]
+      },
+      {
+        "term": "L4",
+        "occurrences_in_paper": 5,
+        "first_use": "paper/sec_intro.tex:61",
+        "first_use_text": "20 conditioned. $N = 31$: 7 of 8, then 6 of 29 & L2 holds; L1, L3 not met; L4 open (0 of 49",
+        "first_definition": "paper/sec_loop.tex:27",
+        "defined_in_paper": true,
+        "note": "L4 is stated across sec_loop.tex:27-28.",
+        "all_occurrences": [
+          "paper/sec_intro.tex:61",
+          "paper/sec_loop.tex:27",
+          "paper/sec_loop.tex:78",
+          "paper/sec_supp.tex:30",
+          "paper/sec_supp.tex:106"
+        ]
+      },
+      {
+        "term": "effort",
+        "occurrences_in_paper": 4,
+        "first_use": "paper/main.tex:60",
+        "first_use_text": "routing layer's default effort, as the component that restores validity, at one cell on 14 and",
+        "first_definition": null,
+        "defined_in_paper": false,
+        "note": "Never defined in the paper; it appears only inside the phrase 'the routing layer's default effort'. The available definition is in the registration, precision-cliff/arm_pd_preregistration.txt:33-35: the routing layer's default thinking effort for the vendor, 'documented as medium, a budget of roughly half of max_tokens'.",
+        "all_occurrences": [
+          "paper/main.tex:60",
+          "paper/sec_path.tex:35",
+          "paper/sec_path.tex:45",
+          "paper/sec_limits.tex:61"
+        ]
+      },
+      {
+        "term": "quota",
+        "occurrences_in_paper": 1,
+        "first_use": "paper/sec_vendor.tex:34",
+        "first_use_text": "serving-path deviation is registered and disclosed. The first-party key stalled on quota, so",
+        "first_definition": null,
+        "defined_in_paper": false,
+        "note": "Never defined; used once, at paper/sec_vendor.tex:34, to explain why the GM3 serving-path amendment was needed ('the first-party key stalled on quota').",
+        "all_occurrences": [
+          "paper/sec_vendor.tex:34"
+        ]
+      }
+    ]
+  },
+  "not_found": [
+    "term 'boundary cell' does not occur anywhere in the paper"
+  ]
+}

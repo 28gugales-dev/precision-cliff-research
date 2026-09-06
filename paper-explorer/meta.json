@@ -1,6 +1,6 @@
 {
   "site_updated": "2026-09-06",
   "paper2_pdf_updated": "2026-09-06",
-  "paper2_revision": "Revision 1.7 (round 25 readability pass: two-to-three-sentence finding openers on sections 4 to 7; body code vocabulary cut from about 26 codes to 15, predictions written in words, condition labels now anchor / argmax / off-family parent; body 12 pages)",
+  "paper2_revision": "Revision 1.8 (cold-review fixes: arm MU excess over the family argmax now traced to the argmax parent's rounding with a per-row supplement table, the false excess-equals-overlap claim removed; GM3 discriminating-cell split labeled post hoc in abstract, Table 1, section 7 and supplement; body 12 pages)",
   "deploy": "git: push to main deploys (root paper-explorer)"
 }
