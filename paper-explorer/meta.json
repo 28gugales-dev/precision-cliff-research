@@ -1,6 +1,6 @@
 {
   "site_updated": "2026-09-06",
   "paper2_pdf_updated": "2026-09-06",
-  "paper2_revision": "Revision 1.8a (also served as paper2_v2.pdf and paper2_supplement_v2.pdf for cache-busting; cold-review fixes: arm MU excess over the family argmax now traced to the argmax parent's rounding with a per-row supplement table, the false excess-equals-overlap claim removed; GM3 discriminating-cell split labeled post hoc in abstract, Table 1, section 7 and supplement; body 12 pages)",
+  "paper2_revision": "Revision 1.9 (also served as paper2_v3.pdf and paper2_supplement_v3.pdf for cache-busting; v2 names still carry rev 1.8a; cold-review clarity and wording pass: plain-language two-sentence summary closes the abstract, arm MU granularity split moved to Supplement S2, contribution 2 narrowed to the one system line P-D tested, 'instrument' kept to Table 2's two-path sense; body 12 pages)",
   "deploy": "git: push to main deploys (root paper-explorer)"
 }
