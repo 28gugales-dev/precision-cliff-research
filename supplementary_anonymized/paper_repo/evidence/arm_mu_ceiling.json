@@ -1,0 +1,224 @@
+{
+ "source": "arm_mu_scored.json",
+ "family_argmax": {
+  "13": {
+   "value": 1.7761423749153968,
+   "k": 3,
+   "m": 4
+  },
+  "21": {
+   "value": 2.2588834764831844,
+   "k": 4,
+   "m": 5
+  },
+  "31": {
+   "value": 2.748528137423857,
+   "k": 5,
+   "m": 6
+  }
+ },
+ "cells": {
+  "A_anchor_N13": {
+   "invocations": 15,
+   "valid6": 12,
+   "valid9": 12,
+   "above_argmax_strict": 1,
+   "above_argmax_margin": 0,
+   "above_argmax_valid9": 1,
+   "max_valid6": 1.7761424,
+   "max_excess": 2.5084603061387156e-08
+  },
+  "A_anchor_N21": {
+   "invocations": 15,
+   "valid6": 5,
+   "valid9": 3,
+   "above_argmax_strict": 1,
+   "above_argmax_margin": 1,
+   "above_argmax_valid9": 0,
+   "max_valid6": 2.258885,
+   "max_excess": 1.5235168153715506e-06
+  },
+  "A_anchor_N31": {
+   "invocations": 15,
+   "valid6": 11,
+   "valid9": 11,
+   "above_argmax_strict": 0,
+   "above_argmax_margin": 0,
+   "above_argmax_valid9": 0,
+   "max_valid6": 2.7485281,
+   "max_excess": 0.0
+  },
+  "B_rival_N13": {
+   "invocations": 15,
+   "valid6": 8,
+   "valid9": 0,
+   "above_argmax_strict": 8,
+   "above_argmax_margin": 2,
+   "above_argmax_valid9": 0,
+   "max_valid6": 1.7761439,
+   "max_excess": 1.5250846032710541e-06
+  },
+  "B_rival_N21": {
+   "invocations": 15,
+   "valid6": 7,
+   "valid9": 3,
+   "above_argmax_strict": 7,
+   "above_argmax_margin": 0,
+   "above_argmax_valid9": 3,
+   "max_valid6": 2.258884,
+   "max_excess": 5.235168156758618e-07
+  },
+  "B_rival_N31": {
+   "invocations": 15,
+   "valid6": 11,
+   "valid9": 1,
+   "above_argmax_strict": 10,
+   "above_argmax_margin": 0,
+   "above_argmax_valid9": 0,
+   "max_valid6": 2.7485284,
+   "max_excess": 2.625761430508078e-07
+  },
+  "CH_N13": {
+   "invocations": 15,
+   "valid6": 2,
+   "valid9": 2,
+   "above_argmax_strict": 0,
+   "above_argmax_margin": 0,
+   "above_argmax_valid9": 0,
+   "max_valid6": 1.625,
+   "max_excess": 0.0
+  },
+  "CH_N21": {
+   "invocations": 15,
+   "valid6": 5,
+   "valid9": 5,
+   "above_argmax_strict": 3,
+   "above_argmax_margin": 0,
+   "above_argmax_valid9": 3,
+   "max_valid6": 2.2588835,
+   "max_excess": 2.3516815605972852e-08
+  },
+  "CH_N31": {
+   "invocations": 15,
+   "valid6": 7,
+   "valid9": 7,
+   "above_argmax_strict": 0,
+   "above_argmax_margin": 0,
+   "above_argmax_valid9": 0,
+   "max_valid6": 2.7485281,
+   "max_excess": 0.0
+  },
+  "C_offfamily_N13": {
+   "invocations": 15,
+   "valid6": 7,
+   "valid9": 6,
+   "above_argmax_strict": 0,
+   "above_argmax_margin": 0,
+   "above_argmax_valid9": 0,
+   "max_valid6": 1.625,
+   "max_excess": 0.0
+  },
+  "C_offfamily_N21": {
+   "invocations": 15,
+   "valid6": 13,
+   "valid9": 13,
+   "above_argmax_strict": 0,
+   "above_argmax_margin": 0,
+   "above_argmax_valid9": 0,
+   "max_valid6": 2.15,
+   "max_excess": 0.0
+  },
+  "C_offfamily_N31": {
+   "invocations": 15,
+   "valid6": 14,
+   "valid9": 14,
+   "above_argmax_strict": 0,
+   "above_argmax_margin": 0,
+   "above_argmax_valid9": 0,
+   "max_valid6": 2.5937499,
+   "max_excess": 0.0
+  }
+ },
+ "pooled": {
+  "valid6": 102,
+  "valid9": 77,
+  "above6_strict": 30,
+  "above6_margin": 3,
+  "above9": 7,
+  "invocations": 180,
+  "largest_excess": 1.5250846032710541e-06,
+  "every_real_excess_fails_valid9": true
+ },
+ "excess_buckets": {
+  "recorded_sum_granularity": 5e-08,
+  "within_rounding": 12,
+  "within_rounding_valid9": 7,
+  "beyond_rounding": 18,
+  "beyond_rounding_valid9": 0
+ },
+ "by_arm": {
+  "MU": {
+   "invocations": 135,
+   "valid6": 88,
+   "valid9": 63,
+   "nominally_above": 27,
+   "above_within_rounding": 9,
+   "above_beyond_rounding": 18,
+   "above_beyond_rounding_valid9": 0,
+   "largest_excess": 1.5250846032710541e-06
+  },
+  "CH": {
+   "invocations": 45,
+   "valid6": 14,
+   "valid9": 14,
+   "nominally_above": 3,
+   "above_within_rounding": 3,
+   "above_beyond_rounding": 0,
+   "above_beyond_rounding_valid9": 0,
+   "largest_excess": 2.3516815605972852e-08
+  }
+ },
+ "arm_CH_attempts": {
+  "invalid_attempts": 31,
+  "by_cell": {
+   "13": {
+    "invalid": 13,
+    "argmax_order": 3,
+    "at_argmax_order": 12,
+    "unevaluable": 1
+   },
+   "21": {
+    "invalid": 10,
+    "argmax_order": 4,
+    "at_argmax_order": 10,
+    "unevaluable": 0
+   },
+   "31": {
+    "invalid": 8,
+    "argmax_order": 5,
+    "at_argmax_order": 8,
+    "unevaluable": 0
+   }
+  },
+  "at_argmax_order": 30,
+  "unevaluable": 1,
+  "valid": 14,
+  "built_argmax": 6,
+  "invocations": 45,
+  "attempted_argmax": 36,
+  "built_by_cell": {
+   "13": [
+    0,
+    2
+   ],
+   "21": [
+    3,
+    5
+   ],
+   "31": [
+    3,
+    7
+   ]
+  }
+ }
+}

@@ -20,3 +20,16 @@ the scripts and outputs the papers cite as living in the paper repository
 (recount_cl.py, arm_mu_ceiling.py, cl_recount.json and the rest). This
 bundle serves both companion submissions; each ships it with its own
 supplement PDF and an anonymized copy of the other paper.
+
+COMPANION (TRANSFER) PAPER FILE MAP. Arm MU: arm_mu_*.py / .jsonl / .json
+and paper_repo/loop/arm_mu_ceiling.py with paper_repo/evidence/
+arm_mu_ceiling.json (the by_arm block separates MU from CH). Arm L:
+arm_l_*.py, arm_l_prompts.json, arm_l_report.json. Arms P and P-D:
+arm_p_*.py / .jsonl / .json, arm_pd_*.py / .jsonl / .json and their
+preregistration and amendment files. Arms GM, GM2, GM3: arm_gm_*.py / .jsonl
+/ .json, arm_gm_v2_report.json, arm_gm2_*, arm_gm3_*. Arm V:
+arm_v_*.py / .jsonl / .json (arm_v_score.py imports arm_f_repro.py, the
+companion's scorer). Independent recount of every count that paper reports:
+arm_transfer_independent_rescore.py and its output
+arm_transfer_independent_rescore.json (LP oracle from n_sweep_forecast.py).
+Correction found by that recount: corrections_ledger.md item 36.
