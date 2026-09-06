@@ -1,10 +1,6 @@
 {
   "site_updated": "2026-09-06",
-  "paper1_pdf_updated": "2026-09-05",
-  "paper1_revision": "Revision 6.1 (standalone fix: the artifact bullet names the anonymized companion PDF; the bundle now ships every cited file; body 19 pages)",
   "paper2_pdf_updated": "2026-09-06",
   "paper2_revision": "Revision 1.7 (round 25 readability pass: two-to-three-sentence finding openers on sections 4 to 7; body code vocabulary cut from about 26 codes to 15, predictions written in words, condition labels now anchor / argmax / off-family parent; body 12 pages)",
-  "arms_updated": "2026-09-02",
-  "graph_updated": "2026-08-18",
   "deploy": "git: push to main deploys (root paper-explorer)"
 }

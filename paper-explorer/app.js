@@ -89,7 +89,7 @@
   // ---------------------------------------------------------------- state
 
   var state = {
-    view: 'paper1',
+    view: 'about',
     arms: null,          // arms.json payload (or null)
     armsError: null,
     graph: null,         // graph.json payload (or null)
@@ -208,20 +208,15 @@
     });
   }
 
+  // Paper 1 atlas data (arms.json, graph.json) removed from the site 2026-09-06;
+  // only meta.json loads now. Atlas code kept intact for a later restore.
   function loadAll() {
-    var a = loadJSON('arms.json').then(
-      function (d) { state.arms = d; state.armsError = null; },
-      function (e) { state.arms = null; state.armsError = e.message || String(e); }
-    );
-    var g = loadJSON('graph.json').then(
-      function (d) { state.graph = d; state.graphError = null; },
-      function (e) { state.graph = null; state.graphError = e.message || String(e); }
-    );
-    var m = loadJSON('meta.json').then(
+    state.arms = null; state.armsError = 'not published';
+    state.graph = null; state.graphError = 'not published';
+    return loadJSON('meta.json').then(
       function (d) { state.meta = d; },
       function () { state.meta = null; }
     );
-    return Promise.all([a, g, m]);
   }
 
   function updWhen(key) {
@@ -1218,52 +1213,30 @@
 
   var ABOUT_HTML = [
     '<header class="about-hero">',
-    '<h2>Precision-cliff research programme</h2>',
-    '<p class="about-lede">A paper on what an LLM proposal is actually made of: the template the model emits when it is not told to search. It runs on circle packing, scored by an exact local evaluator rather than a judge, so every source of variance sits on the model side of the interface.</p>',
+    '<h2>Characterize Before You Loop</h2>',
+    '<p class="about-lede">A short paper on what transfers from a zero-shot language model proposer\'s template once the setting changes: the parent it conditions on, the iteration, the serving path with its reasoning setting, and the vendor. It runs on circle packing in the unit square, scored by an exact local evaluator rather than a judge, so every source of variance sits on the model side of the interface.</p>',
     '<p class="about-byline">Soham Shailesh Gugale · Independent researcher · <a href="mailto:28gugales@gmail.com">28gugales@gmail.com</a></p>',
     '</header>',
 
     '<div class="card paper-card">',
-    '<div class="paper-tag">Paper 1</div>',
-    '<h3>Capability or Optimizer? What Lets an LLM Proposer Leave Its Template Family on Circle Packing</h3>',
-    '<p class="paper-sub">What lets a proposer leave the grid-plus-filler family: the optimizer, not the model tier.</p>',
-    '<p>Zero-shot LLM proposers on circle packing concentrate on a grid-plus-filler family whose best value follows in closed form from N. We ask what lets a proposer leave it. A fixed SLSQP program with no model in the loop clears the family in 45 of 45 runs and beats the best model-written program at every cell: the optimizer does the clearing. Budget-matched at N = 57 and 59 the same program clears 28 of 28 valid outputs of 30 launched, and at N = 73 it cannot complete one restart in the 120-second wall, a limit of the budget, not of the optimizer. Across two proposer tiers and three output channels, the tiers differ in whether their programs drive that optimizer past the family. A Sonnet-tier program with numpy and scipy clears in 23 of 25 valid programs, or 23 of 41 once every invocation is charged; without the libraries, on the same path and budget, it clears none. A weak-tier program with the libraries clears none of its 90 invocations, 4 of 90 when its unreadable output is re-read leniently. Handed the better construction, the weak tier chooses it but builds it in 6 of 14 valid outputs: execution, not preference, is the bottleneck. Twenty-one registered arms are reported, whichever way each went; six more are reported in Paper 2.</p>',
-    '<p class="paper-links"><a href="paper1.pdf" target="_blank" rel="noopener">Read the paper (PDF)</a> · <a href="paper1_supplement.pdf" target="_blank" rel="noopener">Supplement (PDF)</a> · <a href="https://github.com/28gugales-dev/precision-cliff-research" target="_blank" rel="noopener">Code, ledgers &amp; preregistrations</a><span class="updated-tag" id="upd-p1"></span></p>',
-    '</div>',
-
-    '<div class="card paper-card">',
-    '<div class="paper-tag">Paper 2</div>',
-    '<h3>Characterize Before You Loop: a Zero-Shot Proposer\'s Template Does Not Survive the Loop\'s Own Conditions</h3>',
-    '<p class="paper-sub">Companion to Paper 1: what happens to the template when the parent, the iteration, the serving path or the vendor changes.</p>',
-    '<p>Paper 1 establishes the grid-plus-filler concentration and its closed form. This paper measures what happens to that characterization when the setting changes. Eight registered arms change four things: the parent, the iteration, the serving path with its reasoning setting, and the vendor. One parent-conditioning step dissolves the template on both halves of the registered rule. Five generations of a minimal archive-and-mutate loop, at population 5 and 49 valid outputs from 100 conditioned invocations, do not restore it at that scale, and two of the loop\'s four predictions were not met. The same prompts on a pinned serving path return no valid packing at the square cells, and a registered follow-up names extended thinking, on against off at the routing layer\'s default effort, as the component that restores validity. At a second vendor the pooled prediction holds; at the cells that can discriminate anchoring from family search it does not. Across thirteen free-tier aliases, ten fall below the registered floor, two transfer at point estimate with Wilson intervals that include 50%, and one does not. The template is contingent on the serving path and the request parameters it carries, the reasoning setting included, so a zero-shot characterization of a proposer licenses no prediction about the same proposer inside a discovery loop without a measurement at that loop\'s own conditions. Every registered arm is reported, whichever way each went.</p>',
+    '<div class="paper-tag">Paper</div>',
+    '<h3>Characterize Before You Loop: What Transfers From a Zero-Shot Proposer\'s Template and What Does Not</h3>',
+    '<p class="paper-sub">Eight registered arms test whether a proposer\'s anchor and its recipe family\'s argmax survive a change of parent, iteration, serving path or vendor.</p>',
+    '<p>A weak-tier language model proposer, asked in a zero-shot call to pack circles in the unit square, concentrates on a grid-plus-filler template. A companion submission gives the closed form naming its modal output. That template is the anchor, where its outputs settle at a given size. Its recipe family has a largest member there, the family argmax. This paper measures which survives a change of setting. Eight registered arms change four things. They vary the parent, the iteration, the serving path with its reasoning setting, and the vendor. Under a better in-family parent, on the agent-runtime instrument, 26 of 26 valid outputs return that parent\'s score, not the anchor. Under its own anchor as parent the model leaves that anchor, missing the registered bar. Iteration erodes it across five archive-and-mutate generations on that instrument. The same prompts on a pinned path return 0 of 105 valid packings. Extended thinking restores validity at the one cell tested. At a second vendor the pooled bar is met while the cells that test anchoring miss it. Under an instruction to improve, the anchor does not persist. The family argmax does, as a ceiling no arm clears at 10<sup>&minus;9</sup>. Clearing it would mean leaving the recipe family, and no valid output did.</p>',
     '<p class="paper-links"><a href="paper2.pdf" target="_blank" rel="noopener">Read the paper (PDF)</a> · <a href="paper2_supplement.pdf" target="_blank" rel="noopener">Supplement (PDF)</a> · <a href="https://github.com/28gugales-dev/precision-cliff-research" target="_blank" rel="noopener">Code, ledgers &amp; preregistrations</a><span class="updated-tag" id="upd-p2"></span></p>',
     '</div>',
 
     '<div class="card">',
-    '<h3>How to read the atlas</h3>',
-    '<ul>',
-    '<li><b>Paper 1 atlas</b> puts every arm, wave, control, analysis, extension and headline claim on the map as a node — 28 in total, with 42 directed edges between them.</li>',
-    '<li><b>Network or Flowchart.</b> Network is a force layout, good for seeing clusters. Flowchart lays the same nodes out left to right by dependency: anything with no prerequisite starts in the first column, everything else sits one column past its deepest prerequisite.</li>',
-    '<li><b>Click any node</b> for its design, result, verdict and caveats, plus a lineage strip of what fed it and what it fed. Verdicts are colour-coded — green held, red disconfirmed, amber partial, grey descriptive. Node colour and shape encode kind; claim nodes are larger and gold.</li>',
-    '<li><b>Edges are typed</b>: <i>feeds</i> and <i>informs</i> for supply of evidence, <i>controls_for</i> for a probe that bounds a result, <i>replicates</i>, <i>extends</i> and <i>scopes</i> for reach, <i>contrasts_with</i> and <i>disconfirms</i> for tension. Hover an edge to read the annotation behind it.</li>',
-    '<li><b>Concept graph</b> shows 82 concepts auto-extracted from the paper, coloured by community, with edge opacity tracking extraction confidence. It is a reading aid, not a result.</li>',
-    '<li><b>Search</b> filters the active view — matches stay lit, the rest dims. <b>Expand</b> takes the graph full-window (Esc to leave); <b>Reset view</b> restores the default zoom. Scroll to zoom, drag the background to pan, drag a node to pin it somewhere else.</li>',
-    '</ul>',
-    '</div>',
-
-    '<div class="card">',
     '<h3>Provenance</h3>',
-    '<p>Every figure on this map traces to a released script and a raw ledger row. Preregistrations are git ancestors of the sampling they govern, so the registration date is checkable rather than asserted — the full repository, including every ledger, replay script and preregistration, is public at <a href="https://github.com/28gugales-dev/precision-cliff-research" target="_blank" rel="noopener">github.com/28gugales-dev/precision-cliff-research</a>. Prose in the paper was model-assisted under the author\'s direction and disclosed there.</p>',
-    '<p class="muted small">This atlas is generated from two data files: <code>arms.json</code>, the per-paper experiment ledger, and <code>graph.json</code>, a node-link export of the extracted concept graph. Both load at runtime.</p>',
-    '<p id="about-status" class="muted small"></p>',
+    '<p>Every figure in the paper traces to a released script and a raw ledger row. Preregistrations are git ancestors of the sampling they govern, so the registration date is checkable rather than asserted. The full repository, including every ledger, replay script and preregistration, is public at <a href="https://github.com/28gugales-dev/precision-cliff-research" target="_blank" rel="noopener">github.com/28gugales-dev/precision-cliff-research</a>. Prose in the paper was model-assisted under the author\'s direction and disclosed there.</p>',
     '</div>',
 
     '<footer class="about-foot">Questions, or a request for the underlying data: <a href="mailto:28gugales@gmail.com">28gugales@gmail.com</a><span class="updated-tag" id="upd-site"></span></footer>'
   ].join('');
 
   function renderAbout() {
-    el.stageTitle.textContent = 'About';
-    el.stageSub.textContent = 'The research programme in three minutes, and how to use this atlas.';
+    el.stageTitle.textContent = 'Paper';
+    el.stageSub.textContent = 'The paper, its supplement and its code, in one place.';
     document.body.classList.add('is-about');
     syncSummary();
     el.wrap.classList.add('hidden');
@@ -1271,31 +1244,10 @@
     el.about.innerHTML = ABOUT_HTML;
     el.searchCount.textContent = '';
 
-    var status = document.getElementById('about-status');
-    if (status) {
-      var bits = [];
-      bits.push(state.arms
-        ? 'arms.json loaded: ' + ((state.arms.arms || []).length) + ' nodes, ' +
-          ((state.arms.links || []).length) + ' links' +
-          (updWhen('arms_updated') ? ' · updated ' + esc(updWhen('arms_updated')) : '') + '.'
-        : 'arms.json unavailable (' + esc(state.armsError || 'not found') + ').');
-      bits.push(state.graph
-        ? 'graph.json loaded: ' + ((state.graph.nodes || []).length) + ' nodes, ' +
-          ((state.graph.links || []).length) + ' edges' +
-          (updWhen('graph_updated') ? ' · updated ' + esc(updWhen('graph_updated')) : '') + '.'
-        : 'graph.json unavailable (' + esc(state.graphError || 'not found') + ').');
-      status.innerHTML = bits.join('<br>');
-    }
-
     var u2 = document.getElementById('upd-p2');
     if (u2 && updWhen('paper2_pdf_updated')) {
       u2.textContent = 'PDF updated ' + updWhen('paper2_pdf_updated') +
         (updWhen('paper2_revision') ? ' (' + updWhen('paper2_revision') + ')' : '');
-    }
-    var u1 = document.getElementById('upd-p1');
-    if (u1 && updWhen('paper1_pdf_updated')) {
-      u1.textContent = 'PDF updated ' + updWhen('paper1_pdf_updated') +
-        (updWhen('paper1_revision') ? ' (' + updWhen('paper1_revision') + ')' : '');
     }
     var us = document.getElementById('upd-site');
     if (us && updWhen('site_updated')) {
@@ -1495,7 +1447,7 @@
 
   // ---------------------------------------------------------------- boot
 
-  showEmpty('<div><strong>Loading data…</strong>Reading arms.json and graph.json.</div>');
+  showEmpty('<div><strong>Loading…</strong></div>');
 
-  loadAll().then(function () { renderView('paper1'); });
+  loadAll().then(function () { renderView('about'); });
 })();

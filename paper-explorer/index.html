@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Precision-cliff research atlas</title>
+<title>Characterize Before You Loop</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,14 +11,11 @@
 <header class="topbar">
   <div class="brand">
     <span class="mark"></span>
-    <h1>Precision-cliff research atlas</h1>
+    <h1>Characterize Before You Loop</h1>
   </div>
 
-  <nav class="tabs" id="tabs">
-    <button class="tab is-active" data-view="paper1">Paper 1 atlas</button>
-    <button class="tab" data-view="concept">Concept graph</button>
-    <button class="tab" data-view="about">About</button>
-  </nav>
+  <!-- Atlas tabs removed 2026-09-06 (paper 1 taken off the site). Node kept: app.js binds to it at boot. -->
+  <nav class="tabs hidden" id="tabs"></nav>
 
   <div class="search">
     <input id="search" type="search" placeholder="Search nodes…" autocomplete="off" spellcheck="false">
@@ -30,7 +27,7 @@
   <section class="stage" id="stage">
     <div class="stage-head">
       <div class="stage-headings">
-        <h2 id="stage-title">Paper 1 atlas</h2>
+        <h2 id="stage-title">Paper</h2>
         <div class="stage-sub-wrap" id="stage-sub-wrap">
           <p id="stage-sub" class="muted is-clamped"></p>
           <button id="btn-sub-toggle" class="sub-toggle hidden" type="button" aria-expanded="false">Show more</button>
@@ -59,7 +56,7 @@
   <aside class="panel" id="panel">
     <div class="panel-empty" id="panel-empty">
       <h3>Nothing selected</h3>
-      <p class="muted">Click a node in the graph to inspect its design, result and connections. Drag nodes to rearrange, scroll to zoom.</p>
+      <p class="muted"></p>
     </div>
     <div class="panel-body hidden" id="panel-body"></div>
   </aside>
