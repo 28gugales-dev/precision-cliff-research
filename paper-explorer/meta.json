@@ -3,7 +3,7 @@
   "paper1_pdf_updated": "2026-09-05",
   "paper1_revision": "Revision 6.1 (standalone fix: the artifact bullet names the anonymized companion PDF; the bundle now ships every cited file; body 19 pages)",
   "paper2_pdf_updated": "2026-09-06",
-  "paper2_revision": "Revision 1.5 (round 23 readability pass: sentences averaging 12.6 words, instrument-scoped verdicts, V2 as point-estimate pass, GM3 and V clearance re-read, ceiling by construction; cold read Accept with minor revisions; body 12 pages)",
+  "paper2_revision": "Revision 1.6 (round 24 terminology pass: one term per object, anchor / on-prediction rate / registered prediction as hypothesis only / prompt vs template; GM3 figure legend relabeled; body 12 pages)",
   "arms_updated": "2026-09-02",
   "graph_updated": "2026-08-18",
   "deploy": "git: push to main deploys (root paper-explorer)"

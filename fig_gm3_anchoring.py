@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Paper 1 figure: arm GM3 modal sums against the registered prediction.
+"""Transfer paper figure: arm GM3 modal sums against the anchor.
 
 Reads arm_gm3_report.json, which arm_gm3_analysis.py regenerates from the raw
 ledger (arm_gm_gm3_checkpoint.jsonl) with no arguments — chain documented in
@@ -25,7 +25,7 @@ def main():
     # 6.5 in text line (2.86 in), so 1 pt here is 1 pt on the page. The title
     # lives in the caption.
     fig, ax = plt.subplots(figsize=(2.86, 2.15))
-    ax.plot(ns, pred, "k--", lw=0.9, label="registered prediction", zorder=1)
+    ax.plot(ns, pred, "k--", lw=0.9, label="anchor", zorder=1)
     # Unscoreable cells sit 6 apart in N; alternate their labels above and
     # below the marker so neither collides with the neighbour's count label.
     unscoreable_seen = 0
@@ -53,9 +53,9 @@ def main():
             ax.annotate("", xy=(n, modal), xytext=(n, c["predicted_4dp"]),
                         arrowprops=dict(arrowstyle="->", color="tab:red",
                                         lw=0.8, alpha=0.6))
-    ax.plot([], [], "o", color="tab:green", ms=5.5, label="modal sum = prediction")
+    ax.plot([], [], "o", color="tab:green", ms=5.5, label="modal sum = anchor")
     ax.plot([], [], "^", color="tab:red", mfc="none", mew=1.2, ms=5.5,
-            label="modal sum above prediction")
+            label="modal sum above anchor")
     ax.set_xlabel("N (circles)", fontsize=7, labelpad=2)
     ax.set_ylabel("modal sum of radii", fontsize=7, labelpad=2)
     ax.tick_params(labelsize=6.5, length=2.5, pad=2)
