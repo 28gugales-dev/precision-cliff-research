@@ -1,0 +1,104 @@
+{
+  "weak/direct/runtime": {
+    "valid": 57,
+    "clear": 0,
+    "cells": "13, 21, 31, 43",
+    "rule": "arm F full ledger, four discriminating square cells"
+  },
+  "sonnet/direct/runtime": {
+    "valid": 30,
+    "clear": 1,
+    "cells": "13, 21, 31",
+    "rule": "arm S, all rows"
+  },
+  "weak/direct/runtime/N20": {
+    "valid": 15,
+    "clear": 2,
+    "cells": "20",
+    "rule": "arm M extend cell, out-of-family hexagonal rows"
+  },
+  "weak/direct/pinned": {
+    "valid": 0,
+    "sampled": 105,
+    "clear": 0,
+    "cells": "13, 17, 21, 31, 35, 37, 43",
+    "rule": "arm P square cells; no valid output, unscoreable"
+  },
+  "weak/math/runtime": {
+    "valid": 78,
+    "clear": 0,
+    "cells": "13, 21, 31",
+    "argmax_reached": 2,
+    "rule": "arms CC and CC2 pooled, math-only programs"
+  },
+  "sonnet/math/runtime": {
+    "valid": 37,
+    "clear": 0,
+    "cells": "13, 21, 31",
+    "rule": "arm CCS, math-only programs"
+  },
+  "sonnet/math/pinned": {
+    "valid": 35,
+    "clear": 0,
+    "cells": "13, 21, 31",
+    "best": {
+      "13": 1.625,
+      "21": 2.1,
+      "31": 2.672523443
+    },
+    "rule": "arm CCP, arm CC's prompt on arm CL's path and 120 s budget, math only"
+  },
+  "weak/math/pinned": {
+    "valid": 12,
+    "clear": 0,
+    "cells": "13, 21, 31",
+    "scoreable_valid": 6,
+    "scoreable_clear": 0,
+    "wilson_upper_scoreable": 39.0,
+    "rule": "arm P code cells, CC prompt on the pinned path; 0 of 12 pooled, 0 of 6 at the one cell above the five-valid floor"
+  },
+  "weak/scipy/pinned": {
+    "valid": 11,
+    "clear": 0,
+    "cells": "13, 21, 31",
+    "wilson_upper": 25.9,
+    "scoreable_valid": 6,
+    "scoreable_clear": 0,
+    "wilson_upper_scoreable": 39.0,
+    "rule": "arm CL weak tier; 0 of 11 pooled, 0 of 6 at the one cell above the five-valid floor",
+    "lenient_valid": 20,
+    "lenient_clear": 1,
+    "pooled_valid": 19,
+    "pooled_clear": 0,
+    "pooled_wilson_upper": 16.8,
+    "pooled_lenient_valid": 41,
+    "pooled_lenient_clear": 4
+  },
+  "sonnet/scipy/pinned": {
+    "valid": 25,
+    "clear": 23,
+    "cells": "13, 21, 31",
+    "clear_cells": 3,
+    "rule": "arm CL Sonnet tier",
+    "excess_min": 0.67,
+    "excess_median": 3.62,
+    "excess_max": 4.24
+  },
+  "none/scipy/local": {
+    "valid": 45,
+    "clear": 45,
+    "cells": "13, 21, 31",
+    "clear_cells_at_20": 3,
+    "best": {
+      "13": 1.829542412,
+      "21": 2.359585843,
+      "31": 2.883035274
+    },
+    "beats_sonnet_best_at": [
+      13,
+      21,
+      31
+    ],
+    "rule": "arm B, fixed random-restart SLSQP reference program, no model, arm CL's pipeline"
+  }
+}

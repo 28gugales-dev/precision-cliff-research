@@ -16,7 +16,9 @@ def family_argmax(N):
         if k * k > N:
             v = N / (2.0 * k)
         else:
-            m = min(N - k * k, (k - 1) ** 2)
+            m = N - k * k
+            if m > (k - 1) ** 2:
+                continue  # more fillers than the interstices hold: not a family member
             v = k / 2.0 + m * R2 / (2.0 * k)
         best = max(best, v)
     return best
@@ -44,9 +46,13 @@ def extract_text(resp):
     return ""
 
 
+LEDGER = {}
+
+
 def report(name, per_cell):
     print("==", name)
     tot6 = tot9 = clr6 = clr9 = 0
+    cells = {}
     for n in sorted(per_cell):
         v6 = [s for s, ok9 in per_cell[n]]
         v9 = [s for s, ok9 in per_cell[n] if ok9]
@@ -55,10 +61,21 @@ def report(name, per_cell):
         c9 = sum(1 for s in v9 if s - ARGMAX[n] > 1e-9)
         clr6 += c6; clr9 += c9
         b6 = max(v6) if v6 else None
+        ex9 = [s - ARGMAX[n] for s in v9]
+        cells[str(n)] = {"valid6": len(v6), "valid9": len(v9), "clear6": c6, "clear9": c9,
+                         "valid9_above": sum(1 for e in ex9 if e > 0),
+                         "valid9_at_or_below": sum(1 for e in ex9 if e <= 0),
+                         "valid9_max_excess": max(ex9) if ex9 else None,
+                         "best6_gap": (b6 - ARGMAX[n]) if b6 is not None else None}
         print(f"  N={n:2d} valid6={len(v6):2d} valid9={len(v9):2d} best={b6} "
               f"argmax={ARGMAX[n]:.7f} gap={(b6 - ARGMAX[n]) if b6 is not None else None} "
               f"clear6={c6} clear9={c9}")
     print(f"  TOTAL valid6={tot6} valid9={tot9} clear6={clr6} clear9={clr9}")
+    allex = [c["valid9_max_excess"] for c in cells.values() if c["valid9_max_excess"] is not None]
+    LEDGER[name] = {"cells": cells, "valid6": tot6, "valid9": tot9, "clear6": clr6, "clear9": clr9,
+                    "valid9_above": sum(c["valid9_above"] for c in cells.values()),
+                    "valid9_at_or_below": sum(c["valid9_at_or_below"] for c in cells.values()),
+                    "valid9_max_excess": max(allex) if allex else None}
 
 
 # ---- GM3 ----
@@ -106,3 +123,13 @@ for a, pc in byalias.items():
     for n, lst in pc.items():
         allv[n].extend(lst)
 report("V ALL ALIASES", allv)
+
+EVALUABLE = ("openai/gpt-oss-20b:free", "cohere/north-mini-code:free", "google/gemma-4-31b-it:free")
+ev = defaultdict(list)
+for a in EVALUABLE:
+    for n, lst in byalias[a].items():
+        ev[n].extend(lst)
+report("V EVALUABLE", ev)
+with open("arm_ceiling_gm3_v.json", "w", encoding="utf-8") as f:
+    json.dump({"argmax": {str(n): v for n, v in ARGMAX.items()}, "arms": LEDGER}, f, indent=1)
+print("wrote arm_ceiling_gm3_v.json")

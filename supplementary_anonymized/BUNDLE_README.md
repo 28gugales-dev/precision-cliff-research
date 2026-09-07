@@ -34,7 +34,26 @@ arm_p_*.py / .jsonl / .json, arm_pd_*.py / .jsonl / .json and their
 preregistration and amendment files. Arms GM, GM2, GM3: arm_gm_*.py / .jsonl
 / .json, arm_gm_v2_report.json, arm_gm2_*, arm_gm3_*. Arm V:
 arm_v_*.py / .jsonl / .json (arm_v_score.py imports arm_f_repro.py, the
-companion's scorer). Independent recount of every count that paper reports:
-arm_transfer_independent_rescore.py and its output
+companion's scorer). Post hoc ceiling ledgers: arm_ceiling_gm3_v.py writes
+arm_ceiling_gm3_v.json (GM3 and V outputs against the family argmax at 1e-6
+and 1e-9); arm_l_residuals.py writes arm_l_residuals.json (arm L residuals
+per lineage and pooled, and the L3 Fisher test); diagnostics_gm3_rival.py is
+the GM3 structural check of section 7; diagnostics_transfer_null.py writes
+diagnostics_transfer_null.json (the template-shape null of supplement S5).
+Independent re-score of the 135 cell-level counts that paper reports, 129 of
+which agree, with the six differences and their causes listed under
+disagreement_root_causes: arm_transfer_independent_rescore.py and its output
 arm_transfer_independent_rescore.json (LP oracle from n_sweep_forecast.py).
-Correction found by that recount: corrections_ledger.md item 36.
+Correction found by that re-score: corrections_ledger.md item 36. Evidence
+gate: paper_repo/loop/evidence_gate.py checks each residual and clearance
+sentence in paper_repo/paper/*.tex (the transfer paper's LaTeX source)
+against the ledger field it cites, per paper_repo/loop/r27_evidence.json;
+run it from any directory. paper_repo/loop/build_channel_table.py rebuilds
+the anchoring paper's Table 1 from the frozen reports under paper_repo/
+evidence/ and the corpus root.
+
+REPLAY GATE. python -X utf8 replay_gate.py <this directory> runs every
+script named in HOW_TO_RUN.md and this file from the packaged bundle and
+writes replay_gate.json; runners, builders and live collectors (_run.py,
+_build.py, arm_l_step.py, arm_g_rect.py) are listed as SKIP_LIVE because
+they need a serving path or an argument naming a lineage.

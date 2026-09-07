@@ -1,0 +1,386 @@
+Section numbers without an S prefix refer to the main paper. Numbers in this supplement are the numbers in
+the paper and in the frozen arm reports. The two exceptions are the post hoc clearance
+re-reads, for arm MU and for arms GM3 and V, each named with its script in S1 and tabled in
+S2. Facts attributed to the
+companion submission are cited to it \citep{companion}.
+
+\section{Ledger of the arms this paper reports}\label{supp:arms}
+
+Every arm reported in this paper, with the section that reports it, its proposer, design,
+registered test and outcome. Design gives cells $\times$ samples per cell. Registered tests
+are coded P (prediction), F (falsifier), S (secondary prediction) and R (replication rule),
+each expanded in its arm's section. These are the ledger rows of the eight arms this paper
+reports, with the section column pointed at this paper. The arms were run once; arms P and P-D
+are also reported in the companion, and the other six appear there only by citation to this
+paper.
+
+\begin{small}
+\setlength{\tabcolsep}{3.5pt}
+\begin{longtable}{@{}p{0.14\linewidth}p{0.07\linewidth}p{0.11\linewidth}p{0.12\linewidth}p{0.16\linewidth}p{0.25\linewidth}@{}}
+\caption{The eight registered arms this paper reports.}
+\label{tab:arms} \\
+\toprule
+Arm & \S & Proposer(s) & Design & Registered test & Outcome \\
+\midrule
+\endfirsthead
+\toprule
+Arm & \S & Proposer(s) & Design & Registered test & Outcome \\
+\midrule
+\endhead
+MU (conditioning) & \ref{sec:arm-mu} & weak tier & 3 parents $\times$ 3 $N$ $\times$ 15 & P-MU1--P-MU4 + F-MU1 & keep-or-improve 26/26 under \emph{B\_rival}, which entails the 0/26 on-prediction rate there; on-prediction rate 7/28 under \emph{A\_anchor}, below P-MU1's registered 50\%, so the anchor is not self-stable; F-MU1 is that rule's negation and adds nothing beyond it \\
+L (iterated loop) & \ref{sec:arm-l} & weak tier & 2 $N$ $\times$ 2 archives $\times$ 6 rounds $\times$ 5 & L1--L4 + F-L1 & L2 holds; L1 and L3 \textbf{not met} (L3 ran opposite to the registered direction; post hoc Fisher exact $p = 0.303$, odds ratio 0.375); L4 open: 0/49 conditioned outputs clear the family (largest excess $1.3\times10^{-15}$) \\
+P (pinned path) & \ref{sec:arm-p} & weak tier, bare API & 15 cells $\times$ 15 & P-P1: $T(k^*, N)$ modal at $\ge$ 5 of the 7 square cells, including $\ge$ 2 of the 4 discriminating ones, and at $\ge$ 4 of the 5 held-out cells; P-P2: modal at $\le$ 3 of the 7, leaving exactly 4 of 7 unadjudicated, a registration design gap; P-P3: no valid program output at $N = 13$, 21, 31 clears the family argmax (valid at $10^{-9}$ with excess $>10^{-6}$); P-P4: at least one clears; F-P1: pooled on-prediction rate over the four discriminating square cells below 40\% of valid outputs & validity collapses: 0/105 valid at the square cells, 4/75 held-out; every direct-emission prediction UNSCOREABLE; P-P3 holds (0 of 12 valid programs clear); same-day agent-runtime control 6/6 valid, anchor 4/6 (post hoc) \\
+P-D (runtime component) & \ref{sec:arm-p} & weak tier, bare API, $N = 13$ & 2 conditions $\times$ 15 & P-PD1 vs P-PD2 vs P-PD3 + S-PD1 & P-PD1 holds (closed at 27/30 rows by amendment, verdict unchangeable): thinking on 12/14 valid, anchor modal; system line only 0/13; extended thinking is the component \\
+GM (gemini-flash-lite) & \ref{sec:gm3-v} & 2nd vendor, 55 first-party + 85 routed rows & 7 $N$ $\times$ 20 & GM-chain bars & UNDERPOWERED (20 valid / 140) under both serving-path accountings \\
+GM2 (gemma, 4k budget) & \ref{sec:gm3-v} & 2nd vendor & 7 $N$ $\times$ 20 & GM-chain bars & 0/140 parseable; budget confound, diagnosed by GM3 \\
+GM3 (gemma, 16k budget) & \ref{sec:gm3-v} & gemma-4-26b & 7 $N$ $\times$ 20 & P-GM3.1--.3 + falsifier & pooled bar met (57.5\%) but discriminating cells 11/43 = 26\%, below it (post hoc split); misses are the family argmax construction; the structural bar cannot be met at a truncate cell, whose anchor carries a single radius \\
+V (cross-vendor zero-shot) & \ref{sec:gm3-v} & 13 free-tier aliases & 5 $N$ $\times$ 5 & floor + V1/V2 & 2 aliases meet the V1 pooled bar at point estimate (8/12 and 11/18), gemma-4-31b does not (0/15), V2 a point-estimate pass at each evaluable alias (0/4, 0/9, 0/3; every interval includes the bar) \\
+\bottomrule
+\end{longtable}
+\end{small}
+
+\textbf{Registrations and commits.} Conditioning arm (MU): \texttt{arm\_mu\_preregistration.txt}
+with \texttt{arm\_mu\_prompts.json}, committed at \texttt{2b7d202} before sampling; decision
+thresholds, power analysis, tie conventions and falsifier all registered. Second-vendor chain
+(GM, GM2, GM3): \texttt{arm\_gm\_preregistration.txt} at \texttt{37b3adb},
+\texttt{arm\_gm2\_preregistration.txt} at \texttt{3019aab},
+\texttt{arm\_gm3\_preregistration.txt} at \texttt{c0b5b97}; the serving-path deviation
+\texttt{arm\_gm3\_amendment1\_openrouter.md} at \texttt{67cc4a1} was registered before the
+affected cells were sampled. Cross-vendor arm (V): \texttt{arm\_v\_preregistration.md} at
+\texttt{5444f10}, ancestry-checked by its runners before any sampling, with three amendments
+each committed before the sampling it governs; the second of them,
+\texttt{arm\_v\_\bk{}preregistration\_\bk{}amendment2.md} at \texttt{d579797} (2026-08-12),
+added the three aliases that later cleared the floor. Loop arm (L): registered at \texttt{c9645fe}
+and scored once at \texttt{750bb32}. Pinned-path arm (P): registered at \texttt{aa473ad}
+before sampling, with its scoring code committed afterwards at \texttt{596b113}. Thinking-budget arm (P-D): \texttt{arm\_pd\_preregistration.txt} at
+\texttt{5554cc0}, pushed before the first call, and closed at 27 of 30 rows by amendment 1 at
+\texttt{1932cc0}.
+
+\textbf{Ledgers, scorers and reports.} Conditioning arm: raw rows verbatim in
+\texttt{arm\_mu\_collect.jsonl}, scoring \texttt{arm\_mu\_analysis.py}, frozen output
+\texttt{arm\_mu\_results.txt}; the post hoc clearance recomputation is
+\texttt{arm\_mu\_ceiling.py}. Loop arm: \texttt{arm\_l\_collect.jsonl}, stepper
+\texttt{arm\_l\_step.py}, frozen report \texttt{arm\_l\_report.json}. Pinned-path arm:
+prompts and hashes \texttt{arm\_p\_prompts.json}, runner \texttt{arm\_p\_run.py}, scorer
+\texttt{arm\_p\_analysis.py}, report \texttt{arm\_p\_report.json}, ledger
+\texttt{arm\_p\_collect.jsonl} with 225 rows, six refused by the serving path; post hoc
+diagnostics \texttt{arm\_p\_diag\_temperature.jsonl} and \texttt{arm\_p\_diag\_runtime.jsonl},
+labelled post hoc in their headers. Thinking-budget arm: builder
+\texttt{arm\_pd\_build.py}, spec \texttt{arm\_pd\_prompts.json}, runner
+\texttt{arm\_pd\_run.py}, scorer \texttt{arm\_pd\_analysis.py} importing the pinned-path
+scorer unmodified, ledger \texttt{arm\_pd\_collect.jsonl} with 27 rows plus the refusal rows
+kept for resume. The post hoc clearance re-read of arms GM3 and V is
+\texttt{arm\_ceiling\_gm3\_v.py}. Second-vendor chain: \texttt{arm\_gm\_gm3\_checkpoint.jsonl} carries every
+row's raw API response verbatim with serving path and provider tagged, scored by
+\texttt{arm\_gm3\_analysis.py} into \texttt{arm\_gm3\_report.json} with both serving-path
+accountings. Cross-vendor arm: every invocation appended live to
+\texttt{arm\_v\_candidates\_raw.jsonl}, scored by \texttt{arm\_v\_score.py}, which imports the
+companion paper's parse-validate-classify pipeline unchanged. That pipeline is
+\texttt{arm\_f\_repro.py}, the companion paper's own scorer, shipped with this bundle. The
+companion paper is included as \texttt{companion\_anonymized.pdf}. One script cited here,
+\texttt{arm\_mu\_ceiling.py}, lives in the paper repository rather than the corpus root and is
+shipped under \texttt{paper\_repo/loop/}.
+
+\textbf{The independent re-score.} \texttt{arm\_transfer\_\bk{}independent\_\bk{}rescore.py}
+recounts every cell-level number in this paper from the raw ledgers, with its own parser, its
+own validity scorer and a linear-programming oracle blind to the recipe, importing nothing from
+the arms' scoring code; its report is
+\texttt{arm\_transfer\_\bk{}independent\_\bk{}rescore.json}. Closed-form values and family
+argmaxima agree to at most $3.6 \times 10^{-15}$, and of 135 cell-level counts 129 agree. The
+six that differ are these. Three arm L clearance counts at $N = 31$: a proposal sitting on the
+argmax to within $1.3 \times 10^{-15}$ counts as clearing under ``excess $>0$'' and not under
+the registered ``excess $>10^{-6}$'', and no verdict moves. Two arm GM validity counts, at
+$N = 21$ (7 against 6) and $N = 35$ (3 against 2), where a balanced-bracket scan recovers
+packings from completions the vendor truncated mid-prose. And arm P-D's sampled-row count for
+D2 (16 against 13), where three rows logged as call errors with no content are counted as
+sampled by the re-score. The $N = 35$ recount crosses the chain's floor of 3, so that cell
+becomes scoreable on the re-score's own count, while arm GM's UNDERPOWERED verdict, which
+rests on 20 valid of 140 across the whole arm, stands either way. The re-score also split arm
+MU's ceiling buckets as 18 beyond rounding, 9 within it and 61 not exceeding, correcting an
+earlier 18, 12 and 58; that correction is corrections-ledger item 36 and \S\ref{sec:arm-mu}
+carries it.
+
+\section{Deviations from preregistration}\label{supp:deviations}
+
+The rows below are the companion paper's deviation table, restricted to the arms this paper
+reports. Arm GM2 ran under the chain registration with no deviation of its own and has no
+row. Arms GM and GM3 each carry one registered serving-path amendment, and the GM3 row also
+discloses a ledger repair.
+
+\begingroup
+\scriptsize
+\begin{longtable}{@{}p{0.16\textwidth}p{0.26\textwidth}p{0.13\textwidth}p{0.35\textwidth}@{}}
+\caption{Deviations from preregistration, for the arms this paper reports.}\label{tab:deviations}\\
+\toprule
+\textbf{Prediction} & \textbf{Registered rule} & \textbf{As registered?} & \textbf{Outcome / reason} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Prediction} & \textbf{Registered rule} & \textbf{As registered?} & \textbf{Outcome / reason} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r}{\emph{continued on next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+GM serving path & first-party API only & amendment registered \textbf{before resumption} (\texttt{arm\_gm\_\bk{}amendment1\_\bk{}openrouter.md}, \texttt{a075024}, committed 19 s before the first routed row) & 55/140 rows first-party, 85/140 via the routed path with the provider logged as the vendor; UNDERPOWERED under both accountings: all rows, 20 valid, 3 scoreable cells, 1 mode match, 3/20 on-prediction; first-party rows alone, 6 valid, 1 scoreable cell, 0 mode matches; the falsifier fires under neither (\S\ref{sec:gm3-v}) \\
+GM3 serving path & first-party API only & amendment registered \textbf{before resumption} (\texttt{arm\_gm3\_\bk{}amendment1\_\bk{}openrouter.md}, \texttt{67cc4a1}) & 41/140 rows via routed path, provider logged; 59.0\% / 57.5\% dual accounting, no verdict change (\S\ref{sec:gm3-v}); ledger repair at \texttt{31a7fc4}: two concurrent runners with stale completion snapshots wrote 3 duplicate rows at $N = 31$ (sample indices 6--8), removed from 93 rows to 90 before the arm was completed to 140 unique rows, the pre-repair file kept under a PREDEDUP suffix \\
+Arm V proposer set & 3 aliases served through the opencode gateway & expanded 3 $\rightarrow$ 13 by amendments 1--2, each registered \textbf{before the sampling it governs} & verdicts in \S\ref{sec:gm3-v}; one of the thirteen aliases is served under a name no vendor attests, and amendment 1 discloses it as unattributed \\
+Arm V transport repair & single pass, \texttt{max\_tokens} 8192 & amendment 3 registered \textbf{before resumption} (mechanical: 24,576 budget, retry, censored-row accounting) & 877 attempt rows over the 325 registered slots (314 carry rows); floor evaluated per slot (\S\ref{sec:gm3-v}) \\
+GM3 argmax-structure check & --- & \textbf{post hoc}, disclosed (\texttt{diagnostics\bk\_gm3\bk\_rival\bk.py}) & all 27 discriminating-cell packings at the family argmax value carry its two-radius structure (\S\ref{sec:gm3-v}); the registered signature is scoped to $k^*$ and cannot see $(k^*{-}1)$ structure \\
+Arm L (iterated loop) & L1--L4 & registered \textbf{before sampling} (\texttt{c9645fe}), scored once (\texttt{750bb32}); four per-lineage bars rather than one pooled bar per cell, not repaired after the fact; one post-sampling scorer correction, affecting only the $10^{-9}$ clearance test (corrections ledger item 34): the registered configuration stored the family argmax to seven decimals, so a proposal landing exactly on the family argmax at $N = 31$ tested as $3.7 \times 10^{-8}$ above the rounded number; the scorer now recomputes the argmax in closed form, that proposal agrees with it to $1.3 \times 10^{-15}$, float noise, and clears nothing & L2 \textbf{confirmed}; L1 \textbf{not met} on 13-DIVERSE, a 2--2 tie at $n = 4$ decided against the prediction by the registered tie rule; L3 \textbf{not met}, running opposite to the registered direction (Fisher exact $p = 0.303$), the prediction withdrawn rather than reframed; L4 open and answered --- 0 of 49 valid conditioned outputs clear the family argmax (\S\ref{sec:arm-l}) \\
+Arm P (pinned path) & P-P1--P-P4 + F-P1 & registered \textbf{before sampling} (\texttt{aa473ad}); post-review motivation disclosed & 225 invocations, 219 returning content and 6 refused by the serving path and recorded as such; validity collapsed to 0/105 at the square cells; direct-emission predictions \textbf{not evaluable} under the registered floor; P-P3 holds (0/12); F-P1 denominator empty, reported as such (\S\ref{sec:arm-p}) \\
+Arm P temperature diagnostic & --- & \textbf{post hoc}, not preregistered & 0/6 valid at temperature 0.0, 0.5 and 1.0, which is 0/18 across the three settings (\S\ref{sec:arm-p}) \\
+Arm P runtime control & --- & \textbf{post hoc}, not preregistered & same prompt through the agent runtime, same day: 6/6 valid, anchor 4/6 (\S\ref{sec:arm-p}) \\
+Arm P-D (runtime component) & P-PD1/P-PD2/P-PD3 + S-PD1 & registered \textbf{before sampling} (\texttt{5554cc0}), after an outside review asked for a diagnostic beyond temperature; run interrupted at 27 of 30 rows (14 D1, 13 D2) when the serving path refused the last three for credit; closed there by amendment 1 (\texttt{arm\_pd\_\bk{}amendment1\_\bk{}closed\_at\_27.md}), since no completion could change the verdict & P-PD1 \textbf{holds} and the last three rows could not change it: thinking on 12/14 valid, modal $T(4,13)$; system line 0/13; S-PD1 met (\S\ref{sec:arm-p}) \\
+Arm MU clearance re-read & --- & \textbf{post hoc}, not preregistered & the clearance question was never registered for arm MU; 88 valid at the primary tolerance, 18 of them above the argmax by at most $1.53\times10^{-6}$ and every one failing the $10^{-9}$ gate, each decided by overlap, not containment, and in each the excess exceeds the largest single overlap; 13 of the 18 return their argmax parent's rounded sum unchanged (per-row table below); 63 valid at $10^{-9}$, four of them above the argmax by at most $2.5\times10^{-8}$, inside the $5\times10^{-8}$ recorded-sum granularity, none clearing it (\S\ref{sec:arm-mu}) (\texttt{arm\_mu\_ceiling.py}) \\
+GM3 discriminating-cell split & --- & \textbf{post hoc}, not preregistered & the registered bars were the pooled rate, the per-cell modal count and the falsifier; no bar was registered on the discriminating cells alone; read post hoc, those three scoreable cells give 11/43 = 26\%, while the two cells where the anchor equals the family argmax hold 35 of the 46 on-prediction packings (\S\ref{sec:gm3-v}) \\
+Arm GM3 and arm V clearance re-read & --- & \textbf{post hoc}, not preregistered & the clearance question was registered for neither arm; GM3: 80 valid at $10^{-6}$, 79 at $10^{-9}$, 29 of the 79 above the argmax by at most $5.3\times10^{-10}$, none clearing it; arm V, three evaluable aliases: 45 valid at $10^{-6}$, 39 at $10^{-9}$, eight of the 39 above by $8.9\times10^{-16}$, none clearing (\S\ref{sec:gm3-v}, S4) (\texttt{arm\_ceiling\_gm3\_v.py}) \\
+\end{longtable}
+\endgroup
+
+\textbf{The eighteen arm MU outputs above the family argmax at $10^{-6}$.} One row per
+output, from the arm MU clearance re-read (\texttt{arm\_mu\_ceiling.py}, overlaps
+recomputed from the verbatim coordinates). Excess is the recorded sum minus the closed-form
+argmax. Largest overlap is the largest $r_i + r_j - d_{ij}$ over pairs, the quantity the
+$10^{-9}$ test fails on. In every row the excess exceeds the largest overlap, so no single
+pair accounts for it: thirteen rows return the argmax parent's seven-decimal sum unchanged
+and carry its rounding, the other five sit above or below that parent sum. Sums are recorded
+at a $5\times10^{-8}$ granularity. These eighteen sit above the argmax by more than that
+granularity. Nine further rows of the 88 valid at $10^{-6}$ exceed it only within that
+granularity, and the remaining 61 do not.
+
+\input{tab_mu_rows}
+
+\section{Prompts and hashes}\label{supp:prompts}
+
+\textbf{A.1 Bare prompt} (\texttt{\{n\}} parameterized; the $N = 13$ instance hashes to
+\texttt{32db485bea\bk{}625ff9f39f\bk{}4723ebf1a0\bk{}1f337559a9\bk{}e2cf567fb4\bk{}86928f71f7\bk{}f8df}):
+
+\begin{verbatim}
+Pack exactly {n} non-overlapping circles inside the unit square [0,1]x[0,1]
+so that the sum of their radii is as large as possible.
+MUST hold: exactly {n} circles; every circle fully inside the unit square
+[0,1]x[0,1] (x-r >= 0, x+r <= 1, same for y); no two circles overlap
+(distance between centers >= sum of the two radii; touching is allowed).
+Do not write or execute code - construct the packing by reasoning alone.
+Output ONLY the raw Python list of {n} [x, y, r] lists. No explanation, no
+code fences, no other text.
+\end{verbatim}
+
+\textbf{A.2 Registered prompt hashes.} bare N=13 \texttt{32db485b\ldots}, N=17
+\texttt{8437df75\ldots}, N=21 \texttt{a415425b\ldots}, N=31 \texttt{a664d003\ldots}, N=35
+\texttt{3b08c56e\ldots}, N=37 \texttt{2c0a8819\ldots}. Arm P registered the N=43 bare hash
+\texttt{1208e7d2\ldots}, which until then had appeared only in the ledger and in no
+registration. The second-vendor arms and the
+cross-vendor arm send these same prompts byte-identical, with the SHA-256 restated in the
+registration and recomputed at call time, aborting on mismatch. The conditioning arm's
+mutation prompt is hashed in \texttt{arm\_mu\_prompts.json} and the loop arm reuses it
+verbatim for generations 1 to 5.
+
+\textbf{A.3 Dispatch wrapper} (the runtime arms only, and not part of the hashed task prompt):
+\texttt{Do not use any tools. Your entire final message must be the answer and nothing else.}
+
+\textbf{A.4 Parser.} Completions are parsed with \texttt{ast.literal\_eval} after stripping
+code fences. A completion failing to yield a list of $N$ numeric triples is recorded
+\texttt{literal\_eval\_failed} and scored invalid, with the failure mode logged. Radii must be
+strictly positive. Containment and pairwise non-overlap are checked at the two registered
+tolerances.
+
+\section{Per-cell tables for the second-vendor arms}\label{supp:vendors}
+
+\textbf{The chain's verdict table.} The registered test column is the GM-chain registration,
+shared by arms GM, GM2 and GM3. Arm V rows report the bar outcome, with the registration's own label
+named once; both passing intervals span the 50\% bar.
+
+\begin{center}
+\begin{small}
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}p{0.10\linewidth}p{0.13\linewidth}p{0.14\linewidth}p{0.20\linewidth}p{0.32\linewidth}@{}}
+\toprule
+Vendor & Model & Serving path & Registered test & Verdict \\
+\midrule
+Google & gemma-4-26b & first-party API, 7 $N$ $\times$ 20 (41/140 rows routed under amendment; dual accounting) & pooled $\ge$ 30\%; cell-level $\ge$ 5; falsifier $\ge$ 4 fails & pooled bar met (57.5\%); discriminating cells 11/43 = 26\%, \textbf{below} the bar (post hoc split, no bar registered on those cells); cell-level short (modal in 2 of the 5 scoreable cells, against a bar of 5; the falsifier did not fire, needing 4 failures); all three misses are the \emph{family argmax construction} (27/43); the structural bar cannot be met at a truncate cell, whose anchor carries a single radius \\
+Cohere & north-mini-code & free-tier alias, 5 $N$ $\times$ 5 & V1 $\ge$ 50\% of valid on-prediction; V2 family argmax, valid at discriminating cells, $\le$ 10\% & V1 bar \textbf{MET} at point estimate (8/12 = 67\%, [39--86\%]; the interval includes the bar), the registration's label TRANSFERS; V2 point-estimate pass (0/4, [0--49\%]) \\
+OpenAI (open-weight) & gpt-oss-20b & free-tier alias, 5 $N$ $\times$ 5 & same & V1 bar \textbf{MET} at point estimate (11/18 = 61\%, [39--80\%]; the interval includes the bar); V2 point-estimate pass (0/9, [0--30\%]) \\
+Google & gemma-4-31b & free-tier alias, 5 $N$ $\times$ 5 & same & V1 bar \textbf{NOT MET} (0/15, [0--20\%]), the registration's label DOES-NOT-TRANSFER; V2 point-estimate pass (0/3, [0--56\%]) \\
+10 further aliases & (NVIDIA, Liquid, Poolside, inclusionAI, others; one unattributed) & free-tier & floor: $\ge$ 10 of 25 invocations valid & BELOW-FLOOR; failure taxonomies logged, no claim in either direction \\
+\bottomrule
+\end{tabular}
+\end{small}
+\end{center}
+
+\textbf{Arm GM3 per cell.} Recomputable from \texttt{arm\_gm\_gm3\_checkpoint.jsonl} by
+\texttt{arm\_gm3\_analysis.py} with no arguments.
+
+\begin{center}
+\begin{tabular}{@{}ccccccc@{}}
+\toprule
+$N$ & anchor (4 dp) & Gemma modal sum & mode freq & valid & on-prediction & MODE-MATCH \\
+\midrule
+13 & 1.6250 & 1.7761 & 7/9 & 9 & 0 & no (misses upward) \\
+17 & 2.0518 & \textbf{2.0518} & 19/20 & 20 & 20 & \textbf{yes} \\
+21 & 2.1000 & 2.2589 & 9/18 & 18 & 8 & no (misses upward) \\
+31 & 2.5833 & 2.7485 & 11/16 & 16 & 3 & no (misses upward) \\
+35 & 2.9167 & \textbf{2.9167} & 15/15 & 15 & 15 & \textbf{yes} \\
+37 & 3.0345 & --- & --- & 2 & 0 & UNSCOREABLE \\
+43 & 3.0714 & --- & --- & 0 & 0 & UNSCOREABLE \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The two non-discriminating cells are $N = 17$ and $N = 35$, and 35 of the 46 on-prediction
+packings sit in them. The three scoreable discriminating cells are $N = 13$, 21 and 31, where
+the pooled rate, read post hoc, is 11 of 43. All 20 two-radius signatures come from $N = 17$, the one extend
+cell among the matches, while $N = 35$'s 15 on-prediction truncations carry no filler to
+detect.
+
+\textbf{Clearance of the family argmax (post hoc, disclosed).} The rows of arms GM3 and V
+were re-scored by \texttt{arm\_ceiling\_gm3\_v.py}, which imports the chain's scorer and
+carries the closed-form argmax that \texttt{arm\_mu\_ceiling.py} uses. Of arm GM3's 80 valid
+packings, 79 are valid at $10^{-9}$. The best sum at each of its five scoreable cells equals
+the family argmax to within $10^{-9}$: 29 of the 79 sit above it by at most
+$5.3\times10^{-10}$ (one row at $N = 13$; the rest by under $10^{-14}$), so none clears it
+under the rule of \S\ref{sec:method}. Arm V's three
+evaluable aliases give 45 valid outputs at $10^{-6}$: 18 for gpt-oss-20b, 12 for
+north-mini-code and 15 for gemma-4-31b. Of those, 39 are valid at $10^{-9}$; eight sit above
+the argmax by $8.9\times10^{-16}$, all at $N = 35$, and none clears it. The closest at a
+discriminating cell is gpt-oss-20b, short of the argmax by
+$2.5\times10^{-3}$ at $N = 31$ and by $1.2\times10^{-4}$ at $N = 37$. Its best at $N = 35$,
+and north-mini-code's at $N = 17$, equal the argmax to within $10^{-9}$.
+
+\textbf{Arm V per model.} The three aliases that cleared the registered floor are in the
+paper. The other ten finished BELOW-FLOOR and claim nothing in either direction. Their
+failure taxonomies are transport-dominated for the aliases served through the opencode
+gateway, and about half
+transport and half parse failure for two of them. Retries mean the ledger holds far more
+attempt rows than slots: gemma-4-31b's 25 slots took 190 attempt rows, 165 of them transport
+failures, and the floor is evaluated on the 25 slots.
+
+\section{Per-cell tables for arms P and P-D, and the template-shape null}\label{supp:transfer-p}
+
+The rows below are arms P and P-D per cell. Both submissions report these rows in full
+(\S\ref{sec:method}); they are tabled here so that this submission can be checked on its own
+\citep{companion}. No value is recomputed.
+
+\textbf{Arm P per cell.} Fifteen invocations per cell. Refused rows are serving-path refusals
+and are counted invalid at the cell they were issued for. Validity is at $10^{-6}$; no cell
+has a different count at $10^{-9}$.
+
+\begin{center}
+\begin{small}
+\begin{tabular}{@{}llccccl@{}}
+\toprule
+channel & $N$ & sampled & returned & refused & valid & note \\
+\midrule
+square & 13 & 15 & 15 & 0 & 0 & all failures overlap \\
+square & 17 & 15 & 15 & 0 & 0 & all failures overlap \\
+square & 21 & 15 & 15 & 0 & 0 & all failures overlap \\
+square & 31 & 15 & 15 & 0 & 0 & all failures overlap \\
+square & 35 & 15 & 15 & 0 & 0 & one non-positive radius, rest overlap \\
+square & 37 & 15 & 15 & 0 & 0 & one count mismatch, rest overlap \\
+square & 43 & 15 & 15 & 0 & 0 & one malformed row, rest overlap \\
+held-out & 50 & 15 & 15 & 0 & 4 & all four sum to 2.5, family argmax 3.5295867 \\
+held-out & 58 & 15 & 15 & 0 & 0 & count mismatches dominate \\
+held-out & 62 & 15 & 15 & 0 & 0 & count mismatches dominate \\
+held-out & 65 & 15 & 15 & 0 & 0 & count mismatches and overlaps \\
+held-out & 75 & 15 & 14 & 1 & 0 & count mismatches and one refusal \\
+code & 13 & 15 & 13 & 2 & 4 & below the floor of five \\
+code & 21 & 15 & 15 & 0 & 6 & the one code cell above the floor \\
+code & 31 & 15 & 12 & 3 & 2 & below the floor of five \\
+\midrule
+total & --- & 225 & 219 & 6 & 16 & 0 of 105 square, 4 of 75 held-out, 12 of 45 code \\
+\bottomrule
+\end{tabular}
+\end{small}
+\end{center}
+
+No valid output at any cell clears the family argmax. The code cells were executed under a
+10-second timeout, and P-P3 holds on their 12 valid programs.
+
+\textbf{Arm P-D per cell.} One cell, $N = 13$, two conditions, closed at 27 of 30 rows by a
+registered amendment after the serving path refused the last three for credit. The third row
+is arm P's same-day agent-runtime control at the same cell, post hoc and not preregistered,
+scored at $10^{-6}$ only.
+
+\begin{center}
+\begin{small}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+condition & rows & valid at $10^{-6}$ & valid at $10^{-9}$ & on the anchor \\
+\midrule
+D1 (thinking on) & 14 & 12 & 11 & 5 of 12 \\
+D2 (system line only) & 13 & 0 & 0 & --- \\
+runtime control (post hoc) & 6 & 6 & not logged & 4 of 6 \\
+\bottomrule
+\end{tabular}
+\end{small}
+\end{center}
+
+Under D1 the median row spends 3160 reasoning tokens, a descriptive count carrying no
+registered bar, $k = 4$ is modal at 6 of 12, and one
+output is the family argmax 1.7761424. The anchor $T(4,13) = 1.625$ accounts for 5 of
+those 6. The sixth is a $k = 4$ grid at radius 0.125 filling only three of its four rows,
+twelve circles, with a thirteenth of radius 0.05 at the centre, summing to 1.55 rather than
+the 1.625 a full truncation gives. That extra radius is neither the anchor's nor the family's
+tangency filler at $k = 4$, which is 0.0517767, so the row sits on the anchor's grid order
+without sitting on the anchor, and it is the whole difference between the 5 of 12 on the
+anchor and the 6 of 12 at $k = 4$. Under D2 every failure is an overlap, which is arm P's
+collapse. The two D1 failures overlap. The two runtime-control outputs that miss
+the anchor $T(4,13) = 1.625$ are a $3 \times 3$ grid carrying corner
+fillers at 1.6144 and a centre-plus-border construction at 1.7500.
+
+\textbf{Which cells discriminate, and by how much.} A cell discriminates when the
+anchor and the family argmax name different values, so that anchoring and family search
+can be told apart on it. Inside a trap zone the anchor takes the truncate branch,
+$T(k^*, N) = N/(2k^*)$, and at every trap cell this paper samples the family argmax is the
+larger of that and the drop-and-fill value $V(k^*{-}1, N - (k^*{-}1)^2)$, so the cell
+discriminates exactly when the drop-and-fill value is the larger. That two-candidate reading
+is not general: at $N = 60$ and 61, which no arm samples, a lower order with more fillers
+($k = 6$) beats both, which is why the scripts maximize over every admissible order rather
+than over the two. Over the square cells drop-and-fill wins at $N = 13$, 21, 31 and 43, where the
+anchor and the argmax are $1.625$ against $1.7761424$, $2.1$ against $2.2588835$, $2.5833333$
+against $2.7485281$, and $3.0714286$ against $3.2416246$. At $N = 35$ the truncated anchor is
+the larger of the two, and at $N = 17$ and 37 the branch rule extends and the anchor is
+itself the argmax, so those three cells cannot discriminate.
+
+\textbf{The template-shape null, derived.} The null asks what an on-prediction rate would look
+like if the proposer picked a template shape rather than anchoring on one. A proposer already
+inside the recipe family still has to choose a grid order, and the orders in reach at a cell
+are the nearest-square order $k^*$ and its two neighbours, $k^*{-}1$ and $k^*{+}1$; an order
+further out puts the grid radius far from anything the cell can carry. Each order admits one
+branch value, the extend value where $N \ge k^2$ and the truncate value otherwise, and an
+extend value is admissible only when its fillers fit the interstices, $N - k^2 \le (k-1)^2$.
+At every cell studied but one the three orders are admissible, so the
+shape choice is a choice among three values, exactly one of which is the
+anchor, and choosing uniformly lands on-prediction one time in three. At $N = 17$ the order-3
+extend value needs 8 fillers against 4 interstices, so that cell has two admissible orders and
+a null rate of one in two. The rate is therefore per row, and a pooled tail is the exact
+Poisson-binomial upper tail over the rows' rates; it reduces to $\mathrm{Binomial}(n, 1/3)$
+wherever no $N = 17$ row is pooled. The rate is a
+shape-uniform rate inside the recipe family and not a rate over all packings. The companion
+paper derives the same null, and this paper applies it post hoc, as it does there
+\citep{companion}. Tails are computed by
+\texttt{diagnostics\bk\_transfer\bk\_null\bk.py} in the artifact.
+
+\begin{center}
+\begin{small}
+\begin{tabular}{@{}lllc@{}}
+\toprule
+arm & alias & on-prediction / valid & exact upper tail \\
+\midrule
+V & \texttt{north-mini-code} & 8/12 pooled (3 rows at $N = 17$) & 0.037 \\
+V & \texttt{gpt-oss-20b} & 11/18 pooled & 0.014 \\
+V & \texttt{north-mini-code} & 3/4 discriminating cells & 0.111 \\
+V & \texttt{gpt-oss-20b} & 5/9 discriminating cells & 0.145 \\
+GM3 & gemma-4-26b & 11/43 discriminating cells & 0.895 \\
+\bottomrule
+\end{tabular}
+\end{small}
+\end{center}
+
+The two pooled rates clear the null and the three discriminating-cell rates do not. Under a
+flat $\mathrm{Binomial}(n, 1/3)$ the north-mini-code pooled tail would read 0.019; the
+admissibility correction moves it to 0.037 and no verdict.
+

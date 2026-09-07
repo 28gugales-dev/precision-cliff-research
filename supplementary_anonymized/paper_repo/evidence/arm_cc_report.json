@@ -1,0 +1,127 @@
+{
+ "cells": {
+  "13": {
+   "sampled": 15,
+   "bins": {
+    "valid": 12,
+    "geom_invalid": 3
+   },
+   "n_valid": 12,
+   "modal_value_approx": 1.624,
+   "modal_count": 2,
+   "modal_tie": false,
+   "modal_margin": 1,
+   "anchor_rate": "2/12",
+   "argmax_rate": "1/12",
+   "above_rival_rate": "0/12",
+   "k_struct_dist": {
+    "6": 1,
+    "4": 3,
+    "12": 2,
+    "5": 3,
+    "3": 2,
+    "417": 1
+   },
+   "sums": [
+    0.5330041,
+    1.0833333,
+    1.1355494,
+    1.1606276,
+    1.25,
+    1.375,
+    1.39852,
+    1.4219544,
+    1.625,
+    1.625,
+    1.6614054,
+    1.7761424
+   ],
+   "underpowered": false
+  },
+  "21": {
+   "sampled": 15,
+   "bins": {
+    "geom_invalid": 2,
+    "valid": 13
+   },
+   "n_valid": 13,
+   "modal_value_approx": 2.1,
+   "modal_count": 9,
+   "modal_tie": false,
+   "modal_margin": 8,
+   "anchor_rate": "9/13",
+   "argmax_rate": "0/13",
+   "above_rival_rate": "0/13",
+   "k_struct_dist": {
+    "5": 10,
+    "50": 1,
+    "7": 1,
+    "500": 1
+   },
+   "sums": [
+    0.021,
+    1.5,
+    1.512809,
+    2.0191244,
+    2.1,
+    2.1,
+    2.1,
+    2.1,
+    2.1,
+    2.1,
+    2.1,
+    2.1,
+    2.1
+   ],
+   "underpowered": false
+  },
+  "31": {
+   "sampled": 15,
+   "bins": {
+    "valid": 12,
+    "geom_invalid": 2,
+    "blocked_import": 1
+   },
+   "n_valid": 12,
+   "modal_value_approx": 2.584,
+   "modal_count": 3,
+   "modal_tie": false,
+   "modal_margin": 1,
+   "anchor_rate": "3/12",
+   "argmax_rate": "0/12",
+   "above_rival_rate": "0/12",
+   "k_struct_dist": {
+    "6": 5,
+    "33": 1,
+    "20": 2,
+    "7": 2,
+    "null": 1,
+    "25": 1
+   },
+   "sums": [
+    1.4395051,
+    1.4933654,
+    1.4933654,
+    1.4955494,
+    1.5826536,
+    2.2142857,
+    2.4361304,
+    2.527,
+    2.5481222,
+    2.5833333,
+    2.5833333,
+    2.5833333
+   ],
+   "underpowered": false
+  }
+ },
+ "pooled": {
+  "sampled": 45,
+  "valid": 37,
+  "anchor": 14,
+  "armF_baseline": "bare cells N=13/21/31: 50/60 valid, 35/50 on-prediction",
+  "cc1_cells": 3,
+  "cc2_cells": 0,
+  "verdict": "P-CC1 holds"
+ }
+}

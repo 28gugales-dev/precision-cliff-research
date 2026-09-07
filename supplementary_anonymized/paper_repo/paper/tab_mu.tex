@@ -1,0 +1,17 @@
+\begin{center}
+\begin{small}
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}p{0.18\linewidth}cp{0.26\linewidth}p{0.15\linewidth}p{0.21\linewidth}p{0.06\linewidth}@{}}
+\toprule
+Parent & Valid & On-prediction (95\% Wilson) & Registered threshold & Score against parent & $k$-inher. \\
+\midrule
+None (arm L generation 0, same instrument) & 17 & 4/9 at $N = 13$ (44\%, [19--73\%]); 7/8 at $N = 31$ (88\%, [53--98\%]); no row at $N = 21$ & unconditioned reference, no bar & --- & --- \\
+Argmax parent (a packing at the family argmax) & 26 & 0/26 (0\%, [0--13\%]) & dissolved if $\le$ 20\% & 26/26 (100\%, [87--100\%]; bar $\ge$ 50\%): 25 equal within $10^{-6}$, 1 above by $1.2\times10^{-6}$ & 26/26 \\
+Anchor parent (the model's own anchor) & 28 & 7/28 (25\%, [13--43\%]); per cell 4/12, 1/5 and 2/11 at $N = 13$, 21 and 31 & P-MU1 predicted $\ge$ 50\%, not met & 17/28 above the anchor, 4/28 below & 22/28 \\
+Off-family parent (diagonal chain, sum $\approx$ 0.6) & 34 & 20/34 abandon parent for $k^*$-grid (59\%, [42--74\%]); per cell 1/7 [3--51\%], 7/13 [29--77\%] and 12/14 [60--96\%] at $N = 13$, 21 and 31 & P-MU4: $k^*$-grid reasserts, scored per cell & --- & --- \\
+\bottomrule
+\end{tabular}
+
+{\footnotesize Bracketed ranges are 95\% Wilson intervals on the rate they follow.}
+\end{small}
+\end{center}

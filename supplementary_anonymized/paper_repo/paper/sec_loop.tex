@@ -1,0 +1,111 @@
+\section{Five loop generations: arm L}\label{sec:arm-l}
+
+Arm L iterates arm MU's conditioning step for five generations, feeding each scored proposal
+back as the next parent. Iteration keeps the proposer off the anchor: 11 of 49 conditioned outputs sit on it,
+against 11 of 17 at generation 0. Three of the four lineages end exactly on the family argmax
+and none goes above it.
+
+\textbf{Design.} Both prompts were hashed, and the stepper and scorer were committed
+alongside. Generation 0 is the bare prompt, sampled
+fresh inside this arm. Its prompt is byte-identical to the companion paper's unconditioned
+arms, served on the same channel and wrapper. Generations 1 to 5 use arm MU's
+registered mutation prompt verbatim, instantiated with the parent packing and its score. Two
+discriminating cells, $N = 13$ and $N = 31$, are crossed with two archive regimes. GREEDY
+retains only the single best valid proposal. DIVERSE retains up to five distinct-valued ones.
+That gives four lineages of six rounds at population 5, which is 120 invocations. Two of the
+120 were rejected by the runtime before reaching the model, and are counted as invalid rather
+than dropped. The parent for population slot $i$ is
+$\text{archive}[i \bmod |\text{archive}|]$, so the loop carries no sampling randomness of its
+own. All four lineages are evaluable under the registered floor.
+
+This is a minimal analogue. It has no islands, no crossover and no program representation.
+Its only evaluator signal is the parent's own score.
+
+\textbf{Registered predictions.} L1 predicted that the modal valid output at generation 0
+equals the anchor in every lineage. L2 predicted that dissolution survives
+iteration, so that the pooled on-prediction rate over generations 1 to 5 falls below the
+generation-0 rate. L3 predicted that the pooled conditioned on-prediction rate is higher under
+GREEDY than under DIVERSE, on the reading that loop diversity is scaffold-produced. L4 was
+registered open with no direction predicted: report best-of-run against the family argmax.
+The falsifier fires if the pooled conditioned rate meets or exceeds the generation-0 rate in
+both cells.
+
+\begin{table}[!ht]
+\caption{Arm L by lineage. Valid outputs over invocations, and on-prediction counts, at
+generation 0 and across the five conditioned generations, with each lineage's best scoring
+valid output, the generation at which that best first appeared, and its cell's family
+argmax. Pooled: 11 of 17 on-prediction at generation 0, 65\% (95\% Wilson 41--83\%), against
+11 of 49 conditioned, 22\% (13--36\%).}
+\label{tab:arm-l}
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+Lineage
+& \begin{tabular}[b]{@{}c@{}}Gen-0 valid\\/ invocations\end{tabular}
+& \begin{tabular}[b]{@{}c@{}}Gen-0\\on-prediction\end{tabular}
+& \begin{tabular}[b]{@{}c@{}}Conditioned valid\\/ invocations\end{tabular}
+& \begin{tabular}[b]{@{}c@{}}Conditioned\\on-prediction\end{tabular}
+& \begin{tabular}[b]{@{}c@{}}Best\\of run\end{tabular}
+& \begin{tabular}[b]{@{}c@{}}Best first\\reached (gen)\end{tabular}
+& \begin{tabular}[b]{@{}c@{}}Family\\argmax\end{tabular} \\
+\midrule
+13-GREEDY & 5/5 & 2 & 4/25 & 0 & $1.7761424$ & 0 & $1.7761424$ \\
+13-DIVERSE & 4/5 & 2 & 16/25 & 5 & $1.7761424$ & 5 & $1.7761424$ \\
+31-GREEDY & 4/5 & 3 & 18/25 & 3 & $2.6104167$ & 5 & $2.7485281$ \\
+31-DIVERSE & 4/5 & 4 & 11/25 & 3 & $2.7485281$ & 2 & $2.7485281$ \\
+\midrule
+Pooled & 17/20 & 11 & 49/100 & 11 & & & \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
+\textbf{Validity, and what every rate in this arm conditions on.} Validity drops under
+iteration. The pooled row of Table~\ref{tab:arm-l} gives the two totals. The weakest lineage,
+13-GREEDY, carries the loss. Conditioned rounds lose validity as well as accuracy, so every
+rate here counts only survivors. The 11 of 49 on-prediction rate is one such rate. Over all
+invocations it is 11 of 100. That is 6--19\%. At generation 0 it was 11 of 20. That is
+34--74\%. The registration set no validity prediction, so the loss is a post hoc
+observation.
+
+\textbf{L2 confirmed, with unequal support.} Sum the two lineages at each cell of
+Table~\ref{tab:arm-l}. At $N = 31$ the generation-0 on-prediction rate is 7 of 8. Conditioned,
+it falls to 6 of 29. That is 21\% (10--38\%). At
+$N = 13$ it starts at 4 of 9. Conditioned, it is 5 of 20. That is 25\% (11--47\%). Both drops
+are point estimates. The falsifier did not fire. Once a lineage's parent sits
+off the anchor, later rounds condition on a parent at the family argmax, arm MU's second
+condition, so L2 is not independent of MU. Of the 100 conditioned rows, 34 carry a parent at
+the family argmax: 25 in 13-GREEDY and 9 in 31-DIVERSE, none in the other two lineages.
+13-GREEDY returned 4 of 25 valid under that
+condition where arm MU's argmax-parent rows returned 26 of 45, a gap this paper does not
+explain; 31-DIVERSE returned 7 of 9.
+
+\textbf{L1 was not met.} It fails on one lineage. The 13-DIVERSE seed round in
+Table~\ref{tab:arm-l} splits evenly, and the registered tie rule counts the tie against the
+prediction. The other three lineages pass. The rule set four per-lineage bars rather than one
+pooled bar per cell. Each bar ran over the four or five valid proposals that lineage's seed
+round returned.
+
+\textbf{L3 was not met.} Per cell, GREEDY and DIVERSE give 0 of 4 against 5 of 16 at
+$N = 13$ and 3 of 18 against 3 of 11 at $N = 31$. Pool each archive regime over both cells.
+The conditioned
+on-prediction rate is 3 of 22 under GREEDY. That is 14\% (5--33\%). Under DIVERSE it is 8 of
+27. That is 30\% (16--48\%). The difference runs opposite to the
+registered direction and is not separable from chance. A post hoc Fisher exact test on the
+pooled $2 \times 2$ table gives $p = 0.303$. The odds ratio is 0.375. The comparison is also
+confounded: lineages differ in parent identity as well as archive width. 13-GREEDY
+also contributes the fewest conditioned valid proposals of any lineage. The outcome is a
+disconfirmation of L3, not evidence for its converse.
+
+\textbf{L4: three of the four lineages reach the family argmax exactly, and none clears it.}
+The best-of-run and family argmax columns of Table~\ref{tab:arm-l} carry the comparison. Both
+lineages at $N = 13$ and 31-DIVERSE land exactly on their cell's family argmax, and 31-GREEDY
+stops short of it. The best of 13-GREEDY is a generation-0 output, one family-argmax packing in its unconditioned seed round that
+the loop never bettered. The other three lineages reach their best under conditioning. Of the 49 valid
+conditioned outputs the table counts, 47 are valid at $10^{-9}$, and none of those exceeds
+the best value the recipe family can express by more than $10^{-6}$. The largest excess among
+the 49 is $1.3\times10^{-15}$, float noise, on five 31-DIVERSE rows. One post-sampling scorer
+correction, affecting only the
+$10^{-9}$ test and no verdict, is disclosed in Supplement~S2.

@@ -1,0 +1,420 @@
+{
+ "argmax": {
+  "13": 1.7761423749153968,
+  "17": 2.051776695296637,
+  "21": 2.2588834764831844,
+  "31": 2.748528137423857,
+  "35": 2.9166666666666665,
+  "37": 3.034517796864425,
+  "43": 3.2416245780509723
+ },
+ "arms": {
+  "GM3": {
+   "cells": {
+    "13": {
+     "valid6": 9,
+     "valid9": 8,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 1,
+     "valid9_at_or_below": 7,
+     "valid9_max_excess": 5.290121674050852e-10,
+     "best6_gap": 5.290121674050852e-10
+    },
+    "17": {
+     "valid6": 20,
+     "valid9": 20,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 20,
+     "valid9_max_excess": 0.0,
+     "best6_gap": 0.0
+    },
+    "21": {
+     "valid6": 18,
+     "valid9": 18,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 4,
+     "valid9_at_or_below": 14,
+     "valid9_max_excess": 4.440892098500626e-16,
+     "best6_gap": 4.440892098500626e-16
+    },
+    "31": {
+     "valid6": 16,
+     "valid9": 16,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 9,
+     "valid9_at_or_below": 7,
+     "valid9_max_excess": 1.3322676295501878e-15,
+     "best6_gap": 1.3322676295501878e-15
+    },
+    "35": {
+     "valid6": 15,
+     "valid9": 15,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 15,
+     "valid9_at_or_below": 0,
+     "valid9_max_excess": 8.881784197001252e-16,
+     "best6_gap": 8.881784197001252e-16
+    },
+    "37": {
+     "valid6": 2,
+     "valid9": 2,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 2,
+     "valid9_max_excess": -1.1845177968644238,
+     "best6_gap": -1.1845177968644238
+    }
+   },
+   "valid6": 80,
+   "valid9": 79,
+   "clear6": 0,
+   "clear9": 0,
+   "valid9_above": 29,
+   "valid9_at_or_below": 50,
+   "valid9_max_excess": 5.290121674050852e-10
+  },
+  "V openai/gpt-oss-20b:free": {
+   "cells": {
+    "13": {
+     "valid6": 5,
+     "valid9": 5,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 5,
+     "valid9_max_excess": -0.15114237491539684,
+     "best6_gap": -0.15114237491539684
+    },
+    "31": {
+     "valid6": 4,
+     "valid9": 4,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 4,
+     "valid9_max_excess": -0.0025281374238566023,
+     "best6_gap": -0.0025281374238566023
+    },
+    "35": {
+     "valid6": 5,
+     "valid9": 5,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 5,
+     "valid9_at_or_below": 0,
+     "valid9_max_excess": 8.881784197001252e-16,
+     "best6_gap": 8.881784197001252e-16
+    },
+    "37": {
+     "valid6": 4,
+     "valid9": 1,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 1,
+     "valid9_max_excess": -0.00011779686442370263,
+     "best6_gap": -0.00011779686442370263
+    }
+   },
+   "valid6": 18,
+   "valid9": 15,
+   "clear6": 0,
+   "clear9": 0,
+   "valid9_above": 5,
+   "valid9_at_or_below": 10,
+   "valid9_max_excess": 8.881784197001252e-16
+  },
+  "V cohere/north-mini-code:free": {
+   "cells": {
+    "13": {
+     "valid6": 2,
+     "valid9": 1,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 1,
+     "valid9_max_excess": -0.15114237491539684,
+     "best6_gap": -0.15114237491539684
+    },
+    "17": {
+     "valid6": 3,
+     "valid9": 3,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 3,
+     "valid9_max_excess": 0.0,
+     "best6_gap": 0.0
+    },
+    "31": {
+     "valid6": 2,
+     "valid9": 1,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 1,
+     "valid9_max_excess": -0.16519480409052356,
+     "best6_gap": -0.16519480409052356
+    },
+    "35": {
+     "valid6": 3,
+     "valid9": 3,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 3,
+     "valid9_at_or_below": 0,
+     "valid9_max_excess": 8.881784197001252e-16,
+     "best6_gap": 8.881784197001252e-16
+    },
+    "37": {
+     "valid6": 2,
+     "valid9": 1,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 1,
+     "valid9_max_excess": -0.3916606540072811,
+     "best6_gap": -0.3916606540072811
+    }
+   },
+   "valid6": 12,
+   "valid9": 9,
+   "clear6": 0,
+   "clear9": 0,
+   "valid9_above": 3,
+   "valid9_at_or_below": 6,
+   "valid9_max_excess": 8.881784197001252e-16
+  },
+  "V nvidia/nemotron-3-ultra-550b-a55b:free": {
+   "cells": {
+    "17": {
+     "valid6": 1,
+     "valid9": 1,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 1,
+     "valid9_max_excess": 0.0,
+     "best6_gap": 0.0
+    },
+    "31": {
+     "valid6": 1,
+     "valid9": 1,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 1,
+     "valid9_max_excess": -0.16519480409052356,
+     "best6_gap": -0.16519480409052356
+    },
+    "37": {
+     "valid6": 1,
+     "valid9": 1,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 1,
+     "valid9_at_or_below": 0,
+     "valid9_max_excess": 8.881784197001252e-16,
+     "best6_gap": 8.881784197001252e-16
+    }
+   },
+   "valid6": 3,
+   "valid9": 3,
+   "clear6": 0,
+   "clear9": 0,
+   "valid9_above": 1,
+   "valid9_at_or_below": 2,
+   "valid9_max_excess": 8.881784197001252e-16
+  },
+  "V google/gemma-4-31b-it:free": {
+   "cells": {
+    "13": {
+     "valid6": 2,
+     "valid9": 2,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 2,
+     "valid9_max_excess": -0.4761423749153968,
+     "best6_gap": -0.4761423749153968
+    },
+    "17": {
+     "valid6": 5,
+     "valid9": 5,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 5,
+     "valid9_max_excess": -0.3517766952966366,
+     "best6_gap": -0.3517766952966366
+    },
+    "31": {
+     "valid6": 1,
+     "valid9": 1,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 1,
+     "valid9_max_excess": -1.1985281374238563,
+     "best6_gap": -1.1985281374238563
+    },
+    "35": {
+     "valid6": 4,
+     "valid9": 4,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 4,
+     "valid9_max_excess": -2.041666666666666,
+     "best6_gap": -2.041666666666666
+    },
+    "37": {
+     "valid6": 3,
+     "valid9": 3,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 3,
+     "valid9_max_excess": -1.1845177968644238,
+     "best6_gap": -1.1845177968644238
+    }
+   },
+   "valid6": 15,
+   "valid9": 15,
+   "clear6": 0,
+   "clear9": 0,
+   "valid9_above": 0,
+   "valid9_at_or_below": 15,
+   "valid9_max_excess": -0.3517766952966366
+  },
+  "V ALL ALIASES": {
+   "cells": {
+    "13": {
+     "valid6": 9,
+     "valid9": 8,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 8,
+     "valid9_max_excess": -0.15114237491539684,
+     "best6_gap": -0.15114237491539684
+    },
+    "17": {
+     "valid6": 9,
+     "valid9": 9,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 9,
+     "valid9_max_excess": 0.0,
+     "best6_gap": 0.0
+    },
+    "31": {
+     "valid6": 8,
+     "valid9": 7,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 7,
+     "valid9_max_excess": -0.0025281374238566023,
+     "best6_gap": -0.0025281374238566023
+    },
+    "35": {
+     "valid6": 12,
+     "valid9": 12,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 8,
+     "valid9_at_or_below": 4,
+     "valid9_max_excess": 8.881784197001252e-16,
+     "best6_gap": 8.881784197001252e-16
+    },
+    "37": {
+     "valid6": 10,
+     "valid9": 6,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 1,
+     "valid9_at_or_below": 5,
+     "valid9_max_excess": 8.881784197001252e-16,
+     "best6_gap": 8.881784197001252e-16
+    }
+   },
+   "valid6": 48,
+   "valid9": 42,
+   "clear6": 0,
+   "clear9": 0,
+   "valid9_above": 9,
+   "valid9_at_or_below": 33,
+   "valid9_max_excess": 8.881784197001252e-16
+  },
+  "V EVALUABLE": {
+   "cells": {
+    "13": {
+     "valid6": 9,
+     "valid9": 8,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 8,
+     "valid9_max_excess": -0.15114237491539684,
+     "best6_gap": -0.15114237491539684
+    },
+    "17": {
+     "valid6": 8,
+     "valid9": 8,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 8,
+     "valid9_max_excess": 0.0,
+     "best6_gap": 0.0
+    },
+    "31": {
+     "valid6": 7,
+     "valid9": 6,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 6,
+     "valid9_max_excess": -0.0025281374238566023,
+     "best6_gap": -0.0025281374238566023
+    },
+    "35": {
+     "valid6": 12,
+     "valid9": 12,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 8,
+     "valid9_at_or_below": 4,
+     "valid9_max_excess": 8.881784197001252e-16,
+     "best6_gap": 8.881784197001252e-16
+    },
+    "37": {
+     "valid6": 9,
+     "valid9": 5,
+     "clear6": 0,
+     "clear9": 0,
+     "valid9_above": 0,
+     "valid9_at_or_below": 5,
+     "valid9_max_excess": -0.00011779686442370263,
+     "best6_gap": -0.00011779686442370263
+    }
+   },
+   "valid6": 45,
+   "valid9": 39,
+   "clear6": 0,
+   "clear9": 0,
+   "valid9_above": 8,
+   "valid9_at_or_below": 31,
+   "valid9_max_excess": 8.881784197001252e-16
+  }
+ }
+}

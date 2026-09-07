@@ -1,6 +1,6 @@
 {
   "site_updated": "2026-09-06",
   "paper2_pdf_updated": "2026-09-06",
-  "paper2_revision": "Revision 1.10 (also served as paper2_v4.pdf and paper2_supplement_v4.pdf for cache-busting; v3 names carry rev 1.9, v2 names rev 1.8a; submission-prep pass: Section 9 Reproducibility now names the supplementary artifact and its entry point artifact/BUNDLE_README.md, anonymized bundle additionally redacts the repository name; body 12 pages)",
+  "paper2_revision": "Revision 1.12 (also served as paper2_v5.pdf and paper2_supplement_v5.pdf for cache-busting; v4 names carry rev 1.10, v3 names rev 1.9, v2 names rev 1.8a; abstract states the clearance rule and says no valid output cleared the family argmax; supplement scopes the two-candidate argmax reading to the sampled trap cells; anonymized artifact served as supplementary_material_v5.zip; body ends page 13, 16 pages)",
   "deploy": "git: push to main deploys (root paper-explorer)"
 }

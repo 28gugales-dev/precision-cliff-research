@@ -1,0 +1,55 @@
+\section{Related work}\label{sec:related}
+
+\textbf{The loop the proposer is characterized for.} Language Model Crossover
+\citep{meyerson2024languagemodelcrossovervariation}, ELM
+\citep{lehman2022evolutionlargemodels}, EvoPrompt \citep{guo2024evoprompt}, EoH
+\citep{liu2024eoh} and LLaMEA \citep{vanstein2025llamealargelanguagemodel} made the LLM call
+an evolutionary operator over prompts and programs. FunSearch
+\citep{romeraparedes2024funsearch} turned the pattern into a discovery claim. AlphaEvolve
+\citep{novikov2025alphaevolve} and its successors inherit that claim, OpenEvolve
+\citep{sharma2025openevolve} among them
+\citep{lange2025shinkaevolveopenendedsampleefficientprogram,su2026helixevolutionaryreinforcementlearning,khrulkov2025gigaevoopensourceoptimization,cemri2026adaevolveadaptivellmdriven,wang2025thetaevolvetesttimelearningopen}.
+Every one conditions its proposer on a parent and iterates it, two of the conditions this
+paper varies. Simple baselines \citep{gideoni2026simplebaselinescompetitivecode} and
+classical solvers \citep{berthold2026outoftheboxglobaloptimizationpacking} recover much of
+the reported advantage.
+
+\textbf{Template convergence under iteration.} ``Mutation Without Variation''
+\citep{gurkan2026mutationvariationconvergencedynamics} finds iterated LLM program mutation
+collapsing onto previously seen structural templates. In 87\% of chains, over 93\% of
+mutations revisit a seen form. It runs mutation loops in program space with no closed form
+and no preregistration, and is the closest published neighbour to arm L. Its result is about
+structural revisiting. Arm L's second prediction is about a value the revisited structures
+do not cross.
+
+\textbf{Anchoring, and what kind of object anchors here.} Anchoring is studied as a general
+bias over initial information, and as numeric primes dragging point estimates
+\citep{huang2026understandinganchoringeffectllm,lou2024anchoringbiaslargelanguage,malberg2025comprehensiveevaluationcognitivebiases}.
+The modality here differs: a construction template has a computable value, where a scalar
+anchor has only a measurable pull. One level up, LLM outputs concentrate where human ones do
+not \citep{chen2026measuringgaphumanllm,jiang2025artificialhivemindopenendedhomogeneity}.
+Set-level and diversity-aware selection
+\citep{li2026dictionariesdarwinsetlevelselection,wang2026diversescientifichypothesissearch,yang2026accuracyevaluatingstrategydiversity}
+and the bin-packing critiques
+\citep{herrmann2026indepthstudyllmcontributions,sim2025hypebenchmarkingllmevolvedheuristics}
+converge on the same question about the proposer's contribution.
+
+\textbf{Two results that cut against this paper's framing.} Evolutionary search matters
+empirically \citep{zhang2024understandingimportanceevolutionarysearch}, so one unconditioned
+call is a poor stand-in for a loop. Strong LLM optimizers act as local refiners
+\citep{zhang2026makesllmgoodoptimizer}, as a parent-conditioned call does.
+
+\textbf{Instrument effects and reasoning budget.} Larger and more instructable models become
+less reliable \citep{zhou2024reliability}. A reasoning model can report a higher
+hallucination rate alongside higher accuracy \citep{openai2025o3o4systemcard}, and reasoning
+collapses past a complexity threshold
+\citep{shojaee2025illusionthinkingunderstandingstrengths}. Geometric construction is a regime
+where nominal capability and executed correctness diverge
+\citep{kim2026geobuildbenchbenchmarkinteractiveexecutable,balunovic2025mathconstructchallengingllmreasoning}.
+
+\textbf{Preregistration lineage.} Recipes, outcome-blinded predictions and agent protocols
+are already preregistered
+\citep{thomas2026mitigatingllmbasedphackingpreregistering,williams2026predictingllmsafetyrelease,vaccaro2026preregistrationexperimentsaiagents,zhang2026testingfrontierlargelanguage}.
+HindsightBench \citep{jia2026hindsightbenchblackboxbehavioralaudit} releases frozen
+preregistrations of directional aggregate hypotheses. This paper's arms lock a numeric
+threshold and a falsifier before each setting was changed.

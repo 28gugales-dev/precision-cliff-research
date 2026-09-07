@@ -1,0 +1,327 @@
+{
+ "root": "C:\\Users\\soham\\AppData\\Local\\Temp\\claude\\C--Users-soham--hermes\\f81f5280-4575-4fa0-837f-aced52092815\\scratchpad\\replay_p4",
+ "results": [
+  {
+   "script": "arm_l_step.py",
+   "status": "SKIP_LIVE"
+  },
+  {
+   "script": "arm_g_rect.py",
+   "status": "SKIP_LIVE"
+  },
+  {
+   "script": "arm_b_baseline.py",
+   "status": "SKIP_LIVE"
+  },
+  {
+   "script": "arm_b_bridge_run.py",
+   "status": "SKIP_LIVE"
+  },
+  {
+   "script": "n_sweep_forecast.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "  the governing quantity is N - k*^2, i.e. signed distance to the nearest perfect square: negative traps, non-negative converges.",
+    "",
+    "wrote C:\\Users\\soham\\AppData\\Local\\Temp\\claude\\C--Users-soham--hermes\\f81f5280-4575-4fa0-837f-aced52092815\\scratchpad\\replay_p4\\n_sweep_forecast.json"
+   ],
+   "seconds": 1.9
+  },
+  {
+   "script": "arm_v_score.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "  N=31 valid 0/8  on-pred 0  best None  fails {'no_bracketed_list': 2, 'literal_eval_failed:SyntaxError': 5, 'TIMEOUT': 1}",
+    "  N=35 valid 0/6  on-pred 0  best None  fails {'literal_eval_failed:SyntaxError': 3, 'no_bracketed_list': 2, '\\x1b[0m\\n> build \u00b7 nemotron-3.5-lightning-fr': 1}",
+    "  N=37 valid 0/7  on-pred 0  best None  fails {'no_bracketed_list': 3, '\\x1b[0m\\n> build \u00b7 nemotron-3.5-lightning-fr': 1, 'literal_eval_failed:SyntaxError': 2, 'TIMEOUT': 1}"
+   ],
+   "seconds": 0.5
+  },
+  {
+   "script": "arm_f_repro.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "",
+    "--- ledger comparison (arm_f_candidates.jsonl) ---",
+    "MATCH: 215 rows agree with the checked-in ledger on valid, valid_strict_1e9, parse_error, invalid_reason, sum_of_radii, structure"
+   ],
+   "seconds": 0.3
+  },
+  {
+   "script": "arm_pd_analysis.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "D2: sampled 13, valid 0 (1e-9 0), parse fail 0, on-pred 0, rival 0, modal None, k {}",
+    "VERDICT: P-PD1 holds: the reasoning budget is the cause (closed at 27 of 30 rows, amendment 1) | S-PD1: {'D1': {'modal_is_anchor': True, 'on_prediction': '5/12'}}",
+    "written arm_pd_report.json"
+   ],
+   "seconds": 0.3
+  },
+  {
+   "script": "arm_p_analysis.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "  FIRES: False",
+    "",
+    "written arm_p_report.json"
+   ],
+   "seconds": 2.4
+  },
+  {
+   "script": "arm_cp_build.py",
+   "status": "SKIP_LIVE"
+  },
+  {
+   "script": "arm_rp_build.py",
+   "status": "SKIP_LIVE"
+  },
+  {
+   "script": "arm_pp_build.py",
+   "status": "SKIP_LIVE"
+  },
+  {
+   "script": "sec3_ladder_repro.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "  Fisher check 87/200 vs 38/200: p = 1.73e-07  (paper: 1.7e-7)",
+    "  Fisher check 16/50 vs 29/200: p = 0.0068  (paper: 0.007)",
+    "  Fisher check 16/50 vs 7/50:   p = 0.0559  (paper: 0.056 n.s.)"
+   ],
+   "seconds": 0.3
+  },
+  {
+   "script": "sec3_dispersion_registered.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "   q4_k_m     v1 34/65 (52%)   v2 56/99 (57%)",
+    "   q3_k_m     v1 31/51 (61%)   v2 41/91 (45%)",
+    "   q2_k       v1 46/49 (94%)   v2 77/84 (92%)"
+   ],
+   "seconds": 0.2
+  },
+  {
+   "script": "sec3_dispersion_prereg_rule.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "",
+    "=== VERDICT INPUTS ===",
+    "  NED decline p=0.0303 (sig) | rarefaction p=0.9531 (ns) | score JT p=0.4535 (no decline)"
+   ],
+   "seconds": 13.1
+  },
+  {
+   "script": "sec3_registered_echo_test.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "  spread descriptor   rho=+0.1672  p=0.0318  n=165  -> passes registered |rho| <= 0.5",
+    "  displacement descr. rho=-0.1675  p=0.0316  n=165  -> passes registered |rho| <= 0.5",
+    "  Passing the registered threshold is not independence: both are nominally non-zero."
+   ],
+   "seconds": 7.1
+  },
+  {
+   "script": "sec3_search_progress.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "       Validity at 7B is 4-12 of 50 at every rung, so no rung is searching",
+    "       much; the statistic has little room to separate. Consistent with the",
+    "       viability inversion section 3 already reports at this scale."
+   ],
+   "seconds": 5.5
+  },
+  {
+   "script": "sec3_7b_repro.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "    valid probes: 0/30   (paper: 0/30)",
+    "    best score in the entire 7B sweep: 1.79998   (paper: 1.800)",
+    "    against the canonical anchored value 2.5414: 29% below   (paper: 29%)"
+   ],
+   "seconds": 0.2
+  },
+  {
+   "script": "sec3_conditional_quality.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "  is a THIN exclusion and no confirmation: a collapse in departure quality is",
+    "  not the explanation of the echo cliff, and the frequency-only reading that",
+    "  leaves standing is unconfirmed rather than established."
+   ],
+   "seconds": 0.2
+  },
+  {
+   "script": "sec3_horizon_power.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "  wave-3 registration adopts as its primary.",
+    "",
+    "  No claim in the paper rests on any number above."
+   ],
+   "seconds": 389.7
+  },
+  {
+   "script": "sec3_artifacts/dispersion_probe_v2/analyze_v2.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "  descriptives above are EXPLORATORY only",
+    "",
+    "[done]"
+   ],
+   "seconds": 2.3
+  },
+  {
+   "script": "sec6_cv_canary_audit.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "  percent -- so this does not contradict the reading. It does show that \"faster\"",
+    "  and \"lower precision\" are not the same axis even on a fixed stack, which is a",
+    "  step section 4's inference passes through without stating."
+   ],
+   "seconds": 19.0
+  },
+  {
+   "script": "sec4_independent_rescore.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "",
+    "=== N=13 corner radii == 0.25 in all ten rows? ===",
+    "  rows with >=4 circles of radius exactly 0.25: 10/10"
+   ],
+   "seconds": 0.3
+  },
+  {
+   "script": "paper_repo/loop/arm_f_attempt_control.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "Fisher exact, one-sided:                  p = 5.30e-04",
+    "",
+    "wrote C:\\Users\\soham\\AppData\\Local\\Temp\\claude\\C--Users-soham--hermes\\f81f5280-4575-4fa0-837f-aced52092815\\scratchpad\\replay_p4\\paper_repo\\evidence\\arm_f_attempt_control.json"
+   ],
+   "seconds": 0.1
+  },
+  {
+   "script": "paper_repo/loop/arm_f_attempt_uncond.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "",
+    "per cell (arm F): {'13': {'rows': 20, 'evaluable': 20, 'at_argmax_order': 1}, '21': {'rows': 20, 'evaluable': 19, 'at_argmax_order': 4}, '31': {'rows': 20, 'evaluable': 18, 'at_argmax_order': 0}}",
+    "wrote C:\\Users\\soham\\AppData\\Local\\Temp\\claude\\C--Users-soham--hermes\\f81f5280-4575-4fa0-837f-aced52092815\\scratchpad\\replay_p4\\paper_repo\\evidence\\arm_f_attempt_uncond.json"
+   ],
+   "seconds": 0.1
+  },
+  {
+   "script": "paper_repo/loop/arm_mu_ceiling.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "every real excess fails 1e-9         True",
+    "",
+    "wrote C:\\Users\\soham\\AppData\\Local\\Temp\\claude\\C--Users-soham--hermes\\f81f5280-4575-4fa0-837f-aced52092815\\scratchpad\\replay_p4\\paper_repo\\evidence\\arm_mu_ceiling.json"
+   ],
+   "seconds": 0.1
+  },
+  {
+   "script": "paper_repo/loop/build_channel_table.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "  weak/scipy/pinned            valid  11  clear  0",
+    "  sonnet/scipy/pinned          valid  25  clear 23",
+    "  none/scipy/local             valid  45  clear 45"
+   ],
+   "seconds": 0.2
+  },
+  {
+   "script": "paper_repo/loop/cl_lenient_reparse.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "21 {'parse_fail': 7, 'parsed': 7, 'valid_1e6': 4, 'valid_1e9': 4, 'cleared': 0, 'why6': {'overlap': 1, 'nonpositive_radius': 1, 'outside_square': 1}, 'sums': [1.264347, 1.837122844, 2.045487749, 2.055042133]}",
+    "31 {'parse_fail': 7, 'parsed': 7, 'valid_1e6': 2, 'valid_1e9': 2, 'cleared': 0, 'why6': {'nonpositive_radius': 1, 'overlap': 3, 'outside_square': 1}, 'sums': [2.212114582, 2.690471552]}",
+    "weak pooled: registered 11 valid; lenient recovers 9 more valid, 1 clear"
+   ],
+   "seconds": 0.2
+  },
+  {
+   "script": "paper_repo/loop/evidence_gate.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "entries 46  checks 106  failures 0"
+   ],
+   "seconds": 0.2
+  },
+  {
+   "script": "paper_repo/loop/extend_branch_scope.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "Every cell where prediction and family argmax differ is a truncate cell.",
+    "",
+    "wrote C:\\Users\\soham\\AppData\\Local\\Temp\\claude\\C--Users-soham--hermes\\f81f5280-4575-4fa0-837f-aced52092815\\scratchpad\\replay_p4\\paper_repo\\evidence\\extend_branch_scope.json"
+   ],
+   "seconds": 0.2
+  },
+  {
+   "script": "paper_repo/loop/lp_extend_k89.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "disagreements: none",
+    "",
+    "wrote C:\\Users\\soham\\AppData\\Local\\Temp\\claude\\C--Users-soham--hermes\\f81f5280-4575-4fa0-837f-aced52092815\\scratchpad\\replay_p4\\paper_repo\\evidence\\lp_extend_k89.json"
+   ],
+   "seconds": 9.4
+  },
+  {
+   "script": "paper_repo/loop/r26_mu_rows.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "wrote tab_mu_rows.tex (18 rows, 13 equal parent sum) and r26_mu_rows.json"
+   ],
+   "seconds": 0.2
+  },
+  {
+   "script": "paper_repo/loop/recount_1e9.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "CN: {'valid_1e6': 63, 'valid_1e9': 56}",
+    "L: {'valid_1e6': 49, 'valid_1e9': 47}",
+    "pool: as reported 290 | all six arms at 1e-9 281"
+   ],
+   "seconds": 67.4
+  },
+  {
+   "script": "paper_repo/loop/recount_cl.py",
+   "exit": 0,
+   "status": "OK",
+   "tail": [
+    "sonnet 31 same",
+    "sonnet valid 25 cleared 23 non-clearing: [(13, 1.5, True, None), (13, 1.767686476, True, None)]",
+    "weak parse fails 22 Counter({'literal_eval_failed:ValueError': 22})"
+   ],
+   "seconds": 332.1
+  }
+ ],
+ "failures": 0
+}

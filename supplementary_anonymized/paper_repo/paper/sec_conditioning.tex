@@ -1,0 +1,81 @@
+\section{One conditioning step: arm MU}\label{sec:arm-mu}
+
+Arm MU hands the proposer one parent and one instruction, with no iteration. Given a
+parent at the family argmax the proposer keeps it, 26 of 26, and none of those outputs sits
+on the anchor. Given its own anchor as parent it leaves, 17 of 28 moving above it.
+
+\textbf{Design.} Each call is the bare prompt, an existing packing, and the instruction to
+increase the sum of radii.
+The \emph{anchor parent} is built at the model's own unconditioned anchor value $T(k^*, N)$.
+The \emph{argmax parent} is built at the family argmax $V(k^*{-}1, m)$, which at these cells
+is provably better than the anchor. The \emph{off-family parent} is a diagonal-chain packing
+scoring far below either. The registration and the supplement name them A\_anchor, B\_rival
+and C\_offfamily. The cells are $N = 13$, 21 and 31. Three parent conditions in three cells,
+at $n = 15$ samples each, give 135 invocations.
+
+\textbf{Registered predictions.} P-MU1 predicted an on-prediction rate under the anchor parent
+of at least 50\%. P-MU2 predicted an on-prediction rate under the argmax parent of at least
+35\%. P-MU3 predicted $k$-inheritance under the argmax parent below 50\%. P-MU4 predicted that
+under the off-family parent the modal valid output sits on the $k^*$-grid, scored per cell.
+The registered decision rule calls anchoring dissolved when the pooled on-prediction rate
+under the argmax parent is at most 20\% and the keep-or-improve rate is at least 50\%. The
+falsifier fires on the same condition.
+
+\textbf{The rule's two conditions under the argmax parent.} Both are met, and they are not
+independent. The pooled on-prediction rate is 0 of 26 valid outputs. That meets
+the rule's 20\% ceiling and fails P-MU2's 35\% floor. Keep-or-improve is 26 of 26, above
+its floor of 50\%. The argmax parent outscores the anchor
+$T(k^*, N)$ by 0.151 at $N = 13$. The gap is 0.159 at $N = 21$. It is 0.165 at $N = 31$. Each
+gap is more than seventy times the $2\times10^{-3}$ matching window, so an output that keeps or
+improves on that parent cannot sit on the anchor. The 26 of 26 entails the 0 of 26,
+and the rule reduces to one condition.
+
+Keep-or-improve is almost entirely keep. Of the 26, 25 return the parent's score within
+$10^{-6}$, and one exceeds it by $1.2\times10^{-6}$. In
+coordinates, 18 reproduce the parent to within $10^{-6}$ on every coordinate. The
+$1.2\times10^{-6}$ excess is among them, from radii perturbed below that tolerance. One
+further output is a mirror image of the parent. The other 7 relocate
+filler circles while keeping the radius multiset and the parent's sum to seven decimals. All
+26 inherit the parent's grid order too, so P-MU3 is disconfirmed.
+
+The independent evidence is the anchor parent. Its on-prediction rate is 7 of 28,
+below P-MU1's 50\% threshold, so the anchor is not self-stable as its own parent. Here
+the model departs: 17 of 28 move above the anchor and 4 fall below it. Grid order is kept by
+22 of 28, 79\% (60--90\%). The 6 that change it all move above the anchor, and they include
+3 that reach the family argmax value. The falsifier negates the persistence prediction
+over this pair of conditions, and no other was registered.
+
+\textbf{The unconditioned rate on the same instrument.} Arm L's generation 0
+(\S\ref{sec:arm-l}) supplies the no-parent reference on the same prompt bytes, channel and
+wrapper. It puts 4 of 9 valid outputs on the anchor at $N = 13$. It puts 7 of 8
+there at $N = 31$. The anchor parent gives 4 of 12 and 2 of 11 at those cells. Arm
+L did not run at $N = 21$, so no unconditioned row exists there.
+
+\textbf{P-MU4, held in two cells of three.} The anchor's grid order does reassert itself in the one
+condition registration predicted. Given the off-family diagonal parent, 20 of 34
+valid samples abandon the parent and emit a $k^*$-grid construction. The prediction holds
+at $N = 21$ and at $N = 31$, and not
+at $N = 13$.
+
+\input{tab_mu}
+
+\textbf{Clearance of the family argmax (post hoc, disclosed).} Arm MU's rows were scored
+against the anchor, so the clearance question was never asked at registration. Recomputing
+the argmax from the closed form gives $1.776142375$ at $N = 13$. At $N = 21$ it is
+$2.258883476$. At $N = 31$ it is $2.748528137$. The 135 invocations give 88 valid outputs at
+the primary tolerance. At $10^{-9}$ just 63 of the 135 are valid. Of the 88, 27 return a
+sum nominally above the argmax: 9 within the $5\times10^{-8}$ granularity of a recorded sum,
+18 beyond it, and 61 at or below. Seventeen of the eighteen are argmax-parent outputs
+returning their parent's score within $1.2\times10^{-6}$. The eighteenth is the anchor-parent output at
+$N = 21$ that moved onto the argmax.
+
+The argmax parent's seven-decimal coordinates sum to $3.25\times10^{-7}$ above the
+closed form at $N = 13$ and $2.63\times10^{-7}$ above it at $N = 31$. Thirteen of the
+eighteen return that parent sum unchanged; their excess is the parent's rounding. The other
+five sit up to $1.53\times10^{-6}$ above the argmax. All eighteen fail the $10^{-9}$ test on
+overlapping circles, not on containment. Their largest single overlaps run from
+$3.8\times10^{-9}$ to $4.3\times10^{-7}$, median $4.4\times10^{-8}$, each smaller than its
+row's excess. Rounded or perturbed coordinates carry the excess; the $10^{-6}$ tolerance
+admits the overlaps they create (per-row table and the granularity split of the 88,
+Supplement~S2). Of the 63 valid at $10^{-9}$, four sit above the argmax by at most
+$2.5\times10^{-8}$, inside the recorded-sum granularity, and none clears.

@@ -1,7 +1,8 @@
 import json, ast, math, re, collections
 
-ROOT = r"~\AppData\Local\hermes\research-corpus\precision-cliff"
-rows = json.load(open(ROOT + r"\arm_f_raw.json", encoding="utf-8"))
+import os
+ROOT = os.path.dirname(os.path.abspath(__file__))  # the corpus root: run in place
+rows = json.load(open(os.path.join(ROOT, "arm_f_raw.json"), encoding="utf-8"))
 CELLS = (13, 21, 31)
 
 def parse(t):

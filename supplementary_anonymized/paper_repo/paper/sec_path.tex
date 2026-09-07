@@ -1,0 +1,57 @@
+\section{Serving path and reasoning budget: arms P and P-D}\label{sec:arm-p}
+
+Arms P and P-D change how the proposer is served, not what it is conditioned on. On the bare
+pinned path validity collapses, 0 of 105 at the square cells, so no mode prediction can be
+scored. With extended thinking on, validity returns, 12 of 14, and the anchor is again the
+plurality value. Per-cell tables sit in Supplement~S5.
+
+\textbf{Arm P: the registered prompt on a bare, pinned serving path.} Arm P sends the
+registered prompts byte-identical through a path that exposes and pins temperature. It
+runs at $n = 15$ per cell across seven square cells, five held-out cells and three code cells. That
+is 225 invocations. The serving path refused 6, none at a square cell, each counted invalid
+where it was issued. Two competing mode predictions say the anchor $T(k^*, N)$ is modal in a
+majority of the seven square cells, or in few of them. Two competing code-channel predictions
+say no valid program clears the family argmax, or at least one does. The falsifier is on the
+discriminating-cell rate. Supplement~S1 states all five in the registration's own words.
+The registration left 4 of the 7 square cells that neither mode prediction adjudicates, a
+design gap. An outcome there confirms neither.
+
+\textbf{Validity collapsed.} The seven square cells carry both mode predictions. There, 0 of
+105 outputs are valid at the primary tolerance, so none at $10^{-9}$. All 105 returned well-formed lists of the requested
+count, with no prose, fences or reasoning tokens. Every failure but three is an
+overlap. Supplement~S5 names the three. The median maximum pairwise overlap at $N = 13$ is
+0.10. That is fifty times the value window. At the held-out cells 4 of 75 are valid, all four
+at $N = 50$. They sum to 2.5, a full unit below the family argmax there, so none clears.
+
+\textbf{Against the registered floor.} The arm's own floor is five valid outputs per cell, so
+the direct-emission predictions are UNSCOREABLE at every cell. The falsifier cannot fire either. Its
+denominator, the valid outputs at the four discriminating square cells, is
+empty. Empty denominators receive no imputed rate. On the
+code cells 12 of 45 programs are valid, and only $N = 21$ reaches the floor. None clears the
+family, so the no-clearance prediction holds.
+
+\textbf{Two post hoc diagnostics bound the cause.} Neither was registered. The first is a
+temperature sweep. At 0.0, 0.5 and 1.0 the $N = 13$ prompt gives 0 of 6 valid per setting. The
+second is a same-day control at the same cell through the agent runtime, tabled beside the two
+arm P-D conditions in Supplement~S5.
+
+\textbf{Arm P-D: which component of the instrument.} Arm P-D was registered after an outside
+review asked for a diagnostic beyond temperature. It sends the same $N = 13$ prompt, to the same alias, on the same pinned path and
+decoding, under two one-line manipulations, at $n = 15$ each. The \emph{thinking-on}
+condition turns the vendor's extended thinking on at the routing layer's default effort and
+sends no system prompt. The \emph{thinking-off} condition leaves thinking off and adds one
+system line asking for care. The reasoning-budget
+hypothesis predicts thinking-on valid in at least 8 of 15 against at most 3 for thinking-off.
+The context hypothesis exchanges the two thresholds. A third registered outcome covers
+anything else. The arm closed at 27 of 30 rows by a registered amendment, after the serving
+path refused the last three for credit. Those rows could not have changed the verdict,
+because thinking-off could reach at most 2 valid while thinking-on already held 12.
+Thinking-on is valid in 12 of 14. The 95\% Wilson interval on that rate is 60--96\%.
+Thinking-off is valid in 0 of 13, every failure an overlap, exactly arm P's collapse. So the
+reasoning-budget hypothesis holds, and the anchor is the plurality value. $T(4,13) = 1.625$
+accounts for 5 of the 12 valid thinking-on outputs. The registered secondary prediction, that
+this value is modal in whichever condition clears the validity threshold, is therefore met.
+The two conditions differ in thinking and in the system line, but arm P sent this prompt with
+thinking off and no system line and collapsed, so thinking-on changes one feature against that
+baseline. Only $N = 13$ was run, so the component is named on one cell, and no interval is
+computed there.

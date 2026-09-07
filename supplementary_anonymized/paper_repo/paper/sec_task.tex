@@ -1,0 +1,92 @@
+\section{The template and its closed form}\label{sec:task}
+
+This section restates the object under test. Every definition below is the companion paper's
+\citep{companion}. Only the re-score at the end is this paper's own.
+
+\textbf{The benchmark.} Maximize the sum of radii of $N$ non-overlapping circles in the unit
+square. Feasibility is decidable exactly from emitted coordinates, so scoring needs no human.
+The direct-emission prompt fixes the count, states containment and non-overlap, forbids
+code, and demands a raw Python list of \texttt{[x, y, r]} triples. The program channels
+replace that clause with a program contract. The prompt and its digest are in the
+supplement.
+
+\textbf{The recipe family.} The \textbf{recipe family} is the parametric set of
+grid-plus-filler constructions. A \textbf{template} is one member of it. The \textbf{anchor}
+is the template the distribution concentrates on at a given $N$.
+
+A $k \times k$ grid places one circle per cell center with $r_{\mathrm{grid}} = 1/(2k)$. Then
+$m$ fillers sit on interior grid vertices, tangent to the four grid circles around them,
+with $r_{\mathrm{filler}} = (\sqrt{2} - 1)/(2k)$ and $0 \le m \le (k-1)^2$. Hence
+$V(k, m) = k/2 + m(\sqrt{2} - 1)/(2k)$.
+
+When $N < k^2$ a smaller complete grid is available, the $(k-1) \times (k-1)$ lattice at
+radius $1/(2(k-1))$ with fillers on its interior vertices. The model does not fall back to
+it. It \emph{truncates} instead, laying out the $k \times k$ lattice, occupying $N$ cells and
+keeping the radius, which gives $T(k, N) = N/(2k)$.
+
+\textbf{The order rule and the branch rule.} Write $k^*(N) = \mathrm{round}(\sqrt{N})$ for the
+nearest-square order. This is a definition, not a hypothesis. The falsifiable content is the
+\textbf{branch rule}. Where $k^{*2} \le N$ the model extends, adding $m = N - k^{*2}$ fillers:
+the converge branch. Where $k^{*2} > N$ it truncates the $k^*$-grid: the trap branch.
+Substituting $k^*$ into the branch condition gives the \emph{trap zones}
+$N \in [k^2-k+1, k^2-1]$, which over the sweep range are $[13,15]$, $[21,24]$, $[31,35]$,
+$[43,48]$ and $[57,63]$.
+
+The \textbf{family argmax} at $N$ is the largest value the family can express there,
+recomputed in closed form over every admissible $(k, m)$. The scripts enumerate every order
+$k$ with an admissible filler count, $N - k^2 \le (k-1)^2$, and every truncated order. The
+argmax is a value; a packing
+that reaches it is a construction. At the trap cells studied here that enumeration returns
+the larger
+of two candidates: the drop-and-fill $V(k^*{-}1, N - (k^*{-}1)^2)$ and the truncated anchor
+$T(k^*, N) = N/(2k^*)$. At $N = 35$ the truncated anchor is larger, so 35 is not a
+discriminating cell, an $N$ where the anchor and the family argmax differ. At a converge cell the extended anchor is the argmax, so every
+discriminating cell is a trap cell. The anchor there is the truncate
+branch $T(k^*, N) = N/(2k^*)$.
+
+\textbf{Independent re-score.} A second implementation recomputed every cell-level count in
+this paper, the validity, on-prediction, clearance and row counts per cell
+(\texttt{arm\_transfer\_\bk{}independent\_\bk{}rescore.py} in the artifact). The authors wrote
+it for this submission, with its own parser, its own validity scorer and a linear program
+blind to the recipe. It imports nothing from the arms' scoring code. It re-derived the
+closed-form value and the family argmax at all twelve $N$, agreeing to at most
+$3.6 \times 10^{-15}$. Of 135 cell-level counts across all arms, 129 agree. The six that
+differ are three arm L clearance counts at $N = 31$, two arm GM validity counts and arm P-D's
+sampled-row count, each with its cause in Supplement~S1. The re-score also found an arm MU
+bucketing error, logged as item 36 of the artifact's corrections ledger, and
+\S\ref{sec:arm-mu} carries the corrected figures.
+
+\textbf{Notation and conventions.} Table~\ref{tab:glossary} restates the companion paper's
+terms.
+
+\begin{footnotesize}
+\setlength{\tabcolsep}{3.5pt}
+\begin{longtable}{@{}p{0.26\linewidth}p{0.68\linewidth}@{}}
+\caption{Terms used throughout this paper, each used in this sense only.}
+\label{tab:glossary} \\
+\toprule
+Term & Meaning \\
+\midrule
+\endfirsthead
+\toprule
+Term & Meaning \\
+\midrule
+\endhead
+on-prediction & emitted sum within $2\times10^{-3}$ of the anchor \\
+family argmax & the highest-valued member of the recipe family at that $N$: at the trap cells studied here, the drop-and-fill $V(k^*{-}1, m)$ wherever it beats the truncated anchor. This paper gives it no other name \\
+square, held-out and code cell & the three cell sets: a \emph{square cell} is an $N$ addressed with the bare direct-emission prompt, $N = 13$, 17, 21, 31, 35, 37, 43; a \emph{held-out cell} is an $N$ the companion paper kept out of its fit and this paper reuses, $N = 50$, 58, 62, 65, 75; a \emph{code cell} is an $N$ addressed under the program contract instead, $N = 13$, 21, 31 \\
+discriminating cell & $N$ where anchor $\ne$ family argmax; only these can distinguish anchoring from family search \\
+validity & non-overlap and containment at $10^{-6}$ (primary) and $10^{-9}$ (logged); the $10^{-9}$ count is reported wherever a clearance is read \\
+trap cell & an $N$ inside a trap zone, where the branch rule truncates; the discriminating cells are the trap cells studied here whose truncated anchor sits below the family argmax \\
+tier & nominal capability class of the serving alias addressed: here the weak tier is the vendor's Haiku alias (\texttt{claude-haiku-4.5}) \\
+instrument & the proposer's serving path with the request parameters it carries, the reasoning setting included. Two are used here, an agent runtime and a pinned API, described in \S\ref{sec:method}; they are never pooled, and the word is used in this sense only \\
+effort & the size of the reasoning budget a request asks the vendor for. Where a request names none the vendor's routing layer supplies its own default, which is the setting arm P-D switches on \\
+quota & the vendor-side cap on requests per interval; a key that reaches it returns no completions until the interval resets \\
+UNSCOREABLE, UNDERPOWERED, BELOW-FLOOR & a cell below its arm's registered floor of valid samples; a second-vendor chain arm with fewer than 5 scoreable cells; an arm V alias with fewer than 10 of 25 registered invocations valid. Each claims nothing \\
+evaluability floor & the minimum valid-sample count a cell needs before its verdict counts, fixed at each arm's own registration and \emph{not} common across arms; the per-arm values are in \S\ref{sec:method} \\
+anchor & the template the proposer concentrates on at $N$, with its closed-form value. That value is the extended anchor $V(k^*, N - k^{*2})$ at a converge cell and the truncated anchor $T(k^*, N) = N/(2k^*)$ at a trap cell. At a discriminating cell it sits below the family argmax \\
+$k$-inheritance & an output whose dominant circle radius gives the same grid order $k$ as its parent's; counted per parent condition in the arm MU table \\
+located but not attributed & a difference measured between conditions differing in more than one way, so that the difference is established and its cause is not \\
+\bottomrule
+\end{longtable}
+\end{footnotesize}

@@ -1,0 +1,379 @@
+{
+ "input": "arm_p_collect.jsonl",
+ "rows": 225,
+ "square": {
+  "13": {
+   "kstar": 4,
+   "predicted_value": 1.625,
+   "rival_argmax": 1.7761424,
+   "discriminating": true,
+   "sampled": 15,
+   "valid_1e6": 0,
+   "valid_1e9": 0,
+   "evaluable": false,
+   "modal_value": null,
+   "modal_count": 0,
+   "runner_up_count": 0,
+   "modal_tie": false,
+   "hit": null,
+   "on_prediction": 0,
+   "rival_emission": 0,
+   "kstar_structure": 0,
+   "failure_bins": {
+    "overlap": 15
+   }
+  },
+  "17": {
+   "kstar": 4,
+   "predicted_value": 2.0517767,
+   "rival_argmax": 2.0517767,
+   "discriminating": false,
+   "sampled": 15,
+   "valid_1e6": 0,
+   "valid_1e9": 0,
+   "evaluable": false,
+   "modal_value": null,
+   "modal_count": 0,
+   "runner_up_count": 0,
+   "modal_tie": false,
+   "hit": null,
+   "on_prediction": 0,
+   "rival_emission": 0,
+   "kstar_structure": 0,
+   "failure_bins": {
+    "overlap": 15
+   }
+  },
+  "21": {
+   "kstar": 5,
+   "predicted_value": 2.1,
+   "rival_argmax": 2.2588835,
+   "discriminating": true,
+   "sampled": 15,
+   "valid_1e6": 0,
+   "valid_1e9": 0,
+   "evaluable": false,
+   "modal_value": null,
+   "modal_count": 0,
+   "runner_up_count": 0,
+   "modal_tie": false,
+   "hit": null,
+   "on_prediction": 0,
+   "rival_emission": 0,
+   "kstar_structure": 0,
+   "failure_bins": {
+    "overlap": 15
+   }
+  },
+  "31": {
+   "kstar": 6,
+   "predicted_value": 2.5833333,
+   "rival_argmax": 2.7485281,
+   "discriminating": true,
+   "sampled": 15,
+   "valid_1e6": 0,
+   "valid_1e9": 0,
+   "evaluable": false,
+   "modal_value": null,
+   "modal_count": 0,
+   "runner_up_count": 0,
+   "modal_tie": false,
+   "hit": null,
+   "on_prediction": 0,
+   "rival_emission": 0,
+   "kstar_structure": 0,
+   "failure_bins": {
+    "overlap": 15
+   }
+  },
+  "35": {
+   "kstar": 6,
+   "predicted_value": 2.9166667,
+   "rival_argmax": 2.9166667,
+   "discriminating": false,
+   "sampled": 15,
+   "valid_1e6": 0,
+   "valid_1e9": 0,
+   "evaluable": false,
+   "modal_value": null,
+   "modal_count": 0,
+   "runner_up_count": 0,
+   "modal_tie": false,
+   "hit": null,
+   "on_prediction": 0,
+   "rival_emission": 0,
+   "kstar_structure": 0,
+   "failure_bins": {
+    "overlap": 14,
+    "nonpositive_radius": 1
+   }
+  },
+  "37": {
+   "kstar": 6,
+   "predicted_value": 3.0345178,
+   "rival_argmax": 3.0345178,
+   "discriminating": false,
+   "sampled": 15,
+   "valid_1e6": 0,
+   "valid_1e9": 0,
+   "evaluable": false,
+   "modal_value": null,
+   "modal_count": 0,
+   "runner_up_count": 0,
+   "modal_tie": false,
+   "hit": null,
+   "on_prediction": 0,
+   "rival_emission": 0,
+   "kstar_structure": 0,
+   "failure_bins": {
+    "overlap": 14,
+    "count_38_expected_37": 1
+   }
+  },
+  "43": {
+   "kstar": 7,
+   "predicted_value": 3.0714286,
+   "rival_argmax": 3.2416246,
+   "discriminating": true,
+   "sampled": 15,
+   "valid_1e6": 0,
+   "valid_1e9": 0,
+   "evaluable": false,
+   "modal_value": null,
+   "modal_count": 0,
+   "runner_up_count": 0,
+   "modal_tie": false,
+   "hit": null,
+   "on_prediction": 0,
+   "rival_emission": 0,
+   "kstar_structure": 0,
+   "failure_bins": {
+    "overlap": 14,
+    "row_not_xyr": 1
+   }
+  }
+ },
+ "heldout": {
+  "50": {
+   "kstar": 7,
+   "predicted_value": 3.5295867,
+   "rival_argmax": 3.5295867,
+   "discriminating": false,
+   "sampled": 15,
+   "valid_1e6": 4,
+   "valid_1e9": 4,
+   "evaluable": false,
+   "modal_value": 2.5,
+   "modal_count": 4,
+   "runner_up_count": 0,
+   "modal_tie": false,
+   "hit": null,
+   "on_prediction": 0,
+   "rival_emission": 0,
+   "kstar_structure": 0,
+   "failure_bins": {
+    "overlap": 7,
+    "count_49_expected_50": 2,
+    "count_51_expected_50": 2
+   }
+  },
+  "58": {
+   "kstar": 8,
+   "predicted_value": 3.625,
+   "rival_argmax": 3.7662801,
+   "discriminating": true,
+   "sampled": 15,
+   "valid_1e6": 0,
+   "valid_1e9": 0,
+   "evaluable": false,
+   "modal_value": null,
+   "modal_count": 0,
+   "runner_up_count": 0,
+   "modal_tie": false,
+   "hit": null,
+   "on_prediction": 0,
+   "rival_emission": 0,
+   "kstar_structure": 0,
+   "failure_bins": {
+    "count_57_expected_58": 11,
+    "overlap": 3,
+    "count_59_expected_58": 1
+   }
+  },
+  "62": {
+   "kstar": 8,
+   "predicted_value": 3.875,
+   "rival_argmax": 3.8846269,
+   "discriminating": true,
+   "sampled": 15,
+   "valid_1e6": 0,
+   "valid_1e9": 0,
+   "evaluable": false,
+   "modal_value": null,
+   "modal_count": 0,
+   "runner_up_count": 0,
+   "modal_tie": false,
+   "hit": null,
+   "on_prediction": 0,
+   "rival_emission": 0,
+   "kstar_structure": 0,
+   "failure_bins": {
+    "count_61_expected_62": 12,
+    "count_65_expected_62": 1,
+    "overlap": 1,
+    "count_63_expected_62": 1
+   }
+  },
+  "65": {
+   "kstar": 8,
+   "predicted_value": 4.0258883,
+   "rival_argmax": 4.0258883,
+   "discriminating": false,
+   "sampled": 15,
+   "valid_1e6": 0,
+   "valid_1e9": 0,
+   "evaluable": false,
+   "modal_value": null,
+   "modal_count": 0,
+   "runner_up_count": 0,
+   "modal_tie": false,
+   "hit": null,
+   "on_prediction": 0,
+   "rival_emission": 0,
+   "kstar_structure": 0,
+   "failure_bins": {
+    "count_66_expected_65": 6,
+    "overlap": 6,
+    "count_63_expected_65": 1,
+    "count_64_expected_65": 2
+   }
+  },
+  "75": {
+   "kstar": 9,
+   "predicted_value": 4.1666667,
+   "rival_argmax": 4.2847718,
+   "discriminating": true,
+   "sampled": 15,
+   "valid_1e6": 0,
+   "valid_1e9": 0,
+   "evaluable": false,
+   "modal_value": null,
+   "modal_count": 0,
+   "runner_up_count": 0,
+   "modal_tie": false,
+   "hit": null,
+   "on_prediction": 0,
+   "rival_emission": 0,
+   "kstar_structure": 0,
+   "failure_bins": {
+    "count_73_expected_75": 4,
+    "count_76_expected_75": 1,
+    "count_74_expected_75": 4,
+    "count_77_expected_75": 3,
+    "count_71_expected_75": 1,
+    "call_error": 1,
+    "count_78_expected_75": 1
+   }
+  }
+ },
+ "code": {
+  "13": {
+   "sampled": 15,
+   "bins": {
+    "exec_error": 1,
+    "geom_invalid": 6,
+    "valid": 4,
+    "call_error": 2,
+    "blocked_import": 2
+   },
+   "n_valid": 4,
+   "sums": [
+    0.988,
+    1.12,
+    1.17,
+    1.54
+   ],
+   "clearance_argmax": 1.776142375,
+   "cleared": 0,
+   "evaluable": false
+  },
+  "21": {
+   "sampled": 15,
+   "bins": {
+    "blocked_import": 8,
+    "valid": 6,
+    "geom_invalid": 1
+   },
+   "n_valid": 6,
+   "sums": [
+    0.5,
+    0.9545455,
+    1.512,
+    1.575,
+    2.1,
+    2.1186
+   ],
+   "clearance_argmax": 2.258883476,
+   "cleared": 0,
+   "evaluable": true
+  },
+  "31": {
+   "sampled": 15,
+   "bins": {
+    "blocked_import": 9,
+    "call_error": 3,
+    "valid": 2,
+    "geom_invalid": 1
+   },
+   "n_valid": 2,
+   "sums": [
+    1.55,
+    1.66
+   ],
+   "clearance_argmax": 2.748528137,
+   "cleared": 0,
+   "evaluable": false
+  }
+ },
+ "pooled_discriminating": {
+  "valid": 0,
+  "on_prediction": 0,
+  "rate": 0.0,
+  "wilson_95ci": [
+   0.0,
+   0.0
+  ]
+ },
+ "predictions": {
+  "P-P1 (anchor transfers to pinned path)": {
+   "statement": "T(k*,N) modal at >=5/7 square cells, incl >=2/4 discriminating, AND >=4/5 held-out cells",
+   "observed": "square 0/7, discriminating 0/4, heldout 0/5",
+   "holds": false
+  },
+  "P-P2 (anchor is agent-runtime artifact)": {
+   "statement": "modal at <=3/7 square cells",
+   "observed": "square 0/7",
+   "holds": true
+  },
+  "dead_zone (modal at exactly 4/7 square cells)": {
+   "statement": "reported, not adjudicated as P-P1 or P-P2",
+   "observed": "square 0/7",
+   "fires": false
+  },
+  "P-P3 (code-channel ceiling holds)": {
+   "statement": "0 valid program outputs at N=13,21,31 clear family argmax under section-2.4 rule",
+   "observed": "cleared 0/3 cells ([0, 0, 0])",
+   "holds": true
+  },
+  "P-P4 (code-channel ceiling breaks)": {
+   "statement": ">=1 program output clears family argmax",
+   "observed": "cleared 0",
+   "holds": false
+  },
+  "F-P1 (falsifier)": {
+   "statement": "pooled on-prediction rate over the 4 discriminating square cells < 40% of valid outputs",
+   "observed": "rate=0.0000 (0/0) 95%CI=(0.0, 0.0)",
+   "fires": false
+  }
+ }
+}

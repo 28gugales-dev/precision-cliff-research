@@ -10,7 +10,9 @@ from collections import Counter
 from math import comb
 from pathlib import Path
 
-SRC = Path(r"~\AppData\Local\hermes\research-corpus\precision-cliff")
+_UP = Path(__file__).resolve().parents[2]  # bundle root, or research-corpus/ on the authoring host
+CORPUS = _UP if (_UP / "arm_f_repro.py").is_file() else _UP / "precision-cliff"
+SRC = CORPUS
 OUT = Path(__file__).resolve().parent.parent / "evidence" / "arm_f_attempt_uncond.json"
 
 CELLS = (13, 21, 31)

@@ -1,0 +1,18 @@
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+alias & vendor & valid & V1 on-prediction & V1 bar ($\ge$50\%) & \begin{tabular}[b]{@{}c@{}}V2 family argmax\\valid at discriminating cells\\(bar: $\le$10\%)\end{tabular} \\
+\midrule
+\texttt{north-mini-code} & Cohere & 12 & 8/12 [39--86\%] & \textbf{MET} (point est.) & 0/4 \textbf{HOLDS} \\
+\texttt{gpt-oss-20b} & OpenAI & 18 & 11/18 [39--80\%] & \textbf{MET} (point est.) & 0/9 \textbf{HOLDS} \\
+\texttt{gemma-4-31b-it} & Google & 15 & 0/15 = 0\% [0--20\%] & \textbf{NOT MET} & 0/3 \textbf{HOLDS} \\
+\bottomrule
+\end{tabular}
+
+{\footnotesize Bracketed ranges are 95\% Wilson intervals on the rate they follow. V2 is
+scored only at the discriminating cells. The registration labels a met V1 bar TRANSFERS and a
+missed one DOES-NOT-TRANSFER; this table reports the bar outcome, in the sense
+\S\ref{sec:gm3-v} defines. Both passing intervals span the 50\% bar.}
+\end{center}

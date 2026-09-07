@@ -165,7 +165,11 @@
    "above_within_rounding": 9,
    "above_beyond_rounding": 18,
    "above_beyond_rounding_valid9": 0,
-   "largest_excess": 1.5250846032710541e-06
+   "largest_excess": 1.5250846032710541e-06,
+   "valid9_above": 4,
+   "valid9_at_or_below": 59,
+   "valid9_largest_excess": 2.5084603061387156e-08,
+   "at_or_below": 61
   },
   "CH": {
    "invocations": 45,
@@ -175,7 +179,11 @@
    "above_within_rounding": 3,
    "above_beyond_rounding": 0,
    "above_beyond_rounding_valid9": 0,
-   "largest_excess": 2.3516815605972852e-08
+   "largest_excess": 2.3516815605972852e-08,
+   "valid9_above": 3,
+   "valid9_at_or_below": 11,
+   "valid9_largest_excess": 2.3516815605972852e-08,
+   "at_or_below": 11
   }
  },
  "arm_CH_attempts": {

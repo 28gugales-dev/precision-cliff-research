@@ -24,7 +24,9 @@ def family_argmax(N):
         if k * k > N:
             v, m = N / (2.0 * k), 0
         else:
-            m = min(N - k * k, (k - 1) ** 2)
+            m = N - k * k
+            if m > (k - 1) ** 2:
+                continue  # more fillers than the interstices hold: not a family member
             v = k / 2.0 + m * R2 / (2.0 * k)
         if v > best[0]:
             best = (v, k, m)

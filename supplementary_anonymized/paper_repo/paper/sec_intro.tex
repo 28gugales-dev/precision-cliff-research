@@ -1,0 +1,118 @@
+\section{Introduction}\label{sec:intro}
+
+Ask a language model to place 21 circles in a unit square to maximize the sum of their radii.
+It will not search. It reaches for the nearest square grid, five by five ($k = 5$) at
+radius $1/(2k)$, and truncates it, leaving four cells empty. A companion submission
+\citep{companion} gives that behaviour a closed form, naming the modal output in advance.
+It reports that form as the empirical mode at all seven $N$ tested, at four of the five
+held out, and under a perturbed container and paraphrase. The two cell sets are listed in
+Table~\ref{tab:glossary}. This paper's own generation-0 rows were sampled
+fresh under its loop arm, on the same instrument and prompt bytes
+\citep{companion}. At $N = 31$ they put the anchor on 7 of 8 valid
+outputs. At $N = 13$, on 4 of 9 (Table~\ref{tab:overview}).
+
+A characterization that sharp invites an inference. What a proposer emits zero-shot is what it
+will contribute inside a discovery loop, so the loop need not run. Discovery systems in the
+FunSearch line \citep{romeraparedes2024funsearch,novikov2025alphaevolve} do not call their
+proposer zero-shot. They condition it on a parent and iterate it against an archive. Each is a
+change of setting, as is the serving path \citep{companion}. Each can break the
+characterization.
+
+\textbf{Objects and arms.} A \emph{template} is one
+member of the grid-plus-filler recipe family. The \emph{anchor} is the template the model's
+outputs concentrate on at a given $N$. The \emph{family argmax} is the largest value the
+family can express at that $N$. A \emph{discriminating cell} is an $N$ where the two differ,
+so only there can anchoring be told from family search. Table~\ref{tab:glossary} carries the
+rest. Eight registered arms change four things. Arm MU changes
+the parent. Arm L adds iteration, feeding a scored proposal back as the next parent. Arms P
+and P-D change the serving path and the reasoning setting on it. Arms GM, GM2, GM3 and V
+change the vendor, GM2 and GM3 differing only by output budget.
+
+\textbf{Claim.} A weak-tier LLM proposer's zero-shot anchor in circle packing is contingent on
+the serving path and its request parameters. A zero-shot
+characterization therefore does not establish that its anchor transfers into a discovery
+loop, absent a measurement there. The anchor does not transfer. The family argmax does, as a
+ceiling. Under the clearance rule of \S\ref{sec:method}, no output valid at $10^{-9}$
+exceeds it by more than $10^{-6}$ in any arm. At the second vendor's discriminating cells
+most valid outputs sit on it. Two kinds of residual are reported and neither is a clearance.
+The primary $10^{-6}$ tolerance admits circle overlaps up to
+that size, and under it 18 arm MU outputs sit above the argmax by at most
+$1.53\times10^{-6}$; all 18 fail at $10^{-9}$
+(\S\ref{sec:arm-mu}). In arm GM3, 29 outputs valid at $10^{-9}$ sit above the argmax by at
+most $5.3\times10^{-10}$, the rounding of a printed coordinate (\S\ref{sec:gm3-v}). Two arms carry no row in Table~\ref{tab:overview}. Arm
+GM finished UNDERPOWERED whether its routed rows are counted or not. Arm GM2 returned nothing
+parseable at the smaller output budget. Arm GM3 diagnosed the cause at the larger.
+
+\begin{table}[!ht]
+\caption{Six of the eight arms: what each changed, its bar, the outcome
+and the verdict. Codes like P-MU1 name a registered prediction,
+written out in its arm's section and Supplement~S1. L1 to L4 are the loop arm's
+four, named in \S\ref{sec:arm-l}. Arms MU and L ran on the agent-runtime instrument, P and
+P-D on the pinned path. Bracketed ranges are 95\% Wilson intervals on the rate they follow, reported as descriptive precision; no verdict turns on one.}
+\label{tab:overview}
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.05\linewidth}>{\raggedright\arraybackslash}p{0.15\linewidth}>{\raggedright\arraybackslash}p{0.24\linewidth}>{\raggedright\arraybackslash}p{0.22\linewidth}>{\raggedright\arraybackslash}p{0.21\linewidth}@{}}
+\toprule
+Arm & What changed & Registered bar & Outcome & Verdict \\
+\midrule
+MU & The parent the proposer is conditioned on & Under a better in-family parent, on-prediction rate
+at most 20\% and keep-or-improve at least 50\% & 26 of 26 keep or improve [87--100\%], 25 within $10^{-6}$ of the parent's score and one
+$1.2\times10^{-6}$ above it, so the on-prediction rate there is 0 of 26 [0--13\%]; under the model's
+own anchor, 7 of 28 keep it [13--43\%] and 17 move above it & The rule reduces to one
+condition under the better parent; the own-anchor rate misses P-MU1's 50\% bar, so the
+anchor is not self-stable; the falsifier is that rule's negation and adds no second result \\
+\addlinespace
+L & Five archive-and-mutate generations & Pooled conditioned on-prediction rate below the
+generation-0 rate in both cells (L2); the falsifier is its negation & $N = 13$: 4 of 9 at generation 0, 5 of
+20 conditioned. $N = 31$: 7 of 8, then 6 of 29. Pooled 11 of 17 [41--83\%], then 11 of 49
+[13--36\%] & L2 holds; L1 and L3 not met; L4 open (0 of 49 clear the family, [0--7\%]) \\
+\addlinespace
+P & The serving path: the bare pinned chat-completions endpoint & A floor of five valid
+outputs per cell & 0 of 105 valid at the square cells [0--4\%]; 4 of 75 at the held-out cells
+[2--13\%] & Every direct-emission prediction UNSCOREABLE: no cell reaches the floor \\
+\addlinespace
+P-D & Extended thinking on against off, same pinned path & The reasoning budget is the cause,
+against the missing context, against anything else & Thinking on, 12 of 14
+valid with the anchor the plurality value at 5 of 12 [19--68\%]; off, 0 of 13 [0--23\%] &
+The reasoning-budget hypothesis holds; extended thinking is the component \\
+\addlinespace
+GM3 & A second vendor's gemma at a 16,384-token budget & Pooled rate at least 30\%, and the
+anchor modal in 5 of 5 scoreable cells & 46 of 80 pooled (57.5\%, [47--68\%]); modal
+in 2 of 5; 11 of 43 at the discriminating cells (26\%, [15--40\%]) & The pooled bar is met;
+the discriminating cells, the only ones that test anchoring, miss it (post hoc split) \\
+\addlinespace
+V & Thirteen free-tier aliases & At least 10 of a model's 25 invocations valid, then V1 at
+least 50\% and V2 at most 10\% & Ten aliases below the floor; two aliases meet the V1 pooled
+bar at point estimate, on 8 of 12 [39--86\%] and 11 of 18 [39--80\%] of their valid outputs,
+and a third does not, at 0 of 15 [0--20\%] & The boundary is located, not attributed \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
+\textbf{Contributions.}
+\begin{enumerate}
+\item \emph{A measurement of transfer, not an argument about it.} Each change of setting got
+its own arm, with thresholds and a falsifier fixed before the first
+invocation. Every deviation is tabled.
+\item \emph{A named instrument component, at one cell.} On the pinned path at $N = 13$, arm
+P's validity collapse survives the one system line tested, a request for care. One
+registered condition (P-D, whose rows both submissions report) and two post hoc diagnostics
+separate the candidates. Extended thinking carries the anchor.
+\item \emph{A cross-vendor boundary that is located but not attributed.} Two second-vendor
+measurements disagree, with model variant and serving path confounded.
+\end{enumerate}
+
+\textbf{Scope.} The proposer is one vendor's weak-tier alias
+(\texttt{claude-haiku-4.5}) except where another is named. The conditioning arm runs
+at three trap cells, $N = 13$, 21 and 31. The loop arm runs at two of them.
+
+\emph{What is not claimed.} Nothing about the companion paper's numerical baseline, about
+which constructions beat the family argmax, or about its
+mid-tier alias. Those are its results, cited and not restated \citep{companion}.
+Nothing about mechanism inside the weights, about what a discovery system does at
+generation zero, or whether diversity machinery
+\citep{mouret2015mapelites,lehman2011novelty} repairs or explores. Preregistration
+is an adopted standard, not a contribution (\S\ref{sec:related}).

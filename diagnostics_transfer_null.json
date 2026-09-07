@@ -1,0 +1,98 @@
+{
+ "window": 0.002,
+ "cells": {
+  "13": {
+   "anchor": 1.625,
+   "admissible_orders": 3,
+   "null_rate": 0.3333333333333333
+  },
+  "17": {
+   "anchor": 2.051776695296637,
+   "admissible_orders": 2,
+   "null_rate": 0.5
+  },
+  "21": {
+   "anchor": 2.1,
+   "admissible_orders": 3,
+   "null_rate": 0.3333333333333333
+  },
+  "31": {
+   "anchor": 2.5833333333333335,
+   "admissible_orders": 3,
+   "null_rate": 0.3333333333333333
+  },
+  "35": {
+   "anchor": 2.9166666666666665,
+   "admissible_orders": 3,
+   "null_rate": 0.3333333333333333
+  },
+  "37": {
+   "anchor": 3.034517796864425,
+   "admissible_orders": 3,
+   "null_rate": 0.3333333333333333
+  },
+  "43": {
+   "anchor": 3.0714285714285716,
+   "admissible_orders": 3,
+   "null_rate": 0.3333333333333333
+  }
+ },
+ "table": [
+  {
+   "label": "V north-mini-code pooled",
+   "on_prediction": 8,
+   "valid": 12,
+   "null_rates": [
+    0.333333,
+    0.5
+   ],
+   "rows_at_one_half": 3,
+   "tail_admissible": 0.0372402580907382,
+   "tail_one_third": 0.018758432262471283
+  },
+  {
+   "label": "V north-mini-code discriminating",
+   "on_prediction": 3,
+   "valid": 4,
+   "null_rates": [
+    0.333333
+   ],
+   "rows_at_one_half": 0,
+   "tail_admissible": 0.1111111111111111,
+   "tail_one_third": 0.1111111111111111
+  },
+  {
+   "label": "V gpt-oss-20b pooled",
+   "on_prediction": 11,
+   "valid": 18,
+   "null_rates": [
+    0.333333
+   ],
+   "rows_at_one_half": 0,
+   "tail_admissible": 0.014433622275459988,
+   "tail_one_third": 0.014433622275459988
+  },
+  {
+   "label": "V gpt-oss-20b discriminating",
+   "on_prediction": 5,
+   "valid": 9,
+   "null_rates": [
+    0.333333
+   ],
+   "rows_at_one_half": 0,
+   "tail_admissible": 0.14484580602550423,
+   "tail_one_third": 0.14484580602550423
+  },
+  {
+   "label": "GM3 gemma-4-26b discriminating",
+   "on_prediction": 11,
+   "valid": 43,
+   "null_rates": [
+    0.333333
+   ],
+   "rows_at_one_half": 0,
+   "tail_admissible": 0.8947749660135117,
+   "tail_one_third": 0.8947749660135117
+  }
+ ]
+}

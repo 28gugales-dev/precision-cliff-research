@@ -1,0 +1,93 @@
+{
+ "lineages": {
+  "13-greedy": {
+   "conditioned_rows": 25,
+   "valid6": 4,
+   "valid9": 3,
+   "on_prediction": 0,
+   "valid9_above": 0,
+   "valid9_max_excess": -2.220446049250313e-16,
+   "max_excess_valid6": -2.220446049250313e-16,
+   "argmax_parent_rows": 25,
+   "argmax_parent_valid6": 4,
+   "clear": 0
+  },
+  "13-diverse": {
+   "conditioned_rows": 25,
+   "valid6": 16,
+   "valid9": 16,
+   "on_prediction": 5,
+   "valid9_above": 0,
+   "valid9_max_excess": -2.886579864025407e-15,
+   "max_excess_valid6": -2.886579864025407e-15,
+   "argmax_parent_rows": 0,
+   "argmax_parent_valid6": 0,
+   "clear": 0
+  },
+  "31-greedy": {
+   "conditioned_rows": 25,
+   "valid6": 18,
+   "valid9": 18,
+   "on_prediction": 3,
+   "valid9_above": 0,
+   "valid9_max_excess": -0.13811147075719044,
+   "max_excess_valid6": -0.13811147075719044,
+   "argmax_parent_rows": 0,
+   "argmax_parent_valid6": 0,
+   "clear": 0
+  },
+  "31-diverse": {
+   "conditioned_rows": 25,
+   "valid6": 11,
+   "valid9": 10,
+   "on_prediction": 3,
+   "valid9_above": 5,
+   "valid9_max_excess": 1.3322676295501878e-15,
+   "max_excess_valid6": 1.3322676295501878e-15,
+   "argmax_parent_rows": 9,
+   "argmax_parent_valid6": 7,
+   "clear": 0
+  }
+ },
+ "l3_cells": {
+  "13-greedy": [
+   0,
+   4
+  ],
+  "13-diverse": [
+   5,
+   16
+  ],
+  "31-greedy": [
+   3,
+   18
+  ],
+  "31-diverse": [
+   3,
+   11
+  ]
+ },
+ "pooled": {
+  "conditioned_rows": 100,
+  "valid6": 49,
+  "valid9": 47,
+  "on_prediction": 11,
+  "valid9_above": 5,
+  "argmax_parent_rows": 34,
+  "argmax_parent_valid6": 11,
+  "clear": 0,
+  "valid9_max_excess": 1.3322676295501878e-15
+ },
+ "l3": {
+  "greedy": [
+   3,
+   22
+  ],
+  "diverse": [
+   8,
+   27
+  ],
+  "fisher_two_sided_p": 0.30276521610200896,
+  "odds_ratio": 0.375
+ }
+}

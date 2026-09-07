@@ -14,7 +14,8 @@ from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-CORPUS = Path(r"~\AppData\Local\hermes\research-corpus\precision-cliff")
+_UP = Path(__file__).resolve().parents[2]  # bundle root, or research-corpus/ on the authoring host
+CORPUS = _UP if (_UP / "arm_f_repro.py").is_file() else _UP / "precision-cliff"
 sys.path.insert(0, str(CORPUS))
 import arm_cl_analysis as cl  # noqa: E402
 

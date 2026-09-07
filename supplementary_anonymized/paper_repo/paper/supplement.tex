@@ -1,0 +1,39 @@
+% Supplement to paper 2. Compile after main.tex (this file reads main.aux through xr-hyper
+% for cross-references into the paper). Class setup copied from the companion paper's
+% supplement.
+\documentclass[10pt]{article}
+\usepackage{tmlr}
+\usepackage{xr-hyper}
+\externaldocument{main}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{microtype}
+\usepackage{graphicx}
+\raggedbottom
+\newcommand{\bk}{\discretionary{}{}{}}
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+
+\title{Supplement to: Characterize Before You Loop: What Transfers From a
+Zero-Shot Proposer's Template and What Does Not}
+
+\author{\name Anonymous authors \email anonymous@example.org \\
+      \addr Withheld for double-blind review}
+
+\def\month{MM}
+\def\year{YYYY}
+\def\openreview{\url{https://openreview.net/forum?id=XXXX}}
+
+\begin{document}
+\maketitle
+\input{sec_supp}
+
+\bibliography{references}
+\bibliographystyle{tmlr}
+\end{document}

@@ -4,9 +4,11 @@
 #   sec3_dispersion_registered.py                    -- stdlib only
 #   sec3_dispersion_prereg_rule.py                   -- numpy, rapidfuzz, scipy
 #   sec3_artifacts/dispersion_probe_v2/analyze_v2.py -- numpy
+#   fig_scripts.py, fig4_family_echo.py, fig_gm3_anchoring.py -- matplotlib
 #
 # Versions are the ones the reported figures were produced under; the scripts do
 # not depend on version-specific behaviour and looser pins should reproduce.
 numpy>=1.24
 scipy>=1.10
 rapidfuzz>=3.0
+matplotlib>=3.7  # only fig_scripts.py, fig4_family_echo.py, fig_gm3_anchoring.py

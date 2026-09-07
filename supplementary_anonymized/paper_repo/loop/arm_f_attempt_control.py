@@ -12,8 +12,9 @@ import json
 from collections import Counter
 from pathlib import Path
 
-SRC = Path(r"~\AppData\Local\hermes\research-corpus\precision-cliff"
-           r"\arm_f_candidates_v2.jsonl")
+_UP = Path(__file__).resolve().parents[2]  # bundle root, or research-corpus/ on the authoring host
+CORPUS = _UP if (_UP / "arm_f_repro.py").is_file() else _UP / "precision-cliff"
+SRC = CORPUS / "arm_f_candidates_v2.jsonl"
 OUT = Path(__file__).resolve().parent.parent / "evidence" / "arm_f_attempt_control.json"
 
 KSTAR = {13: 4, 17: 4, 21: 5, 31: 6, 35: 6, 37: 6, 43: 7}

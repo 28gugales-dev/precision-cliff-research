@@ -1,0 +1,64 @@
+\section{Registration, instruments, scoring, floors}\label{sec:method}
+
+\textbf{Registration protocol.} For each cell the prompt is pinned and its SHA-256 digest
+written to disk first. The $N = 13$ square prompt has a digest beginning \texttt{32db485b},
+given in full in the supplement. Predictions live in the header of each arm's analysis script or in
+a standalone registration file. Competing predictions, numeric thresholds, tie conventions and
+a falsifier are fixed before the first invocation. Raw outputs are stored verbatim, failures
+included. Scoring is deterministic and local. Each arm writes its rows to a JSONL ledger.
+The supplement carries every arm's ledger, every departure from a registration, and the
+per-cell tables for the serving-path and second-vendor arms. Every reported verdict was
+registered before its arm's first scored run. Post hoc readings are labelled where they
+appear and listed together in \S\ref{sec:limits}.
+
+\textbf{Two instruments, never pooled.} The first is an agent runtime. It does not expose
+decoding parameters, so every runtime row is a distributional claim over an observed sampling
+regime. It dispatches each call to a \emph{subagent}, its worker process. That process
+inherits instruction files outside the task prompt. The digests do not lock those files, and
+a replicator cannot reconstruct them. The runtime also publishes no weight hash, so the
+alias-to-weights binding is a vendor promise. The second is a pinned API, the vendor's
+chat-completions endpoint reached through OpenRouter, at temperature 1.0 with no system
+prompt. It exposes and pins temperature and carries no inherited context. Arms MU and L run
+on the runtime. Arms P and P-D run on the pinned path. Arms GM, GM2 and GM3 use a second
+vendor's first-party API, and arm V uses free-tier aliases at seven attributed vendors. No
+count in this paper pools across instruments.
+
+\textbf{Scoring conventions, fixed in advance.} Validity is scored at $10^{-9}$ and
+$10^{-6}$; $10^{-6}$ is primary, and the $10^{-9}$ count appears wherever a clearance is
+read. Proposers print six to eight decimals, so an
+eight-decimal tangency misses contact by about $5\times10^{-9}$. The primary threshold sits far
+below the gap of about $10^{-2}$ between the competing constructions a cell can express. Value
+matching uses a $2\times10^{-3}$ window. That window never carries a clearance verdict. One
+clearance rule serves every arm: an output clears the family argmax when it is valid at
+$10^{-9}$ and its verified sum exceeds the closed-form argmax by more than $10^{-6}$. An output
+valid only at $10^{-6}$ cannot clear, whatever its sum, and a residual under $10^{-6}$ is
+rounding, not clearance. Both kinds are counted and reported where they occur. That argmax is
+the family's maximum by construction,
+so a clearance is an output outside the recipe family. Completions are parsed with \texttt{ast.literal\_eval}
+after stripping code fences. One that fails to yield a list of $N$ strictly positive numeric
+triples is a logged parse failure, scored invalid. Every on-prediction rate is computed over
+valid outputs and so conditions on execution success. Per-cell validity denominators are
+reported beside every rate, except in arm MU. That arm registered three rates, the
+on-prediction rate (its registration calls it the anchor-rate), keep-or-improve and $k$-inheritance, pooled across its three cells. Only
+P-MU4 (\S\ref{sec:arm-mu}) was registered per cell. Its table therefore gives
+pooled counts for those three and per-cell counts for P-MU4.
+
+\textbf{Evaluability floors, per arm.} The evaluability floor is the minimum
+valid-sample count a cell needs before its verdict counts, fixed at each arm's own
+registration. The second-vendor chain uses 3: a cell below it is UNSCOREABLE for mode analysis
+and claims nothing in either direction. A chain arm with fewer than 5 scoreable cells is
+UNDERPOWERED. Arms P and P-D use 5. Arm V uses a per-model floor of
+at least 10 of a model's 25 registered invocations valid at $10^{-6}$. A model below it is
+labelled BELOW-FLOOR and carries no anchoring claim in either direction. Arm L's floor is a
+two-part rule on each lineage, the chain of generations grown from one cell
+(\S\ref{sec:arm-l}). A lineage needs at least 3 valid proposals at generation 0, the
+unconditioned start, and at least 1 in at least 3 of the 5 generations conditioned on a
+parent. All four lineages clear it. The weakest, lineage 13-GREEDY at $N = 13$, clears on 5
+valid at generation 0 and on valid outputs in 3 of its 5 conditioned generations. Its 4 valid
+conditioned proposals are not the quantity the floor tests.
+
+\textbf{The eight arms.} All eight were run once, in one registered corpus. Arms P and P-D
+answer an instrument question in the companion and a transfer question here, so both papers
+report the same rows in full \citep{companion}. The other six are reported here and appear in
+the companion only as a pointer.
+Each arm's design is stated where the arm is reported. Supplement~S1 tables all eight.

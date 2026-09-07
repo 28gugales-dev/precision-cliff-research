@@ -10,8 +10,9 @@ import json
 import math
 from pathlib import Path
 
-SRC = Path(r"~\AppData\Local\hermes\research-corpus\precision-cliff"
-           r"\arm_mu_scored.json")
+_UP = Path(__file__).resolve().parents[2]  # bundle root, or research-corpus/ on the authoring host
+CORPUS = _UP if (_UP / "arm_f_repro.py").is_file() else _UP / "precision-cliff"
+SRC = CORPUS / "arm_mu_scored.json"
 OUT = Path(__file__).resolve().parent.parent / "evidence" / "arm_mu_ceiling.json"
 
 R2 = math.sqrt(2.0) - 1.0
@@ -30,7 +31,9 @@ def family_argmax(N):
         if k * k > N:
             v, m = N / (2.0 * k), 0
         else:
-            m = min(N - k * k, (k - 1) ** 2)
+            m = N - k * k
+            if m > (k - 1) ** 2:
+                continue  # more fillers than the interstices hold: not a family member
             v = k / 2.0 + m * R2 / (2.0 * k)
         if v > best:
             best, best_k, best_m = v, k, m
@@ -115,6 +118,10 @@ def slice_totals(conditions):
         "above_beyond_rounding": len(real_s),
         "above_beyond_rounding_valid9": sum(1 for r in real_s if r.get("valid9")),
         "largest_excess": max((r["sum"] - a(r) for r in over_s), default=0.0),
+        "valid9_above": sum(1 for r in v9 if r["sum"] > a(r)),
+        "valid9_at_or_below": sum(1 for r in v9 if r["sum"] <= a(r)),
+        "valid9_largest_excess": max((r["sum"] - a(r) for r in v9 if r["sum"] > a(r)), default=0.0),
+        "at_or_below": len(v6) - len(over_s),
     }
 
 

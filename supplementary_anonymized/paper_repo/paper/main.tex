@@ -1,0 +1,85 @@
+% ===========================================================================
+% TMLR submission, paper 2 of a two-paper split (round 22).
+% Preamble and class setup copied from the companion paper's main.tex.
+% Sections follow the body budget of ROUND22_PLAN.md, "Paper 2 spec".
+% Every number is carried over from the companion paper's text or from the
+% frozen arm reports in the corpus; none is recomputed here (NUMBERS.md).
+%
+% Compile: pdflatex -> bibtex -> pdflatex x2, then the same four for
+% supplement.tex (the supplement reads main.aux through xr-hyper).
+%
+% Camera-ready: switch to \usepackage[accepted]{tmlr}, restore the real
+% author block, set \month/\year/\openreview below.
+% ===========================================================================
+\documentclass[10pt]{article}
+\usepackage{tmlr}
+% If accepted: \usepackage[accepted]{tmlr}
+% Preprint (arXiv): \usepackage[preprint]{tmlr}
+
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{microtype}
+\usepackage{graphicx}
+\raggedbottom
+
+% zero-width, hyphen-free break opportunity, used inside long hex digests
+\newcommand{\bk}{\discretionary{}{}{}}
+
+\title{Characterize Before You Loop: What Transfers From a Zero-Shot
+Proposer's Template and What Does Not}
+
+% DOUBLE-BLIND: real author block intentionally absent from this file.
+\author{\name Anonymous authors \email anonymous@example.org \\
+      \addr Withheld for double-blind review}
+
+\def\month{MM}  % camera-ready
+\def\year{YYYY} % camera-ready
+\def\openreview{\url{https://openreview.net/forum?id=XXXX}} % camera-ready
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+A weak-tier language model proposer, asked in a zero-shot call to pack circles in the unit
+square, concentrates on a grid-plus-filler template. A companion submission gives the closed
+form naming its modal output. That template is the anchor, where its outputs settle at a
+given size. Its recipe family has a largest member there, the family argmax. This
+paper measures which survives a change of setting.
+Eight registered arms change four things. They vary the parent, the
+iteration, the serving path with its reasoning setting, and the vendor. Under a better
+in-family parent, on the agent-runtime instrument, 26 of 26 valid outputs keep or improve that
+parent's score, and none returns to the anchor. Under its own anchor as parent the model leaves that anchor,
+missing the registered bar. Iteration erodes it across five archive-and-mutate
+generations on that instrument. The same prompts on a pinned
+path return 0 of 105 valid packings. Extended thinking restores validity at the one cell
+tested. At a second vendor the registered pooled bar is met; a post hoc split shows the cells
+that test anchoring miss it. Under an instruction to improve, the anchor does not persist. The family argmax does, as
+a ceiling no arm clears: no output valid at $10^{-9}$ exceeds it by more than $10^{-6}$.
+Clearing it would mean leaving the recipe family,
+and no valid output did. In plain terms, the anchor value is easy to dislodge and the
+ceiling above it is not. Across every prompt, serving path and vendor tried, no valid packing
+cleared the best member of that recipe family: that member is the ceiling, and the ceiling
+transfers.
+\end{abstract}
+
+\input{sec_intro}
+\input{sec_task}
+\input{sec_method}
+\input{sec_conditioning}
+\input{sec_loop}
+\input{sec_path}
+\input{sec_vendor}
+\input{sec_related}
+\input{sec_limits}
+
+% Citations use natbib \citet/\citep per TMLR's instructions.
+\bibliography{references}
+\bibliographystyle{tmlr}
+
+\end{document}

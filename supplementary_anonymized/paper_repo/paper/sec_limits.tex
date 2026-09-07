@@ -1,0 +1,71 @@
+\section{Limitations, reproducibility, deviations}\label{sec:limits}
+
+\textbf{Scale.} Arm MU takes one conditioning step, and arm L runs five generations at
+population 5 with one mutation operator. A larger loop, with islands and crossover, could
+sustain variation this one cannot.
+
+\textbf{No instruction-free control.} No call without the improve instruction was run. So
+returning the argmax parent unchanged,
+26 of 26, cannot be split into recognising an optimum and ignoring the instruction. Only its
+parent-dependence is established: the same instruction moves 17 of 28 off the model's own
+anchor.
+
+\textbf{Vendor and tier scope.} The proposer under test is one vendor's weak-tier alias,
+except where another is named. The cross-vendor arms move the pooled-level statement, not the
+cell-level mode structure.
+
+\textbf{Prompt robustness.} Every arm conditions on a single hash-locked prompt. That buys
+reproducibility, not robustness to rewording. The companion paper reworded two discriminating
+cells and found the same modal construction \citep{companion}.
+
+\textbf{Untested alternatives.} Typicality bias in preference-tuned models
+\citep{zhang2026verbalizedsamplingmitigatemode} predicts concentration on the most typical
+construction without reference to geometry, and nothing here excludes it. Contamination
+probes \citep{carlini2021extracting,golchin2024timetravel}, a format-sensitivity sweep
+\citep{sclar2024formatspread} and alignment-induced diversity loss \citep{kirk2024rlhf} remain
+untested.
+
+\textbf{Reproducibility.} Every arm's prompts were hashed, and its predictions and falsifiers
+fixed, before sampling. Exceptions are in the supplement's deviation table, and no arm was
+selected on its result. The anonymized artifact, shipped as supplementary material with entry
+point \texttt{artifact/BUNDLE\_README.md}, holds the ledgers, scripts,
+registrations, amendments and frozen reports. It regenerates every reported count by a
+documented command, and a replay gate (\texttt{replay\_gate.py}) runs each documented
+script from the packaged bundle. Arms P and P-D can be re-sampled on their pinned path. Arms MU and L can be re-scored
+but not re-drawn, because their rows depend on a dispatch wrapper and inherited context the
+digests do not lock.
+
+\textbf{Where the forking paths are.} Five choices were made with data already in hand, and
+each is named here. (a) Arm V's evaluable set exists because of amendment 2
+(\texttt{d579797}), which expanded the alias list after the three registered aliases finished
+below the floor. (b) Arm P-D was designed after arm P collapsed, and registered at
+\texttt{5554cc0}. (c) The clearance readings for arms MU, GM3 and V, GM3's
+discriminating-cell split and arm L's pooled Fisher test are post hoc, registered for none. (d) Both arm P diagnostics, the temperature sweep and the same-day runtime control,
+were chosen after that collapse. (e) Arm P's scoring code was committed at \texttt{596b113},
+after its registration at \texttt{aa473ad} and after sampling. None is corrected for
+multiplicity. The protection is that each is listed.
+
+\textbf{Deviations, in summary.} Arms GM and GM3 each carry
+one registered serving-path deviation, with both accountings reported for each, and GM3 also
+carries a disclosed duplicate-row repair. Arm V has three pre-sampling amendments. Arm L has
+one post-sampling scorer correction, affecting only the $10^{-9}$ clearance test. Arm P-D
+closed at 27 of 30 rows by an amendment that could not change its verdict.
+
+\textbf{Use of AI systems.} Claude models drafted prose and assisted implementation. The
+authors designed the study, specified the instruments and their decision rules, and approved
+each preregistration before sampling. Each such commit is a git ancestor of the sampling it
+governs.
+
+\section{Conclusion}\label{sec:conclusion}
+
+Eight registered arms changed four things about the setting, for one task and one weak-tier
+proposer. On the agent-runtime instrument, one conditioning step under the improve instruction
+left 0 of 26 outputs on the anchor given a better parent. An off-family parent brought the
+$k^*$-grid back in 20 of 34. Five loop generations there did not restore the anchor. A pinned serving path collapsed validity until extended
+thinking was on. At a second vendor the pooled bar held while the discriminating cells did
+not. A zero-shot characterization therefore
+does not establish how a proposer behaves inside a discovery loop without a measurement at
+that loop's own conditions. The boundary is two-sided: the anchor does not carry into a
+conditioned call, the family argmax does, as a ceiling no arm clears under the rule of
+\S\ref{sec:method}. Check coordinates as well as score:
+a familiar score can come from a different arrangement.
